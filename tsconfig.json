@@ -8,6 +8,7 @@
       "allowJs": true,
       "moduleResolution": "node",
       "resolveJsonModule":true,
+      "lib": ["ES5", "ES6"],
       "types": ["cypress"]
     }
   }
