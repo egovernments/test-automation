@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "cypress open",
+    "run": "cypress run --record"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^4.0.2",
-    "mochawesome": "^5.0.0"
+    "@cypress/webpack-preprocessor": "^5.1.2",
+    "cypress": "^4.4.0",
+    "mochawesome": "^5.0.0",
+    "ts-loader": "^7.0.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1"
   }
 }

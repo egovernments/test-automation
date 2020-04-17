@@ -1,17 +1,9 @@
-Cypress.Commands.add('register', (body) => {
-    cy.request({
-        method: 'POST',
-        url: '/ecurfew/createAccount',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json;charset=UTF-8'
-        },
-        body: body
-    })
-})
+// in cypress/support/index.d.ts
+// load type definitions that come with Cypress module
+/// <reference types="cypress" />
 
-Cypress.Commands.add('signin', (email,password,type,state) => {
-    cy.request({
+const signin = (email, password, type, state) => {
+    return cy.request({
         method: 'POST',
         url: '/ecurfew/signin',
         failOnStatusCode: false,
@@ -24,12 +16,27 @@ Cypress.Commands.add('signin', (email,password,type,state) => {
             "accountType": type,
             "stateName": state
         }
+    })
+}
 
+Cypress.Commands.add('signin', signin);
+
+Cypress.Commands.add('register', (body) => {
+    return cy.request({
+        method: 'POST',
+        url: '/ecurfew/createAccount',
+        failOnStatusCode: false,
+        headers: {
+            'content-type': 'application/json;charset=UTF-8'
+        },
+        body: body
     })
 })
 
-Cypress.Commands.add('verifyOTP', (email,accType,otp,state) => {
-    cy.request({
+
+
+Cypress.Commands.add('verifyOTP', (email, accType, otp, state) => {
+    return cy.request({
         method: 'POST',
         url: '/ecurfew/verifyOTP',
         failOnStatusCode: false,
@@ -37,7 +44,7 @@ Cypress.Commands.add('verifyOTP', (email,accType,otp,state) => {
             'content-type': 'application/json;charset=UTF-8'
         },
         body: {
-            "identifier":email,
+            "identifier": email,
             "accountIdentifierType": accType,
             "otp": otp,
             "stateName": state
@@ -46,8 +53,8 @@ Cypress.Commands.add('verifyOTP', (email,accType,otp,state) => {
     })
 })
 
-Cypress.Commands.add('approve_reject', (email,accId,action,token) => {
-    cy.request({
+Cypress.Commands.add('approve_reject', (email, accId, action, token) => {
+    return cy.request({
         method: 'POST',
         url: '/ecurfew/approveAccount',
         failOnStatusCode: false,
@@ -63,4 +70,3 @@ Cypress.Commands.add('approve_reject', (email,accId,action,token) => {
 
     })
 })
-
