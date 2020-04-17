@@ -2,8 +2,8 @@
     "userValidLogin": {
         "email": "dharmalingam.k+1@egovernments.org",
         "password": "test1234",
-        "type": "user",
-        "state": "DELHI"
+        "accountType": "user",
+        "stateName": "DELHI"
     },
     "rejectedUser": {
         "email": "dharmalingam.k+5@egovernments.org",

@@ -1,8 +1,6 @@
-// in cypress/support/index.d.ts
-// load type definitions that come with Cypress module
-/// <reference types="cypress" />
+import {ISignIn} from './models';
 
-const signin = (email, password, type, state) => {
+const signin = (data: ISignIn) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/signin',
@@ -10,12 +8,7 @@ const signin = (email, password, type, state) => {
         headers: {
             'content-type': 'application/json;charset=UTF-8'
         },
-        body: {
-            "email": email,
-            "password": password,
-            "accountType": type,
-            "stateName": state
-        }
+        body: data
     })
 }
 
