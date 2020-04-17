@@ -18,5 +18,6 @@ declare namespace Cypress {
         register(name: string, email: string, password: string, orgid: string, orgName: string, state: string): Chainable<Response>
         verifyOTP(email: string, accType: string, otp: string, state: string): Chainable<Response>
         approve_reject(email: string, accId: string, action: string, token: string): Chainable<Response>
+        create_pass(file: File, orderType: string, purpose: string, token: string): Chainable<Response>
     }
 }

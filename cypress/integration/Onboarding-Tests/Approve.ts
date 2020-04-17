@@ -41,7 +41,7 @@ context('ePass Login Test Cases',()=>{
 })
 
     it('Approve the Signup request',()=>{
-        let user=loginData.approver
+
         cy.approve_reject(email,accId,'ACCEPT',authToken).then((response)=>{
             expect(response.status).equal(200)
             expect(response.body).to.have.string("approved")
@@ -51,7 +51,7 @@ context('ePass Login Test Cases',()=>{
 
     })
     it('Decline the Signup request',()=>{
-        let user=loginData.approver
+
         cy.approve_reject(email,accId,'DECLINE',authToken).then((response)=>{
             expect(response.status).equal(200)
             expect(response.body).to.have.string("approved")

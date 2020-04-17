@@ -77,3 +77,22 @@ Cypress.Commands.add('approve_reject', (email, accId, action, token) => {
 
     })
 })
+
+Cypress.Commands.add('create_pass', (file, orderType, purpose, token) => {
+    return cy.request({
+        method: 'POST',
+        url: '/ecurfew/createOrder',
+        failOnStatusCode: false,
+        headers: {
+            'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryD3u3amCb9BMTuDLp'
+        },
+        body: {
+            "file": file,
+            "orderType": orderType,
+            "purpose": purpose,
+            "authToken": token
+        }
+
+    })
+})
+
