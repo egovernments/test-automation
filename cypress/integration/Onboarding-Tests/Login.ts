@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 // @ts-check
 
-//const signinBody = require('../../fixtures/auth/loginBody.json')
-//const loginData = require('../../fixtures/auth/loginData.json')
 import * as loginData from '../../fixtures/auth/loginData.json';
 
+
 context('Login mandatory fields missing', () => {
+
     Object.keys(loginData.userValidLogin).forEach((key: string) => {
         let updatedValue: any = {}
         updatedValue[key] = null;
@@ -15,7 +15,7 @@ context('Login mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.signin(user.email, user.password, user.type, user.state)
                 .then((response) => {
-                    expect(response.status).equal(500)
+                    expect(response.status).equal(400)
                     expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
@@ -44,7 +44,7 @@ context('ePass Login Test Cases', () => {
     it('Login as approver ', () => {
         let user = loginData.approver
         cy.signin(user.email, user.password, user.type, user.state).then((response) => {
-            expect(response.status).equal(400)
+            expect(response.status).equal(200)
             expect(response.body.accountName).to.have.string('superuser')
         })
     })
