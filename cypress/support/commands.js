@@ -21,7 +21,7 @@ const signin = (email, password, type, state) => {
 
 Cypress.Commands.add('signin', signin);
 
-Cypress.Commands.add('register', (body) => {
+Cypress.Commands.add('register', (name,email,password,orgid,orgName,state) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/createAccount',
@@ -29,7 +29,14 @@ Cypress.Commands.add('register', (body) => {
         headers: {
             'content-type': 'application/json;charset=UTF-8'
         },
-        body: body
+        body: {
+            "name": name,
+            "email": email,
+            "password": password,
+            "orgID": orgid,
+            "orgName": orgName,
+            "stateName": state
+          }
     })
 })
 

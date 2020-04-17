@@ -1,5 +1,4 @@
-const signinBody = require('../../fixtures/auth/loginBody.json')
-const loginData = require('../../fixtures/auth/loginData.json')
+import * as loginData from '../../fixtures/auth/loginData.json';
 let authToken,accId,email=""
 context('ePass Login Test Cases',()=>{
 

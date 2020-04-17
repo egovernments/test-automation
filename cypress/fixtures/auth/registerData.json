@@ -1,0 +1,27 @@
+
+{
+  "validData": {
+    "name": "Dinesh1",
+    "email": "dharmalingam.k+3@egovernments.org",
+    "password": "test1234",
+    "orgID": "DSKS3303032DS43",
+    "orgName": "KDS Limited",
+    "stateName": "DELHI"
+  },
+  "invalidData": {
+    "name": "Dinesh1",
+    "email": "dharmalingam.k+32@egovernments.org",
+    "password": "test1234",
+    "orgID": "DSKS3303032DS",
+    "orgName": "KDS Limited",
+    "stateName": "DELHI"
+  },
+  "existData": {
+    "name": "Dinesh1",
+    "email": "dharmalingam.k+1@egovernments.org",
+    "password": "test1234",
+    "orgID": "DSKS3303032DS43",
+    "orgName": "KDS Limited",
+    "stateName": "DELHI"
+  }
+}
