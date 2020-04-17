@@ -1,7 +1,7 @@
 {
   "baseUrl": "https://epassapi.egovernments.org",
   "env": {
-    "search": "TechieQA"
+    "state": "DELHI"
   },
   "projectId": "2qzuuk"
 }

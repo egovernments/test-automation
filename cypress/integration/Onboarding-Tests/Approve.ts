@@ -1,5 +1,7 @@
+/// <reference types="cypress" />
+
 import * as loginData from '../../fixtures/auth/loginData.json';
-let authToken,accId,email=""
+var authToken:string, accId:string, email:string;
 context('ePass Login Test Cases',()=>{
 
     it('Login as approver ',()=>{
@@ -9,7 +11,6 @@ context('ePass Login Test Cases',()=>{
             expect(response.body.accountName).to.have.string('superuser')
             authToken=response.body.authToken
         })
-
     })
     it('Get All pending approval organisations',()=>{
         cy.request({
@@ -29,7 +30,7 @@ context('ePass Login Test Cases',()=>{
 
         if(accounts.length<1){
             console.log('No pending approval organisations and stop execution')
-            Cypress.stop()
+            // Cypress.stop()
         }else{
             console.log(response.body)
             accId=response.body.accounts[0].id
@@ -43,7 +44,7 @@ context('ePass Login Test Cases',()=>{
         let user=loginData.approver
         cy.approve_reject(email,accId,'ACCEPT',authToken).then((response)=>{
             expect(response.status).equal(200)
-            expect(response.body).to.have.all.keys("authToken","publicKey")
+            expect(response.body).to.have.string("approved")
 
 
         })
@@ -53,7 +54,7 @@ context('ePass Login Test Cases',()=>{
         let user=loginData.approver
         cy.approve_reject(email,accId,'DECLINE',authToken).then((response)=>{
             expect(response.status).equal(200)
-            expect(response.body).to.have.all.keys("authToken","publicKey")
+            expect(response.body).to.have.string("approved")
 
         })
 
