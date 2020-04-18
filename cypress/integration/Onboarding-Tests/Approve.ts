@@ -3,6 +3,25 @@
 import * as loginData from '../../fixtures/auth/loginData.json';
 import * as approveData from '../../fixtures/auth/ApproveData.json';
 var authToken: string, accId: number, email: string;
+
+context('ApproveAccount mandatory fields missing', () => {
+
+    Object.keys(approveData.validAcceptAccount).forEach((key: string) => {
+        let updatedValue: any = {}
+        updatedValue[key] = null;
+
+        let approve = Object.assign({}, approveData.validAcceptAccount, updatedValue)
+
+        it(`has missing parameter ${key}`, () => {
+            cy.approveAccount(approve)
+                .then((response) => {
+                    expect(response.status).equal(500)
+                    // expect(response.body.error).does.not.contain("Internal Server Error")
+                });
+        })
+    });
+});
+
 context('ePass Login Test Cases', () => {
 
     it('Login as approver ', () => {
