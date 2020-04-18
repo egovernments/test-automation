@@ -22,87 +22,39 @@ const signin = (data: Partial<ISignIn>) => {
 Cypress.Commands.add('signin', signin);
 
 const register = (data: IRegister) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/createAccount',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json;charset=UTF-8'
-        },
-        body: data
-    })
+    return postApi( '/ecurfew/createAccount', data);
 }
+
 Cypress.Commands.add('register', register);
 
-
 const verifyOTP = (data: IVerifyOtp) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/verifyOTP',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json;charset=UTF-8'
-        },
-        body: data
+    return postApi('/ecurfew/verifyOTP', data);
 
-    })
 }
 Cypress.Commands.add('verifyOTP', verifyOTP);
 
 const approveAccount = (data: IApproveAccount) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/approveAccount',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json;charset=UTF-8'
-        },
-        body: data
+    return postApi('/ecurfew/approveAccount', data);
 
-    })
 }
 Cypress.Commands.add('approveAccount', approveAccount);
 
 const createOrder = (data: ICreateOrder) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/createOrder',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryD3u3amCb9BMTuDLp'
-        },
-        body: data
+    return postApi('/ecurfew/createOrder', data);
 
-    })
 }
 Cypress.Commands.add('createOrder', createOrder)
 
 const donwloadQRCode = (data: IDownloadQRCode) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/downloadQRCodes',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: data
+    return postApi('/ecurfew/downloadQRCodes', data);
 
-    })
 }
 Cypress.Commands.add('donwloadQRCode', donwloadQRCode)
 
 const getAllOrders = (data: IGetAllOrders) => {
-    return cy.request({
-        method: 'POST',
-        url: '/ecurfew/getAllOrders',
-        failOnStatusCode: false,
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: data
-
-    })
+    return postApi('/ecurfew/getAllOrders', data);
 }
+
 Cypress.Commands.add('getAllOrders', getAllOrders)
 
 
