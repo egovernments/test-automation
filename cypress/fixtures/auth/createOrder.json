@@ -1,0 +1,14 @@
+{
+    "validfile_2User": {
+        "file": "`@/Users/dharma/Downloads/epass_valid_2user.csv`",
+        "orderType": "person",
+        "purpose": "Essential services",
+        "authToken": "zebgtanlqttywvdrsttvmqyerwwzvmihqnaovficqllvjpnceoknxtayngkkulujacgndkwxhvlquadcucaghmgrixzuotgkwybazpwuafbklfoaltrzlouijemppoxo"
+    },
+    "validRejectAccount": {
+        "file": "`@/Users/dharma/Downloads/epass_valid_2user.csv`",
+        "orderType": "person",
+        "purpose": "Essential services",
+        "authToken": "zebgtanlqttywvdrsttvmqyerwwzvmihqnaovficqllvjpnceoknxtayngkkulujacgndkwxhvlquadcucaghmgrixzuotgkwybazpwuafbklfoaltrzlouijemppoxo"
+    }
+}

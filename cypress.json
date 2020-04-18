@@ -3,5 +3,6 @@
   "env": {
     "state": "DELHI"
   },
-  "projectId": "2qzuuk"
+  "projectId": "2qzuuk",
+  "ignoreTestFiles": "**/[WIP]*.ts"
 }

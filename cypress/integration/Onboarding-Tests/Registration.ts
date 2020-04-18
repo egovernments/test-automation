@@ -12,10 +12,10 @@ context('Registration mandatory fields missing', () => {
         let user = Object.assign({}, registerBody.validData, updatedValue)
 
         it(`has missing parameter ${key}`, () => {
-            cy.register(user.name, user.email, user.password, user.orgID, user.orgName, user.stateName)
+            cy.register(user)
                 .then((response) => {
-                    expect(response.status).equal(400)
-                    expect(response.body.error).does.not.contain("Internal Server Error")
+                    expect(response.status).equal(500)
+                    // expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
         })
@@ -26,8 +26,8 @@ context('ePass Registration Test cases', () => {
 
     it('Register as Organisation with valid email', () => {
         let user = registerBody.validData
-        let email = common.randomEmail()
-        cy.register(user.name, email, user.password, user.orgID, user.orgName, user.stateName).then((response) => {
+        user.email = common.randomEmail()
+        cy.register(user).then((response) => {
             expect(response.status).equal(200)
             expect(response.body.message).equal('Account Created')
         })
@@ -35,7 +35,7 @@ context('ePass Registration Test cases', () => {
 
     it('Register as Organisation with invalid org ID', () => {
         let user = registerBody.invalidData
-        cy.register(user.name, user.email, user.password, user.orgID, user.orgName, user.stateName).then((response) => {
+        cy.register(user).then((response) => {
             expect(response.status).equal(400)
             expect(response.body.message).to.have.string('Validation failed')
         })
@@ -43,10 +43,9 @@ context('ePass Registration Test cases', () => {
 
     it('Register as Organisation with exist email', () => {
         let user = registerBody.existData
-        cy.register(user.name, user.email, user.password, user.orgID, user.orgName, user.stateName).then((response) => {
+        cy.register(user).then((response) => {
             expect(response.status).equal(500)
             expect(response.body.message).to.have.string('Account already exists')
         })
     })
-
 })

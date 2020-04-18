@@ -2,26 +2,20 @@
     "userValidLogin": {
         "email": "dharmalingam.k+1@egovernments.org",
         "password": "test1234",
-        "type": "user",
-        "state": "DELHI"
+        "accountType": "user",
+        "stateName": "DELHI"
     },
     "rejectedUser": {
         "email": "dharmalingam.k+5@egovernments.org",
         "password": "test1234",
-        "type": "user",
-        "state": "DELHI"
+        "accountType": "user",
+        "stateName": "DELHI"
     },
     "approver": {
         "email": "superuser@epass.gov",
         "password": "admin_password",
-        "type": "admin",
-        "state": "DELHI"
-    },
-    "lme": {
-        "username": "EMP1",
-        "password": "EMP1",
-        "tenantId": "pb.amritsar",
-        "usertype": "EMPLOYEE"
+        "accountType": "admin",
+        "stateName": "DELHI"
     }
 
 }

@@ -1,14 +1,23 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "es5",
-      "jsx": "react",
-      "allowJs": true,
-      "moduleResolution": "node",
-      "resolveJsonModule":true,
-      "lib": ["ES5", "ES6","DOM"],
-      "types": ["cypress"]
-    }
-  }
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "lib": [
+      "ES5",
+      "ES6",
+      "DOM"
+    ],
+    "types": [
+      "cypress"
+    ]
+  },
+  "exclude": [
+    "cypress/**/[WIP]*.ts"
+  ]
+}
