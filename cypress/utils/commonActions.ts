@@ -1,4 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
+
 //Random email generate
 export function randomEmail() {
-    return 'dharmalingam.k+'+Math.floor((Math.random() * 1000) + 1)+'@egovernments.org'
+    return 'dharmalingam.k+'+uuidv4()+'@egovernments.org'
 }

@@ -17,6 +17,7 @@
     "mochawesome": "^5.0.0",
     "ts-loader": "^7.0.0",
     "typescript": "^3.8.3",
+    "uuid": "^7.0.3",
     "webpack": "^4.42.1"
   }
 }
