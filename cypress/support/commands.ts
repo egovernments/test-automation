@@ -1,4 +1,4 @@
-import { ISignIn,IRegister,IVerifyOtp,IApproveAccount,ICreateOrder } from './models';
+import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode } from './models';
 
 const signin = (data: ISignIn) => {
     return cy.request({
@@ -14,7 +14,7 @@ const signin = (data: ISignIn) => {
 
 Cypress.Commands.add('signin', signin);
 
-const register = (data:IRegister) => {
+const register = (data: IRegister) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/createAccount',
@@ -25,10 +25,10 @@ const register = (data:IRegister) => {
         body: data
     })
 }
-    Cypress.Commands.add('register',register);
+Cypress.Commands.add('register', register);
 
 
-const verifyOTP = (data:IVerifyOtp) => {
+const verifyOTP = (data: IVerifyOtp) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/verifyOTP',
@@ -42,7 +42,7 @@ const verifyOTP = (data:IVerifyOtp) => {
 }
 Cypress.Commands.add('verifyOTP', verifyOTP);
 
-const approveAccount = (data:IApproveAccount) => {
+const approveAccount = (data: IApproveAccount) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/approveAccount',
@@ -56,7 +56,7 @@ const approveAccount = (data:IApproveAccount) => {
 }
 Cypress.Commands.add('approveAccount', approveAccount);
 
-const createOrder = (data:ICreateOrder) => {
+const createOrder = (data: ICreateOrder) => {
     return cy.request({
         method: 'POST',
         url: '/ecurfew/createOrder',
@@ -70,30 +70,18 @@ const createOrder = (data:ICreateOrder) => {
 }
 Cypress.Commands.add('createOrder', createOrder)
 
-// Cypress.Commands.add(
-//     "Post_Clients",
-//     (csvPath, fileType, authToken, purpose, orderType) => {
-//       cy.fixture(csvPath, "binary").then(csvBin => {
-//         Cypress.Blob.binaryStringToBlob(csvBin, fileType).then(blob => {
-//           const xhr = new XMLHttpRequest();
-//           xhr.withCredentials = true;
-//           const data = new FormData();
-//           data.set("authToken", authToken);
-//             data.set("orderType", orderType);
-//             data.set("purpose", purpose);
-//             data.set("file", blob);
-//           xhr.open("POST", "/ecurfew/createOrder");
-//           xhr.setRequestHeader("content-type", "multipart/form-data");
+const donwloadQRCode = (data: IDownloadQRCode) => {
+    return cy.request({
+        method: 'POST',
+        url: '/ecurfew/downloadQRCodes',
+        failOnStatusCode: false,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: data
 
-//           xhr.onload = function() {
-//             done(xhr);
-//           };
-//           xhr.onerror = function() {
-//             done(xhr);
-//           };
-//           xhr.send(data);
-//         });
-//       });
-//     }
-// );
+    })
+}
+Cypress.Commands.add('donwloadQRCode', donwloadQRCode)
+
 

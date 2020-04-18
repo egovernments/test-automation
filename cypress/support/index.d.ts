@@ -19,6 +19,7 @@ declare namespace Cypress {
         verifyOTP(data: IVerifyOtp): Chainable<Response>
         approveAccount(data: IApproveAccount): Chainable<Response>
         createOrder(data: ICreateOrder): Chainable<Response>
-        // Post_Clients(csvPath:string, fileType:string, authToken:string, purpose:string, orderType:string): Chainable<Response>
+        donwloadQRCode(data: IDownloadQRCode): Chainable<Response>
+
     }
 }

@@ -28,6 +28,7 @@ context('ePass Login Test Cases', () => {
         let user = loginData.userValidLogin
         cy.signin(user)
             .then((response) => {
+                cy.writeFile("cypress/fixtures/auth/login.json", response.body)
                 expect(response.status).equal(200)
                 expect(response.body.organizationName).equal('KDS Limited')
             })

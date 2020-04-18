@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import * as loginData from '../../fixtures/auth/loginData.json';
-import * as approveData from '../../fixtures/auth/ApproveData.json';
+import * as approveData from '../../fixtures/auth/approveData.json';
 var authToken: string, accId: number, email: string;
 
 context('ApproveAccount mandatory fields missing', () => {
