@@ -1,4 +1,4 @@
-import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode } from './models';
+import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders } from './models';
 
 const signin = (data: ISignIn) => {
     return cy.request({
@@ -83,5 +83,19 @@ const donwloadQRCode = (data: IDownloadQRCode) => {
     })
 }
 Cypress.Commands.add('donwloadQRCode', donwloadQRCode)
+
+const getAllOrders = (data: IGetAllOrders) => {
+    return cy.request({
+        method: 'POST',
+        url: '/ecurfew/getAllOrders',
+        failOnStatusCode: false,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: data
+
+    })
+}
+Cypress.Commands.add('getAllOrders', getAllOrders)
 
 

@@ -47,3 +47,9 @@ export interface IDownloadQRCode {
     authToken:String
 
 }
+
+export interface IGetAllOrders {
+    accountID: String
+    authToken:String
+
+}
