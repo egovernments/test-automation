@@ -28,8 +28,29 @@ context('Download Pass mandatory fields missing', () => {
     });
 });
 
-context('Download Pass Test Cases', () => {
-    it('Download pass and validate the zip file', () => {
+context('Download Pass as approver and requester Test Cases', () => {
+    beforeEach(() => {
+        let user=loginData.approver
+        cy.signin(user)
+            .then((response) => {
+                authToken=response.body.authToken
+            })
+      })
+    it('Download pass as approver and validate the zip file', () => {
+        let download = downloadData.downloadQRCode
+        download.authToken = authToken
+        download.orderID=createResponse.id
+        cy.donwloadQRCode(download)
+            .then((response) => {
+                expect(response.status).equal(200)
+                cy.request('GET', response.body.processedS3URL).then((response) => {
+                    expect(response.status).equal(200)
+                })
+            })
+
+    })
+
+    it('Download pass as requester and validate the zip file', () => {
         let download = downloadData.downloadQRCode
         download.authToken = login.authToken
         download.orderID=createResponse.id
