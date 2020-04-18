@@ -1,15 +1,22 @@
+/// <reference types="Cypress" />
+
 import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders } from './models';
 
-const signin = (data: ISignIn) => {
-    return cy.request({
+function postApi(url: string, data: Cypress.RequestBody){
+    let body: Partial<Cypress.RequestOptions> = {
         method: 'POST',
-        url: '/ecurfew/signin',
+        url: url,
         failOnStatusCode: false,
         headers: {
             'content-type': 'application/json;charset=UTF-8'
         },
         body: data
-    })
+    }
+    return cy.request(body);
+}
+
+const signin = (data: Partial<ISignIn>) => {
+    return postApi('/ecurfew/signin', data);
 }
 
 Cypress.Commands.add('signin', signin);
