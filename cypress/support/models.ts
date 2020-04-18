@@ -35,21 +35,16 @@ export interface IApproveAccount {
     stateName: String;
 }
 
-export interface ICreateOrder {
+export interface ICreateOrder extends IAuthRequired {
     file: String;
     orderType: String
     purpose: String;
-    authToken: String;
 }
 
-export interface IDownloadQRCode {
+export interface IDownloadQRCode extends IAuthRequired {
     orderID: String
-    authToken:String
-
 }
 
-export interface IGetAllOrders {
+export interface IGetAllOrders extends IAuthRequired {
     accountID: String
-    authToken:String
-
 }
