@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders } from './models';
+import axios from 'axios';
 
 function postApi(url: string, data: Cypress.RequestBody){
     let body: Partial<Cypress.RequestOptions> = {
@@ -40,9 +41,26 @@ const approveAccount = (data: IApproveAccount) => {
 Cypress.Commands.add('approveAccount', approveAccount);
 
 const createOrder = (data: ICreateOrder) => {
-    return postApi('/ecurfew/createOrder', data);
-
+    // return postApi('/ecurfew/createOrder', data);
+    // let body: Partial<Cypress.RequestOptions> = {
+    //     method: 'POST',
+    //     url: '/ecurfew/createOrder',
+    //     form: true,
+    //     failOnStatusCode: false,
+    //     headers: {
+    //         'content-type': 'multipart/form-data'
+    //     },
+    //     body: data
+    // }
+    // return cy.request(body);
+    return axios({
+        method: 'post',
+        url: '/ecurfew/createOrder',
+        data: data,
+        headers: {'Content-Type': 'multipart/form-data' }
+        })
 }
+
 Cypress.Commands.add('createOrder', createOrder)
 
 const donwloadQRCode = (data: IDownloadQRCode) => {
