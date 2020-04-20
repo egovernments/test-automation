@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 var authToken: string;
-context('ePass Login Test Cases', () => {
+context('Create bulk pass test cases', () => {
     beforeEach(() => {
         let user=loginData.userValidLogin
         cy.signin(user)

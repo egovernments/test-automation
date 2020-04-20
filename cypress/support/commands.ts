@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders } from './models';
+import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders,IGetPendingAccount } from './models';
 import axios from 'axios';
 
 function postApi(url: string, data: Cypress.RequestBody){
@@ -75,4 +75,8 @@ const getAllOrders = (data: IGetAllOrders) => {
 
 Cypress.Commands.add('getAllOrders', getAllOrders)
 
+const getPendingAccount = (data:IGetPendingAccount) => {
+    return postApi('/ecurfew/getAllAccountsPendingVerification',data)
+}
 
+Cypress.Commands.add('getPendingAccount', getPendingAccount)

@@ -48,4 +48,12 @@ context('ePass Registration Test cases', () => {
             expect(response.body.message).to.have.string('Account already exists')
         })
     })
+    it('Register as Organisation in Karanata with new email', () => {
+        let user = registerBody.karnatakaNewData
+        user.email = common.randomEmail()
+        cy.register(user).then((response) => {
+            expect(response.status).equal(200)
+            expect(response.body.message).equal('Account Created')
+        })
+    })
 })

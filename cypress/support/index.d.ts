@@ -3,8 +3,6 @@
 /// <reference path="models.ts" />
 /// <reference types="Cypress" />
 
-
-
 declare module "*.json"
 {
     const value: any;
@@ -23,7 +21,8 @@ declare namespace Cypress {
         approveAccount(data: IApproveAccount): Chainable<Response>
         createOrder(data: ICreateOrder): Chainable<Response>
         donwloadQRCode(data: IDownloadQRCode): Chainable<Response>
-        getAllOrders(data:IGetAllOrders):Chainable<Response>
+        getAllOrders(data: IGetAllOrders): Chainable<Response>
+        getPendingAccount(data:IGetPendingAccount): Chainable<Response>
 
     }
 }

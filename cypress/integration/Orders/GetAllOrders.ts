@@ -8,7 +8,7 @@ import * as allOrdersData from '../../fixtures/testData/allOrdersData.json';
 var authToken: string;
 
 
-context('Download Pass mandatory fields missing', () => {
+context('GetAlllOrders mandatory fields missing', () => {
 
     Object.keys(allOrdersData.valid).forEach((key: string) => {
         let updatedValue: any = {}

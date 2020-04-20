@@ -28,6 +28,9 @@ export interface IVerifyOtp {
     stateName: String;
 }
 
+export interface IGetPendingAccount extends IAuthRequired {
+
+}
 export interface IApproveAccount {
     identifier: String;
     accountIdentifierType: String;
