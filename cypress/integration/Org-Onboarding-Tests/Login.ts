@@ -2,8 +2,9 @@
 // @ts-check
 
 import * as loginData from '../../fixtures/testData/loginData.json';
+import * as updatePassword from '../../fixtures/testData/updatePassword.json'
 
-
+let authToken: string;
 context('Login mandatory fields missing', () => {
 
     Object.keys(loginData.userValidLogin).forEach((key: string) => {
@@ -18,6 +19,7 @@ context('Login mandatory fields missing', () => {
                     expect(response.status).equal(400)
                     expect(response.body.error).does.not.contain("Internal Server Error")
 
+
                 });
         })
     });
@@ -30,8 +32,10 @@ context('ePass Login Test Cases', () => {
             .then((response) => {
                 cy.writeFile("cypress/fixtures/testData/login.json", response.body)
                 expect(response.status).equal(200)
+                authToken=response.body.authToken
                 expect(response.body.organizationName).equal('KDS Limited');
-                expect(response.body).to.have.all.keys("authToken", "accountID","accountName","organizationID","organizationName")
+                expect(response.body).to.have.all.keys("authToken", "accountID", "accountName", "organizationID", "organizationName")
+
             })
     })
 
@@ -50,6 +54,16 @@ context('ePass Login Test Cases', () => {
             .then((response) => {
                 expect(response.status).equal(200)
                 expect(response.body.accountName).to.have.string('superuser')
+            })
+    })
+
+    it('Update Password', () => {
+        let user = updatePassword.valid
+        user.authToken=authToken
+        cy.updatePassword(user)
+            .then((response) => {
+                expect(response.status).equal(200)
+                expect(response.body).to.have.string('DONE')
             })
     })
 })

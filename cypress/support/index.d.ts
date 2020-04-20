@@ -22,7 +22,8 @@ declare namespace Cypress {
         createOrder(data: ICreateOrder): Chainable<Response>
         donwloadQRCode(data: IDownloadQRCode): Chainable<Response>
         getAllOrders(data: IGetAllOrders): Chainable<Response>
-        getPendingAccount(data:IGetPendingAccount): Chainable<Response>
+        getPendingAccount(data: IGetPendingAccount): Chainable<Response>
+        updatePassword(data:IUpdatePassword):Chainable<Response>
 
     }
 }

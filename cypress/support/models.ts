@@ -28,6 +28,12 @@ export interface IVerifyOtp {
     stateName: String;
 }
 
+export interface IUpdatePassword extends IAuthRequired {
+    email: String;
+    password: String;
+
+}
+
 export interface IGetPendingAccount extends IAuthRequired {
 
 }
