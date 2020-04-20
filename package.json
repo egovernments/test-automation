@@ -12,9 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.1.2",
-    "@types/node": "^13.11.1",
+    "@types/node": "^13.13.0",
     "@types/uuid": "^7.0.2",
     "cypress": "^4.4.0",
+    "faker": "^4.1.0",
     "mochawesome": "^5.0.0",
     "ts-loader": "^7.0.0",
     "typescript": "^3.8.3",

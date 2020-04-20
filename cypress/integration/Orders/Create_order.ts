@@ -34,7 +34,7 @@ context('Create bulk pass test cases', () => {
         })
     })
 
-    it('Create bulk pass with valid user details', () => {
+    it('Create bulk pass with invalid user data', () => {
         cy.readFile('./cypress/fixtures/csv_files/epass_invalid_2user.csv', 'base64').then((data) => {
             Cypress.Blob.base64StringToBlob(data).then((blob)=>{
                 let formData: FormData = new FormData();

@@ -27,6 +27,7 @@ context('ePass Registration Test cases', () => {
     it('Register as Organisation with valid email', () => {
         let user = registerBody.validData
         user.email = common.randomEmail()
+        user.orgID=common.randomGSTIN()
         cy.register(user).then((response) => {
             expect(response.status).equal(200)
             expect(response.body.message).equal('Account Created')
@@ -46,14 +47,6 @@ context('ePass Registration Test cases', () => {
         cy.register(user).then((response) => {
             expect(response.status).equal(400)
             expect(response.body.message).to.have.string('Account already exists')
-        })
-    })
-    it('Register as Organisation in Karanata with new email', () => {
-        let user = registerBody.karnatakaNewData
-        user.email = common.randomEmail()
-        cy.register(user).then((response) => {
-            expect(response.status).equal(200)
-            expect(response.body.message).equal('Account Created')
         })
     })
 })

@@ -30,7 +30,7 @@ context('ePass Login Test Cases', () => {
             .then((response) => {
                 cy.writeFile("cypress/fixtures/testData/login.json", response.body)
                 expect(response.status).equal(200)
-                expect(response.body.organizationName).equal('KDS Limited')
+                expect(response.body).to.have.all.keys("authToken", "accountID","accountName","organizationID","organizationName")
             })
     })
 

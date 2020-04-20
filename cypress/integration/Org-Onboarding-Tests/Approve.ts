@@ -38,7 +38,10 @@ context('ePass ApproveAccount Test Cases', () => {
     it('Decline the Signup request', () => {
         let newEmail = commonActions.randomEmail()
         let user = registerBody.validData
+        user.name = commonActions.randomName()
         user.email = newEmail
+        user.orgID = commonActions.randomGSTIN()
+        user.orgName=commonActions.randomCompanyName()
         cy.register(user);
         let otp = verifyOTP.validData
         otp.identifier = newEmail
@@ -67,7 +70,10 @@ context('ePass ApproveAccount Test Cases', () => {
     it('Approve the Signup request', () => {
         let newEmail = commonActions.randomEmail()
         let user = registerBody.validData
+        user.name = commonActions.randomName()
         user.email = newEmail
+        user.orgID = commonActions.randomGSTIN()
+        user.orgName=commonActions.randomCompanyName()
         cy.register(user);
         let otp = verifyOTP.validData
         otp.identifier = newEmail
@@ -78,16 +84,17 @@ context('ePass ApproveAccount Test Cases', () => {
             console.log(response.body)
             accId = response.body.accounts[0].id
             email = response.body.accounts[0].email
+            let approve = approveData.validAcceptAccount
+            approve.email = newEmail
+            approve.authToken = authToken
+            approve.requesterAccountId = accId
+            cy.approveAccount(approve)
+                .then((response) => {
+                    expect(response.status).equal(200)
+                    expect(response.body).to.have.string("approved")
+                })
         })
-        let approve = approveData.validAcceptAccount
-        approve.email = newEmail
-        approve.authToken = authToken
-        approve.requesterAccountId = accId
-        cy.approveAccount(approve)
-            .then((response) => {
-                expect(response.status).equal(200)
-                expect(response.body).to.have.string("approved")
-            })
+
 
     })
 
