@@ -14,8 +14,8 @@ context('Registration mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.register(user)
                 .then((response) => {
-                    expect(response.status).equal(500)
-                    // expect(response.body.error).does.not.contain("Internal Server Error")
+                    expect(response.status).equal(400)
+                    expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
         })
@@ -44,7 +44,7 @@ context('ePass Registration Test cases', () => {
     it('Register as Organisation with exist email', () => {
         let user = registerBody.existData
         cy.register(user).then((response) => {
-            expect(response.status).equal(500)
+            expect(response.status).equal(400)
             expect(response.body.message).to.have.string('Account already exists')
         })
     })

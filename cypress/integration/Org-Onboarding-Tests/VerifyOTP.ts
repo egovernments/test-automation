@@ -14,8 +14,8 @@ context('VerifyOTP mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.verifyOTP(user)
                 .then((response) => {
-                    expect(response.status).equal(500)
-                    // expect(response.body.error).does.not.contain("Internal Server Error")
+                    expect(response.status).equal(400)
+                    expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
         })
@@ -41,7 +41,7 @@ context('ePass OTP verification Test cases', () => {
         otp.identifier = email
         cy.verifyOTP(otp)
             .then((response) => {
-                expect(response).to.have.property('status', 500);
+                expect(response).to.have.property('status', 400);
                 expect(response.body.message).equal('Invalid OTP')
             })
     })

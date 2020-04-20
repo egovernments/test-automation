@@ -3,37 +3,51 @@
 
 import * as loginData from '../../fixtures/auth/loginData.json';
 import * as createOrder from '../../fixtures/auth/createOrder.json';
+import * as commonActions from '../../utils/commonActions';
 import axios from 'axios';
 
 
 var authToken: string;
 context('ePass Login Test Cases', () => {
-
-    it('Login as approver ', () => {
-        let user = loginData.approver
+    beforeEach(() => {
+        let user=loginData.userValidLogin
         cy.signin(user)
             .then((response) => {
-                expect(response.status).equal(200)
-                expect(response.body.accountName).to.have.string('superuser')
-                authToken = response.body.authToken
+                authToken=response.body.authToken
             })
-    })
-    it('Create bulk pass', () => {
-        let order = createOrder.validfile_2User
-        order.authToken = authToken
+      })
+    it('Create bulk pass with valid user details', () => {
         cy.readFile('./cypress/fixtures/csv_files/epass_valid_2user.csv', 'base64').then((data) => {
             Cypress.Blob.base64StringToBlob(data).then((blob)=>{
-                order.file = data; 
                 let formData: FormData = new FormData();
-                formData.append("authToken", "")
+                formData.append("authToken", authToken)
                 formData.append("orderType", "person")
                 formData.append("purpose", "Essential services")
-                formData.append("file",  new File([blob], "test.csv", { type: 'text/csv' }))
+                formData.append("file", new File([blob], "test.csv", { type: 'text/csv' }))
                 cy.createOrder(formData)
                 .then((response) => {
                     expect(response.status).equal(200)
-                    // expect(response.body).to.have.string("approved")
-                })    
+                    // expect(response.body.orderStatus).to.have.string("approved")
+
+                })
+            })
+        })
+    })
+
+    it('Create bulk pass with valid user details', () => {
+        cy.readFile('./cypress/fixtures/csv_files/epass_invalid_2user.csv', 'base64').then((data) => {
+            Cypress.Blob.base64StringToBlob(data).then((blob)=>{
+                let formData: FormData = new FormData();
+                formData.append("authToken", authToken)
+                formData.append("orderType", "person")
+                formData.append("purpose", "Essential services")
+                formData.append("file", new File([blob], "test.csv", { type: 'text/csv' }))
+                cy.createOrder(formData)
+                .then((response) => {
+                    expect(response.status).equal(400)
+                    // expect(response.body.orderStatus).to.have.string("approved")
+
+                })
             })
         })
     })

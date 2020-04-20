@@ -15,8 +15,8 @@ context('ApproveAccount mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.approveAccount(approve)
                 .then((response) => {
-                    expect(response.status).equal(500)
-                    // expect(response.body.error).does.not.contain("Internal Server Error")
+                    expect(response.status).equal(400)
+                    expect(response.body.error).does.not.contain("Internal Server Error")
                 });
         })
     });

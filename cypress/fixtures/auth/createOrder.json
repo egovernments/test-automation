@@ -3,12 +3,12 @@
         "file": "`@/Users/dharma/Downloads/epass_valid_2user.csv`",
         "orderType": "person",
         "purpose": "Essential services",
-        "authToken": "zebgtanlqttywvdrsttvmqyerwwzvmihqnaovficqllvjpnceoknxtayngkkulujacgndkwxhvlquadcucaghmgrixzuotgkwybazpwuafbklfoaltrzlouijemppoxo"
+        "authToken": ""
     },
     "validRejectAccount": {
         "file": "`@/Users/dharma/Downloads/epass_valid_2user.csv`",
         "orderType": "person",
         "purpose": "Essential services",
-        "authToken": "zebgtanlqttywvdrsttvmqyerwwzvmihqnaovficqllvjpnceoknxtayngkkulujacgndkwxhvlquadcucaghmgrixzuotgkwybazpwuafbklfoaltrzlouijemppoxo"
+        "authToken": ""
     }
 }
