@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
-
-import * as loginData from '../../fixtures/auth/loginData.json';
-import * as approveData from '../../fixtures/auth/approveData.json';
+import * as registerBody from '../../fixtures/testData/registerData.json';
+import * as verifyOTP from '../../fixtures/testData/verifyOTP.json';
+import * as loginData from '../../fixtures/testData/loginData.json';
+import * as approveData from '../../fixtures/testData/approveData.json';
+import * as commonActions from '../../utils/commonActions'
 var authToken: string, accId: number, email: string;
 
 context('ApproveAccount mandatory fields missing', () => {
@@ -51,7 +53,6 @@ context('ePass Login Test Cases', () => {
 
             if (accounts.length < 1) {
                 console.log('No pending approval organisations and stop execution')
-                // Cypress.stop()
             } else {
                 console.log(response.body)
                 accId = response.body.accounts[0].id
@@ -62,10 +63,17 @@ context('ePass Login Test Cases', () => {
     })
 
     it('Approve the Signup request', () => {
+        let newEmail=commonActions.randomEmail()
         let approve = approveData.validAcceptAccount
-        approve.email = email
+        approve.email = newEmail
         approve.requesterAccountId = accId
         approve.authToken = authToken
+        let user = registerBody.validData
+        user.email = newEmail
+        cy.register(user);
+        let otp = verifyOTP.validData
+        otp.identifier = newEmail
+        cy.verifyOTP(otp)
         cy.approveAccount(approve)
             .then((response) => {
                 expect(response.status).equal(200)
@@ -74,15 +82,21 @@ context('ePass Login Test Cases', () => {
 
     })
     it('Decline the Signup request', () => {
+        let newEmail=commonActions.randomEmail()
         let approve = approveData.validRejectAccount
-        approve.email = email
+        approve.email = newEmail
         approve.requesterAccountId = accId
         approve.authToken = authToken
+        let user = registerBody.validData
+        user.email = newEmail
+        cy.register(user);
+        let otp = verifyOTP.validData
+        otp.identifier = newEmail
+        cy.verifyOTP(otp)
         cy.approveAccount(approve)
             .then((response) => {
                 expect(response.status).equal(200)
                 expect(response.body).to.have.string("approved")
-
             })
 
     })

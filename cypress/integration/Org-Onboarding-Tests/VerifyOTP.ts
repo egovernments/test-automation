@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
-import * as registerBody from '../../fixtures/auth/registerData.json';
-import * as verifyOTP from '../../fixtures/auth/verifyOTP.json';
+import * as registerBody from '../../fixtures/testData/registerData.json';
+import * as verifyOTP from '../../fixtures/testData/verifyOTP.json';
+import * as commonActions from '../../utils/commonActions';
 
 context('VerifyOTP mandatory fields missing', () => {
 
@@ -23,7 +24,7 @@ context('VerifyOTP mandatory fields missing', () => {
 });
 
 context('ePass OTP verification Test cases', () => {
-    let email = 'dharmalingam.k+' + Math.floor(Math.random() * 1000) + '@egovernments.org'
+    let email = commonActions.randomEmail()
     it('Register as Organisation with valid email', () => {
         let user = registerBody.validData
         user.email = email

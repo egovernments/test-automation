@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import * as loginData from '../../fixtures/auth/loginData.json';
+import * as loginData from '../../fixtures/testData/loginData.json';
 
 
 context('Login mandatory fields missing', () => {
@@ -28,7 +28,7 @@ context('ePass Login Test Cases', () => {
         let user = loginData.userValidLogin
         cy.signin(user)
             .then((response) => {
-                cy.writeFile("cypress/fixtures/auth/login.json", response.body)
+                cy.writeFile("cypress/fixtures/testData/login.json", response.body)
                 expect(response.status).equal(200)
                 expect(response.body.organizationName).equal('KDS Limited')
             })

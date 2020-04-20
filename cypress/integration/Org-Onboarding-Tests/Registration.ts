@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import * as registerBody from '../../fixtures/auth/registerData.json';
+import * as registerBody from '../../fixtures/testData/registerData.json';
 import * as common from '../../utils/commonActions'
 
 context('Registration mandatory fields missing', () => {
