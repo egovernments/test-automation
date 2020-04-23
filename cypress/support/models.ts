@@ -37,6 +37,9 @@ export interface IUpdatePassword extends IAuthRequired {
 export interface IGetPendingAccount extends IAuthRequired {
 
 }
+export interface IGetAllOrganisations extends IAuthRequired {
+
+}
 export interface IApproveAccount {
     identifier: String;
     accountIdentifierType: String;

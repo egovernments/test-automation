@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders,IGetPendingAccount,IUpdatePassword } from './models';
+import { ISignIn, IRegister, IVerifyOtp, IApproveAccount, ICreateOrder, IDownloadQRCode, IGetAllOrders,IGetPendingAccount,IUpdatePassword, IGetAllOrganisations } from './models';
 import axios from 'axios';
 
 function postApi(url: string, data: Cypress.RequestBody){
@@ -92,3 +92,9 @@ const getState = (data) => {
 }
 
 Cypress.Commands.add('getState', getState)
+
+const getAllOrganisations = (data:IGetAllOrganisations) => {
+    return postApi('/ecurfew/getAllOrganizations',data)
+}
+
+Cypress.Commands.add('getAllOrganisations', getAllOrganisations)

@@ -3,9 +3,9 @@
 import * as states from '../../fixtures/testData/states.json';
 
 
-context('Get All Orders', () => {
+context('Get All States', () => {
 
-    it('Orders :Get all orders', () => {
+    it('Get All States before login', () => {
 
         cy.getState(null)
             .then((response) => {
