@@ -86,3 +86,9 @@ const updatePassword = (data: IUpdatePassword) => {
 }
 
 Cypress.Commands.add('updatePassword', updatePassword)
+
+const getState = (data) => {
+    return postApi('/ecurfew/fetchStateList',data)
+}
+
+Cypress.Commands.add('getState', getState)
