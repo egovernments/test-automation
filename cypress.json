@@ -4,5 +4,13 @@
     "state": "DELHI"
   },
   "projectId": "8yd35y",
-  "ignoreTestFiles": "**/[WIP]*.ts"
+  "ignoreTestFiles": "**/[WIP]*.ts",
+  "reporter": "mochawesome",
+  "reporterOptions": {
+      "reportDir": "cypress/report/mochawesome-report",
+      "overwrite": false,
+      "html": false,
+      "json": true,
+      "timestamp": "mmddyyyy_HHMMss"
+   }
 }

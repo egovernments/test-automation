@@ -19,7 +19,7 @@ context('GetAlllOrders mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.getAllOrders(orders)
                 .then((response) => {
-                    expect(response.status).equal(400)
+                    expect(response.status).equal(400|401)
                     expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
