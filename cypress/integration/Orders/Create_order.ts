@@ -9,7 +9,7 @@ import axios from 'axios';
 
 var authToken: string;
 context('Create bulk pass test cases', () => {
-    beforeEach(() => {
+    before(() => {
         let user=loginData.userValidLogin
         cy.signin(user)
             .then((response) => {

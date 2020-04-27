@@ -27,7 +27,7 @@ context('ApproveAccount mandatory fields missing', () => {
 
 context('ePass ApproveAccount Test Cases', () => {
 
-    beforeEach(() => {
+    before(() => {
         let user = loginData.approver
         cy.signin(user)
             .then((response) => {
@@ -56,6 +56,8 @@ context('ePass ApproveAccount Test Cases', () => {
             approve.email = email
             approve.authToken = authToken
             approve.requesterAccountId = accId
+
+            //Reject account
             cy.approveAccount(approve)
                 .then((response) => {
                     expect(response.status).equal(200)
@@ -88,6 +90,8 @@ context('ePass ApproveAccount Test Cases', () => {
             approve.email = newEmail
             approve.authToken = authToken
             approve.requesterAccountId = accId
+
+            //Approve Account
             cy.approveAccount(approve)
                 .then((response) => {
                     expect(response.status).equal(200)

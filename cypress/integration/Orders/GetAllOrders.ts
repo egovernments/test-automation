@@ -28,7 +28,7 @@ context('GetAlllOrders mandatory fields missing', () => {
 });
 
 context('Get All Orders', () => {
-    beforeEach(() => {
+    before(() => {
         let user=loginData.approver
         cy.signin(user)
             .then((response) => {

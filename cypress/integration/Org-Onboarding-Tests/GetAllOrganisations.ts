@@ -5,7 +5,7 @@ import * as allOrdersData from '../../fixtures/testData/allOrdersData.json';
 
 var authToken: string;
 context('Get All Organisations', () => {
-    beforeEach(() => {
+    before(() => {
         let user=loginData.approver
         cy.signin(user)
             .then((response) => {

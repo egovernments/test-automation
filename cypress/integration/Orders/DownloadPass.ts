@@ -20,7 +20,7 @@ context('Download Pass mandatory fields missing', () => {
         it(`has missing parameter ${key}`, () => {
             cy.donwloadQRCode(download)
                 .then((response) => {
-                    expect(response.status).equal(400)
+                    expect(response.status).equal(400|401)
                     expect(response.body.error).does.not.contain("Internal Server Error")
 
                 });
@@ -29,7 +29,7 @@ context('Download Pass mandatory fields missing', () => {
 });
 
 context('Download Pass as approver and requester Test Cases', () => {
-    beforeEach(() => {
+    before(() => {
         let user=loginData.approver
         cy.signin(user)
             .then((response) => {
