@@ -19,8 +19,8 @@ context('Get All Organisations', () => {
         cy.getAllOrganisations(org)
             .then((response) => {
                 expect(response.status).equal(200)
-                expect(response.body).to.be.not.null
                 expect(response.body).to.have.all.keys("organizations")
+                expect(response.body.organizations.length).to.be.above(0)
 
             });
 
