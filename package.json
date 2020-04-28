@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "open": "cypress open",
-    "run": "cypress run --record"
+    "test": "npm-run-all cypress:tests:deletereport cypress:tests:api cypress:tests:report",
+    "cypress:tests:deletereport": "rimraf cypress/report/mochawesome-report/*",
+    "cypress:tests:api": "cypress run CYPRESS_BASE_URL='https://epassapi.egovernments.org' --spec \"cypress/integration/API/**/*.ts\"",
+    "cypress:tests:report": "mochawesome-merge ./cypress/report/mochawesome-report/*.json > output.json && yarn marge output.json",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --record"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +17,7 @@
     "@cypress/webpack-preprocessor": "^5.1.2",
     "@types/node": "^13.13.0",
     "@types/uuid": "^7.0.2",
-    "cypress": "^4.4.0",
+    "cypress": "4.4.1",
     "faker": "^4.1.0",
     "mochawesome": "^4.1.0",
     "ts-loader": "^7.0.0",
@@ -25,6 +28,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "mocha": "5.2.0",
-    "mochawesome-merge": "^4.0.3"
+    "mochawesome-merge": "^4.0.3",
+    "rimraf": "^3.0.2",
+    "yarn-run-all": "^3.1.1"
   }
 }

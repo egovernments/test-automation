@@ -15,9 +15,14 @@
     ],
     "types": [
       "cypress"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["cypress/*"],
+      "@fixtures/*": ["cypress/fixtures/*"]
+    }
   },
   "exclude": [
     "cypress/**/[WIP]*.ts"
-  ]
+  ],
 }

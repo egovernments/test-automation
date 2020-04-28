@@ -1,5 +1,7 @@
 const path = require('path')
 
+// console.log("Path in __dirname is ", __dirname, path.resolve(__dirname, './cypress/fixtures/'));
+
 module.exports = {
   entry: './src/index.ts',
   module: {
@@ -12,7 +14,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@fixtures': path.resolve(__dirname, './cypress/fixtures/'),
+      '@src': path.resolve(__dirname, './cypress/'),
+    }
   },
   output: {
     filename: 'bundle.js',

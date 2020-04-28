@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import * as loginData from '../../fixtures/testData/loginData.json';
-import * as createOrder from '../../fixtures/testData/createOrder.json';
-import * as commonActions from '../../utils/commonActions';
+import * as loginData from '@fixtures/testData/loginData.json';
+import * as createOrder from '@fixtures/testData/createOrder.json';
+import * as commonActions from '@src/utils/commonActions';
 import axios from 'axios';
 
 

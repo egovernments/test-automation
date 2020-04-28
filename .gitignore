@@ -95,3 +95,4 @@ dist
 package-lock.json
 cypress/report/*
 mochawesome-report/*
+output.json

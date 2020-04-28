@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import * as loginData from '../../fixtures/testData/loginData.json';
-import * as createResponse from '../../fixtures/testData/createOrderRes.json';
-import * as downloadData from '../../fixtures/testData/downloadData.json';
-import * as login from '../../fixtures/testData/login.json'
+import * as loginData from '@fixtures/testData/loginData.json';
+import * as createResponse from '@fixtures/testData/createOrderRes.json';
+import * as downloadData from '@fixtures/testData/downloadData.json';
+import * as login from '@fixtures/testData/login.json'
 
 
 var authToken: string;

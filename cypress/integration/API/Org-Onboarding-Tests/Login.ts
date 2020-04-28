@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import * as loginData from '../../fixtures/testData/loginData.json';
-import * as updatePassword from '../../fixtures/testData/updatePassword.json'
+import * as loginData from '@fixtures/testData/loginData.json';
+import * as updatePassword from '@fixtures/testData/updatePassword.json'
 
 let authToken: string;
 context('Login mandatory fields missing', () => {

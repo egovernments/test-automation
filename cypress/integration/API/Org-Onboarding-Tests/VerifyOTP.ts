@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-import * as registerBody from '../../fixtures/testData/registerData.json';
-import * as verifyOTP from '../../fixtures/testData/verifyOTP.json';
-import * as commonActions from '../../utils/commonActions';
+import * as registerBody from '@fixtures/testData/registerData.json';
+import * as verifyOTP from '@fixtures/testData/verifyOTP.json';
+import * as commonActions from '@src/utils/commonActions';
 
 context('VerifyOTP mandatory fields missing', () => {
 

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import * as loginData from '../../fixtures/testData/loginData.json';
-import * as allOrdersData from '../../fixtures/testData/allOrdersData.json';
+import * as loginData from '@fixtures/testData/loginData.json';
+import * as allOrdersData from '@fixtures/testData/allOrdersData.json';
 
 var authToken: string;
 context('Get All Organisations', () => {

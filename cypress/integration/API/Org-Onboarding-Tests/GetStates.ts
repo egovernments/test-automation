@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import * as states from '../../fixtures/testData/states.json';
+import * as states from '@fixtures/testData/states.json';
 
 
 context('Get All States', () => {

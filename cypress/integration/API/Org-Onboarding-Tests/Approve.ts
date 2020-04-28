@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
-import * as registerBody from '../../fixtures/testData/registerData.json';
-import * as verifyOTP from '../../fixtures/testData/verifyOTP.json';
-import * as loginData from '../../fixtures/testData/loginData.json';
-import * as approveData from '../../fixtures/testData/approveData.json';
-import * as allOrdersData from '../../fixtures/testData/allOrdersData.json';
-import * as commonActions from '../../utils/commonActions'
+import * as registerBody from '@fixtures/testData/registerData.json';
+import * as verifyOTP from '@fixtures/testData/verifyOTP.json';
+import * as loginData from '@fixtures/testData/loginData.json';
+import * as approveData from '@fixtures/testData/approveData.json';
+import * as allOrdersData from '@fixtures/testData/allOrdersData.json';
+import * as commonActions from '@src/utils/commonActions'
 var authToken: string, accId: number, email: string;
 
 context('ApproveAccount mandatory fields missing', () => {
