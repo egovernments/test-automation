@@ -1,0 +1,8 @@
+{
+    "loginForm": {
+        "emailInput": "[type='email']",
+        "passwordInput": "[type='password']",
+        "stateDropDown": "select",
+        "submitButton": "div.login-form [type='submit']"
+    }
+}

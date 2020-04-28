@@ -1,0 +1,21 @@
+{
+    "registerForm": {
+        "orgNameInput": "div.register-form>section>form>div:nth-child(1) .input",
+        "GSTIDInput": "div.register-form>section>form>div:nth-child(2) .input",
+        "PEIDInput": "div.register-form>section>form>div:nth-child(3) .input",
+        "stateInput": "select",
+        "nameInput": "div.register-form>section>form>div:nth-child(5) .input",
+        "emailInput": "div.register-form>section>form>div:nth-child(6) .input",
+        "passwordInput": "div.register-form>section>form>div:nth-child(7) .input",
+        "confirmPwdInput": "div.register-form>section>form>div:nth-child(8) .input",
+        "registerButton": "div.register-form button"
+    },
+    "otpForm": {
+        "otpInput": "div.verify-otp-form form>div:nth-child(1) .input",
+        "peidInput": "div.verify-otp-form form>div:nth-child(2) .input",
+        "verifyEmailButton":"div.verify-otp-form button"
+    },
+    "successPage":{
+        "successText":"div.acc-success .title"
+    }
+}

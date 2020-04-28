@@ -93,3 +93,5 @@ dist
 *.mp4
 *.png
 package-lock.json
+cypress/report/*
+mochawesome-report/*
