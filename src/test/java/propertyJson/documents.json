@@ -1,0 +1,32 @@
+[
+	{
+		"documentType": "OWNER.ADDRESSPROOF.ELECTRICITYBILL",
+		"fileStoreId": "ccd3be88-86a8-47dc-a9da-301c51de1255",
+		"documentUid": "ccd3be88-86a8-47dc-a9da-301c51de1255"
+	},
+	{
+		"documentType": "OWNER.IDENTITYPROOF.VOTERID",
+		"fileStoreId": "4a8c515b-2a23-4c14-a48d-868fc051e36d",
+		"documentUid": "4a8c515b-2a23-4c14-a48d-868fc051e36d"
+	},
+	{
+		"documentType": "OWNER.REGISTRATIONPROOF.GIFTDEED",
+		"fileStoreId": "9733a259-abd5-4f12-b739-20660430871d",
+		"documentUid": "9733a259-abd5-4f12-b739-20660430871d"
+	},
+	{
+		"documentType": "OWNER.USAGEPROOF.TRADELICENCE",
+		"fileStoreId": "7c54b960-8b3c-4ae1-b5a3-c238b1f65539",
+		"documentUid": "7c54b960-8b3c-4ae1-b5a3-c238b1f65539"
+	},
+	{
+		"documentType": "OWNER.CONSTRUCTIONPROOF.BPACERTIFICATE",
+		"fileStoreId": "8a0ec22f-d38b-4058-a85b-c3f94db83509",
+		"documentUid": "8a0ec22f-d38b-4058-a85b-c3f94db83509"
+	},
+	{
+		"documentType": "OWNER.OCCUPANCYPROOF.RENTAGREEMENT",
+		"fileStoreId": "cd909ce6-cb6a-4d10-862b-a6893107a616",
+		"documentUid": "cd909ce6-cb6a-4d10-862b-a6893107a616"
+	}
+]

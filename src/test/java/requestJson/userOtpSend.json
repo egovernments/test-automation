@@ -1,0 +1,14 @@
+{
+	"RequestInfo": {
+		
+		"authToken": null
+	},
+	"otp": {
+		"name": "Test",
+		"permanentCity": "pb.amritsar",
+		"mobileNumber": "#(mobileNumber)",
+		"type": "#(type)",
+		"tenantId": "pb",
+		"userType": "CITIZEN"
+	}
+}

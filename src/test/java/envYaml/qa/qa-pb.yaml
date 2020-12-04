@@ -1,0 +1,33 @@
+#UserName and Password
+counterEmployeeUserName: EMP1
+counterEmployeePassword: eGov@123
+docVerifierUserName: PTDV
+docVerifierPassword: PTDV
+fieldInspectorUserName: PTFI
+fieldInspectorPassword: PTFI
+approverUserName: PTA
+approverPassword: PTA
+tenantIdReq: pb.amritsar
+
+#urls
+urls:
+ localization_SearchUrl: /localization/messages/v1/_search
+ # localizationMessagesUrl: https://egov-micro-qa.egovernments.org/localization/messages/v1/_search?tenantId=pb&locale=en_IN
+ # localizationMessagesUrl: https://egov-micro-qa.egovernments.org/localization/messages/v1/_search?locale=en_IN&tenantId=pb
+ authTokenUrl: https://egov-micro-qa.egovernments.org/user/oauth/token
+ authorityHeader: egov-micro-qa.egovernments.org
+ propertyCreationUrl: https://egov-micro-qa.egovernments.org/property-services/property/_create?locale=en_IN&tenantId=pb
+ mdmsUrl: https://egov-micro-qa.egovernments.org/egov-mdms-service/v1/_search?locale=en_IN&tenantId=pb
+ authReferer: https://egov-micro-qa.egovernments.org/employee/user/login
+ localization_UpserthUrl: /localization/messages/v1/_upsert
+ getFileUrl: https://egov-micro-qa.egovernments.org/filestore/v1/files/url?tenantId=pb
+ createFileUrl: https://egov-micro-qa.egovernments.org/filestore/v1/files
+ applicationStatusUrl: https://egov-micro-qa.egovernments.org/property-services/property/_search?tenantId=pb.amritsar
+ userOtp_SendUrl: /user-otp/v1/_send?tenantId=pb
+#address 
+address:
+ city: Amritsar
+ doorNo: 13/3
+ locality:
+  code: SUN04
+  area: Area1

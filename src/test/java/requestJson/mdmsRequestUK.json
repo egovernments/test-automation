@@ -1,0 +1,73 @@
+{
+	"RequestInfo": {
+		"apiId": "Rainmaker",
+		"ver": ".01",
+		"ts": "",
+		"action": "_search",
+		"did": "1",
+		"key": "",
+		"msgId": "20170310130900|en_IN",
+		"authToken": "#(authToken)"
+	},
+	"MdmsCriteria": {
+		"tenantId": "#(tenantId)",
+		"moduleDetails": [
+			{
+				"moduleName": "PropertyTax",
+				"masterDetails": [
+					{
+						"name": "Floor"
+					},
+					{
+						"name": "OccupancyType"
+					},
+					{
+						"name": "OwnerShipCategory"
+					},
+					{
+						"name": "OwnerType"
+					},
+					{
+						"name": "PropertySubType"
+					},
+					{
+						"name": "PropertyType"
+					},
+					{
+						"name": "SubOwnerShipCategory"
+					},
+					{
+						"name": "UsageCategoryDetail"
+					},
+					{
+						"name": "UsageCategoryMajor"
+					},
+					{
+						"name": "UsageCategoryMinor"
+					},
+					{
+						"name": "UsageCategorySubMinor"
+					},
+					{
+						"name": "ConstructionType"
+					},
+					{
+						"name": "Rebate"
+					},
+					{
+						"name": "Interest"
+					},
+					{
+						"name": "FireCess"
+					},
+					{
+						"name": "RoadType"
+					},
+					{
+						"name": "Thana"
+					}
+				]
+			}
+		]
+	}
+}

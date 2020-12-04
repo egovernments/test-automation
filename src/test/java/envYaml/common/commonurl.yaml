@@ -1,0 +1,5 @@
+urls:
+ baseUrl_qa : https://egov-micro-qa.egovernments.org
+ baseUrl_uat : https://egov-micro-uat.egovernments.org
+ baseUrl_dev : https://uttarakhand-dev.egovernments.org
+ 

@@ -1,0 +1,14 @@
+{
+     "RequestInfo": {
+       "authToken" : "#(authToken)",
+       "userInfo" : {
+         "id" : 1
+       }
+   },
+	
+   "tenantId" : "#(tenantId)",
+   "messages" : [
+   	
+     
+   ]
+}

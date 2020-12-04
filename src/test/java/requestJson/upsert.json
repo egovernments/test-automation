@@ -1,0 +1,48 @@
+[
+ {
+   "RequestInfo": {
+     "authToken": "#(authToken)"
+   },
+   "tenantId": "pb.amritsar",
+   "messages": [
+    {
+            "code": "#(code)",
+            "message": "#(message)",
+            "module": "rainmaker-uc",
+            "locale": "#(locale)"
+        }
+        
+  ]
+ },
+ {
+   "RequestInfo": {
+     "authToken": "#(authToken)"
+   },
+   "tenantId": "pb.amritsar",
+   "messages": [
+   {
+           "code": "",
+           "message": "",
+           "module": "",
+           "locale": "#(locale)"
+       }
+       
+   ]
+  },
+  {
+    "RequestInfo": {
+      "authToken": "#(authToken)"
+    },
+    "tenantId": "",
+    "messages": [
+    {
+        "code": "#(code)",
+        "message": "#(message)",
+        "module": "rainmaker-uc",
+        "locale": "#(locale)"
+        }
+        
+    ]
+   }
+
+]

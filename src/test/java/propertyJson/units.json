@@ -1,0 +1,24 @@
+[
+	{
+		"occupancyType": "#(occupancyType)",
+		"floorNo": "1",
+		"arv": "200000",
+		"constructionDetail": {
+			"builtUpArea": 66.67
+		},
+		"tenantId": "pb.amritsar",
+		"usageCategory": "#(usageCategory)",
+		"unitType": "ACRESTAURANT"
+	},
+	{
+		"floorNo": "3",
+		"occupancyType": "#(occupancyType)",
+		"arv": "200000",
+		"constructionDetail": {
+			"builtUpArea": 66.67
+		},
+		"tenantId": "pb.amritsar",
+		"usageCategory": "#(usageCategory)",
+		"unitType": "ACRESTAURANT"
+	}
+]

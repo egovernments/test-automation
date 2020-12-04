@@ -1,0 +1,15 @@
+[
+	{
+		"constructionYear": null,
+		"tenantId": "uk.dehradun",
+		"usageCategoryMinor": "NONRESIDENTIAL",
+		"usageCategoryMajor": "NONRESIDENTIAL",
+		"usageCategoryDetail": null,
+		"usageCategorySubMinor": "#(usageCategorySubMinor)",
+		"occupancyType": "#(occupancyType)",
+		"ConstructionType": "PUCCA",
+		"unitArea": "1200",
+		"floorNo": "1",
+		"arv": "500"
+	}
+]
