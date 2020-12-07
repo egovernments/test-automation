@@ -22,7 +22,8 @@ function() {
     }
 
     var baseurl = karate.read('classpath:envYaml/common/commonurl.yaml');
-    
+    var test = baseurl.urls[env];
+   // var baseurl = karate.read('classpath:envYaml/'+common+ '/'+commonurl.yaml+ '/'+urls+ '/' +env+ '/');
    	var envProps = karate.read('classpath:envYaml/' + env + '/' + envProFile +'.yaml');
     
    	
@@ -81,7 +82,7 @@ function() {
         config.applicationStatusUrl = envProps.urls.applicationStatusUrl;
         
         //UserOtp
-        config.userOtpRegisterUrl= baseurl.urls.baseUrl_qa + envProps.urls.userOtp_SendUrl;
+        config.userOtpRegisterUrl= test + envProps.urls.userOtp_SendUrl;
 
         print("****************************new url **************" + config.userOtpRegisterUrl);
 

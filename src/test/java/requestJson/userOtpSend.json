@@ -5,10 +5,10 @@
 	},
 	"otp": {
 		"name": "Test",
-		"permanentCity": "pb.amritsar",
+		"permanentCity": "#(tenantIdReq)",
 		"mobileNumber": "#(mobileNumber)",
 		"type": "#(type)",
-		"tenantId": "pb",
+		"tenantId": "#(tenantId)",
 		"userType": "CITIZEN"
 	}
 }

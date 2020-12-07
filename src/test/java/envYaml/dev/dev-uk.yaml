@@ -8,6 +8,7 @@ fieldInspectorPassword: PTFI
 approverUserName: PTA
 approverPassword: PTA
 tenantIdReq: uk.dehradun
+userType: CITIZEN
 
 #urls
 urls: 
@@ -21,7 +22,7 @@ urls:
  getFileUrl: https://uttarakhand-dev.egovernments.org/filestore/v1/files/url?tenantId=uk
  createFileUrl: https://uttarakhand-dev.egovernments.org/filestore/v1/files
  applicationStatusUrl: https://egov-micro-qa.egovernments.org/property-services/property/_search?tenantId=uk.dehradun
-
+ userOtp_SendUrl: /user-otp/v1/_send?tenantId=uk
 #address 
 address:
  city: Dehradun

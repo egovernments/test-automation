@@ -8,6 +8,7 @@ fieldInspectorPassword: PTFI
 approverUserName: PTA
 approverPassword: PTA
 tenantIdReq: pb.amritsar
+userType: CITIZEN
 
 #urls
 urls:

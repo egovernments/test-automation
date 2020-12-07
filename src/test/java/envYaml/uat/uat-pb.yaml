@@ -1,0 +1,22 @@
+counterEmployeeUserName: EMP1
+counterEmployeePassword: eGov@123
+docVerifierUserName: PTDV
+docVerifierPassword: PTDV
+fieldInspectorUserName: PTFI
+fieldInspectorPassword: PTFI
+approverUserName: PTA
+approverPassword: PTA
+tenantIdReq: pb.amritsar
+userType: CITIZEN
+
+urls:
+ userOtp_SendUrl: /user-otp/v1/_send?tenantId=pb
+ localization_UpserthUrl: /localization/messages/v1/_upsert
+ localization_SearchUrl: /localization/messages/v1/_search
+#address 
+address:
+ city: Amritsar
+ doorNo: 13/3
+ locality:
+  code: SUN04
+  area: Area1
