@@ -1,5 +1,0 @@
-urls:
- qa : https://egov-micro-qa.egovernments.org
- uat : https://egov-micro-uat.egovernments.org
- dev : https://egov-micro-dev.egovernments.org
- 

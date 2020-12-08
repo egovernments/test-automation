@@ -4,10 +4,11 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def javaUtils = Java.type('com.egov.base.EGovTest')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def userOtpSend = read('classpath:requestJson/userOtpSend.json')
+  * def userOtpSend = read('classpath:requestPayload/userOtp/userOtpSend.json')
+  * def testData = read('classpath:constants/userOtp/parameters.yaml')
 
-  * def invalidEndpoit = 'https://egov-micro-qa.egovernments.org/user-otp/v/_send?tenantId=pb'
-  * def registeredMobNo = 1111111111
+  * def invalidEndpoint = testData.inValidEndPoint
+  * def registeredMobNo = testData.mobNo
 
 @Success_register
 Scenario: User otp send success call
@@ -141,7 +142,7 @@ Scenario: User otp send fail call
  * set userOtpSend.otp.type = 'login'
  * set userOtpSend.otp.mobileNumber = registeredMobNo
 
-    Given url invalidEndpoit
+    Given url invalidEndpoint
     And request userOtpSend
     When method post
     Then status 401

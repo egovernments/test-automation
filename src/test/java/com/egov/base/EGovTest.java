@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@smoke"})
+@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@userotp,@localization"})
 public class EGovTest {
 
 	@BeforeClass
@@ -30,21 +30,18 @@ public class EGovTest {
 
 	@Test
 	public void testParallel() {
-		 System.setProperty("karate.env", "uat");
-		 System.setProperty("locale", "pb");
-		 System.setProperty("tenantId", "amritsar");
-		 System.setProperty("envProFile", "uat-pb");
+		//  System.setProperty("karate.env", "uat");
+		//  System.setProperty("locale", "pb");
+		//  System.setProperty("tenantId", "amritsar");
 
 		// System.setProperty("karate.env", "dev");
 		// System.setProperty("locale", "uk");
 		// System.setProperty("tenantId", "dehradun");
-		// System.setProperty("envProFile", "dev-uk");
 
-        //    System.setProperty("karate.env", "qa");
-        //    System.setProperty("locale", "pb");
-        //    System.setProperty("tenantId", "pb");
-        //    System.setProperty("envProFile", "qa-pb");
-
+           System.setProperty("karate.env", "qa");
+           System.setProperty("locale", "pb");
+           System.setProperty("tenantId", "pb");
+           
 		String karateOutputPath = "target/surefire-reports";
 		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
 		generateReport(karateOutputPath);

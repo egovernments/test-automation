@@ -1,0 +1,6 @@
+#UserName and Password
+counterEmployee:
+  userName: EMP1
+  password: eGov@1234
+#Tenant id
+tenantIdReq: pb.amritsar

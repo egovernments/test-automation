@@ -2,8 +2,8 @@ function() {
     var env = karate.env; // get system property 'karate.env'
     var locale = karate.properties['locale']; // get system property 'karate.locale'
     var tenantId = karate.properties['tenantId']; // get system property 'karate.tenantId'
-    var envProFile = karate.properties['envProFile']; // get system property 'karate.envProFile'
-    
+    //var envProFile = karate.properties['envProFile']; // get system property 'karate.envProFile'
+    //var host;
 
     if (!env) {
         env = 'qa'; //intelligent default
@@ -17,80 +17,66 @@ function() {
     	tenantId = 'pb';
     }
     
-    if(!envProFile){
-    	envProFile = 'qa-pb'
-    }
+    //if(!envProFile){
+    //	envProFile = 'qa'
+   // }
 
-    var baseurl = karate.read('classpath:envYaml/common/commonurl.yaml');
-    var test = baseurl.urls[env];
-   // var baseurl = karate.read('classpath:envYaml/'+common+ '/'+commonurl.yaml+ '/'+urls+ '/' +env+ '/');
-   	var envProps = karate.read('classpath:envYaml/' + env + '/' + envProFile +'.yaml');
+    var envProps = karate.read('classpath:envYaml/' + env + '/' + env +'.yaml');
+
+    var path = karate.read('classpath:envYaml/common/common.yaml');
+
+    var userData = karate.read('classpath:userDetails/' + env + '/' + 'userDetails.yaml');
+    //var basePath = path.endPoints[env];
+   	//var envProps = karate.read('classpath:envYaml/' + env + '/' + envProFile +'.yaml');
     
    	
-   	print("****************************" + envProps)
+   	//print("****************************" + envProps)
     
     var config = {
         env : env,
         tenantId : tenantId,
-        envProFile : envProFile,
+        //envProFile : envProFile,
 		locale : locale,
         retryCount : 30,
         retryInterval : 10000 //ms
     };
+        
+        
 
-        config.counterEmployeeUserName = envProps.counterEmployeeUserName;
-        config.counterEmployeePassword = envProps.counterEmployeePassword;
+        config.counterEmployeeUserName = userData.counterEmployee.userName;
+        config.counterEmployeePassword = userData.counterEmployee.password;
         
-        config.docVerifierUserName = envProps.docVerifierUserName;
-        config.docVerifierPassword = envProps.docVerifierPassword;
+        //config.docVerifierUserName = envProps.docVerifierUserName;
+        //config.docVerifierPassword = envProps.docVerifierPassword;
         
-        config.fieldInspectorUserName = envProps.fieldInspectorUserName;
-        config.fieldInspectorPassword = envProps.fieldInspectorPassword;
+        //config.fieldInspectorUserName = envProps.fieldInspectorUserName;
+        //config.fieldInspectorPassword = envProps.fieldInspectorPassword;
         
-        config.approverUserName = envProps.approverUserName;
-        config.approverPassword = envProps.approverPassword;
+        //config.approverUserName = envProps.approverUserName;
+        //config.approverPassword = envProps.approverPassword;
         
         // set address and tenantReqId
-        config.tenantIdReq = envProps.tenantIdReq;
-        config.address = envProps.address
+        config.tenantIdReq = userData.tenantIdReq;
         
         //localizationURL
-        config.localizationMessagesUrl = baseurl.urls.baseUrl_qa + envProps.urls.localization_SearchUrl;
+        config.localizationMessagesUrl = envProps.host + path.endPoints.localizationSearch;
         
         //authTokenUrl
-        config.authTokenUrl = envProps.urls.authTokenUrl;
-        config.authorityHeader = envProps.urls.authorityHeader;
-        
-        //propertyCreationUrl
-        config.propertyCreationUrl = envProps.urls.propertyCreationUrl;
-        
-        //mdmsUrl
-        config.mdmsUrl = envProps.urls.mdmsUrl;
-        
-        //authReferer
-        config.authReferer = envProps.urls.authReferer;
+        config.authTokenUrl = envProps.host + path.endPoints.authToken;
         
         //upsertUrl
-        config.upsertUrl = baseurl.urls.baseUrl_qa + envProps.urls.localization_UpserthUrl;
-        
-        
-        //filestore
-        config.getFileUrl = envProps.urls.getFileUrl;
-        config.createFileUrl = envProps.urls.createFileUrl;
-
-  		//application status
-        config.applicationStatusUrl = envProps.urls.applicationStatusUrl;
+        config.upsertUrl = envProps.host + path.endPoints.localizationUpsert;
         
         //UserOtp
-        config.userOtpRegisterUrl= test + envProps.urls.userOtp_SendUrl;
+        config.userOtpRegisterUrl= envProps.host + path.endPoints.userOtpSend;
 
-        print("****************************new url **************" + config.userOtpRegisterUrl);
+        //print("****************************new url **************" + config.userOtpRegisterUrl);
 
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
-    karate.log('envProFile:', envProFile);
+    //karate.log('envProFile:', envProFile);
     
     karate.configure('readTimeout', 120000);
     

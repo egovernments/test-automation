@@ -1,0 +1,6 @@
+endPoints:
+ localizationSearch: localization/messages/v1/_search?tenantId=pb
+ authToken: user/oauth/token
+ localizationUpsert: localization/messages/v1/_upsert
+ userOtpSend: user-otp/v1/_send?tenantId=pb
+
