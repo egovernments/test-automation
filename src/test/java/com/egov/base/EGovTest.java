@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@userotp,@localization"})
+@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@getfileidsuccess"})
 public class EGovTest {
 
 	@BeforeClass
@@ -38,9 +38,9 @@ public class EGovTest {
 		// System.setProperty("locale", "uk");
 		// System.setProperty("tenantId", "dehradun");
 
-           System.setProperty("karate.env", "qa");
-           System.setProperty("locale", "pb");
-           System.setProperty("tenantId", "pb");
+        //    System.setProperty("karate.env", "qa");
+        //    System.setProperty("locale", "pb");
+        //    System.setProperty("tenantId", "pb");
            
 		String karateOutputPath = "target/surefire-reports";
 		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);

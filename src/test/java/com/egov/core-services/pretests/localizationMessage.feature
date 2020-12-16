@@ -4,10 +4,10 @@ Background:
 	* def jsUtils = read('classpath:jsUtils.js')
 
   	# calling localization Json
-  * def localizationSearchRequest = read('classpath:requestPayload/localization/localizationMsg.json')
+  * def localizationSearchRequest = read('../requestPayload/localization/localizationMsg.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print tenantIdReq
-  * set localizationSearchRequest.tenantId = tenantIdReq
+  * print tenantId
+  * set localizationSearchRequest.tenantId = tenantId
   * print localizationSearchRequest
   
 @Success_LocalizationMessage
@@ -16,7 +16,8 @@ Scenario: Localization Message Success call
   * def parameters = 
     """
     {
-     locale: '#(locale_value)',
+     tenantId: '#(tenantId)',
+     locale: '#(locale)',
      module: '#(module_value)'
     }
     """
@@ -43,8 +44,7 @@ Scenario: Localization Message Error call
 
 @Error_NoTenant_LocalizationMessage
 Scenario: Localization Message Error call
-
-  * def localizationMessagesUrl = 'https://egov-micro-qa.egovernments.org/localization/messages/v1/_search?locale=hi_IN'
+ 
   Given url localizationMessagesUrl
   And request localizationSearchRequest
   When method post
@@ -59,7 +59,8 @@ Scenario: Localization Message Error call
   * def parameters = 
     """
     {
-     locale: '#(locale_value)',
+     tenantId: '#(tenantId)',
+     locale: '#(locale)',
      codes: '#(code_value)'
     }
     """
@@ -80,7 +81,8 @@ Scenario: Localization Message Success call
   * def parameters = 
     """
     {
-     locale: '#(locale_value)',
+     tenantId: '#(tenantId)',
+     locale: '#(locale)',
      module: '#(module_value)',
      codes: '#(code_value)'
     }
@@ -96,16 +98,17 @@ Scenario: Localization Message Success call
 
 @Success_LocalizationMessageCall
 Scenario: Localization Message Success call
-  
+
   * def parameters = 
     """
     {
-     locale: '#(locale_value)',
+     tenantId: '#(tenantId)',
+     locale: '#(locale)',
      module: '#(module_value)'
     }
     """
 
-  Given url localizationMessagesUrl + '.amritsar'
+  Given url localizationMessagesUrl
   And params parameters
   And request localizationSearchRequest
   When method post

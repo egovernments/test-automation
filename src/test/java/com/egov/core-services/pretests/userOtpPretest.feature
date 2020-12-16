@@ -4,14 +4,22 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def javaUtils = Java.type('com.egov.base.EGovTest')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def userOtpSend = read('classpath:requestPayload/userOtp/userOtpSend.json')
-  * def testData = read('classpath:constants/userOtp/parameters.yaml')
+  * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
+  * def constantValue = read('../constants/userOtp.yaml')
 
-  * def invalidEndpoint = testData.inValidEndPoint
-  * def registeredMobNo = testData.mobNo
+ # * def invalidEndpoint = testData.inValidEndPoint
+  * def registeredMobNo = constantValue.parameters.mobNo
+ # * set userOtpParam.tenantId = tenantId
+  * def invldurl = constantValue.parameters.invalidEndpoint
 
 @Success_register
 Scenario: User otp send success call
+   * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
   * def mobileNumberGen = randomMobileNumGen(10)
   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
   * print validMobileNum
@@ -20,6 +28,7 @@ Scenario: User otp send success call
   * set userOtpSend.otp.type = 'register'
 
      Given url userOtpRegisterUrl
+     And params parameters
      And request userOtpSend
      When method post
      Then status 201
@@ -28,10 +37,17 @@ Scenario: User otp send success call
 
 @Success_login
 Scenario: User otp send success call
+  * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
   * set userOtpSend.otp.type = 'login'
   * set userOtpSend.otp.mobileNumber = registeredMobNo
 
       Given url userOtpRegisterUrl
+      And params parameters
       And request userOtpSend
       When method post
       Then status 201
@@ -40,6 +56,12 @@ Scenario: User otp send success call
 
 @Success_notype
 Scenario: User otp send success call
+  * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
   * def mobileNumberGen = randomMobileNumGen(10)
   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
   * print validMobileNum
@@ -48,6 +70,7 @@ Scenario: User otp send success call
   * set userOtpSend.otp.type = ''
 
     Given url userOtpRegisterUrl
+    And params parameters
     And request userOtpSend
     When method post
     Then status 201
@@ -56,10 +79,17 @@ Scenario: User otp send success call
 
 @Error_register
 Scenario: User otp send fail call
+   * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
    * set userOtpSend.otp.mobileNumber = registeredMobNo
    * set userOtpSend.otp.type = 'register'
 
      Given url userOtpRegisterUrl
+     And params parameters
      And request userOtpSend
      When method post
      Then status 400
@@ -68,6 +98,12 @@ Scenario: User otp send fail call
 
 @Error_login
 Scenario: User otp send fail call
+   * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
    * def mobileNumberGen = randomMobileNumGen(10)
    * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
    * print validMobileNum
@@ -76,6 +112,7 @@ Scenario: User otp send fail call
    * set userOtpSend.otp.type = 'login' 
 
     Given url userOtpRegisterUrl
+    And params parameters
     And request userOtpSend
     When method post
     Then status 400
@@ -84,6 +121,12 @@ Scenario: User otp send fail call
 
 @Error_InvldMobNo
 Scenario: User otp send fail call
+   * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
    * def mobileNumberGen = randomMobileNumGen(9)
    * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
    * print validMobileNum
@@ -92,6 +135,7 @@ Scenario: User otp send fail call
    * set userOtpSend.otp.type = 'register'
 
     Given url userOtpRegisterUrl
+    And params parameters
     And request userOtpSend
     When method post
     Then status 400
@@ -100,10 +144,17 @@ Scenario: User otp send fail call
 
 @Error_MobNoNull
 Scenario: User otp send fail call
+  * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
   * set userOtpSend.otp.mobileNumber = null
   * set userOtpSend.otp.type = 'login' 
 
     Given url userOtpRegisterUrl
+    And params parameters
     And request userOtpSend
     When method post
     Then status 400
@@ -112,6 +163,7 @@ Scenario: User otp send fail call
 
 @Error_InvldTenant
 Scenario: User otp send fail call
+  
   * set userOtpSend.otp.mobileNumber = registeredMobNo
   * set userOtpSend.otp.type = 'login'
   * set userOtpSend.otp.tenantId = "123" 
@@ -125,10 +177,10 @@ Scenario: User otp send fail call
 
 @Error_TenantNull
 Scenario: User otp send fail call
-
+  
   * set userOtpSend.otp.mobileNumber = null
   * set userOtpSend.otp.type = 'login'
-  * set userOtpSend.otp.tenantId = null
+  * set userOtpSend.otp.tenantId = ''
 
     Given url userOtpRegisterUrl
     And request userOtpSend
@@ -139,10 +191,17 @@ Scenario: User otp send fail call
 
 @Error_Invldurl
 Scenario: User otp send fail call
+ * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
  * set userOtpSend.otp.type = 'login'
  * set userOtpSend.otp.mobileNumber = registeredMobNo
 
     Given url invalidEndpoint
+    And params parameters
     And request userOtpSend
     When method post
     Then status 401

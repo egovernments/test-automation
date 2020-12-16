@@ -1,9 +1,0 @@
-# User otp expected messages
-   errorMsgForRegMobNo: This MobileNumber Already Register as UserName in System. Pls try Another UserName
-   errorMsgForUnRegMobNo: User not Found With this UserName
-   errorMsgForValidMobNo: Mobile number length should be min 10 and max 13 digits
-   errorMsgForMandMobNo: Mobile number field is mandatory
-   errorMsgForMandTenantId: Tenant field is mandatory
-   errorMsgForMobNoNum: Mobile number field should be numeric.
-   errorMsgForInvaldReq: You are not authorized to access this resource
-   msgForMobNo: OTP.MOBILENUMBER
