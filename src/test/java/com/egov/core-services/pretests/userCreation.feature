@@ -10,7 +10,7 @@ Background:
   * def newUser = read('../requestPayload/userCreation/createUser.json')
   * print newUser
  
-# @usercreation
+@usercreation
 Scenario: Creating new user 
    * def mobileNumberGen = randomMobileNumGen(10)
    * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
@@ -18,6 +18,7 @@ Scenario: Creating new user
    * set newUser.user.mobileNumber = validMobileNum
    * set newUser.user.userName = validMobileNum
    * configure headers = read('classpath:websCommonHeaders.js') 
+   
      Given url createUser   
      And request newUser
      When method post

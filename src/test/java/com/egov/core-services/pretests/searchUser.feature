@@ -7,20 +7,13 @@ Background:
   * def authPassword = counterEmployeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
-  * def createUser = read('../pretests/userCreation.feature')
-  * print createdUser
   * def findUser = read('../requestPayload/userCreation/searchUser.json')
   * print findUser
 
 # Search user
 @searchuser
 Scenario: Search user
-  # * def createUser = read('../pretests/userCreation.feature')
-  # * print userCreationResponseBody
-  # * def createdUser = userCreationResponseBody.user[0].userName
-  # * print createdUser 
    * configure headers = read('classpath:websCommonHeaders.js') 
-  # * set findUser.userName = createdUser
      Given url searchUser   
      And request findUser
      When method post
@@ -30,5 +23,5 @@ Scenario: Search user
      * print searchUserResponseBody
      * def user = searchUserResponseBody.user.length
      * print user
-     And eval if (user == 0) karate.call('../pretests/userCreation.feature')
+     And eval if (user == 0) karate.call('userCreation.feature')
      
