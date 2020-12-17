@@ -6,8 +6,8 @@ Background:
   
   Scenario: Auth token Creation scenario
   * configure headers = read('classpath:oauthTokenHeader.js') 
-    Given url authTokenUrl
-    And form field username = authUsername
+        Given url authTokenUrl
+        And form field username = authUsername
 		And form field password = authPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'

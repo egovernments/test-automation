@@ -2,7 +2,7 @@ Feature: FileStore create API call
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def javaUtils = Java.type('com.egov.base.EGovTest')
-  * def test = call read('fileStoreCreate.feature@uploadsuccess')
+  * def test = call read('../pretests/fileStoreCreate.feature@uploadsuccess')
   * print test.filecreateResponseBody
   * print test.filestoreid
 @getfileidsuccess

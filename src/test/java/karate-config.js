@@ -15,9 +15,11 @@ function() {
     	tenantId = 'pb';
     }
 
-    var envProps = karate.read('Classpath:envYaml/' + env + '/' + env +'.yaml');
+    //var envProps = karate.read('Classpath:envYaml/' + env + '/' + env +'.yaml');
+    var envProps = karate.read('envYaml/' + env + '/' + env +'.yaml');
 
-    var path = karate.read('Classpath:envYaml/common/common.yaml');
+    //var path = karate.read('Classpath:envYaml/common/common.yaml');
+    var path = karate.read('envYaml/common/common.yaml');
 
     var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
     
@@ -46,15 +48,22 @@ function() {
         
         //upsertUrl
         config.upsertUrl = envProps.host + path.endPoints.localizationUpsert;
+
+        //create user
+        config.createUser = envProps.host + path.endPoints.createUser;
+
+        //search user
+        config.searchUser = envProps.host + path.endPoints.searchUser;
         
         //UserOtp
-        config.userOtpRegisterUrl= envProps.host + path.endPoints.userOtpSend;
+        config.userOtpRegisterUrl = envProps.host + path.endPoints.userOtpSend;
 
         //File store crete
         config.fileStoreCreate = envProps.host + path.endPoints.fileStoreCreate
 
         //File store get
         config.fileStoreGet = envProps.host + path.endPoints.fileStoreGet
+
 
 
     karate.log('karate.env:', env);

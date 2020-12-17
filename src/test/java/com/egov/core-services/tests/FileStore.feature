@@ -8,7 +8,7 @@ Background:
 Scenario: Upload a document
       * call read('../pretests/fileStoreCreate.feature@uploadsuccess')
       * print filecreateResponseBody
-      * match karate.jsonPath(filecreateResponseBody, "$.fileStoreIds[?(@.id=='"+ fileStoreId +"')]") == '#present' 
+   #   * match karate.jsonPath(filecreateResponseBody, "$.fileStoreIds[?(@.id=='"+ fileStoreId +"')]") == '#present' 
 
 @FileStore_MandatoryCheck_POST_02  @negative
 Scenario: Test uplaoding without passing tenantid / Module in the form data
@@ -18,12 +18,9 @@ Scenario: Test uplaoding without passing tenantid / Module in the form data
 
 @FileStore_invalidFiles_03   @negative
 Scenario: Test uploading invalid file format
-      * call read('../pretests/fileStoreCreate.feature@uploadinvlddocfail
+      * call read('../pretests/fileStoreCreate.feature@uploadinvlddocfail')
       * print filecreateResponseBody
       * assert filecreateResponseBody.Errors[0].message == expectedMsg.errorMessages.invalidFileFormat
-
-
-
 
 @FileStore_WithoutUploading_04   @negative
 Scenario: Test without uplaoding any file when 'file' is selected
@@ -51,18 +48,19 @@ Scenario: Test by not passing the tenant Id in the url
 Scenario: Test by not passing the filestore Id in the url
       * call read('../pretests/fileStoreGet.feature@getfileidfail')
       * print fileStoreGetResponseBody
-      * assert fileStoreGetResponseBody.Errors[0].message == expectedMsg.errorMessages.noTenantid
+      * assert fileStoreGetResponseBody.Errors[0].message == expectedMsg.errorMessages.noFilestoreId
 
 
 @FileStore_E2E_09   @positive
 Scenario: Test uplaoding a file and retriving it
-     * call read('../pretests/fileStoreGet.feature@getfileidsuccess')
-     * match fileStoreGetResponseBody == '#present'
+      * call read('../pretests/fileStoreGet.feature@getfileidsuccess')
+      * print fileStoreGetResponseBody
+      * match fileStoreGetResponseBody == '#present'
 
 
 @FileStore_noTenantModule_10  @positive
 Scenario: Test with blank/non-existent tenant/module
-      * call read('../pretests/fileStoreCreate.feature@uploadnotenantidfail')
+      * call read('../pretests/fileStoreCreate.feature@invldtenantid')
       * print filecreateResponseBody
       * assert filecreateResponseBody.Errors[0].message == expectedMsg.errorMessages.noTenantid
 
