@@ -61,8 +61,11 @@ function() {
         //File store crete
         config.fileStoreCreate = envProps.host + path.endPoints.fileStoreCreate
 
-        //File store get
+        //Get file id
         config.fileStoreGet = envProps.host + path.endPoints.fileStoreGet
+
+        //Search location
+        config.searchloc = envProps.host + path.endPoints.searchLocation
 
 
 

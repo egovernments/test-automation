@@ -1,0 +1,9 @@
+# Parameters
+parameters:
+ hierarchyTypeCode: REVENUE
+ boundaryType: Locality
+ tenantId: ''
+ invldTenantId: 123
+ multiHierarchyTypeCode: ADMIN,REVENUE
+ invldEndpoint: https://egov-micro-qa.egovernments.org/egov-location/location/v1/boundarys/_search?hierarchyTypeCode=REVENUE,ADMIN&boundaryType=Locality&tenantId=pb.amritsar
+ multiTenantid: pb.amritsar,pb.jalandhar

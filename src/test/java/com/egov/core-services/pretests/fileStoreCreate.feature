@@ -6,15 +6,18 @@ Background:
 
 @uploadsuccess
 Scenario: Upload a document
-   #* def field = 
-   # """
-   # {
-   # }
-   # """
+   * def filestoreparam = 
+    """
+    {
+       tenantId: '#(tenantId)',
+       module: '#(module)'
+    }
+    """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf'}
-   And multipart field tenantId = '#(tenantId)'
-   And multipart field module = 'fire-noc'
+   And params filestoreparam
+   #And multipart field tenantId = '#(tenantId)'
+   #And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201
@@ -23,6 +26,34 @@ Scenario: Upload a document
    * print filecreateResponseBody
    * def filestoreid = filecreateResponseBody.files[0].fileStoreId
    * print filestoreid
+
+@uploaddocssuccess
+Scenario: Upload a document 
+# * def json = {}
+# * set json.file1 = { read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf' } <br>
+# * set json.file2 = { read: '../testData/pdf.pdf', filename: 'pdf.pdf', contentType: 'application/pdf' }
+
+   Given url fileStoreCreate   
+#   And multipart files json
+   And multipart file files = { read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf' }
+   And multipart field tenantId = 'pb.amritsar'
+   And multipart field module = 'fire-noc'
+   And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
+   When method post
+   Then status 201
+   And def filecreateResponseHeader = responseHeaders
+   And def filecreateResponseBody = response
+   * print filecreateResponseBody
+
+   And multipart field file = { read: '../testData/pdf.pdf', filename: 'pdf.pdf', contentType: 'application/pdf' }
+   And multipart field tenantId = 'pb.amritsar'
+   And multipart field module = 'fire-noc'
+   And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
+   When method post
+   Then status 201
+   And def filecreateResponseHeader = responseHeaders
+   And def filecreateResponseBody = response
+   * print filecreateResponseBody
    
 
 @uploadnotenantidfail

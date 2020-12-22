@@ -7,3 +7,4 @@ endPoints:
  fileStoreGet: filestore/v1/files/url
  createUser: user/users/_createnovalidate
  searchUser: user/_search
+ searchLocation: egov-location/location/v11/boundarys/_search
