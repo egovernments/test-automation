@@ -17,11 +17,14 @@ expectedOutput:
 parameters:
   module: rainmaker-uc
   code: ACTION_TEST_SEARCH_APPLICATION
+  code1: OWNER_ADDRESSPROOF
   #Removed messages in the url
   invalidUpsertURL: https://egov-micro-qa.egovernments.org/localization/v1/_upsert
+  invalidUpdateURL: https://egov-micro-qa.egovernments.org/localization/v1/_update
+  invalidV2SearchURL: https://egov-micro-qa.egovernments.org/localization/v2/_searc
   invalidSearchURL: 'https://egov-micro-qa.egovernments.org/localization/messages/v1/_search?locale=hi_IN'
   hindhiMsg: संदेश मुखर करना
-  invalidLocale: Mumbai
+  invalidLocale: noLocale
   hindhiLocale: hi_IN
   engLocale: en_IN
   noCode: 
@@ -29,3 +32,5 @@ parameters:
   noMessage: 
   multiModule: rainmaker-common,rainmaker-ws
   multiCode: OWNER_ADDRESSPROOF,ACTION_TEST_SEARCH_APPLICATION
+  userType: EMPLOYEE
+  

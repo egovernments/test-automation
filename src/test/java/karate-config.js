@@ -42,6 +42,14 @@ function() {
         
         //localizationURL
         config.localizationMessagesUrl = envProps.host + path.endPoints.localizationSearch;
+        //localizationSearchV2URL
+        config.localizationSearchV2Url = envProps.host + path.endPoints.localizationV2Search;
+        //localizationUpdateURL
+        config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localizationUpdate;
+        //localizationDeleteURL
+        config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localizationDelete;
+        //localizationCreateURL
+        config.localizationCreateMessagesUrl = envProps.host + path.endPoints.localizationCreate;
         
         //authTokenUrl
         config.authTokenUrl = envProps.host + path.endPoints.authToken;
@@ -66,6 +74,9 @@ function() {
 
         //Search location
         config.searchloc = envProps.host + path.endPoints.searchLocation
+
+        //idGenerate
+        config.idGenerateUrl = envProps.host + path.endPoints.idGeneate;
 
 
 

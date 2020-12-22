@@ -5,10 +5,13 @@ Background:
 
   	# calling localization Json
   * def localizationSearchRequest = read('../requestPayload/localization/localizationMsg.json')
+  * def localizationV2SearchRequest = read('../requestPayload/localization/v2SearchMsg.json')
   * configure headers = read('classpath:websCommonHeaders.js')
   * print tenantId
   * set localizationSearchRequest.tenantId = tenantId
+  * set localizationV2SearchRequest.tenantId = tenantId
   * print localizationSearchRequest
+  * print localizationV2SearchRequest
   
 @Success_LocalizationMessage
 Scenario: Localization Message Success call
@@ -115,5 +118,38 @@ Scenario: Localization Message Success call
   Then status 200
   And def localizationMessageResponseHeader = responseHeaders
   And def localizationMessageResponseBody = response
+
+
+@SearchV2Call
+Scenario: Localization V2 Search Message Success call
+ 
+  Given url localizationSearchV2Url
+  And request localizationV2SearchRequest
+  When method post
+  Then status 200
+  And def localizationV2SearchResponseHeader = responseHeaders
+  And def localizationV2SearchResponseBody = response
+
+
+@SearchV1ErrorCall
+Scenario: Localization V2 Search Message Error call
+ 
+  Given url localizationMessagesUrl
+  And request localizationV2SearchRequest
+  When method post
+  Then status 400
+  And def localizationV2SearchResponseHeader = responseHeaders
+  And def localizationV2SearchResponseBody = response
+
+
+@SearchV2ErrorCall
+Scenario: Localization V2 Search Message Error call
+ 
+  Given url localizationSearchV2Url
+  And request localizationV2SearchRequest
+  When method post
+  Then status 403
+  And def localizationV2SearchResponseHeader = responseHeaders
+  And def localizationV2SearchResponseBody = response
 
 

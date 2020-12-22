@@ -10,7 +10,7 @@ Scenario: Upsert with Success call
 	
 	* def code = 'TB.CHALLAN_UNDER_SECTION_' + ranInteger(4) + '_FIELD_FEE'
 	* print code
-	
+  * def module = module_value
 	# calling localization Json
   * def upsertRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')
@@ -26,7 +26,6 @@ Scenario: Upsert with Success call
 
 @Error_Upsert
 Scenario: Upsert with Error call
-  
    # calling localization Json
   * def upsertRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')
@@ -42,7 +41,6 @@ Scenario: Upsert with Error call
 
   @Error_accessingResource_upsert
   Scenario: Upsert with Error call
-  
    # calling localization Json
   * def upsertRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')

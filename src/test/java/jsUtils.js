@@ -56,3 +56,7 @@ function ranString(length) {
     }
     return result;
  }
+
+ function stringToInteger(x) {
+    return parseInt(x);
+}
