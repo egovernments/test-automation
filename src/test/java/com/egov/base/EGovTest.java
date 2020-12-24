@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@FileStore_GenerateId_01"})
+@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@largefile"})
 public class EGovTest {
 
 	@BeforeClass

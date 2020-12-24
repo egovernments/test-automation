@@ -45,6 +45,26 @@ Scenario: search for location detail
      And def searchLocationResponseBody = response
      * print searchLocationResponseBody
 
+@locationwithnotenantid
+Scenario: search for location detail
+* configure headers = read('classpath:websCommonHeaders.js')
+    
+      * def locparam = 
+    """
+    {
+     hierarchyTypeCode: '#(hierarchyTypeCode)',
+     boundaryType: '#(boundaryType)'
+    }
+    """
+     Given url searchloc
+     And params locparam
+     And request location
+     When method post
+     Then status 400
+     And def searchLocationResponseHeader = responseHeaders
+     And def searchLocationResponseBody = response
+     * print searchLocationResponseBody
+
 @locationerror
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')

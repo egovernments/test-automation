@@ -5,3 +5,4 @@ errorMessages:
 
 parameters:
   module: fire-noc
+  invldTenantId: 123

@@ -15,12 +15,16 @@ function() {
     	tenantId = 'pb';
     }
 
-    var envProps = karate.read('Classpath:envYaml/' + env + '/' + env +'.yaml');
+    //var envProps = karate.read('Classpath:envYaml/' + env + '/' + env +'.yaml');
     //var envProps = karate.read('envYaml/' + env + '/' + env +'.yaml');
 
-    var path = karate.read('Classpath:envYaml/common/common.yaml');
+    //var path = karate.read('Classpath:envYaml/common/common.yaml');
     //var path = karate.read('envYaml/common/common.yaml');
 
+    //var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
+
+    var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
+    var path = karate.read('file:envYaml/common/common.yaml');
     var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
     
     
