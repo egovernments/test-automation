@@ -38,7 +38,8 @@ Scenario: Test to get the documents pat
 
 @FileStore_multipledocuments_06   
 Scenario: Test to fetch path of multiple uploaded document from filestore
-      * call read('../pretests/fileStoreCreate.feature')
+      * call read('../pretests/fileStoreCreate.feature@getmultifileidsuccess')
+      * print fileStoreGetResponseBody
 
 @FileStore_NoTenantID_07   @negative  @filestore
 Scenario: Test by not passing the tenant Id in the url
@@ -66,12 +67,12 @@ Scenario: Test with blank/non-existent tenant/module
       * print filecreateResponseBody
       * match filecreateResponseBody == '#present'
 
-@FileStores_MultipleFiles_11   
+@FileStores_MultipleFiles_11   @filestore
 Scenario: Test by uplaoding multiple files at once
-      * call read('../pretests/fileStoreCreate.feature@uploadmultifilesuccess')
+      * call read('../pretests/fileStoreCreate.feature@uploaddocssuccess')
       * print filecreateResponseBody
 
-@FileStores_LargeFile_12  
+@FileStores_LargeFile_12  @filestore
 Scenario: Test by uploading a large file
       * call read('../pretests/fileStoreCreate.feature@largefile')
       * print filecreateResponseBody

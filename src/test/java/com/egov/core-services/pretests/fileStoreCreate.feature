@@ -24,15 +24,14 @@ Scenario: Upload a document
    And def filecreateResponseHeader = responseHeaders
    And def filecreateResponseBody = response
    * print filecreateResponseBody
-   * def filestoreid = filecreateResponseBody.files[0].fileStoreId
-   * print filestoreid
 
  @uploaddocssuccess
-Scenario: Upload a document 
-
+Scenario: Upload a document
+   
    Given url fileStoreCreate   
-   And multipart file files = { read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf' }
-   And multipart field tenantId = 'pb.amritsar'
+   And multipart file file = { read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf' }
+   And multipart file file = { read: '../testData/pdf.pdf', filename: 'pdf.pdf', contentType: 'application/pdf' }
+   And multipart field tenantId = tenantId
    And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
@@ -103,12 +102,11 @@ Scenario: Upload a document
    And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
-   Then status 201
+   Then status 413
    And def filecreateResponseHeader = responseHeaders
    And def filecreateResponseBody = response
    * print filecreateResponseBody
-   * def filestoreid = filecreateResponseBody.files[0].fileStoreId
-   * print filestoreid
+   
 
 @invldtenantid
 Scenario: Upload a document
@@ -127,5 +125,3 @@ Scenario: Upload a document
    And def filecreateResponseHeader = responseHeaders
    And def filecreateResponseBody = response
    * print filecreateResponseBody
-   * def filestoreid = filecreateResponseBody.files[0].fileStoreId
-   * print filestoreid
