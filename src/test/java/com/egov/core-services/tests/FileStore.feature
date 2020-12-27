@@ -40,6 +40,7 @@ Scenario: Test to get the documents pat
 Scenario: Test to fetch path of multiple uploaded document from filestore
       * call read('../pretests/fileStoreCreate.feature@getmultifileidsuccess')
       * print fileStoreGetResponseBody
+      * match fileStoreGetResponseBody == '#present'
 
 @FileStore_NoTenantID_07   @negative  @filestore
 Scenario: Test by not passing the tenant Id in the url
