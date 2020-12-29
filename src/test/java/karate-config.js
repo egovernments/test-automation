@@ -85,6 +85,13 @@ function() {
         //searchmdms service
         config.searchMdmsUrl = envProps.host + path.endPoints.searchMdms;
 
+        //Searcher
+        config.searcherUrl = envProps.host + path.endPoints.searcher;
+
+        config.searcherWSUrl = envProps.host + path.endPoints.searcherWS;
+
+        config.searcherSWUrl = envProps.host + path.endPoints.searcherSW;
+
 
 
     karate.log('karate.env:', env);

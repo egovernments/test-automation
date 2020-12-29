@@ -6,8 +6,9 @@
 		"tenantId": "#(tenantId)",
 		"moduleDetails": [{
 			"moduleName": "#(moduleName)",
-			"masterDetails": [{
-				"name": "uiCommonConstants"
+			"masterDetails": [
+				{
+				"name": "#(name)"
 			}]
 		}]
 	}

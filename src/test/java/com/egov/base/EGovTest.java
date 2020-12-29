@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@SearchMDMS_Non-existentMod_05"})
+@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@Searcher"})
 public class EGovTest {
 
 	@BeforeClass

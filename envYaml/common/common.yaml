@@ -14,3 +14,6 @@ endPoints:
  searchLocation: egov-location/location/v11/boundarys/_search
  idGeneate: egov-idgen/id/_generate
  searchMdms: egov-mdms-service/v1/_search
+ searcher: egov-searcher/bill-genie/billswithaddranduser/_get
+ searcherWS: egov-searcher/bill-genie/waterbills/_get
+ searcherSW: egov-searcher/bill-genie/seweragebills/_get
