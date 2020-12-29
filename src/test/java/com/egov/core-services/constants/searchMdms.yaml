@@ -1,0 +1,12 @@
+parameters:
+ invldEndpoint: https://egov-micro-qa.egovernments.org/egov-mdms-service/v2/_search
+ invldauth: 123
+ tenantId: abc
+ modulename: common-masters
+ invldmodulename: abc
+ name: uiCommonConstants
+ invldname: 123
+
+errorMessages:
+ invldEndPoint: Not authorized to access this resource
+ invldTenantid: Invalid Tenant Id

@@ -82,6 +82,9 @@ function() {
         //idGenerate
         config.idGenerateUrl = envProps.host + path.endPoints.idGeneate;
 
+        //searchmdms service
+        config.searchMdmsUrl = envProps.host + path.endPoints.searchMdms;
+
 
 
     karate.log('karate.env:', env);

@@ -13,3 +13,4 @@ endPoints:
  searchUser: user/_search
  searchLocation: egov-location/location/v11/boundarys/_search
  idGeneate: egov-idgen/id/_generate
+ searchMdms: egov-mdms-service/v1/_search

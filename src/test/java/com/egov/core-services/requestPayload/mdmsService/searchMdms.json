@@ -1,0 +1,14 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"MdmsCriteria": {
+		"tenantId": "#(tenantId)",
+		"moduleDetails": [{
+			"moduleName": "#(moduleName)",
+			"masterDetails": [{
+				"name": "uiCommonConstants"
+			}]
+		}]
+	}
+}
