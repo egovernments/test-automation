@@ -1,0 +1,24 @@
+parameters:
+ pageSize: false
+ offset: 0
+ reportName: DescriptionReport
+ withoutReportName: ""
+ secondReportName: LMEPerformanceReport
+ invalidTenantId: 123
+ invalidAuthToken: abc
+ invalidEndpoint: https://egov-micro-qa.egovernments.org/report/pgr/DscriptionReport/metadata/_get?tenantId=pb.amritsar&pageSize=false&offset=0
+ searchparams:
+  - name: fromDate
+    input: 1604169000000
+  - name: toDate
+    input: 1606847399000
+  - name: deptname
+    input: DEPT_1
+ withoutSearchParams: [] 
+ invalidSearchParams: "test"
+errormessages:
+ withoutReportName: Error in retrieving report definition
+ noReportName: ERROR_IN_RETRIEVING_REPORT_DATA
+ invalidTenantId: Not authorized to access this resource
+ invalidEndpoint: Not authorized to access this resource
+ invalidSearchparam: Failed to deserialize certain JSON fields

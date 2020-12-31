@@ -92,6 +92,12 @@ function() {
 
         config.searcherSWUrl = envProps.host + path.endPoints.searcherSW;
 
+        //Report
+        config.metadataGetReport = envProps.host + path.endPoints.metadataGetReport
+
+        //Get Report
+        config.getReport = envProps.host + path.endPoints.getReport
+
 
 
     karate.log('karate.env:', env);

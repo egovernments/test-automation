@@ -17,3 +17,5 @@ endPoints:
  searcher: egov-searcher/bill-genie/billswithaddranduser/_get
  searcherWS: egov-searcher/bill-genie/waterbills/_get
  searcherSW: egov-searcher/bill-genie/seweragebills/_get
+ metadataGetReport: report/pgr/DescriptionReport/metadata/_get
+ getReport: report/pgr/DescriptionReport/_get
