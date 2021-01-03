@@ -2,6 +2,6 @@
 	"RequestInfo": {
 		"authToken": "#(authToken)"
 	},
-	"userName": "94949494945",
-	"tenantId": "#(tenantId)"
+	"userName": "#(createdUser)",
+	"tenantId": "pb"
 }

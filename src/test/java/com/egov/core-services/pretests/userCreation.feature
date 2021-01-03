@@ -2,7 +2,7 @@ Feature: Create user
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
+ # * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def authUsername = counterEmployeeUserName
   * def authPassword = counterEmployeePassword
   * def authUserType = 'EMPLOYEE'
@@ -19,8 +19,10 @@ Scenario: Creating new user
    * set newUser.user.userName = validMobileNum
    * configure headers = read('classpath:websCommonHeaders.js') 
    
-     Given url createUser   
+     Given url createUser 
+     * print createUser
      And request newUser
+     * print newUser
      When method post
      Then status 200
      And def userCreationResponseHeader = responseHeaders
