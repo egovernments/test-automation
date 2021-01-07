@@ -20,3 +20,5 @@ endPoints:
  searcherSW: egov-searcher/bill-genie/seweragebills/_get
  metadataGetReport: report/pgr/DescriptionReport/metadata/_get
  getReport: report/pgr/DescriptionReport/_get
+ hrmsCreate: egov-hrms/employees/_create
+ hrmsSearch: egov-hrms/employees/_search

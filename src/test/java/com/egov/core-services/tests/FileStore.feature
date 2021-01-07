@@ -34,8 +34,6 @@ Scenario: Test to get the documents pat
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 
-
-
 @FileStore_multipledocuments_06  @Positive  @Filestore  
 Scenario: Test to fetch path of multiple uploaded document from filestore
       * call read('../pretests/fileStoreCreate.feature@getmultifileidsuccess')

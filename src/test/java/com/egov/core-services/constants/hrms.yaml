@@ -1,0 +1,3 @@
+parameters:
+  userType: EMPLOYEE
+  invalidURL: https://egov-micro-qa.egovernments.org/egov-hrms/_search

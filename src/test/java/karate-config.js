@@ -94,6 +94,12 @@ function() {
         //Get Report
         config.getReport = envProps.host + path.endPoints.getReport
 
+        //hrmsCreate
+        config.hrmsCreateUrl = envProps.host + path.endPoints.hrmsCreate;
+
+        //hrmsSearch
+        config.hrmsSearchUrl = envProps.host + path.endPoints.hrmsSearch;
+
 
 
     karate.log('karate.env:', env);

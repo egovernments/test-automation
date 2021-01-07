@@ -3,7 +3,6 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def javaUtils = Java.type('com.egov.base.EGovTest')
 
-
 @uploadsuccess
 Scenario: Upload a document
    * def filestoreparam = 
