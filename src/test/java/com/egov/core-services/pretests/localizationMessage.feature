@@ -48,8 +48,10 @@ Scenario: Localization Message Error call
 @Error_NoTenant_LocalizationMessage
 Scenario: Localization Message Error call
  
+   * print localizationMessagesUrl
   Given url localizationMessagesUrl
   And request localizationSearchRequest
+  And params parameters
   When method post
   Then status 400
   And def localizationMessageResponseHeader = responseHeaders
@@ -152,4 +154,15 @@ Scenario: Localization V2 Search Message Error call
   And def localizationV2SearchResponseHeader = responseHeaders
   And def localizationV2SearchResponseBody = response
 
+
+
+@Invalid_SearchV2ErrorCall
+Scenario: Localization V2 Search Message Error call
+ 
+  Given url invalidV2Search
+  And request localizationV2SearchRequest
+  When method post
+  Then status 403
+  And def localizationV2SearchResponseHeader = responseHeaders
+  And def localizationV2SearchResponseBody = response
 

@@ -30,6 +30,16 @@ Scenario: Searcher error call
   Then status 403
   And def searcherResponseHeader = responseHeaders
   And def searcherResponseBody = response
+
+@error_invalidSearcher
+Scenario: Searcher error call
+
+  Given url invalidSearcher 
+  And request searcherRequest
+  When method post
+  Then status 403
+  And def searcherResponseHeader = responseHeaders
+  And def searcherResponseBody = response
   
 
 

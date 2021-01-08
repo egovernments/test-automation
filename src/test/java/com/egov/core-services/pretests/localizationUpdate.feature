@@ -48,6 +48,16 @@ Scenario: Update with Error call
   And def updateResponseHeader = responseHeaders
   And def updateResponseBody = response
 
+@Errorupdate_invalid
+Scenario: Update with Error call
+  
+  Given url invalidUpdate
+  And request localizationUpdateRequest
+  When method post
+  Then status 403
+  And def updateResponseHeader = responseHeaders
+  And def updateResponseBody = response
+
 
 #need to update this scenario  
 @Delete

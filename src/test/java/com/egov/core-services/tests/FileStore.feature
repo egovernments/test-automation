@@ -34,7 +34,7 @@ Scenario: Test to get the documents pat
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 
-@FileStore_multipledocuments_06  @Positive  @Filestore  
+@FileStore_multipledocuments_06  @Positive   
 Scenario: Test to fetch path of multiple uploaded document from filestore
       * call read('../pretests/fileStoreCreate.feature@getmultifileidsuccess')
       * print fileStoreGetResponseBody
@@ -71,7 +71,7 @@ Scenario: Test by uplaoding multiple files at once
       * call read('../pretests/fileStoreCreate.feature@uploaddocssuccess')
       * print filecreateResponseBody
 
-@FileStores_LargeFile_12  @Negative  @Filestore
+@FileStores_LargeFile_12  @Negative  
 Scenario: Test by uploading a large file
       * call read('../pretests/fileStoreCreate.feature@largefile')
       * print filecreateResponseBody

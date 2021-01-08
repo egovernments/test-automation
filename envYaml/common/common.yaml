@@ -1,24 +1,44 @@
 endPoints:
- localizationSearch: localization/messages/v1/_search
- localizationV2Search: localization/messages/v2/_search
- localizationUpdate: localization/messages/v1/_update
- localizationDelete: localization/messages/v1/_delete
- localizationCreate: localization/messages/v1/_create
- localizationUpsert: localization/messages/v1/_upsert
- authToken: user/oauth/token
- userOtpSend: user-otp/v1/_send
- fileStoreCreate: filestore/v1/files
- fileStoreGet: filestore/v1/files/url
- createUser: user/users/_createnovalidate
- searchUser: user/_search
- searchLocation: egov-location/location/v11/boundarys/_search
- idGeneate: egov-idgen/id/_generate
- searchMdms: egov-mdms-service/v1/_search
- invalidSearchMdms: egov-mdms-service/v2/_search
- searcher: egov-searcher/bill-genie/billswithaddranduser/_get
- searcherWS: egov-searcher/bill-genie/waterbills/_get
- searcherSW: egov-searcher/bill-genie/seweragebills/_get
- metadataGetReport: report/pgr/DescriptionReport/metadata/_get
- getReport: report/pgr/DescriptionReport/_get
- hrmsCreate: egov-hrms/employees/_create
- hrmsSearch: egov-hrms/employees/_search
+ localization:
+  searchLocalization: localization/messages/v1/_search
+  v2SearchLocalization: localization/messages/v2/_search
+  updateLocalization: localization/messages/v1/_update
+  deleteLocalization: localization/messages/v1/_delete
+  createLocalization: localization/messages/v1/_create
+  upsertLocalization: localization/messages/v1/_upsert
+  invalidUpsert: localization/v1/_upsert
+  invalidUpdate: localization/v1/_update
+  invalidV2Search: localization/v2/_searc
+  invalidSearch: localization/messages/v1/_search?locale=hi_IN'
+ authenticationToken:
+  authToken: user/oauth/token
+ citizenRegisterAndLogin: 
+  sendOtpUser: user-otp/v1/_send
+  invalidSendOpUser: user-otp/v/_send
+ fileStore:
+  createFileStore: filestore/v1/files
+  getFileStore: filestore/v1/files/url
+ citizen:
+  createUser: user/users/_createnovalidate
+  searchUser: user/_search
+ location:
+  searchLocation: egov-location/location/v11/boundarys/_search
+  invalidLocationService: egov-location/location/v1/boundarys/_search?hierarchyTypeCode=REVENUE,ADMIN&boundaryType=Locality&tenantId=pb.amritsar
+ idGenerate:
+  idGeneate: egov-idgen/id/_generate
+ mdmsService:
+  searchMdms: egov-mdms-service/v1/_search
+  invalidSearchMdms: egov-mdms-service/v2/_search
+ searcher:
+  searcher: egov-searcher/bill-genie/billswithaddranduser/_get
+  searcherWS: egov-searcher/bill-genie/waterbills/_get
+  searcherSW: egov-searcher/bill-genie/seweragebills/_get
+  invalidSearcher: egov-searcher/billswithaddranduser/_get
+ reports:
+  metadataGetReport: report/pgr/DescriptionReport/metadata/_get
+  getReport: report/pgr/DescriptionReport/_get
+  invalidReportService: report/pgr/DscriptionReport/metadata/_get?tenantId=pb.amritsar&pageSize=false&offset=0
+ hrms:
+  hrmsCreate: egov-hrms/employees/_create
+  hrmsSearch: egov-hrms/employees/_search
+  invalidHrms: egov-hrms/_search

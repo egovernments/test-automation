@@ -1,4 +1,3 @@
-
 function waitTimeSec(x) {
     karate.log('sleeping');
     java.lang.Thread.sleep(x * 1000);

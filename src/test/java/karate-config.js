@@ -30,75 +30,85 @@ function() {
     };
         
         //username & password for authtoken
-        config.counterEmployeeUserName = userData.counterEmployee.userName;
-        config.counterEmployeePassword = userData.counterEmployee.password;
+        config.counterEmployeeUserName = userData.superUserCounterEmployee.userName;
+        config.counterEmployeePassword = userData.superUserCounterEmployee.password;
 
         //tenantId
         config.tenantId = envProps.tenantId;
 
         
         //localizationURL
-        config.localizationMessagesUrl = envProps.host + path.endPoints.localizationSearch;
+        config.localizationMessagesUrl = envProps.host + path.endPoints.localization.searchLocalization;
+        config.invalidSearch = envProps.host + path.endPoints.localization.invalidSearch;
         //localizationSearchV2URL
-        config.localizationSearchV2Url = envProps.host + path.endPoints.localizationV2Search;
+        config.localizationSearchV2Url = envProps.host + path.endPoints.localization.v2SearchLocalization;
+        config.invalidV2Search = envProps.host + path.endPoints.localization.invalidV2Search;
         //localizationUpdateURL
-        config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localizationUpdate;
+        config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localization.updateLocalization;
+        config.invalidUpdate = envProps.host + path.endPoints.localization.invalidUpdate;
         //localizationDeleteURL
-        config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localizationDelete;
+        config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localization.deleteLocalization;
         //localizationCreateURL
-        config.localizationCreateMessagesUrl = envProps.host + path.endPoints.localizationCreate;
+        config.localizationCreateMessagesUrl = envProps.host + path.endPoints.localization.createLocalization;
         
         //authTokenUrl
-        config.authTokenUrl = envProps.host + path.endPoints.authToken;
+        config.authTokenUrl = envProps.host + path.endPoints.authenticationToken.authToken;
         
         //upsertUrl
-        config.upsertUrl = envProps.host + path.endPoints.localizationUpsert;
+        config.upsertUrl = envProps.host + path.endPoints.localization.upsertLocalization;
+        config.invalidUpsert = envProps.host + path.endPoints.localization.invalidUpsert;
 
         //create user
-        config.createUser = envProps.host + path.endPoints.createUser;
+        config.createUser = envProps.host + path.endPoints.citizen.createUser;
 
         //search user
-        config.searchUser = envProps.host + path.endPoints.searchUser;
+        config.searchUser = envProps.host + path.endPoints.citizen.searchUser;
         
         //UserOtp
-        config.userOtpRegisterUrl = envProps.host + path.endPoints.userOtpSend;
+        config.userOtpRegisterUrl = envProps.host + path.endPoints.citizenRegisterAndLogin.sendOtpUser;
+        config.invalidSendOpUser = envProps.host + path.endPoints.citizenRegisterAndLogin.invalidSendOpUser;
 
         //File store crete
-        config.fileStoreCreate = envProps.host + path.endPoints.fileStoreCreate
+        config.fileStoreCreate = envProps.host + path.endPoints.fileStore.createFileStore
 
         //Get file id
-        config.fileStoreGet = envProps.host + path.endPoints.fileStoreGet
+        config.fileStoreGet = envProps.host + path.endPoints.fileStore.getFileStore
 
         //Search location
-        config.searchloc = envProps.host + path.endPoints.searchLocation
+        config.searchloc = envProps.host + path.endPoints.location.searchLocation
+        config.invalidLocationService = envProps.host + path.endPoints.location.invalidLocationService
 
         //idGenerate
-        config.idGenerateUrl = envProps.host + path.endPoints.idGeneate;
+        config.idGenerateUrl = envProps.host + path.endPoints.idGenerate.idGeneate;
 
         //searchmdms service
-        config.searchMdmsUrl = envProps.host + path.endPoints.searchMdms;
+        config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.searchMdms;
 
         //invalid search mdms service
-        config.invalidSearchMdms = envProps.host + path.endPoints.invalidSearchMdms;
+        config.invalidSearchMdms = envProps.host + path.endPoints.mdmsService.invalidSearchMdms;
 
         //Searcher
-        config.searcherUrl = envProps.host + path.endPoints.searcher;
+        config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;
 
-        config.searcherWSUrl = envProps.host + path.endPoints.searcherWS;
+        config.searcherWSUrl = envProps.host + path.endPoints.searcher.searcherWS;
 
-        config.searcherSWUrl = envProps.host + path.endPoints.searcherSW;
+        config.searcherSWUrl = envProps.host + path.endPoints.searcher.searcherSW;
+        config.invalidSearcher = envProps.host + path.endPoints.searcher.invalidSearcher
 
         //Report
-        config.metadataGetReport = envProps.host + path.endPoints.metadataGetReport
+        config.metadataGetReport = envProps.host + path.endPoints.reports.metadataGetReport
 
         //Get Report
-        config.getReport = envProps.host + path.endPoints.getReport
+        config.getReport = envProps.host + path.endPoints.reports.getReport
+        config.invalidReportService = envProps.host + path.endPoints.reports.invalidReportService
 
         //hrmsCreate
-        config.hrmsCreateUrl = envProps.host + path.endPoints.hrmsCreate;
+        config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.hrmsCreate;
 
         //hrmsSearch
-        config.hrmsSearchUrl = envProps.host + path.endPoints.hrmsSearch;
+        config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
+        config.invalidHrms = envProps.host + path.endPoints.hrms.invalidHrms;
+
 
 
 

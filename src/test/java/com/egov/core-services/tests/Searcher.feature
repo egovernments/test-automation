@@ -56,8 +56,7 @@ Scenario: Test by not passing the mandatory parameter tenantid
 @Searcher_InvalidURL_05 @negative @Searcher
 Scenario: Test by passing invalid url
 
-    * def searcherUrl = expectedMessage.parameters.invalidURL
-    * call read('../pretests/searcherPretest.feature@error')
+    * call read('../pretests/searcherPretest.feature@error_invalidSearcher')
     * assert searcherResponseBody.Errors[0].message == expectedMessage.expectedErrorMessages.Authorized
 
 

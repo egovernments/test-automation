@@ -9,7 +9,6 @@ parameters:
   noURL: ''
   nobusinesService: ''
   invalidtenantId: '123'
-  invalidURL: https://egov-micro-qa.egovernments.org/egov-searcher/billswithaddranduser/_get
   searcherWSURL: egov-searcher/bill-genie/waterbills/_get
 
 expectedErrorMessages:

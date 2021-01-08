@@ -5,7 +5,6 @@ Background:
   * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def reportPayload = read('../requestPayload/reports/metadataGetReport.json')
   * def reportConst = read('../constants/reports.yaml')
-  * def endPoint = reportConst.parameters.invalidEndpoint
 
 @reportsuccess
 Scenario: Test to fetch the details of a report
@@ -84,7 +83,7 @@ Scenario: Test to fetch the details of a report
      offset: '#(offset)'
     }
     """
-     Given url endPoint
+     Given url invalidReportService
      * print endPoint
      And params reportparam
      * print reportparam

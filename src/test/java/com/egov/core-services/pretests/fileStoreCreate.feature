@@ -15,8 +15,8 @@ Scenario: Upload a document
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf'}
    And params filestoreparam
-   #And multipart field tenantId = '#(tenantId)'
-   #And multipart field module = 'fire-noc'
+   # And multipart field tenantId = '#(tenantId)'
+   # And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201

@@ -54,10 +54,10 @@ Scenario: Search without query parameter locale in the url
 	* assert localizationMessageResponseBody.Errors[0].message == expectedMessage.expectedErrorMessages.Nolocale
 
 
-@SearchLocale_noTenantId_06 @negative @localization @localizationdryRun
+@SearchLocale_noTenantId_06
 Scenario: Search without query parameter tenantid in the url
 
-    * def localizationMessagesUrl = expectedMessage.parameters.invalidSearchURL
+    * def localizationMessagesUrl = expectedMessage.parameters.noTenantId
     
 	* call read('../pretests/localizationMessage.feature@Error_NoTenant_LocalizationMessage')
 	* assert localizationMessageResponseBody.ResponseInfo == null
@@ -159,9 +159,7 @@ Scenario: Test by passing Maximum value for Locale
 @Upsert_InvalidUrl_08 @negative @localization
 Scenario: Upsert with Invalid URL
 
-    
-    * def upsertUrl = expectedMessage.parameters.invalidUpsertURL
-    * call read('../pretests/upsert.feature@Error_accessingResource_upsert')  
+    * call read('../pretests/upsert.feature@Errorupsert_localisation')  
 	* match upsertResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
 
 
@@ -211,8 +209,7 @@ Scenario: Test by passing null values
 @Update_Localisation_Invalid_url_05 @negative @localization
 Scenario: Test by passing a invalid request url
 
-    * def localizationUpdateMessagesUrl = expectedMessage.parameters.invalidUpdateURL
-    * call read('../pretests/localizationUpdate.feature@Error_accessingResource_update')  
+    * call read('../pretests/localizationUpdate.feature@Errorupdate_invalid')  
 	* match updateResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
 
 
@@ -375,7 +372,7 @@ Scenario: Test to search a localisation with v1 in the url
 Scenario: Test by passing a invalid request url
 
     * def localizationSearchV2Url = expectedMessage.parameters.invalidV2SearchURL
-    * call read('../pretests/localizationMessage.feature@SearchV2ErrorCall')  
+    * call read('../pretests/localizationMessage.feature@Invalid_SearchV2ErrorCall')  
 	* match localizationV2SearchResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
    
 

@@ -9,9 +9,15 @@ Background:
   * call read('../pretests/authenticationToken.feature')
   * def newUser = read('../requestPayload/userCreation/createUser.json')
   * print newUser
- 
+ # * def test = read('../../../../../../../envYaml/qa/qa.yaml')
+  * def test = read('file:envYaml/' + env + '/' + env +'.yaml')
+  * print test
+  
 @usercreation
 Scenario: Creating new user 
+  
+ #  * def result = call doStorage 'createdUser'
+   * print result
    * def mobileNumberGen = randomMobileNumGen(10)
    * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
    * print validMobileNum
@@ -30,3 +36,15 @@ Scenario: Creating new user
      * print userCreationResponseBody
      * def createdUser = userCreationResponseBody.user[0].userName
      * print createdUser
+     * def doStorage =
+     """
+     function(args) {
+     var DataStorage = Java.type('com.egov.base.testReadFile');
+     var dS = new DataStorage();
+     return dS.updateFile(args);
+     }
+     """
+     * def old = test.username.toString()
+     * print old
+     * def result = call doStorage {'old': #(old), 'new': #(createdUser)}
+     * print result

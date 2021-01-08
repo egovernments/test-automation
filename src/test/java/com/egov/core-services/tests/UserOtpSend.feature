@@ -29,7 +29,6 @@ Background:
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].code == expectedMsg.errorMessages.msgForMobNo
         * print expectedmsg[0].errormessages.errorMsgForRegMobNo
-   #     * call read('src\test\java\constants.yaml')
         * assert userOtpSendResponseBody.error.fields[0].message == expectedMsg.errorMessages.msgForRegMobNo
  
   @UserOtp_Send_Login_02  @positive @userotp

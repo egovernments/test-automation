@@ -31,14 +31,16 @@ Scenario: get the uploaded document id
   * def uploadMultifile = call read('../pretests/fileStoreCreate.feature@uploaddocssuccess')
   * print uploadMultifile.filecreateResponseBody.files[0].fileStoreId, uploadMultifile.filecreateResponseBody.files[1].fileStoreId
   * def getFileIdsFirst = uploadMultifile.filecreateResponseBody.files[0].fileStoreId
-  * def getFileIdsSecond = uploadMultifile.filecreateResponseBody.files[1].fileStoreId
   * print getFileIdsFirst
+  * def getFileIdsSecond = uploadMultifile.filecreateResponseBody.files[1].fileStoreId
   * print getFileIdsSecond
+  * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
+  * print getFileIds
   * def getMultiFileIdParam = 
     """
     {
        tenantId: '#(tenantId)',
-       fileStoreIds: '#(getFileIdsFirst , getFileIdsSecond )'
+       fileStoreIds: '#(getFileIds)'
     }
     """
      Given url fileStoreGet

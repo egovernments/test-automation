@@ -7,8 +7,3 @@ errorMessages:
   msgForMobNoNum: Mobile number field should be numeric.
   msgForInvaldReq: You are not authorized to access this resource
   msgForMobNo: OTP.MOBILENUMBER
-
-parameters:
- # Using for already registered number
- mobNo: 1111111111
- invalidEndpoint: https://egov-micro-qa.egovernments.org/user-otp/v/_send

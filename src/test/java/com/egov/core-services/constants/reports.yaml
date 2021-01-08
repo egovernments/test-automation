@@ -6,7 +6,6 @@ parameters:
  secondReportName: LMEPerformanceReport
  invalidTenantId: 123
  invalidAuthToken: abc
- invalidEndpoint: https://egov-micro-qa.egovernments.org/report/pgr/DscriptionReport/metadata/_get?tenantId=pb.amritsar&pageSize=false&offset=0
  searchparams:
   - name: fromDate
     input: 1604169000000

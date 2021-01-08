@@ -6,11 +6,10 @@ Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def constantValue = read('../constants/userOtp.yaml')
+  * def envConstant = read('file:envYaml/' + env + '/' + env +'.yaml')
+  * print envConstant
+  * def mobNumber = envConstant.userName
 
- # * def invalidEndpoint = testData.inValidEndPoint
-  * def registeredMobNo = constantValue.parameters.mobNo
- # * set userOtpParam.tenantId = tenantId
-  * def invldurl = constantValue.parameters.invalidEndpoint
 
 @Success_register
 Scenario: User otp send success call
@@ -34,6 +33,7 @@ Scenario: User otp send success call
      Then status 201
      And def userOtpSendResponseHeader = responseHeaders
      And def userOtpSendResponseBody = response
+     * print userOtpSendResponseBody
 
 @Success_login
 Scenario: User otp send success call
@@ -44,7 +44,7 @@ Scenario: User otp send success call
     }
     """
   * set userOtpSend.otp.type = 'login'
-  * set userOtpSend.otp.mobileNumber = registeredMobNo
+  * set userOtpSend.otp.mobileNumber = mobNumber
 
       Given url userOtpRegisterUrl
       And params parameters
@@ -85,7 +85,7 @@ Scenario: User otp send fail call
      tenantId: '#(tenantId)'
     }
     """
-   * set userOtpSend.otp.mobileNumber = registeredMobNo
+   * set userOtpSend.otp.mobileNumber = mobNumber
    * set userOtpSend.otp.type = 'register'
 
      Given url userOtpRegisterUrl
@@ -164,7 +164,7 @@ Scenario: User otp send fail call
 @Error_InvldTenant
 Scenario: User otp send fail call
   
-  * set userOtpSend.otp.mobileNumber = registeredMobNo
+  * set userOtpSend.otp.mobileNumber = mobNumber
   * set userOtpSend.otp.type = 'login'
   * set userOtpSend.otp.tenantId = "123" 
 
@@ -198,9 +198,9 @@ Scenario: User otp send fail call
     }
     """
  * set userOtpSend.otp.type = 'login'
- * set userOtpSend.otp.mobileNumber = registeredMobNo
+ * set userOtpSend.otp.mobileNumber = mobNumber
 
-    Given url invalidEndpoint
+    Given url invalidSendOpUser
     And params parameters
     And request userOtpSend
     When method post

@@ -99,7 +99,7 @@ Scenario: search for location detail
      tenantId: '#(tenantId)'
     }
     """
-     Given url invalidEndpoint
+     Given url invalidLocationService
      And params locparam
      And request location
      When method post
