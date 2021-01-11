@@ -15,6 +15,14 @@ function ranInteger(x) {
     }
 }
 
+function getTodayUtcDate(){
+    return new java.util.Date().getTime();
+}
+
+function getTomorrowUtcDate(){
+    return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24)).getTime();
+}
+
 function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 

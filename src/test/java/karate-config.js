@@ -12,7 +12,7 @@ function() {
     }
     
     if(!tenantId){
-    	tenantId = 'pb';
+    	tenantId = 'pb.amritsar';
     }
 
     
@@ -108,7 +108,9 @@ function() {
         //hrmsSearch
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
         config.invalidHrms = envProps.host + path.endPoints.hrms.invalidHrms;
-
+        
+        //hrmsUpdate
+        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
 
 
 
