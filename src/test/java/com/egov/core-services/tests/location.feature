@@ -48,11 +48,6 @@ Scenario: Search to fetch all the records for a particular tenant
       * call read('../pretests/location.feature@locationsuccesswithtenantid')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'  
-
-@SearchLocation_WrongEndPoint_06   @Negative  @location
-Scenario: Send a POST request by passing a wrong endpoint
-      * call read('../pretests/location.feature@locationerrorinvldendpoint')
-      * print searchLocationResponseBody
       
 
 # @SearchLocation_InvalidAuthToken_07

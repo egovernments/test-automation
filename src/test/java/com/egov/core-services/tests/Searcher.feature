@@ -53,12 +53,6 @@ Scenario: Test by not passing the mandatory parameter tenantid
     * call read('../pretests/searcherPretest.feature@error_notenant')
     * assert searcherResponseBody.Errors[0].message == errorManadatoryTenantId
     
-@Searcher_InvalidURL_05 @negative @Searcher
-Scenario: Test by passing invalid url
-
-    * call read('../pretests/searcherPretest.feature@error_invalidSearcher')
-    * assert searcherResponseBody.Errors[0].message == expectedMessage.expectedErrorMessages.Authorized
-
 
 @Searcher_MultipleSearch_06 @negative @Searcher
 Scenario: Test by passing multiple parameters

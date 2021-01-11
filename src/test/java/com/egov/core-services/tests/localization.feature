@@ -57,7 +57,7 @@ Scenario: Search without query parameter locale in the url
 @SearchLocale_noTenantId_06
 Scenario: Search without query parameter tenantid in the url
 
-    * def localizationMessagesUrl = expectedMessage.parameters.noTenantId
+    * def tenantId = expectedMessage.parameters.noTenantId
     
 	* call read('../pretests/localizationMessage.feature@Error_NoTenant_LocalizationMessage')
 	* assert localizationMessageResponseBody.ResponseInfo == null
@@ -156,13 +156,6 @@ Scenario: Test by passing Maximum value for Locale
 	* match upsertResponseBody.error.fields[0].message contains expectedMessage.expectedErrorMessages.Message
 
 
-@Upsert_InvalidUrl_08 @negative @localization
-Scenario: Upsert with Invalid URL
-
-    * call read('../pretests/upsert.feature@Errorupsert_localisation')  
-	* match upsertResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
-
-
 @Update_Localisation_01 @positive @localization
 Scenario: Test to update existing localisation message
 
@@ -204,13 +197,6 @@ Scenario: Test by passing null values
     #update 
     * call read('../pretests/localizationUpdate.feature@Error_Update') 
     * assert updateResponseBody.error.fields[0].message == expectedMessage.expectedErrorMessages.Empty
-
-
-@Update_Localisation_Invalid_url_05 @negative @localization
-Scenario: Test by passing a invalid request url
-
-    * call read('../pretests/localizationUpdate.feature@Errorupdate_invalid')  
-	* match updateResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
 
 
 @Update_Localisation_Invalid_tenantid_06 @negative @localization
@@ -366,15 +352,6 @@ Scenario: Test to search a localisation with v1 in the url
 
     * call read('../pretests/localizationMessage.feature@SearchV1ErrorCall')
     * assert localizationV2SearchResponseBody.Errors[0].message == expectedMessage.expectedErrorMessages.Nolocale
-
-
-@v2Search_Localisation_Invalid_url_05 @negative @localization
-Scenario: Test by passing a invalid request url
-
-    * def localizationSearchV2Url = expectedMessage.parameters.invalidV2SearchURL
-    * call read('../pretests/localizationMessage.feature@Invalid_SearchV2ErrorCall')  
-	* match localizationV2SearchResponseBody.Errors[0].message contains expectedMessage.expectedErrorMessages.Authorized
-   
 
 @v2Search_Localisation_Invalid_locale_06  @negative @localization
 Scenario: Test by passing a invalid , non existent,null value for locale in the request 

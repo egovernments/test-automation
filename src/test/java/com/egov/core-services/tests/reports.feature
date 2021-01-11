@@ -47,12 +47,6 @@ Scenario: Test by passing invalid/non existent or null value for auth Token
       * call read('../pretests/metadataGetReport.feature@reportfail')
       * print reportsResponseBody
 
-@MetadataGet_InvalidURL_05   @Negative  @Reports
-Scenario: Test for invalid url
-      * def reportName = reportConst.parameters.reportName
-      * call read('../pretests/metadataGetReport.feature@invalidurl')
-      * print reportsResponseBody
-      * assert reportsResponseBody.Errors[0].message == reportConst.errormessages.invalidEndpoint
 
 @Report_Get_01  @Positive  @Reports
 Scenario: Test to search for report data with different combinations of search inputs

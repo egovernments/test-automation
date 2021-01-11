@@ -1,0 +1,12 @@
+{
+	"RequestInfo": {
+		"authToken": null
+	},
+	"User": {
+		"otpReference": "#(otpReference)",
+		"username": "#(existingUser)",
+		"name": "#(name)",
+		"tenantId": "#(tenantId)",
+		"permanentCity": "#(permanentCity)"
+	}
+}

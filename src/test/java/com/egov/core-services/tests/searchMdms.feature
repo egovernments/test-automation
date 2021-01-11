@@ -16,12 +16,6 @@ Scenario: Test to search data for a particular module and tenant
       * print searchMdmsResponseBody
       * match searchMdmsResponseBody == '#present'
 
-@SearcherMDMS_InvalidURL_02  @Negative  @SearchMdms
-Scenario: Test for invalid url
-      * call read('../pretests/mdmsService.feature@mdmsinvalidurl')
-      * print searchMdmsResponseBody
-      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidEndPoint
-
 @SearchMDMS_InvalidAuth_03  @bug  
 Scenario: Test by passing a invalid/non existent auth token
       * def authToken = searchMdmsConstant.parameters.invalidAuth

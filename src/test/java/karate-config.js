@@ -39,13 +39,13 @@ function() {
         
         //localizationURL
         config.localizationMessagesUrl = envProps.host + path.endPoints.localization.searchLocalization;
-        config.invalidSearch = envProps.host + path.endPoints.localization.invalidSearch;
+    
         //localizationSearchV2URL
         config.localizationSearchV2Url = envProps.host + path.endPoints.localization.v2SearchLocalization;
-        config.invalidV2Search = envProps.host + path.endPoints.localization.invalidV2Search;
+        
         //localizationUpdateURL
         config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localization.updateLocalization;
-        config.invalidUpdate = envProps.host + path.endPoints.localization.invalidUpdate;
+        
         //localizationDeleteURL
         config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localization.deleteLocalization;
         //localizationCreateURL
@@ -56,27 +56,27 @@ function() {
         
         //upsertUrl
         config.upsertUrl = envProps.host + path.endPoints.localization.upsertLocalization;
-        config.invalidUpsert = envProps.host + path.endPoints.localization.invalidUpsert;
 
         //create user
         config.createUser = envProps.host + path.endPoints.citizen.createUser;
+
+        //Create Citizen
+        config.createCitizen = envProps.host + path.endPoints.citizen.createCitizen;
 
         //search user
         config.searchUser = envProps.host + path.endPoints.citizen.searchUser;
         
         //UserOtp
-        config.userOtpRegisterUrl = envProps.host + path.endPoints.citizenRegisterAndLogin.sendOtpUser;
-        config.invalidSendOpUser = envProps.host + path.endPoints.citizenRegisterAndLogin.invalidSendOpUser;
+        config.userOtpRegisterUrl = envProps.host + path.endPoints.userOtp.sendOtpUser;
 
         //File store crete
-        config.fileStoreCreate = envProps.host + path.endPoints.fileStore.createFileStore
+        config.fileStoreCreate = envProps.host + path.endPoints.fileStore.createFileStore;
 
         //Get file id
-        config.fileStoreGet = envProps.host + path.endPoints.fileStore.getFileStore
+        config.fileStoreGet = envProps.host + path.endPoints.fileStore.getFileStore;
 
         //Search location
-        config.searchloc = envProps.host + path.endPoints.location.searchLocation
-        config.invalidLocationService = envProps.host + path.endPoints.location.invalidLocationService
+        config.searchloc = envProps.host + path.endPoints.location.searchLocation;
 
         //idGenerate
         config.idGenerateUrl = envProps.host + path.endPoints.idGenerate.idGeneate;
@@ -84,33 +84,24 @@ function() {
         //searchmdms service
         config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.searchMdms;
 
-        //invalid search mdms service
-        config.invalidSearchMdms = envProps.host + path.endPoints.mdmsService.invalidSearchMdms;
-
         //Searcher
         config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;
 
         config.searcherWSUrl = envProps.host + path.endPoints.searcher.searcherWS;
 
         config.searcherSWUrl = envProps.host + path.endPoints.searcher.searcherSW;
-        config.invalidSearcher = envProps.host + path.endPoints.searcher.invalidSearcher
 
         //Report
-        config.metadataGetReport = envProps.host + path.endPoints.reports.metadataGetReport
+        config.metadataGetReport = envProps.host + path.endPoints.reports.metadataGetReport;
 
         //Get Report
-        config.getReport = envProps.host + path.endPoints.reports.getReport
-        config.invalidReportService = envProps.host + path.endPoints.reports.invalidReportService
+        config.getReport = envProps.host + path.endPoints.reports.getReport;
 
         //hrmsCreate
         config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.hrmsCreate;
 
         //hrmsSearch
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
-        config.invalidHrms = envProps.host + path.endPoints.hrms.invalidHrms;
-
-
-
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

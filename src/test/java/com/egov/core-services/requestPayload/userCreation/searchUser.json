@@ -1,7 +1,15 @@
 {
-	"RequestInfo": {
-		"authToken": "#(authToken)"
+	"validPayload": {
+		"RequestInfo": {
+			"authToken": "#(authToken)"
+		},
+		"userName": "#(existingUser)",
+		"tenantId": "#(tenantId)"
 	},
-	"userName": "#(existingUser)",
-	"tenantId": "pb"
+	"invalidPayload": {
+		"RequestInfo": {
+			"authToken": "#(authToken)"
+		},
+		"userName": "#(existingUser)"
+	}
 }

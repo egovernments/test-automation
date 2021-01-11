@@ -81,11 +81,3 @@ Background:
         * assert userOtpSendResponseBody.error.fields[1].message == expectedMsg.errorMessages.msgForMandMobNo
         * assert userOtpSendResponseBody.error.fields[2].message == expectedMsg.errorMessages.msgForMobNoNum
         * assert userOtpSendResponseBody.error.fields[3].message == expectedMsg.errorMessages.msgForValidMobNo
-
-  @ignore @UserOtp_InvalidRequestURL_09  @positive  
- Scenario: Test by not passing a invalid request url
-
-        * call read('../pretests/userOtpPretest.feature@Error_Invldurl')
-        * print userOtpSendResponseBody
-        * print userOtpSendResponseBody.Errors[0].message
-        * assert userOtpSendResponseBody.Errors[0].message == expectedMsg.errorMessages.msgForInvaldReq

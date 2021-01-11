@@ -51,11 +51,11 @@ Scenario: Localization Message Error call
    * print localizationMessagesUrl
   Given url localizationMessagesUrl
   And request localizationSearchRequest
-  And params parameters
   When method post
   Then status 400
   And def localizationMessageResponseHeader = responseHeaders
   And def localizationMessageResponseBody = response
+  * print localizationMessageResponseBody
 
 
 @Error_NoModule_LocalizationMessage
