@@ -33,3 +33,4 @@ endPoints:
  hrms:
   hrmsCreate: egov-hrms/employees/_create
   hrmsSearch: egov-hrms/employees/_search
+  hrmsUpdate: egov-hrms/employees/_update
