@@ -1,4 +1,4 @@
-Feature: reports
+Feature: Reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')

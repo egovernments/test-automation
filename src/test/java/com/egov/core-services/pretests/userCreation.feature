@@ -44,7 +44,13 @@ Scenario: Creating new user
      return dS.updateFile(args);
      }
      """
+<<<<<<< HEAD
      * def old = test.userName.toString()
      * print old
      * def result = call doStorage {'old': #(old), 'new': #(createdUser), 'env': #(env) }
+=======
+     * def old = test.username.toString()
+     * print old
+     * def result = call doStorage {'old': #(old), 'new': #(createdUser)}
+>>>>>>> 45ebfe8... Changed project content from cypress to karate
      * print result

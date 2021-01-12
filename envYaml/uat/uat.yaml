@@ -1,4 +1,9 @@
 phost: https://egov-micro-uat.egovernments.org/
+<<<<<<< HEAD
 host: https://mseva-uat.lgpunjab.gov.in/
 tenantId: pb.testing
 userName: 7072352755
+=======
+host: https://mseva-uat-v2.egovernments.org/
+tenantId: pb.testing
+>>>>>>> 45ebfe8... Changed project content from cypress to karate

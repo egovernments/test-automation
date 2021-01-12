@@ -4,4 +4,8 @@ target/
 .settings
 .classpath
 .vscode
+<<<<<<< HEAD
 bin/
+=======
+bin/
+>>>>>>> 45ebfe8... Changed project content from cypress to karate

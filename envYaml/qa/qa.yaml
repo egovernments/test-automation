@@ -1,3 +1,7 @@
 host: https://egov-micro-qa.egovernments.org/
 tenantId: pb.amritsar
+<<<<<<< HEAD
 userName: 8288719366
+=======
+userName: 7072352755
+>>>>>>> 45ebfe8... Changed project content from cypress to karate

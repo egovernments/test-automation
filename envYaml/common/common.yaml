@@ -36,6 +36,10 @@ endPoints:
   hrmsUpdate: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
+<<<<<<< HEAD
   invalidSearchMethod: access/v1/actions/mdms/_create
  pgService:
   create: pg-service/transaction/v1/_create?
+=======
+  invalidSearchMethod: access/v1/actions/mdms/_create
+>>>>>>> 45ebfe8... Changed project content from cypress to karate
