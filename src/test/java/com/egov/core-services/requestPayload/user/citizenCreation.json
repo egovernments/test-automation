@@ -1,0 +1,72 @@
+{
+	"validPayload": {
+	     "RequestInfo": {
+		 "authToken": null
+	},
+	"User": {
+		"otpReference": "#(otpReference)",
+		"username": "#(existingUser)",
+		"name": "#(name)",
+		"tenantId": "#(tenantId)",
+		"permanentCity": "#(permanentCity)"
+	}
+},
+    "withoutUserNamePayload": {
+		"RequestInfo": {
+			"authToken": null
+	   },
+	   "User": {
+		   "otpReference": "#(otpReference)",
+		   "name": "#(name)",
+		   "tenantId": "#(tenantId)",
+		   "permanentCity": "#(permanentCity)"
+	   }
+	},
+
+	"withoutNamePayload": {
+		"RequestInfo": {
+		"authToken": null
+   },
+   "User": {
+	   "otpReference": "#(otpReference)",
+	   "username": "#(existingUser)",
+	   "tenantId": "#(tenantId)",
+	   "permanentCity": "#(permanentCity)"
+   }
+  },
+	"withoutTenantIdPayloal": {
+		"RequestInfo": {
+			"authToken": null
+		},
+		"User": {
+			"otpReference": "#(otpReference)",
+			"username": "#(existingUser)",
+			"name": "#(name)",
+			"permanentCity": "#(permanentCity)"
+		}
+	},
+	"invalidUserNamePayload": {
+		"RequestInfo": {
+		"authToken": null
+   },
+   "User": {
+	   "otpReference": "#(otpReference)",
+	   "username": "#(existingUser)",
+	   "name": "#(name)",
+	   "tenantId": "#(tenantId)",
+	   "permanentCity": "#(permanentCity)"
+   }
+	},
+	"namePayload": {
+		"RequestInfo": {
+		"authToken": null
+   },
+   "User": {
+	   "otpReference": "#(otpReference)",
+	   "username": "#(existingUser)",
+	   "name": "#(name)",
+	   "tenantId": "#(tenantId)",
+	   "permanentCity": "#(permanentCity)"
+   }
+}
+}

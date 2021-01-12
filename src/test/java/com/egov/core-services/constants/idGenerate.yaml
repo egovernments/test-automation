@@ -1,0 +1,5 @@
+parameters:
+  userType: EMPLOYEE
+  format1: UC/[CY:dd-MM-yyyy]
+  format2: PB-PGR-[cy:yyyy-MM-dd]-[SEQ_EG_PGR_ID]
+  idName: waterservice.connection.id

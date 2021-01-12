@@ -1,0 +1,7 @@
+# Parameters
+parameters:
+ hierarchyTypeCode: REVENUE
+ boundaryType: Locality 
+ invldTenantId: 123
+ multiHierarchyTypeCode: ADMIN,REVENUE
+ multiTenantid: pb.amritsar,pb.jalandhar

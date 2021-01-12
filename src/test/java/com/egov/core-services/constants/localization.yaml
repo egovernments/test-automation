@@ -1,0 +1,33 @@
+#Expected Error Messages
+expectedErrorMessages:
+  Code: core.MESSAGE_PERSIST_FAILED
+  Module: ModuleName should be provided when searching on codes
+  Authorized: Not authorized to access this resource
+  NoTenantId: Required String parameter 'tenantId' is not present
+  Nolocale: Required String parameter 'locale' is not present
+  Empty: may not be empty
+  Message: Message persist failed
+
+#Expected Output
+expectedOutput:
+  Modules: ['rainmaker-ws', 'rainmaker-common']
+  Codes: ['ACTION_TEST_SEARCH_APPLICATION', 'OWNER_ADDRESSPROOF']
+
+#parameters and values for localization(Valid & Invalid values)
+parameters:
+  module: rainmaker-uc
+  code: ACTION_TEST_SEARCH_APPLICATION
+  code1: OWNER_ADDRESSPROOF
+  #Removed messages in the url
+  hindhiMsg: संदेश मुखर करना
+  invalidLocale: noLocale
+  hindhiLocale: hi_IN
+  engLocale: en_IN
+  noCode: 
+  noModule: 
+  noMessage: 
+  multiModule: rainmaker-common,rainmaker-ws
+  multiCode: OWNER_ADDRESSPROOF,ACTION_TEST_SEARCH_APPLICATION
+  userType: EMPLOYEE
+  noTenantId: 
+  

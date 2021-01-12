@@ -1,0 +1,18 @@
+parameters:
+ invalidaAuth: 123
+ tenantId: abc
+ noTenantId: 
+ moduleName: common-masters
+ invalidModuleName: abc
+ noModuleName: 
+ name: uiCommonConstants
+ invalidName: 123
+ noName: 
+  
+
+errorMessages:
+ invalidEndPoint: Not authorized to access this resource
+ invalidTenantid: Invalid Tenant Id
+ messageForTenantId: must not be null
+ messageForModuleName: must not be null
+ withoutMasterDetails: An unhandled exception occurred on the server
