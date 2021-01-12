@@ -58,20 +58,42 @@ Scenario: Pass null value for tenantid and check for errors
 #@Create_Citizen_ValidOTP_01
 #Scenario: Create Citizen with OTP & valid data
 
-@Create_Citizen_InValidOTP_02  @Negative 
+@Create_Citizen_InValidOTP_02  @Negative  @User
 Scenario: Create Citizen with Invalid OTP & valid data
   * call read('../pretests/citizenCreate.feature@citizencreate')
   * print citizenCreateResponseBody
   * assert citizenCreateResponseBody.error.message == userConstant.errormessages.invalidOtp
   
 
-@Create_Citizen_NoUsername_03 @Negative
+@Create_Citizen_NoUsername_03 @Negative  @User
 Scenario: Create citizen without username parameter in the request
   * call read('../pretests/citizenCreate.feature@citizencreatewithoutusername')
   * print citizenCreateResponseBody
   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName 
 
-@Create_Citizen_NoName_04  @Negative
+@Create_Citizen_NoName_04  @Negative  @User
 Scenario: Create citizen without name parameter in the request
+   * call read('../pretests/citizenCreate.feature@citizencreatewithoutname')
+   * print citizenCreateResponseBody
+   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidName
+
+@Create_Citizen_NotenantId_05  @Negative  @User
+Scenario: Create citizen without tenantId parameter in the request
+   * call read('../pretests/citizenCreate.feature@citizencreatewithouttenantid')
+   * print citizenCreateResponseBody
+   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidTenantId
+
+@Create_Citizen_InvalidUsername_06  @Negative  @User
+Scenario: Create citizen with InValid username in the request
+   * call read('../pretests/citizenCreate.feature@citizencreateinvalidusername')
+   * print citizenCreateResponseBody
+   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName
+
+@Create_Citizen_NameWithMoreThan50Characters_07  @Negative  @User
+Scenario: Create citizen name with more than 50 characters in the request
+   * call read('../pretests/citizenCreate.feature@citizencreatenamewith50chars')
+   * print citizenCreateResponseBody
+   * assert citizenCreateResponseBody.Errors[0].message == userConstant.errormessages.nameCharsSize
+   
    
   

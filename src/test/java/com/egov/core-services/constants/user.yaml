@@ -1,7 +1,7 @@
 parameters:
  # Search user
  notRegisteredUserName: 1212121298
- invalidUserName: ""
+ withoutUserName: ""
  invalidTenantId: invalid
  emptyTenantId: ""
  multipleTenantId: pb.amritsar,pb.jalandhar
@@ -10,10 +10,16 @@ parameters:
  invalidOtpReference: 348356
  permanentCity: pb.amritsar
  withoutUserName: null
+ invalidUserName: asdfghjkl
+ moreThan50CharsName: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc
 errormessages:
+ # Search user
  forInvalidUserName: InvalidUserSearchCriteriaException
  withoutTenanntId: InvalidUserSearchCriteriaException
  withEmptyStringTenantId: InvalidUserSearchCriteriaException
-
+ # Create citizen
  invalidOtp: OTP validation unsuccessful
  invalidUserName: UserNameNotValidException
+ invalidName: InvalidUserCreateException
+ invalidTenantId: InvalidUserCreateException
+ nameCharsSize: size must be between 0 and 50

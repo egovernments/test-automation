@@ -71,7 +71,7 @@ Scenario: Search user
 Scenario: Search user
      * configure headers = read('classpath:websCommonHeaders.js')
      * def payLoad = findUser.validPayload 
-     * set findUser.validPayload.userName = userConstant.parameters.invalidUserName
+     * set findUser.validPayload.userName = userConstant.parameters.withoutUserName
      Given url searchUser 
      * print searchUser  
      And request payLoad
