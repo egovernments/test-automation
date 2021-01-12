@@ -9,9 +9,11 @@ parameters:
  name: Test
  invalidOtpReference: 348356
  permanentCity: pb.amritsar
+ withoutUserName: null
 errormessages:
  forInvalidUserName: InvalidUserSearchCriteriaException
  withoutTenanntId: InvalidUserSearchCriteriaException
  withEmptyStringTenantId: InvalidUserSearchCriteriaException
 
  invalidOtp: OTP validation unsuccessful
+ invalidUserName: UserNameNotValidException

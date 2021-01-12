@@ -58,7 +58,7 @@ Scenario: Pass null value for tenantid and check for errors
 #@Create_Citizen_ValidOTP_01
 #Scenario: Create Citizen with OTP & valid data
 
-@Create_Citizen_InValidOTP  @Negative 
+@Create_Citizen_InValidOTP_02  @Negative 
 Scenario: Create Citizen with Invalid OTP & valid data
   * call read('../pretests/citizenCreate.feature@citizencreate')
   * print citizenCreateResponseBody
@@ -67,4 +67,11 @@ Scenario: Create Citizen with Invalid OTP & valid data
 
 @Create_Citizen_NoUsername_03 @Negative
 Scenario: Create citizen without username parameter in the request
+  * call read('../pretests/citizenCreate.feature@citizencreatewithoutusername')
+  * print citizenCreateResponseBody
+  * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName 
+
+@Create_Citizen_NoName_04  @Negative
+Scenario: Create citizen without name parameter in the request
+   
   

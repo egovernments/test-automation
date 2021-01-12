@@ -1,6 +1,7 @@
 {
-	"RequestInfo": {
-		"authToken": null
+	"validPayload": {
+	     "RequestInfo": {
+		 "authToken": null
 	},
 	"User": {
 		"otpReference": "#(otpReference)",
@@ -9,4 +10,28 @@
 		"tenantId": "#(tenantId)",
 		"permanentCity": "#(permanentCity)"
 	}
+},
+    "withoutUserNamePayload": {
+		"RequestInfo": {
+			"authToken": null
+	   },
+	   "User": {
+		   "otpReference": "#(otpReference)",
+		   "name": "#(name)",
+		   "tenantId": "#(tenantId)",
+		   "permanentCity": "#(permanentCity)"
+	   }
+	},
+
+	"withoutNamePayload": {
+		"RequestInfo": {
+		"authToken": null
+   },
+   "User": {
+	   "otpReference": "#(otpReference)",
+	   "username": "#(existingUser)",
+	   "tenantId": "#(tenantId)",
+	   "permanentCity": "#(permanentCity)"
+   }
+  }
 }
