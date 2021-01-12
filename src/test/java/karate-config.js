@@ -106,6 +106,10 @@ function() {
         //hrmsUpdate
         config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
 
+        //accessControlSearch
+        config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
+
+        config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
 
 
     karate.log('karate.env:', env);
