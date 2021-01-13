@@ -23,10 +23,6 @@ endPoints:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
   searchMdms: egov-mdms-service/v1/_search
- searcher:
-  searcher: egov-searcher/bill-genie/billswithaddranduser/_get
-  searcherWS: egov-searcher/bill-genie/waterbills/_get
-  searcherSW: egov-searcher/bill-genie/seweragebills/_get
  reports:
   metadataGetReport: report/pgr/DescriptionReport/metadata/_get
   getReport: report/pgr/DescriptionReport/_get
@@ -61,4 +57,3 @@ endPoints:
  updateUser: user/profile/_update
  updatePassword: user/password/_update
  updatePasswordNoLogin: user/password/nologin/_update
-  invalidSearchMethod: access/v1/actions/mdms/_create
