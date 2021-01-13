@@ -21,6 +21,7 @@ function() {
     var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
     
     
+
     var config = {
         env : env,
         tenantId : tenantId,
@@ -33,19 +34,23 @@ function() {
         config.counterEmployeeUserName = userData.superUserCounterEmployee.userName;
         config.counterEmployeePassword = userData.superUserCounterEmployee.password;
 
+        //username & password for authtoken of Super User
+        config.superUserUserName = userData.superUser.userName;
+        config.superUserPassword = userData.superUser.password;
+
         //tenantId
         config.tenantId = envProps.tenantId;
 
         
         //localizationURL
         config.localizationMessagesUrl = envProps.host + path.endPoints.localization.searchLocalization;
-    
+
         //localizationSearchV2URL
         config.localizationSearchV2Url = envProps.host + path.endPoints.localization.v2SearchLocalization;
-        
+
         //localizationUpdateURL
         config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localization.updateLocalization;
-        
+
         //localizationDeleteURL
         config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localization.deleteLocalization;
         //localizationCreateURL
@@ -102,7 +107,7 @@ function() {
 
         //hrmsSearch
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
-        
+
         //hrmsUpdate
         config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
 
@@ -110,6 +115,14 @@ function() {
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
 
         config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
+        //Update user profile
+        config.updateUser = envProps.host + path.endPoints.updateUser
+
+        //Update user password
+        config.updatePassword = envProps.host + path.endPoints.updatePassword
+
+        //Update user password without login - OTP
+        config.updatePasswordNoLogin = envProps.host + path.endPoints.updatePasswordNoLogin
 
 
     karate.log('karate.env:', env);
