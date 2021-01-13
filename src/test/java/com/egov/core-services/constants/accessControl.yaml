@@ -11,6 +11,14 @@ parameters:
   actionMaster: actions-test
   userType: EMPLOYEE
   roleCodes: "SUPERUSER"
+  invalidTenantId: "abc"
+  invalidAuthToken: "abc"
+  invalidRoleCodes: "abc"
+  invalidActionMaster: "abc"
+  invalidEnabled: "abc"
+
+responseInfo:
+  status: "200 OK"
 
 expectedDescriptions:
   IllegalArgumentException: json string can not be null or empty

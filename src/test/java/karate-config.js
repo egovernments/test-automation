@@ -109,9 +109,6 @@ function() {
         //accessControlSearch
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
 
-        config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
-
-
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
