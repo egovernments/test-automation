@@ -1,0 +1,16 @@
+errorMessages:
+ missMatchError: must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
+ invalidEmailError: not a well-formed email address
+ invalidPhoneNumberError: must match "(^$|[0-9]{10})"
+ invalidGenderError: must match "^[a-zA-Z ]*$"
+ tenantIdNull: An unhandled exception occurred on the server
+ noUUIDErrorCode: UserNotFoundException
+ usernameLengthError: size must be between 0 and 50
+ invalidPasswordLengthError: "Password must be of minimum: 8 and maximum: 15 characters."
+ invalidPasswordLngthErrCode: INVALID_PWD_LENGTH
+ passwordMismatchError: PasswordMismatchException
+ invalidUpdatePasswordRequestError: InvalidLoggedInUserUpdatePasswordRequestException
+ notAuthorizedToAccessResourceerror: Not authorized to access this resource
+ otpValidationUnsuccessfulError: OTP validation unsuccessful
+ userNotFoundError: UserNotFoundException
+ invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException

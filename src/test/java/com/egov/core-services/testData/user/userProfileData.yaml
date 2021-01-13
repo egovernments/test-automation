@@ -1,0 +1,44 @@
+#User Profile Valid Data
+validProfileData:
+  userName: TESTUSER
+  emailId: test@mail.org
+  city: amritsar
+  randomPhoneNumber: "0101010101"
+  gender: MALE
+
+#User Profile - Invalid Data
+inValidProfileData:
+  userName: TESTUSER@automation!
+  emailId: test123mail.com
+  mobileNumber: phoneNumber
+  gender: "12345"
+  tenantID : null
+  id: 1000
+
+#User Password - Valid Data
+validPasswordDetails:
+  existingPassword: TestUser@1234
+  newPassword: TestUser@1234
+  tenantId: pb.jalandhar
+
+#User Password - Invalid Data
+inValidPasswordDetails:
+  existingPassword: InValid@123
+  newInvalidPassword: Pas@23
+  tenantId: invalid
+  type: invalid
+
+#User Password Update - OTP
+userUpdateNoLoginValidData:
+  otpReference: "966309"
+  newPassword: TestUser@1234
+  userName: EMP-1013-000335
+  tenantId: pb.jalandhar
+  type: EMPLOYEE
+
+userUpdateNoLoginInvalidData:
+  otpReference: "invalid_otp"
+  newPassword: TestUser@1234
+  userName: invalid_username
+  tenantId: pb.amritsar
+  type: EMPLOYEE
