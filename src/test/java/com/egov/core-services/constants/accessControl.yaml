@@ -11,8 +11,6 @@ parameters:
   actionMaster: actions-test
   userType: EMPLOYEE
   roleCodes: "SUPERUSER"
-  invalidTenantId: "abc"
-  invalidAuthToken: "abc"
   invalidRoleCodes: "abc"
   invalidActionMaster: "abc"
   invalidEnabled: "abc"

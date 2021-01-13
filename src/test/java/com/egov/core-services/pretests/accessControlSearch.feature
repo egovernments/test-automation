@@ -3,6 +3,7 @@ Feature: Access Control Feature
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def accessControlConstants = read('../constants/accessControl.yaml')
+  * def commonConstants = read('../constants/commonConstants.yaml')
   * def searchAccessControlRequest = read('../requestPayload/accessControl/search.json')
   
 @success_search
@@ -27,7 +28,7 @@ Scenario: Access Control search error call
 
 @error_search_invalid_tenant
 Scenario: Access Control search error call with invalid tenantId
-  * set searchAccessControlRequest.tenantId = accessControlConstants.parameters.invalidTenantId
+  * set searchAccessControlRequest.tenantId = commonConstants.invalidParameters.invalidTenantId
   * print searchAccessControlRequest
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest
