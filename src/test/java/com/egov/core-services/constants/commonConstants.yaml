@@ -1,0 +1,3 @@
+invalidParameters:
+ invalidTenantId: "abc"
+ invalidAuthToken: "abc"

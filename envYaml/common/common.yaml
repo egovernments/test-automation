@@ -8,7 +8,7 @@ endPoints:
   upsertLocalization: localization/messages/v1/_upsert
  authenticationToken:
   authToken: user/oauth/token
- userOtp:
+ userOtp: 
   sendOtpUser: user-otp/v1/_send
  fileStore:
   createFileStore: filestore/v1/files
