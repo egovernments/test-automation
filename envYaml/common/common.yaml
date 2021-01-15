@@ -36,4 +36,3 @@ endPoints:
   hrmsUpdate: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
-  invalidSearchMethod: access/v1/actions/mdms/_create
