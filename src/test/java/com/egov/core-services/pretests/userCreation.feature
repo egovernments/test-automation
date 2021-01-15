@@ -44,7 +44,7 @@ Scenario: Creating new user
      return dS.updateFile(args);
      }
      """
-     * def old = test.username.toString()
+     * def old = test.userName.toString()
      * print old
-     * def result = call doStorage {'old': #(old), 'new': #(createdUser)}
+     * def result = call doStorage {'old': #(old), 'new': #(createdUser), 'env': #(env) }
      * print result

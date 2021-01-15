@@ -34,3 +34,5 @@ endPoints:
   hrmsCreate: egov-hrms/employees/_create
   hrmsSearch: egov-hrms/employees/_search
   hrmsUpdate: egov-hrms/employees/_update
+ pgService:
+  create: pg-service/transaction/v1/_create?

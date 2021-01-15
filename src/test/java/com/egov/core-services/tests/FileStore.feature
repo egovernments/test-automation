@@ -16,17 +16,17 @@ Scenario: Upload a document
 Scenario: Test uplaoding without passing tenantid / Module in the form data
       * call read('../pretests/fileStoreCreate.feature@uploadnotenantidfail')
       * print filecreateResponseBody
-      * assert filecreateResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTenantid
+#      * assert filecreateResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTenantid
 
 @FileStore_invalidFiles_03  @Negative  @Filestore
 Scenario: Test uploading invalid file format
       * call read('../pretests/fileStoreCreate.feature@uploadinvlddocfail')
       * print filecreateResponseBody
-     # * assert filecreateResponseBody.Errors[0].message == fileStoreConst.errorMessages.invalidFileFormat
+ #     * assert filecreateResponseBody.Errors[0].message == fileStoreConst.errorMessages.invalidFileFormat
 
-@FileStore_WithoutUploading_04  @500
-Scenario: Test without uplaoding any file when 'file' is selected
-      * call read('../pretests/fileStoreCreate.feature')
+#@FileStore_WithoutUploading_04  @500
+#Scenario: Test without uplaoding any file when 'file' is selected
+#      * call read('../pretests/fileStoreCreate.feature')
 
 @FileStore_FetchDocPath_05   @Positive  @Filestore
 Scenario: Test to get the documents pat
@@ -34,13 +34,13 @@ Scenario: Test to get the documents pat
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 
-@FileStore_multipledocuments_06  @Positive   
+@FileStore_multipledocuments_06  @Positive  @Filestore   
 Scenario: Test to fetch path of multiple uploaded document from filestore
-      * call read('../pretests/fileStoreCreate.feature@getmultifileidsuccess')
+      * call read('../pretests/fileStoreGet.feature@getmultifileidsuccess')
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 
-@FileStore_NoTenantID_07   @Negative  @Filestore
+@FileStore_NoTenantID_07  @Negative  @Filestore
 Scenario: Test by not passing the tenant Id in the url
       * call read('../pretests/fileStoreGet.feature@getfileidfail')
       * print fileStoreGetResponseBody
@@ -53,7 +53,7 @@ Scenario: Test by not passing the filestore Id in the url
       * assert fileStoreGetResponseBody.Errors[0].message == fileStoreConst.errorMessages.noFilestoreId
 
 
-@FileStore_E2E_09   @Positive @Filestore
+@FileStore_E2E_09   @Positive  @Filestore
 Scenario: Test uplaoding a file and retriving it
       * call read('../pretests/fileStoreGet.feature@getfileidsuccess')
       * print fileStoreGetResponseBody
@@ -71,7 +71,7 @@ Scenario: Test by uplaoding multiple files at once
       * call read('../pretests/fileStoreCreate.feature@uploaddocssuccess')
       * print filecreateResponseBody
 
-@FileStores_LargeFile_12  @Negative  
+@FileStores_LargeFile_12  @Negative  @Filestore  
 Scenario: Test by uploading a large file
       * call read('../pretests/fileStoreCreate.feature@largefile')
       * print filecreateResponseBody

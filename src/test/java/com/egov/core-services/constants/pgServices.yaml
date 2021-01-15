@@ -1,0 +1,11 @@
+parameters:
+ invalidTxnAmount: abc
+ txnAmount: 200
+ invalidTenantId: ab
+ gateway: AXIS
+ invalidGateway: HDFC
+
+errorMessages:
+invalidTxnAmount: An unhandled exception occurred on the server
+invalidTenantId: Invalid Tenant Id
+invalidGateway: Invalid or inactive payment gateway provided

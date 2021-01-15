@@ -1,0 +1,33 @@
+{
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "ver": ".01",
+        "action": "_create",
+        "did": "1",
+        "key": "",
+        "msgId": "20170310130900|en_IN",
+        "requesterId": "",
+        "authToken": "#(authToken)"
+    },
+    "Transaction": {
+        "tenantId": "#(tenantId)",
+        "txnAmount": "#(txnAmount)",
+        "module": "PT",
+        "billId": "e30d1915-7408-4624-9e16-ae473202c52b",
+        "consumerCode": "PB-PT-2020-12-02-007576",
+        "productInfo": "Common Payment",
+        "gateway": "#(gateway)",
+        "taxAndPayments": [
+            {
+                "billId": "e30d1915-7408-4624-9e16-ae473202c52b",
+                "amountPaid": 200
+            }
+        ],
+        "user": {
+            "name": "Super User",
+            "mobileNumber": "9742379422",
+            "tenantId": "pb.amritsar"
+        },
+        "callbackUrl": "https://egov-micro-qa.egovernments.org/citizen/egov-common/paymentRedirectPage"
+    }
+}

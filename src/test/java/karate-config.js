@@ -104,7 +104,10 @@ function() {
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
         
         //hrmsUpdate
-        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
+        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate;
+
+        //pgServices
+        config.pgServices = envProps.host + path.endPoints.pgService.create
 
 
 

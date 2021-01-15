@@ -253,7 +253,7 @@ Scenario: Test to search all employee
     * assert hrmsResponseBody.ResponseInfo.status == 'successful'
 
 
-@HRMS_Search_Invaid_URL_03 @negative @hrms_search @hrms
+@HRMS_Search_Invaid_URL_03 @ignore
 Scenario: Test to search with invalid url
 
     * def hrmsSearchUrl = hrmsConstants.expectedMessages.invalidURL
@@ -382,7 +382,7 @@ Scenario: Test to update an employee with invalid aadhar number
     * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.INVALID_AADHAR
 
-@HRMS_update_Deactivate_08 @negative @hrms_update @hrms
+@HRMS_update_Deactivate_08 @ignore
 Scenario: Test to update an employee deactivating the employee
     * call read('../pretests/hrmsPretest.feature@success_Create')
     * assert hrmsResponseBody.ResponseInfo.status == 'successful'
