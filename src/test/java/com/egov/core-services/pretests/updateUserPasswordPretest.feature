@@ -11,7 +11,7 @@ Background:
      * def authUserType = superUserAuthUserType
      * call read('../pretests/authenticationToken.feature')
      * def updatedUserPassword = read('../requestPayload/user/updatePassword/updatePassword.json')
-     * def userProfileData = read('../testData/user/userProfileData.yaml');
+     * def userProfileData = read('../constants/user.yaml')
      * set updatedUserPassword.existingPassword = userProfileData.validPasswordDetails.existingPassword
      * set updatedUserPassword.newPassword = userProfileData.validPasswordDetails.newPassword
      * set updatedUserPassword.tenantId = userProfileData.validPasswordDetails.tenantId

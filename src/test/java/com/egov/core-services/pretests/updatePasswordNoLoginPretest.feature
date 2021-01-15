@@ -11,7 +11,7 @@ Background:
      * def authUserType = superUserAuthUserType
      * call read('../pretests/authenticationToken.feature')
      * def updateUserPasswordNoLogin = read('../requestPayload/user/updatePasswordNoLogin/updatePasswordNoLogin.json')
-     * def updatePasswordData =    read('../testData/user/userProfileData.yaml');
+     * def updatePasswordData =    read('../constants/user.yaml')
      * set updateUserPasswordNoLogin.otpReference = updatePasswordData.userUpdateNoLoginValidData.otpReference
      * set updateUserPasswordNoLogin.newPassword = updatePasswordData.userUpdateNoLoginValidData.newPassword
      * set updateUserPasswordNoLogin.userName = updatePasswordData.userUpdateNoLoginValidData.userName

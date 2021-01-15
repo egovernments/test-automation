@@ -23,3 +23,65 @@ errormessages:
  invalidName: InvalidUserCreateException
  invalidTenantId: InvalidUserCreateException
  nameCharsSize: size must be between 0 and 50
+
+ #User Profile Valid Data
+validProfileData:
+  userName: TESTUSER
+  emailId: test@mail.org
+  city: amritsar
+  randomPhoneNumber: "0101010101"
+  gender: MALE
+
+ #User Profile - Invalid Data
+inValidProfileData:
+  userName: TESTUSER@automation!
+  emailId: test123mail.com
+  mobileNumber: phoneNumber
+  gender: "12345"
+  tenantID: null
+  id: 1000
+
+ #User Password - Valid Data
+validPasswordDetails:
+  existingPassword: TestUser@1234
+  newPassword: TestUser@1234
+  tenantId: pb.jalandhar
+
+ #User Password - Invalid Data
+inValidPasswordDetails:
+  existingPassword: InValid@123
+  newInvalidPassword: Pas@23
+  tenantId: invalid
+  type: invalid
+
+ #User Password Update - OTP
+userUpdateNoLoginValidData:
+  otpReference: "966309"
+  newPassword: TestUser@1234
+  userName: EMP-1013-000335
+  tenantId: pb.jalandhar
+  type: EMPLOYEE
+
+userUpdateNoLoginInvalidData:
+  otpReference: "invalid_otp"
+  newPassword: TestUser@1234
+  userName: invalid_username
+  tenantId: pb.amritsar
+  type: EMPLOYEE
+
+errorMessages:
+ missMatchError: must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
+ invalidEmailError: not a well-formed email address
+ invalidPhoneNumberError: must match "(^$|[0-9]{10})"
+ invalidGenderError: must match "^[a-zA-Z ]*$"
+ tenantIdNull: An unhandled exception occurred on the server
+ noUUIDErrorCode: UserNotFoundException
+ usernameLengthError: size must be between 0 and 50
+ invalidPasswordLengthError: "Password must be of minimum: 8 and maximum: 15 characters."
+ invalidPasswordLngthErrCode: INVALID_PWD_LENGTH
+ passwordMismatchError: PasswordMismatchException
+ invalidUpdatePasswordRequestError: InvalidLoggedInUserUpdatePasswordRequestException
+ notAuthorizedToAccessResourceerror: Not authorized to access this resource
+ otpValidationUnsuccessfulError: OTP validation unsuccessful
+ userNotFoundError: UserNotFoundException
+ invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException

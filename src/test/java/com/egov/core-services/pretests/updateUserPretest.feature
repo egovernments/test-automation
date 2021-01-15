@@ -11,7 +11,7 @@ Background:
      * def authUserType = superUserAuthUserType
      * call read('../pretests/authenticationToken.feature')
      * def updatedUserProfile = read('../requestPayload/user/update/updateUser.json')
-     * def userProfileData =    read('../testData/user/userProfileData.yaml');
+     * def userProfileData =    read('../constants/user.yaml')
 
 
 
