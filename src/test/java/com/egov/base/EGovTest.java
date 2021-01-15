@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@hrms"})
+@KarateOptions(features = "classpath:com/egov/core-services", tags = {"@Reports,@SearchMdms,@Searcher,@location,@localization,@userotp,@User,@hrms,@accessControl"})
 public class EGovTest {
 
 	@BeforeClass

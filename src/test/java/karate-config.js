@@ -109,6 +109,10 @@ function() {
         //pgServices
         config.pgServices = envProps.host + path.endPoints.pgService.create
 
+        //accessControlSearch
+        config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
+
+        config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
 
 
     karate.log('karate.env:', env);
