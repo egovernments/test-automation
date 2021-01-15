@@ -32,3 +32,7 @@ Scenario: Verify creating a payment transaction with invalid/non existent value 
   * call read('../pretests/pgServiceCreate.feature@createpgservicefail')
   * print pgServicesCreateResponseBody
 
+<<<<<<< HEAD
+=======
+@PGCreate_NulValues_06  @negative
+>>>>>>> 8556270... pgservices changes
