@@ -37,6 +37,8 @@ function() {
         //username & password for authtoken of Super User
         config.superUserUserName = userData.superUser.userName;
         config.superUserPassword = userData.superUser.password;
+        config.superUserTenantId = userData.superUser.tenantId;
+        config.superUserAuthUserType = userData.superUser.authUserType;
 
         //tenantId
         config.tenantId = envProps.tenantId;
@@ -116,13 +118,13 @@ function() {
 
         config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
         //Update user profile
-        config.updateUser = envProps.host + path.endPoints.updateUser
+        config.updateUser = envProps.host + path.endPoints.user.updateUser
 
         //Update user password
-        config.updatePassword = envProps.host + path.endPoints.updatePassword
+        config.updatePassword = envProps.host + path.endPoints.user.updatePassword
 
         //Update user password without login - OTP
-        config.updatePasswordNoLogin = envProps.host + path.endPoints.updatePasswordNoLogin
+        config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updatePasswordNoLogin
 
 
     karate.log('karate.env:', env);

@@ -8,7 +8,7 @@ endPoints:
   upsertLocalization: localization/messages/v1/_upsert
  authenticationToken:
   authToken: user/oauth/token
- userOtp: 
+ userOtp:
   sendOtpUser: user-otp/v1/_send
  fileStore:
   createFileStore: filestore/v1/files
@@ -23,6 +23,10 @@ endPoints:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
   searchMdms: egov-mdms-service/v1/_search
+ searcher:
+  searcher: egov-searcher/bill-genie/billswithaddranduser/_get
+  searcherWS: egov-searcher/bill-genie/waterbills/_get
+  searcherSW: egov-searcher/bill-genie/seweragebills/_get
  reports:
   metadataGetReport: report/pgr/DescriptionReport/metadata/_get
   getReport: report/pgr/DescriptionReport/_get
@@ -32,28 +36,7 @@ endPoints:
   hrmsUpdate: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
-  invalidSearchMethod: access/v1/actions/mdms/_create
- localizationSearch: localization/messages/v1/_search
- localizationV2Search: localization/messages/v2/_search
- localizationUpdate: localization/messages/v1/_update
- localizationDelete: localization/messages/v1/_delete
- localizationCreate: localization/messages/v1/_create
- localizationUpsert: localization/messages/v1/_upsert
- authToken: user/oauth/token
- userOtpSend: user-otp/v1/_send
- fileStoreCreate: filestore/v1/files
- fileStoreGet: filestore/v1/files/url
- createUser: user/users/_createnovalidate
- searchUser: user/_search
- searchLocation: egov-location/location/v11/boundarys/_search
- idGeneate: egov-idgen/id/_generate
- searchMdms: egov-mdms-service/v1/_search
- invalidSearchMdms: egov-mdms-service/v2/_search
- searcher: egov-searcher/bill-genie/billswithaddranduser/_get
- searcherWS: egov-searcher/bill-genie/waterbills/_get
- searcherSW: egov-searcher/bill-genie/seweragebills/_get
- metadataGetReport: report/pgr/DescriptionReport/metadata/_get
- getReport: report/pgr/DescriptionReport/_get
- updateUser: user/profile/_update
- updatePassword: user/password/_update
- updatePasswordNoLogin: user/password/nologin/_update
+ user:
+  updateUser: user/profile/_update
+  updatePassword: user/password/_update
+  updatePasswordNoLogin: user/password/nologin/_update

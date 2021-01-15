@@ -7,4 +7,6 @@ superUserCounterEmployee:
 superUser:
   userName: EMP-1013-000335
   password: TestUser@1234
+  tenantId: pb.jalandhar
+  authUserType: EMPLOYEE
 

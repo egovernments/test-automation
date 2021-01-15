@@ -6,9 +6,9 @@ Background:
      # Calling access token
      * def authUsername = 'EMP-1013-000443'
      * def authPassword = 'TestUser@1234'
-     * def tenantId = 'pb.jalandhar'
+     * def tenantId = superUserTenantId
      * print tenantId
-     * def authUserType = 'EMPLOYEE'
+     * def authUserType = superUserAuthUserType
      * call read('../pretests/authenticationToken.feature')
      * def updatedUserPassword = read('../requestPayload/user/updatePassword/updatePassword.json')
      * def userProfileData = read('../testData/user/userProfileData.yaml');
