@@ -1,0 +1,25 @@
+parameters:
+  name: AUTO-EMPLOYEE-
+  mobileNumber: 701
+  employeeStatus: EMPLOYED
+  dob: 960575400000
+  gender: MALE
+  fatherOrHusbandName: Noor
+  employeeType: CONTRACT
+  hierarchy: ADMIN
+  boundaryType: City
+  department: DEPT_25
+  designation: DESIG_58
+  fromDate: 1609439400000
+  userType: EMPLOYEE
+
+expectedMessages:
+  ERR_HRMS_INVALID_DESG: Invalid designation of employee.
+  ERR_HRMS_INVALID_DOB: Invalid date of birth entered.
+  ERR_HRMS_INVALID_DATE_OF_APPOINTMENT_DOB: Employee date of appointment can not be before date of birth.
+  ERR_HRMS_INVALID_ASSIGNMENT_DATES: Employee period of assignment (From Date or To date) can not be before date of birth.
+  ERR_HRMS_INVALID_ASSIGNMENT_NOT_CURRENT_TO_DATE: To date field should not be blank for non current assignment of the employee.
+  ERR_HRMS_INVALID_CURRENT_ASSGN: There should be exactly one current assignment for the employee.
+  CustomException: Not authorized to access this resource
+  ERR_HRMS_INVALID_ASSIGNMENT_CURRENT_TO_DATE: To Date field should be blank for current assignment of the employee.
+  INVALID_AADHAR: AdharNumber should be 12 digit number
