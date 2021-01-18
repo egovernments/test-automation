@@ -12,6 +12,32 @@ parameters:
  withoutUserName: null
  invalidUserName: asdfghjkl
  moreThan50CharsName: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc
+ # Update User
+user:
+ id: 4657
+ userName: EMP-1013-000335
+ name: AUTOMATIONUSER
+ gender: MALE
+ mobileNumber: 9999999999
+ emailId: test@email.com
+ correspondenceAddress: TEST ADDRESS
+ correspondenceCity: jalandar
+ tenantId: pb.jalandhar
+ roles:
+  - code: STADMIN
+    name: State Administrator
+    tenantId: pb.jalandhar
+  - code: SUPERUSER
+    name: Super User
+    tenantId: pb.jalandhar
+ uuid: b707e0ff-647f-4524-b2f2-677c26295987
+ # Update Password
+password:
+   userName: EMP-1013-000443
+   password: TestUser@1234
+
+
+
 errormessages:
  # Search user
  forInvalidUserName: InvalidUserSearchCriteriaException
@@ -23,6 +49,22 @@ errormessages:
  invalidName: InvalidUserCreateException
  invalidTenantId: InvalidUserCreateException
  nameCharsSize: size must be between 0 and 50
+ # User Profile update
+ missMatchError: must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
+ invalidEmailError: not a well-formed email address
+ invalidPhoneNumberError: must match "(^$|[0-9]{10})"
+ invalidGenderError: must match "^[a-zA-Z ]*$"
+ tenantIdNull: An unhandled exception occurred on the server
+ noUUIDErrorCode: UserNotFoundException
+ usernameLengthError: size must be between 0 and 50
+ invalidPasswordLengthError: "Password must be of minimum: 8 and maximum: 15 characters."
+ invalidPasswordLngthErrCode: INVALID_PWD_LENGTH
+ passwordMismatchError: PasswordMismatchException
+ invalidUpdatePasswordRequestError: InvalidLoggedInUserUpdatePasswordRequestException
+ notAuthorizedToAccessResourceerror: Not authorized to access this resource
+ otpValidationUnsuccessfulError: OTP validation unsuccessful
+ userNotFoundError: UserNotFoundException
+ invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException
 
  #User Profile Valid Data
 validProfileData:
@@ -69,19 +111,3 @@ userUpdateNoLoginInvalidData:
   tenantId: pb.amritsar
   type: EMPLOYEE
 
-errorMessages:
- missMatchError: must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
- invalidEmailError: not a well-formed email address
- invalidPhoneNumberError: must match "(^$|[0-9]{10})"
- invalidGenderError: must match "^[a-zA-Z ]*$"
- tenantIdNull: An unhandled exception occurred on the server
- noUUIDErrorCode: UserNotFoundException
- usernameLengthError: size must be between 0 and 50
- invalidPasswordLengthError: "Password must be of minimum: 8 and maximum: 15 characters."
- invalidPasswordLngthErrCode: INVALID_PWD_LENGTH
- passwordMismatchError: PasswordMismatchException
- invalidUpdatePasswordRequestError: InvalidLoggedInUserUpdatePasswordRequestException
- notAuthorizedToAccessResourceerror: Not authorized to access this resource
- otpValidationUnsuccessfulError: OTP validation unsuccessful
- userNotFoundError: UserNotFoundException
- invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException
