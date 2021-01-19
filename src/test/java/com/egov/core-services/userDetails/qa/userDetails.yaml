@@ -10,3 +10,9 @@ superUser:
   tenantId: pb.jalandhar
   authUserType: EMPLOYEE
 
+#UserName and Password - Employee
+employee:
+  userName: EMPSU
+  password: eGov@123
+  type: EMPLOYEE
+

@@ -40,6 +40,11 @@ function() {
         config.superUserTenantId = userData.superUser.tenantId;
         config.superUserAuthUserType = userData.superUser.authUserType;
 
+        // username & password for Employee type user
+        config.employeeUserName = userData.employee.userName;
+        config.employeePassword = userData.employee.password;
+        config.employeeType = userData.employee.type;
+
         //tenantId
         config.tenantId = envProps.tenantId;
 
@@ -118,13 +123,20 @@ function() {
 
         config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
         //Update user profile
-        config.updateUser = envProps.host + path.endPoints.user.updateUser
+        config.updateUser = envProps.host + path.endPoints.user.updateProfile;
 
         //Update user password
-        config.updatePassword = envProps.host + path.endPoints.user.updatePassword
+        config.updatePassword = envProps.host + path.endPoints.user.updatePassword;
 
         //Update user password without login - OTP
-        config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updatePasswordNoLogin
+        config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updateForgetPassword;
+
+        // Create Assessment
+        config.createAssessment =  envProps.host + path.endPoints.collectionService.assessmentCreate
+       // Fetch Bill
+        config.fetchBill =  envProps.host + path.endPoints.collectionService.fetchBill
+      // Create Payment
+        config.payment =  envProps.host + path.endPoints.collectionService.createPayment
 
 
     karate.log('karate.env:', env);

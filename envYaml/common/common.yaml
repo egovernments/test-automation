@@ -37,6 +37,10 @@ endPoints:
  accessControl:
   search: access/v1/actions/mdms/_get
  user:
-  updateUser: user/profile/_update
+  updateProfile: user/profile/_update
   updatePassword: user/password/_update
-  updatePasswordNoLogin: user/password/nologin/_update
+  updateForgetPassword: user/password/nologin/_update
+ collectionService:
+  assessmentCreate: property-services/assessment/_create
+  fetchBill: billing-service/bill/v2/_fetchbill
+  createPayment: collection-services/payments/_create
