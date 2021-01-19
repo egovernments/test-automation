@@ -58,12 +58,17 @@ function() {
         config.upsertUrl = envProps.host + path.endPoints.localization.upsertLocalization;
 
         //create user
+<<<<<<< HEAD
         config.createUser = envProps.host + path.endPoints.citizen.create;
+=======
+        config.createUser = envProps.host + path.endPoints.citizen.createUser;
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
         //Create Citizen
         config.createCitizen = envProps.host + path.endPoints.citizen.createCitizen;
 
         //search user
+<<<<<<< HEAD
         config.searchUser = envProps.host + path.endPoints.citizen.search;
         
         //UserOtp
@@ -77,12 +82,31 @@ function() {
 
         //Search location
         config.searchloc = envProps.host + path.endPoints.location.search;
+=======
+        config.searchUser = envProps.host + path.endPoints.citizen.searchUser;
+        
+        //UserOtp
+        config.userOtpRegisterUrl = envProps.host + path.endPoints.userOtp.sendOtpUser;
+
+        //File store crete
+        config.fileStoreCreate = envProps.host + path.endPoints.fileStore.createFileStore;
+
+        //Get file id
+        config.fileStoreGet = envProps.host + path.endPoints.fileStore.getFileStore;
+
+        //Search location
+        config.searchloc = envProps.host + path.endPoints.location.searchLocation;
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
         //idGenerate
         config.idGenerateUrl = envProps.host + path.endPoints.idGenerate.idGeneate;
 
         //searchmdms service
+<<<<<<< HEAD
         config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.search;
+=======
+        config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.searchMdms;
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
         //Searcher
         config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;
@@ -92,10 +116,17 @@ function() {
         config.searcherSWUrl = envProps.host + path.endPoints.searcher.searcherSW;
 
         //Report
+<<<<<<< HEAD
         config.metadataGetReport = envProps.host + path.endPoints.reports.metadataGet;
 
         //Get Report
         config.getReport = envProps.host + path.endPoints.reports.get;
+=======
+        config.metadataGetReport = envProps.host + path.endPoints.reports.metadataGetReport;
+
+        //Get Report
+        config.getReport = envProps.host + path.endPoints.reports.getReport;
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
         //hrmsCreate
         config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.hrmsCreate;
@@ -104,6 +135,7 @@ function() {
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
         
         //hrmsUpdate
+<<<<<<< HEAD
         config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate;
 
         //pgServices
@@ -111,18 +143,24 @@ function() {
         config.pgServicesUpdate = envProps.host + path.endPoints.pgServices.update
         config.pgServicesSearch = envProps.host + path.endPoints.pgServices.search
 
+=======
+        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
         //accessControlSearch
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
 
         config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
 
+<<<<<<< HEAD
         //pg services
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
 
+=======
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

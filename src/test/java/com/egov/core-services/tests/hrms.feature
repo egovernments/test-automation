@@ -253,7 +253,11 @@ Scenario: Test to search all employee
     * assert hrmsResponseBody.ResponseInfo.status == 'successful'
 
 
+<<<<<<< HEAD
 @HRMS_Search_Invaid_URL_03 @ignore
+=======
+@HRMS_Search_Invaid_URL_03 @negative @hrms_search @hrms
+>>>>>>> f484628170878a5972a6530fbda854ac146c12e5
 Scenario: Test to search with invalid url
 
     * def hrmsSearchUrl = hrmsConstants.expectedMessages.invalidURL
