@@ -27,9 +27,19 @@ parameters:
   transactionNumber: 12345678
   instrumentNumber: 12345678
 
+  # workflow
+  reason: CHEQUEBOUNCE
+  action: CANCEL
+  otherReason: "OTHER"
+invalidParameters:
+  paymentId: "abc"
+  reason: "abc"
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state
+  invalidReceipt: "Payment not found in the system or not in editable state, "
+  mustNotBeNull: must not be null
+  NotAuthorized: Not authorized to access this resource
   totalAmountPaidNull: must not be null
   invalidPaymentMode:  must not be null
   nullTenantIdError: Invalid Tenant Id

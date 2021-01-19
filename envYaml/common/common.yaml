@@ -31,16 +31,17 @@ endPoints:
   metadataGetReport: report/pgr/DescriptionReport/metadata/_get
   getReport: report/pgr/DescriptionReport/_get
  hrms:
-  hrmsCreate: egov-hrms/employees/_create
-  hrmsSearch: egov-hrms/employees/_search
-  hrmsUpdate: egov-hrms/employees/_update
+  create: egov-hrms/employees/_create
+  search: egov-hrms/employees/_search
+  update: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
  user:
   updateProfile: user/profile/_update
   updatePassword: user/password/_update
   updateForgetPassword: user/password/nologin/_update
- collectionService:
+ collectionServices:
   assessmentCreate: property-services/assessment/_create
   fetchBill: billing-service/bill/v2/_fetchbill
   createPayment: collection-services/payments/_create
+  workflow: collection-services/payments/PT/_workflow

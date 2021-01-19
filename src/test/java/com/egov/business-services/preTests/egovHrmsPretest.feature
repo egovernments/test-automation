@@ -14,7 +14,7 @@ Background:
 
 
 @success_Create
-Scenario: hrms_Create success call
+Scenario: HRMS Create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -26,7 +26,7 @@ Scenario: hrms_Create success call
 
 
 @error_Create
-Scenario: hrms_Create success call
+Scenario: HRMS Create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -37,7 +37,7 @@ Scenario: hrms_Create success call
   And def hrmsResponseBody = response
 
 @errorAuth_Create
-Scenario: hrms_Create success call
+Scenario: HRMS Create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -48,7 +48,7 @@ Scenario: hrms_Create success call
   And def hrmsResponseBody = response
 
 @success_Search
-Scenario: hrms_Search success call
+Scenario: HRMS Search success call
 
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -61,7 +61,7 @@ Scenario: hrms_Search success call
 
 
 @success_MultiSearch
-Scenario: hrms_Search success call
+Scenario: HRMS Search success call
 
   * def parameters = 
     """
@@ -82,7 +82,7 @@ Scenario: hrms_Search success call
 
 
 @error_Search
-Scenario: hrms_Search error call
+Scenario: HRMS Search error call
   
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -95,7 +95,7 @@ Scenario: hrms_Search error call
 
 
 @errorAuth_Search
-Scenario: hrms_Search error call
+Scenario: HRMS Search error call
   
   * print searchEmployeeRequest
   Given url hrmsSearchUrl
@@ -107,7 +107,7 @@ Scenario: hrms_Search error call
   And def hrmsResponseBody = response
 
 @success_Update
-Scenario: hrms_update success call
+Scenario: HRMS Update success call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -119,7 +119,7 @@ Scenario: hrms_update success call
   And def hrmsResponseBody = response
 
 @error_Update
-Scenario: hrms_update error call
+Scenario: HRMS Update error call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -131,7 +131,7 @@ Scenario: hrms_update error call
   And def hrmsResponseBody = response
 
 @error_UnAuth_Update
-Scenario: hrms_update error call
+Scenario: HRMS Update error call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -143,7 +143,7 @@ Scenario: hrms_update error call
   And def hrmsResponseBody = response
 
 @success_Update_Deactivate
-Scenario: hrms_update success deactivate call
+Scenario: HRMS Update success deactivate call
 
   * eval updateEmployeeRequest.Employees = Employees
   * eval updateEmployeeRequest.Employees[0].deactivationDetails = updateDeactivatemployeeRequest.deactivationDetails

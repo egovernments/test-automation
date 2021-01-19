@@ -110,18 +110,17 @@ function() {
         config.getReport = envProps.host + path.endPoints.reports.getReport;
 
         //hrmsCreate
-        config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.hrmsCreate;
+        config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.create;
 
         //hrmsSearch
-        config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
+        config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.search;
 
         //hrmsUpdate
-        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate
+        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.update
 
         //accessControlSearch
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
 
-        config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
         //Update user profile
         config.updateUser = envProps.host + path.endPoints.user.updateProfile;
 
@@ -132,11 +131,12 @@ function() {
         config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updateForgetPassword;
 
         // Create Assessment
-        config.createAssessment =  envProps.host + path.endPoints.collectionService.assessmentCreate
+        config.createAssessment =  envProps.host + path.endPoints.collectionServices.assessmentCreate
        // Fetch Bill
-        config.fetchBill =  envProps.host + path.endPoints.collectionService.fetchBill
+        config.fetchBill =  envProps.host + path.endPoints.collectionServices.fetchBill
       // Create Payment
-        config.payment =  envProps.host + path.endPoints.collectionService.createPayment
+        config.payment =  envProps.host + path.endPoints.collectionServices.createPayment
+        config.collectionServiceWorkflowUrl = envProps.host + path.endPoints.collectionServices.workflow
 
 
     karate.log('karate.env:', env);
