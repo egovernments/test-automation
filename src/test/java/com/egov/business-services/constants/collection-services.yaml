@@ -1,10 +1,4 @@
 parameters:
-  businessService: PT
-  # Assessment
-  propertyId: PB-PT-2020-06-12-005338
-  financialYear: 2020-21
-  source: MUNICIPAL_RECORDS
-  channel: CFC_COUNTER
   # Create Payment
   paymentMode: Cash
   paidBy: COMMON_OWNER
@@ -12,7 +6,16 @@ parameters:
   payerName: krish
   # Invalid Billing details
   billId: invalid_123
-
+  # workflow
+  reason: CHEQUEBOUNCE
+  action: CANCEL
+  otherReason: "OTHER"
+invalidParameters:
+  paymentId: "abc"
+  reason: "abc"
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state
+  invalidReceipt: "Payment not found in the system or not in editable state, "
+  mustNotBeNull: must not be null
+  NotAuthorized: Not authorized to access this resource
