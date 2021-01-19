@@ -17,6 +17,8 @@
     "paidBy": "#(paidBy)",
     "mobileNumber": "#(mobileNumber)",
     "payerName": "#(payerName)",
+    "transactionNumber": "#(transactionNumber)",
+    "instrumentNumber": "#(instrumentNumber)",
     "totalAmountPaid": "#(totalAmountPaid)"
   }
 }

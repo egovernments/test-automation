@@ -1,7 +1,7 @@
 parameters:
   businessService: PT
   # Assessment
-  propertyId: PB-PT-2020-06-12-005338
+  propertyId: PB-PT-2020-10-20-007340
   financialYear: 2020-21
   source: MUNICIPAL_RECORDS
   channel: CFC_COUNTER
@@ -12,7 +12,24 @@ parameters:
   payerName: krish
   # Invalid Billing details
   billId: invalid_123
+  # Invalid Business Service
+  invalidBusinessService: invalid
+  # Card payment
+  paymentModeCard: Card
+  # Invalid Payment Mode
+  invalidPaymentMode: invalid
+  # Invalid Tenant Id
+  invalidTenantId: invalid
+  # Negative Total Amount Paid value
+  negativeTotalAmount: -110
+  # Card Payment details
+  paymentMode2: Card
+  transactionNumber: 12345678
+  instrumentNumber: 12345678
 
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state
+  totalAmountPaidNull: must not be null
+  invalidPaymentMode:  must not be null
+  nullTenantIdError: Invalid Tenant Id
