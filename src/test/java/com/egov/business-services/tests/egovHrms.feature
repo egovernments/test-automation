@@ -38,7 +38,7 @@ Scenario: Test to create a employee
     * print hrmsResponseBody
     * def code = hrmsResponseBody.Employees[0].user.userName
     * print code
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
     #Search
@@ -251,7 +251,7 @@ Scenario: Test to search a employee
 Scenario: Test to search all employee
 
     * call read('../pretests/egovHrmsPretest.feature@success_Search')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
 
 
 @HRMS_Search_Invaid_URL_03 @negative @hrms_search @hrms
@@ -286,7 +286,7 @@ Scenario: Test by passing multiple values in the query parameter
     * def code = employeeCodeParam
 
     * call read('../pretests/egovHrmsPretest.feature@success_MultiSearch')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].code == employeeCode1
     * assert hrmsResponseBody.Employees[1].code == employeeCode2
 
@@ -295,13 +295,13 @@ Scenario: Test by passing multiple values in the query parameter
 Scenario: Test to Update an employee
 
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * eval hrmsResponseBody.Employees[0].user.fatherOrHusbandName = hrmsConstants.parameters.fatherOrHusbandNameUpdate
     * def updatedResponse = call read('../pretests/egovHrmsPretest.feature@success_Update') hrmsResponseBody
-    * assert updatedResponse.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert updatedResponse.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert updatedResponse.Employees[0].user.name == name
     * assert updatedResponse.Employees[0].user.mobileNumber == mobileNumber
     * assert updatedResponse.Employees[0].code == code
@@ -311,7 +311,7 @@ Scenario: Test to Update an employee
 @HRMS_update_InvalidValidations_02 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid validation
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -323,7 +323,7 @@ Scenario: Test to update an employee with invalid validation
 @HRMS_update_DateValDOB_03 @negative @hrms_update @hrms
 Scenario: Test to cupdate an employee invalid date of birth validation
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -336,7 +336,7 @@ Scenario: Test to cupdate an employee invalid date of birth validation
 @HRMS_update_DateValCurAssign_04 @negative @hrms_update @hrms
 Scenario: Test to update an employee with is currently assigned as false and to date as null 
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -349,7 +349,7 @@ Scenario: Test to update an employee with is currently assigned as false and to 
 @HRMS_update_InvalidTenant_05 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid tenant
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -362,7 +362,7 @@ Scenario: Test to update an employee with invalid tenant
 @HRMS_update_DateValCurSer_06 @negative @hrms_update @hrms
 Scenario: Test to update an employee with is currently assigned as true and a valid to date
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -375,7 +375,7 @@ Scenario: Test to update an employee with is currently assigned as true and a va
 @HRMS_update_AdhaarVal_07 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid aadhar number
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
@@ -386,12 +386,12 @@ Scenario: Test to update an employee with invalid aadhar number
 @HRMS_update_Deactivate_08 @negative @hrms_update @hrms
 Scenario: Test to update an employee deactivating the employee
     * call read('../pretests/egovHrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * call read('../pretests/egovHrmsPretest.feature@success_Update_Deactivate') hrmsResponseBody
-    * assert hrmsResponseBody.ResponseInfo.status == hrmsConstants.expectedStatus.success
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * print hrmsResponseBody

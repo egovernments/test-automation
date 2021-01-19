@@ -29,7 +29,8 @@ Scenario: Make payment with valid Bill id
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
-    * match response.ResponseInfo.status == 'successful'
+    * match response.ResponseInfo.status == '200 OK'
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
 
 @paidBillId @negative
@@ -46,6 +47,7 @@ Scenario: Make payment with valid Bill id
     When method post
     Then status 400
     And match response.Errors[0].message == paidBillIdError
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
 
 @invalidBillId @negative
@@ -64,17 +66,17 @@ Scenario: Test to Cancel a payment in workflow with valid field values
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
     * print collectionServicesResponseBody
-    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.status.ok
+    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.expectedStatus.ok
     * assert collectionServicesResponseBody.Payments[0].id == paymentId
     * assert collectionServicesResponseBody.Payments[0].tenantId == tenantId
     * match collectionServicesResponseBody.Payments[0].transactionNumber == "#present"
     * match collectionServicesResponseBody.Payments[0].paymentMode == "#present"
-    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.status.instrumentStatusCancelled
+    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
     * match collectionServicesResponseBody.Payments[0].paidBy == "#present"
     * match collectionServicesResponseBody.Payments[0].mobileNumber == "#present"
     * match collectionServicesResponseBody.Payments[0].payerName == "#present"
     * match collectionServicesResponseBody.Payments[0].payerId == "#present"
-    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.status.instrumentStatusCancelled
+    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
 
 @workflow_payment_samePaymentID_02 @negative @collection_services_workflow @collection_services
 Scenario: Test to Cancel a payment in workflow with same paymentId
@@ -110,30 +112,40 @@ Scenario: Test to Cancel a payment in workflow with OTHER as reason
     * def reason = collectionServicesConstants.parameters.otherReason
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
     * print collectionServicesResponseBody
-    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.status.ok
+    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.expectedStatus.ok
     * assert collectionServicesResponseBody.Payments[0].id == paymentId
     * assert collectionServicesResponseBody.Payments[0].tenantId == tenantId
     * match collectionServicesResponseBody.Payments[0].transactionNumber == "#present"
     * match collectionServicesResponseBody.Payments[0].paymentMode == "#present"
-    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.status.instrumentStatusCancelled
+    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
     * match collectionServicesResponseBody.Payments[0].paidBy == "#present"
     * match collectionServicesResponseBody.Payments[0].mobileNumber == "#present"
     * match collectionServicesResponseBody.Payments[0].payerName == "#present"
     * match collectionServicesResponseBody.Payments[0].payerId == "#present"
-    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.status.instrumentStatusCancelled
+    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
 
-@workflow_payment_NoReason_06 @negative @collection_services_workflow @collection_services
+@workflow_payment_NoReason_06 @negative @collection_services_workflow @collection_services_bug
 Scenario: Test to Cancel a payment in workflow with no reason
+    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].reason'}
     * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField')
 
-@workflow_payment_InValidReason_07 @negative @collection_services_workflow @collection_services
-Scenario: Test to Cancel a payment in workflow with invalid paymentId
+@workflow_payment_InValidReason_07 @negative @collection_services_workflow @collection_services_bug
+Scenario: Test to Cancel a payment in workflow with invalid reason
+    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
     * def reason = collectionServicesConstants.invalidParameters.reason
     * call read('../pretests/collectionServicesPretest.feature@error_workflow')
     * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField')
 
 @workflow_payment_NotenantID_09 @negative @collection_services_workflow @collection_services
 Scenario: Test to Cancel a payment in workflow with no tenantId

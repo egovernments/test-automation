@@ -33,9 +33,6 @@ invalidParameters:
   designation: '123'
   aadhaarNumber: 'abc'
 
-expectedStatus:
-  success: 'successful'
-
 expectedMessages:
   ERR_HRMS_INVALID_DESG: Invalid designation of employee.
   ERR_HRMS_INVALID_DOB: Invalid date of birth entered.
