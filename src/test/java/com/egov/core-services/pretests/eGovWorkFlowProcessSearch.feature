@@ -10,7 +10,7 @@ Scenario: Perform search using business id
     """
     {
      businessIds: '#(businessIds)',
-     history: 'true',
+     history: '#(history)',
      tenantId: '#(tenantId)'
     }
 

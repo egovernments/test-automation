@@ -36,7 +36,6 @@ endPoints:
   hrmsUpdate: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
-  invalidSearchMethod: access/v1/actions/mdms/_create
  pgServices:
   create: pg-service/transaction/v1/_create?
   update: pg-service/transaction/v1/_update?
@@ -45,5 +44,3 @@ endPoints:
   search: egov-workflow-v2/egov-wf/process/_search?
  billingService:
   fetchBill: billing-service/bill/v2/_fetchbill?
-
-
