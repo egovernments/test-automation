@@ -1,9 +1,6 @@
 Feature: Business Services - Collection service tests
 
  Background:
-     * def jsUtils = read('classpath:jsUtils.js')
-     * configure headers = read('classpath:websCommonHeaders.js')
-    
      * def collectionServiceData = read('../constants/collectionServices.yaml')
      * def collectionServiceCommonError = read('../constants/commonConstants.yaml')
      * def tenantId = tenantId
