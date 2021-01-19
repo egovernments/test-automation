@@ -1,7 +1,6 @@
 Feature: FileStore create API call 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
 
 @uploadsuccess
 Scenario: Upload a document
@@ -13,10 +12,8 @@ Scenario: Upload a document
     }
     """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
    And params filestoreparam
-   # And multipart field tenantId = '#(tenantId)'
-   # And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201
@@ -28,8 +25,8 @@ Scenario: Upload a document
 Scenario: Upload a document
    
    Given url fileStoreCreate   
-   And multipart file file = { read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf' }
-   And multipart file file = { read: '../testData/pdf.pdf', filename: 'pdf.pdf', contentType: 'application/pdf' }
+   And multipart file file = { read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf' }
+   And multipart file file = { read: '../testData/dummyTestData2.pdf', filename: 'dummyTestData2.pdf', contentType: 'application/pdf' }
    And multipart field tenantId = tenantId
    And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
@@ -48,7 +45,7 @@ Scenario: Upload a document
     }
     """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
    And params filestoreparam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
@@ -67,7 +64,7 @@ Scenario: Upload a document
     }
     """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/TestData.rtf', filename: 'TestData.rtf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData.rtf', filename: 'dummyTestData.rtf', contentType: 'application/pdf'}
    And params filestoreparam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
@@ -84,7 +81,7 @@ Scenario: Upload a document
     }
     """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/TestData.rtf', filename: 'sample.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
    And params filestoreparam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
@@ -96,7 +93,7 @@ Scenario: Upload a document
 Scenario: Upload a document
    
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/Landes - The Wealth and the Poverty of Nations.pdf', filename: 'Landes - The Wealth and the Poverty of Nations.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData1.pdf', filename: 'dummyTestData1.pdf', contentType: 'application/pdf'}
    And multipart field tenantId = tenantId
    And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
@@ -115,7 +112,7 @@ Scenario: Upload a document
    # }
    # """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/sample.pdf', filename: 'sample.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
    And multipart field tenantId = '123'
    And multipart field module = 'fire-noc'
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   

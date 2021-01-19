@@ -1,11 +1,6 @@
 errorMessages:
-<<<<<<< HEAD
  invalidFileFormat: 'Inalvid input provided for file : rtf, please upload any of the allowed formats  [jpg, jpeg, png, pdf, odt, ods, docx, doc, dxf, csv, txt, xlsx, xls]'
  noTenantid: Required String parameter 'tenantId' is not present
-=======
- noTenantid: Required String parameter 'tenantId' is not present
- #invalidFileFormat:  Inalvid input provided for file : rtf, please upload any of the allowed formats  [jpg, jpeg, png, pdf, odt, ods, docx, doc, dxf, csv, txt, xlsx, xls]
->>>>>>> 45ebfe8... Changed project content from cypress to karate
  noFilestoreId: Required String parameter 'tenantId' is not present
 
 parameters:

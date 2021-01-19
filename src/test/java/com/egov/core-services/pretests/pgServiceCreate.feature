@@ -2,10 +2,6 @@ Feature: Initiates a new payment transaction, on successful validation, a redire
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
-  * def authUserType = 'EMPLOYEE'
-  * call read('../pretests/authenticationToken.feature')
   * def pgServicesCreatePayload = read('../requestPayload/pgServices/pgServicesCreate.json')
 
 @createpgservicesuccess

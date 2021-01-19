@@ -7,10 +7,6 @@ Background:
   * def authPassword = counterEmployeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
-#  * call read('userCreation.feature')
-#  * print userCreationResponseBody
-#  * def createdUser = userCreationResponseBody.user[0].userName
-#  * print createdUser
   * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * def existingUser = envContant.userName
   * print existingUser
@@ -20,8 +16,6 @@ Background:
 # Search user
 @searchuser
 Scenario: Search user
- #  * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
-#   * def existingUser = envContant.userName
    * configure headers = read('classpath:websCommonHeaders.js') 
      Given url searchUser 
      * print searchUser  

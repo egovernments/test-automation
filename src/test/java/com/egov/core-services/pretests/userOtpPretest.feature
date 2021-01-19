@@ -2,7 +2,6 @@ Feature: User otp send API call
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def constantValue = read('../constants/userOtp.yaml')

@@ -1,7 +1,6 @@
 Feature: File store
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def fileStoreConst = read('../constants/fileStore.yaml')
 
 @FileStore_GenerateId_01  @Positive  @Filestore

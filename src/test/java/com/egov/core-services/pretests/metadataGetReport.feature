@@ -71,25 +71,3 @@ Scenario: Test to fetch the details of a report
      Then status 403
      And def reportsResponseHeader = responseHeaders
      And def reportsResponseBody = response
-
-@invalidurl
-Scenario: Test to fetch the details of a report
-* configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
-    """
-    {
-     tenantId: '#(tenantId)',
-     pageSize: '#(pageSize)',
-     offset: '#(offset)'
-    }
-    """
-     Given url invalidReportService
-     * print endPoint
-     And params reportparam
-     * print reportparam
-     And request reportPayload
-     * print reportPayload
-     When method post
-     Then status 403
-     And def reportsResponseHeader = responseHeaders
-     And def reportsResponseBody = response

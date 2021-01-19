@@ -13,13 +13,13 @@
         "tenantId": "#(tenantId)",
         "txnAmount": "#(txnAmount)",
         "module": "PT",
-        "billId": "e30d1915-7408-4624-9e16-ae473202c52b",
-        "consumerCode": "PB-PT-2020-12-02-007576",
+        "billId": "#(billId)",
+        "consumerCode": "#(consumerCode)",
         "productInfo": "Common Payment",
         "gateway": "#(gateway)",
         "taxAndPayments": [
             {
-                "billId": "e30d1915-7408-4624-9e16-ae473202c52b",
+                "billId": "#(billId)",
                 "amountPaid": 200
             }
         ],
