@@ -78,7 +78,7 @@ Scenario: To verify the error message returned by API when an invalid UUID passe
         * print updatedUserprofileResponseBody.Errors[0].code
         * assert updatedUserprofileResponseBody.Errors[0].code == errorMessage.errormessages.noUUIDErrorCode
 
-@User_Update_noID_11 @negative @user @test
+@User_Update_noID_11 @negative @user
 Scenario: To verify the error message returned by API when ID is removed
         * call read('../pretests/updateUserPretest.feature@removeID')
         * print updatedUserprofileResponseBody.Errors[0].message
