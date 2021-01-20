@@ -45,3 +45,4 @@ endPoints:
   fetchBill: billing-service/bill/v2/_fetchbill
   createPayment: collection-services/payments/_create
   workflow: collection-services/payments/PT/_workflow
+  searchPayment: collection-services/payments/PT/_search

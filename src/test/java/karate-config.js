@@ -132,11 +132,14 @@ function() {
 
         // Create Assessment
         config.createAssessment =  envProps.host + path.endPoints.collectionServices.assessmentCreate
-       // Fetch Bill
+        // Fetch Bill
         config.fetchBill =  envProps.host + path.endPoints.collectionServices.fetchBill
-      // Create Payment
+        // Create Payment
         config.payment =  envProps.host + path.endPoints.collectionServices.createPayment
+        // Workflow
         config.collectionServiceWorkflowUrl = envProps.host + path.endPoints.collectionServices.workflow
+        // Search Payment
+        config.searchPayment = envProps.host + path.endPoints.collectionServices.searchPayment
 
 
     karate.log('karate.env:', env);

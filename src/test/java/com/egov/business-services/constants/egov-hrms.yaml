@@ -5,7 +5,6 @@ parameters:
   dob: 960575400000
   gender: MALE
   fatherOrHusbandName: Noor
-  fatherOrHusbandNameUpdate: Father
   employeeType: CONTRACT
   hierarchy: ADMIN
   boundaryType: City
@@ -13,28 +12,6 @@ parameters:
   designation: DESIG_58
   fromDate: 1609439400000
   userType: EMPLOYEE
-  employeeCodeParam: 'EMP-107-000298,EMP111'
-  employeeCode1: EMP-107-000298
-  employeeCode2: EMP111
-
-invalidParameters:
-  employeeStatus: '123'
-  employeeName: '123'
-  dob: 'a123a'
-  gender: '123'
-  existingMobileNumber: '7171717178'
-  mobileNumber: '12345'
-  toDate: '123'
-  employeeType: '123'
-  hierarchy: '123'
-  boundryType: '123'
-  boundary: '123'
-  department: '123'
-  designation: '123'
-  aadhaarNumber: 'abc'
-
-expectedStatus:
-  success: 'successful'
 
 expectedMessages:
   ERR_HRMS_INVALID_DESG: Invalid designation of employee.
@@ -43,24 +20,6 @@ expectedMessages:
   ERR_HRMS_INVALID_ASSIGNMENT_DATES: Employee period of assignment (From Date or To date) can not be before date of birth.
   ERR_HRMS_INVALID_ASSIGNMENT_NOT_CURRENT_TO_DATE: To date field should not be blank for non current assignment of the employee.
   ERR_HRMS_INVALID_CURRENT_ASSGN: There should be exactly one current assignment for the employee.
-  unauthorized: Not authorized to access this resource
+  CustomException: Not authorized to access this resource
   ERR_HRMS_INVALID_ASSIGNMENT_CURRENT_TO_DATE: To Date field should be blank for current assignment of the employee.
   INVALID_AADHAR: AdharNumber should be 12 digit number
-  invalidEmployeeStatus: 'Invalid employment status entered.'
-  userCreationFailed: 'User creation failed at the user service.'
-  failedToDeserializeJson: 'Failed to deserialize certain JSON fields'
-  notNull: 'must not be null'
-  userAlreadyExists: 'User already exists for the entered mobile number. Use a different mobile number to proceed.'
-  invalidAssignmentPeriod: 'Invalid period of assignment (From date - To date).'
-  toDateShouldBeBlank: 'To Date field should be blank for current assignment of the employee.'
-  assigmentPeriodCannotBeBeforeDob: 'Employee period of assignment (From Date or To date) can not be before date of birth.'
-  invalidEmployeeType: 'Invalid employee type entered.'
-  invalidJurisdictionHierarchyValue: 'Jurisiction hierarchy value is invalid.'
-  invalidJurisdictionBoundaryType: 'Jurisiction boundary type value is invalid.'
-  invalidJurisdictionBoundary: 'Jurisiction boundary value is invalid.'
-  invalidSizeRange: 'size must be between 2 and 100'
-  invalidDepartment: 'Invalid department of employee entered.'
-  invalidDesignation: 'Invalid designation of employee.'
-  onlyOneCurrentAssigment: 'There should be exactly one current assignment for the employee.'
-  tenantIdMandatory: 'For search based on phone number and name, passing of tenant id is mandatory.'
-  : 
