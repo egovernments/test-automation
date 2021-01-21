@@ -15,10 +15,11 @@ Feature: eGovUser-passwordUpdate
      * set updatedUserPassword.newPassword = userProfileData.validPasswordDetails.newPassword
      * set updatedUserPassword.tenantId = userProfileData.validPasswordDetails.tenantId
      * set updatedUserPassword.username = userProfileData.password.userName
+     * set updatedUserPassword.type = userProfileData.user.type
+     * configure headers = read('classpath:websCommonHeaders.js')
 
   @validPassword
   Scenario: Update existing password with valid password
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePassword
      * print updatePassword
     And request updatedUserPassword
@@ -28,7 +29,6 @@ Feature: eGovUser-passwordUpdate
 
   @inValidNewPassword
   Scenario: Update existing password with invalid new password
-   * configure headers = read('classpath:websCommonHeaders.js') 
    * set updatedUserPassword.newPassword = userProfileData.inValidPasswordDetails.newInvalidPassword
     Given url updatePassword
      * print updatePassword
@@ -41,7 +41,6 @@ Feature: eGovUser-passwordUpdate
 
   @inValidExistingPassword
   Scenario: Update existing password with invalid existing password
-   * configure headers = read('classpath:websCommonHeaders.js') 
    * set updatedUserPassword.existingPassword = userProfileData.inValidPasswordDetails.existingPassword
     Given url updatePassword
      * print updatePassword
@@ -55,7 +54,6 @@ Feature: eGovUser-passwordUpdate
   @noTenantId
   Scenario: Update password without tenantId
    * remove updatedUserPassword.tenantId
-   * configure headers = read('classpath:websCommonHeaders.js')
     Given url updatePassword
      * print updatePassword
     And request updatedUserPassword
@@ -67,7 +65,6 @@ Feature: eGovUser-passwordUpdate
 
   @invalidTenantIdOnPassword
   Scenario: Update password without tenantId
-   * configure headers = read('classpath:websCommonHeaders.js') 
    * set updatedUserPassword.tenantId = userProfileData.inValidPasswordDetails.tenantId
     Given url updatePassword
      * print updatePassword
@@ -81,7 +78,6 @@ Feature: eGovUser-passwordUpdate
   @noUserType
   Scenario: Update password without user type parameter
    * remove updatedUserPassword.type
-   * configure headers = read('classpath:websCommonHeaders.js')
     Given url updatePassword
      * print updatePassword
     And request updatedUserPassword
@@ -94,7 +90,6 @@ Feature: eGovUser-passwordUpdate
   @noExistingPassword
   Scenario: Update password without existing password parameter
    * remove updatedUserPassword.existingPassword
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePassword
      * print updatePassword
     And request updatedUserPassword
@@ -107,7 +102,6 @@ Feature: eGovUser-passwordUpdate
   @noNewPassword
   Scenario: Update password without new password parameter
    * remove updatedUserPassword.newPassword
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePassword
      * print updatePassword
     And request updatedUserPassword
@@ -119,7 +113,6 @@ Feature: eGovUser-passwordUpdate
 
   @invalidUserType
   Scenario: Update password without new password parameter
-   * configure headers = read('classpath:websCommonHeaders.js')
    * set updatedUserPassword.type = userProfileData.inValidPasswordDetails.type 
     Given url updatePassword
      * print updatePassword
@@ -132,7 +125,6 @@ Feature: eGovUser-passwordUpdate
 
   @sameValidPassword
   Scenario: Update existing password with same valid existing password
-   * configure headers = read('classpath:websCommonHeaders.js') 
    * set updatedUserPassword.existingPassword = authPassword
     Given url updatePassword
      * print updatePassword

@@ -23,6 +23,30 @@ user:
  correspondenceAddress: TEST ADDRESS
  correspondenceCity: jalandar
  tenantId: pb.jalandhar
+ type: EMPLOYEE
+ fatherOrHusbandName: TEST
+ salutation: null
+ altContactNumber: null
+ pan: null
+ aadhaarNumber: null
+ permanentAddress: null
+ permanentCity: null
+ permanentPinCode: null
+ correspondencePinCode: null
+ active: true
+ locale: null
+ accountLocked: false
+ signature: null
+ bloodGroup: null
+ photo: null
+ identificationMark: null
+ createdBy: 435
+ accountLockedDate: 0
+ lastModifiedBy: 1
+ createdDate: 07-01-2021 19:32:06
+ lastModifiedDate: 07-01-2021 20:06:46
+ dob: 1/1/1988
+ pwdExpiryDate: 07-04-2021 19:32:06
  roles:
   - code: STADMIN
     name: State Administrator
@@ -88,7 +112,6 @@ validPasswordDetails:
   existingPassword: TestUser@1234
   newPassword: TestUser@1234
   tenantId: pb.jalandhar
-
  #User Password - Invalid Data
 inValidPasswordDetails:
   existingPassword: InValid@123

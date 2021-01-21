@@ -1,5 +1,5 @@
 {
-    "RequestInfo": {
-      "authToken": "#(authToken)"
-    }
+  "RequestInfo": {
+    "authToken": "#(authToken)"
+  }
 }

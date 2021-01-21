@@ -1,3 +1,24 @@
 parameters:
-  consumerCode: PB-PT-2021-01-15-007845
+  consumerCode: PB-PT-2020-10-14-007281
   businessService: PT
+  mobileNumber: 9113689766
+invalidParameters:
+  consumerCode: invalid_123
+  businessService : UK
+  tenantId: invalid
+  mobileNumber: 9118898989
+
+errorMessages:
+  consumerCode:
+    code: BILL_GEN_MANDATORY_FIELDS_MISSING
+    message: "Valid search criteria fields missing, please give some valid criteria like mobileNumber/email OR 'businessService & consumerCode' OR demandId"
+  tenantId:
+    code: NotNull.generateBillCriteria.tenantId
+  businessService:
+    code: NotNull.generateBillCriteria.businessService
+  invalidConsumerBusinessCode:
+    code: EG_BS_BILL_NO_DEMANDS_FOUND
+    message: No Demands Found for the given bill generate criteria
+  invalidTenantId:
+    code: EG_BS_INVALID_TENANTID
+    message: Employees cannot search based on state level tenantid

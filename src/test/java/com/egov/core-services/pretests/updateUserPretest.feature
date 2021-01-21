@@ -11,13 +11,13 @@ Feature: eGovUser-userProfileUpdate
      * call read('../pretests/authenticationToken.feature')
      * def updatedUserProfile = read('../requestPayload/user/update/updateUser.json')
      * def userProfileData =    read('../constants/user.yaml')
+     * configure headers = read('classpath:websCommonHeaders.js') 
 
   @validParameters
   Scenario: Update existing user profile with valid parameters
    * set updatedUserProfile.user.name = userProfileData.validProfileData.userName
    * set updatedUserProfile.user.emailId = userProfileData.validProfileData.emailId
    * set updatedUserProfile.user.correspondenceCity = userProfileData.validProfileData.city
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -28,7 +28,6 @@ Feature: eGovUser-userProfileUpdate
 
   @validAllParameters
   Scenario: Update existing user profile with valid parameters
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -39,7 +38,6 @@ Feature: eGovUser-userProfileUpdate
   @inValidUserName
   Scenario: Update existing user profile with invalid username
    * set updatedUserProfile.user.name = userProfileData.inValidProfileData.userName
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -51,7 +49,6 @@ Feature: eGovUser-userProfileUpdate
   @inValidEmailId
   Scenario: Update existing user email with invalid email id
    * set updatedUserProfile.user.emailId = userProfileData.inValidProfileData.emailId
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -63,7 +60,6 @@ Feature: eGovUser-userProfileUpdate
   @inValidPhoneNumber
   Scenario: Update existing user email with invalid phone number
    * set updatedUserProfile.user.mobileNumber = userProfileData.inValidProfileData.mobileNumber
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -75,7 +71,6 @@ Feature: eGovUser-userProfileUpdate
   @validRandomPhoneNumber
   Scenario: Update existing user profile with a random phone number
    * set updatedUserProfile.user.mobileNumber = userProfileData.validProfileData.randomPhoneNumber
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -87,7 +82,6 @@ Feature: eGovUser-userProfileUpdate
   @invalidGender
   Scenario: Update existing user profile with an Invalid gender
    * set updatedUserProfile.user.gender = userProfileData.inValidProfileData.gender
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -99,7 +93,6 @@ Feature: eGovUser-userProfileUpdate
   @invalidTenantId
   Scenario: Update existing tenantID with a null value
    * set updatedUserProfile.user.tenantId = userProfileData.inValidProfileData.tenantID
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -111,7 +104,6 @@ Feature: eGovUser-userProfileUpdate
   @blankUUID
   Scenario: Update existing tenantID with a null value
    * set updatedUserProfile.user.uuid = ""
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -123,7 +115,6 @@ Feature: eGovUser-userProfileUpdate
   @invalidUUID
   Scenario: Update existing tenantID with a null value
    * set updatedUserProfile.user.uuid = "invalid_UUID"
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -135,7 +126,6 @@ Feature: eGovUser-userProfileUpdate
   @removeID
   Scenario: Remove existing id
    * remove updatedUserProfile.user.id 
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -147,7 +137,6 @@ Feature: eGovUser-userProfileUpdate
   @invalidID
   Scenario: Update existing id with a invalid value
    * set updatedUserProfile.user.id = userProfileData.inValidProfileData.id
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile
@@ -160,7 +149,6 @@ Feature: eGovUser-userProfileUpdate
   Scenario: Update existing user name with 50 characters
    * def name = ranString(55)
    * set updatedUserProfile.user.name = name
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updateUser
      * print updateUser
     And request updatedUserProfile

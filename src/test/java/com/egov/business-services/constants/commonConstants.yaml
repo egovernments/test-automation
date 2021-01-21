@@ -5,3 +5,6 @@ expectedStatus:
  ok: "200 OK"
  success: 'successful'
  instrumentStatusCancelled: CANCELLED
+errorMessages:
+  invalidTenantIdError: Not authorized to access this resource
+  nullParameterError:  must not be null

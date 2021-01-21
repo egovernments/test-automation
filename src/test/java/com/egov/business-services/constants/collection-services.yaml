@@ -6,16 +6,35 @@ parameters:
   payerName: krish
   # Invalid Billing details
   billId: invalid_123
+  # Invalid Business Service
+  invalidBusinessService: invalid
+  # Card payment
+  paymentModeCard: Card
+  # Invalid Payment Mode
+  invalidPaymentMode: invalid
+  # Invalid Tenant Id
+  invalidTenantId: invalid
+  # Negative Total Amount Paid value
+  negativeTotalAmount: -110
+  # Card Payment details
+  paymentMode2: Card
+  transactionNumber: 12345678
+  instrumentNumber: 12345678
   # workflow
   reason: CHEQUEBOUNCE
   action: CANCEL
   otherReason: "OTHER"
+  # Search Payment
+  validBillId: e5fe3c88-4b76-4654-8c5c-ac7beb96ae8a
+  nullValue: null
+  receiptNumber: PT/107/2020-21/138900
+  invalidValue: invalid009                                             
 invalidParameters:
   paymentId: "abc"
   reason: "abc"
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state
-  invalidReceipt: "Payment not found in the system or not in editable state, "
-  mustNotBeNull: must not be null
-  NotAuthorized: Not authorized to access this resource
+  totalAmountPaidNull: must not be null
+  invalidPaymentMode:  must not be null
+  nullTenantIdError: Invalid Tenant Id
