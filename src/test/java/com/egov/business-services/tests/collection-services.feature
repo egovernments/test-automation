@@ -117,7 +117,7 @@ Feature: Business Services - Collection service tests
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Teanant Id
-    * call read('../preTests/collectionServicesPretest.feature@nullTenantId')
+    * call read('../preTests/collectionServicesPretest.feature@nullTenantIdPayment')
     * match response.Errors[0].message == nullTenantIdError
 
 @Create_PaymentWith_negativeAmount_10 @negative @CreatePayment @collectionService

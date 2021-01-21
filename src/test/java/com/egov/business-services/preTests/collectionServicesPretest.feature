@@ -112,7 +112,7 @@ Scenario: Common test to create a Payment
     And def collectionServicesResponseHeader = responseHeaders
     And def collectionServicesResponseBody = response
 
-  @nullTenantId
+  @nullTenantIdPayment
    Scenario: Steps to create a payment where tenant id is null
      * def amount = fetchBillResponse.Bill[0].totalAmount
      * set createPaymentRequest.Payment.paymentDetails[0].totalDue = amount
