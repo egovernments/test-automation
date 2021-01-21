@@ -1,0 +1,42 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "user": {
+        "id": "#(id)",
+        "userName": "#(userName)",
+        "salutation": null,
+        "name": "#(name)",
+        "gender": "#(gender)",
+        "mobileNumber": "#(mobileNumber)",
+        "emailId": "#(emailId)",
+        "altContactNumber": null,
+        "pan": null,
+        "aadhaarNumber": null,
+        "permanentAddress": null,
+        "permanentCity": null,
+        "permanentPinCode": null,
+        "correspondenceAddress": "#(correspondenceAddress)",
+        "correspondenceCity": "#(correspondenceCity)",
+        "correspondencePinCode": null,
+        "active": true,
+        "locale": null,
+        "type": "EMPLOYEE",
+        "accountLocked": false,
+        "accountLockedDate": 0,
+        "fatherOrHusbandName": "TEST",
+        "signature": null,
+        "bloodGroup": null,
+        "photo": null,
+        "identificationMark": null,
+        "createdBy": 435,
+        "lastModifiedBy": 1,
+        "tenantId": "#(tenantId)",
+        "roles": "#(roles)",
+        "uuid": "#(uuid)",
+        "createdDate": "07-01-2021 19:32:06",
+        "lastModifiedDate": "07-01-2021 20:06:46",
+        "dob": "1/1/1988",
+        "pwdExpiryDate": "07-04-2021 19:32:06"
+    }
+}

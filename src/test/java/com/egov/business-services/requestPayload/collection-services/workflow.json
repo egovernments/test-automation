@@ -1,0 +1,13 @@
+{
+    "RequestInfo": {
+      "authToken": "#(authToken)"
+    },
+    "paymentWorkflows": [
+      {
+        "reason": "#(reason)",
+        "action": "#(action)",
+        "tenantId": "#(tenantId)",
+        "paymentId": "#(paymentId)"
+      }
+    ]
+  }
