@@ -1,9 +1,9 @@
 Feature: eGovWorkflow process search
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
-  * def authUserType = 'EMPLOYEE'
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
+  * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * def workFlowProcessSearchPayload = read('../requestPayload/eGovWorkFlow/process/processSearch.json')
   * def processSearchConstant = read('../constants/eGovWorkFlowProcessSearch.yaml')

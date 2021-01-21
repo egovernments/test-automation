@@ -8,8 +8,8 @@ Background:
     * def today = getTodayUtcDate()
     * def tomorrow = getTomorrowUtcDate()
     # Calling access token
-    * def authUsername = counterEmployeeUserName
-    * def authPassword = counterEmployeePassword
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
     * def tenantId = tenantId
     * def name = hrmsConstants.parameters.name + ranInteger(6)
     * def mobileNumber = randomMobileNumGen(10) + ''

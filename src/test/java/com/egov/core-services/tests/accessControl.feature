@@ -14,8 +14,8 @@ Background:
     * def enabled = accessControlConstants.parameters.enabled
     * def roleCodes = accessControlConstants.parameters.roleCodes
     # Calling access token
-    * def authUsername = counterEmployeeUserName
-    * def authPassword = counterEmployeePassword
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
     * def authUserType = accessControlConstants.parameters.userType
     * call read('../pretests/authenticationToken.feature')
    

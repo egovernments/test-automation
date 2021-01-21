@@ -1,0 +1,5 @@
+parameters:
+  propertyId: PB-PT-2020-10-14-007281
+  financialYear: 2020-21
+  source: MUNICIPAL_RECORDS
+  channel: CFC_COUNTER

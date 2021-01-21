@@ -6,8 +6,8 @@ Background:
     * def javaUtils = Java.type('com.egov.base.EGovTest')
     * def expectedMessage = read('../constants/idGenerate.yaml')
     # Calling access token
-    * def authUsername = counterEmployeeUserName
-    * def authPassword = counterEmployeePassword
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
     * def tenantId = tenantId
     * print tenantId
     * def authUserType = expectedMessage.parameters.userType

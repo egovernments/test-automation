@@ -2,9 +2,9 @@ Feature: Reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
-  * def authUserType = 'EMPLOYEE'
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
+  * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * def reportConstant = read('../constants/reports.yaml')
   * def pageSize = reportConstant.parameters.pageSize

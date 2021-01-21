@@ -21,6 +21,7 @@ function() {
     var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
     
     
+
     var config = {
         env : env,
         tenantId : tenantId,
@@ -33,19 +34,30 @@ function() {
         config.counterEmployeeUserName = userData.superUserCounterEmployee.userName;
         config.counterEmployeePassword = userData.superUserCounterEmployee.password;
 
+        //username & password for authtoken of Super User
+        config.superUserUserName = userData.superUser.userName;
+        config.superUserPassword = userData.superUser.password;
+        config.superUserTenantId = userData.superUser.tenantId;
+        config.superUserAuthUserType = userData.superUser.authUserType;
+
+        // username & password for Employee type user
+        config.employeeUserName = userData.employee.userName;
+        config.employeePassword = userData.employee.password;
+        config.employeeType = userData.employee.type;
+
         //tenantId
         config.tenantId = envProps.tenantId;
 
         
         //localizationURL
         config.localizationMessagesUrl = envProps.host + path.endPoints.localization.searchLocalization;
-    
+
         //localizationSearchV2URL
         config.localizationSearchV2Url = envProps.host + path.endPoints.localization.v2SearchLocalization;
-        
+
         //localizationUpdateURL
         config.localizationUpdateMessagesUrl = envProps.host + path.endPoints.localization.updateLocalization;
-        
+
         //localizationDeleteURL
         config.localizationDeleteMessagesUrl = envProps.host + path.endPoints.localization.deleteLocalization;
         //localizationCreateURL
@@ -98,24 +110,42 @@ function() {
         config.getReport = envProps.host + path.endPoints.reports.get;
 
         //hrmsCreate
-        config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.hrmsCreate;
+        config.hrmsCreateUrl = envProps.host + path.endPoints.hrms.create;
 
         //hrmsSearch
-        config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.hrmsSearch;
+        config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.search;
+
         
-        //hrmsUpdate
-        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.hrmsUpdate;
 
         //pgServices
         config.pgServices = envProps.host + path.endPoints.pgServices.create
         config.pgServicesUpdate = envProps.host + path.endPoints.pgServices.update
         config.pgServicesSearch = envProps.host + path.endPoints.pgServices.search
-
+        //hrmsUpdate
+        config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.update
 
         //accessControlSearch
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
 
-        config.accessControlInvalidSearchMethodUrl = envProps.host + path.endPoints.accessControl.invalidSearchMethod;
+        //Update user profile
+        config.updateUser = envProps.host + path.endPoints.user.updateProfile;
+
+        //Update user password
+        config.updatePassword = envProps.host + path.endPoints.user.updatePassword;
+
+        //Update user password without login - OTP
+        config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updateForgetPassword;
+
+        // Create Assessment
+        config.createAssessment =  envProps.host + path.endPoints.collectionServices.assessmentCreate
+        // Fetch Bill
+        config.fetchBill =  envProps.host + path.endPoints.collectionServices.fetchBill
+        // Create Payment
+        config.payment =  envProps.host + path.endPoints.collectionServices.createPayment
+        // Workflow
+        config.collectionServiceWorkflowUrl = envProps.host + path.endPoints.collectionServices.workflow
+        // Search Payment
+        config.searchPayment = envProps.host + path.endPoints.collectionServices.searchPayment
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search

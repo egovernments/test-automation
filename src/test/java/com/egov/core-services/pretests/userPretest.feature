@@ -1,9 +1,9 @@
 Feature: User Search
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
-  * def authUserType = 'EMPLOYEE'
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
+  * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * def existingUser = envContant.userName
