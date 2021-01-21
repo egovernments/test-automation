@@ -3,8 +3,8 @@ Feature: Create user
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
  # * def javaUtils = Java.type('com.egov.base.EGovTest')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
   * def newUser = read('../requestPayload/userCreation/createUser.json')

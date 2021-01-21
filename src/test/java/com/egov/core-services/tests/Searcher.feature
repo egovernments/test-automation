@@ -7,8 +7,8 @@ Background:
     * def expectedMessage = read('../constants/searcher.yaml')
     * def errorManadatoryTenantId = "Missiing Mandatory Property: $.searchCriteria.tenantId"
     # Calling access token
-    * def authUsername = counterEmployeeUserName
-    * def authPassword = counterEmployeePassword
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
     * def tenantId = tenantId
     * print tenantId
     * def authUserType = expectedMessage.parameters.userType
