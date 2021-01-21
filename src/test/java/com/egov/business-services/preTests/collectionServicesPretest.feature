@@ -254,3 +254,34 @@ Scenario: Common test to create a Payment
     Then status 200
     And def searchResponseHeader = responseHeaders
     And def searchResponseBody = response
+
+@error_auth_workflow
+Scenario: Collection Service error authorisation workflow call
+  * print workflowRequest
+  Given url collectionServiceWorkflowUrl 
+  And request workflowRequest
+  When method post
+  Then status 403
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@error_workflow
+Scenario: Collection Service error workflow call
+  * print workflowRequest
+  Given url collectionServiceWorkflowUrl 
+  And request workflowRequest
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@error_workflow_removeField
+Scenario: Collection Service error workflow call
+  * eval karate.remove('workflowRequest', removeFieldPath)
+  * print workflowRequest
+  Given url collectionServiceWorkflowUrl 
+  And request workflowRequest
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response

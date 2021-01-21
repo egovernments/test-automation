@@ -38,3 +38,6 @@ errorMessages:
   totalAmountPaidNull: must not be null
   invalidPaymentMode:  must not be null
   nullTenantIdError: Invalid Tenant Id
+  invalidReceipt: "Payment not found in the system or not in editable state, "
+  mustNotBeNull: must not be null
+  NotAuthorized: Not authorized to access this resource
