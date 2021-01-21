@@ -19,8 +19,8 @@ Background:
     """
     Given url fetchBill
     And params fetchBillParams
+     * print fetchBillParams
     And request fetchBillRequest
-    * print fetchBillRequest
     When method post
     Then status 201
     And def fetchBillResponse = response
@@ -28,3 +28,13 @@ Background:
     And def billId = response.Bill[0].id
      * print billId 
      * print totalAmount
+
+@errorInParam
+    Scenario: Fetch Bill with missing params
+    Given url fetchBill
+    And params fetchBillParams
+     * print fetchBillParams
+    And request fetchBillRequest
+    When method post
+    Then def fetchBillResponse = response
+     * print responseStatus

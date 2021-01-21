@@ -1,6 +1,11 @@
 parameters:
   consumerCode: PB-PT-2020-10-14-007281
   businessService: PT
+  mobileNumber: 9113689766
+invalidParameters:
+  consumerCode: invalid_123
+  businessService : UK
+  tenantId: invalid
 
 errorMessages:
   consumerCode:
@@ -10,3 +15,9 @@ errorMessages:
     code: NotNull.generateBillCriteria.tenantId
   businessService:
     code: NotNull.generateBillCriteria.businessService
+  invalidConsumerBusinessCode:
+    code: EG_BS_BILL_NO_DEMANDS_FOUND
+    message: No Demands Found for the given bill generate criteria
+  invalidTenantId:
+    code: EG_BS_INVALID_TENANTID
+    message: Employees cannot search based on state level tenantid

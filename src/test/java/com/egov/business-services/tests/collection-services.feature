@@ -130,7 +130,6 @@ Feature: Business Services - Collection service tests
     * def negativeAmountError = "The amount paid for the paymentDetail with bill number: " + billId
     * match response.Errors[0].message == negativeAmountError
 
-
 # Search Payment
 
 @Search_PaymentWithReceiptNumber_01 @positive @SearchPayment @collectionService
@@ -142,7 +141,6 @@ Feature: Business Services - Collection service tests
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
     * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
 
-
 @Search_PaymentWithBillID_02 @positive @SearchPayment @collectionService
 Scenario: Test to search payment with billID
 
@@ -151,14 +149,12 @@ Scenario: Test to search payment with billID
     * call read('../preTests/collectionServicesPretest.feature@successSearchBillId')
     * match searchResponseBody.Payments[0].paymentDetails[0].billId == billId
 
-
 @Search_PaymentWithConsumerCode_03 @positive @SearchPayment @collectionService
     Scenario: Test to search payment with consumer code
 
     * def consumerCode = propertyId
     * call read('../preTests/collectionServicesPretest.feature@successSearchConsumerCode')
     * match searchResponseBody.Payments[0].paymentDetails[0].bill.consumerCode == consumerCode
-
 
 @Search_PaymentWithMobileNumber_04 @positive @SearchPayment @collectionService
     Scenario: Test to search payment with mobile number
@@ -167,7 +163,6 @@ Scenario: Test to search payment with billID
     * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
 
-
 @Search_PaymentWithMobileNumberAndReceiptNumber_05 @positive @SearchPayment @collectionService
     Scenario: Test to search payment with mobile number and receipt number
 
@@ -175,7 +170,6 @@ Scenario: Test to search payment with billID
     * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
     * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
-
 
 @Search_AllPayments_06 @positive @SearchPayment @collectionService
     Scenario: Test to search all payments
@@ -186,7 +180,6 @@ Scenario: Test to search payment with billID
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
     * match searchResponseBody.Payments[0].paymentDetails[0] == '#present'
 
-
 @Search_PaymentWith_InvalidtenatID_07 @negative @SearchPayment @collectionService
     Scenario: Test to search payment with invalid tenantID
 
@@ -194,14 +187,12 @@ Scenario: Test to search payment with billID
     * assert searchResponseBody.Payments.length == 0
     * match searchResponseBody.Payments[0] == '#notpresent'
 
-
 @Search_PaymentWith_InvalidMobileNumber_08 @negative @SearchPayment @collectionService
     Scenario: Test to search payment with invalid mobileNumber
 
     * call read('../preTests/collectionServicesPretest.feature@successSearchInvalidMobile')
     * assert searchResponseBody.Payments.length == 0
     * match searchResponseBody.Payments[0] == '#notpresent'
-
 
 @Search_PaymentWith_InvalidReceiptNumber_09 @negative @SearchPayment @collectionService
     Scenario: Test to search payment with invalid ReceiptNumber
