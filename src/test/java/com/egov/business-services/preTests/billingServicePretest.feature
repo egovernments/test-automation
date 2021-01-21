@@ -37,4 +37,4 @@ Background:
     And request fetchBillRequest
     When method post
     Then def fetchBillResponse = response
-     * print responseStatus
+     * print fetchBillResponse

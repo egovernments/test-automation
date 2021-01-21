@@ -6,6 +6,7 @@ invalidParameters:
   consumerCode: invalid_123
   businessService : UK
   tenantId: invalid
+  mobileNumber: 9118898989
 
 errorMessages:
   consumerCode:
