@@ -1,4 +1,4 @@
-Feature: Update user
+Feature: eGov_User - Update password tests
 
 Background:
     * def updatedUserPassword = read('../requestPayload/user/updatePassword/updatePassword.json')
@@ -18,7 +18,6 @@ Scenario: To verify the invalid length password error
    * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.invalidPasswordLngthErrCode
    * assert updatedPasswordResponseBody.Errors[0].message == errorMessage.errormessages.invalidPasswordLengthError
    
-
 @Update_Password_InValidExistingPassword_validNewPassword_03 @negative @userPassword @user
 Scenario: To verify the error message returned by API when an invalid existing password provided
         * call read('../pretests/updateUserPasswordPretest.feature@inValidExistingPassword')
@@ -44,7 +43,6 @@ Scenario: To verify the error message returned by API when tenantId field is rem
 Scenario: To verify the error message returned by API when existingPassword field is removed
         * call read('../pretests/updateUserPasswordPretest.feature@noExistingPassword')
         * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.invalidUpdatePasswordRequestError
-
 
 @Update_Password_noNewPassword_08 @negative @userPassword @user
 Scenario: To verify the error message returned by API when newPassword field is removed

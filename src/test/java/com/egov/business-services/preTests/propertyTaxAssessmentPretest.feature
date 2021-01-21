@@ -26,4 +26,3 @@ Scenario: Create assessment
   When method post
   Then status 201
   * print response
-  # And match response.ResponseInfo.status == 'successful'

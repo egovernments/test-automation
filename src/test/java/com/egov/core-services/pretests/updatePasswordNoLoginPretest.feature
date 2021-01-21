@@ -16,12 +16,11 @@ Feature: eGovUser-passwordNoLoginUpdate
      * set updateUserPasswordNoLogin.userName = updatePasswordData.userUpdateNoLoginValidData.userName
      * set updateUserPasswordNoLogin.tenantId = updatePasswordData.userUpdateNoLoginValidData.tenantId
      * set updateUserPasswordNoLogin.type = updatePasswordData.userUpdateNoLoginValidData.type
+     * configure headers = read('classpath:websCommonHeaders.js') 
 
   @invalidOtp
   Scenario: Update password with invalid OTP
    * set updateUserPasswordNoLogin.otpReference = updatePasswordData.userUpdateNoLoginInvalidData.otpReference
-   * configure headers = read('classpath:websCommonHeaders.js') 
-   
      Given url updatePasswordNoLogin 
      * print updatePasswordNoLogin
      And request updateUserPasswordNoLogin
@@ -34,7 +33,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @removeOtpReference
   Scenario: Update password with invalid OTP
    * remove updateUserPasswordNoLogin.otpReference
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePasswordNoLogin
       * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -47,7 +45,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @removeNewPassword
   Scenario: Update password with invalid OTP
    * remove updateUserPasswordNoLogin.newPassword
-   * configure headers = read('classpath:websCommonHeaders.js')
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -59,8 +56,7 @@ Feature: eGovUser-passwordNoLoginUpdate
 
   @removeUserName
   Scenario: Update password with invalid OTP
-   * remove updateUserPasswordNoLogin.userName
-   * configure headers = read('classpath:websCommonHeaders.js') 
+   * remove updateUserPasswordNoLogin.userName 
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -73,7 +69,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @removeTenantId
   Scenario: Update password with invalid OTP
    * remove updateUserPasswordNoLogin.tenantId
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -86,7 +81,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @removeUserType
   Scenario: Update password with invalid OTP
    * remove updateUserPasswordNoLogin.type
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -99,7 +93,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @inValidUserNameOnUpdatePassword
   Scenario: Update password with invalid OTP
    * set updateUserPasswordNoLogin.userName = updatePasswordData.userUpdateNoLoginInvalidData.userName
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
@@ -112,7 +105,6 @@ Feature: eGovUser-passwordNoLoginUpdate
   @inValidTenantIdOnUpdatePassword
   Scenario: Update password with invalid OTP
    * set updateUserPasswordNoLogin.tenantId = updatePasswordData.userUpdateNoLoginInvalidData.tenantId
-   * configure headers = read('classpath:websCommonHeaders.js') 
     Given url updatePasswordNoLogin
      * print updatePasswordNoLogin
     And request updateUserPasswordNoLogin
