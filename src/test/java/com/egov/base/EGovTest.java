@@ -20,7 +20,7 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = {"classpath:com/egov/core-services","classpath:com/egov/business-services"}, tags = {"@Reports,@SearchMdms,@Searcher,@location,@localization,@userotp,@User,@accessControl,@hrms"})
+@KarateOptions(features = {"classpath:com/egov/core-services","classpath:com/egov/business-services"}, tags = {"@Reports,@SearchMdms,@Searcher,@location,@localization,@userotp,@User,@accessControl,@hrms,@collectionServices"})
 public class EGovTest {
 
 	@BeforeClass
@@ -30,18 +30,6 @@ public class EGovTest {
 
 	@Test
 	public void testParallel() {
-		//  System.setProperty("karate.env", "uat");
-		//  System.setProperty("locale", "pb");
-		//  System.setProperty("tenantId", "amritsar");
-
-		// System.setProperty("karate.env", "dev");
-		// System.setProperty("locale", "uk");
-		// System.setProperty("tenantId", "dehradun");
-
-        //    System.setProperty("karate.env", "qa");
-        //    System.setProperty("locale", "pb");
-        //    System.setProperty("tenantId", "pb");
-           
 		String karateOutputPath = "target/surefire-reports";
 		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
 		generateReport(karateOutputPath);
