@@ -123,6 +123,9 @@ function() {
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
 
+        //pdf service
+        config.createPdf = envProps.host + path.endPoints.pdfService.create
+
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

@@ -8,8 +8,8 @@ Background:
   * call read('../pretests/authenticationToken.feature')
   * def newUser = read('../requestPayload/userCreation/createUser.json')
   * print newUser
-  * def test = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * print test
+  * def envValue = read('file:envYaml/' + env + '/' + env +'.yaml')
+  * print envValue
   
 @usercreation
 Scenario: Creating new user 
@@ -35,12 +35,12 @@ Scenario: Creating new user
      * def doStorage =
      """
      function(args) {
-     var DataStorage = Java.type('com.egov.base.testReadFile');
+     var DataStorage = Java.type('com.egov.base.ReadWriteCitizenUserName');
      var dS = new DataStorage();
      return dS.updateFile(args);
      }
      """
-     * def old = test.userName.toString()
+     * def old = envValue.userName.toString()
      * print old
      * def result = call doStorage {'old': #(old), 'new': #(createdUser), 'env': #(env) }
      * print result

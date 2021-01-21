@@ -11,6 +11,7 @@ Background:
   * def findUser = read('../requestPayload/userCreation/searchUser.json')
   * print findUser
   * def userConstant = read('../constants/user.yaml')
+  * def commonConstants = read('../constants/commonConstants.yaml')
 
 @finduser
 Scenario: Search user
@@ -57,7 +58,7 @@ Scenario: Search user
 Scenario: Search user
      * configure headers = read('classpath:websCommonHeaders.js')
      * def payLoad = findUser.validPayload  
-     * set findUser.validPayload.tenantId = userConstant.parameters.invalidTenantId
+     * set findUser.validPayload.tenantId = commonConstants.invalidParameters.invalidTenantId
      Given url searchUser 
      * print searchUser  
      And request payLoad
@@ -80,7 +81,6 @@ Scenario: Search user
      Then status 400
      And def searchUserResponseHeader = responseHeaders
      And def searchUserResponseBody = response
-
 
 @finduserwithouttenantid
 Scenario: Search user

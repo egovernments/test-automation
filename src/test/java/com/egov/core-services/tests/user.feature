@@ -10,6 +10,7 @@ Scenario: Test to Search for user by passing valid UserName in the request
   * print searchUserResponseBody
   * def user = searchUserResponseBody.user.length
   * print user
+  * match user == '#present'
 
 @User_Search_InValidUsername_02  @negative  @user
 Scenario: Test to Search for user by passing InValid UserName in the request 
@@ -17,6 +18,7 @@ Scenario: Test to Search for user by passing InValid UserName in the request
   * print searchUserResponseBody
   * def user = searchUserResponseBody.user.length
   * print user
+  * match user == '#present'
 
 @User_Search_InValidTenantId_03  @negative  @user
 Scenario: Search for user by giving InValid tenantId
@@ -24,6 +26,7 @@ Scenario: Search for user by giving InValid tenantId
   * print searchUserResponseBody
   * def user = searchUserResponseBody.user.length
   * print user
+  * match user == '#present'
 
 @User_Search_NoUserName_04  @negative  @user
 Scenario: Search for user without username parameter/Search for user without username parameter
@@ -37,11 +40,6 @@ Scenario: Search for user without tenantId parameter
   * print searchUserResponseBody
   * assert searchUserResponseBody.Errors[0].code == userConstant.errormessages.withoutTenanntId
 
-@User_Search_InvalidAuthToken_06  @500
-Scenario: Search for user by giving Invalid AuthToken
-  * call read('../pretests/userPretest.feature@finduser')
-  * print searchUserResponseBody
-
 @User_SearchMultipleTenantUsers_08  @positive  @user
 Scenario: Search by passing 2 tenantids. Make sure both are valid or Multiple Users
   * call read('../pretests/userPretest.feature@finduserwithmultipletenantid')
@@ -54,9 +52,6 @@ Scenario: Pass null value for tenantid and check for errors
   * call read('../pretests/userPretest.feature@finduseremptytenantid')
   * print searchUserResponseBody
   * assert searchUserResponseBody.Errors[0].code == userConstant.errormessages.withEmptyStringTenantId
- 
-#@Create_Citizen_ValidOTP_01
-#Scenario: Create Citizen with OTP & valid data
 
 @Create_Citizen_InValidOTP_02  @negative  @user
 Scenario: Create Citizen with Invalid OTP & valid data

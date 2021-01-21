@@ -3,7 +3,7 @@ package com.egov.base;
 import java.io.*;
 import java.util.*;
 
-public class testReadFile
+public class ReadWriteCitizenUserName
 {
     public String updateFile(Map<String, String> userNames) throws IOException {
         String oldUserName = userNames.get("old");

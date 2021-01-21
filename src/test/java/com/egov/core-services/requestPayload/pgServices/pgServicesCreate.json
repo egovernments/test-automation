@@ -25,9 +25,9 @@
         ],
         "user": {
             "name": "Super User",
-            "mobileNumber": "9742379422",
-            "tenantId": "pb.amritsar"
+            "mobileNumber": "#(mobileNumber)",
+            "tenantId": "#(tenantId)"
         },
-        "callbackUrl": "https://egov-micro-qa.egovernments.org/citizen/egov-common/paymentRedirectPage"
+        "callbackUrl": "#(callbackUrl)"
     }
 }

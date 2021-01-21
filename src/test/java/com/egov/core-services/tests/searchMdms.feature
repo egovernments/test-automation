@@ -7,6 +7,7 @@ Background:
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
   * def searchMdmsConstant = read('../constants/searchMdms.yaml')
+  * def commonConstants = read('../constants/commonConstants.yaml')
   * def moduleName = searchMdmsConstant.parameters.moduleName
   * def name = searchMdmsConstant.parameters.name
 
@@ -16,15 +17,9 @@ Scenario: Test to search data for a particular module and tenant
       * print searchMdmsResponseBody
       * match searchMdmsResponseBody == '#present'
 
-@SearchMDMS_InvalidAuth_03  @bug  
-Scenario: Test by passing a invalid/non existent auth token
-      * def authToken = searchMdmsConstant.parameters.invalidAuth
-      * call read('../pretests/mdmsService.feature@searchmdms')
-      * print searchMdmsResponseBody
-
 @SearchMDMS_InvalidTenant_04  @negative  @searchmdms
 Scenario: Test by passing invalid/non existent or null value for tenant id
-     * def tenantId = searchMdmsConstant.parameters.tenantId
+     * def tenantId = commonConstants.invalidParameters.invalidTenantId
      * call read('../pretests/mdmsService.feature@searchmdmsinvalidtenant')
      * print searchMdmsResponseBody
      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid
@@ -36,6 +31,7 @@ Scenario: Test by passing invalid/non existent or null value for Module Name
       * print searchMdmsResponseBody 
       * def mdmsResponse = searchMdmsResponseBody.MdmsRes
       * print mdmsResponse
+      * match mdmsResponse == '#present'
 
 @SearchMDMS_Non-name_06  @negative    @searchmdms
 Scenario: Test by passing invalid/non existent or null value for Name in Masterdetails
@@ -44,6 +40,7 @@ Scenario: Test by passing invalid/non existent or null value for Name in Masterd
      * print searchMdmsResponseBody
      * def mdmsResponseSecond = searchMdmsResponseBody.MdmsRes["common-masters"]
      * print mdmsResponseSecond
+     * match mdmsResponseSecond == '#present'
 
 @SearchMDMS_MandatoryCheck_07  @negative  @searchmdms
 Scenario: Test by removing tenantid and module name parameter in the request
@@ -59,7 +56,7 @@ Scenario: Test by removing MasterDetails parameter in the request
      * def name = searchMdmsConstant.parameters.noName
      * call read('../pretests/mdmsService.feature@searchmdms')
      * print searchMdmsResponseBody
-  #   * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.withoutMasterDetails 
+     * match searchMdmsResponseBody == '#present'
      
 
 

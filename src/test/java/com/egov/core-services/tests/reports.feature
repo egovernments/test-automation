@@ -6,7 +6,7 @@ Background:
   * def authPassword = counterEmployeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
-  * def reportConstantant = read('../constants/reports.yaml')
+  * def reportConstant = read('../constants/reports.yaml')
   * def pageSize = reportConstant.parameters.pageSize
   * def offset = reportConstant.parameters.offset
   * def apiId = reportConstant.parameters.apiId
@@ -17,6 +17,7 @@ Background:
   * def key = reportConstant.parameters.key
   * def msgId = reportConstant.parameters.msgId
   * def requesterId = reportConstant.parameters.requesterId
+  * def commonConstants = read('../constants/commonConstants.yaml')
 
 @MetadataGet_01  @positive  @reports
 Scenario: Test to fetch the details of a report for a particular module
@@ -35,7 +36,7 @@ Scenario: Test by passing invalid/non existent or null value for reportname id
 @MetadataGet_InvalidTenant_03  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
       * def reportName = reportConstant.parameters.reportName
-      * def tenantId = reportConstant.parameters.invalidTenantId
+      * def tenantId = commonConstants.invalidParameters.invalidTenantId
       * call read('../pretests/metadataGetReport.feature@reportforbidden')
       * print reportsResponseBody
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
@@ -43,9 +44,10 @@ Scenario: Test by passing invalid/non existent or null value for tenant id
 @MetadataGet_InvalidAuth_04  @500
 Scenario: Test by passing invalid/non existent or null value for auth Token
       * def reportName = reportConstant.parameters.reportName
-      * def authToken = reportConstant.parameters.invalidAuthToken
+      * def authToken = commonConstants.invalidParameters.invalidAuthToken
       * call read('../pretests/metadataGetReport.feature@reportfail')
       * print reportsResponseBody
+      * match reportsResponseBody == '#present'
 
 
 @Report_Get_01  @positive  @reports
@@ -58,7 +60,7 @@ Scenario: Test to search for report data with different combinations of search i
 
 @Report_InvalidTenant_02  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
-      * def tenantId = reportConstant.parameters.invalidTenantId
+      * def tenantId = commonConstants.invalidParameters.invalidTenantId
       * def secondReportName = reportConstant.parameters.secondReportName
       * def searchParams = reportConstant.parameters.searchparams
       * call read('../pretests/getReport.feature@getreportforbidden')

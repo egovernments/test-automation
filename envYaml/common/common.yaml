@@ -40,7 +40,10 @@ endPoints:
   create: pg-service/transaction/v1/_create?
   update: pg-service/transaction/v1/_update?
   search: pg-service/transaction/v1/_search?
+  payload: citizen/egov-common/paymentRedirectPage
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
  billingService:
   fetchBill: billing-service/bill/v2/_fetchbill?
+ pdfService:
+  create: pdf-service/v1/_create?

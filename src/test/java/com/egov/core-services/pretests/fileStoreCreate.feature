@@ -1,10 +1,12 @@
 Feature: FileStore create API call 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
+  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def fileStoreConst = read('../constants/fileStore.yaml')
 
 @uploadsuccess
 Scenario: Upload a document
-   * def filestoreparam = 
+   * def filestoreParam = 
     """
     {
        tenantId: '#(tenantId)',
@@ -13,7 +15,7 @@ Scenario: Upload a document
     """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And params filestoreparam
+   And params filestoreParam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201
@@ -28,7 +30,7 @@ Scenario: Upload a document
    And multipart file file = { read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf' }
    And multipart file file = { read: '../testData/dummyTestData2.pdf', filename: 'dummyTestData2.pdf', contentType: 'application/pdf' }
    And multipart field tenantId = tenantId
-   And multipart field module = 'fire-noc'
+   And multipart field module = fileStoreConst.parameters.module
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201
@@ -38,7 +40,7 @@ Scenario: Upload a document
 
 @uploadnotenantidfail
 Scenario: Upload a document 
-   * def filestoreparam = 
+   * def filestoreParam = 
     """
     {
        module: '#(module)'
@@ -46,7 +48,7 @@ Scenario: Upload a document
     """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And params filestoreparam
+   And params filestoreParam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 400
@@ -55,7 +57,7 @@ Scenario: Upload a document
 
 @uploadinvlddocfail
 Scenario: Upload a document 
-   * def filestoreparam = 
+   * def filestoreParam = 
    
    """
     {
@@ -65,7 +67,7 @@ Scenario: Upload a document
     """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData.rtf', filename: 'dummyTestData.rtf', contentType: 'application/pdf'}
-   And params filestoreparam
+   And params filestoreParam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 400
@@ -73,7 +75,8 @@ Scenario: Upload a document
    And def filecreateResponseBody = response
    
 @uploadinvldtenantidfail
-Scenario: Upload a document 
+Scenario: Upload a document
+   * def filestoreParam = 
     """
     {
        tenantId: '#(tenantId)',
@@ -82,7 +85,7 @@ Scenario: Upload a document
     """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And params filestoreparam
+   And params filestoreParam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 400
@@ -95,7 +98,7 @@ Scenario: Upload a document
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData1.pdf', filename: 'dummyTestData1.pdf', contentType: 'application/pdf'}
    And multipart field tenantId = tenantId
-   And multipart field module = 'fire-noc'
+   And multipart field module = fileStoreConst.parameters.module
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 413
@@ -104,7 +107,7 @@ Scenario: Upload a document
    * print filecreateResponseBody
    
 
-@invldtenantid
+@invalidtenantid
 Scenario: Upload a document
    #* def field = 
    # """
@@ -113,8 +116,8 @@ Scenario: Upload a document
    # """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And multipart field tenantId = '123'
-   And multipart field module = 'fire-noc'
+   And multipart field tenantId = commonConstants.invalidParameters.invalidTenantId
+   And multipart field module = fileStoreConst.parameters.module
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
    Then status 201

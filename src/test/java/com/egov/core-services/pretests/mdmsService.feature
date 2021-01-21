@@ -2,14 +2,13 @@ Feature: Searchmdms
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def searchMdmsPayload = read('../requestPayload/mdmsService/searchMdms.json')
   * def searchMdmsConstant = read('../constants/searchMdms.yaml')
   
 @searchmdms
 Scenario: Test to search data for a particular module and tenant
 * configure headers = read('classpath:websCommonHeaders.js')
-* def mdmsparam = 
+* def mdmsParam = 
     """
     {
      tenantId: '#(tenantId)'
@@ -18,8 +17,8 @@ Scenario: Test to search data for a particular module and tenant
 
      Given url searchMdmsUrl
      * print searchMdmsUrl
-     And params mdmsparam
-     * print mdmsparam
+     And params mdmsParam
+     * print mdmsParam
      And request searchMdmsPayload
      * print searchMdmsPayload
      When method post
@@ -31,7 +30,7 @@ Scenario: Test to search data for a particular module and tenant
 @searchmdmsinvalidtenant
 Scenario: Test to search data for a particular module and tenant
 * configure headers = read('classpath:websCommonHeaders.js')
-* def mdmsparam = 
+* def mdmsParam = 
     """
     {
      tenantId: '#(tenantId)'
@@ -40,8 +39,8 @@ Scenario: Test to search data for a particular module and tenant
 
      Given url searchMdmsUrl
      * print searchMdmsUrl
-     And params mdmsparam
-     * print mdmsparam
+     And params mdmsParam
+     * print mdmsParam
      And request searchMdmsPayload
      * print searchMdmsPayload
      When method post

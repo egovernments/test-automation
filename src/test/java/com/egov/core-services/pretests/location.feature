@@ -8,7 +8,7 @@ Background:
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locationparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -17,7 +17,7 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locationparam
+     And params locationParam
      And request location
      When method post
      Then status 200
@@ -29,14 +29,14 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locationparam = 
+      * def locationParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
      Given url searchloc
-     And params locationparam
+     And params locationParam
      And request location
      When method post
      Then status 200
@@ -48,7 +48,7 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locationparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -56,7 +56,7 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locationparam
+     And params locationParam
      And request location
      When method post
      Then status 400
@@ -68,7 +68,7 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locationparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -77,7 +77,7 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locationparam
+     And params locationParam
      And request location
      When method post
      Then status 400

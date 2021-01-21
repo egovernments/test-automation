@@ -2,7 +2,6 @@ Feature: Search user
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def authUsername = counterEmployeeUserName
   * def authPassword = counterEmployeePassword
   * def authUserType = 'EMPLOYEE'

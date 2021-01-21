@@ -9,6 +9,7 @@ Background:
   * def processSearchConstant = read('../constants/eGovWorkFlowProcessSearch.yaml')
   * def history = processSearchConstant.parameters.history
   * def businessIds = processSearchConstant.parameters.businessId
+  * def commonConstants = read('../constants/commonConstants.yaml')
 
 @Search_01  @positive @egovworkflowprocess
 Scenario: Perform search using business id, tenant and history 
@@ -32,7 +33,7 @@ Scenario: Perform search by not passing any input params
 
 @Search_Invaid_tenant_05  @negative  @egovworkflowprocess
 Scenario: Perform search by passing invalid/non existent or null value for tenant id and check for errors
-  * def tenantId = processSearchConstant.parameters.invalidTenantId
+  * def tenantId = commonConstants.invalidParameters.invalidTenantId
   * call read('../pretests/eGovWorkFlowProcessSearch.feature@processsearchinvalidtenantid')
   * print processSearchResponseBody
 
@@ -50,7 +51,7 @@ Scenario: Perform search by passing multple values for tenantId
 
 @Search_inavlidAccess_08  @500
 Scenario: Perform search by passing invalid/non existent or null value for auth Token and check for error
-  * def authToken = processSearchConstant.parameters.invalidAuthToken
+  * def authToken = commonConstants.invalidParameters.invalidAuthToken
   * call read('../pretests/eGovWorkFlowProcessSearch.feature@processsearchfail')
   * print processSearchResponseBody
 

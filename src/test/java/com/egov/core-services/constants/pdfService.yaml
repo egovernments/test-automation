@@ -1,0 +1,8 @@
+parameters:
+   create:
+       valid:
+         key: tradelicense-receipt
+         
+       invalid:
+         key: 123
+        
