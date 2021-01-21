@@ -1,18 +1,18 @@
 Feature: Core service - HRMS
 
 Background:
-
     * def jsUtils = read('classpath:jsUtils.js')
     * def javaUtils = Java.type('com.egov.base.EGovTest')
-    * def hrmsConstants = read('../constants/hrms.yaml')
+    * def hrmsConstants = read('../constants/egov-hrms.yaml')
+    * def commonConstants = read('../constants/commonConstants.yaml')
     * def today = getTodayUtcDate()
     * def tomorrow = getTomorrowUtcDate()
     # Calling access token
-    * def authUsername = counterEmployeeUserName
-    * def authPassword = counterEmployeePassword
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
     * def tenantId = tenantId
     * def name = hrmsConstants.parameters.name + ranInteger(6)
-    * def mobileNumber = randomMobileNumGen(10) + ''
+    * def mobileNumber = '7' + randomMobileNumGen(9)
     * def employeeStatus = hrmsConstants.parameters.employeeStatus
     * def dob = hrmsConstants.parameters.dob + ''
     * def gender = hrmsConstants.parameters.gender
@@ -32,365 +32,287 @@ Background:
 
 @HRMS_create_emp01 @positive @hrms_create @hrms
 Scenario: Test to create a employee
-
-    * call read('../pretests/hrmsPretest.feature@success_Create')
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
     * print hrmsResponseBody
     * def code = hrmsResponseBody.Employees[0].user.userName
     * print code
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
     #Search
-    * call read('../pretests/hrmsPretest.feature@success_Search')
+    * call read('../pretests/egovHrmsPretest.feature@success_Search')
     * print hrmsResponseBody.Employees[0].user.userName
-
 
 @HRMS_create_InvalidEMpStatus_02 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null status
-
-    * def employeeStatus = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def employeeStatus = hrmsConstants.invalidParameters.employeeStatus
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Invalid employment status entered.'
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidEmployeeStatus
 
-@HRMS_create_InvalidUserName_03 @negative @hrms_create @hrms
+@HRMS_create_InvalidUserName_03 @negative @hrms_create @hrms_bug
 Scenario: Test to create a employee with an invalid/nonexistent/null User Name
-
-    * def name = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def name = hrmsConstants.invalidParameters.employeeName
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'User creation failed at the user service.'
-    
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userCreationFailed 
 
 @HRMS_create_InvalidDOB_04 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null DOB
-
-    * def dob = 'a123a'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def dob = hrmsConstants.invalidParameters.dob
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Failed to deserialize certain JSON fields'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.failedToDeserializeJson
 
 @HRMS_create_InvalidGender_05 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null gender
-
-    * def gender = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def gender = hrmsConstants.invalidParameters.gender
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'User creation failed at the user service.'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userCreationFailed
 
 @HRMS_create_NoFatherName_06 @negative @hrms_create @hrms
 Scenario: Test to create a employee with no "fatherOrHusbandName"
-
     * def fatherOrHusbandName = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_ExistingMobile_07 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an existing mobile number
-
-    * def mobileNumber = '7171717178'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def mobileNumber = hrmsConstants.invalidParameters.existingMobileNumber
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'User already exists for the entered mobile number. Use a different mobile number to proceed.'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userAlreadyExists
 
 @HRMS_create_NoMobile_08 @negative @hrms_create @hrms
 Scenario: Test to create a employee with no "Mobile Number" parameter
-
     * def mobileNumber = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_InvalidMobileNumber_09 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null mobile number
-
-    * def mobileNumber = '12345'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def mobileNumber = hrmsConstants.invalidParameters.mobileNumber
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Invalid mobile number entered.'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidMobileNumber
 
 @HRMS_create_NoEMpStatus_10 @negative @hrms_create @hrms
 Scenario: Test to create a employee with no "employee status" parameter
-
     * def employeeStatus = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_NoUser_11 @negative @hrms_create @hrms
 Scenario: Test to create a employee with no "user" parameter
-
     * def name = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_Notenantid_12 @negative @hrms_create @hrms
 Scenario: Test to create a employee with no "tenantid" parameter
-
     * def tenantId = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_InvalidTenantId_13 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null Tenant Id
-
-    * def tenantId = '123'
-
-    * call read('../pretests/hrmsPretest.feature@errorAuth_Create')
+    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * call read('../pretests/egovHrmsPretest.feature@errorAuth_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Not authorized to access this resource'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
 @HRMS_create_InvalidFromDate_14 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an null assignment from date
-
     * def fromDate = null
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'must not be null'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
 @HRMS_create_DateValidation_15 @negative @hrms_create @hrms
 Scenario: Test when current assignment is true and end date exists for assignments
-
-    * def toDate = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def toDate = hrmsConstants.invalidParameters.toDate
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Invalid period of assignment (From date - To date).'
-    * assert hrmsResponseBody.Errors[1].message == 'To Date field should be blank for current assignment of the employee.'
-    * assert hrmsResponseBody.Errors[2].message == 'Employee period of assignment (From Date or To date) can not be before date of birth.'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidAssignmentPeriod
+    * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.toDateShouldBeBlank
+    * assert hrmsResponseBody.Errors[2].message == hrmsConstants.expectedMessages.assigmentPeriodCannotBeBeforeDob
 
 @HRMS_create_InvalidEMpStatus_16 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null employee type
-
-    * def employeeType = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
+    * def employeeType = hrmsConstants.invalidParameters.employeeType
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == 'Invalid employee type entered.'
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidEmployeeType
 
 @HRMS_create_InvalidJudistrictions_17 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null judistrictions
-
-    * def hierarchy = '123'
-    * def boundaryType = '123'
-    * def boundary = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
-    * assert hrmsResponseBody.Errors[0].message == 'Jurisiction hierarchy value is invalid.'
-    * assert hrmsResponseBody.Errors[1].message == 'Jurisiction boundary type value is invalid.'
-    * assert hrmsResponseBody.Errors[2].message == 'Jurisiction boundary value is invalid.'
-
+    * def hierarchy = hrmsConstants.invalidParameters.hierarchy
+    * def boundaryType = hrmsConstants.invalidParameters.boundryType
+    * def boundary = hrmsConstants.invalidParameters.boundary
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidJurisdictionHierarchyValue
+    * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundaryType
+    * assert hrmsResponseBody.Errors[2].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundary
 
 @HRMS_create_HierarchySize_18 @negative @hrms_create @hrms
 Scenario: Test to create a employee by entering hierarchy invalid value
-
-    * def hierarchy = '1'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
-    * assert hrmsResponseBody.Errors[0].message == 'size must be between 2 and 100'
-
+    * def hierarchy = hrmsConstants.invalidParameters.hierarchy
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
+    * print hrmsResponseBody
+    # * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidSizeRange
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidJurisdictionHierarchyValue
+    * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundaryType
+    * assert hrmsResponseBody.Errors[2].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundary
 
 @HRMS_InvalidCheck_19 @negative @hrms_create @hrms
 Scenario: Test to create a employee with invalid department & designation
-
-    * def department = '123'
-    * def designation = '123'
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
-    * assert hrmsResponseBody.Errors[0].message == 'Invalid department of employee entered.'
-    * assert hrmsResponseBody.Errors[1].message == 'Invalid designation of employee.'
-
+    * def department = hrmsConstants.invalidParameters.department
+    * def designation = hrmsConstants.invalidParameters.designation
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidDepartment
+    * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.invalidDesignation
 
 @HRMS_create_DateValidation1_20 @negative @hrms_create @hrms
 Scenario: Test to create a employee when current date is false
-
     * def isCurrentAssignment = false
-
-    * call read('../pretests/hrmsPretest.feature@error_Create')
-    * assert hrmsResponseBody.Errors[0].message == 'To date field should not be blank for non current assignment of the employee.'
-    * assert hrmsResponseBody.Errors[1].message == 'There should be exactly one current assignment for the employee.'
-
+    * call read('../pretests/egovHrmsPretest.feature@error_Create')
+    * print hrmsResponseBody
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.toDateShouldBeBlankForNonCurrentAssignment
+    * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.onlyOneCurrentAssigment
     
 @HRMS_Search_Emp_01 @positive @hrms_search @hrms
 Scenario: Test to search a employee
-
-    * def code = 'EMP-107-000298'
-    * call read('../pretests/hrmsPretest.feature@success_Search')
+    * def code = hrmsConstants.parameters.employeeCode1
+    * call read('../pretests/egovHrmsPretest.feature@success_Search')
     * print hrmsResponseBody
-
 
 @HRMS_Search_AllEmp_02 @positive @hrms_search @hrms
 Scenario: Test to search all employee
-
-    * call read('../pretests/hrmsPretest.feature@success_Search')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
-
-
-@HRMS_Search_Invaid_URL_03 @negative @hrms_search @hrms
-Scenario: Test to search with invalid url
-
-    * def hrmsSearchUrl = hrmsConstants.expectedMessages.invalidURL
-
-    * call read('../pretests/hrmsPretest.feature@errorAuth_Search')
-    * assert hrmsResponseBody.Errors[0].message == 'Not authorized to access this resource'
-
+    * call read('../pretests/egovHrmsPretest.feature@success_Search')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
 
 @HRMS_Search_Name_05 @negative @hrms_search @hrms
 Scenario: Test to search a name by not passing any tenant id
-
-    * def name = 'shaik'
-    * call read('../pretests/hrmsPretest.feature@error_Search')
-    * print hrmsResponseBody.Errors[0].message == 'For search based on phone number and name, passing of tenant id is mandatory.'
-
+    * def name = hrmsConstants.invalidParameters.employeeName
+    * call read('../pretests/egovHrmsPretest.feature@error_Search')
+    * print hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.tenantIdMandatory
 
 @HRMS_Search_InvalidTenantId_06 @negative @hrms_search @hrms
-Scenario: Test to search a employee with an invalid/nonexistent/null Tenant Id
-
-    * def tenantId = 'invalid'
-
-    * call read('../pretests/hrmsPretest.feature@errorAuth_Search')
-    * assert hrmsResponseBody.Errors[0].message == 'Not authorized to access this resource'
-
+Scenario: Test to search a employee with an invalid/nonexistent/null Tenant Id]
+    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * call read('../pretests/egovHrmsPretest.feature@errorAuth_Search')
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
 @HRMS_Search_Multiple_07 @positive @hrms_search @hrms
 Scenario: Test by passing multiple values in the query parameter
-
-    * def code = 'EMP-107-000298,EMP111'
-
-    * call read('../pretests/hrmsPretest.feature@success_MultiSearch')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
-    * assert hrmsResponseBody.Employees[0].code == 'EMP-107-000298'
-    * assert hrmsResponseBody.Employees[1].code == 'EMP111'
-
+    * def code = hrmsConstants.parameters.employeeCodeParam
+    * call read('../pretests/egovHrmsPretest.feature@success_MultiSearch')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
+    * assert hrmsResponseBody.Employees[0].code == hrmsConstants.parameters.employeeCode1
+    * assert hrmsResponseBody.Employees[1].code == hrmsConstants.parameters.employeeCode2
 
 @HRMS_Update_01 @positive @positive @hrms_update @hrms
 Scenario: Test to Update an employee
-
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
-    * eval hrmsResponseBody.Employees[0].user.fatherOrHusbandName = 'Father'
-    * def updatedResponse = call read('../pretests/hrmsPretest.feature@success_Update') hrmsResponseBody
-    * assert updatedResponse.ResponseInfo.status == 'successful'
+    * eval hrmsResponseBody.Employees[0].user.fatherOrHusbandName = hrmsConstants.parameters.fatherOrHusbandNameUpdate
+    * def updatedResponse = call read('../pretests/egovHrmsPretest.feature@success_Update') hrmsResponseBody
+    * assert updatedResponse.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert updatedResponse.Employees[0].user.name == name
     * assert updatedResponse.Employees[0].user.mobileNumber == mobileNumber
     * assert updatedResponse.Employees[0].code == code
-    * assert updatedResponse.Employees[0].user.fatherOrHusbandName == 'Father'
-
+    * assert updatedResponse.Employees[0].user.fatherOrHusbandName == hrmsConstants.parameters.fatherOrHusbandNameUpdate
 
 @HRMS_update_InvalidValidations_02 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid validation
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
-    * eval hrmsResponseBody.Employees[0].assignments[0].designation = 'ABC'
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * eval hrmsResponseBody.Employees[0].assignments[0].designation = hrmsConstants.invalidParameters.designation
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_DESG
-
 
 @HRMS_update_DateValDOB_03 @negative @hrms_update @hrms
 Scenario: Test to cupdate an employee invalid date of birth validation
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * eval hrmsResponseBody.Employees[0].user.dob = tomorrow
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * print hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_DOB
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_ASSIGNMENT_DATES
 
 @HRMS_update_DateValCurAssign_04 @negative @hrms_update @hrms
 Scenario: Test to update an employee with is currently assigned as false and to date as null 
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * eval hrmsResponseBody.Employees[0].assignments[0].isCurrentAssignment = false
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * print hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_ASSIGNMENT_NOT_CURRENT_TO_DATE
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_CURRENT_ASSGN
 
 @HRMS_update_InvalidTenant_05 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid tenant
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * eval hrmsResponseBody.Employees[0].tenantId = 'abc'
-    * call read('../pretests/hrmsPretest.feature@error_UnAuth_Update') hrmsResponseBody
+    * call read('../pretests/egovHrmsPretest.feature@error_UnAuth_Update') hrmsResponseBody
     * print hrmsResponseBody
-    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.CustomException
-
+    * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
 @HRMS_update_DateValCurSer_06 @negative @hrms_update @hrms
 Scenario: Test to update an employee with is currently assigned as true and a valid to date
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
     * eval hrmsResponseBody.Employees[0].assignments[0].toDate = today
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * print hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_ASSIGNMENT_CURRENT_TO_DATE
 
-
 @HRMS_update_AdhaarVal_07 @negative @hrms_update @hrms
 Scenario: Test to update an employee with invalid aadhar number
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
-    * eval hrmsResponseBody.Employees[0].user.aadhaarNumber = 'abc'
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * eval hrmsResponseBody.Employees[0].user.aadhaarNumber = hrmsConstants.invalidParameters.aadhaarNumber
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.INVALID_AADHAR
 
-@HRMS_update_Deactivate_08 @negative @hrms_update @hrms
+@HRMS_update_Deactivate_08 @negative @hrms_update @hrms_bug
 Scenario: Test to update an employee deactivating the employee
-    * call read('../pretests/hrmsPretest.feature@success_Create')
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Create')
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
     * def name = hrmsResponseBody.Employees[0].user.name
     * def code = hrmsResponseBody.Employees[0].code
-    * call read('../pretests/hrmsPretest.feature@success_Update_Deactivate') hrmsResponseBody
-    * assert hrmsResponseBody.ResponseInfo.status == 'successful'
+    * call read('../pretests/egovHrmsPretest.feature@success_Update_Deactivate') hrmsResponseBody
+    * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * print hrmsResponseBody
-    * call read('../pretests/hrmsPretest.feature@error_Update') hrmsResponseBody
+    * call read('../pretests/egovHrmsPretest.feature@error_Update') hrmsResponseBody
     * print hrmsResponseBody

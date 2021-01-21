@@ -1,204 +1,161 @@
 Feature: Business Services - Collection service tests
 
- Background:
-     * def jsUtils = read('classpath:jsUtils.js')
-     * configure headers = read('classpath:websCommonHeaders.js')
-     * def collectionServiceData = read('../constants/collection-services.yaml')
-     * def collectionServicePropertyData = read('../constants/propertyTaxAssessment.yaml')
-     * def commonConstants = read('../constants/commonConstants.yaml')
-     * def tenantId = tenantId
-     * def businessService = collectionServiceData.parameters.businessService
-     * def propertyId = collectionServicePropertyData.parameters.propertyId
-     * def paymentMode = collectionServiceData.parameters.paymentMode
-     * def paidBy = collectionServiceData.parameters.paidBy
-     * def mobileNumber = collectionServiceData.parameters.mobileNumber
-     * def payerName = collectionServiceData.parameters.payerName
-     * def transactionNumber = collectionServiceData.parameters.transactionNumber
-     * def instrumentNumber = collectionServiceData.parameters.instrumentNumber
-     * def createPaymentRequest = read('../requestPayload/collection-services/create.json')
-     * def paidBillIdError = collectionServiceData.errorMessages.paidBillId
-     * def invalidBillIdError = collectionServiceData.errorMessages.invalidBillId
-     * def totalAmountPaidError = collectionServiceData.errorMessages.totalAmountPaidNull
-     * def invalidPaymentModeError = collectionServiceData.errorMessages.invalidPaymentMode
-     * def invalidTenantIdError = commonConstants.errorMessages.invalidTenantIdError
-     * def nullTenantIdError = commonConstants.errorMessages.nullParameterError
-     * def reason = collectionServiceData.parameters.reason
-     * def action = collectionServiceData.parameters.action
-      # Calling access token
-     * def authUsername = employeeUserName
-     * def authPassword = employeePassword
-     * def authUserType = employeeType
-     * call read('../preTests/authenticationToken.feature')
-
-# Create Payment    
-@Create_PaymentWithValidBillID_01 @positive @CreatePayment @collectionService
-    Scenario: Make payment with valid Bill id 
-     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
-     * call read('../preTests/billingServicePretest.feature@fetchBill')
-     * call read('../preTests/collectionServicesPretest.feature@successPayment')
-     * match response.ResponseInfo.status == '200 OK'
-     * def paymentId = collectionServicesResponseBody.Payments[0].id
-     # Calling steps to Cancel the Payment along with Payment Id
-     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
-
-@Create_PaymentWithPaidBillID_02 @negative @CreatePayment @collectionService
-    Scenario: Make payment with paid Bill id 
-     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
-     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with valid Bill id first
-     * call read('../preTests/collectionServicesPretest.feature@successPayment')
-     * def paymentId = collectionServicesResponseBody.Payments[0].id
-    # Set the `billId` value with paid bill id
-     * set createPaymentRequest.Payment.paymentDetails[0].billId = billId
-     * def amount = fetchBillResponse.Bill[0].totalAmount
-     * set createPaymentRequest.Payment.paymentDetails[0].totalDue = amount
-     * set createPaymentRequest.Payment.paymentDetails[0].totalAmountPaid = amount
-     * set createPaymentRequest.Payment.totalDue = amount
-     * set createPaymentRequest.Payment.totalAmountPaid = amount
-     # Calling steps to Cancel the Payment along with Payment Id
-     * call read('../preTests/collectionServicesPretest.feature@successPayment')
-     * match collectionServicesResponseBody.Errors[0].message == paidBillIdError
-     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
-
-@Create_PaymentWithInvalidBillID_03 @negative @CreatePayment @collectionService
-    Scenario: Make payment with invalid Bill id
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with invalid Bill id 
-    * call read('../preTests/collectionServicesPretest.feature@errorBillId')
-    * match response.Errors[0].message == invalidBillIdError
-    * print collectionServicesResponseBody
+Background:
+    * def jsUtils = read('classpath:jsUtils.js')
+    * configure headers = read('classpath:websCommonHeaders.js')
+    * def collectionServicesConstants = read('../constants/collection-services.yaml')
+    * def commonConstants = read('../constants/commonConstants.yaml')
+    * def tenantId = tenantId
+    * def businessService = collectionServicesConstants.parameters.businessService
+    * def propertyId = collectionServicesConstants.parameters.propertyId
+    * def paymentMode = collectionServicesConstants.parameters.paymentMode
+    * def paidBy = collectionServicesConstants.parameters.paidBy
+    * def mobileNumber = collectionServicesConstants.parameters.mobileNumber
+    * def payerName = collectionServicesConstants.parameters.payerName
+    * def invalidBillId = collectionServicesConstants.parameters.billId
+    * def createPaymentRequest = read('../requestPayload/collection-services/create.json')
+    * def reason = collectionServicesConstants.parameters.reason
+    * def action = collectionServicesConstants.parameters.action
+    * def paidBillIdError = collectionServicesConstants.errorMessages.paidBillId
+    * def invalidBillIdError = collectionServicesConstants.errorMessages.invalidBillId
+    # Calling access token
+    * def authUsername = employeeUserName
+    * def authPassword = employeePassword
+    * def authUserType = employeeType
+    * call read('../preTests/authenticationToken.feature')
     
-@Create_PaymentWithInvalidBusinessService_04 @positive @CreatePayment @collectionService
-    Scenario: Make payment with invalid Business ID
+@validBillId @positive
+Scenario: Make payment with valid Bill id 
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with invalid Bill id 
-    * call read('../preTests/collectionServicesPretest.feature@errorBusinessService')
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * match response.ResponseInfo.status == '200 OK'
     * def paymentId = collectionServicesResponseBody.Payments[0].id
-    # Calling steps to Cancel the Payment along with Payment Id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
 
-@Create_PaymentWithAmountpaid_Null_05 @negative @CreatePayment @collectionService
-    Scenario: Make payment with invalid Business ID
+@paidBillId @negative
+    Scenario: Make payment with paid Bill id 
+    # Make payment with valid Bill id first
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../tests/collection-services.feature@validBillId')
+    # Set the `billId` value with paid bill id
+    * set createPaymentRequest.Payment.paymentDetails[0].billId = billId
+    Given url payment
+    And request createPaymentRequest
+    * print createPaymentRequest
+    When method post
+    Then status 400
+    And match response.Errors[0].message == paidBillIdError
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+
+@invalidBillId @negative
+    Scenario: Make payment with invalid Bill id 
+    # Set the `billId` value with invalid bill id
+    * set createPaymentRequest.Payment.paymentDetails[0].billId = invalidBillId
     # Make payment with invalid Bill id 
-    * call read('../preTests/collectionServicesPretest.feature@totalAmountPaidNull')
-    * match response.Errors[0].message == totalAmountPaidError
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * match response.Errors[0].message == invalidBillIdError
 
-@Create_PaymentWith_PaymentModeCard_06 @positive @CreatePayment @collectionService
-    Scenario: Make payment with Card payment mode
+@workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with valid field values
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with Card type payment mode
-    * call read('../preTests/collectionServicesPretest.feature@cardPaymentMethod')
-    * match response.ResponseInfo.status == '200 OK'
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.expectedStatus.ok
+    * assert collectionServicesResponseBody.Payments[0].id == paymentId
+    * assert collectionServicesResponseBody.Payments[0].tenantId == tenantId
+    * match collectionServicesResponseBody.Payments[0].transactionNumber == "#present"
+    * match collectionServicesResponseBody.Payments[0].paymentMode == "#present"
+    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
+    * match collectionServicesResponseBody.Payments[0].paidBy == "#present"
+    * match collectionServicesResponseBody.Payments[0].mobileNumber == "#present"
+    * match collectionServicesResponseBody.Payments[0].payerName == "#present"
+    * match collectionServicesResponseBody.Payments[0].payerId == "#present"
+    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
 
-@Create_PaymentWith_InvalidPaymentMode_07 @negative @CreatePayment @collectionService
-    Scenario: Make payment with invalid Payment mode
+@workflow_payment_samePaymentID_02 @negative @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with same paymentId
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with invalid Payment Mode
-    * call read('../preTests/collectionServicesPretest.feature@errorPaymentMode')
-    * match response.Errors[0].message == invalidPaymentModeError
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+    * print collectionServicesResponseBody
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
 
-@Create_PaymentWith_InvalidtenantID_08 @negative @CreatePayment @collectionService
-    Scenario: Make payment with invalid Tenant Id
+@workflow_payment_NoPaymentID_03 @negative @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with no paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].paymentId'}
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.mustNotBeNull
+
+@workflow_payment_InValidPaymentID_04 @negative @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with invalid paymentId
+    * def paymentId = collectionServicesConstants.invalidParameters.paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
+
+@workflow_payment_OTHERreason_05 @positive @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with OTHER as reason
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with invalid Teanant Id
-    * call read('../preTests/collectionServicesPretest.feature@errorTenantId')
-    * match response.Errors[0].message == invalidTenantIdError
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * def reason = collectionServicesConstants.parameters.otherReason
+    * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.ResponseInfo.status == commonConstants.expectedStatus.ok
+    * assert collectionServicesResponseBody.Payments[0].id == paymentId
+    * assert collectionServicesResponseBody.Payments[0].tenantId == tenantId
+    * match collectionServicesResponseBody.Payments[0].transactionNumber == "#present"
+    * match collectionServicesResponseBody.Payments[0].paymentMode == "#present"
+    * assert collectionServicesResponseBody.Payments[0].instrumentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
+    * match collectionServicesResponseBody.Payments[0].paidBy == "#present"
+    * match collectionServicesResponseBody.Payments[0].mobileNumber == "#present"
+    * match collectionServicesResponseBody.Payments[0].payerName == "#present"
+    * match collectionServicesResponseBody.Payments[0].payerId == "#present"
+    * match collectionServicesResponseBody.Payments[0].paymentStatus == commonConstants.expectedStatus.instrumentStatusCancelled
 
-@Create_PaymentWith_NotenantID_09 @negative @CreatePayment @collectionService
-    Scenario: Make payment with null Tenant Id
+@workflow_payment_NoReason_06 @negative @collection_services_workflow @collection_services_bug
+Scenario: Test to Cancel a payment in workflow with no reason
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with invalid Teanant Id
-    * call read('../preTests/collectionServicesPretest.feature@nullTenantIdPayment')
-    * match response.Errors[0].message == nullTenantIdError
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].reason'}
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField')
 
-@Create_PaymentWith_negativeAmount_10 @negative @CreatePayment @collectionService
-    Scenario: Make payment with negative total amount paid
+@workflow_payment_InValidReason_07 @negative @collection_services_workflow @collection_services_bug
+Scenario: Test to Cancel a payment in workflow with invalid reason
     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    # Make payment with negative total amount paid value
-    * call read('../preTests/collectionServicesPretest.feature@negativeTotalAmount')
-    * def billId = fetchBillResponse.Bill[0].id
-    * def negativeAmountError = "The amount paid for the paymentDetail with bill number: " + billId
-    * match response.Errors[0].message == negativeAmountError
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def paymentId = collectionServicesResponseBody.Payments[0].id
+    * def reason = collectionServicesConstants.invalidParameters.reason
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField')
 
-# Search Payment
+@workflow_payment_NotenantID_09 @negative @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with no tenantId
+    * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].tenantId'}
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.mustNotBeNull
 
-@Search_PaymentWithReceiptNumber_01 @positive @SearchPayment @collectionService
-    Scenario: Test to search payment with receipt number
-    
-    * def mobileNumber = collectionServiceData.parameters.nullValue
-    * def receiptNumber = collectionServiceData.parameters.receiptNumber
-    * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
-    * assert searchResponseBody.Payments[0].paymentDetails.length != 0
-    * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
-
-@Search_PaymentWithBillID_02 @positive @SearchPayment @collectionService
-Scenario: Test to search payment with billID
-
-    #* call read('../preTests/collectionServicesPretest.feature@fetchBill')
-    * def billId = collectionServiceData.parameters.validBillId
-    * call read('../preTests/collectionServicesPretest.feature@successSearchBillId')
-    * match searchResponseBody.Payments[0].paymentDetails[0].billId == billId
-
-@Search_PaymentWithConsumerCode_03 @positive @SearchPayment @collectionService
-    Scenario: Test to search payment with consumer code
-
-    * def consumerCode = propertyId
-    * call read('../preTests/collectionServicesPretest.feature@successSearchConsumerCode')
-    * match searchResponseBody.Payments[0].paymentDetails[0].bill.consumerCode == consumerCode
-
-@Search_PaymentWithMobileNumber_04 @positive @SearchPayment @collectionService
-    Scenario: Test to search payment with mobile number
-
-    * def receiptNumber = collectionServiceData.parameters.nullValue
-    * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
-    * assert searchResponseBody.Payments[0].paymentDetails.length != 0
-
-@Search_PaymentWithMobileNumberAndReceiptNumber_05 @positive @SearchPayment @collectionService
-    Scenario: Test to search payment with mobile number and receipt number
-
-    * def receiptNumber = collectionServiceData.parameters.receiptNumber
-    * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
-    * assert searchResponseBody.Payments[0].paymentDetails.length != 0
-    * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
-
-@Search_AllPayments_06 @positive @SearchPayment @collectionService
-    Scenario: Test to search all payments
-
-    * def receiptNumber = collectionServiceData.parameters.nullValue
-    * def mobileNumber = collectionServiceData.parameters.nullValue
-    * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
-    * assert searchResponseBody.Payments[0].paymentDetails.length != 0
-    * match searchResponseBody.Payments[0].paymentDetails[0] == '#present'
-
-@Search_PaymentWith_InvalidtenatID_07 @negative @SearchPayment @collectionService
-    Scenario: Test to search payment with invalid tenantID
-
-    * call read('../preTests/collectionServicesPretest.feature@successSearchInvalid')
-    * assert searchResponseBody.Payments.length == 0
-    * match searchResponseBody.Payments[0] == '#notpresent'
-
-@Search_PaymentWith_InvalidMobileNumber_08 @negative @SearchPayment @collectionService
-    Scenario: Test to search payment with invalid mobileNumber
-
-    * call read('../preTests/collectionServicesPretest.feature@successSearchInvalidMobile')
-    * assert searchResponseBody.Payments.length == 0
-    * match searchResponseBody.Payments[0] == '#notpresent'
-
-@Search_PaymentWith_InvalidReceiptNumber_09 @negative @SearchPayment @collectionService
-    Scenario: Test to search payment with invalid ReceiptNumber
-
-    * def mobileNumber = collectionServiceData.parameters.nullValue
-    * def receiptNumber = collectionServiceData.parameters.invalidValue
-    * call read('../preTests/collectionServicesPretest.feature@successSearchMobileNumber')
-    * assert searchResponseBody.Payments.length == 0
-    * match searchResponseBody.Payments[0] == '#notpresent'
+@workflow_payment_InValidtenantID_10 @negative @collection_services_workflow @collection_services
+Scenario: Test to Cancel a payment in workflow with invalid tenantId
+    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * call read('../pretests/collectionServicesPretest.feature@error_auth_workflow')
+    * print collectionServicesResponseBody
+    * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.NotAuthorized

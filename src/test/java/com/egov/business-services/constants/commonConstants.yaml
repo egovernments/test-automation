@@ -7,4 +7,4 @@ expectedStatus:
  instrumentStatusCancelled: CANCELLED
 errorMessages:
   invalidTenantIdError: Not authorized to access this resource
-  nullParameterError:  must not be null 
+  nullParameterError:  must not be null
