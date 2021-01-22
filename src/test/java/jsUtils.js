@@ -23,6 +23,10 @@ function getTomorrowUtcDate(){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24)).getTime();
 }
 
+function getEpochDate(days){
+    return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
+}
+
 function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 

@@ -122,7 +122,7 @@ Scenario: Test to Cancel a payment in workflow with invalid reason
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
     * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField')
 
-@workflow_payment_NotenantID_09 @negative @collectionService_workflow @collectionService
+@workflow_payment_NotenantID_09 @negative @collectionService_workflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with no tenantId
     * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].tenantId'}
     * print collectionServicesResponseBody
