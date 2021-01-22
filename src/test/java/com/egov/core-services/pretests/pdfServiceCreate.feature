@@ -4,7 +4,7 @@ Background:
 * def pdfCreatePayload = read('../requestPayload/pdfService/pdfCreate.json')
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
-* def pdfCreatePayloadThird = pdfCreatePayload.Fire-Noc
+* def pdfCreatePayloadThird = pdfCreatePayload.FireNoc
 * def pdfCreatePayloadFourth = pdfCreatePayload.WS
 
 @pdfcreatesuccess

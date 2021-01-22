@@ -41,15 +41,6 @@ Scenario: Test by passing invalid/non existent or null value for tenant id
       * print reportsResponseBody
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
 
-@MetadataGet_InvalidAuth_04  @500
-Scenario: Test by passing invalid/non existent or null value for auth Token
-      * def reportName = reportConstant.parameters.reportName
-      * def authToken = commonConstants.invalidParameters.invalidAuthToken
-      * call read('../pretests/metadataGetReport.feature@reportfail')
-      * print reportsResponseBody
-      * match reportsResponseBody == '#present'
-
-
 @Report_Get_01  @positive  @reports
 Scenario: Test to search for report data with different combinations of search inputs
       * def secondReportName = reportConstant.parameters.secondReportName
@@ -98,14 +89,6 @@ Scenario: Test by seding a invalid search param names
       * call read('../pretests/getReport.feature@getreportfail')
       * print getReportsResponseBody
       * assert getReportsResponseBody.Errors[0].code == reportConstant.errormessages.invalidSearchParamsNames
-
-
-@Report_InvalidAuth_07  @500
-Scenario: Test by passing invalid/non existent or null value for auth Token
-      * def secondReportName = reportConstant.parameters.secondReportName
-      * call read('../pretests/getReport.feature@getreportfail')
-      * print getReportsResponseBody
-      
 
 
       

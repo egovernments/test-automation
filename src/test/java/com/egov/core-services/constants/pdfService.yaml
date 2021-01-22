@@ -1,8 +1,14 @@
 parameters:
-   create:
-       valid:
-         key: tradelicense-receipt
+   valid:
+     keyForTl: tradelicense-receipt
+     keyForPt: property-receipt
+     keyForFireNoc: consolidatedreceipt
+     keyForWs: ws-bill
          
-       invalid:
-         key: 123
+   invalid:
+     key: 123
+
+errorMessages:
+   invalidTenantId: ' tenantId is missing,'
+   invalidKey: ' no config found for key 123'
         

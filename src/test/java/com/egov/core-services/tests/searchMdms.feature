@@ -57,11 +57,6 @@ Scenario: Test by removing MasterDetails parameter in the request
      * call read('../pretests/mdmsService.feature@searchmdms')
      * print searchMdmsResponseBody
      * match searchMdmsResponseBody == '#present'
-     
-
-
-
-
 
       
       

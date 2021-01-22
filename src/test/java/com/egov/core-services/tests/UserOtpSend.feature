@@ -20,8 +20,7 @@ Background:
         * print userOtpSendResponseBody
         * match userOtpSendResponseBody.isSuccessful == true
 
-  @UserOtp_Send_RegisterDuplicate_05  @negative @userotp 
-          
+  @UserOtp_Send_RegisterDuplicate_05  @negative @userotp        
   Scenario: Test registering using a already registered number
         
         * call read('../pretests/userOtpPretest.feature@Error_register')

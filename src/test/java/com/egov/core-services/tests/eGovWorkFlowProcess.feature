@@ -49,12 +49,6 @@ Scenario: Perform search by passing multple values for tenantId
   * call read('../pretests/eGovWorkFlowProcessSearch.feature@processsearchsuccess')
   * print processSearchResponseBody
 
-@Search_inavlidAccess_08  @500
-Scenario: Perform search by passing invalid/non existent or null value for auth Token and check for error
-  * def authToken = commonConstants.invalidParameters.invalidAuthToken
-  * call read('../pretests/eGovWorkFlowProcessSearch.feature@processsearchfail')
-  * print processSearchResponseBody
-
 @Search_MultipleBusIds_09  @negative  @egovworkflowprocess
 Scenario: Perform search by passing multple values for Business Id
   * def businessIds = processSearchConstant.parameters.multipleBusinessId

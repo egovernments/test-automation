@@ -47,7 +47,7 @@ Scenario: Verify creating a payment transaction with invalid/non existent value 
   * call read('../pretests/pgServiceCreate.feature@createpgservicefail')
   * print pgServicesCreateResponseBody
 
-@PGCreate_NulValues_06  @negative  @pgservices
+@PGCreate_NulValues_06
 Scenario: Verify creating a payment transaction by passing null values
   * def mobileNumber = pgSericesConstant.parameters.valid.pgServiceCreateMobileNumber
   * call read('../pretests/pgServiceCreate.feature@createpgservicefail')

@@ -51,11 +51,6 @@ Scenario: Search to fetch all the records for a particular tenant
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'  
       
-
-# @SearchLocation_InvalidAuthToken_07  @500
-# Scenario: Send a POST request by passing a wrong auth token
-#      * call read('../pretests/location.feature')
-
 @SearchLocation_MulltipleTenantId_08  @Negative  @location
 Scenario: Send a POST request by passing multiple tenants which are valid in the request
       * def hierarchyTypeCode = locationConstant.parameters.hierarchyTypeCode
