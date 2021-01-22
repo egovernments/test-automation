@@ -1,12 +1,15 @@
+// providing a wait time which requires seconds as argument
 function waitTimeSec(x) {
     karate.log('sleeping');
     java.lang.Thread.sleep(x * 1000);
 }
 
+//generating random string which requires character length as argument
 function ranString(x) {
     return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
 }
 
+//generating random number which requires no of digits as argument
 function ranInteger(x) {
     if (x) {
         return new java.util.Random().nextInt(Math.pow(10, x));
@@ -15,14 +18,15 @@ function ranInteger(x) {
     }
 }
 
-function getTodayUtcDate(){
+//Get todays time in EPOCH format
+function getCurrentEpochTime(){
     return new java.util.Date().getTime();
 }
-
-function getTomorrowUtcDate(){
+//Get tomorrows time in EPOCH format
+function getTomorrowEpochTime(){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24)).getTime();
 }
-
+//Get time in EPOCH format which requires no of days from as argument
 function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
@@ -40,6 +44,7 @@ if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].ad
 	}
 }
 
+//Generating random mobile number which requires number of digits as argument
 function randomMobileNumGen(x)
 {
     var tenMultiplier = Math.pow(10, x)
@@ -57,7 +62,7 @@ function randomMobileNumGen(x)
     //}    
     return intVsl;
 }
-
+//Generating random string for a given character length using predefined characters
 function ranString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

@@ -5,7 +5,7 @@ Background:
   * def propertyTaxAssessmentConstants = read('../constants/propertyTaxAssessment.yaml')
   * def propertyId = propertyTaxAssessmentConstants.parameters.propertyId
   * def financialYear = propertyTaxAssessmentConstants.parameters.financialYear
-  * def assessmentDate = getTodayUtcDate()
+  * def assessmentDate = getCurrentEpochTime()
   * def source = propertyTaxAssessmentConstants.parameters.source
   * def channel = propertyTaxAssessmentConstants.parameters.channel
   * def assessmentRequest = read('../requestPayload/collection-services/assessment.json')

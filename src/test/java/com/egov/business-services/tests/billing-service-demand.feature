@@ -9,7 +9,7 @@ Background:
     * def consumerCode = billingServiceDemandConstants.parameters.consumerCode + ranInteger(6)
     * def consumerType = billingServiceDemandConstants.parameters.consumerType
     * def businessService = billingServiceDemandConstants.parameters.businessService
-    * def taxPeriodFrom = getTodayUtcDate()
+    * def taxPeriodFrom = getCurrentEpochTime()
     * def taxPeriodTo = getEpochDate(2)
     * def taxHeadMasterCode = billingServiceDemandConstants.parameters.taxHeadMasterCode
     * def taxAmount = billingServiceDemandConstants.parameters.taxAmount
