@@ -4,17 +4,5 @@ target/
 .settings
 .classpath
 .vscode
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-bin/
-=======
-bin/
->>>>>>> 45ebfe8... Changed project content from cypress to karate
-=======
-bin/
->>>>>>> f484628170878a5972a6530fbda854ac146c12e5
-=======
 .metadata/
 bin/
->>>>>>> origin/karate-master
