@@ -1,7 +1,6 @@
 Feature: FileStore get API call 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
 
 @getfileidsuccess
 Scenario: get the uploaded document id

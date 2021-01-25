@@ -2,10 +2,10 @@ Feature: User otp send API call
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def constantValue = read('../constants/userOtp.yaml')
+  * def commonConstants = read('../constants/commonConstants.yaml')
   * def envConstant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * print envConstant
   * def mobNumber = envConstant.userName
@@ -24,7 +24,7 @@ Scenario: User otp send success call
   * print validMobileNum
 
   * set userOtpSend.otp.mobileNumber = validMobileNum
-  * set userOtpSend.otp.type = 'register'
+  * set userOtpSend.otp.type = constantValue.parameters.newUserType
 
      Given url userOtpRegisterUrl
      And params parameters
@@ -43,7 +43,7 @@ Scenario: User otp send success call
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpSend.otp.type = 'login'
+  * set userOtpSend.otp.type = constantValue.parameters.existingUserType
   * set userOtpSend.otp.mobileNumber = mobNumber
 
       Given url userOtpRegisterUrl
@@ -67,7 +67,7 @@ Scenario: User otp send success call
   * print validMobileNum
 
   * set userOtpSend.otp.mobileNumber = validMobileNum
-  * set userOtpSend.otp.type = ''
+  * set userOtpSend.otp.type = constantValue.parameters.withoutType
 
     Given url userOtpRegisterUrl
     And params parameters
@@ -86,7 +86,7 @@ Scenario: User otp send fail call
     }
     """
    * set userOtpSend.otp.mobileNumber = mobNumber
-   * set userOtpSend.otp.type = 'register'
+   * set userOtpSend.otp.type = constantValue.parameters.newUserType
 
      Given url userOtpRegisterUrl
      And params parameters
@@ -109,7 +109,7 @@ Scenario: User otp send fail call
    * print validMobileNum
 
    * set userOtpSend.otp.mobileNumber = validMobileNum
-   * set userOtpSend.otp.type = 'login' 
+   * set userOtpSend.otp.type = constantValue.parameters.existingUserType 
 
     Given url userOtpRegisterUrl
     And params parameters
@@ -132,7 +132,7 @@ Scenario: User otp send fail call
    * print validMobileNum
 
    * set userOtpSend.otp.mobileNumber = validMobileNum
-   * set userOtpSend.otp.type = 'register'
+   * set userOtpSend.otp.type = constantValue.parameters.newUserType 
 
     Given url userOtpRegisterUrl
     And params parameters
@@ -150,8 +150,8 @@ Scenario: User otp send fail call
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpSend.otp.mobileNumber = null
-  * set userOtpSend.otp.type = 'login' 
+  * set userOtpSend.otp.mobileNumber = constantValue.parameters.withoutMobileNumber 
+  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
 
     Given url userOtpRegisterUrl
     And params parameters
@@ -165,8 +165,8 @@ Scenario: User otp send fail call
 Scenario: User otp send fail call
   
   * set userOtpSend.otp.mobileNumber = mobNumber
-  * set userOtpSend.otp.type = 'login'
-  * set userOtpSend.otp.tenantId = "123" 
+  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
+  * set userOtpSend.otp.tenantId = commonConstants.invalidParameters.invalidTenantId
 
     Given url userOtpRegisterUrl
     And request userOtpSend
@@ -178,32 +178,13 @@ Scenario: User otp send fail call
 @Error_TenantNull
 Scenario: User otp send fail call
   
-  * set userOtpSend.otp.mobileNumber = null
-  * set userOtpSend.otp.type = 'login'
-  * set userOtpSend.otp.tenantId = ''
+  * set userOtpSend.otp.mobileNumber = constantValue.parameters.withoutMobileNumber 
+  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
+  * set userOtpSend.otp.tenantId = constantValue.parameters.withoutTenantId
 
     Given url userOtpRegisterUrl
     And request userOtpSend
     When method post
     Then status 400
-    And def userOtpSendResponseHeader = responseHeaders
-    And def userOtpSendResponseBody = response
-
-@Error_Invldurl
-Scenario: User otp send fail call
- * def parameters = 
-    """
-    {
-     tenantId: '#(tenantId)'
-    }
-    """
- * set userOtpSend.otp.type = 'login'
- * set userOtpSend.otp.mobileNumber = mobNumber
-
-    Given url invalidSendOpUser
-    And params parameters
-    And request userOtpSend
-    When method post
-    Then status 401
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response

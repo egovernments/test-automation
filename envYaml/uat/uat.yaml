@@ -1,3 +1,4 @@
-phost: https://egov-micro-uat.egovernments.org/
-host: https://mseva-uat-v2.egovernments.org/
+productHost: https://egov-micro-uat.egovernments.org/
+host: https://mseva-uat.lgpunjab.gov.in/
 tenantId: pb.testing
+userName: 7072352755

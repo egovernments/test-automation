@@ -3,7 +3,7 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def authUsername = employeeUserName
   * def authPassword = employeePassword
-  * def authUserType = 'EMPLOYEE'
+  * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * configure headers = read('classpath:websCommonHeaders.js') 
 

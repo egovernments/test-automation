@@ -1,6 +1,4 @@
 parameters:
- invalidaAuth: 123
- tenantId: abc
  noTenantId: 
  moduleName: common-masters
  invalidModuleName: abc

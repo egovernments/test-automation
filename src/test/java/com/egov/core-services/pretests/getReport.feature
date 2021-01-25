@@ -2,14 +2,13 @@ Feature: Get reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def getReportPayload = read('../requestPayload/reports/getReport.json')
-  * def reportConst = read('../constants/reports.yaml')
+  * def reportConstant = read('../constants/reports.yaml')
 
 @getreportsuccess
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def getReportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -19,8 +18,8 @@ Scenario: Test to search for report data with different
     """
      Given url getReport
      * print getReport
-     And params reportparam
-     * print reportparam
+     And params getReportParam
+     * print getReportParam
      And request getReportPayload
      * print getReportPayload
      When method post
@@ -31,7 +30,7 @@ Scenario: Test to search for report data with different
 @getreportfail
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def getReportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -41,8 +40,8 @@ Scenario: Test to search for report data with different
     """
      Given url getReport
      * print getReport
-     And params reportparam
-     * print reportparam
+     And params getReportParam
+     * print getReportParam
      And request getReportPayload
      * print getReportPayload
      When method post
@@ -53,7 +52,7 @@ Scenario: Test to search for report data with different
 @getreportforbidden
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def getReportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -63,8 +62,8 @@ Scenario: Test to search for report data with different
     """
      Given url getReport
      * print getReport
-     And params reportparam
-     * print reportparam
+     And params getReportParam
+     * print getReportParam
      And request getReportPayload
      * print getReportPayload
      When method post

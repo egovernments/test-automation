@@ -1,4 +1,4 @@
 #UserName and Password
-counterEmployee:
+superUserCounterEmployee:
   userName: EMP11
   password: eGov@123
