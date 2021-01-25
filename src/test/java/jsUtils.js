@@ -1,7 +1,3 @@
-/**
- * Waits for given time
- * @param {time in seconds} x 
- */
 function waitTimeSec(x) {
     karate.log('sleeping');
     java.lang.Thread.sleep(x * 1000);
@@ -54,7 +50,7 @@ function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
 
-function validateAddress(request, response){
+/*function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 
 	request.Property.address.doorNo == karate.jsonPath(response,"$.Properties[*].address.doorNo")[0] && 
@@ -65,7 +61,7 @@ if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].ad
 	
 	return false;
 	}
-}
+}*/
 
 /**
  * Generates random mobile number
