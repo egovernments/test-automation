@@ -1,4 +1,4 @@
 #UserName and Password
-counterEmployee:
+superUserCounterEmployee:
   userName: amr001
   password: 12345678

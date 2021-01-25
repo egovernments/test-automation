@@ -1,7 +1,8 @@
 parameters:
   consumerCode: PB-PT-2020-10-14-007281
   businessService: PT
-  mobileNumber: 9113689766
+  mobileNumber: 9999999999
+  consumerCodeBill: PB-PT-2020-08-19-006197
 invalidParameters:
   consumerCode: invalid_123
   businessService : UK

@@ -8,34 +8,45 @@ endPoints:
   upsertLocalization: localization/messages/v1/_upsert
  authenticationToken:
   authToken: user/oauth/token
- userOtp:
-  sendOtpUser: user-otp/v1/_send
+ userOtp: 
+  sendOtp: user-otp/v1/_send
  fileStore:
-  createFileStore: filestore/v1/files
-  getFileStore: filestore/v1/files/url
+  create: filestore/v1/files
+  getFileId: filestore/v1/files/url
  citizen:
-  createUser: user/users/_createnovalidate
-  searchUser: user/_search
+  create: user/users/_createnovalidate
+  search: user/_search
   createCitizen: user/citizen/_create
  location:
-  searchLocation: egov-location/location/v11/boundarys/_search
+  search: egov-location/location/v11/boundarys/_search
  idGenerate:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
-  searchMdms: egov-mdms-service/v1/_search
+  search: egov-mdms-service/v1/_search
  searcher:
   searcher: egov-searcher/bill-genie/billswithaddranduser/_get
   searcherWS: egov-searcher/bill-genie/waterbills/_get
   searcherSW: egov-searcher/bill-genie/seweragebills/_get
  reports:
-  metadataGetReport: report/pgr/DescriptionReport/metadata/_get
-  getReport: report/pgr/DescriptionReport/_get
+  metadataGet: report/pgr/DescriptionReport/metadata/_get
+  get: report/pgr/DescriptionReport/_get
  hrms:
   create: egov-hrms/employees/_create
   search: egov-hrms/employees/_search
   update: egov-hrms/employees/_update
  accessControl:
   search: access/v1/actions/mdms/_get
+ pgServices:
+  create: pg-service/transaction/v1/_create?
+  update: pg-service/transaction/v1/_update?
+  search: pg-service/transaction/v1/_search?
+  payload: citizen/egov-common/paymentRedirectPage
+ eGovWorkFlowV2Process:
+  search: egov-workflow-v2/egov-wf/process/_search?
+ billingService:
+  fetchBill: billing-service/bill/v2/_fetchbill?
+ pdfService:
+  create: pdf-service/v1/_create?
  user:
   updateProfile: user/profile/_update
   updatePassword: user/password/_update

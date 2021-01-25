@@ -2,14 +2,13 @@ Feature: Metadata get reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def reportPayload = read('../requestPayload/reports/metadataGetReport.json')
-  * def reportConst = read('../constants/reports.yaml')
+  * def reportConstant = read('../constants/reports.yaml')
 
 @reportsuccess
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def reportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -19,8 +18,8 @@ Scenario: Test to fetch the details of a report
     """
      Given url metadataGetReport
      * print metadataGetReport
-     And params reportparam
-     * print reportparam
+     And params reportParam
+     * print reportParam
      And request reportPayload
      * print reportPayload
      When method post
@@ -31,7 +30,7 @@ Scenario: Test to fetch the details of a report
 @reportfail
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def reportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -41,8 +40,8 @@ Scenario: Test to fetch the details of a report
     """
      Given url metadataGetReport
      * print metadataGetReport
-     And params reportparam
-     * print reportparam
+     And params reportParam
+     * print reportParam
      And request reportPayload
      * print reportPayload
      When method post
@@ -53,7 +52,7 @@ Scenario: Test to fetch the details of a report
 @reportforbidden
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
+* def reportParam =
     """
     {
      tenantId: '#(tenantId)',
@@ -63,30 +62,8 @@ Scenario: Test to fetch the details of a report
     """
      Given url metadataGetReport
      * print metadataGetReport
-     And params reportparam
-     * print reportparam
-     And request reportPayload
-     * print reportPayload
-     When method post
-     Then status 403
-     And def reportsResponseHeader = responseHeaders
-     And def reportsResponseBody = response
-
-@invalidurl
-Scenario: Test to fetch the details of a report
-* configure headers = read('classpath:websCommonHeaders.js')
-* def reportparam =
-    """
-    {
-     tenantId: '#(tenantId)',
-     pageSize: '#(pageSize)',
-     offset: '#(offset)'
-    }
-    """
-     Given url invalidReportService
-     * print endPoint
-     And params reportparam
-     * print reportparam
+     And params reportParam
+     * print reportParam
      And request reportPayload
      * print reportPayload
      When method post

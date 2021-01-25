@@ -29,8 +29,8 @@ Background:
      * print billId 
      * print totalAmount
 
-@errorInParam
-    Scenario: Fetch Bill with missing params
+@customizedParam
+    Scenario: Fetch Bill with customized parameters
     Given url fetchBill
     And params fetchBillParams
      * print fetchBillParams

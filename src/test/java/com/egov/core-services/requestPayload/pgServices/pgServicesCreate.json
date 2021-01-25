@@ -1,0 +1,33 @@
+{
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "ver": ".01",
+        "action": "_create",
+        "did": "1",
+        "key": "",
+        "msgId": "20170310130900|en_IN",
+        "requesterId": "",
+        "authToken": "#(authToken)"
+    },
+    "Transaction": {
+        "tenantId": "#(tenantId)",
+        "txnAmount": "#(txnAmount)",
+        "module": "PT",
+        "billId": "#(billId)",
+        "consumerCode": "#(consumerCode)",
+        "productInfo": "Common Payment",
+        "gateway": "#(gateway)",
+        "taxAndPayments": [
+            {
+                "billId": "#(billId)",
+                "amountPaid": 200
+            }
+        ],
+        "user": {
+            "name": "Super User",
+            "mobileNumber": "#(mobileNumber)",
+            "tenantId": "#(tenantId)"
+        },
+        "callbackUrl": "#(callbackUrl)"
+    }
+}

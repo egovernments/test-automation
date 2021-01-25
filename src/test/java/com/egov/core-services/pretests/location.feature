@@ -2,14 +2,13 @@ Feature: Location
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
-  * def locconst = read('../constants/location.yaml')
+  * def locationconstant = read('../constants/location.yaml')
 
 @locationsuccess
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -18,7 +17,7 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locparam
+     And params locationParam
      And request location
      When method post
      Then status 200
@@ -30,14 +29,14 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locparam = 
+      * def locationParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
      Given url searchloc
-     And params locparam
+     And params locationParam
      And request location
      When method post
      Then status 200
@@ -49,7 +48,7 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -57,7 +56,7 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locparam
+     And params locationParam
      And request location
      When method post
      Then status 400
@@ -69,7 +68,7 @@ Scenario: search for location detail
 Scenario: search for location detail
 * configure headers = read('classpath:websCommonHeaders.js')
     
-      * def locparam = 
+      * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -78,32 +77,10 @@ Scenario: search for location detail
     }
     """
      Given url searchloc
-     And params locparam
+     And params locationParam
      And request location
      When method post
      Then status 400
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
-
-@locationerrorinvldendpoint
-Scenario: search for location detail
-* configure headers = read('classpath:websCommonHeaders.js')
-* def invalidEndpoint = locconst.parameters.invldEndpoint
-    
-      * def locparam = 
-    """
-    {
-     hierarchyTypeCode: '#(hierarchyTypeCode)',
-     boundaryType: '#(boundaryType)',
-     tenantId: '#(tenantId)'
-    }
-    """
-     Given url invalidLocationService
-     And params locparam
-     And request location
-     When method post
-     Then status 403
      And def searchLocationResponseHeader = responseHeaders
      And def searchLocationResponseBody = response
      * print searchLocationResponseBody

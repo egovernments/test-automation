@@ -2,15 +2,10 @@ Feature: Search user
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def javaUtils = Java.type('com.egov.base.EGovTest')
   * def authUsername = employeeUserName
   * def authPassword = employeePassword
-  * def authUserType = 'EMPLOYEE'
+  * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
-#  * call read('userCreation.feature')
-#  * print userCreationResponseBody
-#  * def createdUser = userCreationResponseBody.user[0].userName
-#  * print createdUser
   * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * def existingUser = envContant.userName
   * print existingUser
@@ -20,8 +15,6 @@ Background:
 # Search user
 @searchuser
 Scenario: Search user
- #  * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
-#   * def existingUser = envContant.userName
    * configure headers = read('classpath:websCommonHeaders.js') 
      Given url searchUser 
      * print searchUser  
