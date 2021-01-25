@@ -1,8 +1,8 @@
 Feature: Create Citizen
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
   * configure headers = read('classpath:websCommonHeaders.js') 

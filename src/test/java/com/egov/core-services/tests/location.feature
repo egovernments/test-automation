@@ -3,8 +3,8 @@ Feature: Location
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def javaUtils = Java.type('com.egov.base.EGovTest')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
   * def location = read('../requestPayload/location/searchLocation.json')

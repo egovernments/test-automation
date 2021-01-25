@@ -9,8 +9,8 @@ Background:
   * def invalidTenantId = '123'
   * def noTenantId = ''
  # Calling access token
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
 

@@ -2,8 +2,8 @@ Feature: Reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = counterEmployeeUserName
-  * def authPassword = counterEmployeePassword
+  * def authUsername = employeeUserName
+  * def authPassword = employeePassword
   * def authUserType = 'EMPLOYEE'
   * call read('../pretests/authenticationToken.feature')
   * def reportConst = read('../constants/reports.yaml')
