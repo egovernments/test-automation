@@ -5,8 +5,8 @@ Background:
     * def javaUtils = Java.type('com.egov.base.EGovTest')
     * def hrmsConstants = read('../constants/egov-hrms.yaml')
     * def commonConstants = read('../constants/commonConstants.yaml')
-    * def today = getTodayUtcDate()
-    * def tomorrow = getTomorrowUtcDate()
+    * def today = getCurrentEpochTime()
+    * def tomorrow = getTomorrowEpochTime()
     # Calling access token
     * def authUsername = employeeUserName
     * def authPassword = employeePassword

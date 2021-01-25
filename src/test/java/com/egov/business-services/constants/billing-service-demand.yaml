@@ -1,0 +1,22 @@
+parameters:
+  consumerCode: PT_test_
+  consumerType: PropertyTax
+  businessService: PT
+  taxHeadMasterCode: PT_TAX
+  taxAmount: 200
+  collectionAmount: 0
+  minimumAmountPayable: 1
+  status: ACTIVE
+invalidParameters:
+  businessService: invalid
+  taxPeriodFrom: 11111111111111111111111111111111111111111111
+  taxHeadMasterCode: invalid
+  taxAmountGreater: 20020020012
+  minimumAmountPayableGreater: 10000000000
+expectedMessages:
+  duplicateConsumerCode: "Demand already exists in the same period with the same businessService for the given consumercodes : "
+  invalidBusinessService: "No Business Service masters found for give codes "
+  zeroTaxPeriodError: "No Tax Periods Found for the given demand with fromDate : 0 and toDate : 0"
+  invalidTaxHeadMasterCode: "No TaxHead masters found for give codes "
+  collectionAmountMoreThanTaxAmount: cannot not be greater than taxAmount
+  

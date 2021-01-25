@@ -146,6 +146,10 @@ function() {
         config.collectionServiceWorkflowUrl = envProps.host + path.endPoints.collectionServices.workflow
         // Search Payment
         config.searchPayment = envProps.host + path.endPoints.collectionServices.searchPayment
+        // billing-service-demand
+        config.createDemandUrl = envProps.host + path.endPoints.billingServiceDemand.create
+        config.searchDemandUrl = envProps.host + path.endPoints.billingServiceDemand.search
+        config.updateDemandUrl = envProps.host + path.endPoints.billingServiceDemand.update
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search

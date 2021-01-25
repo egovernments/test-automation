@@ -57,3 +57,7 @@ endPoints:
   createPayment: collection-services/payments/_create
   workflow: collection-services/payments/PT/_workflow
   searchPayment: collection-services/payments/PT/_search
+ billingServiceDemand:
+  create: billing-service/demand/_create
+  update: billing-service/demand/_search
+  search: billing-service/demand/_update

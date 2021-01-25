@@ -1,12 +1,26 @@
+/**
+ * Waits for given time
+ * @param {time in seconds} x 
+ */
 function waitTimeSec(x) {
     karate.log('sleeping');
     java.lang.Thread.sleep(x * 1000);
 }
 
+/**
+ * Generates random string
+ * @param {character length of string} x
+ * @returns random string
+ */
 function ranString(x) {
     return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
 }
 
+/**
+ * Generates random integer
+ * @param {no of digits} x
+ * @returns random integer
+ */
 function ranInteger(x) {
     if (x) {
         return new java.util.Random().nextInt(Math.pow(10, x));
@@ -15,12 +29,29 @@ function ranInteger(x) {
     }
 }
 
-function getTodayUtcDate(){
+/**
+ * Generates todays date/time in epoch format
+ * @returns todays date/time
+ */
+function getCurrentEpochTime(){
     return new java.util.Date().getTime();
 }
 
-function getTomorrowUtcDate(){
+/**
+ * Generates tomorrows date/time in epoch format
+ * @returns tomorrows date/time
+ */
+function getTomorrowEpochTime(){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24)).getTime();
+}
+
+/**
+ * Generates date/time in epcoh format
+ * @param {no of days in future from now} days
+ * @returns date/time in epoch format
+ */
+function getEpochDate(days){
+    return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
 
 function validateAddress(request, response){
@@ -36,6 +67,11 @@ if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].ad
 	}
 }
 
+/**
+ * Generates random mobile number
+ * @param {no fo digits} x
+ * @returns random mobile number
+ */
 function randomMobileNumGen(x)
 {
     var tenMultiplier = Math.pow(10, x)
@@ -54,6 +90,11 @@ function randomMobileNumGen(x)
     return intVsl;
 }
 
+/**
+ * Generates random string using predefined character set
+ * @param {character length of string} length
+ * @returns random string
+ */
 function ranString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -64,6 +105,11 @@ function ranString(length) {
     return result;
  }
 
+ /**
+ * Converts string to an integer
+ * @param {string} x
+ * @returns converted integer
+ */
  function stringToInteger(x) {
     return parseInt(x);
 }
