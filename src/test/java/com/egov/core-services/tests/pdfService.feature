@@ -87,4 +87,43 @@ Scenario: "Verify generating PDF invalid/nonexistant or by not passing key and c
   * print pdfCreateSecond
   * assert pdfCreateSecond == pdfCreateConstant.errorMessages.invalidKey
 
+@pdf_createnosave_PT_01  @positive  @pdfservice
+Scenario: Generate PDF config for PT module for a given key and tenantid
+  * def key = pdfCreateConstant.parameters.valid.keyForPt
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosavesuccess')
+  * print pdfCreateNoSaveResponseBody
+
+@pdf_createnosave_TL_02  @positive  @pdfservice
+Scenario: Generate PDF config for TL module for a given key and tenantid
+  * def key = pdfCreateConstant.parameters.valid.keyForTl
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosavesuccess')
+  * print pdfCreateNoSaveResponseBody
+
+@pdf_createnosave_WS_03  @positive  @pdfservice
+Scenario: Generate PDF config for WS module for a given key and tenantid
+  * def key = pdfCreateConstant.parameters.valid.keyForWs
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosaveforwssuccess')
+  * print pdfCreateNoSaveResponseBody
+
+@pdf_createnosave_FireNOC_04  @positive  @pdfservice
+Scenario: Generate PDF config for FireNOC module for a given key and tenantid
+  * def key = pdfCreateConstant.parameters.valid.keyForFireNoc
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosavesuccess')
+  * print pdfCreateNoSaveResponseBody
+
+@pdf_noqueryparams_FireNOC_05  @negative  @pdfservice
+Scenario: Generate PDF config wihtout passing key or tenantid
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosavewithoutparam')
+  * print pdfCreateNoSaveResponseBody
+  * pdfCreateNoSaveResponseBody.message == pdfCreateConstant.errorMessages.withoutParam
+
+@pdf_invalidKey_06  @negative  @pdfservice
+Scenario: Generate PDF config by passing invalid key 
+  * def key = pdfCreateConstant.parameters.invalid.keyForWs
+  * call read('../pretests/pdfServiceCreateNoSave.feature@pdfcreatenosavefail')
+  * print pdfCreateNoSaveResponseBody
+  * pdfCreateNoSaveResponseBody.message == pdfCreateConstant.errorMessages.invalidWsKey 
+  
+  
+
 

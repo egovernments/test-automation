@@ -159,6 +159,7 @@ function() {
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
+        config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
 
 
     karate.log('karate.env:', env);

@@ -7,8 +7,11 @@ parameters:
          
    invalid:
      key: 123
+     keyForWs: ws-bill1
 
 errorMessages:
    invalidTenantId: ' tenantId is missing,'
    invalidKey: ' no config found for key 123'
+   withoutParam: ' key is missing, tenantId is missing, no config found for key undefined'
+   invalidWsKey: ' no config found for key ws-bill1'
         

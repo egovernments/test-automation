@@ -47,6 +47,7 @@ endPoints:
   fetchBill: billing-service/bill/v2/_fetchbill?
  pdfService:
   create: pdf-service/v1/_create?
+  createNoSave: pdf-service/v1/_createnosave?
  user:
   updateProfile: user/profile/_update
   updatePassword: user/password/_update
