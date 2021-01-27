@@ -156,6 +156,7 @@ function() {
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
+        config.searchBill = envProps.host + path.endPoints.billingService.search
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create

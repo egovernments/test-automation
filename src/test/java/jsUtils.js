@@ -50,7 +50,7 @@ function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
 
-/*function validateAddress(request, response){
+function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 
 	request.Property.address.doorNo == karate.jsonPath(response,"$.Properties[*].address.doorNo")[0] && 
@@ -61,7 +61,7 @@ if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].ad
 	
 	return false;
 	}
-}*/
+}
 
 /**
  * Generates random mobile number
@@ -108,4 +108,16 @@ function ranString(length) {
  */
  function stringToInteger(x) {
     return parseInt(x);
+}
+
+/**
+ * Fetched data based upon the environment selected
+ * @param {String} rootParam 
+ * @param {String} key
+ * @returns Value based upon the root param and key provided 
+ */
+function getDataBasedOnEnvironment(rootParam, key) {
+   var envProperties = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
+   var data =  karate.jsonPath(envProperties, "$."+ rootParam +"."+ key +"")
+    return data;
 }
