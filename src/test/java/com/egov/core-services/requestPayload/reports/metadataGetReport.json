@@ -1,0 +1,15 @@
+{
+	"tenantId": "#(tenantId)",
+	"reportName": "#(reportName)",
+	"RequestInfo": {
+		"apiId": "#(apiId)",
+		"ver": "#(ver)",
+		"ts": "#(ts)",
+		"action": "#(action)",
+		"did": "#(did)",
+		"key": "#(key)",
+		"msgId": "#(msgId)",
+		"requesterId": "#(requesterId)",
+		"authToken": "#(authToken)"
+	}
+}

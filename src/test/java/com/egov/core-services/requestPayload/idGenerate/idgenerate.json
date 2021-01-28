@@ -1,0 +1,13 @@
+{
+    "RequestInfo": {
+      "authToken" : "#(authToken)"
+  },
+   
+    "idRequests" : [
+     {
+         "idName": "#(idName)",
+         "format": "#(format)",
+         "tenantId": "#(tenantId)"
+     } 
+  ]
+}

@@ -1,0 +1,28 @@
+parameters:
+  apiId: Rainmaker
+  ver: .01
+  ts: 1610345536976
+  action: _get
+  did: 1
+  msgId: 20170310130900|en_IN
+  actionMaster: actions-test
+  enabled: true
+  roleCodes: SUPERUSER
+  actionMaster: actions-test
+  userType: EMPLOYEE
+  roleCodes: "SUPERUSER"
+  invalidRoleCodes: "abc"
+  invalidActionMaster: "abc"
+  invalidEnabled: "abc"
+
+responseInfo:
+  status: "200 OK"
+
+expectedDescriptions:
+  IllegalArgumentException: json string can not be null or empty
+  PathNotFoundException: "No results for path: $['MdmsRes']['ACCESSCONTROL-ACTIONS-TEST']['abc']"
+  InvalidPathException: "Path must not end with a '.' or '..'"
+  
+expectedMessages:  
+  JsonMappingException: Failed to deserialize certain JSON fields
+  CustomException: Not authorized to access this resource

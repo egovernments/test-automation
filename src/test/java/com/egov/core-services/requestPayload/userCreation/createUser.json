@@ -1,0 +1,23 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "user": {
+        "name": "test1",
+        "gender": "MALE",
+        "mobileNumber": "#(mobileNumber)",
+        "emailId": "avi7@g.com",
+        "dob": "28/06/1991",
+        "userName": "#(mobileNumber)",
+        "active": true,
+        "tenantId": "#(tenantId)",
+        "type": "CITIZEN",
+        "roles": [
+            {
+                "code": "CITIZEN",
+                "name": "CITIZEN",
+                "tenantId": "#(tenantId)"
+            }
+        ]
+    }
+ }
