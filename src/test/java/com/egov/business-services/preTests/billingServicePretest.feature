@@ -48,4 +48,3 @@ Background:
     Then def searchBillResponse = response
     And assert searchBillResponse != null
     And assert responseStatus == 200 || responseStatus == 400
-    
