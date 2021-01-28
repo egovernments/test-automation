@@ -39,7 +39,7 @@ Background:
     Then def fetchBillResponse = response
      * print fetchBillResponse
 
-@searchBill
+@successSearchBill
     Scenario: Search bill with customized parameters
     Given url searchBill
     And params searchBillParams

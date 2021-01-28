@@ -1,7 +1,7 @@
 host: https://egov-micro-qa.egovernments.org/
 tenantId: pb.amritsar
 userName: 8288719366
-#TODO: Consumer needs to be change based upon the environment
+#TODO: Consumer code, mobile number needs to be change based upon the environment
 parameters:
   consumerCode: PB-PT-2020-10-14-007281
   businessService: PT
