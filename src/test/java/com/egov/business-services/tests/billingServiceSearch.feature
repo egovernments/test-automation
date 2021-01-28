@@ -1,4 +1,4 @@
-Feature: Billing Servuces Search tests
+Feature: Billing Services Search tests
 
 Background: 
     *  def authUsername = employeeUserName
@@ -94,7 +94,6 @@ Scenario: Test to search a bill without any parameters
     * karate.log(searchBillResponse)
     * assert searchBillResponse.Errors[0].code == noTenantIdErrorCode
     * assert searchBillResponse.Errors[0].message == noTenantIdErrorMsg
-
 
 @search_withInvalidtenantId_11 @negative @searchBill @billingServiceBill
 Scenario: Test to search a bill with an invalid tenantId
