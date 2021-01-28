@@ -1,4 +1,4 @@
-{
+{ 
     "RequestInfo": {
        
         "authToken": "#(authToken)"
@@ -253,7 +253,7 @@
                 "key": "",
                 "msgId": "20170310130900|en_IN",
                 "requesterId": "",
-                "authToken": "359e95cb-9db4-445e-bb27-46537e97a0c8",
+                "authToken": "#(authToken)",
                 "responseType": "arraybuffer"
             },
             "Bill": [
@@ -432,4 +432,3 @@
             ]
         }
     }
-}

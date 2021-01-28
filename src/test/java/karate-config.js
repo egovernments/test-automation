@@ -153,6 +153,7 @@ function() {
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
+        config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill

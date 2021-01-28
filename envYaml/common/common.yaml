@@ -43,6 +43,7 @@ endPoints:
   payload: citizen/egov-common/paymentRedirectPage
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
+  count: egov-workflow-v2/egov-wf/process/_count?
  billingService:
   fetchBill: billing-service/bill/v2/_fetchbill?
  pdfService:
