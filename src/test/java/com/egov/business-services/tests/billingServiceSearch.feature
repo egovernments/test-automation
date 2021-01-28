@@ -24,8 +24,6 @@ Background:
     *  def invalidTenantIdErrorCode = billingServiceConstants.errorMessages.invalidTenantId.code
     *  def invalidTenantIdErrorMsg = billingServiceConstants.errorMessages.invalidTenantId.message
     
-
-
 @search_withValidServiceAndConsumerCode_01 @positive @searchBill @billingServiceBill
 Scenario: Test to search a bill with valid service and consumer code
     * call read('../preTests/billingServicePretest.feature@successSearchBill')
