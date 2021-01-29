@@ -2,7 +2,8 @@ Feature: Location
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def locationconstant = read('../constants/location.yaml')
+  * def locationconstant = read('../../core-services/constants/location.yaml')
+  * def location = read('../../core-services/requestPayload/location/searchLocation.json')
 
 @locationsuccess
 Scenario: search for location detail

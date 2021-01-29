@@ -1,0 +1,99 @@
+{
+  "RequestInfo": {
+    "authToken": "08ec1d6e-18fd-42d4-8fba-2e8cef65774a"
+  },
+  "MdmsCriteria": {
+    "tenantId": "#(stateCode)",
+    "moduleDetails": [
+      {
+        "moduleName": "PropertyTax",
+        "masterDetails": [
+          {
+            "name": "Floor"
+          },
+          {
+            "name": "OccupancyType"
+          },
+          {
+            "name": "OwnerShipCategory"
+          },
+          {
+            "name": "OwnerType"
+          },
+          {
+            "name": "PropertySubType"
+          },
+          {
+            "name": "PropertyType"
+          },
+          {
+            "name": "SubOwnerShipCategory"
+          },
+          {
+            "name": "UsageCategory"
+          },
+          {
+            "name": "OwnerTypeDocument"
+          },
+          {
+            "name": "Rebate"
+          },
+          {
+            "name": "Penalty"
+          },
+          {
+            "name": "Interest"
+          },
+          {
+            "name": "FireCess"
+          },
+          {
+            "name": "Documents"
+          },
+          {
+            "name": "MutationDocuments"
+          },
+          {
+            "name": "UsageCategoryMajor"
+          },
+          {
+            "name": "UsageCategoryMinor"
+          },
+          {
+            "name": "UsageCategorySubMinor"
+          },
+          {
+            "name": "UsageCategoryDetail"
+          }
+        ]
+      },
+      {
+        "moduleName": "tenant",
+        "masterDetails": [
+          {
+            "name": "tenants"
+          }
+        ]
+      },
+      {
+        "moduleName": "BillingService",
+        "masterDetails": [
+          {
+            "name": "TaxHeadMaster"
+          },
+          {
+            "name": "BusinessService"
+          }
+        ]
+      },
+      {
+        "moduleName": "common-masters",
+        "masterDetails": [
+          {
+            "name": "uiCommonConstants"
+          }
+        ]
+      }
+    ]
+  }
+}

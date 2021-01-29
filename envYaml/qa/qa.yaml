@@ -1,3 +1,4 @@
 host: https://egov-micro-qa.egovernments.org/
-tenantId: pb.amritsar
+stateCode: pb
+cityCode: amritsar
 userName: 8288719366

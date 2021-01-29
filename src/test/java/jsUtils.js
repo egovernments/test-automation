@@ -24,6 +24,18 @@ function ranInteger(x) {
         return new java.util.Random().nextInt(100000000);
     }
 }
+/**
+ * Generates a random number between 0(inclusive) and length of an array(exclusive)
+ * @param {length of an array} length 
+ */
+function randomNumber(length) {
+    var number =  Math.floor(Math.random() * length);
+    if(number==length){
+        number = number -1;
+    }
+    karate.log('Index: ' + number);
+    return number; 
+}
 
 /**
  * Generates todays date/time in epoch format

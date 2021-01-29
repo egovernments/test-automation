@@ -1,0 +1,19 @@
+#UserName and Password
+superUserCounterEmployee:
+  userName: EMP-107-000177
+  password: 79m7be9
+
+#UserName and Password Super User
+superUser:
+  userName: EMP-1013-000335
+  password: TestUser@1234
+  stateCode: pb
+  cityCode: jalandhar
+  authUserType: EMPLOYEE
+
+#UserName and Password - Employee
+employee:
+  userName: EMPSU
+  password: eGov@123
+  type: EMPLOYEE
+
