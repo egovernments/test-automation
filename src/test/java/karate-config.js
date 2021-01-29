@@ -97,6 +97,8 @@ function() {
 
         //searchmdms service
         config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.search;
+        //get mdms service
+        config.getMdmsUrl = envProps.host + path.endPoints.mdmsService.get;
 
         //Searcher
         config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;
@@ -156,6 +158,7 @@ function() {
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
+        config.searchBill = envProps.host + path.endPoints.billingService.search
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create

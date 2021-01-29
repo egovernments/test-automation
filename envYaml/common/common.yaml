@@ -23,6 +23,7 @@ endPoints:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
   search: egov-mdms-service/v1/_search
+  get: egov-mdms-service/v1/_get
  searcher:
   searcher: egov-searcher/bill-genie/billswithaddranduser/_get
   searcherWS: egov-searcher/bill-genie/waterbills/_get
@@ -44,7 +45,8 @@ endPoints:
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
  billingService:
-  fetchBill: billing-service/bill/v2/_fetchbill?
+  fetchBill: billing-service/bill/v2/_fetchbill
+  search: billing-service/bill/v2/_search
  pdfService:
   create: pdf-service/v1/_create?
  user:
