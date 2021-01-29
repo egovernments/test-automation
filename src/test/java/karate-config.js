@@ -37,15 +37,21 @@ function() {
         config.counterEmployeePassword = userData.superUserCounterEmployee.password;
 
         //username & password for authtoken of Super User
-        config.superUserUserName = userData.superUser.userName;
+        config.superUserName = userData.superUser.userName;
         config.superUserPassword = userData.superUser.password;
-        config.superUserTenantId = userData.superUser.stateCode + '.' + userData.superUser.cityCode;
+      //  config.superUserTenantId = userData.superUser.stateCode + '.' + userData.superUser.cityCode;
         config.superUserAuthUserType = userData.superUser.authUserType;
 
         // username & password for Employee type user
         config.employeeUserName = userData.employee.userName;
         config.employeePassword = userData.employee.password;
         config.employeeType = userData.employee.type;
+
+         //username & password for Existing User Profile
+         config.existingUserName = userData.existingUser.userName;
+         config.existingUserPassword = userData.existingUser.password;
+         config.existingUserTenantId = userData.existingUser.tenantId
+         config.existingUserAuthUserType = userData.existingUser.authUserType;
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;

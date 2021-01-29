@@ -133,3 +133,8 @@ function getDataBasedOnEnvironment(rootParam, key) {
    var data =  karate.jsonPath(envProperties, "$."+ rootParam +"."+ key +"")
     return data;
 }
+
+function generateUUID(){
+    var uuid = '' + java.util.UUID.randomUUID();
+    return uuid
+}

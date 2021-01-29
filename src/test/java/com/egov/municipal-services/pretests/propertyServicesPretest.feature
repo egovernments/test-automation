@@ -59,3 +59,4 @@ Scenario: Create a property
     Then status 201
     And def propertyServiceResponseHeaders = responseHeaders
     And def propertyServiceResponseBody = response
+    * karate.log(propertyServiceResponseBody)

@@ -4,12 +4,12 @@ Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling localization Json
-  * def createEmployeeRequest = read('../requestPayload/egov-hrms/create.json')
-  * def searchEmployeeRequest = read('../requestPayload/egov-hrms/search.json')
-  * def updateEmployeeRequest = read('../requestPayload/egov-hrms/update.json')
-  * def updateDeactivatemployeeRequest = read('../requestPayload/egov-hrms/deactivate.json')
+  * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
+  * def searchEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/search.json')
+  * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
+  * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def expectedMessage1 = read('../constants/egov-hrms.yaml')
+  * def expectedMessage1 = read('../../business-services/constants/egov-hrms.yaml')
   * def invalidTenantId = 'notenant'
 
 
