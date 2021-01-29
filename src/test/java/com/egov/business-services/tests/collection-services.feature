@@ -8,7 +8,6 @@ Background:
     * def collectionServicePropertyData = read('../constants/propertyTaxAssessment.yaml')
     * def tenantId = tenantId
     * def businessService = collectionServicesConstants.parameters.businessService
-    * def propertyId = collectionServicePropertyData.parameters.propertyId
     * def paymentMode = collectionServicesConstants.parameters.paymentMode
     * def paidBy = collectionServicesConstants.parameters.paidBy
     * def mobileNumber = collectionServicesConstants.parameters.mobileNumber
@@ -35,7 +34,7 @@ Background:
     
 @workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collectionService_workflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with valid field values
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
@@ -55,7 +54,7 @@ Scenario: Test to Cancel a payment in workflow with valid field values
 
 @workflow_payment_samePaymentID_02 @negative @collectionService_workflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with same paymentId
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
@@ -80,7 +79,7 @@ Scenario: Test to Cancel a payment in workflow with invalid paymentId
 
 @workflow_payment_OTHERreason_05 @positive @collectionService_workflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with OTHER as reason
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
@@ -101,7 +100,7 @@ Scenario: Test to Cancel a payment in workflow with OTHER as reason
 
 @workflow_payment_NoReason_06 @negative @collectionService_workflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with no reason
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
@@ -112,7 +111,7 @@ Scenario: Test to Cancel a payment in workflow with no reason
 
 @workflow_payment_InValidReason_07 @negative @collectionService_workflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with invalid reason
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
@@ -138,7 +137,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 # Create Payment    
 @Create_PaymentWithValidBillID_01 @positive @CreatePayment @collectionServices
     Scenario: Make payment with valid Bill id 
-     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+     * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
      * call read('../preTests/billingServicePretest.feature@fetchBill')
      * call read('../preTests/collectionServicesPretest.feature@successPayment')
      * match response.ResponseInfo.status == '200 OK'
@@ -148,7 +147,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWithPaidBillID_02 @negative @CreatePayment @collectionServices
     Scenario: Make payment with paid Bill id 
-     * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+     * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
      * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with valid Bill id first
      * call read('../preTests/collectionServicesPretest.feature@successPayment')
@@ -167,7 +166,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWithInvalidBillID_03 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Bill id
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../preTests/collectionServicesPretest.feature@errorBillId')
@@ -176,7 +175,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
     
 @Create_PaymentWithInvalidBusinessService_04 @positive @CreatePayment @collectionServices
     Scenario: Make payment with invalid Business ID
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../preTests/collectionServicesPretest.feature@errorBusinessService')
@@ -187,7 +186,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWithAmountpaid_Null_05 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Business ID
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../preTests/collectionServicesPretest.feature@totalAmountPaidNull')
@@ -195,7 +194,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWith_PaymentModeCard_06 @positive @CreatePayment @collectionServices
     Scenario: Make payment with Card payment mode
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with Card type payment mode
     * call read('../preTests/collectionServicesPretest.feature@cardPaymentMethod')
@@ -203,7 +202,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWith_InvalidPaymentMode_07 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Payment mode
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Payment Mode
     * call read('../preTests/collectionServicesPretest.feature@errorPaymentMode')
@@ -211,7 +210,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWith_InvalidtenantID_08 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Tenant Id
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Teanant Id
     * call read('../preTests/collectionServicesPretest.feature@errorTenantId')
@@ -219,7 +218,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWith_NotenantID_09 @negative @CreatePayment @collectionServices
     Scenario: Make payment with null Tenant Id
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Teanant Id
     * call read('../preTests/collectionServicesPretest.feature@nullTenantIdPayment')
@@ -227,7 +226,7 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
 
 @Create_PaymentWith_negativeAmount_10 @negative @CreatePayment @collectionServices
     Scenario: Make payment with negative total amount paid
-    * call read('../preTests/propertyTaxAssessmentPretest.feature@assessment')
+    * call read('../../municipal-services/preTests/propertyServicesPretest.feature@successAssessProperty')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     # Make payment with negative total amount paid value
     * call read('../preTests/collectionServicesPretest.feature@negativeTotalAmount')

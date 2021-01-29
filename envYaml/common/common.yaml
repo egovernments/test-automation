@@ -64,3 +64,4 @@ endPoints:
   create: property-services/property/_create
   update: property-services/property/_update
   assessmentCreate: property-services/assessment/_create
+  search: property-services/property/_search

@@ -12,6 +12,9 @@
             "name": "Floor"
           },
           {
+            "name": "PTWorkflow"
+          },
+          {
             "name": "OccupancyType"
           },
           {
