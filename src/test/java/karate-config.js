@@ -95,6 +95,8 @@ function() {
 
         //searchmdms service
         config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.search;
+        //get mdms service
+        config.getMdmsUrl = envProps.host + path.endPoints.mdmsService.get;
 
         //Searcher
         config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;

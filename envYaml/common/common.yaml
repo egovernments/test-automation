@@ -23,6 +23,7 @@ endPoints:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
   search: egov-mdms-service/v1/_search
+  get: egov-mdms-service/v1/_get
  searcher:
   searcher: egov-searcher/bill-genie/billswithaddranduser/_get
   searcherWS: egov-searcher/bill-genie/waterbills/_get
