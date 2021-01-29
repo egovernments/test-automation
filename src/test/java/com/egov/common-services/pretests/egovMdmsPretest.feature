@@ -8,7 +8,6 @@ Background:
 
 @successSearchState
 Scenario: Search MDMS by State success Call
-  * print searchStateRequest
   Given url searchMdmsUrl
   # And param tenantId = tenantId
   And request searchStateRequest
@@ -24,7 +23,6 @@ Scenario: Search MDMS by State success Call
 
 @successSearchCity
 Scenario: Search MDMS by State and city success Call
-  * print searchCityRequest
   Given url searchMdmsUrl
   And request searchCityRequest
   When method post

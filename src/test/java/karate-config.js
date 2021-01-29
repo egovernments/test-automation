@@ -168,8 +168,8 @@ function() {
         // Property Service
         config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
-        config.createAssessmentUrl =  envProps.host + path.endPoints.propertyService.update
-
+        config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
+        config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

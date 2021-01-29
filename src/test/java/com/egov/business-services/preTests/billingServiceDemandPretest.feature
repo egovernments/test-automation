@@ -19,6 +19,8 @@ Scenario: Create Demand success Call
   And def billingServiceDemandResponseHeader = responseHeaders
   And def billingServiceDemandResponseBody = response
   And def Demands = billingServiceDemandResponseBody.Demands
+  And def demandId = Demands[0].id
+  And def consumerCode = demandId
 
 @errorCreate
 Scenario: Create Demand error Call

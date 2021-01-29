@@ -5,7 +5,6 @@ parameters:
   gender:
     - Male
     - Female
-    - Transgender
   source: 'MUNICIPAL_RECORDS'
   channel: 'CFC_COUNTER'
   hierarchyTypeCode: 'REVENUE'
@@ -17,5 +16,7 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
+  businessId: 'PB-AC-2021-01-27-007614'
+  financialYear: 2020-21
 invalidParameters:
   invalidTenantId: invalid

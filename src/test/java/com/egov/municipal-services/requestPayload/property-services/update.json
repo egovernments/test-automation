@@ -25,7 +25,7 @@
       "usageCategoryMajor": "#(UsageCategoryMajor)",
       "landArea": "#(landArea)",
       "propertyType": "#(PropertyType)",
-      "noOfFloors": 1,
+      "noOfFloors": 2,
       "ownershipCategory": "#(OwnerShipCategory)",
       "owners": [
         {
@@ -36,7 +36,8 @@
           "relationship": "#(relationship)",
           "ownerType": "#(OwnerType)",
           "gender": "#(gender)",
-          "isCorrespondenceAddress": "#(isCorrespondenceAddress)"
+          "isCorrespondenceAddress": "#(isCorrespondenceAddress)",
+          "altContactNumber": "#(mobileNumber)"
         }
       ],
       "source": "#(source)",
@@ -69,6 +70,18 @@
         }
       ],
       "usageCategory": "#(UsageCategory)",
-      "creationReason": "#(creationReason)"
+      "creationReason": "#(creationReason)",
+      "workflow": {
+        "action": "#(workflowAction)",
+        "assignes": null,
+        "businessId": "#(businessId)",
+        "businessService": "#(businessService)",
+        "comment": null,
+        "documents": null,
+        "id": null,
+        "moduleName": "PT",
+        "state": null,
+        "tenantId": "#(tenantId)"
+      }
     }
   }
