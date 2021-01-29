@@ -1,0 +1,21 @@
+parameters: 
+  relationship:
+    - FATHER
+    - HUSBAND
+  gender:
+    - Male
+    - Female
+    - Transgender
+  source: 'MUNICIPAL_RECORDS'
+  channel: 'CFC_COUNTER'
+  hierarchyTypeCode: 'REVENUE'
+  boundaryType: 'Locality'
+  documentTypes:
+    - 'OWNER.ADDRESSPROOF'
+    - 'OWNER.IDENTITYPROOF'
+    - 'OWNER.REGISTRATIONPROOF'
+    - 'OWNER.USAGEPROOF'
+    - 'OWNER.OCCUPANCYPROOF'
+  creationReason: 'CREATE'
+invalidParameters:
+  invalidTenantId: invalid

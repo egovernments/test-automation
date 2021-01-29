@@ -1,0 +1,29 @@
+{
+  "RequestInfo": {
+    "authToken": "#(authToken)"
+  },
+  "MdmsCriteria": {
+    "tenantId": "#(tenantId)",
+    "moduleDetails": [
+      {
+        "moduleName": "PropertyTax",
+        "masterDetails": [
+          {
+            "name": "Documents"
+          }
+        ]
+      },
+      {
+        "moduleName": "tenant",
+        "masterDetails": [
+          {
+            "name": "tenants"
+          },
+          {
+            "name": "citymodule"
+          }
+        ]
+      }
+    ]
+  }
+}

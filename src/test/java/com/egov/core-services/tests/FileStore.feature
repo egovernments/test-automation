@@ -1,12 +1,12 @@
 Feature: File store
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def fileStoreConst = read('../constants/fileStore.yaml')
+  * def fileStoreConst = read('../../core-services/constants/fileStore.yaml')
 
 @FileStore_GenerateId_01  @Positive  @filestore
 Scenario: Upload a document
       * def module = fileStoreConst.parameters.module
-      * call read('../pretests/fileStoreCreate.feature@uploadsuccess')
+      * call read('../../core-services/pretests/fileStoreCreate.feature@uploadsuccess')
       * print filecreateResponseBody
       * match filecreateResponseBody == '#present'
 

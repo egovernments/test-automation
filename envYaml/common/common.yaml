@@ -52,7 +52,6 @@ endPoints:
   updatePassword: user/password/_update
   updateForgetPassword: user/password/nologin/_update
  collectionServices:
-  assessmentCreate: property-services/assessment/_create
   fetchBill: billing-service/bill/v2/_fetchbill
   createPayment: collection-services/payments/_create
   workflow: collection-services/payments/PT/_workflow
@@ -61,3 +60,7 @@ endPoints:
   create: billing-service/demand/_create
   search: billing-service/demand/_search
   update: billing-service/demand/_update
+ propertyService:
+  create: property-services/property/_create
+  update: property-services/property/_update
+  assessmentCreate: property-services/assessment/_create

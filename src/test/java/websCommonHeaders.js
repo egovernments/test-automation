@@ -10,6 +10,7 @@ function() {
 
 	out['authority'] = karate.get('authorityHeader');
 	out['Content-Type'] = 'application/json';
+	out['Accept'] = 'application/json';
 	return out;
 }
 
