@@ -1,0 +1,27 @@
+parameters:
+  moduleName: RAINMAKER-PGR,RAINMAKER-TL
+  tenantId: pg
+  masterName: ServiceDefs
+
+expectedResponse:
+  serviceCode: "BlockOrOverflowingSewage"
+  keywords: "water, supply, connection, damage, repair, broken, pipe, piping, tap"
+  department: "DEPT_4"
+  slaHours: 336
+  menuPath: "WaterandSewage"
+  active: true
+  order: 2
+
+errorMessages:
+  noModuleName:
+    message: Required String parameter 'moduleName' is not present
+    params: moduleName
+  noMasterName:
+    message: Required String parameter 'masterName' is not present
+    params: masterName
+  noTenantId:
+    message: Required String parameter 'tenantId' is not present
+    params: tenantId
+  invalidTenantId:
+    code: Invalid_tenantId.MdmsCriteria.tenantId
+    message: Invalid Tenant Id
