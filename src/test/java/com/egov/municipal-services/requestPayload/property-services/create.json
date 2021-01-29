@@ -25,7 +25,7 @@
       "usageCategoryMajor": "#(UsageCategoryMajor)",
       "landArea": "#(landArea)",
       "propertyType": "#(PropertyType)",
-      "noOfFloors": 2,
+      "noOfFloors": 1,
       "ownershipCategory": "#(OwnerShipCategory)",
       "owners": [
         {
@@ -36,8 +36,7 @@
           "relationship": "#(relationship)",
           "ownerType": "#(OwnerType)",
           "gender": "#(gender)",
-          "isCorrespondenceAddress": "#(isCorrespondenceAddress)",
-          "altContactNumber": "#(mobileNumber)"
+          "isCorrespondenceAddress": "#(isCorrespondenceAddress)"
         }
       ],
       "source": "#(source)",

@@ -24,16 +24,16 @@ function ranInteger(x) {
         return new java.util.Random().nextInt(100000000);
     }
 }
+
 /**
  * Generates a random number between 0(inclusive) and length of an array(exclusive)
  * @param {length of an array} length 
  */
 function randomNumber(length) {
     var number =  Math.floor(Math.random() * length);
-    if(number==length){
-        number = number -1;
+    if(number>=length){
+        number = length -1;
     }
-    karate.log('Index: ' + number);
     return number; 
 }
 
@@ -103,7 +103,7 @@ function randomMobileNumGen(x)
  * @param {character length of string} length
  * @returns random string
  */
-function ranString(length) {
+function randomString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;

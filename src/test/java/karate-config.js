@@ -161,6 +161,7 @@ function() {
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
+        config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
@@ -168,12 +169,13 @@ function() {
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
+        config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
 
         // Property Service
         config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
-        config.createAssessmentUrl =  envProps.host + path.endPoints.propertyService.update
-
+        config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
+        config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
