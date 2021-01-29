@@ -1,10 +1,15 @@
 parameters:
+  # User type valid data 
   newUserType: register
   existingUserType: login
-  withoutType: ''
-  withoutMobileNumber: null
-  withoutTenantId: ''
   userType: CITIZEN
+  # User type invalid data
+  withoutType: ''
+  # Invalid mobile data
+  withoutMobileNumber: null
+  # Invalid tenant id
+  withoutTenantId: ''
+  # Name of the user
   name: Test
   
 errorMessages:

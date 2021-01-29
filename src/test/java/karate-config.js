@@ -155,6 +155,7 @@ function() {
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
+        config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
@@ -162,6 +163,7 @@ function() {
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
+        config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
 
         // Property Service
         config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate

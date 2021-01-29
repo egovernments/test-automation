@@ -62,6 +62,12 @@ Scenario: Perform search by passing offset and limit
   * call read('../pretests/eGovWorkFlowProcessSearch.feature@processsearchoffset&limit')
   * print processSearchResponseBody
 
+@Process_count  @positive  @egovworkflowprocess
+Scenario: Perform search to get the count of process
+  * call read('../pretests/eGovWorkFlowProcessCount.feature@processcountsuccess')
+  * print processCountResponseBody
+  
+
   
   
   
