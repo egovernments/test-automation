@@ -6,21 +6,18 @@ Background:
   * def authPassword = employeePassword
   * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
+  * configure headers = read('classpath:websCommonHeaders.js') 
   * def newUser = read('../requestPayload/userCreation/createUser.json')
   * print newUser
-  * def envValue = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * print envValue
+  * def name = ranString(4)
+  * def mobileNumberGen = '90' + randomMobileNumGen(8)
+  * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
+  * def emailId = ranEmailId(5)
+  * def dob = todayDate()
+
   
 @usercreation
-Scenario: Creating new user 
-   * print result
-   * def mobileNumberGen = randomMobileNumGen(10)
-   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-   * print validMobileNum
-   * set newUser.user.mobileNumber = validMobileNum
-   * set newUser.user.userName = validMobileNum
-   * configure headers = read('classpath:websCommonHeaders.js') 
-   
+Scenario: Creating new user    
      Given url createUser 
      * print createUser
      And request newUser
@@ -32,15 +29,3 @@ Scenario: Creating new user
      * print userCreationResponseBody
      * def createdUser = userCreationResponseBody.user[0].userName
      * print createdUser
-     * def doStorage =
-     """
-     function(args) {
-     var DataStorage = Java.type('com.egov.base.ReadWriteCitizenUserName');
-     var dS = new DataStorage();
-     return dS.updateFile(args);
-     }
-     """
-     * def old = envValue.userName.toString()
-     * print old
-     * def result = call doStorage {'old': #(old), 'new': #(createdUser), 'env': #(env) }
-     * print result
