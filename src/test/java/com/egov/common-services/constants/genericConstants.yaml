@@ -16,12 +16,9 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
-<<<<<<< HEAD
   businessId: 'PB-AC-2021-01-27-007614'
   financialYear: 2020-21
-=======
   module:
     - fire-noc 
->>>>>>> cd0daf0... updated filestore
 invalidParameters:
   invalidTenantId: invalid

@@ -24,12 +24,8 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/business-services",
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
-<<<<<<< HEAD
  	tags = {"@Reports,@SearchMdms,@Searcher,@location,@localization,@userotp,@User,@accessControl,
 	@hrms,@collectionServices,@billingServiceDemand,@pdfservice"})
-=======
- 	tags = {"@fileStore"})
->>>>>>> cd0daf0... updated filestore
 public class EGovTest {
 
 	@BeforeClass
