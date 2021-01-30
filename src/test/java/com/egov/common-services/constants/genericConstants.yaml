@@ -17,6 +17,7 @@ parameters:
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
 <<<<<<< HEAD
+<<<<<<< HEAD
   businessId: 'PB-AC-2021-01-27-007614'
   financialYear: 2020-21
 <<<<<<< HEAD
@@ -43,6 +44,8 @@ errorMessages:
   failed: FAILED
 successMessages:
   successful: SUCCESSFUL
+  module:
+    - fire-noc 
 invalidParameters:
   invalidTenantId: invalid
   emptyValue: ''

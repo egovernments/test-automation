@@ -8,28 +8,48 @@ Scenario: Upload a document
       * call read('../../core-services/pretests/fileStoreCreate.feature@uploadSuccess')
       * print filecreateResponseBody
       * match filecreateResponseBody == '#present'
+<<<<<<< HEAD
      
 @FileStore_MandatoryCheck_POST_02  @Negative  @fileStore
 Scenario: Test uplaoding without passing tenantid / Module in the form data
       * call read('../../core-services/pretests/fileStoreCreate.feature@uploadNoTenantIdFail')
+=======
+
+      
+@FileStore_MandatoryCheck_POST_02  @Negative  @fileStore
+Scenario: Test uplaoding without passing tenantid / Module in the form data
+      * call read('../pretests/fileStoreCreate.feature@uploadNoTenantIdFail')
+>>>>>>> cd0daf0... updated filestore
       * print filecreateResponseBody
       * assert filecreateResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTenantid
 
 @FileStore_invalidFiles_03  @Negative  @fileStore
 Scenario: Test uploading invalid file format
+<<<<<<< HEAD
       * call read('../../core-services/pretests/fileStoreCreate.feature@uploadInvalidDocFail')
+=======
+      * call read('../pretests/fileStoreCreate.feature@uploadInvalidDocFail')
+>>>>>>> cd0daf0... updated filestore
       * print filecreateResponseBody
       * print fileStoreConst.errorMessages.invalidFileFormat
 
 @FileStore_FetchDocPath_05   @Positive  @fileStore
 Scenario: Test to get the documents path
+<<<<<<< HEAD
       * call read('../../core-services/pretests/fileStoreGet.feature@getFileIdSuccess')
+=======
+      * call read('../pretests/fileStoreGet.feature@getFileIdSuccess')
+>>>>>>> cd0daf0... updated filestore
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 
 @FileStore_multipledocuments_06  @Positive  @fileStore   
 Scenario: Test to fetch path of multiple uploaded document from filestore
+<<<<<<< HEAD
       * call read('../../core-services/pretests/fileStoreGet.feature@getMultiFileIdSuccess')
+=======
+      * call read('../pretests/fileStoreGet.feature@getMultiFileIdSuccess')
+>>>>>>> cd0daf0... updated filestore
       * print fileStoreGetResponseBody
       * match fileStoreGetResponseBody == '#present'
 

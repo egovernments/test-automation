@@ -154,8 +154,6 @@ function ranEmailId(x) {
  */
 function todayDate(){
     var today = new Date();
-<<<<<<< HEAD
-<<<<<<< HEAD
     var dd = String(today.getDate());
     var mm = String(today.getMonth() + 1);
     var yyyy = today.getFullYear();
@@ -167,17 +165,3 @@ function generateUUID(){
     var uuid = '' + java.util.UUID.randomUUID();
     return uuid
 }
-=======
-=======
->>>>>>> 355c889... updated filestore
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    today = dd + '/' + mm + '/' + yyyy;
-    return today;
-<<<<<<< HEAD
-}
->>>>>>> 5e5749a... updated filestore
-=======
-}
->>>>>>> 355c889... updated filestore
