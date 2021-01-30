@@ -138,3 +138,25 @@ function generateUUID(){
     var uuid = '' + java.util.UUID.randomUUID();
     return uuid
 }
+/**
+ * Generates random emailid
+ * @param {character length of string} x
+ * @returns random string with email domain
+ */
+function ranEmailId(x) {
+    var name = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
+    return name + '@gmail.com'
+}
+
+/**
+ * Generates current date with dd/mm/yyyy format
+ * @returns today date
+ */
+function todayDate(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = dd + '/' + mm + '/' + yyyy;
+    return today;
+}
