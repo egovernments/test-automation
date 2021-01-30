@@ -1,7 +1,4 @@
-parameters:
-  module: fire-noc
-
 errorMessages:
- invalidFileFormat: 'Inalvid input provided for file : rtf, please upload any of the allowed formats  [jpg, jpeg, png, pdf, odt, ods, docx, doc, dxf, csv, txt, xlsx, xls]'
+ invalidFileFormat: 'Inalvid input provided for file : rtf, please upload any of the allowed formats :  [jpg, jpeg, png, pdf, odt, ods, docx, doc, dxf, csv, txt, xlsx, xls]'
  noTenantid: Required String parameter 'tenantId' is not present
- noFilestoreId: Required String parameter 'tenantId' is not present
+ noFilestoreId: Required List parameter 'fileStoreIds' is not present
