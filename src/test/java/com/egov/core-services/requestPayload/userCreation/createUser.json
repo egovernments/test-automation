@@ -3,11 +3,11 @@
         "authToken": "#(authToken)"
     },
     "user": {
-        "name": "test1",
+        "name": "#(name)",
         "gender": "MALE",
         "mobileNumber": "#(mobileNumber)",
-        "emailId": "avi7@g.com",
-        "dob": "28/06/1991",
+        "emailId": "#(emailId)",
+        "dob": "#(dob)",
         "userName": "#(mobileNumber)",
         "active": true,
         "tenantId": "#(tenantId)",

@@ -17,5 +17,7 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
+  module:
+    - fire-noc 
 invalidParameters:
   invalidTenantId: invalid
