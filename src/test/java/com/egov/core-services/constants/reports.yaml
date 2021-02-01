@@ -10,7 +10,6 @@ parameters:
     input: currentDate
   - name: deptname
     input: departmentname
-
  input:
   - qa: DEPT_1
   - uat: 

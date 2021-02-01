@@ -168,6 +168,16 @@ Scenario: User otp send fail call
 
 @errorInvalidTenant
 Scenario: User otp send fail call
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+  
+  * set userOtpSend.otp.mobileNumber = mobNumber
+  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
+  * set userOtpSend.otp.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
+
+=======
+>>>>>>> 7f2a00f... Updated scripts
   * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
   * set userOtpPayload.otp.type = typeForLogin  
   * set userOtpPayload.otp.tenantId = invalidTenantId
@@ -177,6 +187,10 @@ Scenario: User otp send fail call
      tenantId: '#(invalidTenantId)'
     }
     """
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 7f2a00f... Updated scripts
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
     And params userOtpParam

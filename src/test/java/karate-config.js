@@ -194,6 +194,9 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
+        //registered mobile number for citizen
+        config.registeredMobileNumber = userData.citizen.registeredMobileNumber
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);

@@ -1,5 +1,6 @@
 Feature: Pg services
 Background:
+  * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
   * def jsUtils = read('classpath:jsUtils.js')
   # Calling authtoken
   * def authUsername = employeeUserName

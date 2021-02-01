@@ -28,7 +28,11 @@ Scenario: Test by passing invalid/non existent or null value for tenant id
 @SearchMDMS_Non-existentMod_05   @negative  @searchmdms
 Scenario: Test by passing invalid/non existent or null value for Module Name
       * def moduleName = 'INVALID-module-' + randomString(3)
+<<<<<<< HEAD
       * call read('../../core-services/pretests/mdmsService.feature@searchmdms')
+=======
+      * call read('../pretests/mdmsService.feature@searchmdms')
+>>>>>>> 7f2a00f... Updated scripts
       * print searchMdmsResponseBody 
       * def mdmsResponse = searchMdmsResponseBody.MdmsRes
       * print mdmsResponse
