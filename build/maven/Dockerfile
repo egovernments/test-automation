@@ -9,11 +9,12 @@ COPY build/maven/start.sh ./start.sh
 # not useful for stateless builds
 # RUN mvn -B dependency:go-offline
 
+RUN ls -la /app/
+
 COPY ${WORK_DIR}/src ./src
 # RUN mvn -B -f /app/pom.xml package
 RUN mvn clean test "-Dkarate.env=qa"
 
-RUN ls -la /app/
 
 # Create runtime image
 FROM egovio/8-openjdk-alpine
