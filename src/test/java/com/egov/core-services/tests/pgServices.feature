@@ -16,7 +16,7 @@ Background:
   * def envCommon = read('file:envYaml/common/common.yaml')
   * def callbackUrl = envConstant.host + envCommon.endPoints.pgServices.payload
   * print callbackUrl
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
 
 @PGCreate_01
 Scenario: Verify creating a payment transaction
@@ -35,7 +35,7 @@ Scenario: Verify creating a payment transaction with invalid/non existent or nul
 
 @PGCreate_InvalidTenant_04  @negative  @pgservices
 Scenario: Verify creating a payment transaction with invalid/non existent value for "tenatid" in the request body and check for errors
-  * def tenantId = commonConstants.invalidParameters.invalidTenantId
+  * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
   * def mobileNumber = pgSericesConstant.parameters.valid.pgServiceCreateMobileNumber
   * call read('../pretests/pgServiceCreate.feature@createpgservicefail')
   * print pgServicesCreateResponseBody
@@ -107,7 +107,7 @@ Scenario: Verify updating a payment transaction by not passing transaction id
 
 @PGUpdate_InvalidAuth_04  @500
 Scenario: Verify by updating invalid/non existent or null value for auth Token
-  * def authToken = commonConstants.invalidParameters.invalidAuthToken
+  * def authToken = commonConstants.'Invalid-authToken-' + ranString(5)
   * call read('../pretests/pgServiceUpdate.feature@updatepgservicesuccess')
   * print pgServicesUpdateResponseBody 
 
@@ -141,7 +141,7 @@ Scenario: Verfiy searching transaction details using multiple txn id's
 
 @PGSearch_InvalidAuth_04  @500
 Scenario: Verify passing invalid/non existent or null value for auth Token and check for error
-* def authToken = commonConstants.invalidParameters.invalidAuthToken
+* def authToken = commonConstants.'Invalid-authToken-' + ranString(5)
 * call read('../pretests/pgServiceUpdate.feature@searchpgservicefail')
 * print pgServicesSearchResponseBody
 

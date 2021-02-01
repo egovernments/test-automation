@@ -5,7 +5,7 @@ Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def userOtpConstant = read('../constants/userOtp.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
   * def authUsername = employeeUserName
   * def authPassword = employeePassword
   * def authUserType = employeeType
@@ -57,7 +57,7 @@ Background:
 
   @UserOtp_Send_invalidTenant_Login_07  @negative  @userotp
   Scenario: Test by passing a invalid or a non existent tenant ID
-        * def tenantId = commonConstants.invalidParameters.invalidTenantId
+        * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
         * call read('../pretests/userOtpPretest.feature@Error_InvldTenant')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForInvalidTenantId

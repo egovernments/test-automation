@@ -116,7 +116,7 @@ Scenario: Upload a document
    # """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And multipart field tenantId = commonConstants.invalidParameters.invalidTenantId
+   And multipart field tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
    And multipart field module = fileStoreConst.parameters.module
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post

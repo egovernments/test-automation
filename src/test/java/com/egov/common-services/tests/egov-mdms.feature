@@ -7,9 +7,9 @@ Background:
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
     * def authUserType = employeeType
-    * call read('../preTests/authenticationToken.feature')
+    * call read('../pretests/authenticationToken.feature')
     
 @searchMdmsGlobal
 Scenario: Test to Create Demand with valid field values
-    * call read('../preTests/egovMdmsPretest.feature@successSearchState')
+    * call read('../pretests/egovMdmsPretest.feature@successSearchState')
     * print mdmsServiceResponseBody

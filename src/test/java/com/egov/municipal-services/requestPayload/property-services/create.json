@@ -43,6 +43,11 @@
       "channel": "#(channel)",
       "documents": [
         {
+          "documentType": "#(addressProofDocumentType0)",
+          "fileStoreId": "#(fileStoreId)",
+          "documentUid": "#(fileStoreId)"
+        },
+        {
           "documentType": "#(addressProofDocumentType1)",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
@@ -59,11 +64,6 @@
         },
         {
           "documentType": "#(addressProofDocumentType4)",
-          "fileStoreId": "#(fileStoreId)",
-          "documentUid": "#(fileStoreId)"
-        },
-        {
-          "documentType": "#(addressProofDocumentType5)",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
         }

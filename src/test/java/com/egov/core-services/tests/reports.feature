@@ -17,7 +17,7 @@ Background:
   * def key = reportConstant.parameters.key
   * def msgId = reportConstant.parameters.msgId
   * def requesterId = reportConstant.parameters.requesterId
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
 
 @MetadataGet_01  @positive  @reports
 Scenario: Test to fetch the details of a report for a particular module
@@ -36,7 +36,7 @@ Scenario: Test by passing invalid/non existent or null value for reportname id
 @MetadataGet_InvalidTenant_03  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
       * def reportName = reportConstant.parameters.reportName
-      * def tenantId = commonConstants.invalidParameters.invalidTenantId
+      * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
       * call read('../pretests/metadataGetReport.feature@reportforbidden')
       * print reportsResponseBody
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
@@ -51,7 +51,7 @@ Scenario: Test to search for report data with different combinations of search i
 
 @Report_InvalidTenant_02  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
-      * def tenantId = commonConstants.invalidParameters.invalidTenantId
+      * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
       * def secondReportName = reportConstant.parameters.secondReportName
       * def searchParams = reportConstant.parameters.searchparams
       * call read('../pretests/getReport.feature@getreportforbidden')

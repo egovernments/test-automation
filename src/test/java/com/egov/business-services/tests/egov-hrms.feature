@@ -4,7 +4,7 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def javaUtils = Java.type('com.egov.base.EGovTest')
     * def hrmsConstants = read('../constants/egov-hrms.yaml')
-    * def commonConstants = read('../constants/commonConstants.yaml')
+    * def commonConstants = read('../../common-services/constants/genericConstants')
     * def today = getCurrentEpochTime()
     * def tomorrow = getTomorrowEpochTime()
     # Calling access token
@@ -122,7 +122,7 @@ Scenario: Test to create a employee with no "tenantid" parameter
 
 @HRMS_create_InvalidTenantId_13 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null Tenant Id
-    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
     * call read('../pretests/egovHrmsPretest.feature@errorAuth_Create')
     * print hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
@@ -205,7 +205,7 @@ Scenario: Test to search a name by not passing any tenant id
 
 @HRMS_Search_InvalidTenantId_06 @negative @hrms_search @hrms
 Scenario: Test to search a employee with an invalid/nonexistent/null Tenant Id]
-    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
     * call read('../pretests/egovHrmsPretest.feature@errorAuth_Search')
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 

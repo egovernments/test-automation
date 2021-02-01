@@ -3,7 +3,7 @@ Feature: Business services - collection service calls
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def collectionServicesConstants = read('../constants/collection-services.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
   * def createPaymentRequest = read('../requestPayload/collection-services/create.json')
   * def workflowRequest = read('../requestPayload/collection-services/workflow.json')
   * def searchPaymentRequest = read('../requestPayload/collection-services/search.json')
@@ -11,7 +11,7 @@ Background:
    * def invalidBillId = collectionServicesConstants.parameters.billId
    * def invalidBusinessId = collectionServicesConstants.parameters.invalidBusinessService
    * def invalidPaymentMode = collectionServicesConstants.parameters.invalidPaymentMode
-   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
+   * def invalidTenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
    * def negativeTotalAmount = collectionServicesConstants.parameters.negativeTotalAmount
    * def invalidMobile = collectionServicesConstants.parameters.billId
 

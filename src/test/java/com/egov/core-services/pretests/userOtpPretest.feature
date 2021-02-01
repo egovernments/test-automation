@@ -5,7 +5,7 @@ Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def constantValue = read('../constants/userOtp.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
   * def envConstant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * print envConstant
   * def mobNumber = envConstant.userName
@@ -166,7 +166,7 @@ Scenario: User otp send fail call
   
   * set userOtpSend.otp.mobileNumber = mobNumber
   * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-  * set userOtpSend.otp.tenantId = commonConstants.invalidParameters.invalidTenantId
+  * set userOtpSend.otp.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
 
     Given url userOtpRegisterUrl
     And request userOtpSend
