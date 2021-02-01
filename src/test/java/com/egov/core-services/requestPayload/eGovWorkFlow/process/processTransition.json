@@ -1,0 +1,41 @@
+{
+    "valid": {
+    "RequestInfo": {
+       
+        "authToken": "#(authToken)"
+    },
+    "ProcessInstances": [
+        {
+            "tenantId": "#(tenantId)",
+            "businessService": "#(businessService)",
+            "businessId": "PB-AC-2021-01-28-007622",
+            "action": "REJECT",
+            "comment": null,
+            "assignee": null,
+         "moduleName": "PT",
+            "previousStatus": null
+
+            
+        }
+    ]
+    },
+    "invalid": {
+        "RequestInfo": {
+       
+            "authToken": "#(authToken)"
+        },
+        "ProcessInstances": [
+            {
+                "tenantId": "#(tenantId)",
+                "businessService": "PT.CREATE",
+                "businessId": "PB-AC-2021-01-28-007622",
+                "action": "REJECT",
+                "comment": null,
+                "assignee": null,
+                "previousStatus": null
+    
+                
+            }
+        ]
+    }
+}
