@@ -20,6 +20,10 @@ parameters:
   financialYear: 2020-21
   module:
     - fire-noc 
+  # type for userOtp
+  type:
+    - register 
+    - login
 expectedStatus:
   ok: "200 OK"
   success: 'successful'

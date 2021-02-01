@@ -20,7 +20,7 @@
         "taxAndPayments": [
             {
                 "billId": "#(billId)",
-                "amountPaid": 200
+                "amountPaid": "#(txnAmount)"
             }
         ],
         "user": {

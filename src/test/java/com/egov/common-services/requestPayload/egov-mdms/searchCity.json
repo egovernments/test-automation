@@ -107,6 +107,14 @@
             "name": "UsageCategoryDetail"
           }
         ]
+      },
+      {
+        "moduleName": "egov-location",
+        "masterDetails": [
+          {
+            "name": "TenantBoundary"
+          }
+        ]
       }
     ]
   }

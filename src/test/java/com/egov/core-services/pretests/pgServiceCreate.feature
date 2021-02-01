@@ -1,12 +1,13 @@
 Feature: Initiates a new payment transaction, on successful validation, a redirect is issued to the payment gateway.
 
 Background:
+  * configure headers = read('classpath:websCommonHeaders.js') 
   * def jsUtils = read('classpath:jsUtils.js')
-  * def pgServicesCreatePayload = read('../requestPayload/pgServices/pgServicesCreate.json')
+  * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
 
 @createpgservicesuccess
 Scenario: Verify creating a payment transaction
-  * configure headers = read('classpath:websCommonHeaders.js') 
+#  * configure headers = read('classpath:websCommonHeaders.js') 
      Given url pgServices 
      * print pgServices  
      And request pgServicesCreatePayload
@@ -19,7 +20,7 @@ Scenario: Verify creating a payment transaction
 
 @createpgservicefail
 Scenario: Verify creating a payment transaction
-  * configure headers = read('classpath:websCommonHeaders.js') 
+#  * configure headers = read('classpath:websCommonHeaders.js') 
      Given url pgServices 
      * print pgServices  
      And request pgServicesCreatePayload

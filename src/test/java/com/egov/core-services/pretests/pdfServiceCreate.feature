@@ -43,6 +43,7 @@ Scenario: Verify a pdf is generated successfully
      Given url createPdf 
      * print createPdf 
      And params pdfCreateParam
+     * eval pdfCreatePayloadSecond.Payments = Payments
      And request pdfCreatePayloadSecond
      * print pdfCreatePayloadSecond
      When method post
