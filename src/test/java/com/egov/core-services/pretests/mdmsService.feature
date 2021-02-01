@@ -3,20 +3,18 @@ Feature: Searchmdms
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  * def searchMdmsPayload = read('../requestPayload/mdmsService/searchMdms.json')
-  * def searchMdmsConstant = read('../constants/searchMdms.yaml')
-  * def getMdmsRequest = read('../requestPayload/mdmsService/getMdms.json')
+  * def searchMdmsPayload = read('../../core-services/requestPayload/mdmsService/searchMdms.json')
+  * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
+  * def getMdmsRequest = read('../../core-services/requestPayload/mdmsService/getMdms.json')
   
 @searchmdms
 Scenario: Test to search data for a particular module and tenant
-* configure headers = read('classpath:websCommonHeaders.js')
 * def mdmsParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-
      Given url searchMdmsUrl
      * print searchMdmsUrl
      And params mdmsParam
@@ -28,17 +26,14 @@ Scenario: Test to search data for a particular module and tenant
      And def searchMdmsResponseHeader = responseHeaders
      And def searchMdmsResponseBody = response
 
-
 @searchmdmsinvalidtenant
 Scenario: Test to search data for a particular module and tenant
-* configure headers = read('classpath:websCommonHeaders.js')
 * def mdmsParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-
      Given url searchMdmsUrl
      * print searchMdmsUrl
      And params mdmsParam

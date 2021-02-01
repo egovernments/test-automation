@@ -1,13 +1,12 @@
 parameters:
- noTenantId: 
- moduleName: common-masters
- invalidModuleName: abc
- noModuleName: 
- name: uiCommonConstants
- invalidName: 123
- noName: 
-  
+# Module name 
+ moduleName: 
+  - common-masters
+  - 
 
+ name: 
+  - uiCommonConstants
+  -
 errorMessages:
  invalidEndPoint: Not authorized to access this resource
  invalidTenantid: Invalid Tenant Id

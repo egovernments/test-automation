@@ -2,10 +2,9 @@ Feature: Get reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def getReportPayload = read('../requestPayload/reports/getReport.json')
-  * def reportConstant = read('../constants/reports.yaml')
+  * def getReportPayload = read('../../core-services/requestPayload/reports/getReport.json')
 
-@getreportsuccess
+@getreportSuccess
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
 * def getReportParam =
@@ -27,7 +26,7 @@ Scenario: Test to search for report data with different
      And def getReportsResponseHeader = responseHeaders
      And def getReportsResponseBody = response
 
-@getreportfail
+@getreportFail
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
 * def getReportParam =
@@ -49,7 +48,7 @@ Scenario: Test to search for report data with different
      And def getReportsResponseHeader = responseHeaders
      And def getReportsResponseBody = response
 
-@getreportforbidden
+@getreportForbidden
 Scenario: Test to search for report data with different
 * configure headers = read('classpath:websCommonHeaders.js')
 * def getReportParam =
