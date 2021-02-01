@@ -1,0 +1,30 @@
+parameters: 
+  relationship:
+    - FATHER
+    - HUSBAND
+  gender:
+    - Male
+    - Female
+  source: 'MUNICIPAL_RECORDS'
+  channel: 'CFC_COUNTER'
+  hierarchyTypeCode: 'REVENUE'
+  boundaryType: 'Locality'
+  documentTypes:
+    - 'OWNER.ADDRESSPROOF'
+    - 'OWNER.IDENTITYPROOF'
+    - 'OWNER.REGISTRATIONPROOF'
+    - 'OWNER.USAGEPROOF'
+    - 'OWNER.OCCUPANCYPROOF'
+  creationReason: 'CREATE'
+  businessId: 'PB-AC-2021-01-27-007614'
+  financialYear: 2020-21
+expectedStatus:
+  ok: "200 OK"
+  success: 'successful'
+  instrumentStatusCancelled: CANCELLED
+  created: "201 CREATED"
+errorMessages:
+  invalidTenantIdError: Not authorized to access this resource
+  nullParameterError:  must not be null
+  unhandledException: An unhandled exception occurred on the server
+  jsonDeserializeError: Failed to deserialize certain JSON fields

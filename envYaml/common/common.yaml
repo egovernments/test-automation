@@ -23,6 +23,7 @@ endPoints:
   idGeneate: egov-idgen/id/_generate
  mdmsService:
   search: egov-mdms-service/v1/_search
+  get: egov-mdms-service/v1/_get
  searcher:
   searcher: egov-searcher/bill-genie/billswithaddranduser/_get
   searcherWS: egov-searcher/bill-genie/waterbills/_get
@@ -43,21 +44,28 @@ endPoints:
   payload: citizen/egov-common/paymentRedirectPage
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
+  count: egov-workflow-v2/egov-wf/process/_count?
  billingService:
-  fetchBill: billing-service/bill/v2/_fetchbill?
+  fetchBill: billing-service/bill/v2/_fetchbill
+  search: billing-service/bill/v2/_search
  pdfService:
   create: pdf-service/v1/_create?
+  createNoSave: pdf-service/v1/_createnosave?
  user:
   updateProfile: user/profile/_update
   updatePassword: user/password/_update
   updateForgetPassword: user/password/nologin/_update
  collectionServices:
-  assessmentCreate: property-services/assessment/_create
   fetchBill: billing-service/bill/v2/_fetchbill
   createPayment: collection-services/payments/_create
   workflow: collection-services/payments/PT/_workflow
   searchPayment: collection-services/payments/PT/_search
  billingServiceDemand:
   create: billing-service/demand/_create
-  update: billing-service/demand/_search
-  search: billing-service/demand/_update
+  search: billing-service/demand/_search
+  update: billing-service/demand/_update
+ propertyService:
+  create: property-services/property/_create
+  update: property-services/property/_update
+  assessmentCreate: property-services/assessment/_create
+  search: property-services/property/_search

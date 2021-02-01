@@ -1,4 +1,5 @@
-productHost: https://egov-micro-uat.egovernments.org/
-host: https://mseva-uat.lgpunjab.gov.in/
-tenantId: pb.testing
+host: https://egov-micro-uat.egovernments.org/
+productHost: https://mseva-uat.lgpunjab.gov.in/
+stateCode: pg
+cityCode: citya
 userName: 7072352755

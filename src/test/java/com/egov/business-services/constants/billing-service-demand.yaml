@@ -1,16 +1,7 @@
 parameters:
-  consumerCode: PT_test_
-  consumerType: PropertyTax
-  businessService: PT
-  taxHeadMasterCode: PT_TAX
-  taxAmount: 200
-  collectionAmount: 0
-  minimumAmountPayable: 1
   status: ACTIVE
 invalidParameters:
-  businessService: invalid
   taxPeriodFrom: 11111111111111111111111111111111111111111111
-  taxHeadMasterCode: invalid
   taxAmountGreater: 20020020012
   minimumAmountPayableGreater: 10000000000
 expectedMessages:
@@ -19,4 +10,8 @@ expectedMessages:
   zeroTaxPeriodError: "No Tax Periods Found for the given demand with fromDate : 0 and toDate : 0"
   invalidTaxHeadMasterCode: "No TaxHead masters found for give codes "
   collectionAmountMoreThanTaxAmount: cannot not be greater than taxAmount
+  onlyTenantId: " Any one of the fields additional to tenantId is mandatory"
+  demandNotFound: "No Demand details found for the given ids :  "
+  demandIdMandatory: Demands, must contain ids in the update payload
+  invalidTenantId: No data found for this tenentID
   

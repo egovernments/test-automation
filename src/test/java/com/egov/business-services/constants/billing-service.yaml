@@ -8,7 +8,10 @@ invalidParameters:
   businessService : UK
   tenantId: invalid
   mobileNumber: 9118898989
-
+invalidSearchParam:
+  businessService: invalid
+  billId: invalid
+  mobileNumber: 9118898989
 errorMessages:
   consumerCode:
     code: BILL_GEN_MANDATORY_FIELDS_MISSING
@@ -23,3 +26,12 @@ errorMessages:
   invalidTenantId:
     code: EG_BS_INVALID_TENANTID
     message: Employees cannot search based on state level tenantid
+  mandatoryFieldError:
+    code: EGBS_MANDATORY_FIELDS_ERROR
+    message: BILL_SEARCH_MANDATORY_FIELDS_MISSING Any one of the fields additional to tenantId is mandatory like consumerCode,billId, mobileNumber or email
+  noBusinessServiceError:
+    code: BILL_SEARCH_CONSUMERCODE_BUSINESSSERVICE
+    message: the consumerCode & Service values should be given together or mobilenumber/email can be given
+  notNullSearchCriteriaError:
+    code: NotNull.billSearchCriteria.tenantId
+    message: must not be null

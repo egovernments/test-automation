@@ -11,19 +11,20 @@ function() {
     	locale = 'en_IN';
     }
     
-    if(!tenantId){
-    	tenantId = 'pb.amritsar';
-    }
-
-    
     var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
     var path = karate.read('file:envYaml/common/common.yaml');
-    var userData = karate.read('../userDetails/' + env + '/' + 'userDetails.yaml');
+    var userData = karate.read('../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
     
-    
+    if(!tenantId){
+        var stateCode = 'pb';
+        var cityCode = 'amritsar';
+    	tenantId = stateCode + '.' + cityCode;
+    }
 
     var config = {
         env : env,
+        stateCode : envProps.stateCode,
+        cityCode : envProps.cityCode,
         tenantId : tenantId,
 		locale : locale,
         retryCount : 30,
@@ -31,13 +32,14 @@ function() {
     };
         
         //username & password for authtoken
+        config.stateCode = envProps.stateCode;
         config.counterEmployeeUserName = userData.superUserCounterEmployee.userName;
         config.counterEmployeePassword = userData.superUserCounterEmployee.password;
 
         //username & password for authtoken of Super User
         config.superUserUserName = userData.superUser.userName;
         config.superUserPassword = userData.superUser.password;
-        config.superUserTenantId = userData.superUser.tenantId;
+        config.superUserTenantId = userData.superUser.stateCode + '.' + userData.superUser.cityCode;
         config.superUserAuthUserType = userData.superUser.authUserType;
 
         // username & password for Employee type user
@@ -46,7 +48,7 @@ function() {
         config.employeeType = userData.employee.type;
 
         //tenantId
-        config.tenantId = envProps.tenantId;
+        config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
         
         //localizationURL
@@ -95,6 +97,8 @@ function() {
 
         //searchmdms service
         config.searchMdmsUrl = envProps.host + path.endPoints.mdmsService.search;
+        //get mdms service
+        config.getMdmsUrl = envProps.host + path.endPoints.mdmsService.get;
 
         //Searcher
         config.searcherUrl = envProps.host + path.endPoints.searcher.searcher;
@@ -136,8 +140,6 @@ function() {
         //Update user password without login - OTP
         config.updatePasswordNoLogin = envProps.host + path.endPoints.user.updateForgetPassword;
 
-        // Create Assessment
-        config.createAssessment =  envProps.host + path.endPoints.collectionServices.assessmentCreate
         // Fetch Bill
         config.fetchBill =  envProps.host + path.endPoints.collectionServices.fetchBill
         // Create Payment
@@ -153,13 +155,21 @@ function() {
 
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
+        config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
+        config.searchBill = envProps.host + path.endPoints.billingService.search
 
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
+        config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
 
+        // Property Service
+        config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate
+        config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
+        config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
+        config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

@@ -2,7 +2,6 @@ Feature: Billing Service Pretest
 
 Background:
     * def billingServiceConstants = read('../constants/billing-service.yaml')
-    * def consumerCode = billingServiceConstants.parameters.consumerCode
     * def businessService = billingServiceConstants.parameters.businessService
     * def fetchBillRequest = read('../requestPayload/collection-services/fetchBill.json')
     * configure headers = read('classpath:websCommonHeaders.js')
@@ -38,3 +37,13 @@ Background:
     When method post
     Then def fetchBillResponse = response
      * print fetchBillResponse
+
+@successSearchBill
+    Scenario: Search bill with customized parameters
+    Given url searchBill
+    And params searchBillParams
+    And request fetchBillRequest
+    When method post
+    Then def searchBillResponse = response
+    And assert searchBillResponse != null
+    And assert responseStatus == 200 || responseStatus == 400

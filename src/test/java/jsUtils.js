@@ -26,6 +26,18 @@ function ranInteger(x) {
 }
 
 /**
+ * Generates a random number between 0(inclusive) and length of an array(exclusive)
+ * @param {length of an array} length 
+ */
+function randomNumber(length) {
+    var number =  Math.floor(Math.random() * length);
+    if(number>=length){
+        number = length -1;
+    }
+    return number; 
+}
+
+/**
  * Generates todays date/time in epoch format
  * @returns todays date/time
  */
@@ -50,7 +62,7 @@ function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
 
-/*function validateAddress(request, response){
+function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 
 	request.Property.address.doorNo == karate.jsonPath(response,"$.Properties[*].address.doorNo")[0] && 
@@ -61,7 +73,7 @@ if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].ad
 	
 	return false;
 	}
-}*/
+}
 
 /**
  * Generates random mobile number
@@ -91,7 +103,7 @@ function randomMobileNumGen(x)
  * @param {character length of string} length
  * @returns random string
  */
-function ranString(length) {
+function randomString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
@@ -108,4 +120,16 @@ function ranString(length) {
  */
  function stringToInteger(x) {
     return parseInt(x);
+}
+
+/**
+ * Fetched data based upon the environment selected
+ * @param {String} rootParam 
+ * @param {String} key
+ * @returns Value based upon the root param and key provided 
+ */
+function getDataBasedOnEnvironment(rootParam, key) {
+   var envProperties = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
+   var data =  karate.jsonPath(envProperties, "$."+ rootParam +"."+ key +"")
+    return data;
 }

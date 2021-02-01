@@ -1,8 +1,8 @@
 Feature: FileStore create API call 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def commonConstants = read('../constants/commonConstants.yaml')
-  * def fileStoreConst = read('../constants/fileStore.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def fileStoreConst = read('../../core-services/constants/fileStore.yaml')
 
 @uploadsuccess
 Scenario: Upload a document
@@ -14,7 +14,7 @@ Scenario: Upload a document
     }
     """
    Given url fileStoreCreate   
-   And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
+   And multipart file file = {read: '../../common-services/testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
    And params filestoreParam
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post
@@ -116,7 +116,7 @@ Scenario: Upload a document
    # """
    Given url fileStoreCreate   
    And multipart file file = {read: '../testData/dummyTestData3.pdf', filename: 'dummyTestData3.pdf', contentType: 'application/pdf'}
-   And multipart field tenantId = commonConstants.invalidParameters.invalidTenantId
+   And multipart field tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
    And multipart field module = fileStoreConst.parameters.module
    And header Content-Type = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'   
    When method post

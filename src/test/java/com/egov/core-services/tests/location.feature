@@ -9,7 +9,7 @@ Background:
   * def location = read('../requestPayload/location/searchLocation.json')
   * print location
   * def locationConstant = read('../constants/location.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
   
 
 @SearchLocation_01  @Positive  @location
@@ -32,7 +32,7 @@ Scenario: Search for  location details without tenantId
 Scenario: Send a POST request by passing  invalid/ non existent tenantId and search for the location details
       * def hierarchyTypeCode = locationConstant.parameters.hierarchyTypeCode
       * def boundaryType = locationConstant.parameters.boundaryType
-      * def tenantId = commonConstants.invalidParameters.invalidTenantId
+      * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
       * call read('../pretests/location.feature@locationsuccess')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'

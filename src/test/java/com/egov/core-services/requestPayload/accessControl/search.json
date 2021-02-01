@@ -1,12 +1,6 @@
 {
     "RequestInfo": {
-      "apiId": "#(apiId)",
-      "ver": "#(ver)",
       "ts": "#(ts)",
-      "action": "#(action)",
-      "did": "#(did)",
-      "key": "",
-      "msgId": "#(msgId)",
       "authToken": "#(authToken)"
     },
     "roleCodes": ["#(roleCodes)"],
