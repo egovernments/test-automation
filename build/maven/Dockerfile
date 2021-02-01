@@ -8,7 +8,7 @@ COPY build/maven/start.sh ./start.sh
 
 # not useful for stateless builds
 # RUN mvn -B dependency:go-offline
-
+COPY . .
 RUN ls -la /app/
 
 COPY ${WORK_DIR}/src ./src
