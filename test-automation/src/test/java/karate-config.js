@@ -11,7 +11,7 @@ function() {
     	locale = 'en_IN';
     }
     
-    var envProps = karate.read('file:/app/test-sutomation/test-automation/envYaml/' + env + '/' + env + '.yaml');
+    var envProps = karate.read('file:/app/test-automation/test-automation/envYaml/' + env + '/' + env + '.yaml');
     var path = karate.read('file:/app/test-sutomation/test-automation/envYaml/common/common.yaml');
     var userData = karate.read('/app.../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
     
