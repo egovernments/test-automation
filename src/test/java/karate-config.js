@@ -177,6 +177,9 @@ function() {
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
 
+        //registered mobile number for citizen
+        config.registeredMobileNumber = userData.citizen.registeredMobileNumber
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);

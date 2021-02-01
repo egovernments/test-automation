@@ -31,6 +31,14 @@
             "name": "Documents"
           }
         ]
+      },
+      {
+        "moduleName": "egov-location",
+        "masterDetails": [
+          {
+            "name": "TenantBoundary"
+          }
+        ]
       }
     ]
   }
