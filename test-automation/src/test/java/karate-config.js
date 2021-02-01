@@ -11,9 +11,9 @@ function() {
     	locale = 'en_IN';
     }
     
-    var envProps = karate.read('file:test-automation/envYaml/' + env + '/' + env + '.yaml');
-    var path = karate.read('file:test-automation/envYaml/common/common.yaml');
-    var userData = karate.read('../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
+    var envProps = karate.read('file:/app/test-sutomation/test-automation/envYaml/' + env + '/' + env + '.yaml');
+    var path = karate.read('file:/app/test-sutomation/test-automation/envYaml/common/common.yaml');
+    var userData = karate.read('/app.../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
     
     if(!tenantId){
         var stateCode = 'pb';
