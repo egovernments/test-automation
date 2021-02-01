@@ -2,7 +2,6 @@ Feature: Billing Service Pretest
 
 Background:
     * def billingServiceConstants = read('../constants/billing-service.yaml')
-    * def consumerCode = billingServiceConstants.parameters.consumerCode
     * def businessService = billingServiceConstants.parameters.businessService
     * def fetchBillRequest = read('../requestPayload/collection-services/fetchBill.json')
     * configure headers = read('classpath:websCommonHeaders.js')
@@ -43,6 +42,7 @@ Background:
     Scenario: Search bill with customized parameters
     Given url searchBill
     And params searchBillParams
+        * print searchBillParams
     And request fetchBillRequest
     When method post
     Then def searchBillResponse = response

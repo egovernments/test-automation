@@ -1,21 +1,6 @@
 parameters:
-  # Create Payment
+  # Cash payment mode
   paymentMode: Cash
-  paidBy: COMMON_OWNER
-  mobileNumber: 9898987799
-  payerName: krish
-  # Invalid Billing details
-  billId: invalid_123
-  # Invalid Business Service
-  invalidBusinessService: invalid
-  # Card payment
-  paymentModeCard: Card
-  # Invalid Payment Mode
-  invalidPaymentMode: invalid
-  # Invalid Tenant Id
-  invalidTenantId: invalid
-  # Negative Total Amount Paid value
-  negativeTotalAmount: -110
   # Card Payment details
   paymentMode2: Card
   transactionNumber: 12345678
@@ -23,12 +8,7 @@ parameters:
   # workflow
   reason: CHEQUEBOUNCE
   action: CANCEL
-  otherReason: "OTHER"
-  # Search Payment
-  validBillId: e5fe3c88-4b76-4654-8c5c-ac7beb96ae8a
-  nullValue: null
-  receiptNumber: PT/107/2020-21/138900
-  invalidValue: invalid009                                             
+  otherReason: "OTHER"                                          
 invalidParameters:
   paymentId: "abc"
   reason: "abc"

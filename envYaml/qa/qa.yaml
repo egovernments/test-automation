@@ -1,7 +1,7 @@
 host: https://egov-micro-qa.egovernments.org/
 stateCode: pb
 cityCode: amritsar
-userName: 8288719366
+userName: 4600556741
 #TODO: Consumer code, mobile number needs to be change based upon the environment
 parameters:
   consumerCode: PB-PT-2020-10-14-007281

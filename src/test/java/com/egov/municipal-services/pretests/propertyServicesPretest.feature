@@ -3,7 +3,7 @@ Feature: Property Service
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
+    #* def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
     * def assessmentDate = getCurrentEpochTime()
     * def source = commonConstants.parameters.source
@@ -118,6 +118,7 @@ Scenario: Approve a property
     And def propertyServiceResponseBody = response
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
+    And def consumerCode = propertyId
 
 @successAssessProperty
 Scenario: Create assessment
@@ -132,3 +133,4 @@ Scenario: Create assessment
   And request assessmentRequest
   When method post
   Then status 201
+  And  print response
