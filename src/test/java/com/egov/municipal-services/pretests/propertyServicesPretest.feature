@@ -28,11 +28,11 @@ Background:
     * def isCorrespondenceAddress = true
     * def source = commonConstants.parameters.source
     * def channel = commonConstants.parameters.channel
-    * def addressProofDocumentType1 = PropertyTax.Documents[0].dropdownData[0].code
-    * def addressProofDocumentType2 = PropertyTax.Documents[0].dropdownData[0].code
-    * def addressProofDocumentType3 = PropertyTax.Documents[0].dropdownData[0].code
-    * def addressProofDocumentType4 = PropertyTax.Documents[0].dropdownData[0].code
-    * def addressProofDocumentType5 = PropertyTax.Documents[0].dropdownData[0].code
+    * def addressProofDocumentType0 = PropertyTax.Documents[0].dropdownData[0].code
+    * def addressProofDocumentType1 = PropertyTax.Documents[1].dropdownData[0].code
+    * def addressProofDocumentType2 = PropertyTax.Documents[2].dropdownData[0].code
+    * def addressProofDocumentType3 = PropertyTax.Documents[3].dropdownData[0].code
+    * def addressProofDocumentType4 = PropertyTax.Documents[4].dropdownData[0].code
     * def creationReason = commonConstants.parameters.creationReason
     * def createPropertyRequest = read('../../municipal-services/requestPayload/property-services/create.json')
     * def businessId = commonConstants.parameters.businessId
@@ -44,7 +44,6 @@ Background:
 
 @successCreateProperty
 Scenario: Create a property
-    * print createPropertyRequest
     Given url createpropertyUrl
     And request createPropertyRequest
     When method post
@@ -53,6 +52,7 @@ Scenario: Create a property
     And def propertyServiceResponseBody = response
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
+    And def consumerCode = propertyId
 
 @successSearchProperty
 Scenario: Search a property
@@ -72,6 +72,7 @@ Scenario: Search a property
     And def propertyServiceResponseBody = response
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
+    And def consumerCode = propertyId
 
 @successVerifyProperty
 Scenario: Verify a property
@@ -79,7 +80,8 @@ Scenario: Verify a property
     * eval Property = karate.merge(Property, {'0': {'comment': '', 'assignee': []}})
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
-    * eval updatePropertyRequest.Property.workflow.action = 'VERIFY'
+    # Since the action is specifically 'verify', it is hardcoded
+    * eval updatePropertyRequest.Property.workflow.action = action
     Given url updatePropertyUrl
     And request updatePropertyRequest
     When method post
@@ -88,6 +90,7 @@ Scenario: Verify a property
     And def propertyServiceResponseBody = response
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
+    And def consumerCode = propertyId
 
 @successForwardProperty
 Scenario: Forward a property
@@ -103,6 +106,7 @@ Scenario: Forward a property
     And def propertyServiceResponseBody = response
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
+    And def consumerCode = propertyId
 
 @successApproveProperty
 Scenario: Approve a property

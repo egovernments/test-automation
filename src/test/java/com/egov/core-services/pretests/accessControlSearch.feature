@@ -1,12 +1,13 @@
 Feature: Access Control Feature
 
 Background:
+  * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def accessControlConstants = read('../constants/accessControl.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
-  * def searchAccessControlRequest = read('../requestPayload/accessControl/search.json')
+  * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def searchAccessControlRequest = read('../../core-services/requestPayload/accessControl/search.json')
   
-@success_search
+@successSearch
 Scenario: Access Control search success call
   * print searchAccessControlRequest
   Given url accessControlSearchUrl 
@@ -16,9 +17,8 @@ Scenario: Access Control search success call
   And def accessControlResponseHeader = responseHeaders
   And def accessControlResponseBody = response
 
-@error_search
+@errorSearch
 Scenario: Access Control search error call
-  * print searchAccessControlRequest
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest
   When method post
@@ -26,10 +26,9 @@ Scenario: Access Control search error call
   And def accessControlResponseHeader = responseHeaders
   And def accessControlResponseBody = response
 
-@error_search_invalid_tenant
+@errorSearchInvalidTenant
 Scenario: Access Control search error call with invalid tenantId
-  * set searchAccessControlRequest.tenantId = commonConstants.invalidParameters.invalidTenantId
-  * print searchAccessControlRequest
+  * eval searchAccessControlRequest.tenantId = 'INVALID-' + ranString(10)
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest
   When method post

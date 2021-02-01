@@ -7,7 +7,7 @@ Background:
   * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * def searchMdmsConstant = read('../constants/searchMdms.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
   * def moduleName = searchMdmsConstant.parameters.moduleName
   * def name = searchMdmsConstant.parameters.name
 
@@ -19,7 +19,7 @@ Scenario: Test to search data for a particular module and tenant
 
 @SearchMDMS_InvalidTenant_04  @negative  @searchmdms
 Scenario: Test by passing invalid/non existent or null value for tenant id
-     * def tenantId = commonConstants.invalidParameters.invalidTenantId
+     * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
      * call read('../pretests/mdmsService.feature@searchmdmsinvalidtenant')
      * print searchMdmsResponseBody
      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid
