@@ -1,6 +1,6 @@
 {
   "RequestInfo": {
-    "authToken": "08ec1d6e-18fd-42d4-8fba-2e8cef65774a"
+    "authToken": "#(authToken)"
   },
   "MdmsCriteria": {
     "tenantId": "#(stateCode)",
@@ -94,6 +94,14 @@
         "masterDetails": [
           {
             "name": "uiCommonConstants"
+          }
+        ]
+      },
+      {
+        "moduleName": "ACCESSCONTROL-ROLES",
+        "masterDetails": [
+          {
+            "name": "roles"
           }
         ]
       }

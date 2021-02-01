@@ -2,11 +2,11 @@ Feature: Business services - billing service demand calls
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def billingServiceDemandConstants = read('../constants/billing-service-demand.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
-  * def createDemandRequest = read('../requestPayload/billing-service-demand/create.json')
-  * def searchDemandRequest = read('../requestPayload/billing-service-demand/search.json')
-  * def updateDemandRequest = read('../requestPayload/billing-service-demand/update.json')
+  * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def createDemandRequest = read('../../business-services/requestPayload/billing-service-demand/create.json')
+  * def searchDemandRequest = read('../../business-services/requestPayload/billing-service-demand/search.json')
+  * def updateDemandRequest = read('../../business-services/requestPayload/billing-service-demand/update.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
 @successCreate
@@ -20,7 +20,7 @@ Scenario: Create Demand success Call
   And def billingServiceDemandResponseBody = response
   And def Demands = billingServiceDemandResponseBody.Demands
   And def demandId = Demands[0].id
-  And def consumerCode = demandId
+  And def consumerCode = Demands[0].consumerCode
 
 @errorCreate
 Scenario: Create Demand error Call

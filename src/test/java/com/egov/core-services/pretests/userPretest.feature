@@ -11,7 +11,7 @@ Background:
   * def findUser = read('../requestPayload/userCreation/searchUser.json')
   * print findUser
   * def userConstant = read('../constants/user.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants')
 
 @finduser
 Scenario: Search user
@@ -58,7 +58,7 @@ Scenario: Search user
 Scenario: Search user
      * configure headers = read('classpath:websCommonHeaders.js')
      * def payLoad = findUser.validPayload  
-     * set findUser.validPayload.tenantId = commonConstants.invalidParameters.invalidTenantId
+     * set findUser.validPayload.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
      Given url searchUser 
      * print searchUser  
      And request payLoad
