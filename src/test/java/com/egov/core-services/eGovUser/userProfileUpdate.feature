@@ -11,7 +11,7 @@ Background:
         * call read('../pretests/authenticationToken.feature')
         * def errorMessage = read("../constants/user.yaml")
         * def code = superUserName
-        * call read('../../business-services/preTests/egov-hrmsPretest.feature@success_MultiSearch')
+        * call read('../../business-services/preTests/egov-hrmsPretest.feature@successMultiSearch')
         * def updatedUserProfile = read('../requestPayload/user/update/updateUser.json')
         * def username = ranString(10)
         * def email = ranString(5)+'@auto.com'
