@@ -5,7 +5,7 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
     * def collectionServicesConstants = read('../constants/collection-services.yaml')
-    * def commonConstants = read('../constants/commonConstants.yaml')
+    * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * def paidBillIdError = collectionServicesConstants.errorMessages.paidBillId
     * def invalidBillIdError = collectionServicesConstants.errorMessages.invalidBillId

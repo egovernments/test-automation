@@ -3,7 +3,7 @@ Feature: Business services - collection service calls
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def collectionServicesConstants = read('../constants/collection-services.yaml')
-  * def commonConstants = read('../constants/commonConstants.yaml')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def tenantId = tenantId
   * def businessService = fetchBillResponse.Bill[0].businessService
   * def paymentMode = collectionServicesConstants.parameters.paymentMode

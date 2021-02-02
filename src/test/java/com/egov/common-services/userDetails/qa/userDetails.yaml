@@ -2,7 +2,7 @@
 superUserCounterEmployee:
   userName: EMP-107-000177
   password: 79m7be9
-#UserName and Password Existing User
+#UserName and Password of Existing User. Specifically for updatePassword scripts as part of eGovUser
 existingUser:
   userName: EMP-1013-000335
   password: TestUser@1234
@@ -18,11 +18,7 @@ employee:
   userName: EMPSU
   password: eGov@123
   type: EMPLOYEE
-# Existing user's credentials to update the Password
-updatePassword:
-   userName: EMP-1013-000443
-   password: TestUser@1234
-#Valid password, consumed by password update scripts as part of eGovUser
+#Valid password, consumed by password update-noLogin scripts as part of eGovUser
 validPasswordDetails:
   newPassword: TestUser@1234
 

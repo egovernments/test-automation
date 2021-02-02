@@ -121,7 +121,7 @@ Scenario: To verify the error message returned by API when ID is invalid
 @User_Update_NameWithMorethanMaxCharacters_13 @negative @updateProfile @eGovUser
 Scenario: To verify the max length of characters of username
         * eval updatedUserProfile.user = hrmsResponseBody.Employees[0].user
-        * set updatedUserProfile.user.name = ranString(55)
+        * set updatedUserProfile.user.name = randomString(55)
         * call read('../pretests/eGovUserUpdatePretest.feature@updateUserProfile')
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.usernameLengthError
      

@@ -81,7 +81,7 @@ Scenario: Verify a property
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
     # Since the action is specifically 'verify', it is hardcoded
-    * eval updatePropertyRequest.Property.workflow.action = action
+    * eval updatePropertyRequest.Property.workflow.action = 'VERIFY'
     Given url updatePropertyUrl
     And request updatePropertyRequest
     When method post
