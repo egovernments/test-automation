@@ -6,7 +6,7 @@ Background:
   * def authPassword = employeePassword
   * def authUserType = employeeType
   * call read('../../core-services/pretests/authenticationToken.feature')
-  * call read('../../business-services/preTests/billingServiceDemandPretest.feature@successCreate')
+  * call read('../../business-services/tests/billing-service-demand.feature@create_01')
   * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
   * def txnAmount = fetchBillResponse.Bill[0].totalAmount
   * def name = fetchBillResponse.Bill[0].payerName

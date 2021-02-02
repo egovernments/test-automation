@@ -6,7 +6,7 @@ Background:
   * def authPassword = employeePassword
   * def authUserType = employeeType
   * call read('../../core-services/pretests/authenticationToken.feature')
-# need to call search collection service 
+
   * def pdfCreateConstant = read('../../core-services/constants/pdfService.yaml')
 
 @pdf_create_PT_01  @positive  @pdfservice

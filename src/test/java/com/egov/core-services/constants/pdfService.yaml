@@ -1,14 +1,10 @@
 parameters:
    valid:
-     # valid Key params
+     # valid Key params for each module
      keyForTl: tradelicense-receipt
      keyForPt: property-receipt
      keyForFireNoc: consolidatedreceipt
      keyForWs: ws-bill
-     # invalid Key params   
-   invalid:
-     key: 123
-     keyForWs: ws-bill1
 expectedMessages:
   message: Success
 errorMessages:

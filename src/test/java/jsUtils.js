@@ -138,11 +138,6 @@ function getDataBasedOnEnvironment(rootParam, key) {
    var data =  karate.jsonPath(envProperties, "$."+ rootParam +"."+ key +"")
     return data;
 }
-
-function generateUUID(){
-    var uuid = '' + java.util.UUID.randomUUID();
-    return uuid
-}
 /**
  * Generates random emailid
  * @param {character length of string} x
@@ -164,4 +159,9 @@ function todayDate(){
     var yyyy = today.getFullYear();
     today = dd + '/' + mm + '/' + yyyy;
     return today;
+}
+
+function generateUUID(){
+    var uuid = '' + java.util.UUID.randomUUID();
+    return uuid
 }
