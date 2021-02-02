@@ -1,17 +1,5 @@
 parameters:
-  consumerCode: PB-PT-2020-10-14-007281
   businessService: PT
-  mobileNumber: 9999999999
-  consumerCodeBill: PB-PT-2020-08-19-006197
-invalidParameters:
-  consumerCode: invalid_123
-  businessService : UK
-  tenantId: invalid
-  mobileNumber: 9118898989
-invalidSearchParam:
-  businessService: invalid
-  billId: invalid
-  mobileNumber: 9118898989
 errorMessages:
   consumerCode:
     code: BILL_GEN_MANDATORY_FIELDS_MISSING

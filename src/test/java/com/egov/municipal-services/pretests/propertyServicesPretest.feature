@@ -3,7 +3,7 @@ Feature: Property Service
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
+    #* def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
     * def assessmentDate = getCurrentEpochTime()
     * def source = commonConstants.parameters.source
@@ -40,7 +40,7 @@ Background:
     * def updatePropertyRequest = read('../../municipal-services/requestPayload/property-services/update.json')
     * def assessmentRequest = read('../../municipal-services/requestPayload/property-services/assessment.json')
     * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
-  
+
 
 @successCreateProperty
 Scenario: Create a property
@@ -81,7 +81,7 @@ Scenario: Verify a property
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
     # Since the action is specifically 'verify', it is hardcoded
-    * eval updatePropertyRequest.Property.workflow.action = action
+    * eval updatePropertyRequest.Property.workflow.action = 'VERIFY'
     Given url updatePropertyUrl
     And request updatePropertyRequest
     When method post
@@ -126,7 +126,7 @@ Scenario: Approve a property
 
 @successAssessProperty
 Scenario: Create assessment
-  * def assessmentParams = 
+  * def assessmentParams =
     """
     {
        tenantId: '#(tenantId)'
@@ -137,3 +137,4 @@ Scenario: Create assessment
   And request assessmentRequest
   When method post
   Then status 201
+  And  print response

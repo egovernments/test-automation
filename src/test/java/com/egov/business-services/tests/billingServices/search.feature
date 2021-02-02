@@ -1,20 +1,20 @@
 Feature: Billing Services Search tests
 
-Background: 
+Background:
+    *  call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     *  def authUsername = employeeUserName
     *  def authPassword = employeePassword
     *  def authUserType = employeeType
     *  call read('../preTests/authenticationToken.feature')
     *  def billingServiceConstants = read('../constants/billing-service.yaml')
     *  def jsUtils = read('classpath:jsUtils.js')
-    *  def consumerCode =  getDataBasedOnEnvironment("parameters","consumerCode")
-    *  def businessService =  getDataBasedOnEnvironment("parameters","businessService")
-    *  def mobileNumber = getDataBasedOnEnvironment("parameters","mobileNumber")
-    *  def searchBillParams = { tenantId: '#(tenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
-    *  def invalidService = billingServiceConstants.invalidSearchParam.businessService
-    *  def invalidBillId = billingServiceConstants.invalidSearchParam.billId
-    *  def invalidMobileNumber = billingServiceConstants.invalidSearchParam.mobileNumber
-    *  def invalidTenantId = billingServiceConstants.invalidParameters.tenantId
+    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber
+    *  def invalidService = randomString(2)
+    *  def invalidBillId = generateUUID()
+    *  def invalidMobileNumber = '9'+randomMobileNumGen(9)
+    *  def invalidTenantId = randomString(5)
     *  def mandatoryFieldErrorCode = billingServiceConstants.errorMessages.mandatoryFieldError.code
     *  def mandatoryFieldErrorMessage = billingServiceConstants.errorMessages.mandatoryFieldError.message
     *  def noBusinessServiceErrorCode = billingServiceConstants.errorMessages.noBusinessServiceError.code
@@ -26,6 +26,7 @@ Background:
     
 @search_withValidServiceAndConsumerCode_01 @positive @searchBill @billingServiceBill
 Scenario: Test to search a bill with valid service and consumer code
+    *  def searchBillParams = {tenantId: '#(tenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
     * call read('../preTests/billingServicePretest.feature@successSearchBill')
     * assert searchBillResponse.Bill.size() > 0
     * assert searchBillResponse.Bill[0].businessService == businessService
@@ -34,6 +35,7 @@ Scenario: Test to search a bill with valid service and consumer code
 
 @search_withValidBillId_02 @positive @searchBill @billingServiceBill
 Scenario: Test to search a bill with valid Bill id
+    * def searchBillParams = {tenantId: '#(tenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
     * call read('../preTests/billingServicePretest.feature@successSearchBill')
     * def billId = searchBillResponse.Bill[0].id
     * def searchBillParams = { tenantId: '#(tenantId)', billId: '#(billId)'}
@@ -64,12 +66,14 @@ Scenario: Test to search a bill with a business service and mobile number
 
 @search_withInvalidService_06 @negative @searchBill @billingServiceBill
 Scenario: Test to search a bill with invalid business service
+    *  def searchBillParams = {tenantId: '#(tenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
     * set searchBillParams.service =  invalidService
     * call read('../preTests/billingServicePretest.feature@successSearchBill')
     * assert searchBillResponse.Bill.size() == 0
 
 @search_withInvalidBillId_07 @negative @searchBill @billingServiceBill
 Scenario: Test to search a bill with an invalid billId
+    *  def searchBillParams = {tenantId: '#(tenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
     * set searchBillParams.billId =  invalidBillId
     * call read('../preTests/billingServicePretest.feature@successSearchBill')
     * assert searchBillResponse.Bill.size() == 0

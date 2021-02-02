@@ -42,6 +42,7 @@ Background:
     Scenario: Search bill with customized parameters
     Given url searchBill
     And params searchBillParams
+        * print searchBillParams
     And request fetchBillRequest
     When method post
     Then def searchBillResponse = response

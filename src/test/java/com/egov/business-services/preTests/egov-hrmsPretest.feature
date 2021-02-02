@@ -9,7 +9,7 @@ Background:
   * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def expectedMessage1 = read('../../business-services/constants/egov-hrms.yaml')
+
 
 
 @successCreate

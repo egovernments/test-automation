@@ -11,56 +11,7 @@ parameters:
  permanentCity: pb.amritsar
  withoutUserName: null
  invalidUserName: asdfghjkl
- moreThan50CharsName: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc
- # Update User
-user:
- id: 4657
- userName: EMP-1013-000335
- name: AUTOMATIONUSER
- gender: MALE
- mobileNumber: 9999999999
- emailId: test@email.com
- correspondenceAddress: TEST ADDRESS
- correspondenceCity: jalandar
- tenantId: pb.jalandhar
- type: EMPLOYEE
- fatherOrHusbandName: TEST
- salutation: null
- altContactNumber: null
- pan: null
- aadhaarNumber: null
- permanentAddress: null
- permanentCity: null
- permanentPinCode: null
- correspondencePinCode: null
- active: true
- locale: null
- accountLocked: false
- signature: null
- bloodGroup: null
- photo: null
- identificationMark: null
- createdBy: 435
- accountLockedDate: 0
- lastModifiedBy: 1
- createdDate: 07-01-2021 19:32:06
- lastModifiedDate: 07-01-2021 20:06:46
- dob: 1/1/1988
- pwdExpiryDate: 07-04-2021 19:32:06
- roles:
-  - code: STADMIN
-    name: State Administrator
-    tenantId: pb.jalandhar
-  - code: SUPERUSER
-    name: Super User
-    tenantId: pb.jalandhar
- uuid: b707e0ff-647f-4524-b2f2-677c26295987
- # Update Password
-password:
-   userName: EMP-1013-000443
-   password: TestUser@1234
-
-
+ moreThan50CharsName: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc 
 
 errormessages:
  # Search user
@@ -90,47 +41,5 @@ errormessages:
  userNotFoundError: UserNotFoundException
  invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException
 
- #User Profile Valid Data
-validProfileData:
-  userName: TESTUSER
-  emailId: test@mail.org
-  city: amritsar
-  randomPhoneNumber: "0101010101"
-  gender: MALE
 
- #User Profile - Invalid Data
-inValidProfileData:
-  userName: TESTUSER@automation!
-  emailId: test123mail.com
-  mobileNumber: phoneNumber
-  gender: "12345"
-  tenantID: null
-  id: 1000
-
- #User Password - Valid Data
-validPasswordDetails:
-  existingPassword: TestUser@1234
-  newPassword: TestUser@1234
-  tenantId: pb.jalandhar
- #User Password - Invalid Data
-inValidPasswordDetails:
-  existingPassword: InValid@123
-  newInvalidPassword: Pas@23
-  tenantId: invalid
-  type: invalid
-
- #User Password Update - OTP
-userUpdateNoLoginValidData:
-  otpReference: "966309"
-  newPassword: TestUser@1234
-  userName: EMP-1013-000335
-  tenantId: pb.jalandhar
-  type: EMPLOYEE
-
-userUpdateNoLoginInvalidData:
-  otpReference: "invalid_otp"
-  newPassword: TestUser@1234
-  userName: invalid_username
-  tenantId: pb.amritsar
-  type: EMPLOYEE
 
