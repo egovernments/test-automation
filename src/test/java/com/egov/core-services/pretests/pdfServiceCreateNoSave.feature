@@ -1,7 +1,7 @@
 Feature: PDF config is generated successfully
 
 Background:
-* def pdfCreateNoSavePayload = read('../requestPayload/pdfService/pdfCreateNoSave.json')
+* def pdfCreateNoSavePayload = read('../../core-services/requestPayload/pdfService/pdfCreateNoSave.json')
 * def pdfCreateNoSavePayloadFirst = pdfCreateNoSavePayload.WS
 
 @pdfcreatenosavesuccess

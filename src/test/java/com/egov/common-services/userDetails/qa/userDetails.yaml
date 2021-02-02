@@ -22,7 +22,3 @@ employee:
 validPasswordDetails:
   newPassword: TestUser@1234
 
-# Registered mobile number for user otp
-citizen:
- registeredMobileNumber: 9742379422
-

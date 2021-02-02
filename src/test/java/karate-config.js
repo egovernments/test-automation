@@ -177,8 +177,8 @@ function() {
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
 
-        //registered mobile number for citizen
-        config.registeredMobileNumber = userData.citizen.registeredMobileNumber
+        //eGovWorkFlow Business
+        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

@@ -3,6 +3,8 @@ Feature: User otp send API call
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
+  * call read('../../core-services/pretests/userCreation.feature@usercreation')
+  * def registeredMobileNumber = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
   * print mobileNumber
@@ -166,13 +168,6 @@ Scenario: User otp send fail call
 
 @errorInvalidTenant
 Scenario: User otp send fail call
-<<<<<<< Updated upstream
-  
-  * set userOtpSend.otp.mobileNumber = mobNumber
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-  * set userOtpSend.otp.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-
-=======
   * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
   * set userOtpPayload.otp.type = typeForLogin  
   * set userOtpPayload.otp.tenantId = invalidTenantId
@@ -182,7 +177,6 @@ Scenario: User otp send fail call
      tenantId: '#(invalidTenantId)'
     }
     """
->>>>>>> Stashed changes
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
     And params userOtpParam
@@ -193,6 +187,7 @@ Scenario: User otp send fail call
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
+    * print userOtpSendResponseBody
 
 @errorTenantNull
 Scenario: User otp send fail call

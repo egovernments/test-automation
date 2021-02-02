@@ -40,5 +40,5 @@ Scenario: Search MDMS by State and city success Call
   And def BillingService = MdmsRes.BillingService
   And def commonMasters = MdmsRes['common-masters']
   And def accessControlRoles = MdmsRes['ACCESSCONTROL-ROLES']
-  And def tenantBoundary = MdmsRes.MdmsRes['egov-location'].TenantBoundary
+  And def tenantBoundary = MdmsRes['egov-location'].TenantBoundary
   * print tenantBoundary

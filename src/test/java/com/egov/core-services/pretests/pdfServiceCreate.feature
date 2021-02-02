@@ -1,7 +1,7 @@
 Feature: Generated pdf successfully
 
 Background:
-* def pdfCreatePayload = read('../requestPayload/pdfService/pdfCreate.json')
+* def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
 * def pdfCreatePayloadThird = pdfCreatePayload.FireNoc

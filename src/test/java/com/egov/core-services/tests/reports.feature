@@ -9,8 +9,8 @@ Background:
   * call read('../../core-services/pretests/authenticationToken.feature')
   * def reportConstant = read('../../core-services/constants/reports.yaml')
   * def reportName = reportConstant.parameters.reportName
-  * def pageSize = reportConstant.parameters.pageSize
-  * def offset = reportConstant.parameters.offset
+  * def pageSize = 'false'
+  * def offset = '0'
   * def ts = getCurrentEpochTime()
   * def secondReportName = reportConstant.parameters.secondReportName
   * def searchParams = reportConstant.parameters.searchparams
@@ -19,11 +19,7 @@ Background:
   * eval searchParams[2].input = reportConstant.parameters.input[env]
   * def invalidReportName = 'INVALID-report-' + randomString(2)
   * def withoutSearchParams = []
-  * def invalidSearchParams = 'INVALID-searchparams' + randomString(2)
-  * def invalidSearchParamName = reportConstant.parameters.invalidSearchParamName
-  * eval searchParams[0].Test = ranString(4)
-  * eval searchParams[1].Test = ''
-  * eval searchParams[2].input = reportConstant.parameters.input[env]
+  * def invalidSearchParams = 'INVALID' + randomString(2)
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
 
@@ -42,9 +38,8 @@ Scenario: Test by passing invalid/non existent or null value for reportname id
 
 @MetadataGet_InvalidTenant_03  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
-      * def reportName = reportConstant.parameters.reportName
-      * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-      * call read('../pretests/metadataGetReport.feature@reportforbidden')
+      * def tenantId = invalidTenantId
+      * call read('../../core-services/pretests/metadataGetReport.feature@reportForbidden')
       * print reportsResponseBody
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
 
@@ -56,10 +51,8 @@ Scenario: Test to search for report data with different combinations of search i
 
 @Report_InvalidTenant_02  @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
-      * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-      * def secondReportName = reportConstant.parameters.secondReportName
-      * def searchParams = reportConstant.parameters.searchparams
-      * call read('../pretests/getReport.feature@getreportforbidden')
+      * def tenantId = invalidTenantId
+      * call read('../../core-services/pretests/getReport.feature@getreportForbidden')
       * print getReportsResponseBody
       * assert getReportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
 
@@ -77,16 +70,18 @@ Scenario: Test by removing search params
       * print getReportsResponseBody
       * match getReportsResponseBody == '#present'
 
-@Report_InvalidSearchParams_05  @negative  @reports
-Scenario: Test by adding a invalid search param value
-      * def searchParams = invalidSearchParams
+  @Report_InvalidSearchParams_05  @negative  @reports
+ Scenario: Test by adding a invalid search param value
+      * def searchParams = commonConstants.invalidParameters.invalidValue
       * call read('../../core-services/pretests/getReport.feature@getreportFail')
       * print getReportsResponseBody
       * assert getReportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidSearchparam
 
-@Report_InvalidSearchParamsNames_06  @negative  @reports
-Scenario: Test by seding a invalid search param names
-      * def searchParams = invalidSearchParamName
-      * call read('../../core-services/pretests/getReport.feature@getreportFail')
-      * print getReportsResponseBody
-      * assert getReportsResponseBody.Errors[0].code == reportConstant.errormessages.invalidSearchParamsNames
+#@Report_InvalidSearchParamsNames_06  @negative  @reports
+#Scenario: Test by seding a invalid search param names
+     # * def searchParams = reportConstant.parameters.searchparams
+     # * eval searchParams[0].name = ranString(4)
+     # * eval searchParams[1].name = ''
+     # * call read('../../core-services/pretests/getReport.feature@getreportFail')
+     # * print getReportsResponseBody
+     # * assert getReportsResponseBody.Errors[0].code == reportConstant.errormessages.invalidSearchParamsNames
