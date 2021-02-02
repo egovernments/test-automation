@@ -11,9 +11,6 @@ Background:
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber
-   # *  def consumerCode =  getDataBasedOnEnvironment("parameters","consumerCode")
-   # *  def businessService =  getDataBasedOnEnvironment("parameters","businessService")
-   # *  def mobileNumber = getDataBasedOnEnvironment("parameters","mobileNumber")
     *  def invalidService = randomString(2)
     *  def invalidBillId = generateUUID()
     *  def invalidMobileNumber = '9'+randomMobileNumGen(9)

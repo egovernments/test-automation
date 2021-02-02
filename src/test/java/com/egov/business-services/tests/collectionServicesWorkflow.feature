@@ -110,7 +110,7 @@ Scenario: Test to Cancel a payment in workflow with no tenantId
 @workflow_payment_InValidtenantID_10 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with invalid tenantId
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * def tenantId = randomString(5)
     * call read('../pretests/collectionServicesPretest.feature@error_auth_workflow')
     * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.NotAuthorized

@@ -9,7 +9,7 @@ Feature: Billing Service - Bills tests
      * def authUserType = employeeType
      * call read('../preTests/authenticationToken.feature')
      * def billingServiceConstants = read('../constants/billing-service.yaml')
-     * def commonConstants = read('../constants/commonConstants.yaml')
+     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def invalidMobileNumber = '9'+randomMobileNumGen(9)
      * def invalidConsumerCode = randomString(5)
      * def invalidBusinessService = randomString(2)
