@@ -94,6 +94,12 @@
         "masterDetails": [
           {
             "name": "uiCommonConstants"
+          },
+          {
+            "name": "Department"
+          },
+          {
+            "name": "Designation"
           }
         ]
       },
@@ -102,6 +108,17 @@
         "masterDetails": [
           {
             "name": "roles"
+          }
+        ]
+      },
+      {
+        "moduleName": "egov-hrms",
+        "masterDetails": [
+          {
+            "name": "EmployeeStatus"
+          },
+          {
+            "name": "EmployeeType"
           }
         ]
       }
