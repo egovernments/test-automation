@@ -6,3 +6,5 @@ target/
 .vscode
 .metadata/
 bin/
+build/*
+Jenkinsfile
