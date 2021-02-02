@@ -8,7 +8,7 @@ Background:
      * def tenantId = existingUserTenantId
      * print tenantId
      * def authUserType = existingUserAuthUserType
-     * call read('../pretests/authenticationToken.feature')
+     * call read('../../pretests/authenticationToken.feature')
      * def userProfileData = read('../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
      * def errorMessage = read('../constants/user.yaml')
      * def existingPassword = authPassword

@@ -8,13 +8,13 @@ Background:
      * def tenantId = existingUserTenantId
      * print tenantId
      * def authUserType = existingUserAuthUserType
-     * call read('../pretests/authenticationToken.feature')
+     * call read('../../pretests/authenticationToken.feature')
      * def updatePasswordData = read('../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
      * def otpReference = randomNumber(5)
      * def newPassword = updatePasswordData.validPasswordDetails.newPassword
      * def userName = authUsername
      * def type = authUserType
-     * def errorMessage = read('../constants/user.yaml')
+     * def errorMessage = read('../../constants/user.yaml')
      * def updateUserPasswordNoLogin = read('../requestPayload/user/updatePasswordNoLogin/updatePasswordNoLogin.json')
 
 @Update_NoLogin_Password_InValidOTP_02 @negative @userPasswordNoLogin @eGovUser
