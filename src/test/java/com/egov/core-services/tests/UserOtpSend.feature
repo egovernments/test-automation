@@ -5,7 +5,7 @@ Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def userOtpConstant = read('../constants/userOtp.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def authUsername = employeeUserName
   * def authPassword = employeePassword
   * def authUserType = employeeType

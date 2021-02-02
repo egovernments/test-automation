@@ -17,7 +17,7 @@ Background:
   * def key = reportConstant.parameters.key
   * def msgId = reportConstant.parameters.msgId
   * def requesterId = reportConstant.parameters.requesterId
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
 @MetadataGet_01  @positive  @reports
 Scenario: Test to fetch the details of a report for a particular module
