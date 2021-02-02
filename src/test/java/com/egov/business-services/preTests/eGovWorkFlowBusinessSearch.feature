@@ -10,7 +10,7 @@ Feature: eGovWorkFlowBusiness Feature
     * def workFlowConstants = read('../../business-services/constants/eGovWorkFlowBusiness.yaml')
     * def businessServices = workFlowConstants.inputData.businessServices
     * def searchWorkFlowRequest = read('../../business-services/requestPayload/eGovWorkFlow/business/workFlowSearch.json')
-
+    
 @SuccessSearchWorkFlow
 Scenario: Search Work Flow
 * configure headers = read('classpath:websCommonHeaders.js')

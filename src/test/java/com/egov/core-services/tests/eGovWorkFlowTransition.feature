@@ -12,8 +12,9 @@ Background:
 
 @Process_Transition_01  @positive  @eGovWorkFlowProcess
 Scenario: Verify the API call to move the workflow from one state to another
-  * def statesAction=
-  """
+ # * def statesAction=
+ # """
+ #   for()
   * call read('.././core-services/pretests/eGovWorkFlowProcessTransition.feature@processTransitionSuccess')
   * print processTransitionResponseBody
 
