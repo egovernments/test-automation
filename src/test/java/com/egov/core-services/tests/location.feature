@@ -9,7 +9,7 @@ Background:
   * def location = read('../requestPayload/location/searchLocation.json')
   * print location
   * def locationConstant = read('../constants/location.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   
 
 @SearchLocation_01  @Positive  @location

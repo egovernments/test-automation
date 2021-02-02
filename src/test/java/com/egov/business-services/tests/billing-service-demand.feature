@@ -3,7 +3,6 @@ Feature: Business Services - Billing Service Demand tests
 Background:
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
     * def jsUtils = read('classpath:jsUtils.js')
-    * configure headers = read('classpath:websCommonHeaders.js')
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def consumerCode = 'PT-Test-' + ranInteger(6)
@@ -156,7 +155,7 @@ Scenario: Test to Create Demand with invalid tenant id
     * def tenantId = 'Invalid-tenantId-' + ranString(5)
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreate')
     * print billingServiceDemandResponseBody
-    * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+    * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
 @create_NoTenantId_19 @negative @billingServiceDemandCreate @billingServiceDemand
 Scenario: Test to Create Demand with no tenant id
@@ -412,7 +411,7 @@ Scenario: Test to Update Demand with invalid tenant id
     * eval Demands[0].tenantId = invalidTenantId
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorUpdate')
     * print billingServiceDemandResponseBody
-    * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId
+    * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
 @update_NotenantId_11 @negative @billingServiceDemandUpdate @billingServiceDemand
 Scenario: Test to Update Demand with no tenant id

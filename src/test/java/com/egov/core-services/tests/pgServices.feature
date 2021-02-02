@@ -16,7 +16,7 @@ Background:
   * def envCommon = read('file:envYaml/common/common.yaml')
   * def callbackUrl = envConstant.host + envCommon.endPoints.pgServices.payload
   * print callbackUrl
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
 @PGCreate_01
 Scenario: Verify creating a payment transaction

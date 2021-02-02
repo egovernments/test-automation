@@ -7,7 +7,7 @@ Background:
   * def authUserType = employeeType
   * call read('../pretests/authenticationToken.feature')
   * def searchMdmsConstant = read('../constants/searchMdms.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def moduleName = searchMdmsConstant.parameters.moduleName
   * def name = searchMdmsConstant.parameters.name
 

@@ -11,7 +11,7 @@ Background:
   * def findUser = read('../requestPayload/userCreation/searchUser.json')
   * print findUser
   * def userConstant = read('../constants/user.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
 @finduser
 Scenario: Search user

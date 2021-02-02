@@ -9,7 +9,7 @@ Background:
   * def processSearchConstant = read('../constants/eGovWorkFlowProcessSearch.yaml')
   * def history = processSearchConstant.parameters.history
   * def businessIds = processSearchConstant.parameters.businessId
-  * def commonConstants = read('../../common-services/constants/genericConstants')
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
 @Search_01  @positive @egovworkflowprocess
 Scenario: Perform search using business id, tenant and history 
