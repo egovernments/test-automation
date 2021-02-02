@@ -1,6 +1,4 @@
 parameters:
- pageSize: false
- offset: 0
  # Metadata report name
  reportName: DescriptionReport
  # to get the pgr LMEPerformance report
@@ -12,13 +10,7 @@ parameters:
     input: currentDate
   - name: deptname
     input: departmentname
- invalidSearchParamName: 
-  - Test: name1
-    input: pastDate
-  - test: name2
-    input: currentDate
-  - name: deptname
-    input: DEPT_1
+
  input:
   - qa: DEPT_1
   - uat: 

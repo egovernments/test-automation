@@ -9,10 +9,5 @@ expectedCodes:
   removeAction: 'NotNull.businessServiceRequest.businessServices[0].states[0].actions[0].action'
 
 inputData:
- nextState: ""
- invalidAuthToken: "abc"
- businessServices: "PT.CREATE"
- multipleTenantIds: "pb.amritsar,pb.jalandar"
- multipleBusinessServices: "NewTL,PT.CREATE"
-
+ businessServices: PT.CREATE
  

@@ -8,14 +8,12 @@
         {
             "tenantId": "#(tenantId)",
             "businessService": "#(businessService)",
-            "businessId": "PB-AC-2021-01-28-007622",
+            "businessId": "#(businessId)",
             "action": "REJECT",
             "comment": null,
             "assignee": null,
          "moduleName": "PT",
-            "previousStatus": null
-
-            
+            "previousStatus": null  
         }
     ]
     },
@@ -27,8 +25,8 @@
         "ProcessInstances": [
             {
                 "tenantId": "#(tenantId)",
-                "businessService": "PT.CREATE",
-                "businessId": "PB-AC-2021-01-28-007622",
+                "businessService": "#(businessService)",
+                "businessId": "#(businessId)",
                 "action": "REJECT",
                 "comment": null,
                 "assignee": null,

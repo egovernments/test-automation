@@ -2,11 +2,8 @@ parameters:
 # Module name 
  moduleName: 
   - common-masters
-  - 
-
  name: 
   - uiCommonConstants
-  -
 errorMessages:
  invalidEndPoint: Not authorized to access this resource
  invalidTenantid: Invalid Tenant Id

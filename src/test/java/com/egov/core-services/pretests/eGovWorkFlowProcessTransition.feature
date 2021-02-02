@@ -1,9 +1,12 @@
 Feature: Verify the API call to move the workflow from one state to another
 
 Background:
+* call read(../../municipal-services/pretests/propertyServicesPretest.feature@successCreateProperty)
+* def businessId = acknowldgementNumber
 * def processTransitionPayload = read('../requestPayload/eGovWorkFlow/process/processtransition.json')
 * def processTransiionPayloadValid = processTransitionPayload.valid
 * def processTransiionPayloadInvalid = processTransitionPayload.valid
+
 @processTransitionSuccess
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 

@@ -4,18 +4,18 @@
     },
     "user": {
         "name": "#(name)",
-        "gender": "MALE",
+        "gender": "#(gender)",
         "mobileNumber": "#(mobileNumber)",
         "emailId": "#(emailId)",
         "dob": "#(dob)",
         "userName": "#(mobileNumber)",
         "active": true,
         "tenantId": "#(tenantId)",
-        "type": "CITIZEN",
+        "type": "#(userType)",
         "roles": [
             {
-                "code": "CITIZEN",
-                "name": "CITIZEN",
+                "code": "#(userType)",
+                "name": "#(userType)",
                 "tenantId": "#(tenantId)"
             }
         ]

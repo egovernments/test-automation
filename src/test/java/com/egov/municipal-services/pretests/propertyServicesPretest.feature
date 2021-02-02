@@ -3,7 +3,7 @@ Feature: Property Service
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    #* def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
+  #  * def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
     * def assessmentDate = getCurrentEpochTime()
     * def source = commonConstants.parameters.source
@@ -53,6 +53,7 @@ Scenario: Create a property
     And def Property = propertyServiceResponseBody.Properties[0]
     And def propertyId = Property.propertyId
     And def consumerCode = propertyId
+    And def acknowldgementNumber = Property.acknowldgementNumber
 
 @successSearchProperty
 Scenario: Search a property

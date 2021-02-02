@@ -2,20 +2,16 @@ Feature: User OTP
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
-  * def userOtpConstant = read('../constants/userOtp.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * call read('../../common-services/pretests/eGovMdmsPretest.feature@successSearchState')
   # Calling authToken
   * def authUsername = employeeUserName
   * def authPassword = employeePassword
   * def authUserType = employeeType
   * call read('../../core-services/pretests/authenticationToken.feature')
-  * def userType = accessControlRoles[0].code
+  * def userType = accessControlRoles.roles[0].code
   * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
   * def name = ranString(4)
-  * def permanentCity = userOtpConstant.parameters.permanentCity[env]
+  * def permanentCity = cityCode
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
   @UserOtp_Send_Register_01   @positive  @userOtp
@@ -60,10 +56,8 @@ Background:
 
   @UserOtp_Send_invalidTenant_Login_07  @negative  @userOtp
   Scenario: Test by passing a invalid or a non existent tenant ID
-        * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-        * call read('../pretests/userOtpPretest.feature@Error_InvldTenant')
+        * call read('../pretests/userOtpPretest.feature@errorInvalidTenant')
         * print userOtpSendResponseBody
-        * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForInvalidTenantId
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
 
  @UserOtp_Send_NoType_08  @negative  @userOtp

@@ -12,6 +12,6 @@ superUser:
 
 #UserName and Password - Employee
 employee:
-  userName: PTUATAP1
+  userName: MCS
   password: eGov@123
   type: EMPLOYEE

@@ -45,6 +45,26 @@ Scenario: Test to search data for a particular module and tenant
      And def searchMdmsResponseHeader = responseHeaders
      And def searchMdmsResponseBody = response
 
+@searchmdmswithoutmasterdetails
+Scenario: Test to search data for a particular module and tenant
+* set searchMdmsPayload.MdmsCriteria.moduleDetails[0].masterDetails = null
+* def mdmsParam = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """
+     Given url searchMdmsUrl
+     * print searchMdmsUrl
+     And params mdmsParam
+     * print mdmsParam
+     And request searchMdmsPayload
+     * print searchMdmsPayload
+     When method post
+     Then status 400
+     And def searchMdmsResponseHeader = responseHeaders
+     And def searchMdmsResponseBody = response
+
 @getMdmsService
 Scenario: Get mdms service details based upon customized parameters
      * def getmdmsUrl = 'https://egov-micro-uat.egovernments.org/egov-mdms-service/v1/_get'
