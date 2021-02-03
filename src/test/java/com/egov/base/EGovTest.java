@@ -24,7 +24,7 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/business-services",
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
- 	tags = {"@Reports,@SearchMdms,@Searcher,@location,@localization,@userotp,@User,@accessControl,@hrms,@collectionServices,@billingServiceDemand,@pdfservice"})
+ 	tags = {"@workflow"})
 public class EGovTest {
 
 	@BeforeClass
