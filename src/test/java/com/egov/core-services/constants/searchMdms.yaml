@@ -4,6 +4,7 @@ parameters:
   - common-masters
  name: 
   - uiCommonConstants
+# error messages
 errorMessages:
  invalidEndPoint: Not authorized to access this resource
  invalidTenantid: Invalid Tenant Id

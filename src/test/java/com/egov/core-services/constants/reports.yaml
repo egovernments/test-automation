@@ -3,6 +3,7 @@ parameters:
  reportName: DescriptionReport
  # to get the pgr LMEPerformance report
  secondReportName: LMEPerformanceReport
+ # search param payload
  searchparams:
   - name: fromDate
     input: pastDate
@@ -14,6 +15,7 @@ parameters:
   - qa: DEPT_1
   - uat: 
  ts: currentDate
+# error messages
 errormessages:
  withoutReportName: Error in retrieving report definition
  noReportName: ERROR_IN_RETRIEVING_REPORT_DATA
