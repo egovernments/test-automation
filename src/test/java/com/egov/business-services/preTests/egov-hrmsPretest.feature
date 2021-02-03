@@ -90,8 +90,6 @@ Scenario: hrms search success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-
-
 @errorSearch
 Scenario: hrms search error call
   

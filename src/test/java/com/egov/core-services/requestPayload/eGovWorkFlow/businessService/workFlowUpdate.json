@@ -1,0 +1,28 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "BusinessServices": [{
+        "tenantId": "#(tenantId)",
+        "businessService": "#(businessService)",
+        "business": "#(business)",
+        "businessServiceSla": "#(businessServiceSla)",
+        "states": [{
+            "sla": "#(sla)",
+            "state": "#(state)",
+            "applicationStatus": "#(applicationStatus)",
+            "docUploadRequired": "#(docUploadRequired)",
+            "isStartState": "#(isStartState)",
+            "isTerminateState": "#(isTerminateState)",
+            "isStateUpdatable": "#(isStateUpdatable)",
+            "actions": [{
+                "action": "#(action)",
+                "nextState": "#(action)",
+                "roles": [
+                    "#(action)",
+                    "#(action)"
+                ]
+            }]
+        }]
+    }]
+}
