@@ -7,11 +7,6 @@ Background:
   * def localizationSearchRequest = read('../requestPayload/localization/localizationMsg.json')
   * def localizationV2SearchRequest = read('../requestPayload/localization/v2SearchMsg.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print tenantId
-  * set localizationSearchRequest.tenantId = tenantId
-  * set localizationV2SearchRequest.tenantId = tenantId
-  * print localizationSearchRequest
-  * print localizationV2SearchRequest
   
 @Success_LocalizationMessage
 Scenario: Localization Message Success call
@@ -21,7 +16,7 @@ Scenario: Localization Message Success call
     {
      tenantId: '#(tenantId)',
      locale: '#(locale)',
-     module: '#(module_value)'
+     module: '#(module)'
     }
     """
 
@@ -48,15 +43,13 @@ Scenario: Localization Message Error call
 @Error_NoTenant_LocalizationMessage
 Scenario: Localization Message Error call
  
-   * print localizationMessagesUrl
   Given url localizationMessagesUrl
+  And param locale = '#(locale)'
   And request localizationSearchRequest
   When method post
   Then status 400
   And def localizationMessageResponseHeader = responseHeaders
   And def localizationMessageResponseBody = response
-  * print localizationMessageResponseBody
-
 
 @Error_NoModule_LocalizationMessage
 Scenario: Localization Message Error call
@@ -66,10 +59,9 @@ Scenario: Localization Message Error call
     {
      tenantId: '#(tenantId)',
      locale: '#(locale)',
-     codes: '#(code_value)'
+     codes: '#(code)'
     }
     """
-  * print localizationMessagesUrl
   Given url localizationMessagesUrl
   And request localizationSearchRequest
   And params parameters
@@ -88,8 +80,8 @@ Scenario: Localization Message Success call
     {
      tenantId: '#(tenantId)',
      locale: '#(locale)',
-     module: '#(module_value)',
-     codes: '#(code_value)'
+     module: '#(module)',
+     codes: '#(code)'
     }
     """
   Given url localizationMessagesUrl 
@@ -109,7 +101,7 @@ Scenario: Localization Message Success call
     {
      tenantId: '#(tenantId)',
      locale: '#(locale)',
-     module: '#(module_value)'
+     module: '#(module)'
     }
     """
 
@@ -154,8 +146,6 @@ Scenario: Localization V2 Search Message Error call
   And def localizationV2SearchResponseHeader = responseHeaders
   And def localizationV2SearchResponseBody = response
 
-
-
 @Invalid_SearchV2ErrorCall
 Scenario: Localization V2 Search Message Error call
  
@@ -166,3 +156,21 @@ Scenario: Localization V2 Search Message Error call
   And def localizationV2SearchResponseHeader = responseHeaders
   And def localizationV2SearchResponseBody = response
 
+@Success_LocalizationCall
+Scenario: Localization Message Success call
+  
+  * def parameters = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     locale: '#(locale)'
+    }
+    """
+
+  Given url localizationMessagesUrl 
+  And params parameters
+  And request localizationSearchRequest
+  When method post
+  Then status 200
+  And def localizationMessageResponseHeader = responseHeaders
+  And def localizationMessageResponseBody = response

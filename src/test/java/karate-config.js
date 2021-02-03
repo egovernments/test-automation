@@ -176,7 +176,19 @@ function() {
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
+        //apportion
+        config.apportionUrl = envProps.localhost + path.endPoints.apportion.bill;
+        //dashboard
+        config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
+        config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
+        //encService
+        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
+        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
+        
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);

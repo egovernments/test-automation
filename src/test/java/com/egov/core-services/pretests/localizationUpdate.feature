@@ -3,17 +3,13 @@ Feature: Localization Update Messages API call
 Background:
 	
   * def jsUtils = read('classpath:jsUtils.js')
-  	# calling localization Json
+  	# calling localization Update Json
   * def localizationUpdateRequest = read('../requestPayload/localization/update.json')
+    # calling localization Ceate Json
   * def localizationCreateRequest = read('../requestPayload/localization/create.json')
+  # calling localization MultiMessageCeate Json
   * def localizationMultiMessageCreateRequest = read('../requestPayload/localization/multiMessageCreate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print tenantId
-  * set localizationUpdateRequest.tenantId = tenantId
-  * set localizationCreateRequest.tenantId = tenantId
-  * set localizationMultiMessageCreateRequest.tenantId = tenantId
-  * print localizationUpdateRequest
-  * print localizationMultiMessageCreateRequest
 
 
 @Success_Update
@@ -65,7 +61,6 @@ Scenario: Localization Delete call
 
   * def deleteRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print deleteRequest
   
   Given url localizationDeleteMessagesUrl
   And request deleteRequest
@@ -73,8 +68,6 @@ Scenario: Localization Delete call
   Then status 403
   And def deleteResponseHeader = responseHeaders
   And def deleteResponseBody = response
-
-
 
 @Create_Success
 Scenario: Localization Create Success Call
@@ -86,7 +79,6 @@ Scenario: Localization Create Success Call
   And def createResponseHeader = responseHeaders
   And def createResponseBody = response
 
-
 @Create_MultiMessages_Success
 Scenario: Localization Multi Message Create Success Call
 
@@ -97,12 +89,3 @@ Scenario: Localization Multi Message Create Success Call
   And def createResponseHeader = responseHeaders
   And def createResponseBody = response
   
-  
-
-
-
-  
-
-
-
-

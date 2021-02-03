@@ -28,3 +28,12 @@ errorMessages:
   nullParameterError:  must not be null
   unhandledException: An unhandled exception occurred on the server
   jsonDeserializeError: Failed to deserialize certain JSON fields
+  authorizedError: Not authorized to access this resource
+  failed: FAILED
+successMessages:
+  successful: SUCCESSFUL
+invalidParameters:
+  invalidTenantId: invalid
+  emptyValue: ''
+  nullValue: null
+  invalidValue: Abc@123

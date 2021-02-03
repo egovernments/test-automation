@@ -1,0 +1,28 @@
+{
+    "encryptionRequests": [
+      {
+        "tenantId": "#(tenantId)",
+        "type": "#(type)",
+        "value": "#(value)"
+      },
+      {
+        "tenantId": "#(tenantId)",
+        "type": "#(type)",
+        "value": [
+          "Personal",
+          "Private"
+        ]
+      },
+      {
+        "tenantId": "#(tenantId)",
+        "type": "#(type)",
+        "value": {
+          "userObject1": {
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)",
+            "email": "#(email)"
+          }
+        }
+      }
+    ]
+  }
