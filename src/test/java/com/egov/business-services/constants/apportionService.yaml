@@ -1,0 +1,26 @@
+parameters:
+  #Valid data
+  billId: dcbc4e85-4d35-40f5-a9d8-3faf74a1535e
+  totalAmount: 1000
+  businessService: WS
+  amountPaid: 500
+  isAdvanceAllowed: true
+  billDetailId: 0965da2a-f7b3-46fb-8874-802c00347ed0
+  demandId: 2096f159-4974-4f0d-b9e0-aaaf4f4b5a5f
+  expiryDate: 1594166399205
+  fromPeriod: 1556076800006
+  toPeriod: 155607680008
+  demandDetailId: 2b55c677-b99f-4ddd-b54c-35e01b9cace0
+  billAmount1: 100
+  billAmount2: 100
+  billAmount3: 100
+  billAmount4: 100
+  taxHeadCode1: WS_TIME_REBATE
+  taxHeadCode2: WS_TIME_INTEREST
+  taxHeadCode3: WS_CHARGE
+  taxHeadCode4: WS_ADVANCE_CARRYFORWARD
+  paidValue: 1500
+
+errorMessages:
+  invalidBusinessService: No Advance taxHead found for 
+  invalidTenantMessage: Invalid Tenant Id

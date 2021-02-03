@@ -100,6 +100,12 @@
           },
           {
             "name": "Designation"
+          },
+          {
+            "name": "IdFormat"
+          },
+          {
+            "name": "StateInfo"
           }
         ]
       },
@@ -119,6 +125,14 @@
           },
           {
             "name": "EmployeeType"
+          }
+        ]
+      },
+      {
+        "moduleName": "dss-dashboard",
+        "masterDetails": [
+          {
+            "name": "dashboard-config"
           }
         ]
       }

@@ -1,0 +1,95 @@
+{
+    "tenantId": "#(tenantId)",
+    "Bills": [
+        {
+            "id": "#(billId)",
+            "mobileNumber": "9999999999",
+            "payerName": "AUTO_PAYER",
+            "payerAddress": "Punjab",
+            "payerEmail": null,
+            "status": "ACTIVE",
+            "totalAmount": "#(totalAmount)",
+            "businessService": "#(businessService)",
+            "billNumber": "AUTO_BILL-01",
+            "billDate": 1594127458205,
+            "consumerCode": "WS_6",
+            "additionalDetails": null,
+            "amountPaid" : "#(amountPaid)",
+            "isAdvanceAllowed" : "#(isAdvanceAllowed)",
+            "billDetails": [
+                {
+                    "id": "#(billDetailId)",
+                    "tenantId": "#(tenantId)",
+                    "demandId": "#(demandId)",
+                    "billId": "#(billId)",
+                    "expiryDate": "#(expiryDate)",
+                    "amount": "#(totalAmount)",
+                    "fromPeriod": "#(fromPeriod)",
+                    "toPeriod": "#(toPeriod)",
+                    "additionalDetails": null,
+                    "billAccountDetails": [
+                        {
+                            "id": "754a82e6-cf78-4e66-aee1-93070570efe3",
+                            "tenantId": "#(tenantId)",
+                            "billDetailId": "#(billDetailId)",
+                            "demandDetailId": "#(demandDetailId)",
+                            "order": 0,
+                            "amount": "#(billAmount1)",
+                            "adjustedAmount": 0,
+                            "taxHeadCode": "#(taxHeadCode1)",
+                            "additionalDetails": null,
+                            "auditDetails": null
+                        },
+                        {
+                            "id": "257bb724-a57e-41ec-97b1-c66442c8592d",
+                            "tenantId": "#(tenantId)",
+                            "billDetailId": "#(billDetailId)",
+                            "demandDetailId": "#(demandDetailId)",
+                            "order": 1,
+                            "amount": "#(billAmount2)",
+                            "adjustedAmount": 0,
+                            "taxHeadCode": "#(taxHeadCode2)",
+                            "additionalDetails": null,
+                            "auditDetails": null
+                        },
+                        {
+                            "id": "b5771a2e-4a06-4bac-996e-d07a4229d367",
+                            "tenantId": "#(tenantId)",
+                            "billDetailId": "#(billDetailId)",
+                            "demandDetailId": "#(demandDetailId)",
+                            "order": 2,
+                            "amount": "#(billAmount3)",
+                            "adjustedAmount": 0,
+                            "taxHeadCode": "#(taxHeadCode3)",
+                            "additionalDetails": null,
+                            "auditDetails": null
+                        },
+                        {
+                            "id": "d623f867-5036-407b-808b-a1d6f5055326",
+                            "tenantId": "#(tenantId)",
+                            "billDetailId": "#(billDetailId)",
+                            "demandDetailId": "#(demandDetailId)",
+                            "order": 3,
+                            "amount": "#(billAmount4)",
+                            "adjustedAmount": 0,
+                            "taxHeadCode": "#(taxHeadCode4)",
+                            "additionalDetails": null,
+                            "auditDetails": null
+                        }
+                    ]
+                }
+            ],
+            "tenantId": "#(tenantId)",
+            "fileStoreId": null,
+            "auditDetails": {
+                "createdBy": "11b0e02b-0145-4de2-bc42-c97b96264807",
+                "lastModifiedBy": "11b0e02b-0145-4de2-bc42-c97b96264807",
+                "createdTime": 1594127458205,
+                "lastModifiedTime": 1594127458205
+            }
+        }
+    ],
+    "RequestInfo": {
+        "authToken":"#(authToken)"
+    }
+}

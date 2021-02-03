@@ -1,4 +1,5 @@
 host: https://egov-micro-qa.egovernments.org/
+localhost: http://localhost:8079/
 stateCode: pb
 cityCode: amritsar
 userName: 4600556741

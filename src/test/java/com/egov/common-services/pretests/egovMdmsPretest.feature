@@ -21,6 +21,9 @@ Scenario: Search MDMS by State success Call
   And def commonMasters = MdmsStateRes['common-masters']
   And def accessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
   And def egovHrms = MdmsStateRes['egov-hrms']
+  And def billingService = MdmsStateRes['BillingService']
+  And def dashboard = MdmsStateRes['dss-dashboard']
+  And def dashboardConfig = dashboard['dashboard-config'][0].MODULE_LEVEL
 
 @successSearchCity
 Scenario: Search MDMS by State and city success Call
