@@ -1,4 +1,5 @@
 Feature: File Store feature
+* configure headers = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'
 
 @uploadFileToFilestore
 Scenario:

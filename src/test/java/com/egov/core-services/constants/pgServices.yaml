@@ -1,4 +1,10 @@
+# response status
+status: SUCCESSFUL
+# error messages
 errorMessages:
  invalidTxnAmount: An unhandled exception occurred on the server
  invalidTenantId: Invalid Tenant Id
  invalidGateway: Invalid or inactive payment gateway provided
+ withInvalidTransactionId: Transaction not found
+ withoutTransactionId: Cannot process request, missing transaction id
+ transactionIdwithBillPaid: Transaction not found

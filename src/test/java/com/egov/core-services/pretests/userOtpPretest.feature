@@ -3,6 +3,7 @@ Feature: User otp send API call
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
+  # Calling user creation feature to create new user
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
   * def registeredMobileNumber = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
@@ -13,9 +14,6 @@ Background:
   * print invalidMobileNo
   * def userOtpPayload = read('../../core-services/requestPayload/userOtp/userOtpSend.json')
   * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
-  * def withoutAnyType = ''
-  * def tenantIdAsNull = ''
-  * def withoutMobileNumber = ''
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def typeForRegister = commonConstants.parameters.type[0]
   * def typeForLogin = commonConstants.parameters.type[1]
@@ -71,7 +69,7 @@ Scenario: User otp send success call
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpPayload.otp.type = withoutAnyType
+  * set userOtpPayload.otp.type = ''
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
     And params userOtpParam
@@ -153,7 +151,7 @@ Scenario: User otp send fail call
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpPayload.otp.mobileNumber = withoutMobileNumber 
+  * set userOtpPayload.otp.mobileNumber = ''
   * set userOtpPayload.otp.type = typeForLogin  
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
@@ -168,16 +166,6 @@ Scenario: User otp send fail call
 
 @errorInvalidTenant
 Scenario: User otp send fail call
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-  
-  * set userOtpSend.otp.mobileNumber = mobNumber
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-  * set userOtpSend.otp.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-
-=======
->>>>>>> 7f2a00f... Updated scripts
   * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
   * set userOtpPayload.otp.type = typeForLogin  
   * set userOtpPayload.otp.tenantId = invalidTenantId
@@ -187,10 +175,6 @@ Scenario: User otp send fail call
      tenantId: '#(invalidTenantId)'
     }
     """
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> 7f2a00f... Updated scripts
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
     And params userOtpParam
@@ -205,9 +189,9 @@ Scenario: User otp send fail call
 
 @errorTenantNull
 Scenario: User otp send fail call
-  * set userOtpPayload.otp.mobileNumber = withoutMobileNumber 
-  * set userOtpPayload.otp.type = withoutAnyType 
-  * set userOtpPayload.otp.tenantId = tenantIdAsNull
+  * set userOtpPayload.otp.mobileNumber = '' 
+  * set userOtpPayload.otp.type = ''
+  * set userOtpPayload.otp.tenantId = ''
     Given url userOtpRegisterUrl
     * print userOtpRegisterUrl
     And request userOtpPayload
