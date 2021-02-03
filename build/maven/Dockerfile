@@ -13,7 +13,7 @@ RUN ls -la /app/
 
 COPY ${WORK_DIR}/src ./src
 # RUN mvn -B -f /app/pom.xml package
-RUN mvn clean test "-Dkarate.env=qa"
+RUN mvn clean test "-Dkarate.env=uat"
 
 # Create runtime image
 FROM egovio/8-openjdk-alpine
