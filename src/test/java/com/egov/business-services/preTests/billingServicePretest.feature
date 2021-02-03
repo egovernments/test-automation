@@ -25,6 +25,7 @@ Background:
     And def fetchBillResponse = response
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
+    And def txnAmount = totalAmount
      * print billId 
      * print totalAmount
 

@@ -70,9 +70,9 @@ Scenario: Test by removing search params
       * print getReportsResponseBody
       * match getReportsResponseBody == '#present'
 
-  @Report_InvalidSearchParams_05  @negative  @reports
- Scenario: Test by adding a invalid search param value
-      * def searchParams = commonConstants.invalidParameters.invalidValue
+@Report_InvalidSearchParams_05  @negative  @reports
+Scenario: Test by adding a invalid search param value
+      * def searchParams = invalidSearchParams
       * call read('../../core-services/pretests/getReport.feature@getreportFail')
       * print getReportsResponseBody
       * assert getReportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidSearchparam
