@@ -1,10 +1,2 @@
-parameters:
- invalidTenantId: abc
- history: true
- invalidHistory: 123
- multipleTenantId: pb.amritsar,pb.jalandhar
- invalidAuthToken: 123
- businessId: PB-AC-2021-01-13-007567
- multipleBusinessId: PB-PT-2021-01-19-007850,PB-PT-2021-01-19-007851
- start: 1
- end: 10
+errorMessages:
+ messages: success  

@@ -8,7 +8,7 @@ Background:
     *  def jsUtils = read('classpath:jsUtils.js')
     *  def mdmsServiceConstants = read('../constants/mdmsServiceGet.yaml')
     *  def moduleName = mdmsServiceConstants.parameters.moduleName
-    *  def tenantId = mdmsServiceConstants.parameters.tenantId
+    #*  def tenantId = mdmsServiceConstants.parameters.tenantId
     *  def masterName = mdmsServiceConstants.parameters.masterName
     *  def mdmsParam = {moduleName: '#(moduleName.split(",")[0])',tenantId: '#(tenantId)',masterName: '#(masterName)'}
     *  def serviceCode = mdmsServiceConstants.expectedResponse.serviceCode

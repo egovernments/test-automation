@@ -17,29 +17,10 @@
         ]
       },
       {
-        "moduleName": "BillingService",
+        "moduleName": "egov-location",
         "masterDetails": [
           {
-            "name": "TaxHeadMaster"
-          },
-          {
-            "name": "BusinessService"
-          }
-        ]
-      },
-      {
-        "moduleName": "common-masters",
-        "masterDetails": [
-          {
-            "name": "uiCommonConstants"
-          }
-        ]
-      },
-      {
-        "moduleName": "ACCESSCONTROL-ROLES",
-        "masterDetails": [
-          {
-            "name": "roles"
+            "name": "TenantBoundary"
           }
         ]
       },
@@ -47,64 +28,23 @@
         "moduleName": "PropertyTax",
         "masterDetails": [
           {
-            "name": "Floor"
-          },
-          {
-            "name": "PTWorkflow"
-          },
-          {
-            "name": "OccupancyType"
-          },
-          {
-            "name": "OwnerShipCategory"
-          },
-          {
-            "name": "OwnerType"
-          },
-          {
-            "name": "PropertySubType"
-          },
-          {
-            "name": "PropertyType"
-          },
-          {
-            "name": "SubOwnerShipCategory"
-          },
-          {
-            "name": "UsageCategory"
-          },
-          {
-            "name": "OwnerTypeDocument"
-          },
-          {
-            "name": "Rebate"
-          },
-          {
-            "name": "Penalty"
-          },
-          {
-            "name": "Interest"
-          },
-          {
-            "name": "FireCess"
-          },
-          {
             "name": "Documents"
-          },
+          }
+        ]
+      },
+      {
+        "moduleName": "egov-location",
+        "masterDetails": [
           {
-            "name": "MutationDocuments"
-          },
+            "name": "TenantBoundary"
+          }
+        ]
+      },
+      {
+        "moduleName": "egov-location",
+        "masterDetails": [
           {
-            "name": "UsageCategoryMajor"
-          },
-          {
-            "name": "UsageCategoryMinor"
-          },
-          {
-            "name": "UsageCategorySubMinor"
-          },
-          {
-            "name": "UsageCategoryDetail"
+            "name": "TenantBoundary"
           }
         ]
       }

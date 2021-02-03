@@ -1,11 +1,12 @@
 Feature: Perform search using business id
 
 Background:
-* def workFlowProcessSearchPayload = read('../requestPayload/eGovWorkFlow/process/processSearch.json')
+* configure headers = read('classpath:websCommonHeaders.js')
+* def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
 
 @processsearchsuccess
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js') 
+ # * configure headers = read('classpath:websCommonHeaders.js') 
   * def processSearchParam = 
     """
     {
@@ -28,7 +29,7 @@ Scenario: Perform search using business id
 
 @processsearchoffset&limit
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js') 
+*  * configure headers = read('classpath:websCommonHeaders.js') 
   * def processSearchParam = 
     """
     {
@@ -53,7 +54,7 @@ Scenario: Perform search using business id
 
 @processsearchwithoutbusinessid
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+*  * configure headers = read('classpath:websCommonHeaders.js')
   * def processSearchParam = 
     """
     {
@@ -75,7 +76,7 @@ Scenario: Perform search using business id
     
 @processsearchonlytenantid
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+#  * configure headers = read('classpath:websCommonHeaders.js')
   * def processSearchParam = 
     """
     {
@@ -95,7 +96,7 @@ Scenario: Perform search using business id
 
 @processsearchnoparameter
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+#  * configure headers = read('classpath:websCommonHeaders.js')
      Given url workFlowProcess 
      * print workFlowProcess  
      And request workFlowProcessSearchPayload
@@ -108,7 +109,7 @@ Scenario: Perform search using business id
 
 @processsearchinvalidtenantid
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+#  * configure headers = read('classpath:websCommonHeaders.js')
   * def processSearchParam = 
     """
     {
@@ -132,7 +133,7 @@ Scenario: Perform search using business id
 
 @processsearchfail
 Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+#  * configure headers = read('classpath:websCommonHeaders.js')
   * def processSearchParam = 
     """
     {

@@ -4,17 +4,16 @@ Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling localization Json
-  * def createEmployeeRequest = read('../requestPayload/egov-hrms/create.json')
-  * def searchEmployeeRequest = read('../requestPayload/egov-hrms/search.json')
-  * def updateEmployeeRequest = read('../requestPayload/egov-hrms/update.json')
-  * def updateDeactivatemployeeRequest = read('../requestPayload/egov-hrms/deactivate.json')
+  * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
+  * def searchEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/search.json')
+  * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
+  * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def expectedMessage1 = read('../constants/egov-hrms.yaml')
-  * def invalidTenantId = 'notenant'
 
 
-@success_Create
-Scenario: hrms_Create success call
+
+@successCreate
+Scenario: hrms create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -23,10 +22,11 @@ Scenario: hrms_Create success call
   Then status 202
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
+  And def Employees = hrmsResponseBody.Employees
 
 
-@error_Create
-Scenario: hrms_Create success call
+@errorCreate
+Scenario: hrms create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -36,8 +36,8 @@ Scenario: hrms_Create success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@errorAuth_Create
-Scenario: hrms_Create success call
+@errorAuthCreate
+Scenario: hrms create success call
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -47,8 +47,8 @@ Scenario: hrms_Create success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@success_Search
-Scenario: hrms_Search success call
+@successSearch
+Scenario: hrms search success call
 
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -59,9 +59,23 @@ Scenario: hrms_Search success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
+@successSearchWithoutEmployeeCodes
+Scenario: hrms search success call
 
-@success_MultiSearch
-Scenario: hrms_Search success call
+  * print searchEmployeeRequest
+  Given url hrmsSearchUrl 
+  And param tenantId = tenantId
+  And request searchEmployeeRequest
+  When method post
+  Then status 200
+  And def hrmsResponseHeader = responseHeaders
+  And def hrmsResponseBody = response
+  * def employeeCode1 = hrmsResponseBody.Employees[0].code
+  * def employeeCode2 = hrmsResponseBody.Employees[1].code
+
+
+@successMultiSearch
+Scenario: hrms search success call
 
   * def parameters = 
     """
@@ -79,10 +93,8 @@ Scenario: hrms_Search success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-
-
-@error_Search
-Scenario: hrms_Search error call
+@errorSearch
+Scenario: hrms search error call
   
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -94,8 +106,8 @@ Scenario: hrms_Search error call
   And def hrmsResponseBody = response
 
 
-@errorAuth_Search
-Scenario: hrms_Search error call
+@errorAuthSearch
+Scenario: hrms search error call
   
   * print searchEmployeeRequest
   Given url hrmsSearchUrl
@@ -106,8 +118,8 @@ Scenario: hrms_Search error call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@success_Update
-Scenario: hrms_update success call
+@successUpdate
+Scenario: hrms update success call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -118,8 +130,8 @@ Scenario: hrms_update success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@error_Update
-Scenario: hrms_update error call
+@errorUpdate
+Scenario: hrms update error call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -130,8 +142,8 @@ Scenario: hrms_update error call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@error_UnAuth_Update
-Scenario: hrms_update error call
+@errornAuthUpdate
+Scenario: hrms update error auth call
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -142,8 +154,8 @@ Scenario: hrms_update error call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@success_Update_Deactivate
-Scenario: hrms_update success deactivate call
+@successUpdateDeactivate
+Scenario: hrms update success deactivate call
 
   * eval updateEmployeeRequest.Employees = Employees
   * eval updateEmployeeRequest.Employees[0].deactivationDetails = updateDeactivatemployeeRequest.deactivationDetails

@@ -2,18 +2,27 @@
 superUserCounterEmployee:
   userName: EMP-107-000177
   password: 79m7be9
-
-#UserName and Password Super User
-superUser:
+#UserName and Password of Existing User. Specifically for updatePassword scripts as part of eGovUser
+existingUser:
   userName: EMP-1013-000335
   password: TestUser@1234
-  stateCode: pb
-  cityCode: jalandhar
+  tenantId: pb.jalandhar
   authUserType: EMPLOYEE
-
+#UserName and Password Super User
+superUser:
+  userName: EMP-107-000878
+  password: TestUser@1234
+  authUserType: EMPLOYEE
 #UserName and Password - Employee
 employee:
   userName: EMPSU
   password: eGov@123
   type: EMPLOYEE
+#Valid password, consumed by password update-noLogin scripts as part of eGovUser
+validPasswordDetails:
+  newPassword: TestUser@1234
+
+# Registered mobile number for user otp
+citizen:
+ registeredMobileNumber: 9742379422
 

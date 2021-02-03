@@ -5,7 +5,7 @@
 	},
 	"otp": {
 		"name": "#(name)",
-		"permanentCity": "#(tenantIdReq)",
+		"permanentCity": "#(permanentCity)",
 		"mobileNumber": "#(mobileNumber)",
 		"type": "#(type)",
 		"tenantId": "#(tenantId)",

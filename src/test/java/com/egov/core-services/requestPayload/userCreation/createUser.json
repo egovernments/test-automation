@@ -3,19 +3,19 @@
         "authToken": "#(authToken)"
     },
     "user": {
-        "name": "test1",
-        "gender": "MALE",
+        "name": "#(name)",
+        "gender": "#(gender)",
         "mobileNumber": "#(mobileNumber)",
-        "emailId": "avi7@g.com",
-        "dob": "28/06/1991",
+        "emailId": "#(emailId)",
+        "dob": "#(dob)",
         "userName": "#(mobileNumber)",
         "active": true,
         "tenantId": "#(tenantId)",
-        "type": "CITIZEN",
+        "type": "#(userType)",
         "roles": [
             {
-                "code": "CITIZEN",
-                "name": "CITIZEN",
+                "code": "#(userType)",
+                "name": "#(userType)",
                 "tenantId": "#(tenantId)"
             }
         ]

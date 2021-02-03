@@ -62,6 +62,11 @@ function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
 }
 
+
+function getPastEpochDate(days){
+    return new Date(new java.util.Date().getTime() - (1000 * 60 * 60 * 24 * days)).getTime();
+}
+
 function validateAddress(request, response){
 
 if(request.Property.address.city == karate.jsonPath(response,"$.Properties[*].address.city")[0] && 
@@ -132,4 +137,31 @@ function getDataBasedOnEnvironment(rootParam, key) {
    var envProperties = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
    var data =  karate.jsonPath(envProperties, "$."+ rootParam +"."+ key +"")
     return data;
+}
+/**
+ * Generates random emailid
+ * @param {character length of string} x
+ * @returns random string with email domain
+ */
+function ranEmailId(x) {
+    var name = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
+    return name + '@gmail.com'
+}
+
+/**
+ * Generates current date with dd/mm/yyyy format
+ * @returns today date
+ */
+function todayDate(){
+    var today = new Date();
+    var dd = String(today.getDate());
+    var mm = String(today.getMonth() + 1);
+    var yyyy = today.getFullYear();
+    today = dd + '/' + mm + '/' + yyyy;
+    return today;
+}
+
+function generateUUID(){
+    var uuid = '' + java.util.UUID.randomUUID();
+    return uuid
 }

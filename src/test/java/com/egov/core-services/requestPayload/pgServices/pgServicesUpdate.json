@@ -1,12 +1,5 @@
 {
     "RequestInfo": {
-        "apiId": "Mihy",
-        "ver": ".01",
-        "action": "_update",
-        "did": "1",
-        "key": "",
-        "msgId": "20170310130900|en_IN",
-        "requesterId": "",
         "authToken": "#(authToken)"
     }
 }
