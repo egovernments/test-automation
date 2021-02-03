@@ -8,7 +8,6 @@ Scenario: Upload a document
       * call read('../../core-services/pretests/fileStoreCreate.feature@uploadSuccess')
       * print filecreateResponseBody
       * match filecreateResponseBody == '#present'
-
 @FileStore_MandatoryCheck_POST_02  @Negative  @fileStore
 Scenario: Test uplaoding without passing tenantid / Module in the form data
       * call read('../../core-services/pretests/fileStoreCreate.feature@uploadNoTenantIdFail')
