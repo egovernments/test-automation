@@ -162,6 +162,9 @@ function() {
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
+	config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
+    	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
+    	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
 
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
@@ -176,7 +179,19 @@ function() {
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
+        //apportion
+        config.apportionUrl = envProps.localhost + path.endPoints.apportion.bill;
+        //dashboard
+        config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
+        config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
+        //encService
+        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
+        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
+        
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);

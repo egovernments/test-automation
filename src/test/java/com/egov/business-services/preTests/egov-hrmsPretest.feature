@@ -1,7 +1,6 @@
 Feature: HRMS API call 
 
 Background:
-
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling localization Json
   * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
@@ -9,8 +8,6 @@ Background:
   * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-
-
 
 @successCreate
 Scenario: hrms create success call

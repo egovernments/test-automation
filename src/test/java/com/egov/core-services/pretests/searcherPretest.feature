@@ -18,8 +18,6 @@ Scenario: Searcher success call
   Then status 200
   And def searcherResponseHeader = responseHeaders
   And def searcherResponseBody = response
-  * print searcherResponseBody
-
 
 @error
 Scenario: Searcher error call

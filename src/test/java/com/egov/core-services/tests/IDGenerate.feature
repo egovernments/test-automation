@@ -3,79 +3,74 @@ Feature: Core service - IDGenerate
 Background:
 
     * def jsUtils = read('classpath:jsUtils.js')
-    * def javaUtils = Java.type('com.egov.base.EGovTest')
-    * def expectedMessage = read('../constants/idGenerate.yaml')
+    #* def javaUtils = Java.type('com.egov.base.EGovTest')
+    * def idGenServiceConstants = read('../constants/idGenerate.yaml')
+    # Common global Constants
+    * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # Calling access token
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
-    * def tenantId = tenantId
-    * print tenantId
-    * def authUserType = expectedMessage.parameters.userType
+    * def authUserType = employeeType
     * call read('../pretests/authenticationToken.feature')
+    # MDMS call
+    * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
+    * def index = randomNumber(commonMasters.IdFormat.length)
 
-
-@IdGen_Generate_01 @positive @idGenerate @idGenerate_dryRun
+@IdGen_Generate_01 @positive @idGenerate
 Scenario: Test a unique Id is created for every new application,receipt
 
+    * def idName = commonMasters.IdFormat[index].idname
+    * def format = commonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@success')
-    * print idGenerateResponseBody
-    * assert idGenerateResponseBody.responseInfo.status == 'SUCCESSFUL'
+    * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
-
 
 @IdGen_GeneratetMulti_02 @positive @idGenerate 
 Scenario: Search for Localization in English(Specific Module)
 
+    * def idName = commonMasters.IdFormat[index].idname
+    * def format = commonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@success')
-    * print idGenerateResponseBody
     * def id1 = idGenerateResponseBody.idResponses[0].id
-    * def value1 = stringToInteger(id1.substring(id1.lastIndexOf('-') + 1))
+    * def value1 = stringToInteger(id1.slice(-2))
     * call read('../pretests/idGeneratePretest.feature@success')
     * def id2 = idGenerateResponseBody.idResponses[0].id
-    * def value2 = stringToInteger(id2.substring(id2.lastIndexOf('-') + 1))
+    * def value2 = stringToInteger(id2.slice(-2))
+    # Verfiying the sequence ID values
     * match value2 == value1 + 1
-
-    * assert idGenerateResponseBody.responseInfo.status == 'SUCCESSFUL'
+    * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
-
 
 @IdGen_switchIdName_03 @positive @idGenerate 
 Scenario: Test by interchanging the id names from different modules
 
-    * call read('../pretests/idGeneratePretest.feature@successWithDifferentIDName')
-    * print idGenerateResponseBody
-    * assert idGenerateResponseBody.responseInfo.status == 'SUCCESSFUL'
+    * def idName = commonMasters.IdFormat[index].idname
+    * def format = commonMasters.IdFormat[index].format
+    * call read('../pretests/idGeneratePretest.feature@success')
+    * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
-
-@IdGen_invalidTenantId_04 @negative @idGenerate @idGenerate_dryRun
+@IdGen_invalidTenantId_04 @negative @idGenerate
 Scenario: Test by passing a invalid or a nonexistent tenant id
 
-    * call read('../pretests/idGeneratePretest.feature@forbidden')
-    * print idGenerateResponseBody
-    * assert idGenerateResponseBody.Errors[0].message == 'Not authorized to access this resource'
+    * def tenantId = commonConstants.invalidParameters.invalidTenantId
+    * def idName = commonMasters.IdFormat[index].idname
+    * def format = commonMasters.IdFormat[index].format
+    * call read('../pretests/idGeneratePretest.feature@error')
+    * assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-
-@IdGen_BlankFormat_06 @negative @idGenerate @idGenerate_dryRun
+@IdGen_BlankFormat_06 @negative @idGenerate
 Scenario: Test by not passing any value for format
 
-    * def format = ''
-
+    * def format = commonConstants.invalidParameters.emptyValue
     * call read('../pretests/idGeneratePretest.feature@failed')
-    * print idGenerateResponseBody
-    * assert idGenerateResponseBody.ResponseInfo.status == 'FAILED'
-    * assert idGenerateResponseBody.Errors[0].message == 'No Format is available in the MDMS for the given name and tenant'
+    * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
+    * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError
 
-
-@IdGen_InvalidSeqFormat_07 @negative @idGenerate @idGenerate_dryRun
+@IdGen_InvalidSeqFormat_07 @negative @idGenerate
 Scenario: Test by not passing invalid Sequence format which is not in MDMS
 
-    * def format = 'WS/OTP/[fy:yyyy-yy]/[SEQ_EGOV]'
-
+    * def format = idGenServiceConstants.invalidParameters.sequenceFormat
     * call read('../pretests/idGeneratePretest.feature@failed')
-    * print idGenerateResponseBody
-    * assert idGenerateResponseBody.ResponseInfo.status == 'FAILED'
-    * assert idGenerateResponseBody.Errors[0].message == 'Error occurred while auto creating seq in DB'
-
-
-	
+    * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
+    * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.dbError

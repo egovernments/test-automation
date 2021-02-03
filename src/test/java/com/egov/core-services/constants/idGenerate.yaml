@@ -1,5 +1,5 @@
-parameters:
-  userType: EMPLOYEE
-  format1: UC/[CY:dd-MM-yyyy]
-  format2: PB-PGR-[cy:yyyy-MM-dd]-[SEQ_EG_PGR_ID]
-  idName: waterservice.connection.id
+errorMessages:
+  noFormatError: No Format is available in the MDMS for the given name and tenant
+  dbError: Error occurred while auto creating seq in DB
+invalidParameters:
+  sequenceFormat: WS/OTP/[fy:yyyy-yy]/[SEQ_EGOV]
