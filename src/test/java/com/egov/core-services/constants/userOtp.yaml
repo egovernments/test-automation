@@ -1,17 +1,4 @@
-parameters:
-  # User type valid data 
-  newUserType: register
-  existingUserType: login
-  userType: CITIZEN
-  # User type invalid data
-  withoutType: ''
-  # Invalid mobile data
-  withoutMobileNumber: null
-  # Invalid tenant id
-  withoutTenantId: ''
-  # Name of the user
-  name: Test
-  
+# error messages
 errorMessages:
   msgForRegMobNo: This MobileNumber Already Register as UserName in System. Pls try Another UserName
   msgForUnRegMobNo: User not Found With this UserName

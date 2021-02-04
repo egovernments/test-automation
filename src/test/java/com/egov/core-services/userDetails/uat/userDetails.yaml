@@ -12,6 +12,6 @@ superUser:
 
 #UserName and Password - Employee
 employee:
-  userName: EMPSU
+  userName: MCS
   password: eGov@123
   type: EMPLOYEE

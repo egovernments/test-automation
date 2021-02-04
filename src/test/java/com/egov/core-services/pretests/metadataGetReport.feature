@@ -2,10 +2,9 @@ Feature: Metadata get reports
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def reportPayload = read('../requestPayload/reports/metadataGetReport.json')
-  * def reportConstant = read('../constants/reports.yaml')
+  * def reportPayload = read('../../core-services/requestPayload/reports/metadataGetReport.json')
 
-@reportsuccess
+@reportSuccess
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
 * def reportParam =
@@ -27,7 +26,7 @@ Scenario: Test to fetch the details of a report
      And def reportsResponseHeader = responseHeaders
      And def reportsResponseBody = response
 
-@reportfail
+@reportFail
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
 * def reportParam =
@@ -49,7 +48,7 @@ Scenario: Test to fetch the details of a report
      And def reportsResponseHeader = responseHeaders
      And def reportsResponseBody = response
 
-@reportforbidden
+@reportForbidden
 Scenario: Test to fetch the details of a report
 * configure headers = read('classpath:websCommonHeaders.js')
 * def reportParam =

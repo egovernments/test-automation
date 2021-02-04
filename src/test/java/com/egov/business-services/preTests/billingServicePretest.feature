@@ -1,9 +1,9 @@
 Feature: Billing Service Pretest
 
 Background:
-    * def billingServiceConstants = read('../constants/billing-service.yaml')
+    * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
     * def businessService = billingServiceConstants.parameters.businessService
-    * def fetchBillRequest = read('../requestPayload/collection-services/fetchBill.json')
+    * def fetchBillRequest = read('../../business-services/requestPayload/collection-services/fetchBill.json')
     * configure headers = read('classpath:websCommonHeaders.js')
 
 @fetchBill
@@ -25,6 +25,7 @@ Background:
     And def fetchBillResponse = response
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
+    And def txnAmount = totalAmount
      * print billId 
      * print totalAmount
 

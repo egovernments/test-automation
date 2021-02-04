@@ -5,7 +5,7 @@
 	},
 	"User": {
 		"otpReference": "#(otpReference)",
-		"username": "#(existingUser)",
+		"username": "#(mobileNumber)",
 		"name": "#(name)",
 		"tenantId": "#(tenantId)",
 		"permanentCity": "#(permanentCity)"
@@ -29,18 +29,18 @@
    },
    "User": {
 	   "otpReference": "#(otpReference)",
-	   "username": "#(existingUser)",
+	   "username": "#(mobileNumber)",
 	   "tenantId": "#(tenantId)",
 	   "permanentCity": "#(permanentCity)"
    }
   },
-	"withoutTenantIdPayloal": {
+	"withoutTenantIdPayload": {
 		"RequestInfo": {
 			"authToken": null
 		},
 		"User": {
 			"otpReference": "#(otpReference)",
-			"username": "#(existingUser)",
+			"username": "#(mobileNumber)",
 			"name": "#(name)",
 			"permanentCity": "#(permanentCity)"
 		}
@@ -51,19 +51,19 @@
    },
    "User": {
 	   "otpReference": "#(otpReference)",
-	   "username": "#(existingUser)",
+	   "username": "#(mobileNumber)",
 	   "name": "#(name)",
 	   "tenantId": "#(tenantId)",
 	   "permanentCity": "#(permanentCity)"
    }
 	},
-	"namePayload": {
+	"withNamePayload": {
 		"RequestInfo": {
 		"authToken": null
    },
    "User": {
 	   "otpReference": "#(otpReference)",
-	   "username": "#(existingUser)",
+	   "username": "#(mobileNumber)",
 	   "name": "#(name)",
 	   "tenantId": "#(tenantId)",
 	   "permanentCity": "#(permanentCity)"

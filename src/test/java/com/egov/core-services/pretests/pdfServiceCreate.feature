@@ -1,7 +1,9 @@
 Feature: Generated pdf successfully
 
 Background:
-* def pdfCreatePayload = read('../requestPayload/pdfService/pdfCreate.json')
+* call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
+* def Payments = Payments
+* def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
 * def pdfCreatePayloadThird = pdfCreatePayload.FireNoc
@@ -43,6 +45,7 @@ Scenario: Verify a pdf is generated successfully
      Given url createPdf 
      * print createPdf 
      And params pdfCreateParam
+     * eval pdfCreatePayloadSecond.Payments = Payments
      And request pdfCreatePayloadSecond
      * print pdfCreatePayloadSecond
      When method post

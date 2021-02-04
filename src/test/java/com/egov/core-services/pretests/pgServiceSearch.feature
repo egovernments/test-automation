@@ -2,6 +2,8 @@ Feature: Verify searching transaction details using txn id
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
+  * call read('../../core-services/pretests/pgServiceCreate.feature@createpgservicesuccess')
+  * transactionId = pgServicesCreateResponseBody.Transaction.taxAndPayments[0].txnId
   * def pgServicesSearchPayload = read('../requestPayload/pgServices/pgServicesSearch.json')
 
 @searchpgservicesuccess

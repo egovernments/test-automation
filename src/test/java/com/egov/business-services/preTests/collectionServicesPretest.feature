@@ -40,6 +40,7 @@ Scenario: Common test to create a Payment
   Then assert responseStatus == 200 ||  responseStatus == 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
+  And def Payments = collectionServicesResponseBody.Payments
 
 @errorBillId
    Scenario: Steps to create a payment with Invalid billId

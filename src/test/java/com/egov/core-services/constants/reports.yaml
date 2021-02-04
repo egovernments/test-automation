@@ -1,35 +1,21 @@
 parameters:
- pageSize: false
- offset: 0
+ # Metadata report name
  reportName: DescriptionReport
- withoutReportName: ""
+ # to get the pgr LMEPerformance report
  secondReportName: LMEPerformanceReport
- invalidTenantId: 123
- invalidAuthToken: abc
+ # search param payload
  searchparams:
   - name: fromDate
-    input: 1604169000000
+    input: pastDate
   - name: toDate
-    input: 1606847399000
+    input: currentDate
   - name: deptname
-    input: DEPT_1
- withoutSearchParams: [] 
- invalidSearchParams: "test"
- invalidSearchParamName: 
-  - Test: john
-    input: 1604169000000
-  - test: ""
-    input: 1606847399000
-  - name: deptname
-    input: DEPT_1
- apiId: emp
- ver: 1.0
- ts: 1609237434114
- action: create
- did: 1
- key: abcdkey
- msgId: 20170310130900
- requesterId: ""
+    input: departmentname
+ input:
+  - qa: DEPT_1
+  - uat: 
+ ts: currentDate
+# error messages
 errormessages:
  withoutReportName: Error in retrieving report definition
  noReportName: ERROR_IN_RETRIEVING_REPORT_DATA
