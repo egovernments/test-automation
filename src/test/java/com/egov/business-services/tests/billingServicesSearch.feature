@@ -8,8 +8,8 @@ Background:
     *  call read('../preTests/authenticationToken.feature')
     *  def billingServiceConstants = read('../constants/billing-service.yaml')
     *  def jsUtils = read('classpath:jsUtils.js')
-    *  call read('../preTests/billingServicePretest.feature@fetchBill')
-    *  call read('../preTests/collectionServicesPretest.feature@successPayment')
+    *  call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
+    *  call read('../../business-services/preTests/collectionServicesPretest.feature@successPayment')
     *  def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber
     *  def invalidService = randomString(2)
     *  def invalidBillId = generateUUID()

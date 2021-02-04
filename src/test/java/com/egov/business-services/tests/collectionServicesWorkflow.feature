@@ -4,7 +4,7 @@ Background:
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def collectionServicesConstants = read('../constants/collection-services.yaml')
+    * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def reason = collectionServicesConstants.parameters.reason
     * def action = collectionServicesConstants.parameters.action

@@ -1,14 +1,14 @@
 Feature: Billing Service - Bills tests
 
     Background:
-    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
+   # * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
     * def jsUtils = read('classpath:jsUtils.js')
     # Calling access token
      * def authUsername = employeeUserName
      * def authPassword = employeePassword
      * def authUserType = employeeType
      * call read('../preTests/authenticationToken.feature')
-     * def billingServiceConstants = read('../constants/billing-service.yaml')
+     * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def invalidMobileNumber = '9'+randomMobileNumGen(9)
      * def invalidConsumerCode = randomString(5)

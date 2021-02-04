@@ -4,9 +4,9 @@ Background:
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def collectionServicesConstants = read('../constants/collection-services.yaml')
+    * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
     * def paidBillIdError = collectionServicesConstants.errorMessages.paidBillId
     * def invalidBillIdError = collectionServicesConstants.errorMessages.invalidBillId
     * def totalAmountPaidError = collectionServicesConstants.errorMessages.totalAmountPaidNull

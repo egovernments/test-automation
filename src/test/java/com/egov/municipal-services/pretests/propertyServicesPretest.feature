@@ -3,7 +3,6 @@ Feature: Property Service
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    #* def propertyServiceConstants = read('../../municipal-services/constants/propertyServiceConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
     * def assessmentDate = getCurrentEpochTime()
     * def source = commonConstants.parameters.source
