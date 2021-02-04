@@ -12,6 +12,8 @@ import java.util.Collection;
 
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
+import com.intuit.karate.cucumber.CucumberRunner;
+import com.intuit.karate.cucumber.KarateStats;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,24 +28,20 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/business-services",
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
-		tags = {"@reports,@searchMdms,@Searcher,@location,@localization,@userotp,@eGovUser,@accessControl," +
-				"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill,@encService,@idGenerate"})
+	tags = {"@reports,@searchMdms,@Searcher,@location,@localization,@userotp,@eGovUser,@accessControl," +
+	"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill,@encService,@idGenerate"})
+	
 public class EGovTest {
 	@BeforeClass
 	public static void before() {
-		Map<String, Object> fileStoreResult = Runner.runFeature("classpath:com/egov/common-services/" +
-				"pretests/fileStoreUpload.feature", null, true);
-        Map<String, Object> authResult = Runner.runFeature("classpath:com/egov/common-services/" +
-				"pretests/authenticationToken.feature", null, true);
-		Map<String, Object> mdmsSearchResult = Runner.runFeature("classpath:com/egov/common-services/" +
-				"pretests/egovMdmsPretest.feature", null, true);
+		
 	}
 
 	@Test
 	public void testParallel() {
 
 		String karateOutputPath = "target/surefire-reports";
-		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
+		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
 		generateReport(karateOutputPath);
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
 	}

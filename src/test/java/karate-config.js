@@ -191,12 +191,15 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
+    var result = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+    var token = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+    var result = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature', config);
+        
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
     
     karate.configure('readTimeout', 120000);
-    
 
     return config;
 }
