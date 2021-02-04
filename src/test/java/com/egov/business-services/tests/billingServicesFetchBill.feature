@@ -3,11 +3,9 @@ Feature: Billing Service - Bills tests
     Background:
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
     * def jsUtils = read('classpath:jsUtils.js')
-    # Calling access token
-     * def authUsername = authUsername
-     * def authPassword = authPassword
-     * def authUserType = authUserType
-     * call read('../preTests/authenticationToken.feature')
+    
+
+     
      * def billingServiceConstants = read('../constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def invalidMobileNumber = '9'+randomMobileNumGen(9)

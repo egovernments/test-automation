@@ -13,10 +13,8 @@ Feature: Business Services - Dashboard Analytics service tests
      * def startDate = getCurrentEpochTime()
      * def endDate = getCurrentEpochTime()
      * def interval = dashboardServiceData.parameters.interval
-     * def authUsername = authUsername
-     * def authPassword = authPassword
-     * def authUserType = authUserType
-     * call read('../preTests/authenticationToken.feature')
+
+     
      * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
      * print dashboardConfig
      * def modulePT = dashboardConfig[1].propertytax.filterKey

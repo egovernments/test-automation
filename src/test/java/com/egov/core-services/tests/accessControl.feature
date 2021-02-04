@@ -4,7 +4,7 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    # Calling access token
+    
     * def authUsername = authUsername
     * def authPassword = authPassword
     * def authUserType = authUserType

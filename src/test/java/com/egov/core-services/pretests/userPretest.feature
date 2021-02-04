@@ -1,21 +1,28 @@
 Feature: User Search
 Background:
+  * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = authUsername
-  * def authPassword = authPassword
-  * def authUserType = authUserType
-  * call read('../pretests/authenticationToken.feature')
-  * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * def existingUser = envContant.userName
-  * print existingUser
-  * def findUser = read('../requestPayload/userCreation/searchUser.json')
-  * print findUser
-  * def userConstant = read('../constants/user.yaml')
+  
+  
+  
+  
+  * def multipleTenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
+  * call read('../../core-services/pretests/userCreation.feature@usercreation')
+  * def existingUser = createdUser
+  * def mobileNumberGen = randomMobileNumGen(10)
+  * def unRegisteredNumber = new java.math.BigDecimal(mobileNumberGen)
+  * print unRegisteredNumber
+  * def withoutUserName = ''
+  * def emptyStringInTenantId = ''
+  * def userConstant = read('../../core-services/constants/user.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
+  * def findUser = read('../../core-services/requestPayload/userCreation/searchUser.json')
+  * print findUser
 
 @finduser
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+  #   * configure headers = read('classpath:websCommonHeaders.js') 
      * def payload = findUser.validPayload
      Given url searchUser 
      * print searchUser  
@@ -28,9 +35,9 @@ Scenario: Search user
 
 @finduserwithmultipletenantid
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+    # * configure headers = read('classpath:websCommonHeaders.js')
      * def payload = findUser.validPayload
-     * set findUser.validPayload.tenantId = userConstant.parameters.multipleTenantId
+     * set findUser.validPayload.tenantId = multipleTenantId
      Given url searchUser 
      * print searchUser  
      And request payload
@@ -42,9 +49,9 @@ Scenario: Search user
   
 @finduserwithinvalidusername
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+ #    * configure headers = read('classpath:websCommonHeaders.js') 
      * def payload = findUser.validPayload
-     * set findUser.validPayload.userName = userConstant.parameters.notRegisteredUserName
+     * set findUser.validPayload.userName = unRegisteredNumber
      Given url searchUser 
      * print searchUser  
      And request payload
@@ -56,9 +63,9 @@ Scenario: Search user
 
 @finduserwithinvalidtenantid
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+ #    * configure headers = read('classpath:websCommonHeaders.js')
      * def payLoad = findUser.validPayload  
-     * set findUser.validPayload.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
+     * set findUser.validPayload.tenantId = invalidTenantId
      Given url searchUser 
      * print searchUser  
      And request payLoad
@@ -70,9 +77,9 @@ Scenario: Search user
 
 @finduserwithoutusername
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+ #    * configure headers = read('classpath:websCommonHeaders.js')
      * def payLoad = findUser.validPayload 
-     * set findUser.validPayload.userName = userConstant.parameters.withoutUserName
+     * set findUser.validPayload.userName = withoutUserName
      Given url searchUser 
      * print searchUser  
      And request payLoad
@@ -84,7 +91,7 @@ Scenario: Search user
 
 @finduserwithouttenantid
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+ #    * configure headers = read('classpath:websCommonHeaders.js') 
      * def payLoad = findUser.invalidPayload
      Given url searchUser 
      * print searchUser  
@@ -97,9 +104,9 @@ Scenario: Search user
 
 @finduseremptytenantid
 Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+ #    * configure headers = read('classpath:websCommonHeaders.js') 
      * def payLoad = findUser.validPayload
-     * set findUser.validPayload.tenantId = userConstant.parameters.emptyStringInTenantId
+     * set findUser.validPayload.tenantId = emptyStringInTenantId
      Given url searchUser 
      * print searchUser  
      And request payLoad

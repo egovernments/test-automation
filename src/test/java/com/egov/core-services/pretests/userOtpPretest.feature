@@ -1,189 +1,201 @@
 Feature: User otp send API call 
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
-  * def constantValue = read('../constants/userOtp.yaml')
+  * def jsUtils = read('classpath:jsUtils.js')
+  # Calling user creation feature to create new user
+  * call read('../../core-services/pretests/userCreation.feature@usercreation')
+  * def registeredMobileNumber = createdUser
+  * def mobileNumberGen = randomMobileNumGen(10)
+  * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
+  * print mobileNumber
+  * def mobileNumberGen1 = randomMobileNumGen(9)
+  * def invalidMobileNo = new java.math.BigDecimal(mobileNumberGen1)
+  * print invalidMobileNo
+  * def userOtpPayload = read('../../core-services/requestPayload/userOtp/userOtpSend.json')
+  * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-  * def envConstant = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * print envConstant
-  * def mobNumber = envConstant.userName
+  * def typeForRegister = commonConstants.parameters.type[0]
+  * def typeForLogin = commonConstants.parameters.type[1]
+  * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
 
-
-@Success_register
+@successRegister
 Scenario: User otp send success call
-   * def parameters = 
+   * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-  * def mobileNumberGen = randomMobileNumGen(10)
-  * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-  * print validMobileNum
-
-  * set userOtpSend.otp.mobileNumber = validMobileNum
-  * set userOtpSend.otp.type = constantValue.parameters.newUserType
-
+  * set userOtpPayload.otp.type = typeForRegister
      Given url userOtpRegisterUrl
-     And params parameters
-     And request userOtpSend
+     * print userOtpRegisterUrl
+     And params userOtpParam
+     * print userOtpParam
+     And request userOtpPayload
+     * print userOtpPayload
      When method post
      Then status 201
      And def userOtpSendResponseHeader = responseHeaders
      And def userOtpSendResponseBody = response
      * print userOtpSendResponseBody
 
-@Success_login
+@successLogin
 Scenario: User otp send success call
-  * def parameters = 
+  * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType
-  * set userOtpSend.otp.mobileNumber = mobNumber
-
+  * set userOtpPayload.otp.type = typeForLogin
+  * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
       Given url userOtpRegisterUrl
-      And params parameters
-      And request userOtpSend
+      * print userOtpRegisterUrl
+      And params userOtpParam
+      * print userOtpParam
+      And request userOtpPayload
+      * print userOtpPayload
       When method post
       Then status 201
       And def userOtpSendResponseHeader = responseHeaders
       And def userOtpSendResponseBody = response
 
-@Success_notype
+@successNoType
 Scenario: User otp send success call
-  * def parameters = 
+  * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-  * def mobileNumberGen = randomMobileNumGen(10)
-  * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-  * print validMobileNum
-
-  * set userOtpSend.otp.mobileNumber = validMobileNum
-  * set userOtpSend.otp.type = constantValue.parameters.withoutType
-
+  * set userOtpPayload.otp.type = ''
     Given url userOtpRegisterUrl
-    And params parameters
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And params userOtpParam
+    * print userOtpParam
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 201
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
 
-@Error_register
+@errorRegister
 Scenario: User otp send fail call
-   * def parameters = 
+   * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-   * set userOtpSend.otp.mobileNumber = mobNumber
-   * set userOtpSend.otp.type = constantValue.parameters.newUserType
-
+   * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
+   * set userOtpPayload.otp.type = typeForRegister
      Given url userOtpRegisterUrl
-     And params parameters
-     And request userOtpSend
+     * print userOtpRegisterUrl
+     And params userOtpParam
+     * print userOtpParam
+     And request userOtpPayload
+     * print userOtpPayload
      When method post
      Then status 400
      And def userOtpSendResponseHeader = responseHeaders
      And def userOtpSendResponseBody = response
 
-@Error_login
+@errorLogin
 Scenario: User otp send fail call
-   * def parameters = 
+   * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-   * def mobileNumberGen = randomMobileNumGen(10)
-   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-   * print validMobileNum
-
-   * set userOtpSend.otp.mobileNumber = validMobileNum
-   * set userOtpSend.otp.type = constantValue.parameters.existingUserType 
-
+   * set userOtpPayload.otp.type = typeForLogin 
     Given url userOtpRegisterUrl
-    And params parameters
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And params userOtpParam
+    * print userOtpParam
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
 
-@Error_InvldMobNo
+@errorInvalidMobileNo
 Scenario: User otp send fail call
-   * def parameters = 
+   * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-   * def mobileNumberGen = randomMobileNumGen(9)
-   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-   * print validMobileNum
-
-   * set userOtpSend.otp.mobileNumber = validMobileNum
-   * set userOtpSend.otp.type = constantValue.parameters.newUserType 
-
+   * set userOtpPayload.otp.mobileNumber = invalidMobileNo
+   * set userOtpPayload.otp.type = typeForRegister 
     Given url userOtpRegisterUrl
-    And params parameters
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And params userOtpParam
+    * print userOtpParam
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
 
-@Error_MobNoNull
+@errorMobileNoNull
 Scenario: User otp send fail call
-  * def parameters = 
+  * def userOtpParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-  * set userOtpSend.otp.mobileNumber = constantValue.parameters.withoutMobileNumber 
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-
+  * set userOtpPayload.otp.mobileNumber = ''
+  * set userOtpPayload.otp.type = typeForLogin  
     Given url userOtpRegisterUrl
-    And params parameters
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And params userOtpParam
+    * print userOtpParam
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
 
-@Error_InvldTenant
+@errorInvalidTenant
 Scenario: User otp send fail call
-  
-  * set userOtpSend.otp.mobileNumber = mobNumber
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-  * set userOtpSend.otp.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-
+  * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
+  * set userOtpPayload.otp.type = typeForLogin  
+  * set userOtpPayload.otp.tenantId = invalidTenantId
+  * def userOtpParam = 
+    """
+    {
+     tenantId: '#(invalidTenantId)'
+    }
+    """
     Given url userOtpRegisterUrl
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And params userOtpParam
+    * print userOtpParam
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders
     And def userOtpSendResponseBody = response
+    * print userOtpSendResponseBody
 
-@Error_TenantNull
+@errorTenantNull
 Scenario: User otp send fail call
-  
-  * set userOtpSend.otp.mobileNumber = constantValue.parameters.withoutMobileNumber 
-  * set userOtpSend.otp.type = constantValue.parameters.existingUserType  
-  * set userOtpSend.otp.tenantId = constantValue.parameters.withoutTenantId
-
+  * set userOtpPayload.otp.mobileNumber = '' 
+  * set userOtpPayload.otp.type = ''
+  * set userOtpPayload.otp.tenantId = ''
     Given url userOtpRegisterUrl
-    And request userOtpSend
+    * print userOtpRegisterUrl
+    And request userOtpPayload
+    * print userOtpPayload
     When method post
     Then status 400
     And def userOtpSendResponseHeader = responseHeaders

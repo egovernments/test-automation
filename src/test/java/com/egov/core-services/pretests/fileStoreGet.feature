@@ -1,13 +1,21 @@
 Feature: FileStore get API call 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-
-@getfileidsuccess
-Scenario: get the uploaded document id
-  * def uploadfile = call read('../pretests/fileStoreCreate.feature@uploadsuccess')
-  * print uploadfile.filecreateResponseBody
-  * def getFileId = uploadfile.filecreateResponseBody.files[0].fileStoreId
+  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadSuccess')
+  * print filecreateResponseBody
+  * def getFileId = filecreateResponseBody.files[0].fileStoreId
   * print getFileId
+  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadDocsSuccess')
+  * print filecreateResponseBody.files[0].fileStoreId, filecreateResponseBody.files[1].fileStoreId
+  * def getFileIdsFirst = filecreateResponseBody.files[0].fileStoreId
+  * print getFileIdsFirst
+  * def getFileIdsSecond = filecreateResponseBody.files[1].fileStoreId
+  * print getFileIdsSecond
+  * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
+  * print getFileIds
+
+@getFileIdSuccess
+Scenario: get the uploaded document id
   * def getFileIdParam = 
     """
     {
@@ -25,16 +33,16 @@ Scenario: get the uploaded document id
      And def fileStoreGetResponseBody = response
      * print fileStoreGetResponseBody
 
-@getmultifileidsuccess
+@getMultiFileIdSuccess
 Scenario: get the uploaded document id
-  * def uploadMultifile = call read('../pretests/fileStoreCreate.feature@uploaddocssuccess')
-  * print uploadMultifile.filecreateResponseBody.files[0].fileStoreId, uploadMultifile.filecreateResponseBody.files[1].fileStoreId
-  * def getFileIdsFirst = uploadMultifile.filecreateResponseBody.files[0].fileStoreId
-  * print getFileIdsFirst
-  * def getFileIdsSecond = uploadMultifile.filecreateResponseBody.files[1].fileStoreId
-  * print getFileIdsSecond
-  * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
-  * print getFileIds
+#  * def uploadMultifile = call read('../pretests/fileStoreCreate.feature@uploadDocsSuccess')
+#  * print uploadMultifile.filecreateResponseBody.files[0].fileStoreId, uploadMultifile.filecreateResponseBody.files[1].fileStoreId
+#  * def getFileIdsFirst = uploadMultifile.filecreateResponseBody.files[0].fileStoreId
+#  * print getFileIdsFirst
+#  * def getFileIdsSecond = uploadMultifile.filecreateResponseBody.files[1].fileStoreId
+#  * print getFileIdsSecond
+#  * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
+#  * print getFileIds
   * def getMultiFileIdParam = 
     """
     {
@@ -53,12 +61,8 @@ Scenario: get the uploaded document id
      * print fileStoreGetResponseBody
 
 
-@getfileidfail
+@getFileIdFail
 Scenario: get the uploaded document id
-  * def uploadfile = call read('../pretests/fileStoreCreate.feature@uploadsuccess')
-  * print uploadfile.filecreateResponseBody
-  * def getFileId = uploadfile.filecreateResponseBody.files[0].fileStoreId
-  * print getFileId
   * def getFileIdParam = 
     """
     {
@@ -73,12 +77,8 @@ Scenario: get the uploaded document id
      And def fileStoreGetResponseBody = response
      * print fileStoreGetResponseBody
 
-@nofileid
+@noFileId
 Scenario: get the uploaded document id
-  * def uploadfile = call read('../pretests/fileStoreCreate.feature@uploadsuccess')
-  * print uploadfile.filecreateResponseBody
-  * def getFileId = uploadfile.filecreateResponseBody.files[0].fileStoreId
-  * print getFileId
   * def getFileIdParam = 
     """
     {

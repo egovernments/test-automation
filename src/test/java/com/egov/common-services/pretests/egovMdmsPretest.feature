@@ -9,7 +9,9 @@ Background:
 @successSearchState
 Scenario: Search MDMS by State success Call
   Given url searchMdmsUrl
+  * print searchMdmsUrl
   And request searchStateRequest
+  * print searchStateRequest
   When method post
   Then status 200
   And def mdmsServiceResponseHeader = responseHeaders
@@ -27,7 +29,9 @@ Scenario: Search MDMS by State success Call
 @successSearchCity
 Scenario: Search MDMS by State and city success Call
   Given url searchMdmsUrl
+  * print searchMdmsUrl
   And request searchCityRequest
+  * print searchCityRequest
   When method post
   Then status 200
   And def mdmsServiceResponseHeader = responseHeaders
@@ -36,3 +40,5 @@ Scenario: Search MDMS by State and city success Call
   And def mdmsServiceResponseBody = response
   And def MdmsCityRes = mdmsServiceResponseBody.MdmsRes
   And def mdmsCityEgovLocation = MdmsCityRes['egov-location']
+  And def mdmsCityTenantBoundary = MdmsCityRes['egov-location'].TenantBoundary
+  And def mdmsCityTenant = MdmsCityRes.tenant

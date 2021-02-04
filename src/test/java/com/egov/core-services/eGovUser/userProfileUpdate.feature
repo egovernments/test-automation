@@ -2,7 +2,7 @@ Feature: eGov_User - Update user profile tests
 
 Background:
         * def jsUtils = read('classpath:jsUtils.js')
-        # Calling access token
+        
         * def authUsername = authUsername
         * def authPassword = authPassword
         * def authUserType = authUserType

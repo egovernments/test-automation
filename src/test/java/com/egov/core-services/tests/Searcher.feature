@@ -7,7 +7,7 @@ Background:
     #* def searcherServiceConstants = read('../constants/searcher.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def errorManadatoryTenantId = 'Missing Mandatory Property: $.searchCriteria.tenantId'
-    # Calling access token
+    
     * def authUsername = authUsername
     * def authPassword = authPassword
     * def authUserType = authUserType

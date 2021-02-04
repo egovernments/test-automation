@@ -2,7 +2,7 @@ Feature: MDMS Services Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    # Calling access token
+    
     * def tenantId = tenantId
     * def authUsername = authUsername
     * def authPassword = authPassword

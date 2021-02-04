@@ -2,77 +2,71 @@ Feature: User OTP
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
-  * def userOtpConstant = read('../constants/userOtp.yaml')
-  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-  * def authUsername = authUsername
-  * def authPassword = authPassword
-  * def authUserType = authUserType
-  * call read('../pretests/authenticationToken.feature')
-  * def name = userOtpConstant.parameters.name
-  * def userType = userOtpConstant.parameters.userType
-
   
-  @UserOtp_Send_Register_01   @positive @userotp
+  
+  
+  
+  * def userType = accessControlRoles.roles[0].code
+  * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
+  * def name = ranString(4)
+  * def permanentCity = cityCode
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+
+  @UserOtp_Send_Register_01   @positive  @userOtp
   Scenario: Test to send the OTP to a valid mobile number during registration
-        * call read('../pretests/userOtpPretest.feature@Success_register')
+        * call read('../../core-services/pretests/userOtpPretest.feature@successRegister')
         * print userOtpSendResponseBody
         * match userOtpSendResponseBody.isSuccessful == true
 
-  @UserOtp_Send_RegisterDuplicate_05  @negative @userotp        
+  @UserOtp_Send_RegisterDuplicate_05  @negative  @userOtp        
   Scenario: Test registering using a already registered number
-        
-        * call read('../pretests/userOtpPretest.feature@Error_register')
+        * call read('../../core-services/pretests/userOtpPretest.feature@errorRegister')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo
         * print userOtpConstant[0].errormessages.errorMsgForRegMobNo
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo
  
-  @UserOtp_Send_Login_02  @positive @userotp
+  @UserOtp_Send_Login_02  @positive @userOtp
   Scenario: Test to send the OTP to a valid mobile number during login
-         * call read('../pretests/userOtpPretest.feature@Success_login')
+         * call read('../../core-services/pretests/userOtpPretest.feature@successLogin')
          * print userOtpSendResponseBody
          * match userOtpSendResponseBody.isSuccessful == true
 
-  @UserOtp_Send_Unregistered_03  @negative @userotp
+  @UserOtp_Send_Unregistered_03  @negative @userOtp
   Scenario: Test to send the OTP using a unregistered mobile number during login
-        * call read('../pretests/userOtpPretest.feature@Error_login')
+        * call read('../../core-services/pretests/userOtpPretest.feature@errorLogin')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
  
         
-  @UserOtp_Send_InavlidMobile_04  @negative  @userotp
+  @UserOtp_Send_InavlidMobile_04  @negative  @userOtp
   Scenario: Test to send the OTP using a invalid mobile number during login or register
-        * call read('../pretests/userOtpPretest.feature@Error_InvldMobNo')
+        * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo
 
-  @UserOtp_Send_noMandatoryfields_06  @negative  @userotp
+  @UserOtp_Send_noMandatoryfields_06  @negative  @userOtp
   Scenario: Test by not passing mobile number or tenant id for type ' login'
-        * call read('../pretests/userOtpPretest.feature@Error_MobNoNull')
+        * call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo
 
-  @UserOtp_Send_invalidTenant_Login_07  @negative  @userotp
+  @UserOtp_Send_invalidTenant_Login_07  @negative  @userOtp
   Scenario: Test by passing a invalid or a non existent tenant ID
-        * def tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-        * call read('../pretests/userOtpPretest.feature@Error_InvldTenant')
+        * call read('../pretests/userOtpPretest.feature@errorInvalidTenant')
         * print userOtpSendResponseBody
-        * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForInvalidTenantId
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
 
- @UserOtp_Send_NoType_08  @negative  @userotp
+ @UserOtp_Send_NoType_08  @negative  @userOtp
  Scenario: Test by not passing any value for 'type'
-        * call read('../pretests/userOtpPretest.feature@Success_notype')
+        * call read('../../core-services/pretests/userOtpPretest.feature@successNoType')
         * print userOtpSendResponseBody
         * match userOtpSendResponseBody.isSuccessful == true
         
- @UserOtp_Send_NoMandatoryOtpParameters_08  @negative @userotp
+ @UserOtp_Send_NoMandatoryOtpParameters_08  @negative @userOtp
  Scenario: Test without mobile number, tenantid and type' parameters
-        * call read('../pretests/userOtpPretest.feature@Error_TenantNull')
-        * def tenantId = userOtpConstant.parameters.withoutTenantId
+        * call read('../../core-services/pretests/userOtpPretest.feature@errorTenantNull')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.message == userOtpConstant.errorMessages.msgForInvalidOtp
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandTenantId

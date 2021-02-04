@@ -27,11 +27,9 @@ Feature: Business Services - Apportion service tests
      * def taxHeadCode4 = apportionServiceData.parameters.taxHeadCode4
      * def paidValue = apportionServiceData.parameters.paidValue
      * def nullValue = commonConstants.invalidParameters.nullValue
-     # Calling access token
-     * def authUsername = authUsername
-     * def authPassword = authPassword
-     * def authUserType = authUserType
-     * call read('../preTests/authenticationToken.feature')
+     
+
+     
 
 # For some parameters there are NO validations in this Service
 

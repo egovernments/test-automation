@@ -4,7 +4,7 @@ Background:
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
 @createActiveProperty
 Scenario: Create Active Property
-    # Calling access token
+    
     * def authUsername = authUsername
     * def authPassword = authPassword
     * def authUserType = authUserType
@@ -27,7 +27,7 @@ Scenario: Create Active Property
 
 @createPropertyAndAssess
 Scenario: Create Active Property
-    # Calling access token
+    
     * def authUsername = authUsername
     * def authPassword = authPassword
     * def authUserType = authUserType

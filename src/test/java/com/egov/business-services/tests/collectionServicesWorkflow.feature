@@ -8,11 +8,13 @@ Background:
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def reason = collectionServicesConstants.parameters.reason
     * def action = collectionServicesConstants.parameters.action
-    # Calling access token
+    * def invalidPaymentId = 'payment_'+randomNumber(4)
+    * def invalidReason = 'reason_'+randomNumber(4)
+    
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
     * def authUserType = employeeType
-    * call read('../preTests/authenticationToken.feature')
+    
     
 @workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with valid field values
@@ -54,7 +56,7 @@ Scenario: Test to Cancel a payment in workflow with no paymentId
 @workflow_payment_InValidPaymentID_04 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with invalid paymentId
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * def paymentId = collectionServicesConstants.invalidParameters.paymentId
+    * def paymentId = invalidPaymentId
     * call read('../pretests/collectionServicesPretest.feature@error_workflow')
     * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
@@ -94,7 +96,7 @@ Scenario: Test to Cancel a payment in workflow with invalid reason
     * call read('../preTests/billingServicePretest.feature@fetchBill')
     * call read('../preTests/collectionServicesPretest.feature@successPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
-    * def reason = collectionServicesConstants.invalidParameters.reason
+    * def reason = invalidReason
     * call read('../pretests/collectionServicesPretest.feature@error_workflow')
     * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId

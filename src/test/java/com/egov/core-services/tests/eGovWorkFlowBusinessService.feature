@@ -6,7 +6,7 @@ Feature: eGov workflow service with create, search & update endpoints.
                 * def createWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowCreate.json')
                 * def workFlowConstants = read('../../core-services/constants/workFlow.yaml')
                 * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-                # Calling access token
+                
                 * def authUsername = authUsername
                 * def authPassword = authPassword
                 * def authUserType = authUserType

@@ -14,6 +14,9 @@ existingUser:
   password: TestUser@1234
   tenantId: pb.jalandhar
   authUserType: EMPLOYEE
+# Registered mobile number for user otp
+citizen:
+ registeredMobileNumber: 9742379422
 #TODO: Consumer code, mobile number needs to be change based upon the environment
 parameters:
   consumerCode: PB-PT-2020-10-14-007281

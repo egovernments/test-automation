@@ -7,7 +7,7 @@ Background:
     * def idGenServiceConstants = read('../constants/idGenerate.yaml')
     # Common global Constants
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    # Calling access token
+    
     * def authUsername = authUsername
     * def authPassword = authPassword
     * def authUserType = authUserType
