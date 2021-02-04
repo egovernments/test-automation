@@ -1,14 +1,6 @@
 Feature: Property Services Create
-Background:
-    * call read('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore')
-    * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
 @createActiveProperty
 Scenario: Create Active Property
-    
-    # * def authUsername = authUsername
-    # * def authPassword = authPassword
-    # * def authUserType = authUserType
-    # * call read('../../common-services/pretests/authenticationToken.feature')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode
     * def boundaryType = commonConstants.parameters.boundaryType
@@ -27,11 +19,6 @@ Scenario: Create Active Property
 
 @createPropertyAndAssess
 Scenario: Create Active Property
-    
-    * def authUsername = authUsername
-    * def authPassword = authPassword
-    * def authUserType = authUserType
-    * call read('../../common-services/pretests/authenticationToken.feature')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode
     * def boundaryType = commonConstants.parameters.boundaryType

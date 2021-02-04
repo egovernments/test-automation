@@ -19,7 +19,7 @@ Background:
 @workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with valid field values
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../preTests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
     * print collectionServicesResponseBody
@@ -38,7 +38,7 @@ Scenario: Test to Cancel a payment in workflow with valid field values
 @workflow_payment_samePaymentID_02 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with same paymentId
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../preTests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
     * print collectionServicesResponseBody
@@ -64,7 +64,7 @@ Scenario: Test to Cancel a payment in workflow with invalid paymentId
 @workflow_payment_OTHERreason_05 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with OTHER as reason
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../preTests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * def reason = collectionServicesConstants.parameters.otherReason
     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
@@ -84,7 +84,7 @@ Scenario: Test to Cancel a payment in workflow with OTHER as reason
 @workflow_payment_NoReason_06 @negative @collectionServiceWorkflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with no reason
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../preTests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * call read('../pretests/collectionServicesPretest.feature@error_workflow_removeField') {'removeFieldPath': '$.paymentWorkflows[0].reason'}
     * print collectionServicesResponseBody
@@ -94,7 +94,7 @@ Scenario: Test to Cancel a payment in workflow with no reason
 @workflow_payment_InValidReason_07 @negative @collectionServiceWorkflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with invalid reason
     * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../preTests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * def reason = invalidReason
     * call read('../pretests/collectionServicesPretest.feature@error_workflow')

@@ -2,7 +2,6 @@ Feature: MDMS Services Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    
     * def tenantId = tenantId
     * def authUsername = authUsername
     * def authPassword = authPassword
@@ -12,4 +11,3 @@ Background:
 @searchMdmsGlobal
 Scenario: Test to Create Demand with valid field values
     * call read('../pretests/egovMdmsPretest.feature@successSearchState')
-    * print mdmsServiceResponseBody

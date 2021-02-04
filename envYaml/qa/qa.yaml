@@ -17,8 +17,3 @@ existingUser:
 # Registered mobile number for user otp
 citizen:
  registeredMobileNumber: 9742379422
-#TODO: Consumer code, mobile number needs to be change based upon the environment
-parameters:
-  consumerCode: PB-PT-2020-10-14-007281
-  businessService: PT
-  mobileNumber: 9113689766
