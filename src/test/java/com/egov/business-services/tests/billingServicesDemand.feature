@@ -15,11 +15,7 @@ Background:
     * def taxAmount = 200
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
-    # * def authUsername = authUsername
-    # * def authPassword = authPassword
-    # * def authUserType = authUserType
-    # * call read('../../common-services/pretests/authenticationToken.feature')
-    
+        
 @create_01 @positive @billingServiceDemandCreate @billingServiceDemand
 Scenario: Test to Create Demand with valid field values
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@successCreate')
