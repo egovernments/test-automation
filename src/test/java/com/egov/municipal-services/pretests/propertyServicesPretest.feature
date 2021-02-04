@@ -10,7 +10,7 @@ Background:
     * def channel = commonConstants.parameters.channel
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def cityName = karate.jsonPath(tenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0]
+    * def cityName = karate.jsonPath(mdmsCityTenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0]
     * def OccupancyType = mdmsStatePropertyTax.OccupancyType[1].code
     * def UsageCategory = mdmsStatePropertyTax.UsageCategory[0].code
     * def builtUpArea = 2000

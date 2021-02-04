@@ -24,7 +24,7 @@ Scenario: Search MDMS by State success Call
   And def mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
   And def mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
   And def mdmsStateDashboard = MdmsStateRes['dss-dashboard']
-  And def mdmsStateDashboardConfig = dashboard['dashboard-config'][0].MODULE_LEVEL
+  And def mdmsStateDashboardConfig = mdmsStateDashboard['dashboard-config'][0].MODULE_LEVEL
 
 @successSearchCity
 Scenario: Search MDMS by State and city success Call

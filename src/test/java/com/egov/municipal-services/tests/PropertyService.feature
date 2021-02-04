@@ -5,10 +5,10 @@ Background:
 @createActiveProperty
 Scenario: Create Active Property
     
-    * def authUsername = authUsername
-    * def authPassword = authPassword
-    * def authUserType = authUserType
-    * call read('../../common-services/pretests/authenticationToken.feature')
+    # * def authUsername = authUsername
+    # * def authPassword = authPassword
+    # * def authUserType = authUserType
+    # * call read('../../common-services/pretests/authenticationToken.feature')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode
     * def boundaryType = commonConstants.parameters.boundaryType
