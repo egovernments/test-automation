@@ -18,6 +18,15 @@ parameters:
   creationReason: 'CREATE'
   businessId: 'PB-AC-2021-01-27-007614'
   financialYear: 2020-21
+  # to upload file on fire-noc module
+  module:
+    - fire-noc 
+  # type for userOtp
+  type:
+    - register 
+    - login
+  # payment gateway
+  gateway: AXIS
 expectedStatus:
   ok: "200 OK"
   success: 'successful'
@@ -32,8 +41,12 @@ errorMessages:
   failed: FAILED
 successMessages:
   successful: SUCCESSFUL
+  module:
+    - fire-noc 
 invalidParameters:
   invalidTenantId: invalid
   emptyValue: ''
   nullValue: null
   invalidValue: Abc@123
+  invalidValue: abc
+  passValusAsNull: null

@@ -34,7 +34,7 @@
         "employeeStatus": "EMPLOYED",
         "deactivationDetails": [],
         "reactivationDetails": [],
-        "employeeType": "CONTRACT",
+        "authUserType": "CONTRACT",
         "tests": [],
         "auditDetails": {
           "createdDate": "#(createdDate)",

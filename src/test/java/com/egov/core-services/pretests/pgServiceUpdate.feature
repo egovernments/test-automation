@@ -2,7 +2,9 @@ Feature: Update a payment transaction
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def pgServicesUpdatePayload = read('../requestPayload/pgServices/pgServicesUpdate.json')
+  * call read('../../core-services/pretests/pgServiceCreate.feature@createpgservicesuccess')
+  * transactionId = pgServicesCreateResponseBody.Transaction.taxAndPayments[0].txnId
+  * def pgServicesUpdatePayload = read('../../core-services/requestPayload/pgServices/pgServicesUpdate.json')
 
 @updatepgservicesuccess
 Scenario: Update a payment transaction

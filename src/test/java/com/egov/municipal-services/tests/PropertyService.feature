@@ -4,10 +4,10 @@ Background:
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
 @createActiveProperty
 Scenario: Create Active Property
-    # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../../common-services/pretests/authenticationToken.feature')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode
@@ -27,10 +27,10 @@ Scenario: Create Active Property
 
 @createPropertyAndAssess
 Scenario: Create Active Property
-    # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../../common-services/pretests/authenticationToken.feature')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode

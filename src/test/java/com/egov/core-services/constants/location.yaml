@@ -1,9 +1,3 @@
-# Parameters
-parameters:
- hierarchyTypeCode: REVENUE
- boundaryType: Locality 
- multiHierarchyTypeCode: ADMIN,REVENUE
- multiTenantid: pb.amritsar,pb.jalandhar
-
+# Error messages
 errorMessages:
  noTenantId: Required String parameter 'tenantId' is not present

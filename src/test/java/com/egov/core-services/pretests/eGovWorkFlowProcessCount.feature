@@ -1,7 +1,7 @@
 Feature: Perform search to get the count of process
 
 Background:
-* def workFlowProcessCountPayload = read('../requestPayload/eGovWorkFlow/process/processCount.json')
+* def workFlowProcessCountPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processCount.json')
 
 @processcountsuccess
 Scenario: Perform search using business id

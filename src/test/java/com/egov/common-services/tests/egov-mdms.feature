@@ -2,11 +2,11 @@ Feature: MDMS Services Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    # Calling access token
+    
     * def tenantId = tenantId
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../pretests/authenticationToken.feature')
     
 @searchMdmsGlobal

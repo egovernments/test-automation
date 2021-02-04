@@ -7,19 +7,19 @@ Background:
     #* def searcherServiceConstants = read('../constants/searcher.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def errorManadatoryTenantId = 'Missing Mandatory Property: $.searchCriteria.tenantId'
-    # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../pretests/authenticationToken.feature')
     # MDMS call
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
-    * def businesService = billingService.BusinessService[0].code
+    * def businesService = mdmsStateBillingService.BusinessService[0].code
     # PT billGineiURL
-    * def url1 = billingService.BusinessService[0].billGineiURL
-    * def searcherWSURL = billingService.BusinessService[1].billGineiURL
-    * def businesServiceSW = billingService.BusinessService[86].code
-    * def businesServiceWS = billingService.BusinessService[85].code
+    * def url1 = mdmsStateBillingService.BusinessService[0].billGineiURL
+    * def searcherWSURL = mdmsStateBillingService.BusinessService[1].billGineiURL
+    * def businesServiceSW = mdmsStateBillingService.BusinessService[86].code
+    * def businesServiceWS = mdmsStateBillingService.BusinessService[85].code
     * def multiServiceCode = businesService + ',' + businesServiceSW + ',' + businesServiceWS
     * def mobileNumber = commonConstants.invalidParameters.nullValue
     # calling searcherPretest with NO mobilenumber to get the registered number
