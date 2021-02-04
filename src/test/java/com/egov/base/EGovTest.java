@@ -4,16 +4,12 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collection;
-
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,7 +36,7 @@ public class EGovTest {
 	public void testParallel() {
 
 		String karateOutputPath = "target/surefire-reports";
-		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
+		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
 		generateReport(karateOutputPath);
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
 	}

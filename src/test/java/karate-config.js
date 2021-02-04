@@ -191,11 +191,12 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
-        // Calling pretest features which is consumed by almost all tests
-        var fileStore = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        // Calling pretest features which is cosumed by almost all tests
+        var fileUpload = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         var token = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        config.authToken = token.authToken;
         var mdmsData = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature', config);
-        config.authToken = token.authToken;  
+          
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
