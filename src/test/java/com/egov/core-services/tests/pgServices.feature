@@ -3,10 +3,8 @@ Background:
   * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
   * def jsUtils = read('classpath:jsUtils.js')
   # Calling authtoken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
   * call read('../../business-services/tests/billing-service-demand.feature@create_01')
   * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
   * def txnAmount = fetchBillResponse.Bill[0].totalAmount

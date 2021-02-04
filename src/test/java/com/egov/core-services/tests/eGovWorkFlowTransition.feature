@@ -1,11 +1,9 @@
 Feature: eGovWorkflow process transition
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
   * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successCreateProperty')
   * def businessId = acknowldgementNumber
   * call read('../../business-services/preTests/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')

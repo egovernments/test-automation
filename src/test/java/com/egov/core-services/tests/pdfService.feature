@@ -1,11 +1,9 @@
 Feature: pdf service
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
 
   * def pdfCreateConstant = read('../../core-services/constants/pdfService.yaml')
 

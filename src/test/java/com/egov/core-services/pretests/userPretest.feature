@@ -2,13 +2,11 @@ Feature: User Search
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
-  * call read('../../common-services/pretests/eGovMdmsPretest.feature@successSearchCity')
-  * def multipleTenantId = tenant.tenants[1].code + ',' + tenant.tenants[3].code
+  
+  
+  
+  
+  * def multipleTenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
   * def existingUser = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)

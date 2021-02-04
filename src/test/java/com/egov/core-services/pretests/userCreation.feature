@@ -2,12 +2,10 @@ Feature: Create user
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../common-services/pretests/eGovMdmsPretest.feature@successSearchState')
-  # Calling access token
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
+  
   * print newUserPayload
   * def userType = accessControlRoles.roles[0].code
   * def name = ranString(4)

@@ -1,9 +1,9 @@
 Feature: Mdm Service Get tests
 
 Background: 
-    *  def authUsername = employeeUserName
-    *  def authPassword = employeePassword
-    *  def authUserType = employeeType
+    *  def authUsername = authUsername
+    *  def authPassword = authPassword
+    *  def authUserType = authUserType
     *  call read('../pretests/authenticationToken.feature')
     *  def jsUtils = read('classpath:jsUtils.js')
     *  def mdmsServiceConstants = read('../constants/mdmsServiceGet.yaml')

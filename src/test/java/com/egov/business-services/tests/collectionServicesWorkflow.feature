@@ -10,11 +10,11 @@ Background:
     * def action = collectionServicesConstants.parameters.action
     * def invalidPaymentId = 'payment_'+randomNumber(4)
     * def invalidReason = 'reason_'+randomNumber(4)
-    # Calling access token
+    
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
     * def authUserType = employeeType
-    * call read('../preTests/authenticationToken.feature')
+    
     
 @workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with valid field values

@@ -2,15 +2,15 @@ Feature: eGov_User - Update user profile tests
 
 Background:
         * def jsUtils = read('classpath:jsUtils.js')
-        # Calling access token
-        * def authUsername = superUserName
-        * def authPassword = superUserPassword
-        * def authUserType = superUserAuthUserType
+        
+        * def authUsername = authUsername
+        * def authPassword = authPassword
+        * def authUserType = authUserType
         * print tenantId
-        * def authUserType = superUserAuthUserType
+        * def authUserType = authUserType
         * call read('../pretests/authenticationToken.feature')
         * def errorMessage = read("../constants/user.yaml")
-        * def code = superUserName
+        * def code = authUsername
         * call read('../../business-services/preTests/egov-hrmsPretest.feature@successMultiSearch')
         * def updatedUserProfile = read('../requestPayload/user/update/updateUser.json')
         * def username = ranString(10)

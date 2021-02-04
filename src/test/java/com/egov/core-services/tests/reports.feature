@@ -3,10 +3,8 @@ Feature: Reports
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   # Calling authtoken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
   # calling report constant
   * def reportConstant = read('../../core-services/constants/reports.yaml')
   * def reportName = reportConstant.parameters.reportName

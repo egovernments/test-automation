@@ -1,12 +1,10 @@
 Feature: eGovWorkflow process search
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
-  * call read('../../common-services/pretests/eGovMdmsPretest.feature@successSearchCity')
+  
+  
+  
+  
   * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successCreateProperty')
   * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
   * def processSearchConstant = read('../../core-services/constants/eGovWorkFlowProcessSearch.yaml')
@@ -50,7 +48,7 @@ Scenario: Perform search by passing invalid/non existent or null value for histr
 
 @Search_MultipleTenant_07 @negative  @egovworkflowprocess
 Scenario: Perform search by passing multple values for tenantId
-  * def tenantId = tenant.tenants[1].code + ',' + tenant.tenants[3].code
+  * def tenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
   * call read('.././core-services/pretests/eGovWorkFlowProcessSearch.feature@processsearchsuccess')
   * print processSearchResponseBody
 

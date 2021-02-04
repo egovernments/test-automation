@@ -2,11 +2,9 @@ Feature: search mdms
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
   * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def moduleName = searchMdmsConstant.parameters.moduleName[0]

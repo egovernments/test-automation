@@ -2,7 +2,7 @@ Feature: eGov_User - Update password tests
 
 Background:
      * def jsUtils = read('classpath:jsUtils.js')
-     # Calling access token
+     
      * def authUsername = existingUserName
      * def authPassword = existingUserPassword
      * def tenantId = existingUserTenantId

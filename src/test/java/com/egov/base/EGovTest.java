@@ -30,7 +30,12 @@ public class EGovTest {
 
 	@BeforeClass
 	public static void before() {
-
+		Map<String, Object> fileStoreResult = CucumberRunner.runFeature("classpath:com/egov/common-services/
+		pretests/fileStoreUpload.feature", null, true);
+        Map<String, Object> authResult = CucumberRunner.runFeature("classpath:com/egov/common-services/
+		pretests/authenticationToken.feature", null, true);
+		Map<String, Object> mdmsSearchResult = CucumberRunner.runFeature("classpath:com/egov/common-services/
+		pretests/egovMdmsPretest.feature", null, true);
 	}
 
 	@Test

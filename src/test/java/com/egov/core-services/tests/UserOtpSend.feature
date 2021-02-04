@@ -2,12 +2,10 @@ Feature: User OTP
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../common-services/pretests/eGovMdmsPretest.feature@successSearchState')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
+  
   * def userType = accessControlRoles.roles[0].code
   * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
   * def name = ranString(4)

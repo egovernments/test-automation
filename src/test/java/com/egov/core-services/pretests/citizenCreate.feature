@@ -1,11 +1,9 @@
 Feature: Create Citizen
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authToken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
+  
+  
+  
   * def citizenPayload = read('../../core-services/requestPayload/user/citizenCreation.json')
   * def createCitizenvalidPayload = citizenPayload.validPayload
   * def citizenWithoutUserNamePayLoad = citizenPayload.withoutUserNamePayload
