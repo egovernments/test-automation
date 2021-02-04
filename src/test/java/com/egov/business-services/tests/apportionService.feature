@@ -5,7 +5,7 @@ Feature: Business Services - Apportion service tests
      * configure headers = read('classpath:websCommonHeaders.js')
      * def apportionServiceData = read('../constants/apportionService.yaml')
      * def commonConstants = read('../constants/commonConstants.yaml')
-     #* call read('../../core-services/tests/billingService.feature@fetchbill_01')
+     #* call read('../../core-services/tests/mdmsStateBillingService.feature@fetchbill_01')
      * def billId = apportionServiceData.parameters.billId
      * def totalAmount = apportionServiceData.parameters.totalAmount
      * def businessService = apportionServiceData.parameters.businessService
@@ -28,9 +28,9 @@ Feature: Business Services - Apportion service tests
      * def paidValue = apportionServiceData.parameters.paidValue
      * def nullValue = commonConstants.invalidParameters.nullValue
      # Calling access token
-     * def authUsername = employeeUserName
-     * def authPassword = employeePassword
-     * def authUserType = employeeType
+     * def authUsername = authUsername
+     * def authPassword = authPassword
+     * def authUserType = authUserType
      * call read('../preTests/authenticationToken.feature')
 
 # For some parameters there are NO validations in this Service

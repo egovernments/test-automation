@@ -5,13 +5,13 @@ Background:
     * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../../common-services/pretests/authenticationToken.feature')
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
     * def ts = getCurrentEpochTime()
-    * def roleCodes = accessControlRoles.roles[2].code
+    * def roleCodes = mdmsStateAccessControlRoles.roles[2].code
     * def actionMaster = accessControlConstants.parameters.actionMaster
     * def enabled = true
    

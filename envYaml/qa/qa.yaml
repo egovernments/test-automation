@@ -3,6 +3,17 @@ localhost: http://localhost:8079/
 stateCode: pb
 cityCode: amritsar
 userName: 4600556741
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: EMPSU
+  password: eGov@123
+  type: EMPLOYEE
+#UserName and Password of Existing User. Specifically for updatePassword scripts as part of eGovUser
+existingUser:
+  userName: EMP-1013-000335
+  password: TestUser@1234
+  tenantId: pb.jalandhar
+  authUserType: EMPLOYEE
 #TODO: Consumer code, mobile number needs to be change based upon the environment
 parameters:
   consumerCode: PB-PT-2020-10-14-007281

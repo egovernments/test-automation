@@ -6,9 +6,9 @@ Background:
   * def userOtpSend = read('../requestPayload/userOtp/userOtpSend.json')
   * def userOtpConstant = read('../constants/userOtp.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
+  * def authUsername = authUsername
+  * def authPassword = authPassword
+  * def authUserType = authUserType
   * call read('../pretests/authenticationToken.feature')
   * def name = userOtpConstant.parameters.name
   * def userType = userOtpConstant.parameters.userType

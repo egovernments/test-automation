@@ -2,9 +2,9 @@ Feature: Location
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
+  * def authUsername = authUsername
+  * def authPassword = authPassword
+  * def authUserType = authUserType
   * call read('../pretests/authenticationToken.feature')
   * def location = read('../requestPayload/location/searchLocation.json')
   * print location

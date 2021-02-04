@@ -4,9 +4,9 @@ Feature: Billing Service - Bills tests
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
     * def jsUtils = read('classpath:jsUtils.js')
     # Calling access token
-     * def authUsername = employeeUserName
-     * def authPassword = employeePassword
-     * def authUserType = employeeType
+     * def authUsername = authUsername
+     * def authPassword = authPassword
+     * def authUserType = authUserType
      * call read('../preTests/authenticationToken.feature')
      * def billingServiceConstants = read('../constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

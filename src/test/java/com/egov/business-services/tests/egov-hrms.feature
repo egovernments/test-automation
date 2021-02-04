@@ -3,9 +3,9 @@ Feature: Core service - HRMS
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../../common-services/pretests/authenticationToken.feature')
     * call read('../../common-services/pretests/egovMdmsPretest.feature')
     * def hrmsConstants = read('../../business-services/constants/egov-hrms.yaml')
@@ -14,16 +14,16 @@ Background:
     * def tomorrow = getTomorrowEpochTime()
     * def name = 'AUTO-EMPLOYEE-' + ranInteger(6)
     * def mobileNumber = '78' + randomMobileNumGen(8)
-    * def employeeStatus = egovHrms.EmployeeStatus[0].code
+    * def employeeStatus = mdmsStateEgovHrms.EmployeeStatus[0].code
     * def dob = 635404414000 + ''
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
     * def fatherOrHusbandName = 'AUTO-EMPLOYEE-' + ranInteger(6)
-    * def employeeType = egovHrms.EmployeeType[0].code
-    * def hierarchy = egovLocation.TenantBoundary[0].hierarchyType.code
-    * def boundaryType = egovLocation.TenantBoundary[0].boundary.label
+    * def authUserType = mdmsStateEgovHrms.EmployeeType[0].code
+    * def hierarchy = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
+    * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.label
     * def boundary = tenantId
-    * def department = commonMasters.Department[11].code
-    * def designation = commonMasters.Designation[24].code
+    * def department = mdmsStatecommonMasters.Department[11].code
+    * def designation = mdmsStatecommonMasters.Designation[24].code
     * def isCurrentAssignment = true
     * def fromDate = today
     * def dateOfAppointment = today
@@ -144,7 +144,7 @@ Scenario: Test when current assignment is true and end date exists for assignmen
 
 @HRMS_create_InvalidEMpStatus_16 @negative @hrms_create @hrms
 Scenario: Test to create a employee with an invalid/nonexistent/null employee type
-    * def employeeType = "Invalid-employeeType-" + ranString(5)
+    * def authUserType = "Invalid-authUserType-" + ranString(5)
     * call read('../../business-services/pretests/egov-hrmsPretest.feature@errorCreate')
     * print hrmsResponseBody
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidEmployeeType

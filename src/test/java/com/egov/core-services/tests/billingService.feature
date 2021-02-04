@@ -1,7 +1,7 @@
 Feature: Billing Service
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def billingServiceConstant = read('../constants/billingService.yaml')
+  * def billingServiceConstant = read('../constants/mdmsStateBillingService.yaml')
   * def consumerCode = billingServiceConstant.parameters.fetchBill.consumerCode
   * def businessService = billingServiceConstant.parameters.fetchBill.businessService
 

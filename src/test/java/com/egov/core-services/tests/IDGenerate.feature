@@ -8,19 +8,19 @@ Background:
     # Common global Constants
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # Calling access token
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
+    * def authUsername = authUsername
+    * def authPassword = authPassword
+    * def authUserType = authUserType
     * call read('../pretests/authenticationToken.feature')
     # MDMS call
     * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
-    * def index = randomNumber(commonMasters.IdFormat.length)
+    * def index = randomNumber(mdmsStatecommonMasters.IdFormat.length)
 
 @IdGen_Generate_01 @positive @idGenerate
 Scenario: Test a unique Id is created for every new application,receipt
 
-    * def idName = commonMasters.IdFormat[index].idname
-    * def format = commonMasters.IdFormat[index].format
+    * def idName = mdmsStatecommonMasters.IdFormat[index].idname
+    * def format = mdmsStatecommonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@success')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
@@ -28,8 +28,8 @@ Scenario: Test a unique Id is created for every new application,receipt
 @IdGen_GeneratetMulti_02 @positive @idGenerate 
 Scenario: Search for Localization in English(Specific Module)
 
-    * def idName = commonMasters.IdFormat[index].idname
-    * def format = commonMasters.IdFormat[index].format
+    * def idName = mdmsStatecommonMasters.IdFormat[index].idname
+    * def format = mdmsStatecommonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@success')
     * def id1 = idGenerateResponseBody.idResponses[0].id
     * def value1 = stringToInteger(id1.slice(-2))
@@ -44,8 +44,8 @@ Scenario: Search for Localization in English(Specific Module)
 @IdGen_switchIdName_03 @positive @idGenerate 
 Scenario: Test by interchanging the id names from different modules
 
-    * def idName = commonMasters.IdFormat[index].idname
-    * def format = commonMasters.IdFormat[index].format
+    * def idName = mdmsStatecommonMasters.IdFormat[index].idname
+    * def format = mdmsStatecommonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@success')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
@@ -54,8 +54,8 @@ Scenario: Test by interchanging the id names from different modules
 Scenario: Test by passing a invalid or a nonexistent tenant id
 
     * def tenantId = commonConstants.invalidParameters.invalidTenantId
-    * def idName = commonMasters.IdFormat[index].idname
-    * def format = commonMasters.IdFormat[index].format
+    * def idName = mdmsStatecommonMasters.IdFormat[index].idname
+    * def format = mdmsStatecommonMasters.IdFormat[index].format
     * call read('../pretests/idGeneratePretest.feature@error')
     * assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
