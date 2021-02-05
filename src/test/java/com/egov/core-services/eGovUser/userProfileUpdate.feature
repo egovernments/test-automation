@@ -12,7 +12,7 @@ Background:
         * def errorMessage = read("../constants/user.yaml")
         * def code = authUsername
         * call read('../../business-services/preTests/egov-hrmsPretest.feature@successMultiSearch')
-        * def updatedUserProfile = read('../requestPayload/user/update/updateUser.json')
+        * def updatedUserProfile = read('../../core-services/requestPayload/user/update/updateUser.json')
         * def username = ranString(10)
         * def email = ranString(5)+'@auto.com'
         * def city = tenantId.split(".")[0]

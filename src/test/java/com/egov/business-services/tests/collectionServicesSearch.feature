@@ -4,10 +4,10 @@ Background:
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def collectionServicesConstants = read('../constants/collection-services.yaml')
+    * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
-    * call read('../preTests/collectionServicesPretest.feature@successPayment')
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
+    * call read('../../business-services/preTests/collectionServicesPretest.feature@createPayment')
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
     * def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber
     * def invalidTenantId = randomString(5)

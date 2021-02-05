@@ -6,20 +6,16 @@ Background:
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def consumerCode = 'PT-Test-' + ranInteger(6)
-    * def consumerType = mdmsStateBillingServiceBusinessService[6].businessService
-    * def businessService = mdmsStateBillingServiceBusinessService[6].code
+    * def consumerType = mdmsStateBillingService.BusinessService[6].businessService
+    * def businessService = mdmsStateBillingService.BusinessService[6].code
     * def taxPeriodFrom = getCurrentEpochTime()
     * def taxPeriodTo = getEpochDate(2)
-    * def taxHeadMasterCodes = karate.jsonPath(BillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
+    * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
     * def taxHeadMasterCode = taxHeadMasterCodes[randomNumber(taxHeadMasterCodes.length)]
     * def taxAmount = 200
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
-    * def authUsername = authUsername
-    * def authPassword = authPassword
-    * def authUserType = authUserType
-    * call read('../../common-services/pretests/authenticationToken.feature')
-    
+        
 @create_01 @positive @billingServiceDemandCreate @billingServiceDemand
 Scenario: Test to Create Demand with valid field values
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@successCreate')

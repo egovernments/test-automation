@@ -2,10 +2,7 @@ Feature: Pg services
 Background:
   * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authtoken
-  
-  
-  * call read('../../business-services/tests/billing-service-demand.feature@create_01')
+  #* call read('../../business-services/tests/billingServicesDemand.feature@create_01')
   * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
   * def txnAmount = fetchBillResponse.Bill[0].totalAmount
   * def name = fetchBillResponse.Bill[0].payerName
@@ -81,7 +78,7 @@ Scenario: Verify creating a payment transaction with invalid/non existent value 
 
 @PGCreate_DupicatePay_11  @negative  @pgservices
 Scenario: Verify creating a payment transaction with a bill id for which payment is already done
-  * call read(../../business-services/preTests/collectionServicesPretest@successPayment)
+  * call read('../../business-services/preTests/collectionServicesPretest.feature@createPayment')
   * call read('../../core-services/pretests/pgServiceCreate.feature@createpgservicefail')
   * print pgServicesCreateResponseBody
 
@@ -105,7 +102,7 @@ Scenario: Verify updating a payment transaction by not passing transaction id
 Scenario: Verify updating by passing a transaction id which has 
 1. expired bill 
 2. bill which is already paid
-  * call read(../../business-services/preTests/collectionServicesPretest@successPayment)
+  * call read('../../business-services/preTests/collectionServicesPretest.feature@createPayment')
   * call read('../../core-services/pretests/pgServiceUpdate.feature@updatepgservicefail')
   * print pgServicesUpdateResponseBody
 
