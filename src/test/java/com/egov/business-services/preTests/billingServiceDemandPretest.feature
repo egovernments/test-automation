@@ -10,7 +10,7 @@ Background:
   
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@successCreate
+@createEmployeeHrms
 Scenario: Create Demand success Call
   * print createDemandRequest
   Given url createDemandUrl
@@ -23,7 +23,7 @@ Scenario: Create Demand success Call
   And def demandId = Demands[0].id
   And def consumerCode = Demands[0].consumerCode
 
-@errorCreate
+@errorInCreateEmployee
 Scenario: Create Demand error Call
   * print createDemandRequest
   Given url createDemandUrl
@@ -75,7 +75,7 @@ Scenario: Search Demand error Call
   And def billingServiceDemandResponseHeader = responseHeaders
   And def billingServiceDemandResponseBody = response
 
-@successUpdate
+@updateEmployeeHrms
 Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
   * print updateDemandRequest
@@ -87,7 +87,7 @@ Scenario: Update Demand success Call
   And def billingServiceDemandResponseBody = response
   And def Demands = billingServiceDemandResponseBody.Demands
 
-@errorUpdate
+@errorInUpdateEmployee
 Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
   * print updateDemandRequest

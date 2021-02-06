@@ -17,7 +17,7 @@ Background:
    
 @AC_search_01 @AC_search_rolecode_03 @positive @accessControl
 Scenario: Test to search an access control with all valid fields
-    * call read('../../core-services/pretests/accessControlSearch.feature@successSearch')
+    * call read('../../core-services/pretests/accessControlSearch.feature@searchEmployeeHrms')
     * match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok
     * match accessControlResponseBody.actions[*].id == '#present'
     * match accessControlResponseBody.actions[*].name == '#present'
@@ -38,24 +38,24 @@ Scenario: Test to search an access control with invalid tenant
 @AC_search_invalidRoleCode_04 @positive @accessControl
 Scenario: Test to search access control with invalid role code
     * def roleCodes = 'Invalid-rolecode-' + ranString(10)
-    * call read('../../core-services/pretests/accessControlSearch.feature@successSearch')
+    * call read('../../core-services/pretests/accessControlSearch.feature@searchEmployeeHrms')
     * match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok
     * match accessControlResponseBody.actions == '#[0]'
 
 @AC_search_invalidActionMaster_05 @negative @accessControl
 Scenario: Test to search an access control with invalid action-master
     * def actionMaster = 'Invalid-actionMaster-' + ranString(10)
-    * call read('../../core-services/pretests/accessControlSearch.feature@errorSearch')
+    * call read('../../core-services/pretests/accessControlSearch.feature@errorInSearchEmployee')
     * match accessControlResponseBody.Errors[0].description contains accessControlConstants.expectedDescriptions.PathNotFoundException
 
 @AC_search_BlankActionMaster_06 @negative @accessControl
 Scenario: Test to search an access control with action-master as blank
     * def actionMaster = " "
-    * call read('../../core-services/pretests/accessControlSearch.feature@errorSearch')
+    * call read('../../core-services/pretests/accessControlSearch.feature@errorInSearchEmployee')
     * match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.InvalidPathException
 
 @AC_search_enabled_07 @negative @accessControl
 Scenario: Test to search an access control with invalid value for enabled
     * def enabled = 'Invalid-enabled-' + ranString(5)
-    * call read('../../core-services/pretests/accessControlSearch.feature@errorSearch')
+    * call read('../../core-services/pretests/accessControlSearch.feature@errorInSearchEmployee')
     * match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.JsonMappingException

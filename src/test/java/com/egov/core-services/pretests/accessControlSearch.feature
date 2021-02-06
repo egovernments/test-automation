@@ -7,7 +7,7 @@ Background:
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def searchAccessControlRequest = read('../../core-services/requestPayload/accessControl/search.json')
   
-@successSearch
+@searchEmployeeHrms
 Scenario: Access Control search success call
   * print searchAccessControlRequest
   Given url accessControlSearchUrl 
@@ -17,7 +17,7 @@ Scenario: Access Control search success call
   And def accessControlResponseHeader = responseHeaders
   And def accessControlResponseBody = response
 
-@errorSearch
+@errorInSearchEmployee
 Scenario: Access Control search error call
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest

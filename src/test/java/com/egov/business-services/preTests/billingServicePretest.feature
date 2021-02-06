@@ -29,7 +29,7 @@ Background:
      * print billId 
      * print totalAmount
 
-@customizedParam
+@fetchBillWithCustomizedParameters
     Scenario: Fetch Bill with customized parameters
     Given url fetchBill
     And params fetchBillParams
