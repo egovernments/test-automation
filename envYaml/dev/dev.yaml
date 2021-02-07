@@ -6,3 +6,11 @@ superUser:
   userName: amr001
   password: 12345678
   type: EMPLOYEE
+# Employee username and password to update an existing user's profile
+employee:
+  userName: EMP-107-000365
+  password: eGov@dev123
+  type: EMPLOYEE
+# Registered mobile number for user otp
+citizen:
+ registeredMobileNumber: 9742379422

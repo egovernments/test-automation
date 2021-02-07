@@ -7,7 +7,7 @@ Background:
   * def dashboardRequest = read('../requestPayload/dashboardAnalytics/dashboard.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@successDashboard
+@processDashboard
 Scenario: success dashboard
 
   Given url configHomeUrl 
@@ -17,8 +17,8 @@ Scenario: success dashboard
   And def dashboardResponseHeader = responseHeaders
   And def dashboardResponseBody = response
 
-@successDashboardChart
-Scenario: success dashboard
+@processDashboardChart
+Scenario: success dashboard char API
 
   Given url getChartUrl 
   And request dashboardRequest

@@ -28,11 +28,7 @@ Feature: Business Services - Apportion service tests
      * def paidValue = apportionServiceData.parameters.paidValue
      * def nullValue = commonConstants.invalidParameters.nullValue
      
-
-     
-
 # For some parameters there are NO validations in this Service
-
 @apportion_bill_01 @positive
 Scenario: Test to apportion a bill with valid data
 
