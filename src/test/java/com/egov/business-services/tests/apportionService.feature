@@ -31,14 +31,12 @@ Feature: Business Services - Apportion service tests
 # For some parameters there are NO validations in this Service
 @apportion_bill_01 @positive
 Scenario: Test to apportion a bill with valid data
-
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
 
 @apportion_billWithAdjustedAmount_02 @positive
 Scenario: Test to apportion a bill with valid adjusted amount
-
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
@@ -49,48 +47,41 @@ Scenario: Test to apportion a bill with valid adjusted amount
 
 @apportion_bill_InvalidBusinessService_03 @negative
 Scenario: Test to apportion a bill with Invalid businessService
-     
      * def businessService = commonConstants.invalidParameters.invalidValue
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionServiceData.errorMessages.invalidBusinessService + ' businessService: ' + businessService
 
 @apportion_bill_amountPaidNULL_04 @negative
 Scenario: Test to apportion a bill with AmountPaid as a NULL
-   
      * def amountPaid = nullValue
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
 @apportion_bill_IsAdvanceAllowedNULL_05 @negative
 Scenario: Test to apportion a bill with isAdvanceAllowed as a NULL
-
      * def isAdvanceAllowed = nullValue
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
 @apportion_bill_WithOneTaxHeadCode_06 @positive
 Scenario: Test to apportion a bill with one tax HeadCode
-
      * call read('../preTests/apportionServicePretest.feature@successApportionWithOneTaxHeadCode')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
 
 @apportion_bill_WithNoBillAccountDetails_07 @negative
 Scenario: Test to apportion a bill with no bill account details
-
      * call read('../preTests/apportionServicePretest.feature@errorApportionWithNoBillDetails')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
 @apportion_bill_WithexpiryDateNull_08 @negative
 Scenario: Test to apportion a bill with Expiry date as NULL
-    
      * def expiryDate = nullValue
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
 @apportion_bill_NULLtaxHeadCode_09 @negative
 Scenario: Test to apportion a bill with Tax HeadCode as NULL
-
      * def taxHeadCode1 = nullValue
      * def taxHeadCode2 = nullValue
      * def taxHeadCode3 = nullValue
@@ -100,21 +91,18 @@ Scenario: Test to apportion a bill with Tax HeadCode as NULL
 
 @apportion_bill_NoTenantId_10 @negative
 Scenario: Test to apportion a bill with No tenantId
-
      * def tenantId = nullValue
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
 @apportion_bill_InValidTenantId_11 @negative
 Scenario: Test to apportion a bill with Invalid tenantId
-
      * def tenantId = commonConstants.invalidParameters.invalidTenantId
      * call read('../preTests/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionServiceData.errorMessages.invalidTenantMessage
 
 @apportion_bill_PartialAmount_12 @positive
 Scenario: Test to apportion a bill with Partial Amount
-
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
@@ -123,7 +111,6 @@ Scenario: Test to apportion a bill with Partial Amount
 
 @apportion_bill_FullAmount_13 @positive
 Scenario: Test to apportion a bill with Full Amount
-   
      * def amountPaid = totalAmount
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
@@ -133,7 +120,6 @@ Scenario: Test to apportion a bill with Full Amount
 
 @apportion_bill_AdvancePayment_14 @positive
 Scenario: Test to apportion a bill with Advance payment
-
      * def amountPaid = 1500
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
@@ -144,7 +130,6 @@ Scenario: Test to apportion a bill with Advance payment
 
 @apportion_bill_VerifyOrder_15 @positive
 Scenario: Test to apportion a bill with an Order
-
      * call read('../preTests/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
