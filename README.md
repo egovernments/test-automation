@@ -5,6 +5,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+  * [Configurations](#configurations)
 * [Run Command Details](#run-command-details)
 * [Configure Test Runner](#configure-test-runner)
 * [Test Reporting](#test-reporting)
@@ -15,7 +16,7 @@
     
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids.  
+eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids. For more details on framework architechture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
  
 <!-- Built With -->
 ### Built With
@@ -46,6 +47,16 @@ Upon installing the above-required software. Follow the below steps to confiure 
 * Open [git bash](https://git-scm.com/downloads) or any other terminal and execute `git clone https://github.com/egovernments/test-automation.git` to clone the project repository in the system
 * Open command prompt or terminal and run `mvn clean test`, this will start execution on `QA` by default
 
+<!--Configurations-->
+### Configurations
+  ###### Application Level 
+  * Create role action mapping as per the requirement 
+  * Create a new user as per the mapped role
+  ###### Project Level 
+  * Update the configuration parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments under `envYaml/<env>/<env>.yaml`
+  * Use the credentials of user created for the newly mapped role
+  
+  
 ## Run Command Details
  ###### On DEV
  *  `mvn clean test "-Dkarate.env=dev"`
