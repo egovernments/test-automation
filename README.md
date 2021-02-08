@@ -5,6 +5,9 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [Run Command Details](#run-command-details)
+* [Configure Test Runner](#configure-test-runner)
+* [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
 * [Roadmap](#roadmap)
 
