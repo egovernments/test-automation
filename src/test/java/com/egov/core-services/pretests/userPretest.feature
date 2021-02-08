@@ -2,6 +2,7 @@ Feature: User Search
         Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
+  # initializing user payload objects
   * def multipleTenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
   * def existingUser = createdUser

@@ -14,6 +14,7 @@ Feature: Core service - IDGenerate
 
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateSuccessfully')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
@@ -23,9 +24,11 @@ Feature: Core service - IDGenerate
 
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateSuccessfully')
     * def id1 = idGenerateResponseBody.idResponses[0].id
     * def value1 = stringToInteger(id1.slice(-2))
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateSuccessfully')
     * def id2 = idGenerateResponseBody.idResponses[0].id
     * def value2 = stringToInteger(id2.slice(-2))
@@ -39,31 +42,35 @@ Feature: Core service - IDGenerate
 
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateSuccessfully')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
         @IdGen_invalidTenantId_04 @negative @idGenerate
         Scenario: Test by passing a invalid or a nonexistent tenant id
-
+    #setting invalid tenantId for negative scenario
     * def tenantId = commonConstants.invalidParameters.invalidTenantId
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateError')
     * assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
         @IdGen_BlankFormat_06 @negative @idGenerate
         Scenario: Test by not passing any value for format
-
+    #setting sequence format as blank for negative scenario
     * def format = commonConstants.invalidParameters.emptyValue
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateFailed')
     * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
     * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError
 
         @IdGen_InvalidSeqFormat_07 @negative @idGenerate
         Scenario: Test by not passing invalid Sequence format which is not in MDMS
-
+    #setting invalid sequence format for negative scenario
     * def format = idGenServiceConstants.invalidParameters.sequenceFormat
+    # calling id generate pretest
     * call read('../pretests/idGeneratePretest.feature@idGenerateFailed')
     * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
     * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.dbError

@@ -4,11 +4,13 @@ Feature: search mdms
   * def jsUtils = read('classpath:jsUtils.js')
   * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  # initializing search mdms request payload objects
   * def moduleName = searchMdmsConstant.parameters.moduleName[0]
   * def name = searchMdmsConstant.parameters.name[0]
 
         @searchMdmsSuccessfully_Data_01  @positive  @searchMdms
         Scenario: Test to search data for a particular module and tenant
+        # calling search mdms pretest
       * call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully')
       * print searchMdmsResponseBody
       * match searchMdmsResponseBody == '#present'
@@ -16,6 +18,7 @@ Feature: search mdms
         @searchMdmsSuccessfully_InvalidTenant_04  @negative  @searchMdms
         Scenario: Test by passing invalid/non existent or null value for tenant id
      * def tenantId = commonConstants.invalidParameters.invalidTenantId
+     # calling search mdms pretest
      * call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError')
      * print searchMdmsResponseBody
      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid
@@ -23,6 +26,7 @@ Feature: search mdms
         @searchMdmsSuccessfully_Non-existentMod_05   @negative  @searchMdms
         Scenario: Test by passing invalid/non existent or null value for Module Name
       * def moduleName = 'INVALID-module-' + randomString(3)
+      # calling search mdms pretest
       * call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully')
       * print searchMdmsResponseBody 
       * def mdmsResponse = searchMdmsResponseBody.MdmsRes
@@ -32,6 +36,7 @@ Feature: search mdms
         @searchMdmsSuccessfully_Non-name_06  @negative    @searchMdms
         Scenario: Test by passing invalid/non existent or null value for Name in Masterdetails
      * def name = 'INVALID-Name-' + randomString(3)
+     # calling search mdms pretest
      * call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully')
      * print searchMdmsResponseBody
      * def mdmsResponseSecond = searchMdmsResponseBody.MdmsRes["common-masters"]
@@ -42,6 +47,7 @@ Feature: search mdms
         Scenario: Test by removing tenantid and module name parameter in the request
      * def tenantId = commonConstants.invalidParameters.passValusAsNull
      * def moduleName = commonConstants.invalidParameters.passValusAsNull
+     # calling search mdms pretest
      * call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError')
      * print searchMdmsResponseBody
      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.messageForTenantId
@@ -49,6 +55,7 @@ Feature: search mdms
 
         @searchMdmsSuccessfully_NoMasterDetails_08  @negative  @searchMdms
         Scenario: Test by removing MasterDetails parameter in the request
+        # calling search mdms pretest
      * call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithoutMasterDetailsError')
      * print searchMdmsResponseBody
      * assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.withoutMasterDetails
