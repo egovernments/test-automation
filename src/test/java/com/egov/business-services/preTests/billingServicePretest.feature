@@ -23,6 +23,7 @@ Background:
     When method post
     Then status 201
     And def fetchBillResponse = response
+    * print fetchBillResponse
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
     And def txnAmount = totalAmount

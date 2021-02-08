@@ -47,7 +47,7 @@ Scenario: reate Demand error Call by removing field
 @searchDemand
 Scenario: Search Demand  Call
   * print searchDemandRequest
-  * eval createDemandRequest.searchDemandParams = 
+  * def searchDemandParams = 
   """
   {
     tenantId: '#(tenantId)',

@@ -183,7 +183,7 @@ Scenario: Test to Create Demand with invalid tenant id
     # Defining an invalid tenantId and assigning it to tenantId
     * def tenantId = 'Invalid-tenantId-' + ranString(5)
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorInCreateEmployee')
-    * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+    * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
 @create_NoTenantId_19 @negative @billingServiceDemandCreate @billingServiceDemand
 Scenario: Test to Create Demand with no tenant id

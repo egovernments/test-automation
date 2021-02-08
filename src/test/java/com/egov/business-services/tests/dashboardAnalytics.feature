@@ -13,9 +13,9 @@ Feature: Business Services - Dashboard Analytics service tests
      * def endDate = getCurrentEpochTime()
      * def interval = dashboardServiceData.parameters.interval
      * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
-     * print dashboardConfig
-     * def modulePT = dashboardConfig[1].propertytax.filterKey
-     * def moduleLevel = dashboardConfig[3].pgr.filterKey
+     * print mdmsStateDashboardConfig
+     * def modulePT = mdmsStateDashboardConfig[1].propertytax.filterKey
+     * def moduleLevel = mdmsStateDashboardConfig[3].pgr.filterKey
      
 @getDashboardConfig_01 @positive @dashboardAnalytics
 Scenario: Verify the API call to get config for the dashboard

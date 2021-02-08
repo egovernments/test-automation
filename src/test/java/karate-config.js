@@ -186,7 +186,7 @@ function() {
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
         //registered mobile number for citizen
-        config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
+      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
