@@ -1,10 +1,12 @@
 Feature: FileStore get API call
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
+  # calling upload single document file pretest
   * call read('../../core-services/pretests/fileStoreCreate.feature@uploadDocumentsSuccessfully')
   * print filecreateResponseBody
   * def getFileId = filecreateResponseBody.files[0].fileStoreId
   * print getFileId
+  # calling upload multiple document files pretest
   * call read('../../core-services/pretests/fileStoreCreate.feature@uploadMultipleDocumentsSuccessfully')
   * print filecreateResponseBody.files[0].fileStoreId, filecreateResponseBody.files[1].fileStoreId
   * def getFileIdsFirst = filecreateResponseBody.files[0].fileStoreId

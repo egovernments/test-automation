@@ -5,6 +5,7 @@ Feature: User otp send API call
   * def jsUtils = read('classpath:jsUtils.js')
   # Calling user creation feature to create new user
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
+  # initialing user otp realted payload objects
   * def registeredMobileNumber = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
