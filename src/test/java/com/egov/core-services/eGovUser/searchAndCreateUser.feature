@@ -33,7 +33,7 @@ Scenario: Search for user without username parameter/Search for user without use
   * print searchUserResponseBody
   * assert searchUserResponseBody.Errors[0].code == userConstant.errormessages.forInvalidUserName
 
-@User_Search_NotenantId_05  @negative  @@userSearch  @eGovUser
+@User_Search_NotenantId_05  @negative  @userSearch  @eGovUser
 Scenario: Search for user without tenantId parameter
   * call read('../../core-services/pretests/userPretest.feature@finduserwithouttenantid')
   * print searchUserResponseBody
@@ -54,40 +54,40 @@ Scenario: Pass null value for tenantid and check for errors
 
 @Create_Citizen_InValidOTP_02  @negative  @userSearch  @eGovUser
 Scenario: Create Citizen with Invalid OTP & valid data
-  * call read('../../core-services/pretests/citizenCreate.feature@citizencreate')
-  * print citizenCreateResponseBody
-  * assert citizenCreateResponseBody.error.message == userConstant.errormessages.invalidOtp
+  * call read('../../core-services/pretests/createCitizen.feature@createCitizen')
+  * print createCitizenResponseBody
+  * assert createCitizenResponseBody.error.message == userConstant.errormessages.invalidOtp
   
 
 @Create_Citizen_NoUsername_03 @negative  @createSearch  @eGovUser
 Scenario: Create citizen without username parameter in the request
-  * call read('../../core-services/pretests/citizenCreate.feature@citizencreatewithoutusername')
-  * print citizenCreateResponseBody
-  * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName 
+  * call read('../../core-services/pretests/createCitizen.feature@createCitizenWithoutUsername')
+  * print createCitizenResponseBody
+  * assert createCitizenResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName 
 
 @Create_Citizen_NoName_04  @negative  @createSearch  @eGovUser
 Scenario: Create citizen without name parameter in the request
-   * call read('../../core-services/pretests/citizenCreate.feature@citizencreatewithoutname')
-   * print citizenCreateResponseBody
-   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidName
+   * call read('../../core-services/pretests/createCitizen.feature@createCitizenWithoutName')
+   * print createCitizenResponseBody
+   * assert createCitizenResponseBody.Errors[0].code == userConstant.errormessages.invalidName
 
 @Create_Citizen_NotenantId_05  @negative  @createSearch  @eGovUser
 Scenario: Create citizen without tenantId parameter in the request
-   * call read('../../core-services/pretests/citizenCreate.feature@citizencreatewithouttenantid')
-   * print citizenCreateResponseBody
-   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidTenantId
+   * call read('../../core-services/pretests/createCitizen.feature@createCitizenWithoutTenantId')
+   * print createCitizenResponseBody
+   * assert createCitizenResponseBody.Errors[0].code == userConstant.errormessages.invalidTenantId
 
 @Create_Citizen_InvalidUsername_06  @negative  @createSearch  @eGovUser
 Scenario: Create citizen with InValid username in the request
-   * call read('../../core-services/pretests/citizenCreate.feature@citizencreateinvalidusername')
-   * print citizenCreateResponseBody
-   * assert citizenCreateResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName
+   * call read('../../core-services/pretests/createCitizen.feature@createCitizenWithInvalidUsername')
+   * print createCitizenResponseBody
+   * assert createCitizenResponseBody.Errors[0].code == userConstant.errormessages.invalidUserName
 
 @Create_Citizen_NameWithMoreThan50Characters_07  @negative  @createSearch  @eGovUser
 Scenario: Create citizen name with more than 50 characters in the request
-   * call read('../../core-services/pretests/citizenCreate.feature@citizencreatenamewith50chars')
-   * print citizenCreateResponseBody
-   * assert citizenCreateResponseBody.Errors[0].message == userConstant.errormessages.nameCharsSize
+   * call read('../../core-services/pretests/createCitizen.feature@createCitizenWithNameMoreThan50chars')
+   * print createCitizenResponseBody
+   * assert createCitizenResponseBody.Errors[0].message == userConstant.errormessages.nameCharsSize
    
    
   

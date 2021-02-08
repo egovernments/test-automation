@@ -153,7 +153,7 @@ function() {
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
-	config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
+	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
     	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
     	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
 
@@ -192,23 +192,26 @@ function() {
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
         // Calling pretest features which is consumed by almost all tests
-        var fileUpload = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
-        var token = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
-        config.authToken = token.authToken;
-        var mdmsCityData = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@successSearchCity', config);
-        config.tenant = mdmsCityData.tenant;
-        config.mdmsCityData = mdmsCityData.mdmsCityData;
-        config.mdmsCityTenantBoundary = mdmsCityData.mdmsCityTenantBoundary;
-        var mdmsStateData = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@successSearchState', config);
-        config.mdmsStatePropertyTax = mdmsStateData.mdmsStatePropertyTax;
-        config.mdmsStatetenant = mdmsStateData.mdmsStatetenant;
-        config.mdmsStateBillingService = mdmsStateData.mdmsStateBillingService;
-        config.mdmsStatecommonMasters = mdmsStateData.mdmsStatecommonMasters;
-        config.mdmsStateAccessControlRoles = mdmsStateData.mdmsStateAccessControlRoles;
-        config.mdmsStateEgovHrms = mdmsStateData.mdmsStateEgovHrms;
-        config.mdmsStateDashboard = mdmsStateData.mdmsStateDashboard;
-        config.mdmsStateDashboardConfig = mdmsStateData.mdmsStateDashboardConfig;
-          
+        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        config.fileStoreId = fileUploadResponse.fileStoreId
+
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        config.authToken = authTokenResponse.authToken;
+
+        var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
+        var MdmsCityRes = MdmsCityResponse.MdmsCityRes
+        config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
+        config.mdmsCityTenant = MdmsCityRes.tenant
+
+        var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
+        var MdmsStateRes = MdmsStateResponse.MdmsStateRes
+        config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
+        config.mdmsStatetenant = MdmsStateRes.tenant
+        config.mdmsStateBillingService = MdmsStateRes.BillingService
+        config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
+        config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
+        config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
+        config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

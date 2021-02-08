@@ -16,7 +16,7 @@ Feature: Business Services - Dashboard Analytics service tests
 
      
      * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
-     * print dashboardConfig
+     * def dashboardConfig = mdmsStateDashboard[0].MODULE_LEVEL
      * def modulePT = dashboardConfig[1].propertytax.filterKey
      * def moduleLevel = dashboardConfig[3].pgr.filterKey
      

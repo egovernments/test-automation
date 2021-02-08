@@ -4,7 +4,7 @@ Background:
   
   
   
-  * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successCreateProperty')
+  * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
   * def businessId = acknowldgementNumber
   * call read('../../business-services/preTests/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')
 

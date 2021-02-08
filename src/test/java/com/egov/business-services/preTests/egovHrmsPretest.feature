@@ -9,8 +9,8 @@ Background:
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@successCreate
-Scenario: hrms create success call
+@createEmployeeSuccessfully
+Scenario: hrms create employee successfully
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -22,8 +22,8 @@ Scenario: hrms create success call
   And def Employees = hrmsResponseBody.Employees
 
 
-@errorCreate
-Scenario: hrms create success call
+@createEmployeeError
+Scenario: hrms create employee error
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -33,8 +33,8 @@ Scenario: hrms create success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@errorAuthCreate
-Scenario: hrms create success call
+@createEmployeeAuthorizationError
+Scenario: hrms create employee error authorization
 
   * print createEmployeeRequest
   Given url hrmsCreateUrl 
@@ -44,8 +44,8 @@ Scenario: hrms create success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@successSearch
-Scenario: hrms search success call
+@searchEmployeeSuccessfully
+Scenario: hrms search employee successfully
 
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -56,8 +56,8 @@ Scenario: hrms search success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@successSearchWithoutEmployeeCodes
-Scenario: hrms search success call
+@searchEmployeeSuccessfullyWithoutEmployeeCodes
+Scenario: hrms search employee successfully without passing employee codes
 
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -71,8 +71,8 @@ Scenario: hrms search success call
   * def employeeCode2 = hrmsResponseBody.Employees[1].code
 
 
-@successMultiSearch
-Scenario: hrms search success call
+@searchEmployeeSuccessfullyWithMultipleEmployeeCodes
+Scenario: hrms search employee successfully by passing multiple employee codes
 
   * def parameters = 
     """
@@ -90,8 +90,8 @@ Scenario: hrms search success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@errorSearch
-Scenario: hrms search error call
+@searchEmployeeError
+Scenario: hrms search employee error
   
   * print searchEmployeeRequest
   Given url hrmsSearchUrl 
@@ -103,7 +103,7 @@ Scenario: hrms search error call
   And def hrmsResponseBody = response
 
 
-@errorAuthSearch
+@searchEmployeeAuthorizationError
 Scenario: hrms search error call
   
   * print searchEmployeeRequest
@@ -115,8 +115,8 @@ Scenario: hrms search error call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@successUpdate
-Scenario: hrms update success call
+@updateEmployeeSuccessfully
+Scenario: hrms update employee successfully
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -127,8 +127,8 @@ Scenario: hrms update success call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@errorUpdate
-Scenario: hrms update error call
+@updateEmployeeError
+Scenario: hrms update employee error
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -139,8 +139,8 @@ Scenario: hrms update error call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@errornAuthUpdate
-Scenario: hrms update error auth call
+@updateEmployeeAuthorizationError
+Scenario: hrms update employee authorization error
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
@@ -151,8 +151,8 @@ Scenario: hrms update error auth call
   And def hrmsResponseHeader = responseHeaders
   And def hrmsResponseBody = response
 
-@successUpdateDeactivate
-Scenario: hrms update success deactivate call
+@deactivateEmployeeSuccessfully
+Scenario: hrms deactivate successfully
 
   * eval updateEmployeeRequest.Employees = Employees
   * eval updateEmployeeRequest.Employees[0].deactivationDetails = updateDeactivatemployeeRequest.deactivationDetails

@@ -1,4 +1,4 @@
-Feature: Access Control Feature
+Feature: Access Control Pretest Feature
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
@@ -7,9 +7,8 @@ Background:
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def searchAccessControlRequest = read('../../core-services/requestPayload/accessControl/search.json')
   
-@successSearch
-Scenario: Access Control search success call
-  * print searchAccessControlRequest
+@searchAccessControlSuccessfully
+Scenario: Search Access Control successfully
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest
   When method post
@@ -17,8 +16,8 @@ Scenario: Access Control search success call
   And def accessControlResponseHeader = responseHeaders
   And def accessControlResponseBody = response
 
-@errorSearch
-Scenario: Access Control search error call
+@searchAccessControlError
+Scenario: Search Access Control for error
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest
   When method post
@@ -26,8 +25,8 @@ Scenario: Access Control search error call
   And def accessControlResponseHeader = responseHeaders
   And def accessControlResponseBody = response
 
-@errorSearchInvalidTenant
-Scenario: Access Control search error call with invalid tenantId
+@searchAccessControlWithInvalidTenant
+Scenario: Search Access Control with invalid tenantId
   * eval searchAccessControlRequest.tenantId = 'INVALID-' + ranString(10)
   Given url accessControlSearchUrl 
   And request searchAccessControlRequest

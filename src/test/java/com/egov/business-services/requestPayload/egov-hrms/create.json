@@ -20,7 +20,7 @@
              ],
              "tenantId":"#(tenantId)"
           },
-          "authUserType":"#(authUserType)",
+          "employeeType":"#(employeeType)",
           "jurisdictions":[
              {
                 "hierarchy":"#(hierarchy)",

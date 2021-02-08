@@ -3,13 +3,13 @@ Feature: Work Flow Pre Tests
         Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def workFlowConstants = read('../constants/workFlow.yaml')
+    * def workFlowConstants = read('../../core-services/constants/workFlow.yaml')
     * def createWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowCreate.json')
     * def searchWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowUpdate.json')
     * def updateWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowSearch.json')
 
-        @SuccessCreateWorkFlow
-        Scenario: Create Work Flow
+        @createWorkFlowSuccessfully
+        Scenario: Create Work Flow successfully
     * eval createWorkFlowRequest.BusinessServices[0] = BusinessServices
             Given url workFlowCreateURL
               And request createWorkFlowRequest
@@ -18,8 +18,8 @@ Feature: Work Flow Pre Tests
               And def workFlowCreateResponseHeader = responseHeaders
               And def workFlowCreateResponseBody = response
 
-        @SuccessUpdateWorkFlow
-        Scenario: Happy Path : Update Work Flow
+        @updateWorkFlowSuccessfully
+        Scenario: Update Work Flow successfully
     * eval updateWorkFlowRequest.BusinessServices[0] = BusinessServices
             Given url workFlowUpdateURL
               And request updateWorkFlowRequest
@@ -28,8 +28,8 @@ Feature: Work Flow Pre Tests
               And def workFlowUpdateResponseHeader = responseHeaders
               And def workFlowUpdateResponseBody = response
 
-        @ErrorPathTestWithInvalidTenantId
-        Scenario: Error Path : Workflow with invalid tenantId
+        @createWorkflowWithInvalidTenantId
+        Scenario: Create Workflow with invalid tenantId
     * set createWorkFlowRequest.tenantId = workFlowConstants.inputData.invalidTenantId
             Given url workFlowCreateURL
               And request createWorkFlowRequest
@@ -38,8 +38,8 @@ Feature: Work Flow Pre Tests
               And def createWorkFlowResponseHeader = responseHeaders
               And def createWorkFlowResponseBody = response
 
-        @ErrorPathTestWithRemoveParameters
-        Scenario: Error Path : Workflow with remove parameters
+        @createWorkflowWithWithoutParameters
+        Scenario: Create Workflow wihtout parameters
             Given url workFlowCreateURL
               And request createWorkFlowRequest
              When method post
@@ -47,8 +47,8 @@ Feature: Work Flow Pre Tests
               And def createWorkFlowResponseHeader = responseHeaders
               And def createWorkFlowResponseBody = response
 
-        @ErrorPathTestWithInvalidNextState
-        Scenario: Error Path : Workflow with invalid next state value
+        @createWorkflowWithWithoutParameters
+        Scenario: Create Workflow with invalid next state value
     * set createWorkFlowRequest.BusinessServices[0].states[0].actions[0].nextState = workFlowConstants.inputData.nextState
             Given url workFlowCreateURL
               And request createWorkFlowRequest
@@ -112,7 +112,7 @@ Feature: Work Flow Pre Tests
   * print workFlowSearchURL
   * print searchWorkFlowResponseBody
 
-        @SuccessUpdateWorkFlow_Test
+        @updateWorkFlowSuccessfully_Test
         Scenario: Happy Path : Update Work Flow
     * eval updateWorkFlowRequest.BusinessServices[0] = BusinessServices
     * print updateWorkFlowRequest

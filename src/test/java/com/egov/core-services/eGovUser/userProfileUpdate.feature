@@ -11,7 +11,7 @@ Background:
         * call read('../pretests/authenticationToken.feature')
         * def errorMessage = read("../constants/user.yaml")
         * def code = authUsername
-        * call read('../../business-services/preTests/egov-hrmsPretest.feature@successMultiSearch')
+        * call read('../../business-services/preTests/egovHrmsPretest.feature@successMultiSearch')
         * def updatedUserProfile = read('../../core-services/requestPayload/user/update/updateUser.json')
         * def username = ranString(10)
         * def email = ranString(5)+'@auto.com'
@@ -26,7 +26,7 @@ Background:
    * set updatedUserProfile.user.emailId = email
    * set updatedUserProfile.user.correspondenceCity = city
    * call read('../pretests/eGovUserUpdatePretest.feature@updateUserProfile')
-   * call read('../../business-services/preTests/egov-hrmsPretest.feature@success_MultiSearch')
+   * call read('../../business-services/preTests/egovHrmsPretest.feature@success_MultiSearch')
    * karate.log(hrmsResponseBody)
    * assert hrmsResponseBody.Employees[0].user.name == username
    * assert hrmsResponseBody.Employees[0].user.emailId == email
@@ -67,7 +67,7 @@ Scenario: To verify the phone number is not get updated even though it is valid
         * eval updatedUserProfile.user = hrmsResponseBody.Employees[0].user
         * set updatedUserProfile.user.mobileNumber = randomMobileNo
         * call read('../pretests/eGovUserUpdatePretest.feature@updateUserProfile')
-        * call read('../../business-services/preTests/egov-hrmsPretest.feature@success_MultiSearch')
+        * call read('../../business-services/preTests/egovHrmsPretest.feature@success_MultiSearch')
         * assert hrmsResponseBody.Employees[0].user.mobileNumber != randomMobileNo 
 
 @User_Update_InvalidGender_07 @negative @updateProfile @eGovUser

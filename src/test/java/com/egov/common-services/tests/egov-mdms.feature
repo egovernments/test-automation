@@ -8,6 +8,6 @@ Background:
     * def authUserType = authUserType
     * call read('../pretests/authenticationToken.feature')
     
-@searchMdmsGlobal
+@searchMdmsSuccessfullyGlobal
 Scenario: Test to Create Demand with valid field values
     * call read('../pretests/egovMdmsPretest.feature@successSearchState')

@@ -1,9 +1,6 @@
-Feature: Create Citizen
+Feature: Create Citizen Pretest Feature
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  
-  
-  
   * def citizenPayload = read('../../core-services/requestPayload/user/citizenCreation.json')
   * def createCitizenvalidPayload = citizenPayload.validPayload
   * def citizenWithoutUserNamePayLoad = citizenPayload.withoutUserNamePayload
@@ -50,7 +47,7 @@ Background:
   * set citizenWithName.User.permanentCity = permanentCity
   
 
-  @citizencreate 
+  @createCitizen 
   Scenario: Create citizen
      Given url createCitizen 
      * print createCitizen  
@@ -58,60 +55,60 @@ Background:
      * print createCitizenvalidPayload
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
 
-  @citizencreatewithoutusername
-  Scenario: Create citizen
+  @createCitizenWithoutUsername
+  Scenario: Create Citizen Without Username
      Given url createCitizen 
      * print createCitizen  
      And request citizenWithoutUserNamePayLoad
      * print citizenWithoutUserNamePayLoad
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
 
-  @citizencreatewithoutname
-  Scenario: Create citizen
+  @createCitizenWithoutName
+  Scenario: Create Citizen Without Name
      Given url createCitizen 
      * print createCitizen  
      And request citizenWithoutName
      * print citizenWithoutName
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
 
-  @citizencreatewithouttenantid
-  Scenario: Create citizen
+  @createCitizenWithoutTenantId
+  Scenario: Create Citizen Without TenantId
      Given url createCitizen 
      * print createCitizen  
      And request citizenWithoutTenantId
      * print citizenWithoutTenantId
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
 
-  @citizencreateinvalidusername
-  Scenario: Create citizen
+  @createCitizenWithInvalidUsername
+  Scenario: Create Citizen With Invalid Username
      Given url createCitizen 
      * print createCitizen  
      And request citizenWithInvalidUserName
      * print citizenWithInvalidUserName
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
 
-  @citizencreatenamewith50chars
-  Scenario: Create citizen
+  @createCitizenWithNameMoreThan50chars
+  Scenario: Create Citizen With Name More Than 50chars
      Given url createCitizen 
      * print createCitizen  
      And request citizenWithName
      * print citizenWithName
      When method post
      Then status 400
-     And def citizenCreateResponseHeader = responseHeaders
-     And def citizenCreateResponseBody = response
+     And def createCitizenResponseHeader = responseHeaders
+     And def createCitizenResponseBody = response
