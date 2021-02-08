@@ -1,9 +1,12 @@
 Feature: eGovWorkflow process search
         Background:
+      # read the javascript utils file for using generic methods
   * def jsUtils = read('classpath:jsUtils.js')
+      # calling property creation test which is required for workflow process
   * call read('../../municipal-services/tests/propertyService.feature@createProperty')
   * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
   * def processSearchConstant = read('../../core-services/constants/eGovWorkFlowProcessSearch.yaml')
+      # initializing request payload objects
   * def history = 'true'
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
@@ -12,58 +15,73 @@ Feature: eGovWorkflow process search
 
         @Search_01  @positive @egovWorkflowProcess
         Scenario: Perform search using business id, tenant and history
+        # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
   * print processSearchResponseBody
 
         @Search_withoutBusId_02  @positive  @egovWorkflowProcess
         Scenario: Perform search using only tenant and history
+        # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessWithoutBusinessid')
   * print processSearchResponseBody
 
         @Search_onlyTenant_03  @positive  @egovWorkflowProcess
         Scenario: Perform search using only tenant
+        # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessWithOnlyTenantid')
   * print processSearchResponseBody
 
         @Search_NoInputParams_04  @positive  @egovWorkflowProcess
         Scenario: Perform search by not passing any input params
+        # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessWithNoParameter')
   * print processSearchResponseBody
 
         @Search_Invaid_tenant_05  @negative  @egovWorkflowProcess
         Scenario: Perform search by passing invalid/non existent or null value for tenant id and check for errors
+        #setting invalid tenantId for negative scenario
   * def tenantId = invalidTenantId
+      # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessWithInvalidTenantid')
   * print processSearchResponseBody
 
         @Search_Invaid_history_06  @negative  @egovWorkflowProcess
         Scenario: Perform search by passing invalid/non existent or null value for histroy and check for errors
+        #setting invalid history for negative scenario
   * def history = invalidHistory
+  # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessError')
   * print processSearchResponseBody 
 
         @Search_MultipleTenant_07 @negative  @egovWorkflowProcess
         Scenario: Perform search by passing multple values for tenantId
+        #setting multiple tenantIds
   * def tenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
+  # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
   * print processSearchResponseBody
 
         @Search_MultipleBusIds_09  @negative  @egovWorkflowProcess
         Scenario: Perform search by passing multple values for Business Id
   * call read('../../municipal-services/tests/propertyService.feature@createProperty')
+  #setting multiple businessIds for negative scenario
   * def multipleBusinessId = businessIds + ',' + acknowldgementNumber
   * eval businessIds = multipleBusinessId
+  # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
   * print processSearchResponseBody
 
         @Search_OffsetLimit_10  @positive  @egovWorkflowProcess
         Scenario: Perform search by passing offset and limit
+        #setting valid offset limit
   * def start = '1'
   * def end = '10'
+  # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessOffsetAndLimit')
   * print processSearchResponseBody
 
         @Process_count  @positive  @egovWorkflowProcess
         Scenario: Perform search to get the count of process
+        # calling search workflow process count pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessCount.feature@searchWorkflowProcessCountSuccessfully')
   * print processCountResponseBody

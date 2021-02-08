@@ -2,6 +2,7 @@ Feature: Create Citizen Pretest Feature
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def citizenPayload = read('../../core-services/requestPayload/user/citizenCreation.json')
+  # initializing create citizen request payload objects
   * def createCitizenvalidPayload = citizenPayload.validPayload
   * def citizenWithoutUserNamePayLoad = citizenPayload.withoutUserNamePayload
   * def citizenWithoutName = citizenPayload.withoutNamePayload
@@ -18,6 +19,8 @@ Feature: Create Citizen Pretest Feature
   * def invalidMobileNo = ranString(6)
   * def moreThan50CharsName = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc'
   
+  # setting the payload for different usecases
+
   * set createCitizenvalidPayload.User.username = mobileNumber
   * set createCitizenvalidPayload.User.otpReference = otpReference
   * set createCitizenvalidPayload.User.name = name

@@ -1,5 +1,7 @@
 Feature: eGov egovWorkflowBusniessService service with create, search & update endpoints.
 
+# This script is under development or piece of code is missing
+
         Background:
                 * def jsUtils = read('classpath:jsUtils.js')
                 * configure headers = read('classpath:websCommonHeaders.js')

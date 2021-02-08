@@ -11,6 +11,7 @@ Feature: Location
         Scenario: Send a POST request for a given tenant Id to search for the location details
       * def hierarchyTypeCode = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
       * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.children[0].children[0].children[0].label
+      # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'
@@ -19,6 +20,7 @@ Feature: Location
         Scenario: Search for  location details without tenantId
       * def hierarchyTypeCode = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
       * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.children[0].children[0].children[0].label
+      # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationWithoutTenantIdError')
       * print searchLocationResponseBody
       * assert searchLocationResponseBody.Errors[0].message == locationConstant.errorMessages.noTenantId
@@ -28,6 +30,7 @@ Feature: Location
       * def hierarchyTypeCode = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
       * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.children[0].children[0].children[0].label
       * def tenantId = commonConstants.invalidParameters.invalidTenantId
+      # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'
@@ -36,12 +39,14 @@ Feature: Location
         Scenario: Send a POST request by passing Multiple hierarchyTypeCode and search for the location details for a particular Tenant
       * def hierarchyTypeCode = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code + ',' + mdmsCityEgovLocation.TenantBoundary[1].hierarchyType.code
       * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.children[0].children[0].children[0].label
+      # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'   
 
         @SearchLocation_AllRecords_05  @Positive  @location
         Scenario: Search to fetch all the records for a particular tenant
+        # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationSuccessfulyWithOnlyTenantId')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'  
@@ -52,6 +57,7 @@ Feature: Location
       * def hierarchyTypeCode = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code + ',' + mdmsCityEgovLocation.TenantBoundary[1].hierarchyType.code
       * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.children[0].children[0].children[0].label
       * def tenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
+      # calling search location pretest
       * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
       * print searchLocationResponseBody
       * match searchLocationResponseBody == '#present'

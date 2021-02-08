@@ -4,6 +4,7 @@ Feature: Generated pdf successfully
 * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
 * def Payments = Payments
 * def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
+# initializing pdf create payload objects
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
 * def pdfCreatePayloadThird = pdfCreatePayload.FireNoc
