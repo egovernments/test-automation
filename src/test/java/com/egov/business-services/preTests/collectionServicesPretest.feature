@@ -171,7 +171,7 @@ Scenario: Common test to create a Payment
     And def collectionServicesResponseHeader = responseHeaders
     And def collectionServicesResponseBody = response
 
-  @success_workflow
+  @processworkflow
   Scenario: Collection Service success workflow call
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
@@ -182,7 +182,7 @@ Scenario: Common test to create a Payment
 
 # Search Payment
 
-  @successSearchBillId 
+  @searchPaymentWithBillId 
     Scenario: test to search a payment with BillId
 
     * def parameters = 
@@ -203,7 +203,7 @@ Scenario: Common test to create a Payment
     * print receiptNumber
 
 
-  @successSearchConsumerCode
+  @searchPaymentWithConsumerCode
   Scenario: test to search a payment with ConsumerCode
 
     * def parameters = 
@@ -223,8 +223,8 @@ Scenario: Common test to create a Payment
     And def searchResponseBody = response
 
 
-  @successSearchMobileNumber
-  Scenario: test to search a payment with MobileNumber & ReceiptNumber
+  @searchPaymentWithParams
+  Scenario: Test to search a payment with given parameters
     Given url searchPayment
     And params parameters
     * print parameters
@@ -234,7 +234,7 @@ Scenario: Common test to create a Payment
     And def searchResponseHeader = responseHeaders
     And def searchResponseBody = response
 
-@error_auth_workflow
+@errorInauthworkflow
 Scenario: Collection Service error authorisation workflow call
   * print workflowRequest
   Given url collectionServiceWorkflowUrl 
@@ -244,7 +244,7 @@ Scenario: Collection Service error authorisation workflow call
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
 
-@error_workflow
+@errorinworkflow
 Scenario: Collection Service error workflow call
   * print workflowRequest
   Given url collectionServiceWorkflowUrl 
@@ -254,7 +254,7 @@ Scenario: Collection Service error workflow call
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
 
-@error_workflow_removeField
+@removeFieldFromWorkFlow
 Scenario: Collection Service error workflow call
   * eval karate.remove('workflowRequest', removeFieldPath)
   * print workflowRequest

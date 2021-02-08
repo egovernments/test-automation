@@ -1,6 +1,6 @@
-Feature: HRMS API call 
+Feature: HRMS API call
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling localization Json
   * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
@@ -9,70 +9,70 @@ Background:
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@createEmployeeSuccessfully
-Scenario: hrms create employee successfully
+        @createEmployeeSuccessfully
+        Scenario: hrms create employee successfully
 
   * print createEmployeeRequest
-  Given url hrmsCreateUrl 
-  And request createEmployeeRequest
-  When method post
-  Then status 202
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
-  And def Employees = hrmsResponseBody.Employees
+            Given url hrmsCreateUrl
+              And request createEmployeeRequest
+             When method post
+             Then status 202
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
+              And def Employees = hrmsResponseBody.Employees
 
 
-@createEmployeeError
-Scenario: hrms create employee error
-
-  * print createEmployeeRequest
-  Given url hrmsCreateUrl 
-  And request createEmployeeRequest
-  When method post
-  Then status 400
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
-
-@createEmployeeAuthorizationError
-Scenario: hrms create employee error authorization
+        @createEmployeeError
+        Scenario: hrms create employee error
 
   * print createEmployeeRequest
-  Given url hrmsCreateUrl 
-  And request createEmployeeRequest
-  When method post
-  Then status 403
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsCreateUrl
+              And request createEmployeeRequest
+             When method post
+             Then status 400
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@searchEmployeeSuccessfully
-Scenario: hrms search employee successfully
+        @createEmployeeAuthorizationError
+        Scenario: hrms create employee error authorization
+
+  * print createEmployeeRequest
+            Given url hrmsCreateUrl
+              And request createEmployeeRequest
+             When method post
+             Then status 403
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
+
+        @searchEmployeeSuccessfully
+        Scenario: hrms search employee successfully
 
   * print searchEmployeeRequest
-  Given url hrmsSearchUrl 
-  And param codes = '#(code)'
-  And request searchEmployeeRequest
-  When method post
-  Then status 200
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsSearchUrl
+              And param codes = '#(code)'
+              And request searchEmployeeRequest
+             When method post
+             Then status 200
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@searchEmployeeSuccessfullyWithoutEmployeeCodes
-Scenario: hrms search employee successfully without passing employee codes
+        @searchEmployeeSuccessfullyWithoutEmployeeCodes
+        Scenario: hrms search employee successfully without passing employee codes
 
   * print searchEmployeeRequest
-  Given url hrmsSearchUrl 
-  And param tenantId = tenantId
-  And request searchEmployeeRequest
-  When method post
-  Then status 200
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsSearchUrl
+              And param tenantId = tenantId
+              And request searchEmployeeRequest
+             When method post
+             Then status 200
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
   * def employeeCode1 = hrmsResponseBody.Employees[0].code
   * def employeeCode2 = hrmsResponseBody.Employees[1].code
 
 
-@searchEmployeeSuccessfullyWithMultipleEmployeeCodes
-Scenario: hrms search employee successfully by passing multiple employee codes
+        @searchEmployeeSuccessfullyWithMultipleEmployeeCodes
+        Scenario: hrms search employee successfully by passing multiple employee codes
 
   * def parameters = 
     """
@@ -82,86 +82,84 @@ Scenario: hrms search employee successfully by passing multiple employee codes
     }
     """
   * print searchEmployeeRequest
-  Given url hrmsSearchUrl 
-  And params parameters
-  And request searchEmployeeRequest
-  When method post
-  Then status 200
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsSearchUrl
+              And params parameters
+              And request searchEmployeeRequest
+             When method post
+             Then status 200
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@searchEmployeeError
-Scenario: hrms search employee error
+        @searchEmployeeError
+        Scenario: hrms search employee error
   
   * print searchEmployeeRequest
-  Given url hrmsSearchUrl 
-  And param names = '#(name)'
-  And request searchEmployeeRequest
-  When method post
-  Then status 400
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsSearchUrl
+              And param names = '#(name)'
+              And request searchEmployeeRequest
+             When method post
+             Then status 400
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-
-@searchEmployeeAuthorizationError
-Scenario: hrms search error call
-  
+        @searchWithInvalidTenantId
+        Scenario: Search employee with Invalid tenant id
   * print searchEmployeeRequest
-  Given url hrmsSearchUrl
-  And param tenantId = '#(tenantId)' 
-  And request searchEmployeeRequest
-  When method post
-  Then status 403
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsSearchUrl
+              And param tenantId = '#(tenantId)'
+              And request searchEmployeeRequest
+             When method post
+             Then status 403
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@updateEmployeeSuccessfully
-Scenario: hrms update employee successfully
-
-  * eval updateEmployeeRequest.Employees = Employees
-  * print updateEmployeeRequest
-  Given url hrmsUpdateUrl 
-  And request updateEmployeeRequest
-  When method post
-  Then status 202
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
-
-@updateEmployeeError
-Scenario: hrms update employee error
+        @updateEmployeeSuccessfully
+        Scenario: hrms update employee successfully
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
-  Given url hrmsUpdateUrl 
-  And request updateEmployeeRequest
-  When method post
-  Then status 400
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsUpdateUrl
+              And request updateEmployeeRequest
+             When method post
+             Then status 202
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@updateEmployeeAuthorizationError
-Scenario: hrms update employee authorization error
+        @updateEmployeeError
+        Scenario: hrms update employee error
 
   * eval updateEmployeeRequest.Employees = Employees
   * print updateEmployeeRequest
-  Given url hrmsUpdateUrl 
-  And request updateEmployeeRequest
-  When method post
-  Then status 403
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsUpdateUrl
+              And request updateEmployeeRequest
+             When method post
+             Then status 400
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
 
-@deactivateEmployeeSuccessfully
-Scenario: hrms deactivate successfully
+        @updateEmployeeWithInvalidTenantId
+        Scenario: Error in update employee for invalid tenant Id
+
+  * eval updateEmployeeRequest.Employees = Employees
+  * print updateEmployeeRequest
+            Given url hrmsUpdateUrl
+              And request updateEmployeeRequest
+             When method post
+             Then status 403
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response
+
+        @deactivateEmployeeSuccessfully
+        Scenario: hrms deactivate successfully
 
   * eval updateEmployeeRequest.Employees = Employees
   * eval updateEmployeeRequest.Employees[0].deactivationDetails = updateDeactivatemployeeRequest.deactivationDetails
   * eval updateEmployeeRequest.Employees[0].isActive = false
   * eval updateEmployeeRequest.Employees[0].reActivateEmployee = false
   * print updateEmployeeRequest
-  Given url hrmsUpdateUrl 
-  And request updateEmployeeRequest
-  When method post
-  Then status 202
-  And def hrmsResponseHeader = responseHeaders
-  And def hrmsResponseBody = response
+            Given url hrmsUpdateUrl
+              And request updateEmployeeRequest
+             When method post
+             Then status 202
+              And def hrmsResponseHeader = responseHeaders
+              And def hrmsResponseBody = response

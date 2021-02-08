@@ -2,10 +2,6 @@ Feature: Create user
 
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  
-  
-  
-  
   * print newUserPayload
   * def userType = mdmsStateAccessControlRoles.roles[0].code
   * def name = ranString(4)
