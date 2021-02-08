@@ -5,7 +5,6 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
 * [Test Coverage](#test-coverage)
 * [Roadmap](#roadmap)
 
@@ -13,56 +12,66 @@
     
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-The major purpose of this project is to design and execute automated test scripts to validate various functional flow of Kuvera application (Mobile). The tool is capable to test  mobile applications in major platforms (i.e. Andriod, IOS) apart from that it is also capable for Web automation. Moreover this tool is configurable for future enhancements also.
+eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids.  
  
 <!-- Built With -->
 ### Built With
  * [Java](https://www.java.com/en/)
+ * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  * [Karate](https://github.com/intuit/karate)
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  * [JUnit](https://junit.org/junit4/)
  
 <!-- Getting Started --> 
 ## Getting Started
-To start with this tool, some prerequisites has to be made, which are described below :point_down:.
+To start with this framework, some prerequisites has to be made, which are described below
 
 <!-- Prerequisites --> 
 ### Prerequisites
-The major softwares or tools which has to be setup in the machine to run the test script using the tool are listed down below. Please click on the each links to get the installation guide.
-
- * [Java](https://github.com/krishnendu-halder/kuvera-wiki/wiki/Java)
- * [Android SDK](https://github.com/krishnendu-halder/kuvera-wiki/wiki/Adndriod-SDK)
- * [Appium](https://github.com/krishnendu-halder/kuvera-wiki/wiki/Appium)
- * [ADB Setup](https://www.xda-developers.com/install-adb-windows-macos-linux/)
-
-<!-- Usage --> 
-### Usage
-The recommended way to execute the scripts on real device (Android), as this will be faster and efficient. To do that follow the steps below. 
- * Points needs to be added
- 
+To setup this framework two major softwares needs to installed into the system. The step by step setup guidline provided below 
+ ###### On Windows
+ * [JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
+ * [maven 3.6.3](https://maven.apache.org/download.cgi)
+###### On Mac
+ * First install [HomeBrew](https://brew.sh/)
+ * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
+ * To install maven into the system, execute `$ brew install maven` on terminal
 
 <!--Installation-->
 ### Installation
-Upon installing the above-required software. Follow the below steps to trigger the execution.
-* steps needs to be added here
+Upon installing the above-required software. Follow the below steps to confiure and start execution
+* Open [git bash](https://git-scm.com/downloads) or any other terminal and execute `git clone https://github.com/egovernments/test-automation.git` to clone the project repository in the system
+* Open command prompt or terminal and run `mvn clean test`, this will start execution on `QA` by default
 
-  
 #### Run Command Details
- *  Run commands nees to be added here
- 
+ ###### On DEV
+ *  `mvn clean test "-Dkarate.env=dev"`
+ ###### On QA
+ *  `mvn clean test "-Dkarate.env=qa"`
+ ###### On UAT
+ *  `mvn clean test "-Dkarate.env=uat"`
+
+#### Configure Test Runner
+By default framework will execute all of the test features, to control this or to specify any particular test feature file follow the below steps
+ * Open `EGovTest.java` from `src/test/java/com/egov/base` 
+ * Specify the test case tag or service tag followed by `@` under `tags{}`. For example `@collectionServices`
+ * Execute the run commands as mentioned
   
 #### Test Reporting
-To determine the test results and analysis the test faliures test reporting is required. To generate the test report follow the steps.
- * Report location details needs to be added here
+To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
+ * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
+ * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
  
 
 <!-- Test Coverage -->
 ### Test Coverage
-The automated tests cover the following checks.
+The automated tests cover validations for following services.
 * Test Coverage details
-   * Point 1
+   * core-services
+   * business-services
+   * mdms-services
 
 <!-- Roadmap -->
 ### Roadmap
 Here are the next milestones.
-* Some roadmap
+* egf services
