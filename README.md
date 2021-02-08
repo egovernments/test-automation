@@ -77,4 +77,4 @@ The automated tests cover validations for following services.
 <!-- Roadmap -->
 ### Roadmap
 Here are the next milestones.
-* egf services
+* egf-services
