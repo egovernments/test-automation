@@ -1,7 +1,7 @@
 # eGov Test Automation Framework
 ##### Table of Contents
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
+  * [Technology Used](#technology-used)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -10,7 +10,7 @@
 * [Configure Test Runner](#configure-test-runner)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
-* [Roadmap](#roadmap)
+* [Upcoming Services](#upcoming-services)
 
 
     
@@ -18,8 +18,8 @@
 ## About The Project
 eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids. For more details on framework architechture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
  
-<!-- Built With -->
-### Built With
+<!-- Technology Used -->
+### Technology Used
  * [Java](https://www.java.com/en/)
  * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  * [Karate](https://github.com/intuit/karate)
@@ -28,11 +28,11 @@ eGov test automation framework majorly deals with various API services validatio
  
 <!-- Getting Started --> 
 ## Getting Started
-To start with this framework, some prerequisites has to be made, which are described below
+This framework required below prerequisites to be covered
 
 <!-- Prerequisites --> 
 ### Prerequisites
-To setup this framework two major softwares needs to installed into the system. The step by step setup guidline provided below 
+To setup this framework two major softwares needs to be installed into the system. The step by step setup guidline provided below 
  ###### On Windows
  * [JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
  * [maven 3.6.3](https://maven.apache.org/download.cgi)
@@ -83,9 +83,8 @@ The automated tests cover validations for following services.
 * Test Coverage details
    * core-services
    * business-services
-   * mdms-services
 
-<!-- Roadmap -->
-### Roadmap
-Here are the next milestones.
-* egf-services
+<!-- Upcoming Services -->
+### Upcoming Services
+Service to be automated.
+* municipal-services
