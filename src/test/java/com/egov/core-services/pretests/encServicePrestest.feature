@@ -1,6 +1,6 @@
-Feature: enc-Service API call 
+Feature: enc-Service API call
 
-Background:
+        Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
   * def encryptRequest = read('../requestPayload/encService/encrypt.json')
@@ -8,74 +8,74 @@ Background:
   * def signRequest = read('../requestPayload/encService/sign.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@successEncrypt
-Scenario: encrypt success call
+        @EncryptSuccessfully
+        Scenario: encrypt successfully
 
-  Given url encryptUrl 
-  And request encryptRequest
-  When method post
-  Then status 200
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
-  And def decryptRequest = response
+            Given url encryptUrl
+              And request encryptRequest
+             When method post
+             Then status 200
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
+              And def decryptRequest = response
 
-@errorEncrypt
-Scenario: encrypt error call
+        @EncryptError
+        Scenario: encrypt error
 
-  Given url encryptUrl 
-  And request encryptRequest
-  When method post
-  Then status 500
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
+            Given url encryptUrl
+              And request encryptRequest
+             When method post
+             Then status 500
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
 
-@successDecrypt
-Scenario: decrypt success call
+        @decryptsuccessfully
+        Scenario: decrypt successfully
 
-  Given url decryptUrl 
-  And request decryptRequest
-  When method post
-  Then status 200
-  And def decryptResponseHeader = responseHeaders
-  And def decryptResponseBody = response
+            Given url decryptUrl
+              And request decryptRequest
+             When method post
+             Then status 200
+              And def decryptResponseHeader = responseHeaders
+              And def decryptResponseBody = response
 
-@successRotate
-Scenario: rotate success call
+        @rotateSuccessfully
+        Scenario: rotate successfully
 
-  Given url rotateKeyUrl 
-  And request rotateKeyRequest
-  When method post
-  Then status 200
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
+            Given url rotateKeyUrl
+              And request rotateKeyRequest
+             When method post
+             Then status 200
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
 
-@successSign
-Scenario: sign success call
+        @signSuccessfully
+        Scenario: sign successfully
 
-  Given url signUrl 
-  And request signRequest
-  When method post
-  Then status 200
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
-  And def verifyRequest = response
+            Given url signUrl
+              And request signRequest
+             When method post
+             Then status 200
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
+              And def verifyRequest = response
 
-@successVerify
-Scenario: verify success call
+        @verifySuccessfully
+        Scenario: verify successfully
 
-  Given url verifyUrl 
-  And request verifyRequest
-  When method post
-  Then status 200
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
+            Given url verifyUrl
+              And request verifyRequest
+             When method post
+             Then status 200
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
 
-@errorVerify
-Scenario: verify error call
+        @verifyError
+        Scenario: verify error
 
-  Given url verifyUrl 
-  And request verifyRequest
-  When method post
-  Then status 400
-  And def encryptResponseHeader = responseHeaders
-  And def encryptResponseBody = response
+            Given url verifyUrl
+              And request verifyRequest
+             When method post
+             Then status 400
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response

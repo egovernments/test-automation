@@ -1,41 +1,39 @@
-Feature: IDGenerate API call 
+Feature: IDGenerate API call
 
-Background:
-
-  * def jsUtils = read('classpath:jsUtils.js')
-  	# calling localization Json
-  * def idGenerateRequest = read('../requestPayload/idGenerate/idgenerate.json')
+        Background:
+	# reading idgenerate request payload Json
+  * def idGenerateRequest = read('../../core-services/requestPayload/idGenerate/idgenerate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
 
-@success
-Scenario: IDGenerate success call
+        @idGenerateSuccessfully
+        Scenario: IDGenerate successfully
 
-  Given url idGenerateUrl 
-  And request idGenerateRequest
-  When method post
-  Then status 200
-  And def idGenerateResponseHeader = responseHeaders
-  And def idGenerateResponseBody = response
-
-
-@error
-Scenario: IDGenerate error call
-
-  Given url idGenerateUrl 
-  And request idGenerateRequest
-  When method post
-  Then status 403
-  And def idGenerateResponseHeader = responseHeaders
-  And def idGenerateResponseBody = response
+            Given url idGenerateUrl
+              And request idGenerateRequest
+             When method post
+             Then status 200
+              And def idGenerateResponseHeader = responseHeaders
+              And def idGenerateResponseBody = response
 
 
-@failed
-Scenario: IDGenerate failed call
+        @idGenerateError
+        Scenario: IDGenerate error
 
-  Given url idGenerateUrl 
-  And request idGenerateRequest
-  When method post
-  Then status 200
-  And def idGenerateResponseHeader = responseHeaders
-  And def idGenerateResponseBody = response
+            Given url idGenerateUrl
+              And request idGenerateRequest
+             When method post
+             Then status 403
+              And def idGenerateResponseHeader = responseHeaders
+              And def idGenerateResponseBody = response
+
+
+        @idGenerateFailed
+        Scenario: IDGenerate failed
+
+            Given url idGenerateUrl
+              And request idGenerateRequest
+             When method post
+             Then status 200
+              And def idGenerateResponseHeader = responseHeaders
+              And def idGenerateResponseBody = response

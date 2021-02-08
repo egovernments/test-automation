@@ -16,7 +16,6 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
-  businessId: 'PB-AC-2021-01-27-007614'
   financialYear: 2020-21
   # to upload file on fire-noc module
   module:

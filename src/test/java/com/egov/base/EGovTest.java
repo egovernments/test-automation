@@ -25,7 +25,10 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
 	tags = {"@reports,@searchMdms,@Searcher,@location,@localization,@userotp,@eGovUser,@accessControl," +
-			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill,@encService,@idGenerate"})
+			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
+			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
+// below tags will be added for execution once port fowarding is implemented on the system under execution
+// @encService and @apportionService
 
 public class EGovTest {
 	@BeforeClass

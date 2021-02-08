@@ -2,7 +2,6 @@ parameters:
   moduleName: RAINMAKER-PGR,RAINMAKER-TL
   tenantId: pg
   masterName: ServiceDefs
-
 expectedResponse:
   serviceCode: "BlockOrOverflowingSewage"
   keywords: "water, supply, connection, damage, repair, broken, pipe, piping, tap"
@@ -11,7 +10,6 @@ expectedResponse:
   menuPath: "WaterandSewage"
   active: true
   order: 2
-
 errorMessages:
   noModuleName:
     message: Required String parameter 'moduleName' is not present

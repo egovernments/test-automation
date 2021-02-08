@@ -1,6 +1,6 @@
 Feature: Create user
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * print newUserPayload
   * def userType = mdmsStateAccessControlRoles.roles[0].code
@@ -14,17 +14,17 @@ Background:
   * def newUserPayload = read('../../core-services/requestPayload/userCreation/createUser.json')
 
   
-@usercreation
-Scenario: Creating new user 
+        @usercreation
+        Scenario: Creating new user
      * configure headers = read('classpath:websCommonHeaders.js')   
-     Given url createUser 
+            Given url createUser
      * print createUser
-     And request newUserPayload
+              And request newUserPayload
      * print newUserPayload
-     When method post
-     Then status 200
-     And def userCreationResponseHeader = responseHeaders
-     And def userCreationResponseBody = response
+             When method post
+             Then status 200
+              And def userCreationResponseHeader = responseHeaders
+              And def userCreationResponseBody = response
      * print userCreationResponseBody
      * def createdUser = userCreationResponseBody.user[0].userName
      * print createdUser

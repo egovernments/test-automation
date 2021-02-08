@@ -1,6 +1,6 @@
 Feature: Property Service
 
-Background:
+        Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
@@ -9,7 +9,7 @@ Background:
     * def channel = commonConstants.parameters.channel
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def cityName = karate.jsonPath(tenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0]
+    * def cityName = karate.jsonPath(mdmsStatetenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0]
     * def OccupancyType = mdmsStatePropertyTax.OccupancyType[1].code
     * def UsageCategory = mdmsStatePropertyTax.UsageCategory[0].code
     * def builtUpArea = 2000
@@ -41,21 +41,22 @@ Background:
     * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
 
 
-@successCreateProperty
-Scenario: Create a property
-    Given url createpropertyUrl
-    And request createPropertyRequest
-    When method post
-    Then status 201
-    And def propertyServiceResponseHeaders = responseHeaders
-    And def propertyServiceResponseBody = response
-    And def Property = propertyServiceResponseBody.Properties[0]
-    And def propertyId = Property.propertyId
-    And def consumerCode = propertyId
-    And def acknowldgementNumber = Property.acknowldgementNumber
+        @successCreateProperty
+        Scenario: Create a property
+            Given url createpropertyUrl
+              And request createPropertyRequest
+             When method post
+             Then status 201
+              And def propertyServiceResponseHeaders = responseHeaders
+              And def propertyServiceResponseBody = response
+              And def Property = propertyServiceResponseBody.Properties[0]
+              And def propertyId = Property.propertyId
+              And def consumerCode = propertyId
+              And def acknowldgementNumber = Property.acknowldgementNumber
+              * print acknowldgementNumber
 
-@successSearchProperty
-Scenario: Search a property
+        @successSearchProperty
+        Scenario: Search a property
     * def searchPropertyParams =
     """
         {
@@ -63,78 +64,77 @@ Scenario: Search a property
             propertyIds: '#(propertyId)'
         }
     """
-    Given url searchPropertyUrl
-    And params searchPropertyParams
-    And request searchPropertyRequest
-    When method post
-    Then status 200
-    And def propertyServiceResponseHeaders = responseHeaders
-    And def propertyServiceResponseBody = response
-    And def Property = propertyServiceResponseBody.Properties[0]
-    And def propertyId = Property.propertyId
-    And def consumerCode = propertyId
+            Given url searchPropertyUrl
+              And params searchPropertyParams
+              And request searchPropertyRequest
+             When method post
+             Then status 200
+              And def propertyServiceResponseHeaders = responseHeaders
+              And def propertyServiceResponseBody = response
+              And def Property = propertyServiceResponseBody.Properties[0]
+              And def propertyId = Property.propertyId
+              And def consumerCode = propertyId
 
-@successVerifyProperty
-Scenario: Verify a property
+        @successVerifyProperty
+        Scenario: Verify a property
     * def workflow = updatePropertyRequest.Property.workflow
     * eval Property = karate.merge(Property, {'0': {'comment': '', 'assignee': []}})
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
     # Since the action is specifically 'verify', it is hardcoded
     * eval updatePropertyRequest.Property.workflow.action = 'VERIFY'
-    Given url updatePropertyUrl
-    And request updatePropertyRequest
-    When method post
-    Then status 200
-    And def propertyServiceResponseHeaders = responseHeaders
-    And def propertyServiceResponseBody = response
-    And def Property = propertyServiceResponseBody.Properties[0]
-    And def propertyId = Property.propertyId
-    And def consumerCode = propertyId
+            Given url updatePropertyUrl
+              And request updatePropertyRequest
+             When method post
+             Then status 200
+              And def propertyServiceResponseHeaders = responseHeaders
+              And def propertyServiceResponseBody = response
+              And def Property = propertyServiceResponseBody.Properties[0]
+              And def propertyId = Property.propertyId
+              And def consumerCode = propertyId
 
-@successForwardProperty
-Scenario: Forward a property
+        @successForwardProperty
+        Scenario: Forward a property
     * def workflow = updatePropertyRequest.Property.workflow
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
     * eval updatePropertyRequest.Property.workflow.action = 'FORWARD'
-    Given url updatePropertyUrl
-    And request updatePropertyRequest
-    When method post
-    Then status 200
-    And def propertyServiceResponseHeaders = responseHeaders
-    And def propertyServiceResponseBody = response
-    And def Property = propertyServiceResponseBody.Properties[0]
-    And def propertyId = Property.propertyId
-    And def consumerCode = propertyId
+            Given url updatePropertyUrl
+              And request updatePropertyRequest
+             When method post
+             Then status 200
+              And def propertyServiceResponseHeaders = responseHeaders
+              And def propertyServiceResponseBody = response
+              And def Property = propertyServiceResponseBody.Properties[0]
+              And def propertyId = Property.propertyId
+              And def consumerCode = propertyId
 
-@successApproveProperty
-Scenario: Approve a property
+        @successApproveProperty
+        Scenario: Approve a property
     * def workflow = updatePropertyRequest.Property.workflow
     * eval updatePropertyRequest.Property = Property
     * eval updatePropertyRequest.Property.workflow = workflow
     * eval updatePropertyRequest.Property.workflow.action = 'APPROVE'
-    Given url updatePropertyUrl
-    And request updatePropertyRequest
-    When method post
-    Then status 200
-    And def propertyServiceResponseHeaders = responseHeaders
-    And def propertyServiceResponseBody = response
-    And def Property = propertyServiceResponseBody.Properties[0]
-    And def propertyId = Property.propertyId
-    And def consumerCode = propertyId
+            Given url updatePropertyUrl
+              And request updatePropertyRequest
+             When method post
+             Then status 200
+              And def propertyServiceResponseHeaders = responseHeaders
+              And def propertyServiceResponseBody = response
+              And def Property = propertyServiceResponseBody.Properties[0]
+              And def propertyId = Property.propertyId
+              And def consumerCode = propertyId
 
-@successAssessProperty
-Scenario: Create assessment
+        @successAssessProperty
+        Scenario: Create assessment
   * def assessmentParams =
     """
     {
        tenantId: '#(tenantId)'
     }
     """
-  Given url createAssessment
-  And params assessmentParams
-  And request assessmentRequest
-  When method post
-  Then status 201
-  And  print response
+            Given url createAssessment
+              And params assessmentParams
+              And request assessmentRequest
+             When method post
+             Then status 201

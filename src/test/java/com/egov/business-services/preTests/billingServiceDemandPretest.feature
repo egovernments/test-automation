@@ -1,6 +1,6 @@
 Feature: Business services - billing service demand calls
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -10,42 +10,42 @@ Background:
   
   * configure headers = read('classpath:websCommonHeaders.js')
 
-@createEmployeeHrms
-Scenario: Create Demand success Call
+        @createBillDemand
+        Scenario: Create Demand success Call
   * print createDemandRequest
-  Given url createDemandUrl
-  And request createDemandRequest
-  When method post
-  Then status 201
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
-  And def Demands = billingServiceDemandResponseBody.Demands
-  And def demandId = Demands[0].id
-  And def consumerCode = Demands[0].consumerCode
+            Given url createDemandUrl
+              And request createDemandRequest
+             When method post
+             Then status 201
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
+              And def Demands = billingServiceDemandResponseBody.Demands
+              And def demandId = Demands[0].id
+              And def consumerCode = Demands[0].consumerCode
 
-@errorInCreateEmployee
-Scenario: Create Demand error Call
+        @errorCreateBillDemand
+        Scenario: Create Demand error Call
   * print createDemandRequest
-  Given url createDemandUrl
-  And request createDemandRequest
-  When method post
-  Then assert responseStatus == 400 || responseStatus == 403
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
+            Given url createDemandUrl
+              And request createDemandRequest
+             When method post
+             Then assert responseStatus == 400 || responseStatus == 403
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
 
-@errorCreateRemoveField
-Scenario: reate Demand error Call by removing field
+        @errorCreateRemoveField
+        Scenario: reate Demand error Call by removing field
   * eval karate.remove('createDemandRequest', removeFieldPath)
   * print createDemandRequest
-  Given url createDemandUrl 
-  And request createDemandRequest
-  When method post
-  Then status 400
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
+            Given url createDemandUrl
+              And request createDemandRequest
+             When method post
+             Then status 400
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
 
-@searchDemand
-Scenario: Search Demand  Call
+        @searchDemand
+        Scenario: Search Demand  Call
   * print searchDemandRequest
   * def searchDemandParams = 
   """
@@ -56,45 +56,45 @@ Scenario: Search Demand  Call
     demandId: '#(demandId)'
   }
   """
-  Given url searchDemandUrl
-  And params searchDemandParams
-  And request searchDemandRequest
-  When method post
-  And def searchDemandResponseStatus = responseStatus
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
+            Given url searchDemandUrl
+              And params searchDemandParams
+              And request searchDemandRequest
+             When method post
+              And def searchDemandResponseStatus = responseStatus
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
 
-@searchDemandGenericParam
-Scenario: Search Demand error Call
+        @searchDemandGenericParam
+        Scenario: Search Demand error Call
   * print searchDemandRequest
-  Given url searchDemandUrl
-  And params searchDemandParams
-  And request searchDemandRequest
-  When method post
-  And def searchDemandResponseStatus = responseStatus
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
+            Given url searchDemandUrl
+              And params searchDemandParams
+              And request searchDemandRequest
+             When method post
+              And def searchDemandResponseStatus = responseStatus
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
 
-@updateEmployeeHrms
-Scenario: Update Demand success Call
+        @updateDemand
+        Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
   * print updateDemandRequest
-  Given url updateDemandUrl
-  And request updateDemandRequest
-  When method post
-  Then status 201
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
-  And def Demands = billingServiceDemandResponseBody.Demands
+            Given url updateDemandUrl
+              And request updateDemandRequest
+             When method post
+             Then status 201
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
+              And def Demands = billingServiceDemandResponseBody.Demands
 
-@errorInUpdateEmployee
-Scenario: Update Demand success Call
+        @errorInUpdateEmployee
+        Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
   * print updateDemandRequest
-  Given url updateDemandUrl
-  And request updateDemandRequest
-  When method post
-  Then assert responseStatus == 400 || responseStatus == 403
-  And def billingServiceDemandResponseHeader = responseHeaders
-  And def billingServiceDemandResponseBody = response
-  And def Demands = billingServiceDemandResponseBody.Demands
+            Given url updateDemandUrl
+              And request updateDemandRequest
+             When method post
+             Then assert responseStatus == 400 || responseStatus == 403
+              And def billingServiceDemandResponseHeader = responseHeaders
+              And def billingServiceDemandResponseBody = response
+              And def Demands = billingServiceDemandResponseBody.Demands
