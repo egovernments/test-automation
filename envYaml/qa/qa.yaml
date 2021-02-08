@@ -2,18 +2,13 @@ host: https://egov-micro-qa.egovernments.org/
 localhost: http://localhost:8079/
 stateCode: pb
 cityCode: amritsar
-userName: 4600556741
 # Super User credentials for login(need to create user manually)
 superUser:
   userName: EMPSU
   password: eGov@123
   type: EMPLOYEE
-#UserName and Password of Existing User. Specifically for updatePassword scripts as part of eGovUser
-existingUser:
-  userName: EMP-1013-000335
-  password: TestUser@1234
-  tenantId: pb.jalandhar
-  authUserType: EMPLOYEE
-# Registered mobile number for user otp
-citizen:
- registeredMobileNumber: 9742379422
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-107-000878
+  password: Password@2
+  type: EMPLOYEE

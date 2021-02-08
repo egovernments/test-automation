@@ -21,7 +21,7 @@ Background:
      * call read('../../business-services/preTests/collectionServicesPretest.feature@createPayment')
      * match response.ResponseInfo.status == '200 OK'
      * def paymentId = collectionServicesResponseBody.Payments[0].id
-     * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+     * call read('../pretests/collectionServicesPretest.feature@processworkflow')
 
 @Create_PaymentWithPaidBillID_02 @negative @CreatePayment @collectionServices
     Scenario: Make payment with paid Bill id 
@@ -40,7 +40,7 @@ Background:
      # Calling steps to Cancel the Payment along with Payment Id
      * call read('../../business-services/preTests/collectionServicesPretest.feature@createPayment')
      * match collectionServicesResponseBody.Errors[0].message == paidBillIdError
-     * call read('../../business-services/pretests/collectionServicesPretest.feature@success_workflow')
+     * call read('../../business-services/pretests/collectionServicesPretest.feature@processworkflow')
 
 @Create_PaymentWithInvalidBillID_03 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Bill id
@@ -60,7 +60,7 @@ Background:
     * match response.ResponseInfo.status == '200 OK'
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Calling steps to Cancel the Payment along with Payment Id
-    * call read('../pretests/collectionServicesPretest.feature@success_workflow')
+    * call read('../pretests/collectionServicesPretest.feature@processworkflow')
 
 @Create_PaymentWithAmountpaid_Null_05 @negative @CreatePayment @collectionServices
     Scenario: Make payment with invalid Business ID

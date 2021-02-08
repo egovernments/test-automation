@@ -6,3 +6,8 @@ superUser:
   userName: amr001
   password: 12345678
   type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-107-000365
+  password: eGov@dev123
+  type: EMPLOYEE

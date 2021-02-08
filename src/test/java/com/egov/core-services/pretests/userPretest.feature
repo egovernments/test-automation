@@ -2,11 +2,7 @@ Feature: User Search
 Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  
-  
-  
-  
-  * def multipleTenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
+  * def multipleTenantId = tenant.tenants[1].code + ',' + tenant.tenants[3].code
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
   * def existingUser = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
@@ -21,8 +17,7 @@ Background:
   * print findUser
 
 @finduser
-Scenario: Search user
-  #   * configure headers = read('classpath:websCommonHeaders.js') 
+Scenario: Search user with valid details
      * def payload = findUser.validPayload
      Given url searchUser 
      * print searchUser  
@@ -34,8 +29,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
 
 @finduserwithmultipletenantid
-Scenario: Search user
-    # * configure headers = read('classpath:websCommonHeaders.js')
+Scenario: Search user with multiple tenantIds
      * def payload = findUser.validPayload
      * set findUser.validPayload.tenantId = multipleTenantId
      Given url searchUser 
@@ -48,8 +42,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
   
 @finduserwithinvalidusername
-Scenario: Search user
- #    * configure headers = read('classpath:websCommonHeaders.js') 
+Scenario: Search user with invalid username
      * def payload = findUser.validPayload
      * set findUser.validPayload.userName = unRegisteredNumber
      Given url searchUser 
@@ -62,8 +55,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
 
 @finduserwithinvalidtenantid
-Scenario: Search user
- #    * configure headers = read('classpath:websCommonHeaders.js')
+Scenario: Search user with invalid tenantId
      * def payLoad = findUser.validPayload  
      * set findUser.validPayload.tenantId = invalidTenantId
      Given url searchUser 
@@ -76,8 +68,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
 
 @finduserwithoutusername
-Scenario: Search user
- #    * configure headers = read('classpath:websCommonHeaders.js')
+Scenario: Search user without username
      * def payLoad = findUser.validPayload 
      * set findUser.validPayload.userName = withoutUserName
      Given url searchUser 
@@ -90,8 +81,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
 
 @finduserwithouttenantid
-Scenario: Search user
- #    * configure headers = read('classpath:websCommonHeaders.js') 
+Scenario: Search user without tenantId
      * def payLoad = findUser.invalidPayload
      Given url searchUser 
      * print searchUser  
@@ -103,8 +93,7 @@ Scenario: Search user
      And def searchUserResponseBody = response
 
 @finduseremptytenantid
-Scenario: Search user
- #    * configure headers = read('classpath:websCommonHeaders.js') 
+Scenario: Search user with empty tenantId
      * def payLoad = findUser.validPayload
      * set findUser.validPayload.tenantId = emptyStringInTenantId
      Given url searchUser 

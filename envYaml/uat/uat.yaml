@@ -1,16 +1,16 @@
 host: https://egov-micro-uat.egovernments.org/
-productHost: https://mseva-uat.lgpunjab.gov.in/
+# productHost is not in use currently hence commented 
+#productHost: https://mseva-uat.lgpunjab.gov.in/ 
 stateCode: pg
 cityCode: citya
-userName: 7072352755
+
 # Super User credentials for login(need to create user manually)
 superUser:
   userName: EMP111
   password: eGov@123
   type: EMPLOYEE
-#UserName and Password Existing User
-existingUser:
-  userName: EMP-1013-000216
-  password: eGov@123
-  tenantId: pg.citya
-  authUserType: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-1013-000262
+  password: eGov@uat123
+  type: EMPLOYEE

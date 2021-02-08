@@ -1,9 +1,9 @@
 Feature: Billing Service - Bills tests
 
     Background:
-    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
-    * def jsUtils = read('classpath:jsUtils.js')
-    * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
+     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
+     * def jsUtils = read('classpath:jsUtils.js')
+     * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def invalidMobileNumber = '9'+randomMobileNumGen(9)
      * def invalidConsumerCode = randomString(5)
@@ -22,6 +22,7 @@ Feature: Billing Service - Bills tests
 @fetchbill_01 @positive @fetchbill @billingServiceBill
 Scenario: Fetch bill with valid consumer code and business service
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)', tenantId: '#(tenantId)'}
+    # Steps to fetch bill with specified parameters
     * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
     * print billResponse.ResposneInfo.status
     * assert fetchBillResponse.Bill.size()>0
@@ -31,55 +32,69 @@ Scenario: Fetch bill with valid consumer code and business service
     
 @fetchbill_NoConsumerCode_02 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with no consumer code parameter
+    # Defining fetchBillParams with businessService and tenantId only
     * def fetchBillParams = { businessService: '#(businessService)', tenantId: '#(tenantId)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == noConsumerCodeErrorCode
     * assert fetchBillResponse.Errors[0].message == noConsumerCodeErrorMessage
 
 @fetchbill_NoBusinessService_03 @negative @fetchbill @billingServiceBill 
 Scenario: Fetch bill with no business service parameter
+    # Defining fetchBillParams with consumerCode and tenantId only
     * def fetchBillParams = { consumerCode: '#(consumerCode)', tenantId: '#(tenantId)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == noBusinessServiceErrorCode
     * assert fetchBillResponse.Errors[0].message == mustNotNullError
 
 @fetchbill_noTenantId_04 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with no tenantId parameter
+    # Defining fetchBillParams with consumerCode and businessService only
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == noTenantIdErrorCode
     * assert fetchBillResponse.Errors[0].message == mustNotNullError
 
 @fetchbill_InvalidConsumerCode_05 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with invalid Consumer code
+    # Defining fetchBillParams with invalid consumerCode
     * def fetchBillParams = { consumerCode: '#(invalidConsumerCode)', businessService: '#(businessService)', tenantId: '#(tenantId)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == noDemandFoundErrorCode
     * assert fetchBillResponse.Errors[0].message == noDemandFoundErrorMessage
 
 @fetchbill_InvalidBusinessService_06 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with invalid Business Service
+    # Defining fetchBillParams with invalid businessService
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(invalidBusinessService)', tenantId: '#(tenantId)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == noDemandFoundErrorCode
     * assert fetchBillResponse.Errors[0].message == noDemandFoundErrorMessage
 
 @fetchbill_invalidTenantId_07 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with invalid Tenant Id
+    # Defining fetchBillParams with invalid tenantId
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)', tenantId: '#(invalidTenantId)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * assert fetchBillResponse.Errors[0].code == invalidTenantIdErrorCode
     * assert fetchBillResponse.Errors[0].message == invalidTenantIdErrorMessage
 
 @fetchbill_WithMobileNumberAndBusinessService_08 @positive @fetchbill @billingServiceBill
 Scenario: Fetch bill with mobile number
+    # Defining fetchBillParams with consumerCode, businessService, tenantId and mobileNumber
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)', tenantId: '#(tenantId)', mobileNumber: '#(mobileNumber)'}
+    # Steps to fetch bill with customized parameters
     * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill') 
     * assert fetchBillResponse.Bill.size()>0
     * match fetchBillResponse.Bill[0].consumerCode == '#present'
@@ -89,15 +104,19 @@ Scenario: Fetch bill with mobile number
 
 @fetchbill_WithNoParameters_09 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with no parameters
+    # Defining fetchBillParams with empty parameters
     * def fetchBillParams = {}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam') 
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters') 
     * assert responseStatus == 400
     * match fetchBillResponse.Errors[*].code contains ['#(noTenantIdErrorCode)', '#(noBusinessServiceErrorCode)']
    
 @fetchbill_WithInvalidMobileNumber_10 @negative @fetchbill @billingServiceBill
 Scenario: Fetch bill with invalid mobile number
+    # Defining fetchBillParams with invalid mobileNumber
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)', tenantId: '#(tenantId)', mobileNumber: '#(invalidMobileNumber)'}
-    * call read('../../business-services/preTests/billingServicePretest.feature@customizedParam')
+    # Steps to fetch bill with customized parameters
+    * call read('../../business-services/preTests/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * assert responseStatus == 400 
     * assert fetchBillResponse.Errors[0].code == noDemandFoundErrorCode
     * assert fetchBillResponse.Errors[0].message == noDemandFoundErrorMessage

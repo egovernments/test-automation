@@ -2,12 +2,8 @@ Feature: Create user
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  
-  
-  
-  
   * print newUserPayload
-  * def userType = accessControlRoles.roles[0].code
+  * def userType = mdmsStateAccessControlRoles.roles[0].code
   * def name = ranString(4)
   * def mobileNumberGen = '90' + randomMobileNumGen(8)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)

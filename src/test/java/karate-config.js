@@ -34,10 +34,10 @@ function() {
         config.stateCode = envProps.stateCode;
         
          //username & password for Existing User Profile
-         config.existingUserName = envProps.existingUser.userName;
-         config.existingUserPassword = envProps.existingUser.password;
-         config.existingUserTenantId = envProps.existingUser.tenantId
-         config.existingUserAuthUserType = envProps.existingUser.authUserType;
+         config.employeeUserName = envProps.employee.userName;
+         config.employeePassword = envProps.employee.password;
+         //config.existingUserTenantId = envProps.existingUser.tenantId
+         config.employeeType = envProps.employee.type;
 
          // username & password for global super user
          config.authUsername = envProps.superUser.userName;
@@ -186,7 +186,7 @@ function() {
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
         //registered mobile number for citizen
-        config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
+      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
@@ -208,6 +208,7 @@ function() {
         config.mdmsStateEgovHrms = mdmsStateData.mdmsStateEgovHrms;
         config.mdmsStateDashboard = mdmsStateData.mdmsStateDashboard;
         config.mdmsStateDashboardConfig = mdmsStateData.mdmsStateDashboardConfig;
+        
           
 
     karate.log('karate.env:', env);
