@@ -1,13 +1,12 @@
 Feature: Get reports
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def getReportPayload = read('../requestPayload/reports/getReport.json')
-  * def reportConstant = read('../constants/reports.yaml')
-
-@getreportsuccess
-Scenario: Test to search for report data with different
+  * def getReportPayload = read('../../core-services/requestPayload/reports/getReport.json')
 * configure headers = read('classpath:websCommonHeaders.js')
+
+        @getReportSuccessfully
+        Scenario: Get Report Successfully
 * def getReportParam =
     """
     {
@@ -16,20 +15,19 @@ Scenario: Test to search for report data with different
      offset: '#(offset)'
     }
     """
-     Given url getReport
+            Given url getReport
      * print getReport
-     And params getReportParam
+              And params getReportParam
      * print getReportParam
-     And request getReportPayload
+              And request getReportPayload
      * print getReportPayload
-     When method post
-     Then status 200
-     And def getReportsResponseHeader = responseHeaders
-     And def getReportsResponseBody = response
+             When method post
+             Then status 200
+              And def getReportsResponseHeader = responseHeaders
+              And def getReportsResponseBody = response
 
-@getreportfail
-Scenario: Test to search for report data with different
-* configure headers = read('classpath:websCommonHeaders.js')
+        @getReportError
+        Scenario: Get Report Error
 * def getReportParam =
     """
     {
@@ -38,20 +36,19 @@ Scenario: Test to search for report data with different
      offset: '#(offset)'
     }
     """
-     Given url getReport
+            Given url getReport
      * print getReport
-     And params getReportParam
+              And params getReportParam
      * print getReportParam
-     And request getReportPayload
+              And request getReportPayload
      * print getReportPayload
-     When method post
-     Then status 400
-     And def getReportsResponseHeader = responseHeaders
-     And def getReportsResponseBody = response
+             When method post
+             Then status 400
+              And def getReportsResponseHeader = responseHeaders
+              And def getReportsResponseBody = response
 
-@getreportforbidden
-Scenario: Test to search for report data with different
-* configure headers = read('classpath:websCommonHeaders.js')
+        @getReport403Error
+        Scenario: Get Report 403 Forbidden Error
 * def getReportParam =
     """
     {
@@ -60,13 +57,13 @@ Scenario: Test to search for report data with different
      offset: '#(offset)'
     }
     """
-     Given url getReport
+            Given url getReport
      * print getReport
-     And params getReportParam
+              And params getReportParam
      * print getReportParam
-     And request getReportPayload
+              And request getReportPayload
      * print getReportPayload
-     When method post
-     Then status 403
-     And def getReportsResponseHeader = responseHeaders
-     And def getReportsResponseBody = response
+             When method post
+             Then status 403
+              And def getReportsResponseHeader = responseHeaders
+              And def getReportsResponseBody = response

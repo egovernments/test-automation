@@ -83,3 +83,5 @@ endPoints:
   rotateKey: egov-enc-service/crypto/v1/_rotatekey
   verify: egov-enc-service/crypto/v1/_verify
   sign: egov-enc-service/crypto/v1/_sign
+ eGovWorkFlowBusiness:
+  search: egov-workflow-v2/egov-wf/businessservice/_search

@@ -1,14 +1,13 @@
 Feature: Location
 
-Background:
+        Background:
+  * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
   * def locationconstant = read('../../core-services/constants/location.yaml')
-  * def location = read('../../core-services/requestPayload/location/searchLocation.json')
+  * def locationPayload = read('../../core-services/requestPayload/location/searchLocation.json')
 
-@locationsuccess
-Scenario: search for location detail
-* configure headers = read('classpath:websCommonHeaders.js')
-    
+        @searchLocationSuccessfully
+        Scenario: search for location detail successfully
       * def locationParam = 
     """
     {
@@ -17,59 +16,52 @@ Scenario: search for location detail
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request location
-     When method post
-     Then status 200
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 200
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
 
-@locationsuccesswithtenantid
-Scenario: search for location detail
-* configure headers = read('classpath:websCommonHeaders.js')
-    
-      * def locationParam = 
+        @searchLocationSuccessfulyWithOnlyTenantId
+        Scenario: search for location detail with only tenantId successfully
+   * def locationParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request location
-     When method post
-     Then status 200
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 200
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
      * print searchLocationResponseBody
 
-@locationwithnotenantid
-Scenario: search for location detail
-* configure headers = read('classpath:websCommonHeaders.js')
-    
-      * def locationParam = 
+        @searchLocationWithoutTenantIdError
+        Scenario: search for location detail without tenantId error
+  * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
      boundaryType: '#(boundaryType)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request location
-     When method post
-     Then status 400
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 400
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
      * print searchLocationResponseBody
 
-@locationerror
-Scenario: search for location detail
-* configure headers = read('classpath:websCommonHeaders.js')
-    
-      * def locationParam = 
+        @searchLocationError
+        Scenario: search for location detail error
+  * def locationParam = 
     """
     {
      hierarchyTypeCode: '#(hierarchyTypeCode)',
@@ -77,11 +69,11 @@ Scenario: search for location detail
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request location
-     When method post
-     Then status 400
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 400
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
      * print searchLocationResponseBody

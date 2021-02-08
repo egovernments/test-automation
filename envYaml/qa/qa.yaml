@@ -2,9 +2,13 @@ host: https://egov-micro-qa.egovernments.org/
 localhost: http://localhost:8079/
 stateCode: pb
 cityCode: amritsar
-userName: 4600556741
-#TODO: Consumer code, mobile number needs to be change based upon the environment
-parameters:
-  consumerCode: PB-PT-2020-10-14-007281
-  businessService: PT
-  mobileNumber: 9113689766
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: EMPSU
+  password: eGov@123
+  type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-107-000878
+  password: Password@2
+  type: EMPLOYEE

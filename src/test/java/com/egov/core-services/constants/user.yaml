@@ -1,18 +1,4 @@
-parameters:
- # Search user
- notRegisteredUserName: 1212121298
- withoutUserName: ""
- invalidTenantId: invalid
- emptyTenantId: ""
- multipleTenantId: pb.amritsar,pb.jalandhar
- # Create citizen
- name: Test
- invalidOtpReference: 348356
- permanentCity: pb.amritsar
- withoutUserName: null
- invalidUserName: asdfghjkl
- moreThan50CharsName: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabc 
-
+# Error messages
 errormessages:
  # Search user
  forInvalidUserName: InvalidUserSearchCriteriaException
@@ -20,26 +6,23 @@ errormessages:
  withEmptyStringTenantId: InvalidUserSearchCriteriaException
  # Create citizen
  invalidOtp: OTP validation unsuccessful
- invalidUserName: UserNameNotValidException
+ invalidUserNameCode: UserNameNotValidException
  invalidName: InvalidUserCreateException
  invalidTenantId: InvalidUserCreateException
  nameCharsSize: size must be between 0 and 50
- # User Profile update
- missMatchError: must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
- invalidEmailError: not a well-formed email address
- invalidPhoneNumberError: must match "(^$|[0-9]{10})"
- invalidGenderError: must match "^[a-zA-Z ]*$"
- tenantIdNull: An unhandled exception occurred on the server
- noUUIDErrorCode: UserNotFoundException
- usernameLengthError: size must be between 0 and 50
- invalidPasswordLengthError: "Password must be of minimum: 8 and maximum: 15 characters."
- invalidPasswordLngthErrCode: INVALID_PWD_LENGTH
- passwordMismatchError: PasswordMismatchException
- invalidUpdatePasswordRequestError: InvalidLoggedInUserUpdatePasswordRequestException
- notAuthorizedToAccessResourceerror: Not authorized to access this resource
- otpValidationUnsuccessfulError: OTP validation unsuccessful
- userNotFoundError: UserNotFoundException
- invalidNonLoggedInUserPasswordUpdateError: InvalidNonLoggedInUserUpdatePasswordRequestException
-
+ # Update user profile related error messages
+ invalidUserName:  must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
+ invalidPhoneNumber: must match "(^$|[0-9]{10})"
+ invalidEmail: not a well-formed email address
+ invalidGender: must match "^[a-zA-Z ]*$"
+ invalidUUID: "User not found for given criteria: UserSearchCriteria(id=null, uuid=[], userName=null, name=null, mobileNumber=null, emailId=null, fuzzyLogic=false, active=null, offset=null, limit=null, sort=null, type=null, tenantId=null, roleCodes=null)"
+ # Update user password related error code and message
+ passwordMismatchCode: PasswordMismatchException
+ invalidPasswordLengthCode: INVALID_PWD_LENGTH
+ invalidPasswordMessage: "Password must be of minimum: 8 and maximum: 15 characters."
+ # Update user password without login related errors
+ invalidOTP: OTP validation unsuccessful
+ userNotFoundCode: UserNotFoundException
+ 
 
 

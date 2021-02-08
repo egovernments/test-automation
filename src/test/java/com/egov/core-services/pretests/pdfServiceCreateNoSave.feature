@@ -1,12 +1,14 @@
 Feature: PDF config is generated successfully
 
-Background:
-* def pdfCreateNoSavePayload = read('../requestPayload/pdfService/pdfCreateNoSave.json')
+        Background:
+        * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
+* def Payments = Payments
+* def Bill = Payments[0].paymentDetails[0].bill
+* def pdfCreateNoSavePayload = read('../../core-services/requestPayload/pdfService/pdfCreateNoSave.json')
 * def pdfCreateNoSavePayloadFirst = pdfCreateNoSavePayload.WS
 
-@pdfcreatenosavesuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfNosaveSuccessfully
+        Scenario: Create PDF NoSave successfully
   * def pdfCreateNoSaveParam = 
     """
     {
@@ -15,20 +17,16 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createNoSavePdf 
-     * print createNoSavePdf 
-     And params pdfCreateNoSaveParam
-     And request pdfCreateNoSavePayload
-     * print pdfCreateNoSavePayload
-     When method post
-     Then status 201
-     And def pdfCreateNoSaveResponseHeader = responseHeaders
-     And def pdfCreateNoSaveResponseBody = response
-     * print pdfCreateNoSaveResponseBody
+            Given url createNoSavePdf
+              And params pdfCreateNoSaveParam
+              And request pdfCreateNoSavePayload
+             When method post
+             Then status 201
+              And def pdfCreateNoSaveResponseHeader = responseHeaders
+              And def pdfCreateNoSaveResponseBody = response
 
-@pdfcreatenosaveforwssuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfNosaveForWsSuccessfully
+        Scenario: Create PDF NoSave for WS successfully
   * def pdfCreateNoSaveParam = 
     """
     {
@@ -37,33 +35,25 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createNoSavePdf 
-     * print createNoSavePdf 
-     And params pdfCreateNoSaveParam
-     And request pdfCreateNoSavePayloadFirst
-     * print pdfCreateNoSavePayloadFirst
-     When method post
-     Then status 201
-     And def pdfCreateNoSaveResponseHeader = responseHeaders
-     And def pdfCreateNoSaveResponseBody = response
-     * print pdfCreateNoSaveResponseBody
+            Given url createNoSavePdf
+              And params pdfCreateNoSaveParam
+              And request pdfCreateNoSavePayloadFirst
+             When method post
+             Then status 201
+              And def pdfCreateNoSaveResponseHeader = responseHeaders
+              And def pdfCreateNoSaveResponseBody = response
 
-@pdfcreatenosavewithoutparam
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
-     Given url createNoSavePdf 
-     * print createNoSavePdf 
-     And request pdfCreateNoSavePayload
-     * print pdfCreateNoSavePayload
-     When method post
-     Then status 400
-     And def pdfCreateNoSaveResponseHeader = responseHeaders
-     And def pdfCreateNoSaveResponseBody = response
-     * print pdfCreateNoSaveResponseBody
+        @createPdfNosaveWithoutParamsError
+        Scenario: Create PDF NoSave without params error
+            Given url createNoSavePdf
+              And request pdfCreateNoSavePayload
+             When method post
+             Then status 400
+              And def pdfCreateNoSaveResponseHeader = responseHeaders
+              And def pdfCreateNoSaveResponseBody = response
 
-@pdfcreatenosavefail
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfNosaveError
+        Scenario: Create PDF NoSave error
   * def pdfCreateNoSaveParam = 
     """
     {
@@ -72,13 +62,10 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createNoSavePdf 
-     * print createNoSavePdf 
-     And params pdfCreateNoSaveParam
-     And request pdfCreateNoSavePayload
-     * print pdfCreateNoSavePayload
-     When method post
-     Then status 400
-     And def pdfCreateNoSaveResponseHeader = responseHeaders
-     And def pdfCreateNoSaveResponseBody = response
-     * print pdfCreateNoSaveResponseBody
+            Given url createNoSavePdf
+              And params pdfCreateNoSaveParam
+              And request pdfCreateNoSavePayload
+             When method post
+             Then status 400
+              And def pdfCreateNoSaveResponseHeader = responseHeaders
+              And def pdfCreateNoSaveResponseBody = response

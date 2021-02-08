@@ -1,11 +1,10 @@
 Feature: Perform search using business id
 
-Background:
-* def workFlowProcessSearchPayload = read('../requestPayload/eGovWorkFlow/process/processSearch.json')
+        Background:
+* def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
 
-@processsearchsuccess
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @searchWorkflowProcessSuccessfully
+        Scenario: Perform search using business id
   * def processSearchParam = 
     """
     {
@@ -15,20 +14,17 @@ Scenario: Perform search using business id
     }
 
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess 
-     And params processSearchParam
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 200
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 200
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
      * print processSearchResponseBody
 
-@processsearchoffset&limit
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @searchWorkflowProcessOffsetAndLimit
+        Scenario: Perform search using offset and limit
   * def processSearchParam = 
     """
     {
@@ -40,20 +36,17 @@ Scenario: Perform search using business id
 
     }
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess 
-     And params processSearchParam
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 200
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 200
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
      * print processSearchResponseBody
 
-@processsearchwithoutbusinessid
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+        @searchWorkflowProcessWithoutBusinessid
+        Scenario: Perform search wihtout passing business id
   * def processSearchParam = 
     """
     {
@@ -61,54 +54,42 @@ Scenario: Perform search using business id
      tenantId: '#(tenantId)'
     }
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess 
-     And params processSearchParam 
-     * print processSearchParam
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 200
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 200
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
      * print processSearchResponseBody
     
-@processsearchonlytenantid
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+        @searchWorkflowProcessWithOnlyTenantid
+        Scenario: Perform search with only tenantId
   * def processSearchParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess
-     And params processSearchParam  
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 200
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
-     * print processSearchResponseBody
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 200
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
 
-@processsearchnoparameter
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
-     Given url workFlowProcess 
-     * print workFlowProcess  
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 200
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
-     * print processSearchResponseBody
+        @searchProcessWithNoParameter
+        Scenario: Perform search with no parameter
+            Given url workFlowProcess
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 200
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
 
-@processsearchinvalidtenantid
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+        @searchProcessWithInvalidTenantid
+        Scenario: Perform search with invalid tenantId
   * def processSearchParam = 
     """
     {
@@ -118,21 +99,16 @@ Scenario: Perform search using business id
 
     }
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess  
-     And params processSearchParam
-     * print processSearchParam
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 403
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
-     * print processSearchResponseBody
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 403
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response
 
-@processsearchfail
-Scenario: Perform search using business id
-  * configure headers = read('classpath:websCommonHeaders.js')
+        @searchProcessError
+        Scenario: Perform search error
   * def processSearchParam = 
     """
     {
@@ -142,14 +118,10 @@ Scenario: Perform search using business id
 
     }
     """ 
-     Given url workFlowProcess 
-     * print workFlowProcess  
-     And params processSearchParam
-     * print processSearchParam
-     And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
-     When method post
-     Then status 400
-     And def processSearchResponseHeader = responseHeaders
-     And def processSearchResponseBody = response
-     * print processSearchResponseBody
+            Given url workFlowProcess
+              And params processSearchParam
+              And request workFlowProcessSearchPayload
+             When method post
+             Then status 400
+              And def processSearchResponseHeader = responseHeaders
+              And def processSearchResponseBody = response

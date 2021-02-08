@@ -1,13 +1,13 @@
 Feature: Metadata get reports
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def reportPayload = read('../requestPayload/reports/metadataGetReport.json')
-  * def reportConstant = read('../constants/reports.yaml')
+  * def reportPayload = read('../../core-services/requestPayload/reports/metadataGetReport.json')
+  * configure headers = read('classpath:websCommonHeaders.js')
 
-@reportsuccess
-Scenario: Test to fetch the details of a report
-* configure headers = read('classpath:websCommonHeaders.js')
+
+        @getReportMetadataSuccessfully
+        Scenario: Get Report Metadata Successfully
 * def reportParam =
     """
     {
@@ -16,20 +16,19 @@ Scenario: Test to fetch the details of a report
      offset: '#(offset)'
     }
     """
-     Given url metadataGetReport
+            Given url metadataGetReport
      * print metadataGetReport
-     And params reportParam
+              And params reportParam
      * print reportParam
-     And request reportPayload
+              And request reportPayload
      * print reportPayload
-     When method post
-     Then status 200
-     And def reportsResponseHeader = responseHeaders
-     And def reportsResponseBody = response
+             When method post
+             Then status 200
+              And def reportsResponseHeader = responseHeaders
+              And def reportsResponseBody = response
 
-@reportfail
-Scenario: Test to fetch the details of a report
-* configure headers = read('classpath:websCommonHeaders.js')
+        @getReportMetadataError
+        Scenario: Get Report Metadata Error
 * def reportParam =
     """
     {
@@ -38,20 +37,19 @@ Scenario: Test to fetch the details of a report
      offset: '#(offset)'
     }
     """
-     Given url metadataGetReport
+            Given url metadataGetReport
      * print metadataGetReport
-     And params reportParam
+              And params reportParam
      * print reportParam
-     And request reportPayload
+              And request reportPayload
      * print reportPayload
-     When method post
-     Then status 400
-     And def reportsResponseHeader = responseHeaders
-     And def reportsResponseBody = response
+             When method post
+             Then status 400
+              And def reportsResponseHeader = responseHeaders
+              And def reportsResponseBody = response
 
-@reportforbidden
-Scenario: Test to fetch the details of a report
-* configure headers = read('classpath:websCommonHeaders.js')
+        @getReportMetadata403Error
+        Scenario: Get Report Metadata 403 Forbidden Error
 * def reportParam =
     """
     {
@@ -60,13 +58,13 @@ Scenario: Test to fetch the details of a report
      offset: '#(offset)'
     }
     """
-     Given url metadataGetReport
+            Given url metadataGetReport
      * print metadataGetReport
-     And params reportParam
+              And params reportParam
      * print reportParam
-     And request reportPayload
+              And request reportPayload
      * print reportPayload
-     When method post
-     Then status 403
-     And def reportsResponseHeader = responseHeaders
-     And def reportsResponseBody = response
+             When method post
+             Then status 403
+              And def reportsResponseHeader = responseHeaders
+              And def reportsResponseBody = response

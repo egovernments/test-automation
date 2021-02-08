@@ -1,110 +1,106 @@
 Feature: User Search
-Background:
+        Background:
+  * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../pretests/authenticationToken.feature')
-  * def envContant = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * def existingUser = envContant.userName
-  * print existingUser
-  * def findUser = read('../requestPayload/userCreation/searchUser.json')
-  * print findUser
-  * def userConstant = read('../constants/user.yaml')
+  * def multipleTenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
+  * call read('../../core-services/pretests/userCreation.feature@usercreation')
+  * def existingUser = createdUser
+  * def mobileNumberGen = randomMobileNumGen(10)
+  * def unRegisteredNumber = new java.math.BigDecimal(mobileNumberGen)
+  * print unRegisteredNumber
+  * def withoutUserName = ''
+  * def emptyStringInTenantId = ''
+  * def userConstant = read('../../core-services/constants/user.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
+  * def findUser = read('../../core-services/requestPayload/userCreation/searchUser.json')
+  * print findUser
 
-@finduser
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+        @finduser
+        Scenario: Search user with valid details
      * def payload = findUser.validPayload
-     Given url searchUser 
+            Given url searchUser
      * print searchUser  
-     And request payload
+              And request payload
      * print payload
-     When method post
-     Then status 200
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 200
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
 
-@finduserwithmultipletenantid
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+        @finduserwithmultipletenantid
+        Scenario: Search user with multiple tenantIds
      * def payload = findUser.validPayload
-     * set findUser.validPayload.tenantId = userConstant.parameters.multipleTenantId
-     Given url searchUser 
+     * set findUser.validPayload.tenantId = multipleTenantId
+            Given url searchUser
      * print searchUser  
-     And request payload
+              And request payload
      * print payload
-     When method post
-     Then status 200
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 200
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
   
-@finduserwithinvalidusername
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+        @finduserwithinvalidusername
+        Scenario: Search user with invalid username
      * def payload = findUser.validPayload
-     * set findUser.validPayload.userName = userConstant.parameters.notRegisteredUserName
-     Given url searchUser 
+     * set findUser.validPayload.userName = unRegisteredNumber
+            Given url searchUser
      * print searchUser  
-     And request payload
+              And request payload
      * print payload
-     When method post
-     Then status 200
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 200
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
 
-@finduserwithinvalidtenantid
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+        @finduserwithinvalidtenantid
+        Scenario: Search user with invalid tenantId
      * def payLoad = findUser.validPayload  
-     * set findUser.validPayload.tenantId = commonConstants.'Invalid-tenantId-' + ranString(5)
-     Given url searchUser 
+     * set findUser.validPayload.tenantId = invalidTenantId
+            Given url searchUser
      * print searchUser  
-     And request payLoad
+              And request payLoad
      * print payLoad
-     When method post
-     Then status 200
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 200
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
 
-@finduserwithoutusername
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js')
+        @finduserwithoutusername
+        Scenario: Search user without username
      * def payLoad = findUser.validPayload 
-     * set findUser.validPayload.userName = userConstant.parameters.withoutUserName
-     Given url searchUser 
+     * set findUser.validPayload.userName = withoutUserName
+            Given url searchUser
      * print searchUser  
-     And request payLoad
+              And request payLoad
      * print payLoad
-     When method post
-     Then status 400
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 400
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
 
-@finduserwithouttenantid
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+        @finduserwithouttenantid
+        Scenario: Search user without tenantId
      * def payLoad = findUser.invalidPayload
-     Given url searchUser 
+            Given url searchUser
      * print searchUser  
-     And request payLoad
+              And request payLoad
      * print payload
-     When method post
-     Then status 400
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 400
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response
 
-@finduseremptytenantid
-Scenario: Search user
-     * configure headers = read('classpath:websCommonHeaders.js') 
+        @finduseremptytenantid
+        Scenario: Search user with empty tenantId
      * def payLoad = findUser.validPayload
-     * set findUser.validPayload.tenantId = userConstant.parameters.emptyStringInTenantId
-     Given url searchUser 
+     * set findUser.validPayload.tenantId = emptyStringInTenantId
+            Given url searchUser
      * print searchUser  
-     And request payLoad
+              And request payLoad
      * print payload
-     When method post
-     Then status 400
-     And def searchUserResponseHeader = responseHeaders
-     And def searchUserResponseBody = response
+             When method post
+             Then status 400
+              And def searchUserResponseHeader = responseHeaders
+              And def searchUserResponseBody = response

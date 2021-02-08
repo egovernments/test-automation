@@ -13,7 +13,6 @@ function() {
     
     var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
     var path = karate.read('file:envYaml/common/common.yaml');
-    var userData = karate.read('../../common-services/userDetails/' + env + '/' + 'userDetails.yaml');
     
     if(!tenantId){
         var stateCode = 'pb';
@@ -33,25 +32,17 @@ function() {
         
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
-        config.counterEmployeeUserName = userData.superUserCounterEmployee.userName;
-        config.counterEmployeePassword = userData.superUserCounterEmployee.password;
-
-        //username & password for authtoken of Super User
-        config.superUserName = userData.superUser.userName;
-        config.superUserPassword = userData.superUser.password;
-      //  config.superUserTenantId = userData.superUser.stateCode + '.' + userData.superUser.cityCode;
-        config.superUserAuthUserType = userData.superUser.authUserType;
-
-        // username & password for Employee type user
-        config.employeeUserName = userData.employee.userName;
-        config.employeePassword = userData.employee.password;
-        config.employeeType = userData.employee.type;
-
+        
          //username & password for Existing User Profile
-         config.existingUserName = userData.existingUser.userName;
-         config.existingUserPassword = userData.existingUser.password;
-         config.existingUserTenantId = userData.existingUser.tenantId
-         config.existingUserAuthUserType = userData.existingUser.authUserType;
+         config.employeeUserName = envProps.employee.userName;
+         config.employeePassword = envProps.employee.password;
+         //config.existingUserTenantId = envProps.existingUser.tenantId
+         config.employeeType = envProps.employee.type;
+
+         // username & password for global super user
+         config.authUsername = envProps.superUser.userName;
+         config.authPassword = envProps.superUser.password;
+         config.authUserType = envProps.superUser.type;
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
@@ -162,7 +153,7 @@ function() {
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
-	config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
+	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
     	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
     	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
 
@@ -191,13 +182,42 @@ function() {
         config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
         config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
-        
+        //eGovWorkFlow Business
+        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
+
+        //registered mobile number for citizen
+      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
+
+        //eGovWorkFlow Business
+        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
+
+        // Calling pretest features which is consumed by almost all tests
+        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        config.fileStoreId = fileUploadResponse.fileStoreId
+
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        config.authToken = authTokenResponse.authToken;
+
+        var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
+        var MdmsCityRes = MdmsCityResponse.MdmsCityRes
+        config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
+        config.mdmsCityTenant = MdmsCityRes.tenant
+
+        var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
+        var MdmsStateRes = MdmsStateResponse.MdmsStateRes
+        config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
+        config.mdmsStatetenant = MdmsStateRes.tenant
+        config.mdmsStateBillingService = MdmsStateRes.BillingService
+        config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
+        config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
+        config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
+        config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
     
     karate.configure('readTimeout', 120000);
-    
 
     return config;
 }

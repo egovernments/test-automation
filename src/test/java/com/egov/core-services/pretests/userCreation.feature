@@ -1,46 +1,30 @@
 Feature: Create user
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../pretests/authenticationToken.feature')
-  * def newUser = read('../requestPayload/userCreation/createUser.json')
-  * print newUser
-  * def envValue = read('file:envYaml/' + env + '/' + env +'.yaml')
-  * print envValue
+  * print newUserPayload
+  * def userType = mdmsStateAccessControlRoles.roles[0].code
+  * def name = ranString(4)
+  * def mobileNumberGen = '90' + randomMobileNumGen(8)
+  * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
+  * def emailId = ranEmailId(5)
+  * def dob = todayDate()
+  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+  * def gender = commonConstants.parameters.gender[0]
+  * def newUserPayload = read('../../core-services/requestPayload/userCreation/createUser.json')
+
   
-@usercreation
-Scenario: Creating new user 
-   * print result
-   * def mobileNumberGen = randomMobileNumGen(10)
-   * def validMobileNum = new java.math.BigDecimal(mobileNumberGen)
-   * print validMobileNum
-   * set newUser.user.mobileNumber = validMobileNum
-   * set newUser.user.userName = validMobileNum
-   * configure headers = read('classpath:websCommonHeaders.js') 
-   
-     Given url createUser 
+        @usercreation
+        Scenario: Creating new user
+     * configure headers = read('classpath:websCommonHeaders.js')   
+            Given url createUser
      * print createUser
-     And request newUser
-     * print newUser
-     When method post
-     Then status 200
-     And def userCreationResponseHeader = responseHeaders
-     And def userCreationResponseBody = response
+              And request newUserPayload
+     * print newUserPayload
+             When method post
+             Then status 200
+              And def userCreationResponseHeader = responseHeaders
+              And def userCreationResponseBody = response
      * print userCreationResponseBody
      * def createdUser = userCreationResponseBody.user[0].userName
      * print createdUser
-     * def doStorage =
-     """
-     function(args) {
-     var DataStorage = Java.type('com.egov.base.ReadWriteCitizenUserName');
-     var dS = new DataStorage();
-     return dS.updateFile(args);
-     }
-     """
-     * def old = envValue.userName.toString()
-     * print old
-     * def result = call doStorage {'old': #(old), 'new': #(createdUser), 'env': #(env) }
-     * print result

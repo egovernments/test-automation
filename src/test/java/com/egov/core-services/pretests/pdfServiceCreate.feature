@@ -1,15 +1,17 @@
 Feature: Generated pdf successfully
 
-Background:
-* def pdfCreatePayload = read('../requestPayload/pdfService/pdfCreate.json')
+        Background:
+* call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
+* def Payments = Payments
+* def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
 * def pdfCreatePayloadThird = pdfCreatePayload.FireNoc
 * def pdfCreatePayloadFourth = pdfCreatePayload.WS
+* configure headers = read('classpath:websCommonHeaders.js') 
 
-@pdfcreatesuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfSuccessfully
+        Scenario: Create PDF Successfully
   * def pdfCreateParam = 
     """
     {
@@ -18,20 +20,17 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
-     * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadFirst
-     * print pdfCreatePayloadFirst
-     When method post
-     Then status 201
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+            Given url createPdf
+              And params pdfCreateParam
+              And request pdfCreatePayloadFirst
+              * print pdfCreatePayloadFirst
+             When method post
+             Then status 201
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
 
-@pdfcreateforptsuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfForPtSuccessfully
+        Scenario: Create PDF for PT Successfully
   * def pdfCreateParam = 
     """
     {
@@ -40,20 +39,17 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
-     * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadSecond
-     * print pdfCreatePayloadSecond
-     When method post
-     Then status 201
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+            Given url createPdf
+              And params pdfCreateParam
+     * eval pdfCreatePayloadSecond.Payments = Payments
+              And request pdfCreatePayloadSecond
+             When method post
+             Then status 201
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
 
-@pdfcreateforfirenocsuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfForFireNocSuccessfully
+        Scenario: Create PDF for Fire NOC Successfully
   * def pdfCreateParam = 
     """
     {
@@ -62,20 +58,16 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
-     * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadThird
-     * print pdfCreatePayloadThird
-     When method post
-     Then status 201
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+            Given url createPdf
+              And params pdfCreateParam
+              And request pdfCreatePayloadThird
+             When method post
+             Then status 201
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
 
-@pdfcreateforwssuccess
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfForWSSuccessfully
+        Scenario: Create PDF for WS Successfully
   * def pdfCreateParam = 
     """
     {
@@ -84,20 +76,16 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
-     * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadFourth
-     * print pdfCreatePayloadFourth
-     When method post
-     Then status 201
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+            Given url createPdf
+              And params pdfCreateParam
+              And request pdfCreatePayloadFourth
+             When method post
+             Then status 201
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
     
-@pdfcreatewithouttenantid
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfWithoutTenantIdError
+        Scenario: Create PDF without tenantId error
   * def pdfCreateParam = 
     """
     {
@@ -105,20 +93,17 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
+            Given url createPdf
      * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadFirst
-     * print pdfCreatePayloadFirst
-     When method post
-     Then status 400
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+              And params pdfCreateParam
+              And request pdfCreatePayloadFirst
+             When method post
+             Then status 400
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
 
-@pdfcreatefail
-Scenario: Verify a pdf is generated successfully
-  * configure headers = read('classpath:websCommonHeaders.js') 
+        @createPdfError
+        Scenario: Create PDF error
   * def pdfCreateParam = 
     """
     {
@@ -127,13 +112,10 @@ Scenario: Verify a pdf is generated successfully
     }
 
     """ 
-     Given url createPdf 
-     * print createPdf 
-     And params pdfCreateParam
-     And request pdfCreatePayloadFirst
-     * print pdfCreatePayloadFirst
-     When method post
-     Then status 400
-     And def pdfCreateResponseHeader = responseHeaders
-     And def pdfCreateResponseBody = response
-     * print pdfCreateResponseBody
+            Given url createPdf
+              And params pdfCreateParam
+              And request pdfCreatePayloadFirst
+             When method post
+             Then status 400
+              And def pdfCreateResponseHeader = responseHeaders
+              And def pdfCreateResponseBody = response
