@@ -1,54 +1,50 @@
-Feature: Searcher API call 
+Feature: Searcher API call
 
-Background:
+        Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
-  	# calling localization Json
+  	# calling searcher Json
   * def searcherRequest = read('../requestPayload/searcher/searcher.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print searcherRequest
 
 
-@success
-Scenario: Searcher success call
+        @searchSuccessfully
+        Scenario: Search successfully
 
-  Given url searcherUrl 
-  And request searcherRequest
-  When method post
-  Then status 200
-  And def searcherResponseHeader = responseHeaders
-  And def searcherResponseBody = response
-  * print searcherResponseBody
+            Given url searcherUrl
+              And request searcherRequest
+             When method post
+             Then status 200
+              And def searcherResponseHeader = responseHeaders
+              And def searcherResponseBody = response
 
+        @searchError
+        Scenario: Search error
 
-@error
-Scenario: Searcher error call
+            Given url searcherUrl
+              And request searcherRequest
+             When method post
+             Then status 403
+              And def searcherResponseHeader = responseHeaders
+              And def searcherResponseBody = response
 
-  Given url searcherUrl 
-  And request searcherRequest
-  When method post
-  Then status 403
-  And def searcherResponseHeader = responseHeaders
-  And def searcherResponseBody = response
+        @invalidSearcherError
+        Scenario: Invalid Searcher error
 
-@error_invalidSearcher
-Scenario: Searcher error call
-
-  Given url invalidSearcher 
-  And request searcherRequest
-  When method post
-  Then status 403
-  And def searcherResponseHeader = responseHeaders
-  And def searcherResponseBody = response
+            Given url invalidSearcher
+              And request searcherRequest
+             When method post
+             Then status 403
+              And def searcherResponseHeader = responseHeaders
+              And def searcherResponseBody = response
   
 
 
-@error_notenant
-Scenario: Searcher Tenanterror call
-
-  Given url searcherWSUrl 
-  And request searcherRequest
-  When method post
-  Then status 400
-  And def searcherResponseHeader = responseHeaders
-  And def searcherResponseBody = response
+        @searchWithoutTenantIdError
+        Scenario: Search without TenantId error
+            Given url searcherWSUrl
+              And request searcherRequest
+             When method post
+             Then status 400
+              And def searcherResponseHeader = responseHeaders
+              And def searcherResponseBody = response

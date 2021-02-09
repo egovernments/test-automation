@@ -1,108 +1,79 @@
-Feature: Localization Update Messages API call 
+Feature: Localization Update Messages API call
 
-Background:
+        Background:
 	
   * def jsUtils = read('classpath:jsUtils.js')
-  	# calling localization Json
-  * def localizationUpdateRequest = read('../requestPayload/localization/update.json')
-  * def localizationCreateRequest = read('../requestPayload/localization/create.json')
-  * def localizationMultiMessageCreateRequest = read('../requestPayload/localization/multiMessageCreate.json')
+  	# calling localization Update Json
+  * def localizationUpdateRequest = read('../../core-services/requestPayload/localization/update.json')
+    # calling localization Ceate Json
+  * def localizationCreateRequest = read('../../core-services/requestPayload/localization/create.json')
+  # calling localization MultiMessageCeate Json
+  * def localizationMultiMessageCreateRequest = read('../../core-services/requestPayload/localization/multiMessageCreate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print tenantId
-  * set localizationUpdateRequest.tenantId = tenantId
-  * set localizationCreateRequest.tenantId = tenantId
-  * set localizationMultiMessageCreateRequest.tenantId = tenantId
-  * print localizationUpdateRequest
-  * print localizationMultiMessageCreateRequest
 
 
-@Success_Update
-Scenario: Update with Success call
+        @updateLocalizationMessageSuccessfully
+        Scenario: Update localization message Successfully
 
-  Given url localizationUpdateMessagesUrl
-  And request localizationUpdateRequest
-  When method post
-  Then status 200
-  And def updateResponseHeader = responseHeaders
-  And def updateResponseBody = response
-
-
-@Error_Update
-Scenario: Update with Error call
-
-  Given url localizationUpdateMessagesUrl
-  And request localizationUpdateRequest
-  When method post
-  Then status 400
-  And def updateResponseHeader = responseHeaders
-  And def updateResponseBody = response
+            Given url localizationUpdateMessagesUrl
+              And request localizationUpdateRequest
+             When method post
+             Then status 200
+              And def updateResponseHeader = responseHeaders
+              And def updateResponseBody = response
 
 
-@Error_accessingResource_update
-Scenario: Update with Error call
+        @updateLocalizationMessageError
+        Scenario: Update localization message Error
+
+            Given url localizationUpdateMessagesUrl
+              And request localizationUpdateRequest
+             When method post
+             Then status 400
+              And def updateResponseHeader = responseHeaders
+              And def updateResponseBody = response
+
+
+        @updateLocalizationMessageWithInvalidTenantIdError
+        Scenario: Update localization message wit invalid tenantId Error
   
-  Given url localizationUpdateMessagesUrl
-  And request localizationUpdateRequest
-  When method post
-  Then status 403
-  And def updateResponseHeader = responseHeaders
-  And def updateResponseBody = response
+            Given url localizationUpdateMessagesUrl
+              And request localizationUpdateRequest
+             When method post
+             Then status 403
+              And def updateResponseHeader = responseHeaders
+              And def updateResponseBody = response
 
-@Errorupdate_invalid
-Scenario: Update with Error call
-  
-  Given url invalidUpdate
-  And request localizationUpdateRequest
-  When method post
-  Then status 403
-  And def updateResponseHeader = responseHeaders
-  And def updateResponseBody = response
-
-
-#need to update this scenario  
-@Delete
-Scenario: Localization Delete call
+        @deleteLocalizationMessageSuccessfully
+        Scenario: Delete Localization message successfully
 
   * def deleteRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print deleteRequest
   
-  Given url localizationDeleteMessagesUrl
-  And request deleteRequest
-  When method post
-  Then status 403
-  And def deleteResponseHeader = responseHeaders
-  And def deleteResponseBody = response
+            Given url localizationDeleteMessagesUrl
+              And request deleteRequest
+             When method post
+             Then status 403
+              And def deleteResponseHeader = responseHeaders
+              And def deleteResponseBody = response
 
+        @createLocalizationMessageSuccessfully
+        Scenario: Create Localization messgae Successfully
 
+            Given url localizationCreateMessagesUrl
+              And request localizationCreateRequest
+             When method post
+             Then status 200
+              And def createResponseHeader = responseHeaders
+              And def createResponseBody = response
 
-@Create_Success
-Scenario: Localization Create Success Call
+        @createMultipleLocalizationMessageSuccessfully
+        Scenario: Create Multiple Localization messgae Successfully
 
-  Given url localizationCreateMessagesUrl
-  And request localizationCreateRequest
-  When method post
-  Then status 200
-  And def createResponseHeader = responseHeaders
-  And def createResponseBody = response
-
-
-@Create_MultiMessages_Success
-Scenario: Localization Multi Message Create Success Call
-
-  Given url localizationCreateMessagesUrl
-  And request localizationMultiMessageCreateRequest
-  When method post
-  Then status 200
-  And def createResponseHeader = responseHeaders
-  And def createResponseBody = response
+            Given url localizationCreateMessagesUrl
+              And request localizationMultiMessageCreateRequest
+             When method post
+             Then status 200
+              And def createResponseHeader = responseHeaders
+              And def createResponseBody = response
   
-  
-
-
-
-  
-
-
-
-

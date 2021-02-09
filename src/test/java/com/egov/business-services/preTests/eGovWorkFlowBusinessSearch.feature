@@ -2,7 +2,7 @@ Feature: eGovWorkFlowBusiness Feature
 
     Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    # Calling authToken
+    
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
     * def authUserType = employeeType

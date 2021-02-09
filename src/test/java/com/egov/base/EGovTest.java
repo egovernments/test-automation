@@ -4,18 +4,18 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Collection;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
 import com.intuit.karate.KarateOptions;
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
@@ -24,19 +24,23 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/business-services",
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
- 	tags = {"@Searcher,@localization,@accessControl,@hrms,@collectionServices,@billingServiceDemand," + "
-	 @billingServiceBill,@userOtp,@fileStore,@reports,@location,@searchmdms,@eGovUser"})
-public class EGovTest {
+	tags = {"@reports,@searchMdms,@Searcher,@location,@localization,@userotp,@eGovUser,@accessControl," +
+			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
+			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
+// below tags will be added for execution once port fowarding is implemented on the system under execution
+// @encService and @apportionService
 
+public class EGovTest {
 	@BeforeClass
 	public static void before() {
-
+		
 	}
 
 	@Test
 	public void testParallel() {
+
 		String karateOutputPath = "target/surefire-reports";
-		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
+		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
 		generateReport(karateOutputPath);
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
 	}

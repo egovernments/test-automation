@@ -1,0 +1,24 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Payment": {
+		"paymentDetails": [{
+			"businessService": "#(businessService)",
+			"billId": "#(billId)",
+			"totalDue": "#(amount)",
+			"totalAmountPaid": "#(amount)"
+		}],
+		"tenantId": "#(tenantId)",
+		"totalDue": "#(amount)",
+		"paymentMode": "#(paymentModeForCheque)",
+		"paidBy": "#(paidBy)",
+		"mobileNumber": "#(mobileNumber)",
+		"payerName": "#(payerName)",
+		"transactionNumber": "#(transactionNumberForCheque)",
+		"instrumentNumber": "#(instrumentNumberForCheque)",
+		"instrumentDate": "#(instrumentDate)",
+		"ifscCode": "#(ifscCode)",
+		"totalAmountPaid": "#(amount)"
+	}
+}

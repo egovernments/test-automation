@@ -45,6 +45,9 @@ endPoints:
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
   count: egov-workflow-v2/egov-wf/process/_count?
+  businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
+  businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
+  businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
  billingService:
   fetchBill: billing-service/bill/v2/_fetchbill
   search: billing-service/bill/v2/_search
@@ -69,5 +72,16 @@ endPoints:
   update: property-services/property/_update
   assessmentCreate: property-services/assessment/_create
   search: property-services/property/_search
+ apportion:
+  bill: apportion-service/v2/bill/_apportion
+ dashboard:
+  getDashboardConfig: dashboard-analytics/dashboard/getDashboardConfig/home
+  getChartV2: dashboard-analytics/dashboard/getChartV2
+ encService:
+  encrypt: egov-enc-service/crypto/v1/_encrypt
+  decrypt: egov-enc-service/crypto/v1/_decrypt
+  rotateKey: egov-enc-service/crypto/v1/_rotatekey
+  verify: egov-enc-service/crypto/v1/_verify
+  sign: egov-enc-service/crypto/v1/_sign
  eGovWorkFlowBusiness:
   search: egov-workflow-v2/egov-wf/businessservice/_search

@@ -23,13 +23,15 @@ Background:
     When method post
     Then status 201
     And def fetchBillResponse = response
+    * print fetchBillResponse
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
     And def txnAmount = totalAmount
+    And def bill = fetchBillResponse.Bill
      * print billId 
      * print totalAmount
 
-@customizedParam
+@fetchBillWithCustomizedParameters
     Scenario: Fetch Bill with customized parameters
     Given url fetchBill
     And params fetchBillParams

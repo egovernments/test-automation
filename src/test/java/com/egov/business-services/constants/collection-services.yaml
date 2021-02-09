@@ -9,9 +9,6 @@ parameters:
   reason: CHEQUEBOUNCE
   action: CANCEL
   otherReason: "OTHER"                                          
-invalidParameters:
-  paymentId: "abc"
-  reason: "abc"
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state

@@ -7,7 +7,7 @@ Feature: eGovUser-userProfileUpdate pretest
   Scenario: Update existing user profile with valid parameters
     Given url updateUser
      * print updateUser
-    And request updatedUserProfile
+    And request profilePayload
     When method post
     Then assert responseStatus == 200 || responseStatus == 400
     And  def updatedUserprofileResponseBody = response

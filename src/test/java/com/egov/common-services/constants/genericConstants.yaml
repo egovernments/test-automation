@@ -16,7 +16,6 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
-  businessId: 'PB-AC-2021-01-27-007614'
   financialYear: 2020-21
   # to upload file on fire-noc module
   module:
@@ -37,7 +36,16 @@ errorMessages:
   nullParameterError:  must not be null
   unhandledException: An unhandled exception occurred on the server
   jsonDeserializeError: Failed to deserialize certain JSON fields
+  authorizedError: Not authorized to access this resource
+  failed: FAILED
+successMessages:
+  successful: SUCCESSFUL
+  module:
+    - fire-noc 
 invalidParameters:
   invalidTenantId: invalid
+  emptyValue: ''
+  nullValue: null
+  invalidValue: Abc@123
   invalidValue: abc
   passValusAsNull: null
