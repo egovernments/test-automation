@@ -16,7 +16,7 @@
     
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids. For more details on framework architechture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
+eGov test automation framework majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
  
 <!-- Technology Used -->
 ### Technology Used
@@ -32,7 +32,9 @@ This framework required below prerequisites to be covered
 
 <!-- Prerequisites --> 
 ### Prerequisites
-To setup this framework two major softwares needs to be installed into the system. The step by step setup guidline provided below 
+To setup this framework two major softwares needs to be installed into the system. The step by step setup guidline provided below
+ * [Install kubectl](https://gist.github.com/mrbobbytables/d9e5c7224dbba989cf0b8a30d7a231a4)
+ * Configure kubectl for port forwarding
  ###### On Windows
  * [JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
  * [maven 3.6.3](https://maven.apache.org/download.cgi)
