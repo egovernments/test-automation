@@ -80,8 +80,8 @@ By default framework will execute all of the test features, to control this or t
 ## Run with Command Prompt
 It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
  * Open command prompt or terminal on project folder
- * Execute `mvn test "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov" "-Dkarate.env=<env>"`
- ###### For example  `mvn test "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov" "-Dkarate.env=qa"`  
+ * Execute `mvn clean test "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov" "-Dkarate.env=<env>"`
+ ###### For example  `mvn clean test "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov" "-Dkarate.env=qa"`  
  
 ## List Of Tags
 The listed tags are available currently in the framework
