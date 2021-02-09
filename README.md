@@ -8,6 +8,8 @@
   * [Configurations](#configurations)
 * [Run Command Details](#run-command-details)
 * [Configure Test Runner](#configure-test-runner)
+* [Run with Command Prompt](#run-with-command-prompt)
+* [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
 * [Upcoming Services](#upcoming-services)
@@ -74,7 +76,35 @@ By default framework will execute all of the test features, to control this or t
  * Open `EGovTest.java` from `src/test/java/com/egov/base` 
  * Specify the test case tag or service tag followed by `@` under `tags{}`. For example `@collectionServices`
  * Execute the run commands as mentioned
-  
+ 
+## Run with Command Prompt
+It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
+ * Open command prompt or terminal on project folder
+ * Execute `mvn test "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov" "-Dkarate.env=<env>"`
+ ###### For example `mvn test "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov" "-Dkarate.env=qa"`  
+ 
+## List Of Tags
+The listed tags are available currently in the framework
+| Tags          		      | Description   			         |        
+| ------------- 		      |:-------------:			         |
+| @reports      		      | Reports tests 			         | 
+| @searchMdms   		      | Search mdms tests         | 
+| @Searcher     		      | Searcher tests            |
+| @location     		      | Location tests			         |
+| @localization 		      | Loacalization tests		     |
+| @userotp      		      | User OTP tests			         |
+| @eGovUser				         | User profile update tests |
+| @accessControl		      | Access control tests 		   |
+| @hrms         		      | HRMS tests				            |
+| @collectionServices 	 | Collecetion Service tests	|
+| @billingServiceDemand | Billing Demand tests		    |
+| @pdfservice           | PDF Service tests			      |
+| @billingServiceBill   | Billing Service Bill tests|
+| @idGenerate			        | ID generation tests		     |
+| @egovWorkflowProcess  | Workflow tests			         |
+| @fileStore			         | File store tests			       |
+| @pgservices			        | PG Service tests			       | 
+
 ## Test Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
  * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
