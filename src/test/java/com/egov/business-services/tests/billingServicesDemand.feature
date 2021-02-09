@@ -6,8 +6,8 @@ Feature: Business Services - Billing Service Demand tests
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def consumerCode = 'PT-Test-' + ranInteger(6)
-    * def consumerType = mdmsStateBillingService.BusinessService[6].businessService
-    * def businessService = mdmsStateBillingService.BusinessService[6].code
+    * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
+    * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()
     * def taxPeriodTo = getEpochDate(2)
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
