@@ -1,6 +1,6 @@
 Feature: eGov_User - Update user profile tests
 
-        Background:
+Background:
         * def jsUtils = read('classpath:jsUtils.js')
         * def authUsername = employeeUserName
         * def authPassword = employeePassword
