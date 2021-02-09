@@ -16,6 +16,7 @@ Feature: Core service - Localization
 
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
+    # calling search localization pretest
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageSuccessfully') 
 	* match localizationMessageResponseBody.messages[0].module contains module
 	* assert localizationMessageResponseBody.messages[0].locale == locale
@@ -25,6 +26,7 @@ Feature: Core service - Localization
 
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     * def module = commonConstants.invalidParameters.emptyValue
+    # calling search localization pretest
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageSuccessfully')
 	* assert localizationMessageResponseBody.messages[0].locale == locale
     * assert localizationMessageResponseBody.messages.length != 0
@@ -33,13 +35,14 @@ Feature: Core service - Localization
         Scenario: Search with different locale
 
     * def locale = commonConstants.invalidParameters.invalidValue
+    # calling search localization pretest
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageSuccessfully')
 	* match localizationMessageResponseBody.messages == []
     * assert localizationMessageResponseBody.messages.length == 0
 
         @SearchLocale_noLocale_05  @negative @localization
         Scenario: Search without query parameter locale in the url
-
+    # calling search localization pretest
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageError') 
 	* assert localizationMessageResponseBody.ResponseInfo == null
 	* assert localizationMessageResponseBody.Errors[0].message == localizationServiceConstants.expectedErrorMessages.Nolocale
@@ -49,13 +52,14 @@ Feature: Core service - Localization
 
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     * def tenantId = commonConstants.invalidParameters.emptyValue
+    # calling search localization pretest
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageWithoutTenantIdError')
 	* assert localizationMessageResponseBody.ResponseInfo == null
 	* assert localizationMessageResponseBody.Errors[0].message == localizationServiceConstants.expectedErrorMessages.NoTenantId
 
         @SearchLocale_MultipleData_07 @positive @localization
         Scenario: Search with multiple modules and codes
-
+    # calling search localization pretest
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
     * def module1 = localizationMessageResponseBody.messages[index].module
@@ -64,6 +68,7 @@ Feature: Core service - Localization
     * def code1 = localizationMessageResponseBody.messages[index].code
     * def code2 = localizationMessageResponseBody.messages[index+1].code
     * def code = code1 + ',' + code2
+    # calling search localization pretest with multiple modules
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageWithMutipleModuleSuccessfully')
 	* match localizationMessageResponseBody.messages[*].module contains module1
     * match localizationMessageResponseBody.messages[*].module contains module2
@@ -74,9 +79,11 @@ Feature: Core service - Localization
         Scenario: Search with no modules
 
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
+    # calling search localization pretest
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
     * def code1 = localizationMessageResponseBody.messages[index].code
+    # calling search localization pretest without providing module
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageWithoutModuleError')
 	* match localizationMessageResponseBody.Errors[0].message contains localizationServiceConstants.expectedErrorMessages.Module
 
@@ -99,6 +106,7 @@ Feature: Core service - Localization
     * def message = commonConstants.invalidParameters.emptyValue
 	* def code = commonConstants.invalidParameters.emptyValue
     * def module = commonConstants.invalidParameters.emptyValue
+    # calling upsert localization pretest
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError')
 	* match upsertResponseBody.error.fields[*].message contains localizationServiceConstants.expectedErrorMessages.Empty
 
@@ -109,6 +117,7 @@ Feature: Core service - Localization
 	* def code = 'AUTOMATION_SECTION_' + ranInteger(5) + '_FIELD_FEE'
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def tenantId = commonConstants.invalidParameters.emptyValue
+    # calling upsert localization pretest
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationErrorAccessingResource') 
 	* match upsertResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
 
@@ -118,6 +127,7 @@ Feature: Core service - Localization
     * def message = randomString(50)
     * def code = randomString(256)
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
+    # calling upsert localization pretest
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError')
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
@@ -128,6 +138,7 @@ Feature: Core service - Localization
     * def message = randomString(515)
 	* def code = 'AUTOMATION_SECTION_' + ranInteger(4) + '_FIELD_FEE'
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
+    # calling upsert localization pretest
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError') 
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
@@ -139,6 +150,7 @@ Feature: Core service - Localization
 	* def code = 'AUTOMATION_SECTION_' + ranInteger(4) + '_FIELD_FEE'
 	* def locale = randomString(256)
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
+    # calling upsert localization pretest
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError') 
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
@@ -152,7 +164,7 @@ Feature: Core service - Localization
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
     * def code = localizationMessageResponseBody.messages[index].code
     * def message = 'Automation Message' + ranInteger(5)
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageSuccessfully') 
     * assert updateResponseBody.messages[0].message == message
     * assert updateResponseBody.messages[0].code == code
@@ -167,7 +179,7 @@ Feature: Core service - Localization
     * def code = localizationMessageResponseBody.messages[index].code
     * def message = 'Automation Message' + ranInteger(5)
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageSuccessfully') 
     * assert updateResponseBody.messages[0].message == message
     * assert updateResponseBody.messages[0].code == code
@@ -180,7 +192,7 @@ Feature: Core service - Localization
     * def message = commonConstants.invalidParameters.emptyValue
 	* def code = commonConstants.invalidParameters.emptyValue
     * def module = commonConstants.invalidParameters.emptyValue
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageError') 
     * assert updateResponseBody.error.fields[0].message == localizationServiceConstants.expectedErrorMessages.Empty
 
@@ -188,6 +200,7 @@ Feature: Core service - Localization
         Scenario: Test by passing a invalid value for Tenant ID
     
     * def tenantId = commonConstants.invalidParameters.invalidValue
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageWithInvalidTenantIdError')  
 	* match updateResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
 
@@ -200,11 +213,11 @@ Feature: Core service - Localization
     * def code = localizationMessageResponseBody.messages[index].code
     * def message = 'Auto Message ' + ranInteger(5)
     * def module = localizationMessageResponseBody.messages[index].module
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageSuccessfully') 
     * assert updateResponseBody.messages[0].message == message
     * assert updateResponseBody.messages[0].code == code
-    #search
+    # calling search localization pretest 
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageWithMutipleModuleSuccessfully')
     * assert localizationMessageResponseBody.messages[0].message == message
 
@@ -216,6 +229,7 @@ Feature: Core service - Localization
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     * def code = 'AUTOMATION_CODE ' + ranInteger(5)
     * def message = 'Auto Message ' + ranInteger(5)
+    # calling create localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@createLocalizationMessageSuccessfully')
     * assert createResponseBody.messages[0].code == code
     * assert createResponseBody.messages[0].message == message
@@ -227,10 +241,11 @@ Feature: Core service - Localization
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     * def code = 'AUTOMATION_CODE ' + ranInteger(5)
     * def message = 'स्वचालन संदेश ' + ranInteger(5)
+    # calling create localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@createLocalizationMessageSuccessfully')
     * assert createResponseBody.messages[0].code == code
     * assert createResponseBody.messages[0].message == message
-    #search
+    # calling search localization pretest 
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationMessageWithMutipleModuleSuccessfully')
     * assert localizationMessageResponseBody.messages[0].message == message
     * assert localizationMessageResponseBody.messages[0].code == code
@@ -242,11 +257,12 @@ Feature: Core service - Localization
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     * def code = 'AUTOMATION_CODE ' + ranInteger(5)
     * def message = 'Automation Message' + ranInteger(5)
+    # calling create localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@createLocalizationMessageSuccessfully')
     * assert createResponseBody.messages[0].code == code
     * assert createResponseBody.messages[0].message == message
     * def message = 'Updated Automation Message ' + ranInteger(2)
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageSuccessfully') 
     * assert updateResponseBody.messages[0].message == message
     * assert updateResponseBody.messages[0].code == code
@@ -257,7 +273,7 @@ Feature: Core service - Localization
     * def message = commonConstants.invalidParameters.emptyValue
 	* def code = message
     * def module = message
-    #update 
+    # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageError') 
     * assert updateResponseBody.error.fields[0].message == localizationServiceConstants.expectedErrorMessages.Empty
 
@@ -272,6 +288,7 @@ Feature: Core service - Localization
     * def locale1 = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     * def code1 = 'AUTOMATION_CODE ' + ranInteger(5)
     * def message1 = 'Automation Message' + ranInteger(5)
+    # calling create multiple localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@createMultipleLocalizationMessageSuccessfully') 
     * match createResponseBody.messages[*].code contains ['#(code)', '#(code1)']
     * match createResponseBody.messages[*].message contains ['#(message)', '#(message1)']
@@ -280,6 +297,7 @@ Feature: Core service - Localization
         Scenario: Test by passing a invalid value for Tenant ID
     
     * def tenantId = commonConstants.invalidParameters.emptyValue
+    # calling create localization pretest
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageWithInvalidTenantIdError')  
 	* match updateResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
 
@@ -289,10 +307,12 @@ Feature: Core service - Localization
         Scenario: Test to search a localisation
     
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
+    # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
     * def module = localizationMessageResponseBody.messages[index].module
     * def code = localizationMessageResponseBody.messages[index].code
+    # calling search V2 localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV2Successfully')
     * assert localizationV2SearchResponseBody.messages[0].code == code
     * assert localizationV2SearchResponseBody.messages.length == 1
@@ -301,6 +321,7 @@ Feature: Core service - Localization
         Scenario: Test to search a localisation by passing multiple values
     
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
+    # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
     * def code = localizationMessageResponseBody.messages[index].code
@@ -308,6 +329,7 @@ Feature: Core service - Localization
     * def module1 = localizationMessageResponseBody.messages[index].module
     * def module2 = localizationMessageResponseBody.messages[index+1].module
     * def module = module1 + ',' + module2
+    # calling search V2 localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV2Successfully')
     * match localizationV2SearchResponseBody.messages[*].code contains code
     * match localizationV2SearchResponseBody.messages[*].code contains code1
@@ -318,8 +340,10 @@ Feature: Core service - Localization
     
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
+    # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def code = localizationMessageResponseBody.messages[index].code
+    # calling search V2 localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV1Error')
     * assert localizationV2SearchResponseBody.Errors[0].message == localizationServiceConstants.expectedErrorMessages.Nolocale
 
@@ -327,6 +351,7 @@ Feature: Core service - Localization
         Scenario: Test by passing a invalid , non existent,null value for locale in the request
 
     * def locale = commonConstants.invalidParameters.invalidValue
+    # calling search V2 localization pretest 
 	* call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV2Successfully')
 	* match localizationV2SearchResponseBody.messages == []
     * assert localizationV2SearchResponseBody.message == null
@@ -336,9 +361,11 @@ Feature: Core service - Localization
     
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
+    # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def code = localizationMessageResponseBody.messages[0].code
     * def tenantId = commonConstants.invalidParameters.emptyValue
+    # calling search V2 localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV2Error') 
 	* match localizationV2SearchResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
     
