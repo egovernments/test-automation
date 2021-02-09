@@ -1,7 +1,6 @@
 Feature: Core service - IDGenerate
 
-        Background:
-
+Background:
     * def jsUtils = read('classpath:jsUtils.js')
     #* def javaUtils = Java.type('com.egov.base.EGovTest')
     * def idGenServiceConstants = read('../constants/idGenerate.yaml')
@@ -9,9 +8,8 @@ Feature: Core service - IDGenerate
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def index = randomNumber(mdmsStatecommonMasters.IdFormat.length)
 
-        @IdGen_Generate_01 @positive @idGenerate
-        Scenario: Test a unique Id is created for every new application,receipt
-
+@IdGen_Generate_01 @positive @idGenerate
+Scenario: Test a unique Id is created for every new application,receipt
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
@@ -19,9 +17,8 @@ Feature: Core service - IDGenerate
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
-        @IdGen_GeneratetMulti_02 @positive @idGenerate
-        Scenario: Search for Localization in English(Specific Module)
-
+@IdGen_GeneratetMulti_02 @positive @idGenerate
+Scenario: Search for Localization in English(Specific Module)
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
@@ -37,9 +34,8 @@ Feature: Core service - IDGenerate
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
-        @IdGen_switchIdName_03 @positive @idGenerate
-        Scenario: Test by interchanging the id names from different modules
-
+@IdGen_switchIdName_03 @positive @idGenerate
+Scenario: Test by interchanging the id names from different modules
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
@@ -47,8 +43,8 @@ Feature: Core service - IDGenerate
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
-        @IdGen_invalidTenantId_04 @negative @idGenerate
-        Scenario: Test by passing a invalid or a nonexistent tenant id
+@IdGen_invalidTenantId_04 @negative @idGenerate
+Scenario: Test by passing a invalid or a nonexistent tenant id
     #setting invalid tenantId for negative scenario
     * def tenantId = commonConstants.invalidParameters.invalidTenantId
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
@@ -57,8 +53,8 @@ Feature: Core service - IDGenerate
     * call read('../pretests/idGeneratePretest.feature@idGenerateError')
     * assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-        @IdGen_BlankFormat_06 @negative @idGenerate
-        Scenario: Test by not passing any value for format
+@IdGen_BlankFormat_06 @negative @idGenerate
+Scenario: Test by not passing any value for format
     #setting sequence format as blank for negative scenario
     * def format = commonConstants.invalidParameters.emptyValue
     # calling id generate pretest
@@ -66,8 +62,8 @@ Feature: Core service - IDGenerate
     * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
     * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError
 
-        @IdGen_InvalidSeqFormat_07 @negative @idGenerate
-        Scenario: Test by not passing invalid Sequence format which is not in MDMS
+@IdGen_InvalidSeqFormat_07 @negative @idGenerate
+Scenario: Test by not passing invalid Sequence format which is not in MDMS
     #setting invalid sequence format for negative scenario
     * def format = idGenServiceConstants.invalidParameters.sequenceFormat
     # calling id generate pretest

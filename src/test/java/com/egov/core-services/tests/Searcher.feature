@@ -1,7 +1,6 @@
 Feature: Core service - Searcher
 
-        Background:
-
+Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def searcherConstants = read('../../core-services/constants/searcher.yaml')
@@ -18,9 +17,8 @@ Feature: Core service - Searcher
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * def MobileNum = searcherResponseBody.Bills[0].mobileNumber
 
-        @Searcher_Bill_01 @positive @Searcher
-        Scenario: Test searching for a bill using egov searcher API service
-    
+@Searcher_Bill_01 @positive @Searcher
+Scenario: Test searching for a bill using egov searcher API service
     * def mobileNumber = MobileNum
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
@@ -29,9 +27,8 @@ Feature: Core service - Searcher
     * assert searcherResponseBody.Bills[0].businessService == businesService
 
 
-        @Searcher_InvalidReqUrl_02 @negative @Searcher
-        Scenario: Test searching for a bill using egov searcher API service
-
+@Searcher_InvalidReqUrl_02 @negative @Searcher
+Scenario: Test searching for a bill using egov searcher API service
     * def businesService = businesServiceWS
     * def mobileNumber = MobileNum
     * def url1 = searcherWSURL
@@ -39,36 +36,30 @@ Feature: Core service - Searcher
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * assert searcherResponseBody.Bills.length == 0
 
-        @Searcher_InvalidTenant_03 @negative @Searcher
-        Scenario: Test by passing invalid/non existent or null value for tenant id
- 
+@Searcher_InvalidTenant_03 @negative @Searcher
+Scenario: Test by passing invalid/non existent or null value for tenant id
     * def tenantId = commonConstants.invalidParameters.emptyValue
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchError')
     * assert searcherResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-        @Searcher_Mandatory_04 @negative @Searcher
-        Scenario: Test by not passing the mandatory parameter tenantid
-
+@Searcher_Mandatory_04 @negative @Searcher
+Scenario: Test by not passing the mandatory parameter tenantid
     * def tenantId = commonConstants.invalidParameters.nullValue
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchWithoutTenantIdError')
     * match searcherResponseBody.Errors[0].message == errorManadatoryTenantId
     
-
-        @Searcher_MultipleSearch_06 @negative @Searcher
-        Scenario: Test by passing multiple parameters
-
+@Searcher_MultipleSearch_06 @negative @Searcher
+Scenario: Test by passing multiple parameters
     * def businesService = multiServiceCode
     * def mobileNumber = MobileNum
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * assert searcherResponseBody.Bills.length == 0
 
-
-        @Searcher_NullMobile_07 @negative @Searcher
-        Scenario: Test by passing null value for mobile number
-
+@Searcher_NullMobile_07 @negative @Searcher
+Scenario: Test by passing null value for mobile number
     * def businesService = businesServiceWS
     * def mobileNumber = commonConstants.invalidParameters.emptyValue
     # calling searcher pretest
@@ -76,10 +67,8 @@ Feature: Core service - Searcher
     * assert searcherResponseBody.Bills.length == 0
 
 
-
-        @Searcher_NullBusinessSer_08 @negative @Searcher
-        Scenario: Test by passing null value for Business Service
-
+@Searcher_NullBusinessSer_08 @negative @Searcher
+Scenario: Test by passing null value for Business Service
     * def businesService = commonConstants.invalidParameters.emptyValue
     * def mobileNumber = MobileNum
     # calling searcher pretest
@@ -87,9 +76,8 @@ Feature: Core service - Searcher
     * assert searcherResponseBody.Bills.length == 0
 
 
-        @Searcher_NullUrl_09 @negative @Searcher
-        Scenario: Test by passing null value for URL
-
+@Searcher_NullUrl_09 @negative @Searcher
+Scenario: Test by passing null value for URL
     * def mobileNumber = MobileNum
     * def url1 = commonConstants.invalidParameters.emptyValue
     # calling searcher pretest
