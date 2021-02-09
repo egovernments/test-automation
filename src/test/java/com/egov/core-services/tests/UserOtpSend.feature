@@ -1,13 +1,13 @@
 Feature: User OTP
 
-        Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
-  # initializing user otp request payload objects
-  * def userType = mdmsStateAccessControlRoles.roles[0].code
-  * def name = ranString(4)
-  * def permanentCity = cityCode
-  * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+Background:
+      * def jsUtils = read('classpath:jsUtils.js')
+      * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
+      # initializing user otp request payload objects
+      * def userType = mdmsStateAccessControlRoles.roles[0].code
+      * def name = ranString(4)
+      * def permanentCity = cityCode
+      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
         @UserOtp_Send_Register_01   @positive  @userOtp
         Scenario: Test to send the OTP to a valid mobile number during registration

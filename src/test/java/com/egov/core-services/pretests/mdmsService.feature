@@ -63,7 +63,10 @@ Feature: Searchmdms
         Scenario: Get mdms Successfully
             Given url getMdmsUrl
               And params mdmsParam
+              * print mdmsParam
               And request getMdmsRequest
              When method post
-             Then assert responseStatus == 200 || responseStatus == 400
-              And  def getMdmsResponseBody = response
+             And  def getMdmsResponseBody = response
+             * print getMdmsResponseBody
+             Then assert responseStatus == 200 || responseStatus == 400 || responseStatus == 403
+              
