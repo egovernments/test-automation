@@ -47,7 +47,7 @@ Apart from JDK and maven `kubectl` configuration is required for `port forwardin
 
 <!--Installation-->
 ### Installation
-Upon installing the above-required software. Follow the below steps to confiure and start execution
+Upon installing the above-required software. Follow the below steps to configure and start execution
 * Open [git bash](https://git-scm.com/downloads) or any other terminal and execute `git clone https://github.com/egovernments/test-automation.git` to clone the project repository in the system
 * Open command prompt or terminal and run `mvn clean test`, this will start execution on `QA` by default
 
@@ -90,5 +90,5 @@ The automated tests cover validations for following services.
 
 <!-- Upcoming Services -->
 ### Upcoming Services
-Service to be automated.
+Services to be automated.
 * municipal-services
