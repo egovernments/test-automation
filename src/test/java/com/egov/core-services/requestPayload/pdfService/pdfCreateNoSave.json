@@ -9,6 +9,6 @@
             "authToken": "#(authToken)",
             "responseType": "arraybuffer"
         },
-        "Bill": "#(Bill)"
+        "Bill": "#(bill)"
         }
     }

@@ -96,14 +96,14 @@ Feature: pdf service
 
         @pdf_create_invalid_key_09  @negative  @pdfservice
         Scenario: "Verify generating PDF invalid/nonexistant or by not passing key and check for errors(all the modules)"
-  * def key = pdfCreateConstant.parameters.invalid.key
+  * def key = ranString(5)
   # calling create pdf pretest
   * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfError')
   * print pdfCreateResponseBody
   * print pdfCreateConstant.errorMessages.invalidKey
   * def pdfCreateSecond = pdfCreateResponseBody.message
   * print pdfCreateSecond
-  * assert pdfCreateSecond == pdfCreateConstant.errorMessages.invalidKey
+  * assert pdfCreateSecond == pdfCreateConstant.errorMessages.invalidKey + key
 
         @pdf_createnosave_PT_01  @positive  @pdfservice
         Scenario: Generate PDF config for PT module for a given key and tenantid

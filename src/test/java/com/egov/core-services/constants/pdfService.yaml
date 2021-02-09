@@ -9,7 +9,7 @@ expectedMessages:
   message: Success
 errorMessages:
    invalidTenantId: ' tenantId is missing,'
-   invalidKey: ' no config found for key 123'
+   invalidKey: ' no config found for key '
    withoutParam: ' key is missing, tenantId is missing, no config found for key undefined'
    invalidWsKey: ' no config found for key ws-bill1'
         

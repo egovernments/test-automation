@@ -104,7 +104,7 @@ Feature: Pg services
         Scenario: Verify updating a payment transaction with invalid/non existent value for "transaction id" in the request body
   * def transactionId = ranString(10)
   # calling update pg transaction pretest
-  * call read('../../core-services/pretests/pgServiceUpdate.feature@updatePgTransactionError')
+  * call read('../../core-services/pretests/pgServiceUpdate.feature@invalidTransactionIdError')
   * print pgServicesUpdateResponseBody 
 
         @PGUpdate_NoTxnId_03  @negative  @pgservices
@@ -137,14 +137,20 @@ Feature: Pg services
 
 
         # Need to fix the testcase. so it is commented
-        # @PGSearch_MultipleTxn_03  @negative  @pgservices
+        @PGSearch_MultipleTxn_03  @negative  @pgservices
         Scenario: Verfiy searching transaction details using multiple txn id's
-  * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
-  * def mobileNumber = searcherResponseBody.Bills[0].mobileNumber
+#  * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
+#  * def mobileNumber = searcherResponseBody.Bills[0].mobileNumber
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
-  * def multipleTransactionIds = txnId
+  * def transactionIdFirst = txnId
+  * print transactionIdFirst
+  * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+  * call read('../../business-services/preTests/billingServicePretest.feature@fetchBill')
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
-  * eval multipleTransactionIds = multipleTransactionIds + ',' + txnId
+  * def transactionIdSecond = txnId
+  * print transactionIdSecond
+#  * eval multipleTransactionIds = multipleTransactionIds + ',' + txnId
+  * eval multipleTransactionIds = transactionIdFirst + ',' + transactionIdSecond
   * eval txnId = multipleTransactionIds
   * call read('../../core-services/pretests/pgServiceSearch.feature@searchPgTransactionSuccessfully')
   * print pgServicesSearchResponseBody
