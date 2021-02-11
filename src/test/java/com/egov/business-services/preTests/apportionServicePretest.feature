@@ -4,9 +4,9 @@ Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling apportion Json
-  * def apportionRequest = read('../../requestPayload/apportionService/apportion.json')
+  * def apportionRequest = read('../../business-services/requestPayload/apportionService/apportion.json')
     # calling apportion Json with No bill details
-  * def noBillDetailsApportionRequest = read('../../requestPayload/apportionService/noBillDetails.json')
+  * def noBillDetailsApportionRequest = read('../../business-services/requestPayload/apportionService/noBillDetails.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
 
