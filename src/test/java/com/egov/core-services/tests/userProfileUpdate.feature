@@ -8,7 +8,7 @@ Background:
         * print tenantId
         * call read('../../common-services/pretests/authenticationToken.feature')
         * def code = authUsername
-        * call read('../../business-services/preTests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
+        * call read('../../business-services/pretests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
         * def profilePayload = read('../../core-services/requestPayload/user/update/updateUser.json')
         * def errorMessage = read("../../core-services/constants/user.yaml")
         * def genericError = read("../../common-services/constants/genericConstants.yaml")
@@ -31,7 +31,7 @@ Background:
         # Steps to update user profile along with predefined field values
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
         # Steps to search user again to validate the updated details
-        * call read('../../business-services/preTests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
+        * call read('../../business-services/pretests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
         # Validate name which should be equal to username
         * assert hrmsResponseBody.Employees[0].user.name == username
         # Validate emailId which should be equal to email
@@ -93,7 +93,7 @@ Background:
         # Steps to update user profile with new random mobile number
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
         # Steps to search user through HRMS
-        * call read('../../business-services/preTests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
+        * call read('../../business-services/pretests/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
         # Validate user's mobileNumber is not equal with rendomMobileNumber
         * assert hrmsResponseBody.Employees[0].user.mobileNumber != randomMobileNo 
 
