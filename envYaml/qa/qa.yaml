@@ -1,5 +1,4 @@
 host: https://egov-micro-qa.egovernments.org/
-localhost: http://localhost:8079/
 stateCode: pb
 cityCode: amritsar
 # Super User credentials for login(need to create user manually)

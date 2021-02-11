@@ -1,6 +1,5 @@
 parameters:
   moduleName: RAINMAKER-PGR,RAINMAKER-TL
-  tenantId: pg
   masterName: ServiceDefs
 expectedResponse:
   serviceCode: "BlockOrOverflowingSewage"
@@ -23,3 +22,5 @@ errorMessages:
   invalidTenantId:
     code: Invalid_tenantId.MdmsCriteria.tenantId
     message: Invalid Tenant Id
+    codeQa: CustomException
+    messageQa: Not authorized to access this resource

@@ -1,4 +1,7 @@
 {
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
 	"tenantId": "#(tenantId)",
 	"value": "#(value)"
 }

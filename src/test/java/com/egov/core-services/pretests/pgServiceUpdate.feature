@@ -2,11 +2,11 @@ Feature: Update a payment transaction
 
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   * def pgServicesUpdatePayload = read('../../core-services/requestPayload/pgServices/pgServicesUpdate.json')
 
         @updatePgTransactionSuccessfully
         Scenario: Update Payment Gateway Transaction Successfully
+  * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
@@ -17,6 +17,7 @@ Feature: Update a payment transaction
             Given url pgServicesUpdate
      * print pgServicesUpdate 
               And params pgServicesUpdateParam
+     * print pgServicesUpdateParam
               And request pgServicesUpdatePayload
      * print pgServicesUpdatePayload
              When method post
@@ -24,19 +25,42 @@ Feature: Update a payment transaction
               And def pgServicesUpdateResponseHeader = responseHeaders
               And def pgServicesUpdateResponseBody = response
      * print pgServicesUpdateResponseBody
-
-        @updatePgTransactionError
+        
+        @invalidTransactionIdError
         Scenario: Update Payment Gateway Transaction Error
   * configure headers = read('classpath:websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
     {
-     transactionId: '#(transactionId)'
+     transactionId: '#(txnId)'
     }
     """ 
             Given url pgServicesUpdate
      * print pgServicesUpdate 
               And params pgServicesUpdateParam
+     * print pgServicesUpdateParam
+              And request pgServicesUpdatePayload
+     * print pgServicesUpdatePayload
+             When method post
+             Then status 400
+              And def pgServicesUpdateResponseHeader = responseHeaders
+              And def pgServicesUpdateResponseBody = response
+     * print pgServicesUpdateResponseBody
+
+        @updatePgTransactionError
+        Scenario: Update Payment Gateway Transaction Error
+  * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
+  * configure headers = read('classpath:websCommonHeaders.js')
+  * def pgServicesUpdateParam = 
+    """
+    {
+     transactionId: '#(txnId)'
+    }
+    """ 
+            Given url pgServicesUpdate
+     * print pgServicesUpdate 
+              And params pgServicesUpdateParam
+     * print pgServicesUpdateParam
               And request pgServicesUpdatePayload
      * print pgServicesUpdatePayload
              When method post
