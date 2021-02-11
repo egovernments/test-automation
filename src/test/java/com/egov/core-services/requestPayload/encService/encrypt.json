@@ -1,4 +1,7 @@
 {
+  "RequestInfo": {
+		"authToken": "#(authToken)"
+	},
     "encryptionRequests": [
       {
         "tenantId": "#(tenantId)",
@@ -25,4 +28,4 @@
         }
       }
     ]
-  }
+}
