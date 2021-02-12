@@ -184,11 +184,11 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
-        config.signUrl = envProps.host + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
+        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
