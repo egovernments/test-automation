@@ -135,7 +135,7 @@ Scenario: Verify searching transaction details using null/ invalid/non existent 
 
 
         # Need to fix the testcase. so it is commented
-        #@PGSearch_MultipleTxn_03  @negative  @pgservices
+        @PGSearch_MultipleTxn_03  @negative  @pgservices
         Scenario: Verfiy searching transaction details using multiple txn id's
 #  * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
 #  * def mobileNumber = searcherResponseBody.Bills[0].mobileNumber

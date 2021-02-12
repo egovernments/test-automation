@@ -24,9 +24,7 @@ import net.minidev.json.JSONValue;
 	"classpath:com/egov/business-services",
 	"classpath:com/egov/common-services",
 	"classpath:com/egov/municipal-services"},
-	tags = {"@reports,@searchMdms,@Searcher,@location,@localization,@userotp,@eGovUser,@accessControl," +
-			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
-			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
+	tags = {"@ChartOfAccountCreate_UniqueBank_02"})
 // below tags will be added for execution once port fowarding is implemented on the system under execution
 // @encService and @apportionService
 

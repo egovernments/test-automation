@@ -185,12 +185,6 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
-        //registered mobile number for citizen
-      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
-
-        //eGovWorkFlow Business
-        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
-
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -221,4 +215,3 @@ function() {
 
     return config;
 }
-
