@@ -222,9 +222,13 @@ function() {
     karate.configure('readTimeout', 120000);
 
     return config;
+<<<<<<< HEAD
     }catch(e){
         karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
         java.lang.System.exit(0);
     }
 }
 
+=======
+}
+>>>>>>> 9ae7781... chartofaccount craete & search
