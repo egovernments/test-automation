@@ -11,6 +11,11 @@ function() {
     	locale = 'en_IN';
     }
 
+    if(!karate.properties['configPath']){
+        karate.log("Stoppping Execution!!! Error in config file path. Please Check!!!")
+        java.lang.System.exit(0);
+    }
+    try{
     var envProps = karate.read('file:' + karate.properties['configPath']);
     
     var path = karate.read('file:envYaml/common/common.yaml');
@@ -221,5 +226,9 @@ function() {
     karate.configure('readTimeout', 120000);
 
     return config;
+    }catch(e){
+        karate.log("Stoppping Execution!!!Error in config details. Please Check!!!")
+        java.lang.System.exit(0);
+    }
 }
 
