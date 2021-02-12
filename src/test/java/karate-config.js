@@ -11,26 +11,33 @@ function() {
     	locale = 'en_IN';
     }
 
-    var envProps = karate.read('file:' + karate.properties['configPath']);
-    
-    var path = karate.read('file:envYaml/common/common.yaml');
-    
-    if(!tenantId){
-        var stateCode = 'pb';
-        var cityCode = 'amritsar';
-    	tenantId = stateCode + '.' + cityCode;
+    if(!karate.properties['configPath']){
+        karate.log(java.lang.String.format("Terminating execution due to %s config file path",
+        karate.properties['configPath']))
+        java.lang.System.exit(0);
     }
 
-    var config = {
-        env : env,
-        stateCode : envProps.stateCode,
-        cityCode : envProps.cityCode,
-        tenantId : tenantId,
-		locale : locale,
-        retryCount : 30,
-        retryInterval : 10000 //ms
-    };
-        
+    var envProps = karate.read('file:' + karate.properties['configPath']);
+
+    var path = karate.read('file:envYaml/common/common.yaml');
+
+    if(!tenantId){
+         var stateCode = 'pb';
+         var cityCode = 'amritsar';
+         tenantId = stateCode + '.' + cityCode;
+    }
+
+  try{
+
+   var config = {
+         env : env,
+         stateCode : envProps.stateCode,
+         cityCode : envProps.cityCode,
+         tenantId : tenantId,
+         locale : locale,
+         retryCount : 30,
+         retryInterval : 10000 //ms
+   };
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -221,5 +228,9 @@ function() {
     karate.configure('readTimeout', 120000);
 
     return config;
+    }catch(e){
+        karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
+        java.lang.System.exit(0);
+    }
 }
 
