@@ -215,6 +215,10 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
 
+        //egfMaster chart of account
+        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
