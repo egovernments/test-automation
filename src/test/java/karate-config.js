@@ -12,30 +12,32 @@ function() {
     }
 
     if(!karate.properties['configPath']){
-        karate.log("Stoppping Execution!!! Error in config file path. Please Check!!!")
+        karate.log(java.lang.String.format("Terminating execution due to %s config file path",
+        karate.properties['configPath']))
         java.lang.System.exit(0);
     }
-    try{
+
     var envProps = karate.read('file:' + karate.properties['configPath']);
-    
+
     var path = karate.read('file:envYaml/common/common.yaml');
-    
+
     if(!tenantId){
-        var stateCode = 'pb';
-        var cityCode = 'amritsar';
-    	tenantId = stateCode + '.' + cityCode;
+         var stateCode = 'pb';
+         var cityCode = 'amritsar';
+         tenantId = stateCode + '.' + cityCode;
     }
 
-    var config = {
-        env : env,
-        stateCode : envProps.stateCode,
-        cityCode : envProps.cityCode,
-        tenantId : tenantId,
-		locale : locale,
-        retryCount : 30,
-        retryInterval : 10000 //ms
-    };
-        
+  try{
+
+   var config = {
+         env : env,
+         stateCode : envProps.stateCode,
+         cityCode : envProps.cityCode,
+         tenantId : tenantId,
+         locale : locale,
+         retryCount : 30,
+         retryInterval : 10000 //ms
+   };
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -227,7 +229,7 @@ function() {
 
     return config;
     }catch(e){
-        karate.log("Stoppping Execution!!!Error in config details. Please Check!!!")
+        karate.log(karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e)))
         java.lang.System.exit(0);
     }
 }
