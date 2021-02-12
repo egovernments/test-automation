@@ -1,0 +1,19 @@
+{
+    "requestInfo":{
+         
+         "authToken":"#(authToken)"
+         
+      },
+       "chartOfAccounts": 
+          [
+                  {
+                   "glcode":"#(glcode)",
+                      "name":"#(name)",
+                      "isActiveForPosting":"#(isActiveForPosting)",
+                      "type":"#(type)",
+                      "classification":"#(classification)",
+                      "functionRequired":"#(functionRequired)",
+                      "budgetCheckRequired":"#(budgetCheckRequired)"		   	
+                    }
+          ]
+   }
