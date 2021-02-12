@@ -1,7 +1,6 @@
 Feature: Business Services - Billing Service Demand tests
 
         Background:
-    * call read('../../common-services/pretests/egovMdmsPretest.feature@successSearchState')
     * def jsUtils = read('classpath:jsUtils.js')
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
