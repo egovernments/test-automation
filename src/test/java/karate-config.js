@@ -229,7 +229,7 @@ function() {
 
     return config;
     }catch(e){
-        karate.log(karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e)))
+        karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
         java.lang.System.exit(0);
     }
 }
