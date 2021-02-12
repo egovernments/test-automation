@@ -81,8 +81,9 @@ employee:
 ## Run with Command Prompt
 It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
  * Open command prompt or terminal on project folder
- * Execute `mvn clean test "-DconfigPath=/path/to/config/file.yaml" "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov"
- ###### For example  `mvn clean test "-DconfigPath=/Users/admin/eGovAuto/config.yaml" "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov"
+ * Execute `mvn clean test "-DconfigPath=/path/to/config/file.yaml" "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov"`
+ ###### For example  
+ `mvn clean test "-DconfigPath=/Users/admin/eGovAuto/config.yaml" "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov"`
  
 ## List Of Tags
 The listed tags are available currently in the framework
