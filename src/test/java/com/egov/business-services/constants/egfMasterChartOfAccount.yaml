@@ -1,8 +1,4 @@
-parameters:
-# chart of acccount create parameters
- isActiveForPosting: false
- functionRequired: false
- budgetCheckRequired: false
+# Error messages
 errorMessages:
  forExistingBankName: The  value  $token for the field name already exists in the system. Please provide different value
  forInvalidTenantId: Not authorized to access this resource
