@@ -10,8 +10,14 @@ function() {
     if(!locale){
     	locale = 'en_IN';
     }
+
+
+    if(!karate.properties['configPath'] && env){
+        var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
+    }else{
+        var envProps = karate.read('file:' + karate.properties['configPath']);
+    }
     
-    var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
     var path = karate.read('file:envYaml/common/common.yaml');
     
     if(!tenantId){
