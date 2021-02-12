@@ -40,10 +40,6 @@ To setup this framework two major softwares needs to be installed into the syste
  * First install [HomeBrew](https://brew.sh/)
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
- 
-Apart from JDK and maven `kubectl` configuration is required for `port forwarding`. Steps are mentioned below
- * [Install kubectl](https://gist.github.com/mrbobbytables/d9e5c7224dbba989cf0b8a30d7a231a4)
- * Configure kubectl for port forwarding
 
 <!--Installation-->
 ### Installation
