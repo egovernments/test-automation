@@ -10,8 +10,9 @@ function() {
     if(!locale){
     	locale = 'en_IN';
     }
+
+    var envProps = karate.read('file:' + karate.properties['configPath']);
     
-    var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
     var path = karate.read('file:envYaml/common/common.yaml');
     
     if(!tenantId){
@@ -171,16 +172,16 @@ function() {
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
         //apportion
-        config.apportionUrl = envProps.localhost + path.endPoints.apportion.bill;
+        config.apportionUrl = envProps.host + path.endPoints.apportion.bill;
         //dashboard
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
-        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
+        config.signUrl = envProps.host + path.endPoints.encService.sign;
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
