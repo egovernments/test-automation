@@ -6,8 +6,6 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Configurations](#configurations)
-* [Run Command Details](#run-command-details)
-* [Configure Test Runner](#configure-test-runner)
 * [Run with Command Prompt](#run-with-command-prompt)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
@@ -42,46 +40,46 @@ To setup this framework two major softwares needs to be installed into the syste
  * First install [HomeBrew](https://brew.sh/)
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
- 
-Apart from JDK and maven `kubectl` configuration is required for `port forwarding`. Steps are mentioned below
- * [Install kubectl](https://gist.github.com/mrbobbytables/d9e5c7224dbba989cf0b8a30d7a231a4)
- * Configure kubectl for port forwarding
 
 <!--Installation-->
 ### Installation
 Upon installing the above-required software. Follow the below steps to configure and start execution
 * Open [git bash](https://git-scm.com/downloads) or any other terminal and execute `git clone https://github.com/egovernments/test-automation.git` to clone the project repository in the system
-* Open command prompt or terminal and run `mvn clean test`, this will start execution on `QA` by default
 
 <!--Configurations-->
 ### Configurations
   ###### Application Level 
   * Create role action mapping as per the requirement 
   * Create a new user as per the mapped role
+  * Create another user for updating profile of existing user scenario
+  * Use the above credentials in environment config file
   ###### Project Level 
-  * Update the configuration parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments under `envYaml/<env>/<env>.yaml`
-  * Use the credentials of user created for the newly mapped role
+  * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. For ex:`/Users/admin/Desktop/config.yaml`
+  * Create the environment config file in below format
+  ```yaml
+  host: hostUrl
+stateCode: pb
+cityCode: amritsar
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: userName
+  password: password
+  type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: userName
+  password: password
+  type: EMPLOYEE
+  ```
+  * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
   
-  
-## Run Command Details
- ###### On DEV
- *  `mvn clean test "-Dkarate.env=dev"`
- ###### On QA
- *  `mvn clean test "-Dkarate.env=qa"`
- ###### On UAT
- *  `mvn clean test "-Dkarate.env=uat"`
-
-## Configure Test Runner
-By default framework will execute all of the test features, to control this or to specify any particular test feature file follow the below steps
- * Open `EGovTest.java` from `src/test/java/com/egov/base` 
- * Specify the test case tag or service tag followed by `@` under `tags{}`. For example `@collectionServices`
- * Execute the run commands as mentioned
  
 ## Run with Command Prompt
 It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
  * Open command prompt or terminal on project folder
- * Execute `mvn clean test "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov" "-Dkarate.env=<env>"`
- ###### For example  `mvn clean test "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov" "-Dkarate.env=qa"`  
+ * Execute `mvn clean test "-DconfigPath=/path/to/config/file.yaml" "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov"`
+ ###### For example  
+ `mvn clean test "-DconfigPath=/Users/admin/eGovAuto/config.yaml" "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov"`
  
 ## List Of Tags
 The listed tags are available currently in the framework

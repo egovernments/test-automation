@@ -10,26 +10,34 @@ function() {
     if(!locale){
     	locale = 'en_IN';
     }
-    
-    var envProps = karate.read('file:envYaml/' + env + '/' + env +'.yaml');
-    var path = karate.read('file:envYaml/common/common.yaml');
-    
-    if(!tenantId){
-        var stateCode = 'pb';
-        var cityCode = 'amritsar';
-    	tenantId = stateCode + '.' + cityCode;
+
+    if(!karate.properties['configPath']){
+        karate.log(java.lang.String.format("Terminating execution due to %s config file path",
+        karate.properties['configPath']))
+        java.lang.System.exit(0);
     }
 
-    var config = {
-        env : env,
-        stateCode : envProps.stateCode,
-        cityCode : envProps.cityCode,
-        tenantId : tenantId,
-		locale : locale,
-        retryCount : 30,
-        retryInterval : 10000 //ms
-    };
-        
+    var envProps = karate.read('file:' + karate.properties['configPath']);
+
+    var path = karate.read('file:envYaml/common/common.yaml');
+
+    if(!tenantId){
+         var stateCode = 'pb';
+         var cityCode = 'amritsar';
+         tenantId = stateCode + '.' + cityCode;
+    }
+
+  try{
+
+   var config = {
+         env : env,
+         stateCode : envProps.stateCode,
+         cityCode : envProps.cityCode,
+         tenantId : tenantId,
+         locale : locale,
+         retryCount : 30,
+         retryInterval : 10000 //ms
+   };
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -171,16 +179,16 @@ function() {
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
         //apportion
-        config.apportionUrl = envProps.localhost + path.endPoints.apportion.bill;
+        config.apportionUrl = envProps.host + path.endPoints.apportion.bill;
         //dashboard
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
-        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
+        config.signUrl = envProps.host + path.endPoints.encService.sign;
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
@@ -220,5 +228,9 @@ function() {
     karate.configure('readTimeout', 120000);
 
     return config;
+    }catch(e){
+        karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
+        java.lang.System.exit(0);
+    }
 }
 

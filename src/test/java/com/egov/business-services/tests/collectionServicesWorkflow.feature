@@ -19,9 +19,9 @@ Background:
 @workflow_payment_01 @workflow_payment_CHEQUEBOUNCEreason_08 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with valid field values
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to create a Payment
-    * call read('../preTests/collectionServicesPretest.feature@createPayment')
+    * call read('../pretests/collectionServicesPretest.feature@createPayment')
     # Defining paymentId with payment id fetched from collectionServicesResponseBody
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Steps to process workflow
@@ -52,9 +52,9 @@ Scenario: Test to Cancel a payment in workflow with valid field values
 @workflow_payment_samePaymentID_02 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with same paymentId
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to create a Payment
-    * call read('../preTests/collectionServicesPretest.feature@createPayment')
+    * call read('../pretests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Steps to process workflow
     * call read('../pretests/collectionServicesPretest.feature@processworkflow')
@@ -65,7 +65,7 @@ Scenario: Test to Cancel a payment in workflow with same paymentId
 @workflow_payment_NoPaymentID_03 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with no paymentId
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to process workflow where paymentId field is removed from the request
     * call read('../pretests/collectionServicesPretest.feature@removeFieldFromWorkFlow') {'removeFieldPath': '$.paymentWorkflows[0].paymentId'}
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.mustNotBeNull
@@ -73,7 +73,7 @@ Scenario: Test to Cancel a payment in workflow with no paymentId
 @workflow_payment_InValidPaymentID_04 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with invalid paymentId
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     * def paymentId = invalidPaymentId
     # Steps to process workflow with invalid payment Id
     * call read('../pretests/collectionServicesPretest.feature@errorinworkflow')
@@ -82,9 +82,9 @@ Scenario: Test to Cancel a payment in workflow with invalid paymentId
 @workflow_payment_OTHERreason_05 @positive @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with OTHER as reason
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to create a Payment
-    * call read('../preTests/collectionServicesPretest.feature@createPayment')
+    * call read('../pretests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * def reason = collectionServicesConstants.parameters.otherReason
     # Steps to process workflow
@@ -115,9 +115,9 @@ Scenario: Test to Cancel a payment in workflow with OTHER as reason
 @workflow_payment_NoReason_06 @negative @collectionServiceWorkflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with no reason
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to create a Payment
-    * call read('../preTests/collectionServicesPretest.feature@createPayment')
+    * call read('../pretests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Steps to process workflow where reason field is removed from the request
     * call read('../pretests/collectionServicesPretest.feature@removeFieldFromWorkFlow') {'removeFieldPath': '$.paymentWorkflows[0].reason'}
@@ -127,9 +127,9 @@ Scenario: Test to Cancel a payment in workflow with no reason
 @workflow_payment_InValidReason_07 @negative @collectionServiceWorkflow @collectionService_bug
 Scenario: Test to Cancel a payment in workflow with invalid reason
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to create a Payment
-    * call read('../preTests/collectionServicesPretest.feature@createPayment')
+    * call read('../pretests/collectionServicesPretest.feature@createPayment')
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     * def reason = invalidReason
     # Steps to process workflow with Invalid reason
@@ -141,7 +141,7 @@ Scenario: Test to Cancel a payment in workflow with invalid reason
 @workflow_payment_NotenantID_09 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with no tenantId
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     # Steps to process workflow where tenantId field is removed from the request
     * call read('../pretests/collectionServicesPretest.feature@removeFieldFromWorkFlow') {'removeFieldPath': '$.paymentWorkflows[0].tenantId'}
     * print collectionServicesResponseBody
@@ -150,7 +150,7 @@ Scenario: Test to Cancel a payment in workflow with no tenantId
 @workflow_payment_InValidtenantID_10 @negative @collectionServiceWorkflow @collectionServices
 Scenario: Test to Cancel a payment in workflow with invalid tenantId
     # Steps to process fetchBill
-    * call read('../preTests/billingServicePretest.feature@fetchBill')
+    * call read('../pretests/billingServicePretest.feature@fetchBill')
     * def tenantId = randomString(5)
     # Steps to process workflow with invalid tenantId
     * call read('../pretests/collectionServicesPretest.feature@errorInauthworkflow')
