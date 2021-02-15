@@ -1,10 +1,10 @@
 Feature: Chart of account
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def glcode = ranInteger(6)
-  * def name = ranString(5) + "Bank"
   * def egfMasterChartOfAccountConstant = read('../../business-services/constants/egfMasterChartOfAccount.yaml')
   # Required parameters to create acccount
+  * def glcode = ranInteger(6)
+  * def name = ranString(5) + "Bank"
   * def isActiveForPosting = 'false'
   * def functionRequired = 'false'
   * def budgetCheckRequired = 'false'

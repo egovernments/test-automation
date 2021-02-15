@@ -1,12 +1,12 @@
 Feature: Chart of account search
 
-        Background:
+Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def chartOfAccountSearchPayload = read('../../business-services/requestPayload/egfMasterChartOfAccount/search.json')
 
 @searchAccountSuccessfully
-        Scenario: Searching chart of accounts through API call
+Scenario: Searching chart of accounts through API call
   * call read('../../business-services/tests/egfMasterChartOfAccount.feature@ChartOfAccountCreate_01')
   * def chartOfAccountSearcheParam = 
     """
