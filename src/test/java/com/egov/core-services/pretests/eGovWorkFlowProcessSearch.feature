@@ -125,3 +125,24 @@ Feature: Perform search using business id
              Then status 400
               And def processSearchResponseHeader = responseHeaders
               And def processSearchResponseBody = response
+
+@searchAssigneeSuccess
+Scenario: Perform search using business id
+  * def processSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     assignee: '#(uuid)'
+    }
+
+    """ 
+     Given url workFlowProcess 
+     * print workFlowProcess 
+     And params processSearchParam
+     And request workFlowProcessSearchPayload
+     * print workFlowProcessSearchPayload
+     When method post
+     Then status 200
+     And def processSearchResponseHeader = responseHeaders
+     And def processSearchResponseBody = response
+     * print processSearchResponseBody

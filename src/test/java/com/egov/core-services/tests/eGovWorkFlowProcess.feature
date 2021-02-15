@@ -17,25 +17,25 @@ Background:
 Scenario: Perform search using business id, tenant and history
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
- * print processSearchResponseBody
+ * match processSearchResponseBody == '#present'
 
 @Search_withoutBusId_02  @positive  @egovWorkflowProcess
 Scenario: Perform search using only tenant and history
   # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessWithoutBusinessid')
-  * print processSearchResponseBody
+  * match processSearchResponseBody == '#present'
 
 @Search_onlyTenant_03  @positive  @egovWorkflowProcess
 Scenario: Perform search using only tenant
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessWithOnlyTenantid')
- * print processSearchResponseBody
+ * match processSearchResponseBody == '#present'
 
 @Search_NoInputParams_04  @positive  @egovWorkflowProcess
 Scenario: Perform search by not passing any input params
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessWithNoParameter')
- * print processSearchResponseBody
+ * match processSearchResponseBody == '#present'
 
 @Search_Invaid_tenant_05  @negative  @egovWorkflowProcess
 Scenario: Perform search by passing invalid/non existent or null value for tenant id and check for errors
@@ -43,7 +43,7 @@ Scenario: Perform search by passing invalid/non existent or null value for tenan
  * def tenantId = invalidTenantId
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessWithInvalidTenantid')
- * print processSearchResponseBody
+ * match processSearchResponseBody == '#present'
 
 @Search_Invaid_history_06  @negative  @egovWorkflowProcess
 Scenario: Perform search by passing invalid/non existent or null value for histroy and check for errors
@@ -51,7 +51,7 @@ Scenario: Perform search by passing invalid/non existent or null value for histr
  * def history = invalidHistory
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchProcessError')
- * print processSearchResponseBody 
+ * match processSearchResponseBody == '#present'
 
 @Search_MultipleTenant_07 @negative  @egovWorkflowProcess
 Scenario: Perform search by passing multple values for tenantId
@@ -59,7 +59,7 @@ Scenario: Perform search by passing multple values for tenantId
  * def tenantId = mdmsCityTenant.tenants[1].code + ',' + mdmsCityTenant.tenants[3].code
  # calling search workflow pretest
  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
- * print processSearchResponseBody
+ * match processSearchResponseBody == '#present'
 
 @Search_MultipleBusIds_09  @negative  @egovWorkflowProcess
 Scenario: Perform search by passing multple values for Business Id
@@ -69,7 +69,7 @@ Scenario: Perform search by passing multple values for Business Id
   * eval businessIds = multipleBusinessId
   # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
-  * print processSearchResponseBody
+  * match processSearchResponseBody == '#present'
 
 @Search_OffsetLimit_10  @positive  @egovWorkflowProcess
 Scenario: Perform search by passing offset and limit
@@ -78,7 +78,17 @@ Scenario: Perform search by passing offset and limit
   * def end = '10'
   # calling search workflow pretest
   * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessOffsetAndLimit')
-  * print processSearchResponseBody
+  * match processSearchResponseBody == '#present'
+
+@Search_Assignee_11  @positive  @egovworkflowprocess
+Scenario: Perform Search by passing assignee param and check the sorting order (created time DESC). 
+  * call read('.././core-services/pretests/eGovWorkFlowProcessSearch.feature@searchAssigneeSuccess')
+  * match processSearchResponseBody == '#present'
+
+@Search_NextAction_12  @positive  @egovworkflowprocess
+Scenario: Perform search and verify that the nextActions in search response is populated based on the role of user making search call
+  * call read('.././core-services/pretests/eGovWorkFlowProcessSearch.feature@processsearchsuccess')
+  * match processSearchResponseBody == '#present'
 
 @Process_count  @positive  @egovWorkflowProcess
 Scenario: Perform search to get the count of process

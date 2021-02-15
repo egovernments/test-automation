@@ -166,7 +166,10 @@ function generateUUID(){
     return uuid
 }
 
-/** To validate expected result and actual result with dynamic value */
+/** To validate expected result and actual result with dynamic value
+ * response: will get after execution
+ * constant: constant value in constant yaml file
+ */
 function toGetDynamicValueFromResponse(response, constant)
 {        
         var responseArray = response.split("  ", 3);   

@@ -18,3 +18,9 @@ errorMessages:
   invalidReceipt: "Payment not found in the system or not in editable state, "
   mustNotBeNull: must not be null
   NotAuthorized: Not authorized to access this resource
+  instrumentDateAsNull: Instrument Date Input is mandatory for cheque and DD
+  instrumentDatePastNinetyDays: "Cheque/DD date should be less than and within 90 days of Current Date"
+  futureInstrumentDate: Cheque/DD date can not be future Date
+  moreThanDueAmount: The amount to be paid is more than amount due
+  instrumentNumberAsEmptyString: Instrument Number is mandatory for Cheque, DD, Card
+  transactionNumberAsEmptyString: Transaction Number is mandatory for Card and online payment

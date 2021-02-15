@@ -111,3 +111,45 @@ Feature: collection-services-Create tests
     * def billId = fetchBillResponse.Bill[0].id
     * def negativeAmountError = "The amount paid for the paymentDetail with bill number: " + billId
     * match response.Errors[0].message == negativeAmountError
+
+    @Create_PaymentWith_PaymentModeCheque_11 @positive @CreatePayment1 @collectionServices
+    Scenario: Test to Create Payment with paymentMode CHEQUE
+    # Make a payment with cheque
+    * call read('../../business-services/preTests/collectionServicesPretest.feature@chequePaymentMethod')
+    * match response.ResponseInfo.status == '200 OK'
+
+@Create_PaymentWithNoInstrumentDate_12 @negative @CreatePayment1 @collectionServices
+    Scenario: Test to Create Payment with no instrument date
+    # Make a payment with cheeque
+    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForInstrumentDateWihChequePayment')
+    * match response.Errors[0].message == instrumentDateError
+
+@Create_PaymentWithPast90InstrumentDate_13 @negative @CreatePayment1 @collectionServices
+   Scenario: Test to Create Payment with Past 90 instrument date
+   # Make a payment with cheeque
+   * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForPastDaysInstrumentDateWihChequePayment')
+   * match response.Errors[0].message == instrumentPastDateError
+
+@Create_PaymentWithFutureInstrumentDate_14 @negative @CreatePayment1 @collectionServices
+   Scenario: Test to Create Payment with future instrument date
+   # Make a payment with cheeque
+   * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForFutureInstrumentDateWihChequePayment')
+   * match response.Errors[0].message == instrumentFutureDateError
+
+@Create_PaymentWithMorethanAmountDue_15 @negative @CreatePayment1 @collectionServices
+   Scenario: Test to Create Payment with more than amount due
+   # Make a payment with cheeque
+   * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForMorethanDueAmountWihChequePayment')
+   * match response.Errors[0].message == moreThanDueAmountError
+
+@Create_PaymentWithNoInstrumentNumber_16 @negative @CreatePayment1 @collectionServices
+   Scenario: Test to Create Payment with No Instrument number
+   # Make a payment with cheeque
+   * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForInstrumentNumberWihChequePayment')
+   * match response.Errors[0].message == instrumentNumberError
+
+@Create_PaymentWithNoTransactioNumber_17 @negative @CreatePayment1 @collectionServices
+   Scenario: Test to Create Payment with No Transaction number
+   # Make a payment with cheeque
+   * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForTransactionNumberWihChequePayment')
+   * match response.Errors[0].message == transactionNumberError

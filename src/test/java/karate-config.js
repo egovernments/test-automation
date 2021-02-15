@@ -193,6 +193,14 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
+        //url shorten
+        config.shortenUrl = envProps.host + path.endPoints.urlShorten.shorten
+
+        //egfMaster chart of account
+        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
+        config.chartOfAccountUpdate = envProps.host + path.endPoints.egfMasterChartOfAccount.update
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -215,10 +223,6 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
 
-        //egfMaster chart of account
-        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
-        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
-
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', tenantId);
@@ -226,17 +230,8 @@ function() {
     karate.configure('readTimeout', 120000);
 
     return config;
-<<<<<<< HEAD
-<<<<<<< HEAD
     }catch(e){
         karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
         java.lang.System.exit(0);
     }
 }
-
-=======
-}
->>>>>>> 9ae7781... chartofaccount craete & search
-=======
-}
->>>>>>> 59bc1b99eeabf2ce0266cedf33c8b047ccee1067
