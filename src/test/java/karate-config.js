@@ -227,6 +227,7 @@ function() {
 
     return config;
 <<<<<<< HEAD
+<<<<<<< HEAD
     }catch(e){
         karate.log(java.lang.String.format("Terminating execution due to %s in configuration", e))
         java.lang.System.exit(0);
@@ -236,3 +237,6 @@ function() {
 =======
 }
 >>>>>>> 9ae7781... chartofaccount craete & search
+=======
+}
+>>>>>>> 59bc1b99eeabf2ce0266cedf33c8b047ccee1067

@@ -1,6 +1,6 @@
 Feature: Chart of account create
 
-  Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def chartOfAccountCreatePayload = read('../../business-services/requestPayload/egfMasterChartOfAccount/create.json')
@@ -36,8 +36,11 @@ Feature: Chart of account create
               * print isActiveForPosting
               And def id = chartOfAccountCreateResponseBody.chartOfAccounts[0].id
               * print id
+<<<<<<< HEAD
               And def budgetCheckRequired = chartOfAccountCreateResponseBody.chartOfAccounts[0].budgetCheckRequired
               * print budgetCheckRequired
+=======
+>>>>>>> 59bc1b99eeabf2ce0266cedf33c8b047ccee1067
      * print chartOfAccountCreateResponseBody
 
 @createAccountError
