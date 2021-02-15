@@ -8,7 +8,12 @@ parameters:
   # workflow
   reason: CHEQUEBOUNCE
   action: CANCEL
-  otherReason: "OTHER"                                          
+  otherReason: "OTHER"  
+  # Cheque payment mode (Fetching data from here as there is no bill pay scenario for cheque)
+  paymentModeForCheque: CHEQUE
+  ifscCode: SBIN0002814
+  transactionNumberForCheque: 1234567899876541001
+  instrumentNumberForCheque: 1234567899876541001                                        
 errorMessages:
   paidBillId: Bill has already been paid or is in pending state
   invalidBillId: Bill IDs provided does not exist or is in an invalid state

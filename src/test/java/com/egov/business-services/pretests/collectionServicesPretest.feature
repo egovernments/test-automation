@@ -14,10 +14,20 @@ Background:
   * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
   * def transactionNumber = collectionServicesConstants.parameters.transactionNumber
   * def instrumentNumber = collectionServicesConstants.parameters.instrumentNumber
+  * def paymentModeForCard = collectionServicesConstants.parameters.paymentMode2
+  * def paymentModeForCheque = collectionServicesConstants.parameters.paymentModeForCheque
+  * def transactionNumberForCheque = collectionServicesConstants.parameters.transactionNumberForCheque
+  * print transactionNumberForCheque
+  * def instrumentNumberForCheque = collectionServicesConstants.parameters.instrumentNumberForCheque
+  * print instrumentNumberForCheque
+  * def instrumentDate = getCurrentEpochTime()
+  * def ifscCode = collectionServicesConstants.parameters.ifscCode
+  * def invalidBillId = generateUUID()
   * def invalidBillId = generateUUID()
   * def createPaymentRequest = read('../../business-services/requestPayload/collection-services/create.json')
   * def workflowRequest = read('../../business-services/requestPayload/collection-services/workflow.json')
   * def searchPaymentRequest = read('../../business-services/requestPayload/collection-services/search.json')
+  * def createPaymentRequestForCheque = read('../../business-services/requestPayload/collection-services/createPaymentWithCheque.json')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def invalidBillId = 'invalid_'+randomNumber(4)
   * def invalidBusinessId = 'PT'+randomNumber(4)
@@ -265,6 +275,7 @@ Scenario: Collection Service error workflow call
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
 
+# Payment with cheque
 @chequePaymentMethod
 Scenario: Steps to create a payment with Cheque payment method
   * def amount = fetchBillResponse.Bill[0].totalAmount
