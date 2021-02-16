@@ -1,0 +1,12 @@
+chartOfAccount:
+  params:
+    isActiveForPosting: false
+    type: B
+    classification: 1
+    functionRequired: false
+    budgetCheckRequired: false
+
+chartOfAccountDeatails:
+  params:
+    tableName: contractor
+    active: true 

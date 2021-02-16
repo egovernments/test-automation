@@ -199,6 +199,15 @@ function() {
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
+        // egfMaster-ChartOfAccountDetails - Create account details type
+        config.accountDetailsType = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.accountDetailsType
+        // egfMaster-ChartOfAccountDetails - Create chart of account details
+        config.createAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.create
+
+        // Need to be removed
+        config.createCharOfAccount = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        //*********/
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
