@@ -1,8 +1,6 @@
 {
     "requestInfo":{
-         
          "authToken":"#(authToken)"
-         
       },
        "chartOfAccounts": 
           [

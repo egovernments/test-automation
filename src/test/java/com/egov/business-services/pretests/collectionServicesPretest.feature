@@ -287,12 +287,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForInstrumentDateWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -306,12 +304,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForPastDaysInstrumentDateWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -325,12 +321,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForFutureInstrumentDateWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -344,12 +338,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForMorethanDueAmountWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -362,12 +354,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForInstrumentNumberWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -381,12 +371,10 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody
 
 @errorForTransactionNumberWihChequePayment
 Scenario: Steps to create a payment with Cheque payment method
@@ -400,9 +388,7 @@ Scenario: Steps to create a payment with Cheque payment method
 
   Given url payment
   And request createPaymentRequestForCheque
-  * print createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print collectionServicesResponseBody

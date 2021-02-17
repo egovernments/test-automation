@@ -25,7 +25,7 @@ Scenario: Verify creating chart of accounts by passing a bank name that already 
 * call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountSuccessfully')
 * def name = chartOfAccountCreateResponseBody.chartOfAccounts[0].name
 # Pass the duplicate name
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * print chartOfAccountCreateResponseBody.errors[0].description
 * print egfMasterChartOfAccountConstant.errorMessages.forExistingBankName
 # Validating error message with dynamic value
@@ -44,21 +44,21 @@ Scenario: Verify with a invalid or non existant tenant id and check for errors
 Scenario: Verify creating chart of accounts by passing a invalid length for glcode through API call and check for errors
 # To create chart of account with invalid glcode
 * def glcode = ""
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidglcode
 
 @ChartOfAccountCreate_nameLen_05  @chartOfAccountCreate  @chartOfAccount  @negative
 Scenario: Verify creating chart of accounts by passing a invalid length for name through API call and check for errors
 # To create chart of account with invalid name
 * def name = ranString(2)
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidName
 
 @ChartOfAccountCreate_InvalidType_06  @chartOfAccountCreate  @chartOfAccount  @negative
 Scenario: Verify creatng chart of accounts by passing a invalid value for 'type' through API call and check for errors
 # To create chart of account with invalid type
 * def type = null
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidType
 
 @ChartOfAccountCreate_UniqueGlcode_07  @chartOfAccountCreate  @chartOfAccount  @negative
@@ -66,7 +66,7 @@ Scenario: Verify creating chart of accounts by passing a GLcode that already exi
 # To create chart of account with existing glcode
 * call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountSuccessfully')
 * def name = chartOfAccountCreateResponseBody.chartOfAccounts[0].glcode
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forExistingGlcode
 
 @ChartOfAccountCreate_08  @chartOfAccountCreate  @chartOfAccount  @negative
@@ -85,5 +85,5 @@ Scenario: Verify creating chart of accounts by passing null values for  glcode, 
 * def budgetCheckRequired = null
 * def classification = null
 * def type = null
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@createAccountError')
+* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInAccoutCreate')
 * chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidFunctionRequired

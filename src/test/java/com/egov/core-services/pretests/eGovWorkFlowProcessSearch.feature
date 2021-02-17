@@ -145,4 +145,3 @@ Scenario: Perform search using business id
      Then status 200
      And def processSearchResponseHeader = responseHeaders
      And def processSearchResponseBody = response
-     * print processSearchResponseBody
