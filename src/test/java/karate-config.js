@@ -225,7 +225,7 @@ function() {
         config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
-        config.mdmsStateDashboardConfig = mdmsStateDashboard['dashboard-config']
+        config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
