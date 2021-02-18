@@ -14,7 +14,7 @@ Background:
     * def invalidMobileNumber = '9'+randomMobileNumGen(9)
     * def invalidReceipt = 'invalid_'+randomNumber(5)
 
-@Search_PaymentWithReceiptNumber_01 @positive @SearchPayment @collectionServices
+@Search_PaymentWithReceiptNumber_01 @regression @positive @SearchPayment @collectionServices
     Scenario: Test to search payment with receipt number
     # Defining parameters with tenantId and receiptNumber
     * def parameters = {tenantId: '#(tenantId)',receiptNumber: '#(receiptNumber)'}
@@ -24,21 +24,21 @@ Background:
     # Validate that receiptNumber in response body is equal to receiptNumber defined in parameters
     * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
 
-@Search_PaymentWithBillID_02 @positive @SearchPayment @collectionServices
+@Search_PaymentWithBillID_02 @regression @positive @SearchPayment @collectionServices
 Scenario: Test to search payment with billID
     # Steps to search payment with valid billId where billId defined in fetchBill
     * call read('../pretests/collectionServicesPretest.feature@searchPaymentWithBillId')
     # Validate that billId in response body is equal to billId defined in parameters
     * match searchResponseBody.Payments[0].paymentDetails[0].billId == billId
 
-@Search_PaymentWithConsumerCode_03 @positive @SearchPayment @collectionServices
+@Search_PaymentWithConsumerCode_03 @regression @positive @SearchPayment @collectionServices
     Scenario: Test to search payment with consumer code
     # Steps to search payment with valid consumer code
     * call read('../pretests/collectionServicesPretest.feature@searchPaymentWithConsumerCode')
     # Validate that consumer code in response body is equal to consumer code defined in parameters
     * match searchResponseBody.Payments[0].paymentDetails[0].bill.consumerCode == consumerCode
    
-@Search_PaymentWithMobileNumber_04 @positive @SearchPayment @collectionServices
+@Search_PaymentWithMobileNumber_04 @regression @positive @SearchPayment @collectionServices
     Scenario: Test to search payment with mobile number
     # Defining parameters with tenantId and mobileNumber
     * def parameters = {tenantId: '#(tenantId)',mobileNumber: '#(mobileNumber)'}
@@ -46,7 +46,7 @@ Scenario: Test to search payment with billID
     * call read('../pretests/collectionServicesPretest.feature@searchPaymentWithParams')
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
 
-@Search_PaymentWithMobileNumberAndReceiptNumber_05 @positive @SearchPayment @collectionServices
+@Search_PaymentWithMobileNumberAndReceiptNumber_05 @regression @positive @SearchPayment @collectionServices
     Scenario: Test to search payment with mobile number and receipt number
     # Defining parameters with tenantId, mobileNumber and receiptNumbers
     * def parameters = {tenantId: '#(tenantId)',mobileNumber: '#(mobileNumber)', receiptNumbers: '#(receiptNumber)'}
@@ -56,7 +56,7 @@ Scenario: Test to search payment with billID
     # Validate that receiptNumber in response body is equal to receiptNumber defined in parameters
     * match searchResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
 
-@Search_AllPayments_06 @positive @SearchPayment @collectionServices
+@Search_AllPayments_06 @regression @positive @SearchPayment @collectionServices
     Scenario: Test to search all payments
     # Defining parameters with tenantId only
     * def parameters = {tenantId: '#(tenantId)'}
@@ -65,7 +65,7 @@ Scenario: Test to search payment with billID
     # Validate that Payment details should present in the response body
     * match searchResponseBody.Payments[0].paymentDetails[0] == '#present'
 
-@Search_PaymentWith_InvalidtenatID_07 @negative @SearchPayment @collectionServices
+@Search_PaymentWith_InvalidtenatID_07 @regression @negative @SearchPayment @collectionServices
     Scenario: Test to search payment with invalid tenantID
     # Defining parameters with invalid tenantId
     * def parameters = {tenantId: '#(invalidTenantId)'}
@@ -74,7 +74,7 @@ Scenario: Test to search payment with billID
     # Validate that Payment details should not present in the response body as tenantId is invalid
     * match searchResponseBody.Payments[0] == '#notpresent'
 
-@Search_PaymentWith_InvalidMobileNumber_08 @negative @SearchPayment @collectionServices
+@Search_PaymentWith_InvalidMobileNumber_08 @regression @negative @SearchPayment @collectionServices
     Scenario: Test to search payment with invalid mobileNumber
     # Defining parameters with invalid mobile number
     * def parameters = {tenantId: '#(tenantId)',mobileNumber: '#(invalidMobileNumber)'}
@@ -84,7 +84,7 @@ Scenario: Test to search payment with billID
     # Validate that Payment details should not present in the response body as mobileNumber is invalid
     * match searchResponseBody.Payments[0] == '#notpresent'
 
-@Search_PaymentWith_InvalidReceiptNumber_09 @negative @SearchPayment @collectionServices
+@Search_PaymentWith_InvalidReceiptNumber_09 @regression @negative @SearchPayment @collectionServices
 Scenario: Test to search payment with invalid ReceiptNumber
     # Defining parameters with invalid receipt number
     * def parameters = {tenantId: '#(tenantId)',receiptNumbers: '#(invalidReceipt)'}

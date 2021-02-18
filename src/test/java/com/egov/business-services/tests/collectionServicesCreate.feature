@@ -22,14 +22,14 @@ Feature: collection-services-Create tests
     * def instrumentNumberError = collectionServicesConstants.errorMessages.instrumentNumberAsEmptyString
     * def transactionNumberError = collectionServicesConstants.errorMessages.transactionNumberAsEmptyString
 
-        @Create_PaymentWithValidBillID_01 @positive @CreatePayment @collectionServices
+        @Create_PaymentWithValidBillID_01 @regression @positive @CreatePayment @collectionServices
         Scenario: Make payment with valid Bill id
      * call read('../../business-services/pretests/collectionServicesPretest.feature@createPayment')
      * match response.ResponseInfo.status == '200 OK'
      * def paymentId = collectionServicesResponseBody.Payments[0].id
      * call read('../../business-services/pretests/collectionServicesPretest.feature@processworkflow')
 
-        @Create_PaymentWithPaidBillID_02 @negative @CreatePayment @collectionServices
+        @Create_PaymentWithPaidBillID_02 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with paid Bill id
      * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
      * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -48,7 +48,7 @@ Feature: collection-services-Create tests
      * match collectionServicesResponseBody.Errors[0].message == paidBillIdError
      * call read('../../business-services/pretests/collectionServicesPretest.feature@processworkflow')
 
-        @Create_PaymentWithInvalidBillID_03 @negative @CreatePayment @collectionServices
+        @Create_PaymentWithInvalidBillID_03 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Bill id
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -57,7 +57,7 @@ Feature: collection-services-Create tests
     * match response.Errors[0].message == invalidBillIdError
     * print collectionServicesResponseBody
     
-        @Create_PaymentWithInvalidBusinessService_04 @positive @CreatePayment @collectionServices
+        @Create_PaymentWithInvalidBusinessService_04 @regression @positive @CreatePayment @collectionServices
         Scenario: Make payment with invalid Business ID
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -68,7 +68,7 @@ Feature: collection-services-Create tests
     # Calling steps to Cancel the Payment along with Payment Id
     * call read('../../business-services/pretests/collectionServicesPretest.feature@processworkflow')
 
-        @Create_PaymentWithAmountpaid_Null_05 @negative @CreatePayment @collectionServices
+        @Create_PaymentWithAmountpaid_Null_05 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Business ID
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -76,7 +76,7 @@ Feature: collection-services-Create tests
     * call read('../../business-services/pretests/collectionServicesPretest.feature@totalAmountPaidNull')
     * match response.Errors[0].message == totalAmountPaidError
 
-        @Create_PaymentWith_PaymentModeCard_06 @positive @CreatePayment @collectionServices
+        @Create_PaymentWith_PaymentModeCard_06 @regression @positive @CreatePayment @collectionServices
         Scenario: Make payment with Card payment mode
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -84,7 +84,7 @@ Feature: collection-services-Create tests
     * call read('../../business-services/pretests/collectionServicesPretest.feature@cardPaymentMethod')
     * match response.ResponseInfo.status == '200 OK'
 
-        @Create_PaymentWith_InvalidPaymentMode_07 @negative @CreatePayment @collectionServices
+        @Create_PaymentWith_InvalidPaymentMode_07 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Payment mode
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -92,7 +92,7 @@ Feature: collection-services-Create tests
     * call read('../../business-services/pretests/collectionServicesPretest.feature@errorPaymentMode')
     * match response.Errors[0].message == invalidPaymentModeError
 
-        @Create_PaymentWith_InvalidtenantID_08 @negative @CreatePayment @collectionServices
+        @Create_PaymentWith_InvalidtenantID_08 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Tenant Id
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -100,7 +100,7 @@ Feature: collection-services-Create tests
     * call read('../../business-services/pretests/collectionServicesPretest.feature@errorTenantId')
     * match response.Errors[0].message == invalidTenantIdError
 
-        @Create_PaymentWith_NotenantID_09 @negative @CreatePayment @collectionServices
+        @Create_PaymentWith_NotenantID_09 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with null Tenant Id
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -108,7 +108,7 @@ Feature: collection-services-Create tests
     * call read('../../business-services/pretests/collectionServicesPretest.feature@nullTenantIdPayment')
     * match response.Errors[0].message == nullTenantIdError
 
-        @Create_PaymentWith_negativeAmount_10 @negative @CreatePayment @collectionServices
+        @Create_PaymentWith_negativeAmount_10 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with negative total amount paid
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
     * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
@@ -118,43 +118,43 @@ Feature: collection-services-Create tests
     * def negativeAmountError = "The amount paid for the paymentDetail with bill number: " + billId
     * match response.Errors[0].message == negativeAmountError
 
-    @Create_PaymentWith_PaymentModeCheque_11 @positive @CreatePaymentWithCheque @collectionServices
+    @Create_PaymentWith_PaymentModeCheque_11 @regression @positive @CreatePaymentWithCheque @collectionServices
     Scenario: Test to Create Payment with paymentMode CHEQUE
     # Make a payment with cheque
     * call read('../../business-services/preTests/collectionServicesPretest.feature@chequePaymentMethod')
     * match response.ResponseInfo.status == '200 OK'
 
-@Create_PaymentWithNoInstrumentDate_12 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithNoInstrumentDate_12 @regression @negative @CreatePaymentWithCheque @collectionServices
     Scenario: Test to Create Payment with no instrument date
     # Make a payment with cheeque
     * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForInstrumentDateWihChequePayment')
     * match response.Errors[0].message == instrumentDateError
 
-@Create_PaymentWithPast90InstrumentDate_13 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithPast90InstrumentDate_13 @regression @negative @CreatePaymentWithCheque @collectionServices
    Scenario: Test to Create Payment with Past 90 instrument date
    # Make a payment with cheeque
    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForPastDaysInstrumentDateWihChequePayment')
    * match response.Errors[0].message == instrumentPastDateError
 
-@Create_PaymentWithFutureInstrumentDate_14 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithFutureInstrumentDate_14 @regression @negative @CreatePaymentWithCheque @collectionServices
    Scenario: Test to Create Payment with future instrument date
    # Make a payment with cheeque
    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForFutureInstrumentDateWihChequePayment')
    * match response.Errors[0].message == instrumentFutureDateError
 
-@Create_PaymentWithMorethanAmountDue_15 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithMorethanAmountDue_15 @regression @negative @CreatePaymentWithCheque @collectionServices
    Scenario: Test to Create Payment with more than amount due
    # Make a payment with cheeque
    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForMorethanDueAmountWihChequePayment')
    * match response.Errors[0].message == moreThanDueAmountError
 
-@Create_PaymentWithNoInstrumentNumber_16 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithNoInstrumentNumber_16 @regression @negative @CreatePaymentWithCheque @collectionServices
    Scenario: Test to Create Payment with No Instrument number
    # Make a payment with cheeque
    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForInstrumentNumberWihChequePayment')
    * match response.Errors[0].message == instrumentNumberError
 
-@Create_PaymentWithNoTransactioNumber_17 @negative @CreatePaymentWithCheque @collectionServices
+@Create_PaymentWithNoTransactioNumber_17 @regression @negative @CreatePaymentWithCheque @collectionServices
    Scenario: Test to Create Payment with No Transaction number
    # Make a payment with cheeque
    * call read('../../business-services/preTests/collectionServicesPretest.feature@errorForTransactionNumberWihChequePayment')

@@ -21,7 +21,7 @@ import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
 @KarateOptions(features = {"classpath:com/egov"},
-	tags = {"@reports,@searchMdms,@location,@localization,@userotp,@eGovUser,@accessControl," +
+	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
 			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
 			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
 // below tags will be added for execution once port fowarding is implemented on the system under execution

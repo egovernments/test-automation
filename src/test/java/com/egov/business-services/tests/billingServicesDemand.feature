@@ -15,7 +15,7 @@ Feature: Business Services - Billing Service Demand tests
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
         
-    @create_01 @positive @billingServiceDemandCreate @billingServiceDemand
+    @create_01 @regression @positive @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with valid field values
     # Steps to create a new Employee through HRMS
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -51,7 +51,7 @@ Feature: Business Services - Billing Service Demand tests
     # Validate the demand status is equal with expected demand status `ACTIVE`
     * match billingServiceDemandResponseBody.Demands[0].status == billingServiceDemandConstants.parameters.status
 
-    @create_DuplicateConsumerCode_02 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_DuplicateConsumerCode_02 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with duplicate consumer code
     # Steps to create a new employee
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -60,21 +60,21 @@ Feature: Business Services - Billing Service Demand tests
     # Validate that actual error returned by API for duplicate consumer code is same as expected error message
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.duplicateConsumerCode + '[' + consumerCode + ']'
 
-    @create_NoConsumerCode_03 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoConsumerCode_03 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no consumer code
     # Steps to create a new employee without consumerCode field in the request 
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].consumerCode'}
     # Validate that actual error returned by API for no consumer code field is same as expected error message
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_NoConsumerType_04 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoConsumerType_04 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no consumer type
     # Steps to create a new employee without consumerType field in the request
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].consumerType'}
     # Validate that actual error returned by API for no consumer type field is same as expected error message
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_InvalidBusinessService_05 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_InvalidBusinessService_05 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with invalid business service
     # Defining businessService with invalid business service
     * def businessService = 'invalid-businessService-' + ranString(10)
@@ -83,7 +83,7 @@ Feature: Business Services - Billing Service Demand tests
     # Validate that actual error returned by API for invalid business service is same as expected error message
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidBusinessService + '[' + businessService + ']'
 
-    @create_ConsumerCodeWith251Characters_06 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_ConsumerCodeWith251Characters_06 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with invalid consumer code character length
     # Defining consumerCode with invalid random value
     * def consumerCode = randomString(260)
@@ -91,21 +91,21 @@ Feature: Business Services - Billing Service Demand tests
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateBillDemand')
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
-    @create_NoBusinessService_07 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoBusinessService_07 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no business service
     # Steps to create a new employee without businessService field in the request
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].businessService'}
     * print billingServiceDemandResponseBody
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_InvalidTaxPeriodFrom_08 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_InvalidTaxPeriodFrom_08 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with invalid tax period from
     # Defining taxPeriodFrom with Invalid taxPeriodFrom value
     * def taxPeriodFrom = billingServiceDemandConstants.invalidParameters.taxPeriodFrom
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateBillDemand')
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.jsonDeserializeError
 
-    @create_ZeroTaxPeriod_09 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_ZeroTaxPeriod_09 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with zero tax period from and to
     # Defining taxPeriodFrom as `0`
     * def taxPeriodFrom = 0
@@ -115,7 +115,7 @@ Feature: Business Services - Billing Service Demand tests
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateBillDemand')
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.zeroTaxPeriodError
 
-    @create_NULLTaxPeriod_10 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NULLTaxPeriod_10 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no tax period from and to
     * def taxPeriodFrom = null
     * def taxPeriodTo = null
@@ -124,7 +124,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_InvalidTaxHeadMasterCode_11 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_InvalidTaxHeadMasterCode_11 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with invalid tax head master code
     # Defining taxHeadMasterCode with an Invalid taxHeadMasterCode
     * def taxHeadMasterCode = 'Invalid-taxHeadMasterCode-' + ranString(10)
@@ -133,13 +133,13 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTaxHeadMasterCode + '[' + taxHeadMasterCode + ']'
 
-    @create_NoTaxHeadMasterCode_12 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoTaxHeadMasterCode_12 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no tax head master code
     # Steps to create a employee without taxHeadMasterCode
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].demandDetails[0].taxHeadMasterCode'}
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_MorethanMaxTaxAmount_13 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_MorethanMaxTaxAmount_13 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with tax amount more than maximum amount
     # Defining taxAmount with more than tax amount value
     * def taxAmount = billingServiceDemandConstants.invalidParameters.taxAmountGreater
@@ -147,13 +147,13 @@ Feature: Business Services - Billing Service Demand tests
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateBillDemand')
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
-    @create_NoTaxAmount_14 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoTaxAmount_14 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no tax amount
     # Steps to create a employee without taxAmount field in request
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].demandDetails[0].taxAmount'}
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_collectionAmountMorethanTaxAmount_15 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_collectionAmountMorethanTaxAmount_15 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with collection amount more than tax amount
     # Defining collectionAmount with more than tax amount
     * def collectionAmount = taxAmount + '0'
@@ -161,7 +161,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message contains billingServiceDemandConstants.expectedMessages.collectionAmountMoreThanTaxAmount
 
-    @create_NocollectionAmount_16 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NocollectionAmount_16 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no collection amount
     # Defining collectionAmount as null
     * def collectionAmount = null
@@ -169,7 +169,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @create_MorethanMax_MinimumAmountPayable_17 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_MorethanMax_MinimumAmountPayable_17 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with minimum amount payable more than mamimum amount
     # Defining minimumAmountPayable with more than payable ammount
     * def minimumAmountPayable = billingServiceDemandConstants.invalidParameters.minimumAmountPayableGreater
@@ -177,20 +177,20 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
-    @create_InvalidTenantId_18 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_InvalidTenantId_18 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with invalid tenant id
     # Defining an invalid tenantId and assigning it to tenantId
     * def tenantId = 'Invalid-tenantId-' + ranString(5)
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateBillDemand')
     * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
-    @create_NoTenantId_19 @negative @billingServiceDemandCreate @billingServiceDemand
+    @create_NoTenantId_19 @regression @negative @billingServiceDemandCreate @billingServiceDemand
     Scenario: Test to Create Demand with no tenant id
     # Steps to create a employee without tenantId field in the request
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@errorCreateRemoveField') {'removeFieldPath': '$.Demands[0].tenantId'}
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @search_01 @search_WithDemandId_09 @positive @billingServiceDemandSearch @billingServiceDemand
+    @search_01 @search_WithDemandId_09 @regression @positive @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with valid parameter values
     # Create a new employee through HRMS
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -228,7 +228,7 @@ Feature: Business Services - Billing Service Demand tests
     # Validate that demand taxAmount is equal to defined taxAmount
     * match billingServiceDemandResponseBody.Demands[0].demandDetails[0].taxAmount == taxAmount
 
-    @search_InvalidConsumerCode_02 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_InvalidConsumerCode_02 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with invalid consumer code
     # Create new employee through HRMS
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -243,7 +243,7 @@ Feature: Business Services - Billing Service Demand tests
     # Vaidate that the Demands should not contains any value
     * match billingServiceDemandResponseBody.Demands == '#[0]'
 
-    @search_InvalidBusinessService_03 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_InvalidBusinessService_03 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with invalid business service
     # Create new employee through HRMS
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -259,7 +259,7 @@ Feature: Business Services - Billing Service Demand tests
     # Vaidate that the Demands should not contains any value
     * match billingServiceDemandResponseBody.Demands == '#[0]'
 
-    @search_NoConsumerCode_04 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_NoConsumerCode_04 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with no consumer code
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -280,7 +280,7 @@ Feature: Business Services - Billing Service Demand tests
     # Vaidate that the Demands should not contains any value
     * match billingServiceDemandResponseBody.Demands != '#[0]'
 
-    @search_NoBusinessService_05 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_NoBusinessService_05 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with no business service
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -301,7 +301,7 @@ Feature: Business Services - Billing Service Demand tests
     # Vaidate that the Demands should not contains any value
     * match billingServiceDemandResponseBody.Demands != '#[0]'
 
-    @search_InvalidTenantId_06 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_InvalidTenantId_06 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with invalid tenant id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * def demandId = billingServiceDemandResponseBody.Demands[0].id
@@ -313,7 +313,7 @@ Feature: Business Services - Billing Service Demand tests
     * assert searchDemandResponseStatus == 403
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
     
-    @search_NoTenantId_07 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_NoTenantId_07 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with no tenant id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -332,7 +332,7 @@ Feature: Business Services - Billing Service Demand tests
     * assert searchDemandResponseStatus == 400
     * assert billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @search_WithOnlyTenantId_08 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_WithOnlyTenantId_08 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with only tenant id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -348,7 +348,7 @@ Feature: Business Services - Billing Service Demand tests
     * assert searchDemandResponseStatus == 400
     * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.onlyTenantId
 
-    @search_InvalidDemandId_10 @negative @billingServiceDemandSearch @billingServiceDemand
+    @search_InvalidDemandId_10 @regression @negative @billingServiceDemandSearch @billingServiceDemand
     Scenario: Test to Search Demand with invalid demand id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -362,7 +362,7 @@ Feature: Business Services - Billing Service Demand tests
     # Validate that the size of Demands should be `0` as invalid demandId passed in parameter
     * match billingServiceDemandResponseBody.Demands == '#[0]'
 
-    @update_01 @positive @billingServiceDemandUpdate @billingServiceDemand
+    @update_01 @regression @positive @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with valid field values
     # Craete a employee through HRMS
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
@@ -399,7 +399,7 @@ Feature: Business Services - Billing Service Demand tests
     # Validate that the demand status is equal to expected status `ACTIVE`
     * match billingServiceDemandResponseBody.Demands[0].status == billingServiceDemandConstants.parameters.status
 
-    @update_InvalidDemandId_02 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_InvalidDemandId_02 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with invalid demand id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -412,7 +412,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.demandNotFound + '[' + invalidDemandId + ']'
 
-    @update_NoDemandId_03 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_NoDemandId_03 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with no demand id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -423,7 +423,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.demandIdMandatory
 
-    @update_InvalidBusinessService_04 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_InvalidBusinessService_04 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with invalid business service
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -436,7 +436,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidBusinessService + '[' + invalidBusinessService + ']'
 
-    @update_NoBusinessService_05  @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_NoBusinessService_05  @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with no businessn service
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -447,7 +447,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @update_InvalidTaxPeriods_06 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_InvalidTaxPeriods_06 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with zero tax period from and to
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -459,7 +459,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.zeroTaxPeriodError
 
-    @update_NoTaxPeriods_07 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_NoTaxPeriods_07 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with no tax period from and to
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -470,7 +470,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @update_InvalidTaxheadMasterCode_08 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_InvalidTaxheadMasterCode_08 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with invalid tax head master code
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -482,7 +482,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTaxHeadMasterCode + '[' + invalidTaxHeadMasterCode + ']'
 
-    @update_NoTaxAmount_09 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_NoTaxAmount_09 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with no tax amount
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -492,7 +492,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @update_InvalidtenantId_10 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_InvalidtenantId_10 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with invalid tenant id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -504,7 +504,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
-    @update_NotenantId_11 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_NotenantId_11 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with no tenant id
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
@@ -514,7 +514,7 @@ Feature: Business Services - Billing Service Demand tests
     * print billingServiceDemandResponseBody
     * match billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-    @update_CollectionAmountGreaterThanTaxAmount_12 @negative @billingServiceDemandUpdate @billingServiceDemand
+    @update_CollectionAmountGreaterThanTaxAmount_12 @regression @negative @billingServiceDemandUpdate @billingServiceDemand
     Scenario: Test to Update Demand with collection amount greater than tax amount
     * call read('../../business-services/pretests/billingServiceDemandPretest.feature@createBillDemand')
     * print billingServiceDemandResponseBody
