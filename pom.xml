@@ -206,7 +206,29 @@
                 </dependency>
             </dependencies>
         </plugin>
-			
+			<plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.3.0</version>
+    <executions>
+        <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <projectName>Sample-Cucumber-TestNG</projectName>
+                <skip>false</skip>
+                <outputDirectory>reports/html-reports</outputDirectory>
+                <inputDirectory>target/surefire-reports</inputDirectory>
+                <jsonFiles>
+                    <param>**/*.json</param>
+                </jsonFiles>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
 		</plugins>
 	</build>
 
