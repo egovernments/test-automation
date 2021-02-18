@@ -38,6 +38,9 @@ function() {
          retryCount : 30,
          retryInterval : 10000 //ms
    };
+        
+        config.envHost = envProps.host
+
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -222,6 +225,7 @@ function() {
         config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
+        config.mdmsStateDashboardConfig = mdmsStateDashboard['dashboard-config']
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

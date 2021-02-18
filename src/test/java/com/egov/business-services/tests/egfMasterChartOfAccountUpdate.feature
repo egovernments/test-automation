@@ -10,35 +10,35 @@ Background:
 Scenario: Verify updating chart of accounts through API call
 # Update the existing glcode with new glcode
 * def glcode = glcode
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@updateAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@updateAccountSuccessfully')
 * match chartOfAccountUpdateResponseBody.chartOfAccounts.length == '##[_ > 0]'
 
 @ChartOfAccountUpdate_glcodeLen_02  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
 Scenario: Verify updating chart of accounts by passing a invalid length for glcode through API call and check for errors
 # Update glcode with empty string
 * def glcode = ""
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInUpdateAccount')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@errorInUpdateAccount')
 * assert chartOfAccountUpdateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidglcode
 
 @ChartOfAccountUpdate_nameLen_03  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
 Scenario: Verify updating chart of accounts by passing a invalid length for name through API call and check for errors
 # Update name with invalid length
 * def name = ranString(2)
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInUpdateAccount')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@errorInUpdateAccount')
 * assert chartOfAccountUpdateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidName
 
 @ChartOfAccountUpdate_InvalTyp_04  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
 Scenario: Verify updating chart of accounts by passing a invalid value for 'type' through API call and check for errors
 # Update tpye as null
 * def type = null
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInUpdateAccount')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@errorInUpdateAccount')
 * assert chartOfAccountUpdateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidType
 
 @ChartOfAccountUpdate_UniqueGlcode_06  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
 Scenario: Verify updating chart of accounts by passing a GLcode that already exists and check for errors
 # Update the glcode
 * def glcode = "GLCODE"
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInUpdateAccount')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@errorInUpdateAccount')
 * assert chartOfAccountUpdateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forExistingGlcode
 
 @ChartOfAccountUpdate_nullValues_07  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
@@ -50,13 +50,13 @@ Scenario: Verify updating chart of accounts by passing null values for  glcode, 
 * def budgetCheckRequired = null
 * def classification = null
 * def type = null
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@errorInUpdateAccount')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@errorInUpdateAccount')
 
 @ChartOfAccountUpdate_Invaltenant_08  @chartOfAccountUpdate  @chartOfAccount  @regression @negative
 Scenario: Verify with a invalid or non existant tenant id and check for errors
 # Update the chart of account with invalid tenantId
 * def tenantId = invalidTenantId
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@unauthorizedaccessError')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@unauthorizedaccessError')
 * assert chartOfAccountResponseBody.Errors[0].message == commonConstant.errorMessages.invalidTenantIdError
 
 @ChartOfAccountUpdate_09  @chartOfAccountUpdate  @chartOfAccount  @regression @positive
@@ -65,5 +65,5 @@ Scenario: Verify by change 'true' to 'false' and vice versa for - isActiveForPos
 * def functionRequired = 'true'
 * def budgetCheckRequired = 'true'
 * def isActiveForPosting = 'true'
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@updateAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterChartOfAccount.feature@updateAccountSuccessfully')
 * match chartOfAccountUpdateResponseBody.chartOfAccounts.length == '##[_ > 0]'

@@ -3,7 +3,7 @@ Background:
  # read the javascript utils file for using generic methods
   * def jsUtils = read('classpath:jsUtils.js')
  # calling property creation test which is required for workflow process
-  * call read('../../municipal-services/tests/propertyService.feature@createProperty')
+  * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
   * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
   * def processSearchConstant = read('../../core-services/constants/eGovWorkFlowProcessSearch.yaml')
   # initializing request payload objects

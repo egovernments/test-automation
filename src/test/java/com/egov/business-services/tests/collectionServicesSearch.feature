@@ -6,8 +6,8 @@ Background:
     * configure headers = read('classpath:websCommonHeaders.js')
     * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
-    * call read('../../business-services/pretests/collectionServicesPretest.feature@createPayment')
+    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
+    * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
     * def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber
     * def invalidTenantId = randomString(5)

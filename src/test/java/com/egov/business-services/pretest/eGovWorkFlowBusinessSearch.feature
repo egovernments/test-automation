@@ -6,7 +6,7 @@ Feature: eGovWorkFlowBusiness Feature
     * def authUsername = employeeUserName
     * def authPassword = employeePassword
     * def authUserType = employeeType
-    * call read('../../business-services/pretests/authenticationToken.feature')
+    * call read('../../business-services/pretest/authenticationToken.feature')
     * def workFlowConstants = read('../../business-services/constants/eGovWorkFlowBusiness.yaml')
     * def businessServices = workFlowConstants.inputData.businessServices
     * def searchWorkFlowRequest = read('../../business-services/requestPayload/eGovWorkFlow/business/workFlowSearch.json')

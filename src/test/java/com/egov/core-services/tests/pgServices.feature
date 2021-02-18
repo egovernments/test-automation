@@ -3,15 +3,14 @@ Background:
  # calling create property and assess property
   * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
+  * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
   #initializing create pg transaction request payload objects
   * def txnAmount = fetchBillResponse.Bill[0].totalAmount
   * def name = fetchBillResponse.Bill[0].payerName
   * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
   * def pgSericesConstant = read('../../core-services/constants/pgServices.yaml')
-  * def envConstant = read('file:envYaml/' + env + '/' + env +'.yaml')
   * def envCommon = read('file:envYaml/common/common.yaml')
-  * def callbackUrl = envConstant.host + envCommon.endPoints.pgServices.payload
+  * def callbackUrl = envHost + envCommon.endPoints.pgServices.payload
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def gateway = commonConstants.parameters.gateway
   * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
@@ -89,7 +88,7 @@ Scenario: Verify creating a payment transaction with invalid/non existent value 
 @PGCreate_DupicatePay_11  @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with a bill id for which payment is already done
   # calling create pg transaction pretest
-  * call read('../../business-services/pretests/collectionServicesPretest.feature@createPayment')
+  * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
   # calling create pg transaction pretest
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   * print pgServicesCreateResponseBody
@@ -116,7 +115,7 @@ Scenario: Verify updating a payment transaction by not passing transaction id
 @PGUpdate_BillVal_05  @regression @negative  @pgservices
 Scenario: Verify updating by passing a transaction id which has expired bill and bill which is already paid
   # calling collection service create payment pretest
-  * call read('../../business-services/pretests/collectionServicesPretest.feature@createPayment')
+  * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
   * call read('../../core-services/pretests/pgServiceUpdate.feature@updatePgTransactionError')
   * print pgServicesUpdateResponseBody
 
@@ -143,7 +142,7 @@ Scenario: Verify searching transaction details using null/ invalid/non existent 
   * def transactionIdFirst = txnId
   * print transactionIdFirst
   * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
-  * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
+  * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   * def transactionIdSecond = txnId
   * print transactionIdSecond

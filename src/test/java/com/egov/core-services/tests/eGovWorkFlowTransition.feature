@@ -3,9 +3,9 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   
   # This feature testing was blocked. Need to update
-  * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
+  * call read('../../municipal-services/pretests/PropertyService.feature@createProperty')
   * def businessId = acknowldgementNumber
-  * call read('../../business-services/pretests/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')
+  * call read('../../business-services/pretest/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')
 
 @Process_Transition_01  @regression @positive  @eGovWorkFlowProcess
 Scenario: Verify the API call to move the workflow from one state to another
