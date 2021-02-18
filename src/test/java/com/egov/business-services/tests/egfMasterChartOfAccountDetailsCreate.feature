@@ -5,7 +5,7 @@
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccount')
         * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createAccountDetailsType')
-        * def requestPayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetailsCreate.json')
+        * def requestPayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/create.json')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
         # Chart of Account 
         * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = chartAccountId

@@ -203,6 +203,10 @@ function() {
         config.accountDetailsType = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.accountDetailsType
         // egfMaster-ChartOfAccountDetails - Create chart of account details
         config.createAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.create
+        // egfMaster-ChartOfAccountDetails - Update chart of account details
+        config.updateAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.update
+        // egfMaster-ChartOfAccountDetails - Update chart of account details
+        config.searchAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.search
 
         // Need to be removed
         config.createCharOfAccount = envProps.host + path.endPoints.egfMasterChartOfAccount.create

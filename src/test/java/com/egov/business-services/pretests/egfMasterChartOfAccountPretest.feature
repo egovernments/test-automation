@@ -9,7 +9,7 @@ Feature: Pretest scenarios for egf-master-ChartOfAccount Service endpoints
         * def description = 'TEST_'+randomString(5)
         * def active = egfMasterConstants.chartOfAccountDeatails.params.active
         * def accountDetailsTypePayload = read('../../business-services/requestPayload/egfMaster/accountDetailsType.json')
-        * def accountDetailsCreatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetailsCreate.json')
+        * def accountDetailsUpdatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/update.json')
         # Need to be removed
         * def glcode = randomString(6)
         * def isActiveForPosting = egfMasterConstants.chartOfAccount.params.isActiveForPosting
@@ -38,6 +38,7 @@ Feature: Pretest scenarios for egf-master-ChartOfAccount Service endpoints
     And def chartAccountId = response.chartOfAccounts[0].id
     And def chartAccountGlcode = response.chartOfAccounts[0].glcode
     And def chartAccountName = response.chartOfAccounts[0].name
+    And def chartOfAccountResponse = response
 
 @createAccountDetailsType
     Scenario: To create account details type
@@ -58,6 +59,7 @@ Feature: Pretest scenarios for egf-master-ChartOfAccount Service endpoints
     And def accountTypeTableName = response.accountDetailTypes[0].tableName
     And def accountTypeIsActive = response.accountDetailTypes[0].active
     And def accountTypefullyQualifiedName = response.accountDetailTypes[0].fullyQualifiedName
+    And def accountDetailsTypeResponse = response
   
 @createChartOfAccountDetails
     Scenario: To create chart of account details
@@ -73,6 +75,34 @@ Feature: Pretest scenarios for egf-master-ChartOfAccount Service endpoints
         * print requestPayload
     When method post
     Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403
-    
+    And def accountDetailsCreateResponse = response
 
+@updateChartOfAccountDetails
+    Scenario: To update chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url updateAccountDetails
+    And params params
+    And request requestPayloadToUpdate
+        * print requestPayloadToUpdate
+    When method post
+    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def updateResponse = response
+        * print updateResponse
+    
+@searchChartOfAccountDetails
+    Scenario: To search chart of account details
+    Given url searchAccountDetails
+    And params searchAccountDetailsParams
+        * print searchAccountDetailsParams
+    And request requestPayloadToSearch
+        * print requestPayloadToUpdate
+    When method post
+    Then assert responseStatus == 200 || responseStatus == 403
+    And def searchResponse = response
+        * print searchResponse
 

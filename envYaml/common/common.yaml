@@ -88,6 +88,8 @@ endPoints:
  egfMasterChartOfAccountDetails:
   accountDetailsType: egf-master/accountdetailtypes/_create
   create: egf-master/chartofaccountdetails/_create
+  update: egf-master/chartofaccountdetails/_update
+  search: egf-master/chartofaccountdetails/_search
 # Need to be removed
  egfMasterChartOfAccount:
   create: egf-master/chartofaccounts/_create
