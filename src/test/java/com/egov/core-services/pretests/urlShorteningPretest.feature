@@ -7,12 +7,9 @@ Background:
 
 @urlShortenFail
 Scenario: Verify Send a invalid url in the API call
-     Given url shortenUrl 
-     * print shortenUrl  
+     Given url shortenUrl  
      And request urlShortenPayload
-     * print urlShortenPayload
      When method post
      Then status 400
      And def urlShortenResponseHeader = responseHeaders
      And def urlShortenResponseBody = response
-     * print urlShortenResponseBody

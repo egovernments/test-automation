@@ -184,20 +184,22 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
-        config.signUrl = envProps.host + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
+        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
-        //registered mobile number for citizen
-      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
+        //url shorten
+        config.shortenUrl = envProps.host + path.endPoints.urlShorten.shorten
 
-        //eGovWorkFlow Business
-        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
+        //egfMaster chart of account
+        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
+        config.chartOfAccountUpdate = envProps.host + path.endPoints.egfMasterChartOfAccount.update
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
@@ -233,4 +235,3 @@ function() {
         java.lang.System.exit(0);
     }
 }
-
