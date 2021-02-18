@@ -54,7 +54,7 @@ public class EGovTest {
 		
 		// To Store reports in other location in system
 		//Configuration config = new Configuration(new File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov Functional Test");
-		Configuration config = new Configuration(new File("target/" + currentDate), "eGov Functional Test");
+		Configuration config = new Configuration(new File("target"), "eGov Functional Test");
 
 		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
 		reportBuilder.generateReports();
