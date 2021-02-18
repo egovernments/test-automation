@@ -85,6 +85,12 @@ endPoints:
   sign: egov-enc-service/crypto/v1/_sign
  eGovWorkFlowBusiness:
   search: egov-workflow-v2/egov-wf/businessservice/_search
+ urlShorten:
+  shorten: egov-url-shortening/shortener
+ egfMasterChartOfAccount:
+  create: egf-master/chartofaccounts/_create
+  search: egf-master/chartofaccounts/_search
+  update: egf-master/chartofaccounts/_update
  egfMasterChartOfAccountDetails:
   accountDetailsType: egf-master/accountdetailtypes/_create
   create: egf-master/chartofaccountdetails/_create
@@ -93,4 +99,4 @@ endPoints:
 # Need to be removed
  egfMasterChartOfAccount:
   create: egf-master/chartofaccounts/_create
-  
+

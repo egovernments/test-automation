@@ -16,7 +16,6 @@ Scenario: To test User account
 		Then status 400
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-        * print authResponseBody
 
 @validPasswordError
 Scenario: To test User account
@@ -31,7 +30,6 @@ Scenario: To test User account
 		Then status 400
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-        * print authResponseBody
 
 
 @acountUnlockSuccess
@@ -47,7 +45,6 @@ Scenario: To test User account
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-        * print authResponseBody
 
 @validPasswordSuccess
 Scenario: To test User account
@@ -62,4 +59,3 @@ Scenario: To test User account
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-        * print authResponseBody
