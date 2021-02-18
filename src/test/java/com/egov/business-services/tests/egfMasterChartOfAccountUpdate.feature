@@ -10,7 +10,7 @@ Background:
 Scenario: Verify updating chart of accounts through API call
 # Update the existing glcode with new glcode
 * def glcode = glcode
-* call read('../../business-services/preTests/egfMasterChartOfAccount.feature@updateAccountSuccessfully')
+* call read('../../business-services/preTests/egfMasterPreTest.feature@updateAccountSuccessfully')
 * match chartOfAccountUpdateResponseBody.chartOfAccounts.length == '##[_ > 0]'
 
 @ChartOfAccountUpdate_glcodeLen_02  @chartOfAccountUpdate  @chartOfAccount  @negative
