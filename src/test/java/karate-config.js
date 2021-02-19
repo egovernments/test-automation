@@ -164,6 +164,7 @@ function() {
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
+        config.workflowTransition = envProps.host + path.endPoints.eGovWorkFlowV2Process.transition
 	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
     	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
     	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
