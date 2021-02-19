@@ -31,6 +31,8 @@ expectedStatus:
   success: 'successful'
   instrumentStatusCancelled: CANCELLED
   created: "201 CREATED"
+  serverError: "500 INTERNAL_SERVER_ERROR"
+  badRequest: "400 BAD_REQUEST"
 errorMessages:
   invalidTenantIdError: Not authorized to access this resource
   nullParameterError:  must not be null
@@ -38,6 +40,8 @@ errorMessages:
   jsonDeserializeError: Failed to deserialize certain JSON fields
   authorizedError: Not authorized to access this resource
   failed: FAILED
+  internalServerError: Internal Server Error
+  mandatoryFieldError: the field id must be not be null or empty
 successMessages:
   successful: SUCCESSFUL
   module:
