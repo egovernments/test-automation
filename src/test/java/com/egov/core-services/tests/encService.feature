@@ -16,7 +16,7 @@ Background:
 @Encrypt_01 @encService
 Scenario: Verify to encrypt name, mobile number and email for a user
   # calling encryption pretest
-  * call read('../pretests/encServicePrestest.feature@EncryptSuccessfully')
+  * call read('../core-services/pretest/encServicePrestest.feature@EncryptSuccessfully')
   * match response[*].userObject1.name == '#present'
   * match response[*].userObject1.email == '#present'
   * match response[*].userObject1.mobileNumber == '#present'
@@ -26,15 +26,15 @@ Scenario: Verify with a invalid or non existant tenant id/type and check for err
    # setting invalid type for negative scenario
    * def type = commonConstants.invalidParameters.invalidValue
       # calling encryption pretest
-   * call read('../pretests/encServicePrestest.feature@EncryptError')
+   * call read('../core-services/pretest/encServicePrestest.feature@EncryptError')
    * match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType
 
 @Decrypt_01 @encService
 Scenario: Verify by sending encrypted message in the API
    # calling encryption pretest    
-   * call read('../pretests/encServicePrestest.feature@EncryptSuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@EncryptSuccessfully')
    # calling decryption pretest
-   * call read('../pretests/encServicePrestest.feature@decryptsuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@decryptsuccessfully')
    * match response[*].userObject1.name contains name
    * match response[*].userObject1.email contains email
 
@@ -42,14 +42,14 @@ Scenario: Verify by sending encrypted message in the API
 @Rotate_01 @encService
 Scenario: Verify roate key API for a given tenant id
    # calling rotate pretest
-   * call read('../pretests/encServicePrestest.feature@rotateSuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@rotateSuccessfully')
    * match response.acknowledged == true
 
 
 @Sign_01 @encService
 Scenario: Test to Sign the data
    # calling sign pretest
-   * call read('../pretests/encServicePrestest.feature@signSuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@signSuccessfully')
    * match response.value == value
    * match response.signature == '#present'
    * match response.signature != value
@@ -58,20 +58,20 @@ Scenario: Test to Sign the data
 @Verify_01 @encService
 Scenario: Test to verify signature through API call
    # calling sign pretest
-   * call read('../pretests/encServicePrestest.feature@signSuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@signSuccessfully')
    # calling verfy pretest
-   * call read('../pretests/encServicePrestest.feature@verifySuccessfully')
+   * call read('../core-services/pretest/encServicePrestest.feature@verifySuccessfully')
    * match response.verified == true
 
 
 @Verify_InvalidValue_02 @encService
 Scenario: Test to verify signature through API call by passing invalid value
     # calling sign pretest
-    * call read('../pretests/encServicePrestest.feature@signSuccessfully')
+    * call read('../core-services/pretest/encServicePrestest.feature@signSuccessfully')
     # setting verify request payload to null
     * set verifyRequest.value = null
     # calling verfy pretest
-    * call read('../pretests/encServicePrestest.feature@verifyError')
+    * call read('../core-services/pretest/encServicePrestest.feature@verifyError')
     * match response.message == encServiceData.errorMessages.verifyError + ': 1'
 
 

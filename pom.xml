@@ -213,12 +213,12 @@
     <executions>
         <execution>
             <id>execution</id>
-            <phase>verify</phase>
+            <phase>test</phase>
             <goals>
                 <goal>generate</goal>
             </goals>
             <configuration>
-                <projectName>Sample-Cucumber-TestNG</projectName>
+                <projectName>eGov Test Automation Results</projectName>
                 <skip>false</skip>
                 <outputDirectory>reports/html-reports</outputDirectory>
                 <inputDirectory>target/surefire-reports</inputDirectory>
