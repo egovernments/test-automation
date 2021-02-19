@@ -12,6 +12,7 @@ import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
@@ -28,6 +29,7 @@ import net.minidev.json.JSONValue;
 // @encService and @apportionService
 
 public class EGovTest {
+	static String karateOutputPath = "target/surefire-reports";
 	@BeforeClass
 	public static void before() {
 		
@@ -36,10 +38,15 @@ public class EGovTest {
 	@Test
 	public void testParallel() {
 
-		String karateOutputPath = "target/surefire-reports";
+		
 		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
-		generateReport(karateOutputPath);
+		
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
+	}
+
+	@AfterClass
+	public static void after(){
+		generateReport(karateOutputPath);
 	}
 
 	private static void generateReport(String karateOutputPath) {

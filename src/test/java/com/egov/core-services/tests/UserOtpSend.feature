@@ -57,7 +57,7 @@ Background:
         @UserOtp_Send_invalidTenant_Login_07  @regression @negative  @userOtp
         Scenario: Test by passing a invalid or a non existent tenant ID
         # calling register user pretest
-        * call read('../core-services/pretest/userOtpPretest.feature@errorInvalidTenant')
+        * call read('../../core-services/pretest/userOtpPretest.feature@errorInvalidTenant')
         * print userOtpSendResponseBody
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
 

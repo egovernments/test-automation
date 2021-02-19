@@ -13,7 +13,7 @@ Scenario: Test a unique Id is created for every new application,receipt
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
@@ -22,11 +22,11 @@ Scenario: Search for Localization in English(Specific Module)
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
     * def id1 = idGenerateResponseBody.idResponses[0].id
     * def value1 = stringToInteger(id1.slice(-2))
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
     * def id2 = idGenerateResponseBody.idResponses[0].id
     * def value2 = stringToInteger(id2.slice(-2))
     # Verfiying the sequence ID values
@@ -39,7 +39,7 @@ Scenario: Test by interchanging the id names from different modules
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateSuccessfully')
     * assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful
     * match idGenerateResponseBody.idResponses == '#notnull'
 
@@ -50,7 +50,7 @@ Scenario: Test by passing a invalid or a nonexistent tenant id
     * def idName = mdmsStatecommonMasters.IdFormat[index].idname
     * def format = mdmsStatecommonMasters.IdFormat[index].format
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateError')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateError')
     * assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @IdGen_BlankFormat_06 @regression @negative @idGenerate
@@ -58,7 +58,7 @@ Scenario: Test by not passing any value for format
     #setting sequence format as blank for negative scenario
     * def format = commonConstants.invalidParameters.emptyValue
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateFailed')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateFailed')
     * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
     * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError
 
@@ -67,6 +67,6 @@ Scenario: Test by not passing invalid Sequence format which is not in MDMS
     #setting invalid sequence format for negative scenario
     * def format = idGenServiceConstants.invalidParameters.sequenceFormat
     # calling id generate pretest
-    * call read('../core-services/pretest/idGeneratePretest.feature@idGenerateFailed')
+    * call read('../../core-services/pretest/idGeneratePretest.feature@idGenerateFailed')
     * assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed
     * assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.dbError

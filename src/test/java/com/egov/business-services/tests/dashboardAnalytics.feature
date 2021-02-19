@@ -21,14 +21,14 @@ Feature: Business Services - Dashboard Analytics service tests
         @getDashboardConfig_01 @regression @positive @dashboardAnalytics
         Scenario: Verify the API call to get config for the dashboard
      # Steps to hit Dashboard API and get Configuration for Dashboard
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboard')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboard')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * assert dashboardResponseBody.responseData[0].visualizations.length != 0 
 
         @getChartV2_metric_01 @regression @positive @dashboardAnalytics
         Scenario: Verify the API call for display of data in metric format
      # Steps to process dashboard chart
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * print dashboardResponseBody
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
@@ -38,7 +38,7 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data a pie chart
      # Defining visualizationCode with complaintsByStatus parameter value 
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.complaintsByStatus
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.pie
@@ -47,7 +47,7 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data as bar graph
      # Defining visualizationCode with totalComplaintsbyStatus parameter value
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.totalComplaintsbyStatus
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.line
@@ -56,7 +56,7 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data as multiple line graph
      # Defining visualizationCode with totalComplaintsbySource parameter value
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.totalComplaintsbySource
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.line
@@ -66,7 +66,7 @@ Feature: Business Services - Dashboard Analytics service tests
      # Defining departmentId with xpgrStatusByCatagory parameter value
      * def departmentId = dashboardServiceData.parameters.departmentId
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.xpgrStatusByCatagory
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.xtable
@@ -76,7 +76,7 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data as timeseries
      # Defining visualizationCode with eventDurationGraph parameter value
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.eventDurationGraph
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.line
@@ -85,7 +85,7 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data as a table
      # Defining visualizationCode with demandCollectionIndexUsageRevenue parameter value
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.demandCollectionIndexUsageRevenue
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.table
@@ -96,7 +96,7 @@ Feature: Business Services - Dashboard Analytics service tests
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.wardDrillDown
      # Defining moduleLevel with modulePT
      * def moduleLevel = modulePT
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.table
@@ -105,5 +105,5 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of dasboard with invalid tenant id
      # Defining tenantId with Invalid tenantId
      * def tenantId = commonConstants.invalidParameters.invalidTenantId
-     * call read('../business-services/pretest/dashboardAnalyticsPretest.feature@errorDashboardChart')
+     * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@errorDashboardChart')
      * match dashboardResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
