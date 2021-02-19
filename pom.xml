@@ -194,6 +194,7 @@
             <version>2.19.1</version>
             <configuration>
                 <argLine>
+					-Xmx1024m -XX:MaxPermSize=256m
                     -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
                 </argLine>
@@ -225,6 +226,7 @@
                 <jsonFiles>
                     <param>**/*.json</param>
                 </jsonFiles>
+				<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
             </configuration>
         </execution>
     </executions>
