@@ -12,8 +12,8 @@
         * def classification = '1'
         * def type = 'B'
         * def invalidTenantId = ranString(3)
-        * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
-        * call read('../../business-services/pretests/egfMasterPreTest.feature@createAccountDetailsType')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@createAccountSuccessfully')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@createAccountDetailsType')
         * def requestPayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/create.json')
         * def requestPayloadToUpdate = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/update.json')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -30,7 +30,7 @@
         * set requestPayload.chartOfAccountDetails[0].accountDetailType.active = accountTypeIsActive
         * set requestPayload.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName = accountTypefullyQualifiedName
         # Steps to create Chart Account Details
-        * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
         # For Update request payload 
         * set requestPayloadToUpdate.chartOfAccountDetails = requestPayload.chartOfAccountDetails
         * set requestPayloadToUpdate.chartOfAccountDetails[0].id = response.chartOfAccountDetails[0].id
@@ -48,7 +48,7 @@ Scenario: Update Chart Of Account Details with Existing ID
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tableName = randomString(4)
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.active = 'true'
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName = randomString(4)
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert updateResponse.chartOfAccountDetails[0]['chartOfAccount'].id == id
     * assert updateResponse.chartOfAccountDetails[0]['chartOfAccount'].glcode != requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.glcode
     * assert updateResponse.chartOfAccountDetails[0]['chartOfAccount'].name != requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.name
@@ -63,8 +63,8 @@ Scenario: Update Chart Of Account Details with New ID
     * def glcode = ranInteger(6)
     * def name = ranString(5) + "Bank"
     * def invalidTenantId = ranString(3)
-    * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@createAccountDetailsType')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@createAccountSuccessfully')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@createAccountDetailsType')
     # * set requestPayloadToUpdate.chartOfAccountDetails = requestPayload.chartOfAccountDetails
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.id = id
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.id = accountTypeId
@@ -75,7 +75,7 @@ Scenario: Update Chart Of Account Details with New ID
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tableName = accountTypeTableName
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.active = 'true'
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName = accountTypefullyQualifiedName
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * print updateResponse.chartOfAccountDetails[0]['chartOfAccount'].id
     * print accountDetailsCreateResponse.chartOfAccountDetails[0]['chartOfAccount'].id
     * assert updateResponse.chartOfAccountDetails[0]['chartOfAccount'].id != accountDetailsCreateResponse.chartOfAccountDetails[0]['chartOfAccount'].id
@@ -90,7 +90,7 @@ Scenario: Update Chart Of Account Details with New ID
 @ChartOfAccountDeatilsUpdateUsingNullId_03 @chartOfAccountDetailsUpdate @egfMaster
 Scenario: Update Chart Of Account Details null IDs
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert updateResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * assert updateResponse.errors[0].message == commonConstants.errorMessages.mandatoryFieldError 
 
@@ -98,7 +98,7 @@ Scenario: Update Chart Of Account Details null IDs
 Scenario: Update Chart Of Account Details invalid IDs
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.id = 'Invalid@'+randomString(3)
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.id =  'Invalid@'+randomString(3)
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -107,14 +107,14 @@ Scenario: Update Chart Of Account Details with invalid tenantIds
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.tenantId = invalidTenantId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tenantId =  invalidTenantId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].tenantId =  invalidTenantId
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert updateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError 
 
 @ChartOfAccountDeatilsUpdate_InvalidChartAccountIdId_06 @chartOfAccountDetailsUpdate @egfMaster
 Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.id = null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -122,7 +122,7 @@ Scenario: Update Chart Of Account Details with invalid chartOfAccountId
 Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.id =  null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -136,7 +136,7 @@ Scenario: Update Chart Of Account Details with Null values
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tableName = null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.active = null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName = null
-    * call read('../../business-services/pretests/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
     * assert updateResponse.chartOfAccountDetails.size() != 0
     * assert updateResponse.chartOfAccountDetails[0]['chartOfAccount'].id == id
     * assert updateResponse.chartOfAccountDetails[0]['accountDetailType'].id == accountTypeId
