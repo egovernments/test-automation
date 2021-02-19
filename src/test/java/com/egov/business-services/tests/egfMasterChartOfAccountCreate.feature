@@ -13,55 +13,53 @@ Background:
   * def type = 'B'
   * def invalidTenantId = ranString(3)
 
-@ChartOfAccountCreate_01 @chartOfAccountCreate  @chartOfAccount  @positive
+@ChartOfAccountCreate_01 @chartOfAccountCreate  @chartOfAccount  @positive @egfMaster @regression
 Scenario: Verify creating chart of accounts through API call
 # To create chart of account
 * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
 * match chartOfAccountCreateResponseBody.chartOfAccounts.length == '##[_ > 0]'
 
-@ChartOfAccountCreate_UniqueBank_02  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_UniqueBank_02  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creating chart of accounts by passing a bank name that already exists and check for errors
 # To create chart of account
 * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
 * def name = chartOfAccountCreateResponseBody.chartOfAccounts[0].name
 # Pass the duplicate name
 * call read('../../business-services/preTests/egfMasterPreTest.feature@errorInAccoutCreate')
-* print chartOfAccountCreateResponseBody.errors[0].description
-* print egfMasterChartOfAccountConstant.errorMessages.forExistingBankName
 # Validating error message with dynamic value
-* def validateErrorMessage = toGetDynamicValueFromResponse(chartOfAccountCreateResponseBody.errors[0].description,egfMasterChartOfAccountConstant.errorMessages.forExistingBankName)
+* def validateErrorMessage = "The  value  "+name+" for the field name already exists in the system. Please provide different value"
 * print validateErrorMessage
-* assert validateErrorMessage == true
+* match chartOfAccountCreateResponseBody.errors[0].description == validateErrorMessage
 
-@ChartOfAccountCreate_InValidTEnant_03  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_InValidTEnant_03  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify with a invalid or non existant tenant id and check for errors
 # To create chart of account with invalid tenantid
 * def tenantId = invalidTenantId
 * call read('../../business-services/preTests/egfMasterPreTest.feature@unauthorizedaccessError')
 * assert chartOfAccountResponseBody.Errors[0].message == commonConstant.errorMessages.invalidTenantIdError
 
-@ChartOfAccountCreate_GcodeLen_04  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_GcodeLen_04  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creating chart of accounts by passing a invalid length for glcode through API call and check for errors
 # To create chart of account with invalid glcode
 * def glcode = ""
 * call read('../../business-services/preTests/egfMasterPreTest.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidglcode
 
-@ChartOfAccountCreate_nameLen_05  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_nameLen_05  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creating chart of accounts by passing a invalid length for name through API call and check for errors
 # To create chart of account with invalid name
-* def name = ranString(2)
+* def name = randomString(2)
 * call read('../../business-services/preTests/egfMasterPreTest.feature@errorInAccoutCreate')
-* assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidName
+* match chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidName
 
-@ChartOfAccountCreate_InvalidType_06  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_InvalidType_06  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creatng chart of accounts by passing a invalid value for 'type' through API call and check for errors
 # To create chart of account with invalid type
 * def type = null
 * call read('../../business-services/preTests/egfMasterPreTest.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forInvalidType
 
-@ChartOfAccountCreate_UniqueGlcode_07  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_UniqueGlcode_07  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creating chart of accounts by passing a GLcode that already exists and check for errors
 # To create chart of account with existing glcode
 * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
@@ -69,14 +67,14 @@ Scenario: Verify creating chart of accounts by passing a GLcode that already exi
 * call read('../../business-services/preTests/egfMasterPreTest.feature@errorInAccoutCreate')
 * assert chartOfAccountCreateResponseBody.errors[0].message == egfMasterChartOfAccountConstant.errorMessages.forExistingGlcode
 
-@ChartOfAccountCreate_08  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_08  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify by pasing 'true' and 'false' - isActiveForPosting, functionRequired , budgetCheckRequired and check if its acccepting
 # To create chart of account by changing budgetCheckRequired value
 * def budgetCheckRequired = 'true'
 * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
 * match chartOfAccountCreateResponseBody.chartOfAccounts.length == '##[_ > 0]'
 
-@ChartOfAccountCreate_nullvalues_09  @chartOfAccountCreate  @chartOfAccount  @negative
+@ChartOfAccountCreate_nullvalues_09  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @regression
 Scenario: Verify creating chart of accounts by passing null values for  glcode, name, type, classification,functionrequired,budgetCheckRequired  and check for errors
 # To create chart of account passing null
 * def glcode = null

@@ -20,7 +20,7 @@
                    "fullyQualifiedName": "#(fullyQualifiedName)",
                    "tenantId": "#(tenantId)"
                },
-               "id": "{{id}}",
+               "id": "#(id)",
                "tenantId": "#(tenantId)"
            }
        ]

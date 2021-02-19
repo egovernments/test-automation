@@ -209,10 +209,12 @@ function() {
         config.updateAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.update
         // egfMaster-ChartOfAccountDetails - Update chart of account details
         config.searchAccountDetails = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.search
-
-        // Need to be removed
-        config.createCharOfAccount = envProps.host + path.endPoints.egfMasterChartOfAccount.create
-        //*********/
+        // egfMaster-Bank - Create
+        config.bankCreate = envProps.host + path.endPoints.egfMasterBank.create
+        // egfMaster-Bank - Update
+        config.bankUpdate = envProps.host + path.endPoints.egfMasterBank.update
+        // egfMaster-Bank - Search
+        config.bankSearch = envProps.host + path.endPoints.egfMasterBank.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

@@ -3,14 +3,23 @@
     Background: 
         * def jsUtils = read('classpath:jsUtils.js')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
-        * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccount')
-        * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createAccountDetailsType')
+        # Required parameters to create acccount
+        * def glcode = ranInteger(6)
+        * def name = ranString(5) + "Bank"
+        * def isActiveForPosting = 'false'
+        * def functionRequired = 'false'
+        * def budgetCheckRequired = 'false'
+        * def classification = '1'
+        * def type = 'B'
+        * def invalidTenantId = ranString(3)
+        * call read('../../business-services/preTests/egfMasterPreTest.feature@createAccountSuccessfully')
+        * call read('../../business-services/pretests/egfMasterPreTest.feature@createAccountDetailsType')
         * def requestPayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/create.json')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
         # Chart of Account 
-        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = chartAccountId
-        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.glcode = chartAccountGlcode
-        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.name = chartAccountName
+        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = id
+        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.glcode = glcode
+        * set requestPayload.chartOfAccountDetails[0].chartOfAccount.name = name
         * set requestPayload.chartOfAccountDetails[0].chartOfAccount.description = randomString(8)
         # Account Details Type
         * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = accountTypeId
@@ -22,12 +31,13 @@
         # Invalid values
         * def invalidGLCode = 'GL@'+ranInteger(5)
         * def invalidTenantId = 'Invalid-'+randomString(4)
+  
          
 
 @ChartOfAccountDeatilsCreate_01 @ChartOfAccountDeatilsCreate_ValidNameAndDescription_06 @ChartOfAccountDeatilsCreate_tableNameAndFullyQualifiedName_07 @positive @chartOfAccountDetailsCreate @egfMaster
 Scenario: Create chart of account details with valid Id
     # Steps to create Chart Account Details
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     # Validate the size of `chartOfAccountDetails` response array should not be `0`
     * assert response.chartOfAccountDetails.size() != 0
     # Validate chart of account id 
@@ -55,7 +65,7 @@ Scenario: Create chart of account details with invalid ids
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = randomString(5)
     # Set an invalid id to chart of account details id 
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = randomString(5)
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -63,7 +73,7 @@ Scenario: Create chart of account details with invalid ids
 Scenario: Create chart of account details with invalid GLCode
     # Set an invalid GLCode to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.glcode = invalidGLCode
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     # Validate that API should not consider the invalid GLCode it should only conder the valid GLCode
     * assert response.chartOfAccountDetails[0]['chartOfAccount'].glcode != invalidGLCode
 
@@ -73,7 +83,7 @@ Scenario: Create chart of account details with invalid tenantId
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.tenantId = invalidTenantId
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.tenantId = invalidTenantId
     * set requestPayload.chartOfAccountDetails[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     # Validate the actual error message returned by API should be equal to expected error message due to invalid tenantId
     * assert response.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -82,7 +92,7 @@ Scenario: Create chart of account details with null id
     # Set invalid tenantIds into request payload 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = null
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = null
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     # Validate the actual error message returned by API should be equal to expected error message due to invalid tenantId
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
@@ -99,7 +109,7 @@ Scenario: Create chart of account details with all null values
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.tableName = null
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.active = null
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName = null
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     # Validate that chart account glCode field value is not updated with `null` 
     * assert response.chartOfAccountDetails[0]['chartOfAccount'].glcode != null
     # Validate chart account name field value is not updated with `null` 
@@ -119,7 +129,7 @@ Scenario: Create chart of account details with all null values
 Scenario: Create chart of account details with invalid Chart Account Id
     # Set an invalid id to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = 'Invalid-'+randomString(5)
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -127,6 +137,6 @@ Scenario: Create chart of account details with invalid Chart Account Id
 Scenario: Create chart of account details with invalid Account Details Type Id
     # Set an invalid id to chart of account details type id 
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = 'Invalid-'+randomString(5)
-    * call read('../../business-services/pretests/egfMasterChartOfAccountPretest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretests/egfMasterPreTest.feature@createChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 

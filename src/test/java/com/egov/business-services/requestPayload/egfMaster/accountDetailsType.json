@@ -5,7 +5,7 @@
       "accountDetailTypes": 
           [
                   {
-                   "name":"#(name)",
+                   "name":"#(typeName)",
                    "tableName":"#(tableName)",
                    "fullyQualifiedName":"#(fullyQualifiedName)",
                       "tenantId":"#(tenantId)",
