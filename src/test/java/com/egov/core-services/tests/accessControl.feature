@@ -13,7 +13,7 @@ Feature: Core service - accessControl
     * def actionMaster = accessControlConstants.parameters.actionMaster
     * def enabled = true
    
-    @AC_search_01 @AC_search_rolecode_03 @positive @accessControl
+    @AC_search_01 @AC_search_rolecode_03 @regression @positive @accessControl
     Scenario: Test to search an access control with all valid fields
     # calling Search Access Control pretest
     * call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully')
@@ -30,13 +30,13 @@ Feature: Core service - accessControl
     * match accessControlResponseBody.actions[*].tenantId == '#present'
     * match accessControlResponseBody.actions[*].path == '#present'
 
-    @AC_search_InvalidTenant_02 @negative @accessControl
+    @AC_search_InvalidTenant_02 @regression @negative @accessControl
     Scenario: Test to search an access control with invalid tenant
     # calling Search Access Control pretest
     * call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant')
     * match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException
 
-    @AC_search_invalidRoleCode_04 @positive @accessControl
+    @AC_search_invalidRoleCode_04 @regression @positive @accessControl
     Scenario: Test to search access control with invalid role code
     # setting random invalid roleCode for negative scenario
     * def roleCodes = 'Invalid-rolecode-' + ranString(10)
@@ -45,7 +45,7 @@ Feature: Core service - accessControl
     * match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok
     * match accessControlResponseBody.actions == '#[0]'
 
-    @AC_search_invalidActionMaster_05 @negative @accessControl
+    @AC_search_invalidActionMaster_05 @regression @negative @accessControl
     Scenario: Test to search an access control with invalid action-master
     # setting random invalid actionMaster for negative scenario
     * def actionMaster = 'Invalid-actionMaster-' + ranString(10)
@@ -53,7 +53,7 @@ Feature: Core service - accessControl
     * call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError')
     * match accessControlResponseBody.Errors[0].description contains accessControlConstants.expectedDescriptions.PathNotFoundException
 
-    @AC_search_BlankActionMaster_06 @negative @accessControl
+    @AC_search_BlankActionMaster_06 @regression @negative @accessControl
     Scenario: Test to search an access control with action-master as blank
     # setting blank value for actionMaster for negative scenario
     * def actionMaster = " "
@@ -61,7 +61,7 @@ Feature: Core service - accessControl
     * call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError')
     * match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.InvalidPathException
 
-    @AC_search_enabled_07 @negative @accessControl
+    @AC_search_enabled_07 @regression @negative @accessControl
     Scenario: Test to search an access control with invalid value for enabled
     # setting random invalid enabled for negative scenario
     * def enabled = 'Invalid-enabled-' + ranString(5)

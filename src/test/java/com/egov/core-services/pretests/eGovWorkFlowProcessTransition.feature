@@ -1,7 +1,7 @@
 Feature: Verify the API call to move the workflow from one state to another
 
 Background:
-* call read(../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully)
+* call read('../../municipal-services/tests/PropertyService.feature@createProperty')
 * def businessId = acknowldgementNumber
 * def processTransitionPayload = read('../requestPayload/eGovWorkFlow/process/processtransition.json')
 * def processTransiionPayloadValid = processTransitionPayload.valid
@@ -10,8 +10,8 @@ Background:
 @processTransitionSuccess
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
-     Given url workFlowProcessTrnsition 
-     * print workFlowProcessTrnsition
+     Given url workflowTransition 
+     * print workflowTransition
      And request processTransiionPayloadValid
      * print processTransiionPayloadValid
      When method post
@@ -23,8 +23,8 @@ Scenario: Verify the API call to move the workflow from one state to another
 @processTransitionFail
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
-     Given url workFlowProcessTrnsition 
-     * print workFlowProcessTrnsition
+     Given url workflowTransition 
+     * print workflowTransition
      And request processTransiionPayloadValid
      * print processTransiionPayloadValid
      When method post
@@ -36,8 +36,8 @@ Scenario: Verify the API call to move the workflow from one state to another
 @processTransitionWithoutModuleName
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
-     Given url workFlowProcessTrnsition 
-     * print workFlowProcessTrnsition
+     Given url workflowTransition 
+     * print workflowTransition
      And request processTransiionPayloadInvalid
      * print processTransiionPayloadInvalid
      When method post
@@ -49,8 +49,8 @@ Scenario: Verify the API call to move the workflow from one state to another
 @processTransitionWithoutTenantId
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
-     Given url workFlowProcessTrnsition 
-     * print workFlowProcessTrnsition
+     Given url workflowTransition 
+     * print workflowTransition
      And request processTransiionPayloadValid
      * print processTransiionPayloadValid
      When method post

@@ -2,11 +2,6 @@ Feature: eGovWorkFlowBusiness Feature
 
     Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    
-    * def authUsername = employeeUserName
-    * def authPassword = employeePassword
-    * def authUserType = employeeType
-    * call read('../../business-services/pretests/authenticationToken.feature')
     * def workFlowConstants = read('../../business-services/constants/eGovWorkFlowBusiness.yaml')
     * def businessServices = workFlowConstants.inputData.businessServices
     * def searchWorkFlowRequest = read('../../business-services/requestPayload/eGovWorkFlow/business/workFlowSearch.json')

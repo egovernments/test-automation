@@ -45,6 +45,7 @@ endPoints:
  eGovWorkFlowV2Process:
   search: egov-workflow-v2/egov-wf/process/_search?
   count: egov-workflow-v2/egov-wf/process/_count?
+  transition: egov-workflow-v2/egov-wf/process/_transition
   businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
   businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
   businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
