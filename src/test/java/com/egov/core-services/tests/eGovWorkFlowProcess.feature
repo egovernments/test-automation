@@ -87,7 +87,7 @@ Scenario: Perform Search by passing assignee param and check the sorting order (
 
 @Search_NextAction_12  @regression @positive  @egovworkflowprocess
 Scenario: Perform search and verify that the nextActions in search response is populated based on the role of user making search call
-  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@processsearchsuccess')
+  * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
   * match processSearchResponseBody == '#present'
 
 @Process_count  @regression @positive  @egovWorkflowProcess

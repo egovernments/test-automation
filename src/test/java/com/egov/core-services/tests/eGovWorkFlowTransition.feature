@@ -5,7 +5,7 @@ Background:
   # This feature testing was blocked. Need to update
   * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
   * def businessId = acknowldgementNumber
-  * call read('../../core-services/pretest/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')
+  * call read('../../core-services/pretests/eGovWorkFlowBusinessSearch@SuccessSearchWorkFlow')
 
 @Process_Transition_01  @regression @positive  @eGovWorkFlowProcess
 Scenario: Verify the API call to move the workflow from one state to another
