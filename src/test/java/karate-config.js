@@ -38,6 +38,9 @@ function() {
          retryCount : 30,
          retryInterval : 10000 //ms
    };
+        
+        config.envHost = envProps.host
+
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -161,6 +164,7 @@ function() {
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
+        config.workflowTransition = envProps.host + path.endPoints.eGovWorkFlowV2Process.transition
 	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
     	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
     	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
@@ -184,20 +188,22 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
-        config.signUrl = envProps.host + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
+        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
 
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
 
-        //registered mobile number for citizen
-      //  config.registeredMobileNumber = envProps.citizen.registeredMobileNumber
+        //url shorten
+        config.shortenUrl = envProps.host + path.endPoints.urlShorten.shorten
 
-        //eGovWorkFlow Business
-        config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
+        //egfMaster chart of account
+        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
+        config.chartOfAccountUpdate = envProps.host + path.endPoints.egfMasterChartOfAccount.update
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
@@ -220,6 +226,7 @@ function() {
         config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
+        config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
@@ -233,4 +240,3 @@ function() {
         java.lang.System.exit(0);
     }
 }
-

@@ -69,7 +69,7 @@ Feature: Generated pdf successfully
 
         @createPdfForWSSuccessfully
         Scenario: Create PDF for WS Successfully
-        * call read('../../business-services/pretests/billingServicePretest.feature@fetchBill')
+        * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
   * def pdfCreateParam = 
     """
     {

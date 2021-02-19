@@ -12,6 +12,7 @@ import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
@@ -21,13 +22,14 @@ import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
 @KarateOptions(features = {"classpath:com/egov"},
-	tags = {"@reports,@searchMdms,@location,@localization,@userotp,@eGovUser,@accessControl," +
+	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
 			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
 			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
 // below tags will be added for execution once port fowarding is implemented on the system under execution
 // @encService and @apportionService
 
 public class EGovTest {
+	static String karateOutputPath = "target/surefire-reports";
 	@BeforeClass
 	public static void before() {
 		
@@ -36,10 +38,15 @@ public class EGovTest {
 	@Test
 	public void testParallel() {
 
-		String karateOutputPath = "target/surefire-reports";
+		
 		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
-		generateReport(karateOutputPath);
+		
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
+	}
+
+	@AfterClass
+	public static void after(){
+		generateReport(karateOutputPath);
 	}
 
 	private static void generateReport(String karateOutputPath) {
@@ -54,7 +61,7 @@ public class EGovTest {
 		
 		// To Store reports in other location in system
 		//Configuration config = new Configuration(new File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov Functional Test");
-		Configuration config = new Configuration(new File("target/" + currentDate), "eGov Functional Test");
+		Configuration config = new Configuration(new File("target"), "eGov Functional Test");
 
 		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
 		reportBuilder.generateReports();

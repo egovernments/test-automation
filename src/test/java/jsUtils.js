@@ -165,3 +165,27 @@ function generateUUID(){
     var uuid = '' + java.util.UUID.randomUUID();
     return uuid
 }
+
+/** To validate expected result and actual result with dynamic value
+ * response: will get after execution
+ * constant: constant value in constant yaml file
+ */
+function toGetDynamicValueFromResponse(response, constant)
+{        
+        var responseArray = response.split("  ", 3);   
+        var messageStringArray = responseArray[2];
+        var tokenValue = messageStringArray.split(" ",1);
+        response = response.replace(tokenValue,'$token');
+        if(response === constant)
+         return true;
+        else
+         return false;
+
+}
+
+/** To replace comma and validate the response */
+function toReplaceComma(responseMessage)
+{
+    responseMessage = responseMessage.replaceAll("'","");
+    return responseMessage;
+}

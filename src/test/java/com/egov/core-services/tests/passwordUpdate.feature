@@ -15,7 +15,7 @@ Background:
      * def type = authUserType
      * def updatedUserPassword = read('../../core-services/requestPayload/user/updatePassword/updatePassword.json')
 
-@Update_Password_ValidExistingPassword_validNewPassword_01 @Update_Password_SameAsExistingPassword_10 @positive @userPassword @eGovUser
+@Update_Password_ValidExistingPassword_validNewPassword_01 @Update_Password_SameAsExistingPassword_10 @regression @positive @userPassword @eGovUser
 Scenario: To verify existing password is updating correctly
         # Steps to update user's password with valid reuest payload
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
@@ -28,7 +28,7 @@ Scenario: To verify existing password is updating correctly
         # Re-executing update user password steps to restore the existing password back, so that it can be reusable and independent
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
 
-@Update_Password_ValidExistingPassword_InvalidNewPassword_02 @negative @userPassword @eGovUser
+@Update_Password_ValidExistingPassword_InvalidNewPassword_02 @regression @negative @userPassword @eGovUser
 Scenario: To verify the invalid length password error
         # Set invalid password to newPassword field
         * set updatedUserPassword.newPassword = 'Pas'+ ranString(2)
@@ -38,7 +38,7 @@ Scenario: To verify the invalid length password error
         * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.invalidPasswordLengthCode
         * assert updatedPasswordResponseBody.Errors[0].message == errorMessage.errormessages.invalidPasswordMessage
    
-@Update_Password_InValidExistingPassword_validNewPassword_03 @negative @userPassword @eGovUser
+@Update_Password_InValidExistingPassword_validNewPassword_03 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when an invalid existing password provided
         # Set existingPassword as invalid
         * set updatedUserPassword.existingPassword = 'Pas'+ ranString(2)
@@ -48,7 +48,7 @@ Scenario: To verify the error message returned by API when an invalid existing p
         * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.passwordMismatchCode
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-@Update_Password_notenantId_04 @negative @userPassword @eGovUser
+@Update_Password_notenantId_04 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when tenantId field is removed
         # Remove tenantId field from the request body
         * remove updatedUserPassword.tenantId
@@ -57,7 +57,7 @@ Scenario: To verify the error message returned by API when tenantId field is rem
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-@Update_Password_InValidtenantId_05 @negative @userPassword @eGovUser
+@Update_Password_InValidtenantId_05 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API for an invalid tenantId
         # Set random invalid value as tenantID
         * set updatedUserPassword.tenantId = ranString(5)
@@ -66,7 +66,7 @@ Scenario: To verify the error message returned by API for an invalid tenantId
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.authorizedError
 
-@Update_Password_noType_06 @negative @userPassword @eGovUser
+@Update_Password_noType_06 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when userType field is removed
         # Remove type field from the request body
         * remove updatedUserPassword.type
@@ -75,7 +75,7 @@ Scenario: To verify the error message returned by API when userType field is rem
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-@Update_Password_noExistingPassword_07 @negative @userPassword @eGovUser
+@Update_Password_noExistingPassword_07 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when existingPassword field is removed
         # Remove existingPassword field from the request body
         * remove updatedUserPassword.existingPassword
@@ -84,7 +84,7 @@ Scenario: To verify the error message returned by API when existingPassword fiel
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-@Update_Password_noNewPassword_08 @negative @userPassword @eGovUser
+@Update_Password_noNewPassword_08 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when newPassword field is removed
         # Remove newPassword field from the request body
         * remove updatedUserPassword.newPassword
@@ -93,7 +93,7 @@ Scenario: To verify the error message returned by API when newPassword field is 
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-@Update_Password_InvalidType_09 @negative @userPassword @eGovUser
+@Update_Password_InvalidType_09 @regression @negative @userPassword @eGovUser
 Scenario: To verify the error message returned by API when invalid type is provided
          # Set a random invalid value as user type
          * set updatedUserPassword.type = ranString(8)

@@ -14,10 +14,20 @@ Background:
   * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
   * def transactionNumber = collectionServicesConstants.parameters.transactionNumber
   * def instrumentNumber = collectionServicesConstants.parameters.instrumentNumber
+  * def paymentModeForCard = collectionServicesConstants.parameters.paymentMode2
+  * def paymentModeForCheque = collectionServicesConstants.parameters.paymentModeForCheque
+  * def transactionNumberForCheque = collectionServicesConstants.parameters.transactionNumberForCheque
+  * print transactionNumberForCheque
+  * def instrumentNumberForCheque = collectionServicesConstants.parameters.instrumentNumberForCheque
+  * print instrumentNumberForCheque
+  * def instrumentDate = getCurrentEpochTime()
+  * def ifscCode = collectionServicesConstants.parameters.ifscCode
+  * def invalidBillId = generateUUID()
   * def invalidBillId = generateUUID()
   * def createPaymentRequest = read('../../business-services/requestPayload/collection-services/create.json')
   * def workflowRequest = read('../../business-services/requestPayload/collection-services/workflow.json')
   * def searchPaymentRequest = read('../../business-services/requestPayload/collection-services/search.json')
+  * def createPaymentRequestForCheque = read('../../business-services/requestPayload/collection-services/createPaymentWithCheque.json')
   * configure headers = read('classpath:websCommonHeaders.js')
   * def invalidBillId = 'invalid_'+randomNumber(4)
   * def invalidBusinessId = 'PT'+randomNumber(4)
@@ -260,6 +270,124 @@ Scenario: Collection Service error workflow call
   * print workflowRequest
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+# Payment with cheque
+@chequePaymentMethod
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 200
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForInstrumentDateWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+  * set createPaymentRequestForCheque.Payment.instrumentDate = 'null'
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForPastDaysInstrumentDateWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+  * set createPaymentRequestForCheque.Payment.instrumentDate = getPastEpochDate(100)
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForFutureInstrumentDateWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+  * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(91)
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForMorethanDueAmountWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount + 10
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount + 10
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForInstrumentNumberWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
+  * set createPaymentRequestForCheque.Payment.instrumentNumber = ""
+
+  Given url payment
+  And request createPaymentRequestForCheque
+  When method post
+  Then status 400
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+
+@errorForTransactionNumberWihChequePayment
+Scenario: Steps to create a payment with Cheque payment method
+  * def amount = fetchBillResponse.Bill[0].totalAmount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalDue = amount
+  * set createPaymentRequestForCheque.Payment.paymentDetails[0].totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.totalDue = amount
+  * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
+  * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCard
+  * set createPaymentRequestForCheque.Payment.transactionNumber = ""
+
+  Given url payment
+  And request createPaymentRequestForCheque
   When method post
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
