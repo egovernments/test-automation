@@ -195,7 +195,7 @@
             <configuration>
 				<useSystemClassLoader>false</useSystemClassLoader>
                 <argLine>
-					-Xmx1024m -XX:MaxPermSize=256m
+					-Xmx1g -XX:MaxPermSize=256m -XX:-UseGCOverheadLimit
                     -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
                 </argLine>
@@ -227,7 +227,7 @@
                 <jsonFiles>
                     <param>**/*.json</param>
                 </jsonFiles>
-				<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+				<argLine>-Xmx1g -XX:MaxPermSize=256m -XX:-UseGCOverheadLimit</argLine>
             </configuration>
         </execution>
     </executions>

@@ -16,7 +16,7 @@ Feature: FileStore create API call
   * def filetestData1 = 'dummyTestData1.pdf'
   * def filetestData2 = 'dummyTestData2.pdf'
   * def filetestData3 = 'dummyTestData3.pdf'
-  * configure ssl = true
+  * configure ssl = false
 
         @uploadDocumentsSuccessfully
         Scenario: Upload document successfully
@@ -43,7 +43,7 @@ Feature: FileStore create API call
              Then status 201
               And def filecreateResponseHeader = responseHeaders
               And def filecreateResponseBody = response
-   * print filecreateResponseBody
+   
 
         @uploadWithoutTenantIdError
         Scenario: Upload a document without tenantId
@@ -79,7 +79,7 @@ Feature: FileStore create API call
              Then status 413
               And def filecreateResponseHeader = responseHeaders
               And def filecreateResponseBody = response
-   * print filecreateResponseBody
+   
    
 
         @uploadWithInvalidTenantIdError
@@ -93,4 +93,4 @@ Feature: FileStore create API call
              Then status 201
               And def filecreateResponseHeader = responseHeaders
               And def filecreateResponseBody = response
-   * print filecreateResponseBody
+   

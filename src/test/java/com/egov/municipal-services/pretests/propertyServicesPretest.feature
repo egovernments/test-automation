@@ -4,7 +4,7 @@ Feature: Property Service
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def financialYear = commonConstants.parameters.financialYear
-    * def assessmentDate = getCurrentEpochTime()
+    * def assessmentDate = getPastEpochDate(1)
     * def source = commonConstants.parameters.source
     * def channel = commonConstants.parameters.channel
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
@@ -53,7 +53,6 @@ Feature: Property Service
               And def propertyId = Property.propertyId
               And def consumerCode = propertyId
               And def acknowldgementNumber = Property.acknowldgementNumber
-              * print acknowldgementNumber
 
         @successSearchProperty
         Scenario: Search a property

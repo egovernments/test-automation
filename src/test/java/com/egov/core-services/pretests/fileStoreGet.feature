@@ -3,19 +3,14 @@ Feature: FileStore get API call
   * def jsUtils = read('classpath:jsUtils.js')
   # calling upload single document file pretest
   * call read('../../core-services/pretests/fileStoreCreate.feature@uploadDocumentsSuccessfully')
-  * print filecreateResponseBody
+  
   * def getFileId = filecreateResponseBody.files[0].fileStoreId
-  * print getFileId
   # calling upload multiple document files pretest
   * call read('../../core-services/pretests/fileStoreCreate.feature@uploadMultipleDocumentsSuccessfully')
-  * print filecreateResponseBody.files[0].fileStoreId, filecreateResponseBody.files[1].fileStoreId
   * def getFileIdsFirst = filecreateResponseBody.files[0].fileStoreId
-  * print getFileIdsFirst
   * def getFileIdsSecond = filecreateResponseBody.files[1].fileStoreId
-  * print getFileIdsSecond
   * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
-  * print getFileIds
-
+  
         @getFileIdSuccessfully
         Scenario: get the uploaded document id successfully
   * def getFileIdParam = 
@@ -31,7 +26,6 @@ Feature: FileStore get API call
              Then status 200
               And def fileStoreGetResponseHeader = responseHeaders
               And def fileStoreGetResponseBody = response
-    * print fileStoreGetResponseBody
 
         @getMultiFileIdSuccessfully
         Scenario: get the uploaded multiple document ids successfully
@@ -48,7 +42,6 @@ Feature: FileStore get API call
              Then status 200
               And def fileStoreGetResponseHeader = responseHeaders
               And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
 
 
         @getFileIdFail
@@ -65,7 +58,6 @@ Feature: FileStore get API call
              Then status 400
               And def fileStoreGetResponseHeader = responseHeaders
               And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
 
         @getFileWithoutFileId
         Scenario: get the document without document id
@@ -81,4 +73,3 @@ Feature: FileStore get API call
              Then status 400
               And def fileStoreGetResponseHeader = responseHeaders
               And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody

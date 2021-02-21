@@ -8,22 +8,20 @@ Feature: User Search
   * def existingUser = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
   * def unRegisteredNumber = new java.math.BigDecimal(mobileNumberGen)
-  * print unRegisteredNumber
   * def withoutUserName = ''
   * def emptyStringInTenantId = ''
   * def userConstant = read('../../core-services/constants/user.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
   * def findUser = read('../../core-services/requestPayload/userCreation/searchUser.json')
-  * print findUser
-
+  
         @finduser
         Scenario: Search user with valid details
      * def payload = findUser.validPayload
             Given url searchUser
-     * print searchUser  
+     
               And request payload
-     * print payload
+     
              When method post
              Then status 200
               And def searchUserResponseHeader = responseHeaders
@@ -34,9 +32,9 @@ Feature: User Search
      * def payload = findUser.validPayload
      * set findUser.validPayload.tenantId = multipleTenantId
             Given url searchUser
-     * print searchUser  
+     
               And request payload
-     * print payload
+     
              When method post
              Then status 200
               And def searchUserResponseHeader = responseHeaders
@@ -47,9 +45,9 @@ Feature: User Search
      * def payload = findUser.validPayload
      * set findUser.validPayload.userName = unRegisteredNumber
             Given url searchUser
-     * print searchUser  
+     
               And request payload
-     * print payload
+     
              When method post
              Then status 200
               And def searchUserResponseHeader = responseHeaders
@@ -60,9 +58,9 @@ Feature: User Search
      * def payLoad = findUser.validPayload  
      * set findUser.validPayload.tenantId = invalidTenantId
             Given url searchUser
-     * print searchUser  
+     
               And request payLoad
-     * print payLoad
+     
              When method post
              Then status 200
               And def searchUserResponseHeader = responseHeaders
@@ -73,9 +71,9 @@ Feature: User Search
      * def payLoad = findUser.validPayload 
      * set findUser.validPayload.userName = withoutUserName
             Given url searchUser
-     * print searchUser  
+     
               And request payLoad
-     * print payLoad
+     
              When method post
              Then status 400
               And def searchUserResponseHeader = responseHeaders
@@ -85,9 +83,9 @@ Feature: User Search
         Scenario: Search user without tenantId
      * def payLoad = findUser.invalidPayload
             Given url searchUser
-     * print searchUser  
+     
               And request payLoad
-     * print payload
+     
              When method post
              Then status 400
               And def searchUserResponseHeader = responseHeaders
@@ -98,9 +96,9 @@ Feature: User Search
      * def payLoad = findUser.validPayload
      * set findUser.validPayload.tenantId = emptyStringInTenantId
             Given url searchUser
-     * print searchUser  
+     
               And request payLoad
-     * print payload
+     
              When method post
              Then status 400
               And def searchUserResponseHeader = responseHeaders

@@ -1,7 +1,7 @@
 Feature: Business Services - Collection service - search tests
 
 Background:
-    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
     * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')

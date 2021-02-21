@@ -18,16 +18,11 @@ Scenario: Search Work Flow
       """
             Given url businessSearch
               And params parameters
-              * print parameters
               And request searchWorkFlowRequest
-              * print searchWorkFlowRequest
-             When method post
-             Then status 200
+              When method post
+              Then status 200
               And def searchWorkFlowResponseHeader = responseHeaders
               And def searchWorkFlowResponseBody = response
-              * print searchWorkFlowResponseBody
               And def businessService = searchWorkFlowResponseBody.BusinessServices[0].businessService
-              * print businessService
               And def states = searchWorkFlowResponseBody.BusinessServices[0].states
-              * print states
               

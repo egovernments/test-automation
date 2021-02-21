@@ -7,8 +7,8 @@ Background:
   * def tenantId = tenantId
   * def businessService = fetchBillResponse.Bill[0].businessService
   * def paymentMode = collectionServicesConstants.parameters.paymentMode
-  * def paidBy = fetchBillResponse.Bill[0].payerName
-  * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
+  * def paidBy = 'Payer ' + randomString(10)
+  * def mobileNumber = '78' + randomMobileNumGen(8)
   * def payerName = fetchBillResponse.Bill[0].payerName
   * def totalDue = 0
   * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
@@ -17,10 +17,8 @@ Background:
   * def paymentModeForCard = collectionServicesConstants.parameters.paymentMode2
   * def paymentModeForCheque = collectionServicesConstants.parameters.paymentModeForCheque
   * def transactionNumberForCheque = collectionServicesConstants.parameters.transactionNumberForCheque
-  * print transactionNumberForCheque
   * def instrumentNumberForCheque = collectionServicesConstants.parameters.instrumentNumberForCheque
-  * print instrumentNumberForCheque
-  * def instrumentDate = getCurrentEpochTime()
+  * def instrumentDate = getPastEpochDate(1)
   * def ifscCode = collectionServicesConstants.parameters.ifscCode
   * def invalidBillId = generateUUID()
   * def invalidBillId = generateUUID()
@@ -210,8 +208,6 @@ Scenario: Common test to create a Payment
     And def searchResponseHeader = responseHeaders
     And def searchResponseBody = response
     And def receiptNumber = response.Payments[0].paymentDetails[0].receiptNumber
-    * print receiptNumber
-
 
   @searchPaymentWithConsumerCode
   Scenario: test to search a payment with ConsumerCode
@@ -226,7 +222,6 @@ Scenario: Common test to create a Payment
     Given url searchPayment
     And params parameters
     And request searchPaymentRequest
-      * print searchPaymentRequest
     When method post
     Then status 200
     And def searchResponseHeader = responseHeaders
@@ -237,7 +232,6 @@ Scenario: Common test to create a Payment
   Scenario: Test to search a payment with given parameters
     Given url searchPayment
     And params parameters
-    * print parameters
     And request searchPaymentRequest
     When method post
     Then status 200
@@ -246,7 +240,6 @@ Scenario: Common test to create a Payment
 
 @errorInauthworkflow
 Scenario: Collection Service error authorisation workflow call
-  * print workflowRequest
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
   When method post
@@ -256,7 +249,6 @@ Scenario: Collection Service error authorisation workflow call
 
 @errorinworkflow
 Scenario: Collection Service error workflow call
-  * print workflowRequest
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
   When method post
@@ -267,7 +259,6 @@ Scenario: Collection Service error workflow call
 @removeFieldFromWorkFlow
 Scenario: Collection Service error workflow call
   * eval karate.remove('workflowRequest', removeFieldPath)
-  * print workflowRequest
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
   When method post
@@ -284,7 +275,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalDue = amount
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -301,7 +291,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
   * set createPaymentRequestForCheque.Payment.instrumentDate = 'null'
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -318,7 +307,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
   * set createPaymentRequestForCheque.Payment.instrumentDate = getPastEpochDate(100)
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -335,7 +323,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
   * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(91)
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -351,7 +338,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalDue = amount
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount + 10
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -368,7 +354,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
   * set createPaymentRequestForCheque.Payment.instrumentNumber = ""
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post
@@ -385,7 +370,6 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCard
   * set createPaymentRequestForCheque.Payment.transactionNumber = ""
-
   Given url payment
   And request createPaymentRequestForCheque
   When method post

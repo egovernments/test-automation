@@ -90,8 +90,7 @@ Scenario: Test by a message in Eng locale to Hindi locale
     * call read('../../core-services/pretests/upsert.feature@upsertLocalizationSuccessfully')
     * assert upsertResponseBody.messages[0].message == message
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
-    * print localizationMessageResponseBody
-	* match localizationMessageResponseBody.messages[*].message contains message
+    * match localizationMessageResponseBody.messages[*].message contains message
 
 @Upsert_MandatoryValidation_02  @regression @negative @localization
 Scenario: Test by not passing any value for Message,Code and Module

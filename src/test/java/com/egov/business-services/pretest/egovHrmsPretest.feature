@@ -11,8 +11,6 @@ Feature: HRMS API call
 
         @createEmployeeSuccessfully
         Scenario: hrms create employee successfully
-
-  * print createEmployeeRequest
             Given url hrmsCreateUrl
               And request createEmployeeRequest
              When method post
@@ -24,8 +22,6 @@ Feature: HRMS API call
 
         @createEmployeeError
         Scenario: hrms create employee error
-
-  * print createEmployeeRequest
             Given url hrmsCreateUrl
               And request createEmployeeRequest
              When method post
@@ -35,8 +31,6 @@ Feature: HRMS API call
 
         @createEmployeeAuthorizationError
         Scenario: hrms create employee error authorization
-
-  * print createEmployeeRequest
             Given url hrmsCreateUrl
               And request createEmployeeRequest
              When method post
@@ -46,8 +40,6 @@ Feature: HRMS API call
 
         @searchEmployeeSuccessfully
         Scenario: hrms search employee successfully
-
-  * print searchEmployeeRequest
             Given url hrmsSearchUrl
               And param codes = '#(code)'
               And request searchEmployeeRequest
@@ -58,8 +50,6 @@ Feature: HRMS API call
 
         @searchEmployeeSuccessfullyWithoutEmployeeCodes
         Scenario: hrms search employee successfully without passing employee codes
-
-  * print searchEmployeeRequest
             Given url hrmsSearchUrl
               And param tenantId = tenantId
               And request searchEmployeeRequest
@@ -70,10 +60,8 @@ Feature: HRMS API call
   * def employeeCode1 = hrmsResponseBody.Employees[0].code
   * def employeeCode2 = hrmsResponseBody.Employees[1].code
 
-
         @searchEmployeeSuccessfullyWithMultipleEmployeeCodes
         Scenario: hrms search employee successfully by passing multiple employee codes
-
   * def parameters = 
     """
     {
@@ -81,7 +69,6 @@ Feature: HRMS API call
      codes: '#(code)'
     }
     """
-  * print searchEmployeeRequest
             Given url hrmsSearchUrl
               And params parameters
               And request searchEmployeeRequest
@@ -92,8 +79,6 @@ Feature: HRMS API call
 
         @searchEmployeeError
         Scenario: hrms search employee error
-  
-  * print searchEmployeeRequest
             Given url hrmsSearchUrl
               And param names = '#(name)'
               And request searchEmployeeRequest
@@ -104,7 +89,6 @@ Feature: HRMS API call
 
         @searchWithInvalidTenantId
         Scenario: Search employee with Invalid tenant id
-  * print searchEmployeeRequest
             Given url hrmsSearchUrl
               And param tenantId = '#(tenantId)'
               And request searchEmployeeRequest
@@ -115,9 +99,7 @@ Feature: HRMS API call
 
         @updateEmployeeSuccessfully
         Scenario: hrms update employee successfully
-
-  * eval updateEmployeeRequest.Employees = Employees
-  * print updateEmployeeRequest
+  * eval updateEmployeeRequest.Employees = Employees  
             Given url hrmsUpdateUrl
               And request updateEmployeeRequest
              When method post
@@ -127,9 +109,7 @@ Feature: HRMS API call
 
         @updateEmployeeError
         Scenario: hrms update employee error
-
-  * eval updateEmployeeRequest.Employees = Employees
-  * print updateEmployeeRequest
+  * eval updateEmployeeRequest.Employees = Employees 
             Given url hrmsUpdateUrl
               And request updateEmployeeRequest
              When method post
@@ -139,9 +119,7 @@ Feature: HRMS API call
 
         @updateEmployeeWithInvalidTenantId
         Scenario: Error in update employee for invalid tenant Id
-
-  * eval updateEmployeeRequest.Employees = Employees
-  * print updateEmployeeRequest
+  * eval updateEmployeeRequest.Employees = Employees 
             Given url hrmsUpdateUrl
               And request updateEmployeeRequest
              When method post
@@ -151,12 +129,10 @@ Feature: HRMS API call
 
         @deactivateEmployeeSuccessfully
         Scenario: hrms deactivate successfully
-
   * eval updateEmployeeRequest.Employees = Employees
   * eval updateEmployeeRequest.Employees[0].deactivationDetails = updateDeactivatemployeeRequest.deactivationDetails
   * eval updateEmployeeRequest.Employees[0].isActive = false
   * eval updateEmployeeRequest.Employees[0].reActivateEmployee = false
-  * print updateEmployeeRequest
             Given url hrmsUpdateUrl
               And request updateEmployeeRequest
              When method post

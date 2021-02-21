@@ -4,9 +4,6 @@ Feature: Localization Messages API call
 	* def jsUtils = read('classpath:jsUtils.js')
   * def upsertRequest = read('../requestPayload/localization/upsert.json')
   * configure headers = read('classpath:websCommonHeaders.js')
-  * print upsertRequest
-  
-  
 	
         @upsertLocalizationSuccessfully
         Scenario: Upsert with Success call

@@ -28,15 +28,12 @@ Feature: Business Services - HRMS
         @HRMS_create_emp01 @regression @positive @hrms_create @hrms @smoke @businessService
         Scenario: Test to create a employee
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
-    * print hrmsResponseBody
     * def code = hrmsResponseBody.Employees[0].user.userName
-    * print code
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
     #Search
     * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfully')
-    * print hrmsResponseBody.Employees[0].user.userName
 
         @HRMS_create_InvalidEMpStatus_02 @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null status
@@ -109,7 +106,7 @@ Feature: Business Services - HRMS
     * def mobileNumber = "Invalid-mobileNuumber-" + ranString(5)
     # Steps to generate error message as provided mobile number in Invalid
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeError')
-    * print hrmsResponseBody
+    
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidMobileNumber
 
@@ -147,7 +144,7 @@ Feature: Business Services - HRMS
     # Steps to generate error message due to Invalid tenantId
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeAuthorizationError')
     # Checking actual error message returned by API with expected error message
-    * print hrmsResponseBody
+    
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
         @HRMS_create_InvalidFromDate_14 @regression @negative @hrmsCreate @hrms

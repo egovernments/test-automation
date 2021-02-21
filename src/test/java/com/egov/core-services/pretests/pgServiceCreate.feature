@@ -14,16 +14,14 @@ Feature: Initiates a new payment transaction, on successful validation, a redire
               And def pgServicesCreateResponseHeader = responseHeaders
               And def pgServicesCreateResponseBody = response
               And def txnId = pgServicesCreateResponseBody.Transaction.txnId
-     * print pgServicesCreateResponseBody
+     
 
         @createPgTransactionError
         Scenario: Create Payment Gateway Transaction Error
             Given url pgServices
-     * print pgServices  
               And request pgServicesCreatePayload
-     * print pgServicesCreatePayload
              When method post
              Then status 400
               And def pgServicesCreateResponseHeader = responseHeaders
               And def pgServicesCreateResponseBody = response
-     * print pgServicesCreateResponseBody
+     

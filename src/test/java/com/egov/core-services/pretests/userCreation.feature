@@ -2,7 +2,6 @@ Feature: Create user
 
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * print newUserPayload
   * def userType = mdmsStateAccessControlRoles.roles[0].code
   * def name = ranString(4)
   * def mobileNumberGen = '90' + randomMobileNumGen(8)
@@ -18,13 +17,9 @@ Feature: Create user
         Scenario: Creating new user
      * configure headers = read('classpath:websCommonHeaders.js')   
             Given url createUser
-     * print createUser
               And request newUserPayload
-     * print newUserPayload
              When method post
              Then status 200
               And def userCreationResponseHeader = responseHeaders
               And def userCreationResponseBody = response
-     * print userCreationResponseBody
      * def createdUser = userCreationResponseBody.user[0].userName
-     * print createdUser

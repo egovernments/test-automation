@@ -9,7 +9,6 @@ Background:
 @searchMdmsSuccessfullyByState
 Scenario: Search MDMS by State success Call
   Given url searchMdmsUrl
-  * print searchMdmsUrl
   And request searchStateRequest
   When method post
   Then status 200
@@ -20,7 +19,6 @@ Scenario: Search MDMS by State success Call
 @searchMdmsSuccessfullyByCity
 Scenario: Search MDMS by State and city success Call
   Given url searchMdmsUrl
-  * print searchMdmsUrl
   And request searchCityRequest
   When method post
   Then status 200

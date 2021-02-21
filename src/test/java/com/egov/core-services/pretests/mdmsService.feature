@@ -18,7 +18,7 @@ Feature: Searchmdms
             Given url searchMdmsUrl
               And params mdmsParam
               And request searchMdmsPayload
-     * print searchMdmsPayload
+     
              When method post
              Then status 200
               And def searchMdmsResponseHeader = responseHeaders
@@ -35,7 +35,7 @@ Feature: Searchmdms
             Given url searchMdmsUrl
               And params mdmsParam
               And request searchMdmsPayload
-     * print searchMdmsPayload
+     
              When method post
              Then status 400
               And def searchMdmsResponseHeader = responseHeaders
@@ -53,7 +53,7 @@ Feature: Searchmdms
             Given url searchMdmsUrl
               And params mdmsParam
               And request searchMdmsPayload
-     * print searchMdmsPayload
+     
              When method post
              Then status 400
               And def searchMdmsResponseHeader = responseHeaders
@@ -63,10 +63,8 @@ Feature: Searchmdms
         Scenario: Get mdms Successfully
             Given url getMdmsUrl
               And params mdmsParam
-              * print mdmsParam
               And request getMdmsRequest
              When method post
              And  def getMdmsResponseBody = response
-             * print getMdmsResponseBody
              Then assert responseStatus == 200 || responseStatus == 400 || responseStatus == 403
               

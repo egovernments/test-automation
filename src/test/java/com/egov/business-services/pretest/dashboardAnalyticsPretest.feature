@@ -22,7 +22,6 @@ Scenario: success dashboard char API
 
   Given url getChartUrl 
   And request dashboardRequest
-  * print dashboardRequest
   When method post
   Then status 200
   And def dashboardResponseHeader = responseHeaders

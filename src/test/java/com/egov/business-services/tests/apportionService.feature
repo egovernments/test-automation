@@ -1,12 +1,13 @@
 Feature: Business Services - Apportion service tests
 
    Background:
-     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
+     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
+     * def Bills = fetchBillResponse.Bill
      * def jsUtils = read('classpath:jsUtils.js')
      * configure headers = read('classpath:websCommonHeaders.js')
      * def apportionServiceData = read('../../business-services/constants/apportionService.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
      * def businessService = apportionServiceData.parameters.businessService
      * def amountPaid = totalAmount
      * def isAdvanceAllowed = apportionServiceData.parameters.isAdvanceAllowed

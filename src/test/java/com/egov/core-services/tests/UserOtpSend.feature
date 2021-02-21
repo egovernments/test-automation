@@ -13,29 +13,28 @@ Background:
         Scenario: Test to send the OTP to a valid mobile number during registration
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully')
-        * print userOtpSendResponseBody
+        
         * match userOtpSendResponseBody.isSuccessful == true
 
         @UserOtp_Send_RegisterDuplicate_05  @negative  @userOtp
         Scenario: Test registering using a already registered number
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorRegister')
-        * print userOtpSendResponseBody
+        
         * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo
-        * print userOtpConstant[0].errormessages.errorMsgForRegMobNo
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo
  
         @UserOtp_Send_Login_02  @positive @userOtp
         Scenario: Test to send the OTP to a valid mobile number during login
          * call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully')
-         * print userOtpSendResponseBody
+         
          * match userOtpSendResponseBody.isSuccessful == true
 
         @UserOtp_Send_Unregistered_03  @negative @userOtp
         Scenario: Test to send the OTP using a unregistered mobile number during login
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorLogin')
-        * print userOtpSendResponseBody
+        
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
  
         
@@ -43,7 +42,7 @@ Background:
         Scenario: Test to send the OTP using a invalid mobile number during login or register
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
-        * print userOtpSendResponseBody
+        
         * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo
 
@@ -51,28 +50,28 @@ Background:
         Scenario: Test by not passing mobile number or tenant id for type ' login'
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull')
-        * print userOtpSendResponseBody
+        
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo
 
         @UserOtp_Send_invalidTenant_Login_07  @negative  @userOtp
         Scenario: Test by passing a invalid or a non existent tenant ID
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant')
-        * print userOtpSendResponseBody
+        
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo
 
         @UserOtp_Send_NoType_08  @negative  @userOtp
         Scenario: Test by not passing any value for 'type'
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@successNoType')
-        * print userOtpSendResponseBody
+        
         * match userOtpSendResponseBody.isSuccessful == true
         
         @UserOtp_Send_NoMandatoryOtpParameters_08  @negative @userOtp
         Scenario: Test without mobile number, tenantid and type' parameters
         # calling register user pretest
         * call read('../../core-services/pretests/userOtpPretest.feature@errorTenantNull')
-        * print userOtpSendResponseBody
+        
         # verifying error messages
         * assert userOtpSendResponseBody.error.message == userOtpConstant.errorMessages.msgForInvalidOtp
         * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandTenantId

@@ -12,7 +12,6 @@ Feature: Business services - billing service demand calls
 
         @createBillDemand
         Scenario: Create Demand success Call
-  * print createDemandRequest
             Given url createDemandUrl
               And request createDemandRequest
              When method post
@@ -25,7 +24,7 @@ Feature: Business services - billing service demand calls
 
         @errorCreateBillDemand
         Scenario: Create Demand error Call
-  * print createDemandRequest
+  
             Given url createDemandUrl
               And request createDemandRequest
              When method post
@@ -36,7 +35,7 @@ Feature: Business services - billing service demand calls
         @errorCreateRemoveField
         Scenario: reate Demand error Call by removing field
   * eval karate.remove('createDemandRequest', removeFieldPath)
-  * print createDemandRequest
+  
             Given url createDemandUrl
               And request createDemandRequest
              When method post
@@ -46,7 +45,7 @@ Feature: Business services - billing service demand calls
 
         @searchDemand
         Scenario: Search Demand  Call
-  * print searchDemandRequest
+  
   * def searchDemandParams = 
   """
   {
@@ -66,7 +65,7 @@ Feature: Business services - billing service demand calls
 
         @searchDemandGenericParam
         Scenario: Search Demand error Call
-  * print searchDemandRequest
+  
             Given url searchDemandUrl
               And params searchDemandParams
               And request searchDemandRequest
@@ -78,7 +77,7 @@ Feature: Business services - billing service demand calls
         @updateDemand
         Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
-  * print updateDemandRequest
+  
             Given url updateDemandUrl
               And request updateDemandRequest
              When method post
@@ -87,10 +86,10 @@ Feature: Business services - billing service demand calls
               And def billingServiceDemandResponseBody = response
               And def Demands = billingServiceDemandResponseBody.Demands
 
-        @errorInUpdateEmployee
+        @errorInUpdateDemand
         Scenario: Update Demand success Call
   * eval updateDemandRequest.Demands = Demands
-  * print updateDemandRequest
+  
             Given url updateDemandUrl
               And request updateDemandRequest
              When method post

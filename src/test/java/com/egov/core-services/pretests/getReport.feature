@@ -16,11 +16,11 @@ Feature: Get reports
     }
     """
             Given url getReport
-     * print getReport
+     
               And params getReportParam
-     * print getReportParam
+     
               And request getReportPayload
-     * print getReportPayload
+     
              When method post
              Then status 200
               And def getReportsResponseHeader = responseHeaders
@@ -37,11 +37,11 @@ Feature: Get reports
     }
     """
             Given url getReport
-     * print getReport
+     
               And params getReportParam
-     * print getReportParam
+     
               And request getReportPayload
-     * print getReportPayload
+     
              When method post
              Then status 400
               And def getReportsResponseHeader = responseHeaders
@@ -58,11 +58,11 @@ Feature: Get reports
     }
     """
             Given url getReport
-     * print getReport
+     
               And params getReportParam
-     * print getReportParam
+     
               And request getReportPayload
-     * print getReportPayload
+     
              When method post
              Then status 403
               And def getReportsResponseHeader = responseHeaders

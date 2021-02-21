@@ -5,7 +5,6 @@ Feature: Business Services - Dashboard Analytics service tests
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def dashboardServiceData = read('../../business-services/constants/dashboardAnalytics.yaml')
      * def dashboardTestData = read('../../business-services/requestPayload/dashboardAnalytics/chartAPI.json')
-     * print dashboardTestData
      * def departmentId = commonConstants.invalidParameters.nullValue
      * def visualizationType = dashboardServiceData.parameters.visualizationType
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.totalComplaints
@@ -29,7 +28,6 @@ Feature: Business Services - Dashboard Analytics service tests
         Scenario: Verify the API call for display of data in metric format
      # Steps to process dashboard chart
      * call read('../../business-services/pretest/dashboardAnalyticsPretest.feature@processDashboardChart')
-     * print dashboardResponseBody
      * match dashboardResponseBody.statusInfo.statusMessage == dashboardServiceData.expected.successMessages.status
      * match dashboardResponseBody.responseData.visualizationCode == visualizationCode
      * match dashboardResponseBody.responseData.chartType == dashboardServiceData.expected.chartType.metric

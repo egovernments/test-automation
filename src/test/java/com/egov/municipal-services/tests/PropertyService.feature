@@ -22,7 +22,6 @@ Feature: Property Services Create
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successForwardProperty')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successSearchProperty')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@successApproveProperty')
-    * print propertyServiceResponseBody
 
         @createPropertyAndAssess
         Scenario: Create Active Property

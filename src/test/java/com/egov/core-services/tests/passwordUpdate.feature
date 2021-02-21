@@ -10,7 +10,6 @@ Background:
      * def genericError = read("../../common-services/constants/genericConstants.yaml")
      * def existingPassword = authPassword
      * def newPassword = 'Password@'+randomNumber(4)
-     * print newPassword
      * def username = authUsername
      * def type = authUserType
      * def updatedUserPassword = read('../../core-services/requestPayload/user/updatePassword/updatePassword.json')
