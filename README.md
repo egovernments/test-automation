@@ -83,9 +83,9 @@ It is possible to specify certain test tags and environment details from command
  
 ## List Of Tags
 
-To run all the tests, use the tag `@regression`(this tag excludes `@userOtp` and `@egovWorkflowProcess` testcases from execution to avoid triggering sms service. Use these tags along with `@regression` only if necessary)
+* To run all the tests, use the tag `@regression`(this tag excludes `@userOtp` and `@egovWorkflowProcess` testcases from execution to avoid triggering sms service. Use these tags along with `@regression` only if necessary)
 
-To run the tests based on required services for execution, use below listed tags
+* To run the tests based on required services for execution, use below listed tags
 
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        
