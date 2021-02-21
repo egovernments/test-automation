@@ -194,6 +194,8 @@
             <version>2.19.1</version>
             <configuration>
 				<useSystemClassLoader>false</useSystemClassLoader>
+				<forkCount>3</forkCount>
+    			<reuseForks>true</reuseForks>
                 <argLine>
 					-Xmx1g -XX:MaxPermSize=256m -XX:-UseGCOverheadLimit
                     -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
