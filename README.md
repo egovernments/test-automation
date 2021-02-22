@@ -1,7 +1,7 @@
-## DIGIT Test Automation Framework and Setup Guide
-# Preface:
+# DIGIT Test Automation Framework and Setup Guide
+### Preface:
 DIGIT, a REST API platform based out of microservices architecture.
-# Role of Test Automation:
+### Role of Test Automation:
 1. Robust test framework, functions as platform independent test suite
 2. Framework handles multi tenant by tuning only environment properties file changes
 3. Dynamic test data creations on instant API calls
@@ -22,7 +22,7 @@ DIGIT, a REST API platform based out of microservices architecture.
 * [Test Coverage](#test-coverage)
 * [Upcoming Services](#upcoming-services)
 
-## Project Brief
+### Project Brief
 DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
 
 DIGIT Test Automation suite with one click brings quick turnaround of quality validations of DIGIT services and workflows without any manual quality engineering test efforts.
@@ -43,7 +43,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  BDD framework - Behavior Driven Development is a software development approach 
  
-## Automation Framework Kick-Off
+### Automation Framework Kick-Off
 ### Pre-requisites
  * Two main software utilities required:  JAVA and MAVEN
 
@@ -64,7 +64,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  (https://www.baeldung.com/install-maven-on-windows-linux-mac)
 
 <!--Installation-->
-# KARATE Framework, Source Code, GIT Install
+### KARATE Framework, Source Code, GIT Install
 Supported IDEs for Code/Test Runs: (https://github.com/intuit/karate/wiki/IDE-Support)
 
 Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
@@ -90,7 +90,7 @@ git checkout <Your Branch>
  
 git pull origin karate-master
 
-# Check List to ensure to start automation test Runs:
+### Check List to ensure to start automation test Runs:
 1. JAVA, MAVEN path set in ENVIRONMENT variables
 2. Visual studio, GIT installed
 3. DIGIT Test Automation Framework is covered with all "Core, Business and Municipal" services feature, pretest, tests, constant, yaml Files.
@@ -101,7 +101,7 @@ git pull origin karate-master
  Ex:  1. <Local Working Directory path>karate\qa.yaml
       2. <Local Working Directory path>karate\uat.yaml
      
-###### Project Level 
+#### Project Level 
   * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. 
   
   For ex:`/Users/admin/Desktop/config.yaml`
@@ -153,16 +153,16 @@ Ex:
 <<<<<<< HEAD
 ##### Caution: avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
 
-## List Of all services tags
+### List Of all services tags
 =======
-## Run with Command Prompt
+### Run with Command Prompt
 It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
  * Open command prompt or terminal on project folder
  * Execute `mvn clean test "-DconfigPath=/path/to/config/file.yaml" "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov"`
- ###### For example  
+###### For example  
  `mvn clean test "-DconfigPath=/Users/admin/eGovAuto/config.yaml" "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov"`
  
-## List Of Tags
+### List Of Tags
 
 * To run all the tests, use the tag `@regression`(this tag excludes `@userOtp` and `@egovWorkflowProcess` testcases from execution to avoid triggering sms service. Use these tags along with `@regression` only if necessary)
 
@@ -189,13 +189,13 @@ The listed tags are available currently in the framework
 | @fileStore			         | File store tests			       |
 | @pgservices			        | PG Service tests			       | 
 
-## Test Reporting
+### Test Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
  * Post execution of test runs, framework will automatically generate `karate-summary.html` file which can be found under `./test-automation/target/cucumber-html-reports/overview-features.html`
  * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
  
 <!-- Test Coverage -->
-## Test Coverage
+### Test Coverage
 
 DIGIT Test Automation Framework cover validations of below services.
 * Test Coverage details
