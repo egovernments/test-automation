@@ -5,15 +5,9 @@ DIGIT, a REST API platform based out of microservices architecture.
 1. Robust test framework, functions as platform independent test suite
 2. Framework handles multi tenant by tuning only environment properties file changes
 3. Dynamic test data creations on instant API calls
-<<<<<<< HEAD
 4. Reusability of code, features with data driven tests
 5. Test suites catagirisation to utilise automation suite based on platform test requirements - In-progress
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
-=======
-4. Reusability of Code, Features with data driven tests
-5. Test suites catagirisation to utilise automation suite based on Platform test requirements - In-Progress
-6. Ensure Environment specific test data cleanup post test suite complete - In-Progress
->>>>>>> 1b0e1a4ae8d6dd0c2fedf045efc14032dd0385aa
 
 ##### Table of Contents
 * [Project Brief](#about-the-project)
@@ -29,11 +23,7 @@ DIGIT, a REST API platform based out of microservices architecture.
 * [Upcoming Services](#upcoming-services)
 
 ## Project Brief
-<<<<<<< HEAD
 DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
-=======
-DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, business and Municipal services. automation test suit solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
->>>>>>> 1b0e1a4ae8d6dd0c2fedf045efc14032dd0385aa
 
 DIGIT Test Automation suite with one click brings quick turnaround of quality validations of DIGIT services and workflows without any manual quality engineering test efforts.
 
@@ -97,7 +87,6 @@ git pull origin karate-master
 3. DIGIT Test Automation Framework is covered with all "Core, Business and Municipal" services feature, pretest, tests, constant, yaml Files.
 4. Create environment configuration yaml file at any given path of your local system, per test environment to input while we run automation suite.
  
-<<<<<<< HEAD
  Environement configuartion file contains parameters such as host, cityCode, stateCode, user credentials etc.
 Ex:  1. <Local Working Directory path>karate]qa.yaml
      2. <Local Working Directory path>karate\uat.yaml
@@ -105,14 +94,6 @@ Ex:  1. <Local Working Directory path>karate]qa.yaml
 ###### Project Level 
   * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. 
   For ex:`/Users/admin/Desktop/config.yaml`
-=======
- Environement configuartion file contains parameteres such as host, cityCode, stateCode, user credentials etc.
-Ex:  1. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate]qa.yaml
-     2. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate\uat.yaml
-     
-###### Project Level 
-  * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. For ex:`/Users/admin/Desktop/config.yaml`
->>>>>>> 1b0e1a4ae8d6dd0c2fedf045efc14032dd0385aa
   * Create the environment config file in below format
   ```yaml
   host: hostUrl
