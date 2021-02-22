@@ -74,11 +74,11 @@ Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
  (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
  - Create a Local Repository Path Working Directory:
-Windows Example: '<Local Working Directory path>\test-automation'
+ Windows Example:  <Local Working Directory path>\test-automation
 
 - Open Visual studio: Ctl+~ (to open terminal)
 
-change path to '<Local Working Directory path>\test-automation'
+change path to  <Local Working Directory path>\test-automation
 
 - Perform source code clone to local repository path working directory using git clone
 
@@ -167,7 +167,6 @@ It is possible to specify certain test tags and environment details from command
 * To run all the tests, use the tag `@regression`(this tag excludes `@userOtp` and `@egovWorkflowProcess` testcases from execution to avoid triggering sms service. Use these tags along with `@regression` only if necessary)
 
 * To run the tests based on required services for execution, use below listed tags
->>>>>>> 05eff5862c9d2d7a0755555e792da4630888bd23
 
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        
