@@ -6,8 +6,8 @@ DIGIT, a REST API platform based out of microservices architecture.
 2. Framework handles multi tenant by tuning only environment properties file changes
 3. Dynamic test data creations on instant API calls
 4. Reusability of Code, Features with data driven tests
-5. Test suites catagirisation to utilise automation suite based on Platform test requirements
-6. Ensure Environment specific test data cleanup post test suite complete
+5. Test suites catagirisation to utilise automation suite based on Platform test requirements - In-Progress
+6. Ensure Environment specific test data cleanup post test suite complete - In-Progress
 
 ##### Table of Contents
 * [Project Brief](#about-the-project)
