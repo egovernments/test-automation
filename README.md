@@ -23,7 +23,7 @@ DIGIT, a REST API platform based out of microservices architecture.
 * [Upcoming Services](#upcoming-services)
 
 ## Project Brief
-eGov test automation framework plays a significant role in automating DIGIT workflows of Core, business and Municipal services. automation test suit solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
+DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, business and Municipal services. automation test suit solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
 
 Automation suite with One click brings quick turnaround of Quality validations of DIGIT services and workflows without any manual Quality Engineering test efforts.
 
