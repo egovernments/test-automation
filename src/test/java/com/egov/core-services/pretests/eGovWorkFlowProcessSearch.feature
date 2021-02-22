@@ -21,7 +21,7 @@ Feature: Perform search using business id
              Then status 200
               And def processSearchResponseHeader = responseHeaders
               And def processSearchResponseBody = response
-     * print processSearchResponseBody
+     
 
         @searchWorkflowProcessOffsetAndLimit
         Scenario: Perform search using offset and limit
@@ -43,7 +43,7 @@ Feature: Perform search using business id
              Then status 200
               And def processSearchResponseHeader = responseHeaders
               And def processSearchResponseBody = response
-     * print processSearchResponseBody
+     
 
         @searchWorkflowProcessWithoutBusinessid
         Scenario: Perform search wihtout passing business id
@@ -61,7 +61,7 @@ Feature: Perform search using business id
              Then status 200
               And def processSearchResponseHeader = responseHeaders
               And def processSearchResponseBody = response
-     * print processSearchResponseBody
+     
     
         @searchWorkflowProcessWithOnlyTenantid
         Scenario: Perform search with only tenantId
@@ -137,10 +137,8 @@ Scenario: Perform search using business id
 
     """ 
      Given url workFlowProcess 
-     * print workFlowProcess 
      And params processSearchParam
      And request workFlowProcessSearchPayload
-     * print workFlowProcessSearchPayload
      When method post
      Then status 200
      And def processSearchResponseHeader = responseHeaders

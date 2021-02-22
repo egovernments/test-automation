@@ -39,7 +39,7 @@ Feature: Location
              Then status 200
               And def searchLocationResponseHeader = responseHeaders
               And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+     
 
         @searchLocationWithoutTenantIdError
         Scenario: search for location detail without tenantId error
@@ -57,7 +57,7 @@ Feature: Location
              Then status 400
               And def searchLocationResponseHeader = responseHeaders
               And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+     
 
         @searchLocationError
         Scenario: search for location detail error
@@ -76,4 +76,4 @@ Feature: Location
              Then status 400
               And def searchLocationResponseHeader = responseHeaders
               And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+     

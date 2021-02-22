@@ -9,7 +9,7 @@ Scenario: Test to Search for user by passing valid UserName in the request
   * call read('../../core-services/pretests/userPretest.feature@finduser')
   # Defining user with length of the searched user
   * def user = searchUserResponseBody.user.length
-  * print user
+  
   # Validate the value of user is present
   * match user == '#present'
 
@@ -19,7 +19,7 @@ Scenario: Test to Search for user by passing valid UserName in the request
   * call read('../../core-services/pretests/userPretest.feature@finduserwithinvalidusername')
   # Defining user with length of the searched user
   * def user = searchUserResponseBody.user.length
-  * print user
+  
   # Validate the value of user is present
   * match user == '#present'
 
@@ -29,7 +29,7 @@ Scenario: Search for user by giving InValid tenantId
   * call read('../../core-services/pretests/userPretest.feature@finduserwithinvalidtenantid')
   # Defining user with length of the searched user
   * def user = searchUserResponseBody.user.length
-  * print user
+  
   # Validate the value of user is present
   * match user == '#present'
 
@@ -53,7 +53,7 @@ Scenario: Search by passing 2 tenantids. Make sure both are valid or Multiple Us
   * call read('../../core-services/pretests/userPretest.feature@finduserwithmultipletenantid')
   # Defining user with length of the searched user
   * def user = searchUserResponseBody.user.length
-  * print user
+  
 
 @User_SearchBlankTenant_09  @regression @negative  @userSearch  @eGovUser
 Scenario: Pass null value for tenantid and check for errors
@@ -73,7 +73,6 @@ Scenario: Create Citizen with Invalid OTP & valid data
 Scenario: Create citizen without username parameter in the request
   # Steps to create citizen without userName parameter
   * call read('../../core-services/pretests/citizenCreate.feature@createCitizenWithoutUsername')
-  * print createCitizenResponseBody
   # Validate actual error code returned by API for missed userName parameter is equal to expected error code
   * assert createCitizenResponseBody.Errors[0].code == userConstant.errormessages.invalidUserNameCode 
 

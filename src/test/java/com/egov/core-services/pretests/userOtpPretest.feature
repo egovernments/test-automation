@@ -9,10 +9,8 @@ Feature: User otp send API call
   * def registeredMobileNumber = createdUser
   * def mobileNumberGen = randomMobileNumGen(10)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
-  * print mobileNumber
   * def mobileNumberGen1 = randomMobileNumGen(9)
   * def invalidMobileNo = new java.math.BigDecimal(mobileNumberGen1)
-  * print invalidMobileNo
   * def userOtpPayload = read('../../core-services/requestPayload/userOtp/userOtpSend.json')
   * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -30,16 +28,16 @@ Feature: User otp send API call
     """
   * set userOtpPayload.otp.type = typeForRegister
             Given url userOtpRegisterUrl
-     * print userOtpRegisterUrl
+     
               And params userOtpParam
-     * print userOtpParam
+     
               And request userOtpPayload
-     * print userOtpPayload
+     
              When method post
              Then status 201
               And def userOtpSendResponseHeader = responseHeaders
               And def userOtpSendResponseBody = response
-     * print userOtpSendResponseBody
+     
 
         @loginSuccessfully
         Scenario: User otp send success call
@@ -52,11 +50,11 @@ Feature: User otp send API call
   * set userOtpPayload.otp.type = typeForLogin
   * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
             Given url userOtpRegisterUrl
-      * print userOtpRegisterUrl
+      
               And params userOtpParam
-      * print userOtpParam
+      
               And request userOtpPayload
-      * print userOtpPayload
+      
              When method post
              Then status 201
               And def userOtpSendResponseHeader = responseHeaders
@@ -72,11 +70,11 @@ Feature: User otp send API call
     """
   * set userOtpPayload.otp.type = ''
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And params userOtpParam
-    * print userOtpParam
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 201
               And def userOtpSendResponseHeader = responseHeaders
@@ -93,11 +91,11 @@ Feature: User otp send API call
    * set userOtpPayload.otp.mobileNumber = registeredMobileNumber
    * set userOtpPayload.otp.type = typeForRegister
             Given url userOtpRegisterUrl
-     * print userOtpRegisterUrl
+     
               And params userOtpParam
-     * print userOtpParam
+     
               And request userOtpPayload
-     * print userOtpPayload
+     
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
@@ -113,11 +111,11 @@ Feature: User otp send API call
     """
    * set userOtpPayload.otp.type = typeForLogin 
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And params userOtpParam
-    * print userOtpParam
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
@@ -134,11 +132,11 @@ Feature: User otp send API call
    * set userOtpPayload.otp.mobileNumber = invalidMobileNo
    * set userOtpPayload.otp.type = typeForRegister 
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And params userOtpParam
-    * print userOtpParam
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
@@ -155,11 +153,11 @@ Feature: User otp send API call
   * set userOtpPayload.otp.mobileNumber = ''
   * set userOtpPayload.otp.type = typeForLogin  
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And params userOtpParam
-    * print userOtpParam
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
@@ -177,16 +175,16 @@ Feature: User otp send API call
     }
     """
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And params userOtpParam
-    * print userOtpParam
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
               And def userOtpSendResponseBody = response
-    * print userOtpSendResponseBody
+    
 
         @errorTenantNull
         Scenario: User otp send fail call
@@ -194,9 +192,9 @@ Feature: User otp send API call
   * set userOtpPayload.otp.type = ''
   * set userOtpPayload.otp.tenantId = ''
             Given url userOtpRegisterUrl
-    * print userOtpRegisterUrl
+    
               And request userOtpPayload
-    * print userOtpPayload
+    
              When method post
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders

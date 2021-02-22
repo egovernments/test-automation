@@ -11,50 +11,49 @@ Background:
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
      Given url workflowTransition 
-     * print workflowTransition
+     
      And request processTransiionPayloadValid
-     * print processTransiionPayloadValid
+     
      When method post
      Then status 200
      And def processTransitionResponseHeader = responseHeaders
      And def processTransitionResponseBody = response
-     * print processTransitionResponseBody
+     
 
 @processTransitionFail
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
      Given url workflowTransition 
-     * print workflowTransition
+     
      And request processTransiionPayloadValid
-     * print processTransiionPayloadValid
+     
      When method post
      Then status 400
      And def processTransitionResponseHeader = responseHeaders
      And def processTransitionResponseBody = response
-     * print processTransitionResponseBody
+     
 
 @processTransitionWithoutModuleName
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
      Given url workflowTransition 
-     * print workflowTransition
+     
      And request processTransiionPayloadInvalid
-     * print processTransiionPayloadInvalid
      When method post
      Then status 400
      And def processTransitionResponseHeader = responseHeaders
      And def processTransitionResponseBody = response
-     * print processTransitionResponseBody
+     
 
 @processTransitionWithoutTenantId
 Scenario: Verify the API call to move the workflow from one state to another
   * configure headers = read('classpath:websCommonHeaders.js') 
      Given url workflowTransition 
-     * print workflowTransition
+     
      And request processTransiionPayloadValid
-     * print processTransiionPayloadValid
+     
      When method post
      Then status 403
      And def processTransitionResponseHeader = responseHeaders
      And def processTransitionResponseBody = response
-     * print processTransitionResponseBody
+     

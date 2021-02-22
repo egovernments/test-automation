@@ -100,30 +100,29 @@ Feature: Work Flow Pre Tests
       businessServices: '#(businessServices)'
       }
       """
-    * print searchWorkFlowRequest
+    
             Given url workFlowSearchURL
               And params parameters
-    * print parameters
+    
               And request searchWorkFlowRequest
              When method post
              Then status 200
               And def searchWorkFlowResponseHeader = responseHeaders
               And def searchWorkFlowResponseBody = response
-  * print workFlowSearchURL
-  * print searchWorkFlowResponseBody
+  
+  
 
         @updateWorkFlowSuccessfully_Test
         Scenario: Happy Path : Update Work Flow
     * eval updateWorkFlowRequest.BusinessServices[0] = BusinessServices
-    * print updateWorkFlowRequest
+    
             Given url workFlowUpdateURL
               And request updateWorkFlowRequest
              When method post
              Then status 200
               And def workFlowUpdateResponseHeader = responseHeaders
               And def workFlowUpdateResponseBody = response
-    * print workFlowUpdateURL
-
+    
         @ErrorPathUpdateTestWithInvalidTenantId
         Scenario: Error Path : Update workflow with invalid tenantId value
     * set updateWorkFlowRequest.tenantId = workFlowConstants.inputData.invalidTenantId

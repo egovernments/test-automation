@@ -141,9 +141,24 @@ Ex:
 - Note: 
  @regression is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
  
+<<<<<<< HEAD
 ##### Caution: avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
 
 ## List Of all services tags
+=======
+## Run with Command Prompt
+It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
+ * Open command prompt or terminal on project folder
+ * Execute `mvn clean test "-DconfigPath=/path/to/config/file.yaml" "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov"`
+ ###### For example  
+ `mvn clean test "-DconfigPath=/Users/admin/eGovAuto/config.yaml" "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov"`
+ 
+## List Of Tags
+
+* To run all the tests, use the tag `@regression`(this tag excludes `@userOtp` and `@egovWorkflowProcess` testcases from execution to avoid triggering sms service. Use these tags along with `@regression` only if necessary)
+
+* To run the tests based on required services for execution, use below listed tags
+>>>>>>> 05eff5862c9d2d7a0755555e792da4630888bd23
 
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        

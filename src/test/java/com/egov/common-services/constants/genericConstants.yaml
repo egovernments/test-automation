@@ -19,7 +19,7 @@ parameters:
   financialYear: 2020-21
   # to upload file on fire-noc module
   module:
-    - fire-noc 
+    - fire-noc
   # type for userOtp
   type:
     - register 

@@ -15,15 +15,15 @@ Feature: Verify searching transaction details using txn id
     }
     """ 
             Given url pgServicesSearch
-     * print pgServicesSearch 
+     
               And params pgServicesSearchParam
               And request pgServicesSearchPayload
-     * print pgServicesSearchPayload
+     
              When method post
              Then status 200
               And def pgServicesSearchResponseHeader = responseHeaders
               And def pgServicesSearchResponseBody = response
-     * print pgServicesSearchResponseBody
+     
 
         @searchPgTransactionError
         Scenario: Search a payment gateway transaction error
@@ -34,12 +34,12 @@ Feature: Verify searching transaction details using txn id
     }
     """ 
             Given url pgServicesSearch
-     * print pgServicesSearch 
+     
               And params pgServicesSearchParam
               And request pgServicesSearchPayload
-     * print pgServicesSearchPayload
+     
              When method post
              Then status 400
               And def pgServicesSearchResponseHeader = responseHeaders
               And def pgServicesSearchResponseBody = response
-     * print pgServicesSearchResponseBody
+     

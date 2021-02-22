@@ -1,7 +1,7 @@
 Feature: Billing Service - Bills tests
 
     Background:
-     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess') 
+     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
      * def jsUtils = read('classpath:jsUtils.js')
      * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -24,7 +24,6 @@ Scenario: Fetch bill with valid consumer code and business service
     * def fetchBillParams = { consumerCode: '#(consumerCode)', businessService: '#(businessService)', tenantId: '#(tenantId)'}
     # Steps to fetch bill with specified parameters
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
-    * print billResponse.ResposneInfo.status
     * assert fetchBillResponse.Bill.size()>0
     * match fetchBillResponse.Bill[0].consumerCode == '#present'
     * match fetchBillResponse.Bill[0].businessService == '#present'

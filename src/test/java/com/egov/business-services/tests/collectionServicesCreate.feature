@@ -1,7 +1,7 @@
 Feature: collection-services-Create tests
 
         Background:
-    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
     * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
@@ -31,9 +31,7 @@ Feature: collection-services-Create tests
 
         @Create_PaymentWithPaidBillID_02 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with paid Bill id
-     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
-    # Make payment with valid Bill id first
+     # Make payment with valid Bill id first
      * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
      * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Set the `billId` value with paid bill id
@@ -50,17 +48,12 @@ Feature: collection-services-Create tests
 
         @Create_PaymentWithInvalidBillID_03 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Bill id
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorBillId')
     * match response.Errors[0].message == invalidBillIdError
-    * print collectionServicesResponseBody
     
         @Create_PaymentWithInvalidBusinessService_04 @regression @positive @CreatePayment @collectionServices
         Scenario: Make payment with invalid Business ID
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorBusinessService')
     * match response.ResponseInfo.status == '200 OK'
@@ -70,48 +63,36 @@ Feature: collection-services-Create tests
 
         @Create_PaymentWithAmountpaid_Null_05 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Business ID
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Bill id 
     * call read('../../business-services/pretest/collectionServicesPretest.feature@totalAmountPaidNull')
     * match response.Errors[0].message == totalAmountPaidError
 
         @Create_PaymentWith_PaymentModeCard_06 @regression @positive @CreatePayment @collectionServices
         Scenario: Make payment with Card payment mode
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with Card type payment mode
     * call read('../../business-services/pretest/collectionServicesPretest.feature@cardPaymentMethod')
     * match response.ResponseInfo.status == '200 OK'
 
         @Create_PaymentWith_InvalidPaymentMode_07 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Payment mode
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Payment Mode
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorPaymentMode')
     * match response.Errors[0].message == invalidPaymentModeError
 
         @Create_PaymentWith_InvalidtenantID_08 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with invalid Tenant Id
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Teanant Id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorTenantId')
     * match response.Errors[0].message == invalidTenantIdError
 
         @Create_PaymentWith_NotenantID_09 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with null Tenant Id
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with invalid Tenant Id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@nullTenantIdPayment')
     * match response.Errors[0].message == nullTenantIdError
 
         @Create_PaymentWith_negativeAmount_10 @regression @negative @CreatePayment @collectionServices
         Scenario: Make payment with negative total amount paid
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@assessPropertySuccessfully')
-    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Make payment with negative total amount paid value
     * call read('../../business-services/pretest/collectionServicesPretest.feature@negativeTotalAmount')
     * def billId = fetchBillResponse.Bill[0].id

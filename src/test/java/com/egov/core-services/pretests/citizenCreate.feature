@@ -13,7 +13,6 @@ Feature: Create Citizen Pretest Feature
   * def otpReference = '348356'
   * def mobileNumberGen = randomMobileNumGen(10)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
-  * print mobileNumber
   * def name = ranString(4)
   * def permanentCity = cityCode
   * def invalidMobileNo = ranString(6)
@@ -53,9 +52,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizen
         Scenario: Create citizen
             Given url createCitizen
-     * print createCitizen  
               And request createCitizenvalidPayload
-     * print createCitizenvalidPayload
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
@@ -64,9 +61,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizenWithoutUsername
         Scenario: Create Citizen Without Username
             Given url createCitizen
-     * print createCitizen  
               And request citizenWithoutUserNamePayLoad
-     * print citizenWithoutUserNamePayLoad
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
@@ -75,9 +70,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizenWithoutName
         Scenario: Create Citizen Without Name
             Given url createCitizen
-     * print createCitizen  
               And request citizenWithoutName
-     * print citizenWithoutName
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
@@ -86,9 +79,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizenWithoutTenantId
         Scenario: Create Citizen Without TenantId
             Given url createCitizen
-     * print createCitizen  
               And request citizenWithoutTenantId
-     * print citizenWithoutTenantId
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
@@ -97,9 +88,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizenWithInvalidUsername
         Scenario: Create Citizen With Invalid Username
             Given url createCitizen
-     * print createCitizen  
               And request citizenWithInvalidUserName
-     * print citizenWithInvalidUserName
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
@@ -108,9 +97,7 @@ Feature: Create Citizen Pretest Feature
         @createCitizenWithNameMoreThan50chars
         Scenario: Create Citizen With Name More Than 50chars
             Given url createCitizen
-     * print createCitizen  
               And request citizenWithName
-     * print citizenWithName
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders

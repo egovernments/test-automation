@@ -1,7 +1,7 @@
 Feature: Business Services - Collection service tests
 
 Background:
-    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
     * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
@@ -134,7 +134,6 @@ Scenario: Test to Cancel a payment in workflow with invalid reason
     * def reason = invalidReason
     # Steps to process workflow with Invalid reason
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorinworkflow')
-    * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.invalidReceipt + paymentId
     * call read('../../business-services/pretest/collectionServicesPretest.feature@removeFieldFromWorkFlow')
 
@@ -144,7 +143,6 @@ Scenario: Test to Cancel a payment in workflow with no tenantId
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     # Steps to process workflow where tenantId field is removed from the request
     * call read('../../business-services/pretest/collectionServicesPretest.feature@removeFieldFromWorkFlow') {'removeFieldPath': '$.paymentWorkflows[0].tenantId'}
-    * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.mustNotBeNull
 
 @workflow_payment_InValidtenantID_10 @regression @negative @collectionServiceWorkflow @collectionServices
@@ -154,5 +152,4 @@ Scenario: Test to Cancel a payment in workflow with invalid tenantId
     * def tenantId = randomString(5)
     # Steps to process workflow with invalid tenantId
     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorInauthworkflow')
-    * print collectionServicesResponseBody
     * assert collectionServicesResponseBody.Errors[0].message == collectionServicesConstants.errorMessages.NotAuthorized

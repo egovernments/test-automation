@@ -24,7 +24,6 @@ Feature: Generated pdf successfully
             Given url createPdf
               And params pdfCreateParam
               And request pdfCreatePayloadFirst
-              * print pdfCreatePayloadFirst
              When method post
              Then status 201
               And def pdfCreateResponseHeader = responseHeaders
@@ -80,9 +79,9 @@ Feature: Generated pdf successfully
     """ 
             Given url createPdf
               And params pdfCreateParam
-              * print pdfCreateParam
+              
               And request pdfCreatePayloadFourth
-              * print pdfCreatePayloadFourth
+              
              When method post
              Then status 201
               And def pdfCreateResponseHeader = responseHeaders
@@ -98,7 +97,7 @@ Feature: Generated pdf successfully
 
     """ 
             Given url createPdf
-     * print createPdf 
+     
               And params pdfCreateParam
               And request pdfCreatePayloadFirst
              When method post
@@ -118,9 +117,9 @@ Feature: Generated pdf successfully
     """ 
             Given url createPdf
               And params pdfCreateParam
-              * print pdfCreateParam
+              
               And request pdfCreatePayloadFirst
-              * print pdfCreatePayloadFirst
+              
              When method post
              Then status 400
               And def pdfCreateResponseHeader = responseHeaders
