@@ -88,11 +88,13 @@ git pull origin karate-master
 4. Create environment configuration yaml file at any given path of your local system, per test environment to input while we run automation suite.
  
  Environement configuartion file contains parameters such as host, cityCode, stateCode, user credentials etc.
-Ex:  1. <Local Working Directory path>karate]qa.yaml
-     2. <Local Working Directory path>karate\uat.yaml
+
+ Ex:  1. <Local Working Directory path>karate\qa.yaml
+      2. <Local Working Directory path>karate\uat.yaml
      
 ###### Project Level 
   * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. 
+  
   For ex:`/Users/admin/Desktop/config.yaml`
   * Create the environment config file in below format
   ```yaml
@@ -124,10 +126,10 @@ Ex: AccessControl service feature file is composed of N number of test cases and
 
 1. Running one service feature test cases:
 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
+<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
 
 Ex: 
-C:\Users\Prakat-L089\Desktop\Projects\Code base\Phase 1.1>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
+<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
 
 2. Running multiple services feature test cases at one shot:
 
