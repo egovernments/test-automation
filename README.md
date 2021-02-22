@@ -89,40 +89,26 @@ Command: to clone the project repository in the system
  Environement configuartion file contains parameteres such as host, cityCode, stateCode, user credentials etc.
 Ex:  1. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate]qa.yaml
      2. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate\uat.yaml
-
-Ex: qa.yaml
-Save below Yaml File template in a txt file (qa.yaml)
-host: https://qa.digit.org/
+     
+###### Project Level 
+  * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. For ex:`/Users/admin/Desktop/config.yaml`
+  * Create the environment config file in below format
+  ```yaml
+  host: hostUrl
 stateCode: pb
 cityCode: amritsar
-#Super User credentials for login(need to create user manually)
+# Super User credentials for login(need to create user manually)
 superUser:
-  userName: EMPAUTO
-  password: eGov@123
+  userName: userName
+  password: password
   type: EMPLOYEE
-#Employee username and password to update an existing user's profile (need to create user manually)
+# Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-  userName: EMP-107-000878
-  password: Password@2
+  userName: userName
+  password: password
   type: EMPLOYEE
-
-Ex: uat.yaml
-Save below Yaml File template in a txt file (qa.yaml)
-host: https://uat.digit.org/
-#productHost is not in use currently hence commented 
-#productHost: https://mseva-uat.lgpunjab.gov.in/ 
-stateCode: pg
-cityCode: citya
-#Super User credentials for login(need to create user manually)
-superUser:
-  userName: EMP111
-  password: eGov@123
-  type: EMPLOYEE
-#Employee username and password to update an existing user's profile (need to create user manually)
-employee:
-  userName: EMP-1013-000262
-  password: eGov@uat123
-  type: EMPLOYEE
+  ```
+  * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
   
 ### You are set to Start to start Automation test runs now
 
