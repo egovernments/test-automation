@@ -78,7 +78,7 @@ Windows Example: <Local Working Directory path>\test-automation
 
 - Open Visual studio: Ctl+~ (to open terminal)
 
--change path to <Local Working Directory path>
+change path to <Local Working Directory path>\test-automation
 
 - Perform source code clone to local repository path working directory using git clone
 
