@@ -2,12 +2,12 @@
 # Preface:
 DIGIT, a REST API platform based out of microservices architecture.
 # Role of Test Automation:
-1. Robust test framework, functions as Platform independent test suite
+1. Robust test framework, functions as platform independent test suite
 2. Framework handles multi tenant by tuning only environment properties file changes
 3. Dynamic test data creations on instant API calls
-4. Reusability of Code, Features with data driven tests
-5. Test suites catagirisation to utilise automation suite based on Platform test requirements
-6. Ensure Environment specific test data cleanup post test suite complete
+4. Reusability of code, features with data driven tests
+5. Test suites catagirisation to utilise automation suite based on platform test requirements - In-progress
+6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
 ##### Table of Contents
 * [Project Brief](#about-the-project)
@@ -23,19 +23,20 @@ DIGIT, a REST API platform based out of microservices architecture.
 * [Upcoming Services](#upcoming-services)
 
 ## Project Brief
-eGov test automation framework plays a significant role in automating DIGIT workflows of Core, business and Municipal services. automation test suit solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
+DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
 
-Automation suite with One click brings quick turnaround of Quality validations of DIGIT services and workflows without any manual Quality Engineering test efforts.
+DIGIT Test Automation suite with one click brings quick turnaround of quality validations of DIGIT services and workflows without any manual quality engineering test efforts.
 
-Automation suite also majorly deals with various API services validation. It enables to test and validate back end services accross all active environments and as well as tenant ids. 
+DIGIT Test Automation suite also majorly deals with various API services validation. 
+it enables to test and validate back end services accross all active environments and as well as tenant ids. 
 
-Automation suite covers most key role in testing eGov configuration "KAFKA" architecture by validating producing and consuming real time Event TOPICS to and from KAFKA Server.
+DIGIT Test Automation suite covers most key role in testing eGov configuration "KAFKA" architecture by validating producing and consuming real time event TOPICS to and from KAFKA Server.
 
 For more details on KARATE framework architecture 
 please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
  
 ### Tools and Technologies Used
- * [Java](https://www.java.com/en/):      Java version(s): 7.0, 8.0
+ * [Java](https://www.java.com/en/):      Java version(s): 8.0
  * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  * [Karate](https://github.com/intuit/karate/tree/v0.9.6) : 0.9.6
  * [Gherkin](https://cucumber.io/docs/gherkin/reference/)
@@ -44,9 +45,9 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  
 ## Automation Framework Kick-Off
 ### Pre-requisites
- * Two Main Software Utilities Required:  JAVA and MAVEN
+ * Two main software utilities required:  JAVA and MAVEN
 
- The step by step setup guidline is provided below based on Operating system.
+ The step by step setup guidelines are provided below based on operating system.
  ###### On Windows
  * [JAVA Installl/Configure]
  *(https://www.java.com/en/download/help/windows_manual_download.html)
@@ -72,82 +73,76 @@ Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
   (https://git-scm.com/downloads)
  (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - Create a Local Repository Path Working Directory:
-Windows Example: C:\Users\Prakat-L089\Desktop\Projects\Code base\Phase 1.1\automation-phase1.1-ktn\test-automation
+Windows Example: <Local Working Directory path>\test-automation
 
-- Open Visual studio: Ctl+~ (To Open terminal) and schange path to Local Repository Path
-- Perform Source Code Clone to Local Repository Path Working Directory using git clone
+- Open Visual studio: Ctl+~ (to open terminal) and change path to <Local Working Directory path>
+- Perform source code clone to local repository path working directory using git clone
 Command: to clone the project repository in the system
-- git clone https://github.com/egovernments/test-automation.git 
-- git pull origin karate-master
-
+git clone https://github.com/egovernments/test-automation.git
+git checkout <Your Branch>
+git pull origin karate-master
 # Check List to ensure to start automation test Runs:
-1. JAVA, MAVEN Path set
-2. Visual Stidio, GIT installed : Not Installed paths
-3. eGov automation code suite is full loaded with all "Core, business and Municipal" Services Feature, pretest, Tests, constant, yaml Files.
-4. Create Environment Configuration Yaml files as per Test environment to pass while we run automation suit in any path of your loacl system.
+1. JAVA, MAVEN path set in ENVIRONMENT variables
+2. Visual studio, GIT installed
+3. DIGIT Test Automation Framework is covered with all "Core, Business and Municipal" services feature, pretest, tests, constant, yaml Files.
+4. Create environment configuration yaml file at any given path of your local system, per test environment to input while we run automation suite.
  
- Environement configuartion file contains parameteres such as host, cityCode, stateCode, user credentials etc.
-Ex:  1. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate]qa.yaml
-     2. C:\Users\Prakat-L089\Desktop\Projects\EnvFiles karate\uat.yaml
-
-Ex: qa.yaml
-Save below Yaml File template in a txt file (qa.yaml)
-host: https://qa.digit.org/
+ Environement configuartion file contains parameters such as host, cityCode, stateCode, user credentials etc.
+Ex:  1. <Local Working Directory path>karate]qa.yaml
+     2. <Local Working Directory path>karate\uat.yaml
+     
+###### Project Level 
+  * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. 
+  For ex:`/Users/admin/Desktop/config.yaml`
+  * Create the environment config file in below format
+  ```yaml
+  host: hostUrl
 stateCode: pb
 cityCode: amritsar
-#Super User credentials for login(need to create user manually)
+# Super User credentials for login(need to create user manually)
 superUser:
-  userName: EMPAUTO
-  password: eGov@123
+  userName: userName
+  password: password
   type: EMPLOYEE
-#Employee username and password to update an existing user's profile (need to create user manually)
+# Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-  userName: EMP-107-000878
-  password: Password@2
+  userName: userName
+  password: password
   type: EMPLOYEE
-
-Ex: uat.yaml
-Save below Yaml File template in a txt file (qa.yaml)
-host: https://uat.digit.org/
-#productHost is not in use currently hence commented 
-#productHost: https://mseva-uat.lgpunjab.gov.in/ 
-stateCode: pg
-cityCode: citya
-#Super User credentials for login(need to create user manually)
-superUser:
-  userName: EMP111
-  password: eGov@123
-  type: EMPLOYEE
-#Employee username and password to update an existing user's profile (need to create user manually)
-employee:
-  userName: EMP-1013-000262
-  password: eGov@uat123
-  type: EMPLOYEE
+  ```
+  * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
   
-### You are set to Start to start Automation test runs now
+### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
 ##### Run with Command Prompt
 NOTE:
 1. Test cases are grouped by TAG names based on DIGIT Services
-Ex: AccessControl service composed of N Test cases are tagged as @accessControl
+
+Ex: AccessControl service feature file is composed of N number of test cases and are tagged as @accessControl
 
 ##### Generic Command prompt to start test runs:
-<Local Repository Path Working Directory>\\mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
+
+1. Running one service feature test cases:
+
+<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
 
 Ex: 
-C:\Users\Prakat-L089\Desktop\Projects\Code base\Phase 1.1> mvn clean test "-DconfigPath=C:\\Users\\Prakat-L089\\Desktop\\Projects\\EnvFiles karate\\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
+C:\Users\Prakat-L089\Desktop\Projects\Code base\Phase 1.1>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
+
+2. Running multiple services feature test cases at one shot:
 
 Note: Multiple Services and associated Test cases can be run adding multiple tag names with same command format
 
 Ex: 
-<Local Repository Path Working Directory>\\mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1,@tagname2,@tagname3,@tagname4" classpath:com/egov"
+<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1,@tagname2,@tagname3,@tagname4" classpath:com/egov"
 
 - Note: 
-- @regression is a TAG name to run full set of Core, business, Municipal Services and assiciated Test cases as a suite.
+ @regression is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
  
-##### Caution: Avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
+##### Caution: avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
 
-## List Of all Services Tags
+## List Of all services tags
+
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         |
@@ -171,22 +166,17 @@ The listed tags are available currently in the framework
 
 ## Test Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
- * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
+ * Post execution of test runs, framework will automatically generate `karate-summary.html` file which can be found under `./test-automation/target/cucumber-html-reports/overview-features.html`
  * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
  
 <!-- Test Coverage -->
 ## Test Coverage
-The automated tests cover validations for following services.
+
+DIGIT Test Automation Framework cover validations of below services.
 * Test Coverage details
-   * core-services
-   * business-services
+   * Core-services
+   * Business-services
+   * Municipal-services
    
-<!-- Upcoming Services -->
-### Upcoming Services
-Services to be automated.
-* municipal-services
- 
 [Refer Details Product Requirements on Services] :
 (https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)
-
-##### HAPPY Automation testing...
