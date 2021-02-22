@@ -69,18 +69,27 @@ Supported IDEs for Code/Test Runs: (https://github.com/intuit/karate/wiki/IDE-Su
 
 Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
 * GIT Installation:
- -Install GIT in your local operating system 
+ - Install GIT in your local operating system 
   (https://git-scm.com/downloads)
  (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- Create a Local Repository Path Working Directory:
+
+ - Create a Local Repository Path Working Directory:
 Windows Example: <Local Working Directory path>\test-automation
 
-- Open Visual studio: Ctl+~ (to open terminal) and change path to <Local Working Directory path>
+- Open Visual studio: Ctl+~ (to open terminal)
+
+- change path to <Local Working Directory path>
+
 - Perform source code clone to local repository path working directory using git clone
+
 Command: to clone the project repository in the system
+
 git clone https://github.com/egovernments/test-automation.git
+
 git checkout <Your Branch>
+ 
 git pull origin karate-master
+
 # Check List to ensure to start automation test Runs:
 1. JAVA, MAVEN path set in ENVIRONMENT variables
 2. Visual studio, GIT installed
