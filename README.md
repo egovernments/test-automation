@@ -56,7 +56,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [maven 3.6.3]
  (https://maven.apache.org/download.cgi)
 (https://maven.apache.org/install.html)
-###### On Mac
+ ###### On Mac
  * [JAVA Installl/Configure] (https://www.java.com/en/download/help/mac_install.html)
  [JAVA PATH Setting]: (https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
 
@@ -64,7 +64,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  (https://www.baeldung.com/install-maven-on-windows-linux-mac)
 
 <!--Installation-->
-### KARATE Framework, Source Code, GIT Install
+#### KARATE Framework, Source Code, GIT Install
 Supported IDEs for Code/Test Runs: (https://github.com/intuit/karate/wiki/IDE-Support)
 
 Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
@@ -125,7 +125,7 @@ employee:
   
 ### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
-##### Run with Command Prompt
+### Run with Command Prompt
 NOTE:
 1. Test cases are grouped by TAG names based on DIGIT Services
 
@@ -154,7 +154,7 @@ Ex:
 ##### Caution: avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
 
 ### List Of all services tags
-=======
+=============================
 ### Run with Command Prompt
 It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
  * Open command prompt or terminal on project folder
