@@ -74,11 +74,11 @@ Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
  (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
  - Create a Local Repository Path Working Directory:
-Windows Example: <Local Working Directory path>\test-automation
+Windows Example: '<Local Working Directory path>\test-automation'
 
 - Open Visual studio: Ctl+~ (to open terminal)
 
-change path to <Local Working Directory path>\test-automation
+change path to '<Local Working Directory path>\test-automation'
 
 - Perform source code clone to local repository path working directory using git clone
 
