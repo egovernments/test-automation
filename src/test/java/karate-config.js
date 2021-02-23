@@ -219,6 +219,14 @@ function() {
         config.bankUpdate = envProps.host + path.endPoints.egfMasterBank.update
         // egfMaster-Bank - Search
         config.bankSearch = envProps.host + path.endPoints.egfMasterBank.search
+        // egfMaster - Bank Branches endpoints
+        config.bankBranchCreate = envProps.host + path.endPoints.egfMasterBankBranches.create
+        config.bankBranchUpdate = envProps.host + path.endPoints.egfMasterBankBranches.update
+        config.bankBranchSearch = envProps.host + path.endPoints.egfMasterBankBranches.search
+        // dashboard ingest endpoint
+        config.dashboardIngestSave = envProps.host + path.endPoints.dashboardIngest.save
+        config.dashboardIngestUpload = envProps.host + path.endPoints.dashboardIngest.upload
+        config.dashboardIngestMigrate = envProps.host + path.endPoints.dashboardIngest.migrate
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

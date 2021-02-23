@@ -13,6 +13,10 @@ Background:
   * def chartOfAccountUpdatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccount/update.json')
   * def accountDetailsTypePayload = read('../../business-services/requestPayload/egfMaster/accountDetailsType.json')
   * def accountDetailsUpdatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/update.json')
+  * def createBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/create.json')
+  * def updateBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/update.json')
+  * def searchBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/search.json')
+
   
 @createAccountSuccessfully
   Scenario: Creating chart of accounts through API call
@@ -251,6 +255,7 @@ Scenario: Updating chart of accounts and check for error through API call
       * print responseStatus
     Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def createBankResponse = response
+    And def bankId = createBankResponse.banks[0].id
 
 @updateBank
     Scenario: To update Bank
@@ -278,3 +283,72 @@ Scenario: Updating chart of accounts and check for error through API call
       * print responseStatus
     Then assert responseStatus == 200 || responseStatus == 403 || responseStatus == 400
     And def searchBankResponse = response
+
+# Pretest scenarios for Bank Branch Service
+  @createBankBranch
+    Scenario: To create Bank Branch
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankBranchCreate
+    And params params
+    And request createBankBranchPayload
+    When method post
+    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def createBankBranchResponse = response
+    * def bankBranches = createBankBranchResponse.bankBranches
+
+@createBankBranchWithInvalidTenantId
+    Scenario: To create Bank Branch
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankBranchCreate
+    And params params
+    * eval createBankBranchPayload.tenantId = 'InvalidTenantId-'+randomString(10)
+    And request createBankBranchPayload
+    When method post
+    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def createBankBranchResponse = response
+
+@createBankBranchWithoutParams
+    Scenario: To create Bank Branch
+    Given url bankBranchCreate
+    And request createBankBranchPayload
+    When method post
+    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def createBankBranchResponse = response
+    * def bankBranches = createBankBranchResponse.bankBranches
+
+@updateBankBranch
+    Scenario: To update Bank Branch
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    * eval updateBankBranchPayload.bankBranches = bankBranches
+    Given url bankBranchUpdate
+    And params params
+    And request updateBankBranchPayload
+    When method post
+    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def updateBankBranchResponse = response
+
+@searchBankBranch
+    Scenario: To search Bank Branch
+    Given url bankBranchSearch
+    And params searchParams
+        * print searchParams
+    And request searchBankBranchPayload
+    When method post
+    Then assert responseStatus == 200 || responseStatus == 403 || responseStatus == 400
+    And def searchBankBranchResponse = response
+    * print searchBankBranchResponse
