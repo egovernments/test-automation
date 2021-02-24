@@ -2,6 +2,7 @@ Feature: eGovUser-userProfileUpdate pretest
 
   Background:
      * configure headers = read('classpath:websCommonHeaders.js') 
+     * def updateUserPasswordNoLogin = read('../../core-services/requestPayload/user/updatePasswordNoLogin/updatePasswordNoLogin.json')
 
 @updateUserProfile
   Scenario: Update existing user profile with valid parameters
@@ -16,7 +17,7 @@ Feature: eGovUser-userProfileUpdate pretest
      Given url updatePasswordNoLogin 
      And request updateUserPasswordNoLogin
      When method post
-     Then status 400
+     Then assert responseStatus == 400 || responseStatus == 200
      And  def updatedPasswordWithOutLogin = response
 
 @updateUserPassword

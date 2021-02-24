@@ -1,0 +1,3 @@
+parameters:
+  newPassword: 'eGov@123'
+  employeeType: 'EMPLOYEE'
