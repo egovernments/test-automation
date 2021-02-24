@@ -212,7 +212,6 @@ Scenario: User otp send success call
   * remove userOtpPayload.RequestInfo
   * remove userOtpPayload.otp.name
   * remove userOtpPayload.otp.permanentCity
-  # * set userOtpPayload.otp.mobileNumber = hrmsResponseBody.Employees[0].user.mobileNumber
   * set userOtpPayload.otp.mobileNumber = resetMobileNumber
   * set userOtpPayload.otp.userType = 'EMPLOYEE'
   Given url userOtpRegisterUrl
