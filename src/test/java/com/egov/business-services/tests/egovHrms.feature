@@ -7,12 +7,12 @@ Feature: Business Services - HRMS
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def today = getCurrentEpochTime()
     * def tomorrow = getTomorrowEpochTime()
-    * def name = 'AUTO-EMPLOYEE-' + ranInteger(6)
+    * def name = 'AUTOEMPLOYEE' + randomString(6)
     * def mobileNumber = '78' + randomMobileNumGen(8)
     * def employeeStatus = mdmsStateEgovHrms.EmployeeStatus[0].code
     * def dob = 635404414000 + ''
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
-    * def fatherOrHusbandName = 'AUTO-EMPLOYEE-' + ranInteger(6)
+    * def fatherOrHusbandName = 'AUTOEMPFATHER' + randomString(6)
     * def employeeType = mdmsStateEgovHrms.EmployeeType[0].code
     * def hierarchy = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
     * def boundaryType = mdmsCityEgovLocation.TenantBoundary[0].boundary.label
@@ -32,9 +32,6 @@ Feature: Business Services - HRMS
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
-    #Search
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfully')
-
         @HRMS_create_InvalidEMpStatus_02 @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null status
     # Defining employee status with invalid status

@@ -1,0 +1,4 @@
+topics:
+  smsNotification: "egov.core.notification.sms" 
+  createProperty: "save-property-registry"
+  UpdateProperty: "update-property-registry"

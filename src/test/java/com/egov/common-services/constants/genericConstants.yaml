@@ -24,6 +24,7 @@ parameters:
   type:
     - register 
     - login
+    - passwordreset
   # payment gateway
   gateway: AXIS
 expectedStatus:
