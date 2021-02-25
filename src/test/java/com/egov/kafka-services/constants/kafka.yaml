@@ -1,4 +1,7 @@
 topics:
-  smsNotification: "egov.core.notification.sms" 
+  smsNotification: "egov.core.notification.sms"
+  emailNotification: "egov.core.notification.email"
   createProperty: "save-property-registry"
   UpdateProperty: "update-property-registry"
+  createPgTransaction: "save-pg-txns"
+  createWorkflowTransition: "save-wf-transitions"

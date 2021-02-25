@@ -1,4 +1,4 @@
-Feature: Kafka Service Tests
+Feature: Kafka Notification SMS Tests
 
 Background:
     # Try to delete the kafka consumer instance if it is not already deleted
@@ -40,7 +40,7 @@ Background:
     }
     """
 
-@sms_01 @positive @kafkaEgovNotificationSms
+@sms_01 @positive @kafkaEgovNotificationSms @kafkaService
 Scenario: Create an Employee user, forgot password, read otp from kafka and update password
     # Create an Employee via hrms create employee api
     * call read('../../business-services/tests/egovHrms.feature@HRMS_create_emp01')

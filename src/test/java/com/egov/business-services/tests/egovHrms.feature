@@ -9,6 +9,7 @@ Feature: Business Services - HRMS
     * def tomorrow = getTomorrowEpochTime()
     * def name = 'AUTOEMPLOYEE' + randomString(6)
     * def mobileNumber = '78' + randomMobileNumGen(8)
+    * def email = randomString(10) + '@' + randomString(5) + '.com'
     * def employeeStatus = mdmsStateEgovHrms.EmployeeStatus[0].code
     * def dob = 635404414000 + ''
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
