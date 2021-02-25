@@ -1,11 +1,11 @@
-Feature: Kafka Payment Gateway Transaction Tests
+Feature: Kafka Service Tests
 
 Background:
     # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters
     * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
-    * def kafkaTopics = kafkaConstants.topics.createPgTransaction
+    * def kafkaTopics = kafkaConstants.topics.createWorkflowTransition
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -15,32 +15,34 @@ Background:
     """
     function() {
       var i=0;
-      while (i<10) {
+      while (i<20) {
         var result = karate.call('../../kafka-services/pretests/kafkaPretest.feature@readConsumerRecords');
         var records = result.response;
+        records = karate.jsonPath(records, "$[?(@.value.ProcessInstances.businessId=='" + businessId + "')].value.ProcessInstances")
         if (records.size() > 0) {
           karate.log('Records fetched, exiting loop');
+          karate.log('Records: ',records);
           return records;
         }
         i++;
         karate.log('waiting to fetch records');
       }
+      karate.log('failed to fetch records!!!')
     }
     """
 
-@kafka_pg_create_01 @positive @kafkaEgovNotificationSms @kafkaService
+@kafka_workflow_transition_01 @positive @kafkaEgovNotificationSms @kafkaService
 Scenario: Create a pg transaction and verifdy the response Transaction object with the data obtained from the consumer
-    # Create pg transaction
-    * call read('../../core-services/tests/pgServices.feature@PGCreate_01')
+    # Create workflow process transition
+    * call read('../../core-services/tests/eGovWorkFlowTransition.feature@Process_Transition_01')
     # Expected response
-    * def createPgTransactionResponse = pgServicesCreateResponseBody.Transaction
+    * def createProcessInstanceResponse = processTransitionResponseBody.ProcessInstances
     # Call JS function to read the records from kafka consumer
-    * def kafkaPgTransactionResponse = call waitUntilRecordsAreRead
-    # Extract the kafka pg transaction consumer response messages for created billId and consumerCode
-    * def pgTransactionMessages = karate.jsonPath(kafkaPgTransactionResponse, "$[?(@.value.Transaction.billId=='" + billId + "' && @.value.Transaction.consumerCode=='" + consumerCode + "')].value.Transaction")
+    * def kafkawokflowTransitionResponse = call waitUntilRecordsAreRead
+    * print 'Business Id: ' + businessId
     # Extract the latest one and Actual Response
-    * def latestPgTransactionMessage = pgTransactionMessages[pgTransactionMessages.length-1]
-    * match createPgTransactionResponse == latestPgTransactionMessage
+    * def latestworkflowTransitionMessage = kafkawokflowTransitionResponse[kafkawokflowTransitionResponse.length-1]
+    * match createProcessInstanceResponse == latestworkflowTransitionMessage
 
 
 
