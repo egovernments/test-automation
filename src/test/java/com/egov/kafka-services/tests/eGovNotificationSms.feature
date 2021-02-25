@@ -1,4 +1,4 @@
-Feature: Kafka Service Tests
+Feature: Kafka Notification SMS Tests
 
 Background:
     # Try to delete the kafka consumer instance if it is not already deleted

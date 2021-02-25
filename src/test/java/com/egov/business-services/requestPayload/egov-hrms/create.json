@@ -12,6 +12,7 @@
              "relationship":"FATHER",
              "gender":"#(gender)",
              "dob":"#(dob)",
+             "email": "#(email)",
              "roles":[
                 {
                    "code":"AE_CREATOR",
