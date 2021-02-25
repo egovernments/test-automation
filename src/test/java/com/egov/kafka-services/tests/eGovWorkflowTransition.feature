@@ -31,7 +31,7 @@ Background:
     }
     """
 
-@kafka_workflow_transition_01 @positive @kafkaEgovNotificationSms @kafkaService
+@kafka_workflow_transition_01 @positive @kafkaWorkflowTransition @kafkaService
 Scenario: Create a pg transaction and verifdy the response Transaction object with the data obtained from the consumer
     # Create workflow process transition
     * call read('../../core-services/tests/eGovWorkFlowTransition.feature@Process_Transition_01')

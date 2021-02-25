@@ -28,7 +28,7 @@ Background:
     }
     """
 
-@kafka_pg_create_01 @positive @kafkaEgovNotificationSms @kafkaService
+@kafka_pg_create_01 @positive @kafkaPgTransaction @kafkaService
 Scenario: Create a pg transaction and verifdy the response Transaction object with the data obtained from the consumer
     # Create pg transaction
     * call read('../../core-services/tests/pgServices.feature@PGCreate_01')
