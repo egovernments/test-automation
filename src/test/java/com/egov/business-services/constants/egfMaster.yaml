@@ -16,7 +16,7 @@ errorMessages:
  forNullValueOfGlcode: the field glcode must be not be null
  forInvalidBudgetCheckRequired: the field budgetCheckRequired must be not be null
  forNullValueOfName: the field name must be not be null
- nameFieldValueNotUnique: the field name must be unique in the system 
+ nameFieldValueNotUnique: the field name must be unique in the system
  codeFieldValueNotUnique: the field code must be unique in the system
  nullTenantIdDescription: The  value  null for the field tenantId not allowed in the system. Please provide correct value
  nullTenantIdMessage: the field tenantId must be not be null
@@ -33,3 +33,4 @@ errorMessages:
  activeNotNull: the field active must be not be null
  nameInvalid: 'must match "^[a-zA-Z0-9_]*$"'
  tenantParamMandatory: "Required String parameter 'tenantId' is not present"
+ invalidNameGtrThan50: "length must be between 1 and 50"

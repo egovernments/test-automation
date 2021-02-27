@@ -223,6 +223,10 @@ function() {
         config.bankBranchCreate = envProps.host + path.endPoints.egfMasterBankBranches.create
         config.bankBranchUpdate = envProps.host + path.endPoints.egfMasterBankBranches.update
         config.bankBranchSearch = envProps.host + path.endPoints.egfMasterBankBranches.search
+        // egfMaster - AccountDetailTypes endpoints
+        config.accountDetailTypesCreate = envProps.host + path.endPoints.egfMasterAccountDetailTypes.create
+        config.accountDetailTypesUpdate = envProps.host + path.endPoints.egfMasterAccountDetailTypes.update
+        config.accountDetailTypesSearch = envProps.host + path.endPoints.egfMasterAccountDetailTypes.search
         // dashboard ingest endpoints
         config.dashboardIngestSave = envProps.host + path.endPoints.dashboardIngest.save
         config.dashboardIngestUpload = envProps.host + path.endPoints.dashboardIngest.upload

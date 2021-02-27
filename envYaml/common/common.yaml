@@ -105,6 +105,10 @@ endPoints:
   create: egf-master/bankbranches/_create
   update: egf-master/bankbranches/_update
   search: egf-master/bankbranches/_search
+ egfMasterAccountDetailTypes:
+  create: egf-master/accountdetailtypes/_create
+  update: egf-master/accountdetailtypes/_update
+  search: egf-master/accountdetailtypes/_search
  dashboardIngest:
   save: dashboard-ingest/ingest/save
   upload: dashboard-ingest/ingest/upload
@@ -114,3 +118,4 @@ endPoints:
   subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
   read: consumers/automation_consumer/instances/automation_consumer_instance/records
   delete: consumers/automation_consumer/instances/automation_consumer_instance
+ 
