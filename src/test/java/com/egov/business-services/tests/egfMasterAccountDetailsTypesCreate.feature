@@ -13,6 +13,7 @@ Scenario: Create Account details types with Unique ID and validate duplicate acc
 * match accountDetailTypesCreateResponseBody.accountDetailTypes[0].name != null
 # Accountdetailtypes Create_DuplicateName_02: Create Account details types with Duplicate ID
 * def branchName = accountDetailTypesCreateResponseBody.accountDetailTypes[0].name
+* def tableName = accountDetailTypesCreateResponseBody.accountDetailTypes[0].name
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.nameFieldValueNotUnique
 
@@ -39,3 +40,16 @@ Scenario: Create Account details types Name with null
 * def branchName = commonConstant.invalidParameters.passValusAsNull
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.branchNameNotNull
+
+@accountdetailtypesCreatetable
+Scenario: Accountdetailtypes Create_TableNameWith25Characters_08
+#  Accountdetailtypes Create_UniqueName_01: Accountdetailtypes Create_TableNameWith25Characters_08
+* def tableName = randomString(25)
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName != null
+
+@accountdetailtypesCreatetable30char
+Scenario: Create Account details types TableName with morethan 25 characters
+* def  tableName = randomString(30)
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan25
