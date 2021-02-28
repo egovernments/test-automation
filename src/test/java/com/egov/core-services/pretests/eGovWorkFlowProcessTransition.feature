@@ -3,7 +3,7 @@ Feature: Verify the API call to move the workflow from one state to another
 Background:
 * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
 * def businessId = acknowldgementNumber
-* def processTransitionPayload = read('../requestPayload/eGovWorkFlow/process/processtransition.json')
+* def processTransitionPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processtransition.json')
 * def processTransiionPayloadValid = processTransitionPayload.valid
 * def processTransiionPayloadInvalid = processTransitionPayload.valid
 

@@ -199,3 +199,25 @@ Feature: User otp send API call
              Then status 400
               And def userOtpSendResponseHeader = responseHeaders
               And def userOtpSendResponseBody = response
+
+@generateOtpSuccessfully
+Scenario: User otp send success call
+  * def userOtpParam = 
+  """
+  {
+    tenantId: '#(tenantId)'
+  }
+  """
+  * set userOtpPayload.otp.type = commonConstants.parameters.type[2]
+  * remove userOtpPayload.RequestInfo
+  * remove userOtpPayload.otp.name
+  * remove userOtpPayload.otp.permanentCity
+  * set userOtpPayload.otp.mobileNumber = resetMobileNumber
+  * set userOtpPayload.otp.userType = 'EMPLOYEE'
+  Given url userOtpRegisterUrl
+  And params userOtpParam
+  And request userOtpPayload
+  When method post
+  Then status 201
+  And def userOtpSendResponseHeader = responseHeaders
+  And def userOtpSendResponseBody = response

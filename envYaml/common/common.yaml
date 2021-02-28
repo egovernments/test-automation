@@ -109,3 +109,16 @@ endPoints:
   create: egf-master/bankaccounts/_create
   update: egf-master/bankaccounts/_update
   search: egf-master/bankaccounts/_search
+ egfMasterBankBranches:
+  create: egf-master/bankbranches/_create
+  update: egf-master/bankbranches/_update
+  search: egf-master/bankbranches/_search
+ dashboardIngest:
+  save: dashboard-ingest/ingest/save
+  upload: dashboard-ingest/ingest/upload
+  migrate: dashboard-ingest/ingest/migrate/collectionsindex-v1/v1
+ kafkaService:
+  create: consumers/automation_consumer
+  subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
+  read: consumers/automation_consumer/instances/automation_consumer_instance/records
+  delete: consumers/automation_consumer/instances/automation_consumer_instance

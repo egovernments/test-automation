@@ -26,3 +26,10 @@ errorMessages:
  invalidNameLength: size must be between 2 and 100
  invalidDescriptionLength: size must be between 0 and 250
  missingTenantId: Required String parameter 'tenantId' is not present
+ invalidCharacterLength: length must be between 0 and 50
+ branchNameNotNull: the field name must be not be null
+ bankIdNotNull: the field bank must be not be null
+ branchCodeNotNull: the field code must be not be null
+ activeNotNull: the field active must be not be null
+ nameInvalid: 'must match "^[a-zA-Z0-9_]*$"'
+ tenantParamMandatory: "Required String parameter 'tenantId' is not present"
