@@ -125,32 +125,41 @@ employee:
   
 ### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
-##### Run with Command Prompt
-NOTE:
-1. Test cases are grouped by TAG names based on DIGIT Services
+##### Generic Command prompt maven commands to start test runs:
+
+NOTE: Test cases are grouped by TAG names based on DIGIT Services
 
 Ex: AccessControl service feature file is composed of N number of test cases and are tagged as @accessControl
 
-##### Generic Command prompt to start test runs:
+  Refer below `List Of all services tags` section for complete list of tags for all the available services
 
-1. Running one service feature test cases:
+1. Running indiviual service level feature test cases:
 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
+  Below is the command format for running individual services
 
-Ex: 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
+  <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname> classpath:com/egov"
 
-2. Running multiple services feature test cases at one shot:
+2. Running service category level feature test cases at one shot:
 
-Note: Multiple Services and associated Test cases can be run adding multiple tag names with same command format
+  Multiple Services categories are `@businessServices` (for running complete set of business-services test cases), `@coreServices` (for running complete set of core-services test cases)
 
-Ex: 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1,@tagname2,@tagname3,@tagname4" classpath:com/egov"
+3. Running test category level feature test cases:
 
-- Note: 
- @businessServices is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
- 
-##### Caution: avoid running @businessServices to avoid system performence issues and data consumptions at eGov configuarations.
+  `@regression` (for running full set of test cases which are marked as regression) and `@smoke` (for running the set of test cases which are marked as smoke)
+
+Note:
+  * Currently all the testcases are marked as `@regression`. So, this tag can be used alone for executing all the testcases
+
+  * Test cases are yet to be tagged as `@smoke` (will be marked soon)
+
+  * One or tags associated with the above mentioned levels can be used separated by a comma in below format
+
+  Ex: 
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount,@billingServiceDemand classpath:com/egov"
+
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @businessServices classpath:com/egov"
+
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @regression classpath:com/egov"
 
 ## List Of all services tags
 
