@@ -43,13 +43,28 @@ Scenario: Create Account details types Name with null
 
 @accountdetailtypesCreatetable
 Scenario: Accountdetailtypes Create_TableNameWith25Characters_08
-#  Accountdetailtypes Create_UniqueName_01: Accountdetailtypes Create_TableNameWith25Characters_08
+#  Accountdetailtypes Create_TableNameWith25Characters_08: Accountdetailtypes Create_TableNameWith mote than 25Characters
 * def tableName = randomString(25)
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName != null
 
-@accountdetailtypesCreatetable30char
-Scenario: Create Account details types TableName with morethan 25 characters
-* def  tableName = randomString(30)
+@accountdetailtypesCreatetable
+Scenario: Accountdetailtypes Create_TableNameWithMoreThan25Characters_9
+#  Accountdetailtypes Create_TableNameWithMoreThan25Characters_9: Accountdetailtypes Create_TableName WithMore Than 25 Characters
+* def tableName = randomString(30)
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan25
+
+
+@accountdetailtypesCreatetable
+Scenario: Accountdetailtypes Create_EmptyTableName_10
+#  Accountdetailtypes Create_EmptyTableName_10: Accountdetailtypes Create_EmptyTableName
+* def tableName = commonConstant.invalidParameters.emptyValue
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName != null
+
+@accountdetailtypesCreatetable
+Scenario: Accountdetailtypes Create_NullTableName_11
+* def tableName = commonConstant.invalidParameters.passValusAsNull
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName == null

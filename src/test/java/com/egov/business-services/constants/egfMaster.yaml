@@ -35,3 +35,4 @@ errorMessages:
  tenantParamMandatory: "Required String parameter 'tenantId' is not present"
  invalidNameGtrThan50: "length must be between 1 and 50"
  invalidNameGtrThan25: "length must be between 0 and 25"
+ tableNameNotNull: "the field name must be not be null"

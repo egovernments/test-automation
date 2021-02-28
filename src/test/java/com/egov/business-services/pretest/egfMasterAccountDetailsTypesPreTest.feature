@@ -4,7 +4,7 @@ Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml') 
   # * def branchName = randomString(10)
-  * def tableName = egfMasterConstants.chartOfAccountDeatails.params.tableName
+  # * def tableName = egfMasterConstants.chartOfAccountDeatails.params.tableName
   * def fullyQualifiedName = randomString(3)+"/"+tableName
   * def description = 'TEST_'+randomString(5)
   * def active = egfMasterConstants.chartOfAccountDeatails.params.active
@@ -31,4 +31,4 @@ Background:
     * print accountDetailTypesCreate
     * print accountCreateParam
     * print accountDetailTypesCreatePayload
-    #* print accountDetailTypesCreateResponseBody
+   # * print accountDetailTypesCreateResponseBody
