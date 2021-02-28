@@ -124,7 +124,7 @@ Scenario: Accountdetailtypes Create_ActiveWithTrue_19
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.accountDetailTypes[0].active == false
 
-@accountdetailtypesCreate20
+@accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_NullActive_20
 #  Accountdetailtypes Create_NullActive_20: Create Account details types active : null
 * def active = commonConstant.invalidParameters.passValusAsNull
