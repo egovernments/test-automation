@@ -1,0 +1,9 @@
+# Error messages
+errorMessages:
+ forExistingAccountNumber: the field name must be unique in the system
+ forInvalidActiveValue: the field active must be not be null
+ forInvalidType: the field type must be not be null
+ forInvalidAccountNumber: length must be between 0 and 25
+ forInvalidDescription: length must be between 0 and 256
+ forInvalidPayTo: length must be between 0 and 100
+ withoutTenantId: Required String parameter tenantId is not present
