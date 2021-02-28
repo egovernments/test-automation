@@ -100,7 +100,15 @@ endPoints:
  egfMasterBank:
   create: egf-master/banks/_create
   update: egf-master/banks/_update
-  search: egf-master/banks/_search 
+  search: egf-master/banks/_search
+ egfMasterChartOfAccount:
+  create: egf-master/chartofaccounts/_create
+  search: egf-master/chartofaccounts/_search
+  update: egf-master/chartofaccounts/_update
+ egfMasterBankAccount:
+  create: egf-master/bankaccounts/_create
+  update: egf-master/bankaccounts/_update
+  search: egf-master/bankaccounts/_search
  egfMasterBankBranches:
   create: egf-master/bankbranches/_create
   update: egf-master/bankbranches/_update

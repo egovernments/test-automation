@@ -30,6 +30,30 @@ Scenario: Read Records from the Consumer
     Then status 200
     * def readConsumerResponseBody = response
 
+@waitUntilRecordsAreConsumed
+Scenario: Wait until records are consumed
+    * def waitUntilRecordsAreRead = 
+    """
+    function() {
+      var i=0;
+      while (i<10) {
+        var result = karate.call('../../kafka-services/pretests/kafkaPretest.feature@readConsumerRecords');
+        var records = result.response;
+        karate.log('Kafka Response: ', records);
+        records = karate.jsonPath(records, recordsFilterCondition);
+        if (records.size() > 0) {
+          karate.log('Records fetched, exiting loop');
+          karate.log('Kafka Response: ', records);
+          return records;
+        }
+        i++;
+        karate.log('waiting to fetch records');
+      }
+      return null;
+    }
+    """
+    * def recordsResponse = call waitUntilRecordsAreRead
+
 @deleteConsumerInstance
 Scenario: Delete Consumer Instance
     * configure headers = { Accept: 'application/vnd.kafka.v2+json'}

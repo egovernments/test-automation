@@ -15,14 +15,14 @@ Background:
   * def gateway = commonConstants.parameters.gateway
   * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
 
-@PGCreate_01  @regression @positive  @pgservices
+@PGCreate_01  @coreServices @regression @positive  @pgservices
 Scenario: Verify creating a payment transaction
   # calling create pg transaction pretest
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   
   * match pgServicesCreateResponseBody == '#present'
 
-@PGCreate_InvalidTxnAmt_03  @regression @negative  @pgservices
+@PGCreate_InvalidTxnAmt_03  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with invalid/non existent or null value for "TxnAmt" in the request body and check for erros
    * def txnAmount = commonConstants.invalidParameters.invalidValue
    # calling create pg transaction pretest
@@ -30,14 +30,14 @@ Scenario: Verify creating a payment transaction with invalid/non existent or nul
    
    * match pgServicesCreateResponseBody.Errors[0].message == pgSericesConstant.errorMessages.jsonException
 
-@PGCreate_InvalidTenant_04  @regression @negative  @pgservices
+@PGCreate_InvalidTenant_04  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with invalid/non existent value for "tenatid" in the request body and check for errors
   * def tenantId = commonConstants.invalidParameters.invalidTenantId
   # calling create pg transaction pretest
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PGCreate_InvalidGateway_05  @regression @negative  @pgservices
+@PGCreate_InvalidGateway_05  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with invalid/non existent value for "gateway" in the request body and check for errors
   * def gateway = commonConstants.invalidParameters.invalidValue
   # calling create pg transaction pretest
@@ -58,7 +58,7 @@ Scenario: Verify creating a payment transaction by passing null values
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PGCreate_AmtVal_07  @regression @negative  @pgservices
+@PGCreate_AmtVal_07  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction by passing a txn amount which is not equal to the amount paid
   * def txnAmount = txnAmount+100
   # calling create pg transaction pretest
@@ -66,7 +66,7 @@ Scenario: Verify creating a payment transaction by passing a txn amount which is
   
 
 # need to debug this
-@PGCreate_ExpBill_08 @regression @negative  @pgservices
+@PGCreate_ExpBill_08 @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction by passing a bill id which is expired
   # calling create pg transaction pretest
   * def consumerCode = 'PT-Test-' + ranInteger(6)
@@ -84,21 +84,21 @@ Scenario: Verify creating a payment transaction by passing a bill id which is ex
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PGCreate_AmtValDue_09  @regression @negative  @pgservices
+@PGCreate_AmtValDue_09  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction by passing a amount which is greater than amount due
   * def txnAmount = txnAmount+'0'
   # calling create pg transaction pretest
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PGCreate_InvalidBillID_10  @regression @negative  @pgservices
+@PGCreate_InvalidBillID_10  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with invalid/non existent value for "bill id" in the request body and check for errors
   * def billId = commonConstants.invalidParameters.invalidValue
   # calling create pg transaction pretest
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PGCreate_DupicatePay_11  @regression @negative  @pgservices
+@PGCreate_DupicatePay_11  @coreServices @regression @negative  @pgservices
 Scenario: Verify creating a payment transaction with a bill id for which payment is already done
   # calling create pg transaction pretest
   * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
@@ -106,39 +106,39 @@ Scenario: Verify creating a payment transaction with a bill id for which payment
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
   
 
-@PG_Update_01  @regression @positive  @pgservices
+@PG_Update_01  @coreServices @regression @positive  @pgservices
 Scenario: Update a payment transaction
   # calling update pg transaction pretest
   * call read('../../core-services/pretests/pgServiceUpdate.feature@updatePgTransactionSuccessfully')
   
 
-@PGUpdate_InvalidTxnId_02  @regression @negative  @pgservices
+@PGUpdate_InvalidTxnId_02  @coreServices @regression @negative  @pgservices
 Scenario: Verify updating a payment transaction with invalid/non existent value for "transaction id" in the request body
   * def transactionId = ranString(10)
   # calling update pg transaction pretest
   * call read('../../core-services/pretests/pgServiceUpdate.feature@invalidTransactionIdError')
    
 
-@PGUpdate_NoTxnId_03  @regression @negative  @pgservices
+@PGUpdate_NoTxnId_03  @coreServices @regression @negative  @pgservices
 Scenario: Verify updating a payment transaction by not passing transaction id
   # calling update pg transaction pretest
   * call read('../../core-services/pretests/pgServiceUpdate.feature@withouttransactionidpgservicefail')
   
 
-@PGUpdate_BillVal_05  @regression @negative  @pgservices
+@PGUpdate_BillVal_05  @coreServices @regression @negative  @pgservices
 Scenario: Verify updating by passing a transaction id which has expired bill and bill which is already paid
   # calling collection service create payment pretest
   * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
   * call read('../../core-services/pretests/pgServiceUpdate.feature@updatePgTransactionError')
   
 
-@PGSearch_Txn_01  @regression @negative  @pgservices
+@PGSearch_Txn_01  @coreServices @regression @negative  @pgservices
 Scenario: Verify searching transaction details using txn id
   # calling search pg transaction pretest
   * call read('../../core-services/pretests/pgServiceUpdate.feature@searchPgTransactionSuccessfully')
   
 
-@PGSearch_InvalidTxn_02  @regression @negative  @pgservices
+@PGSearch_InvalidTxn_02  @coreServices @regression @negative  @pgservices
 Scenario: Verify searching transaction details using null/ invalid/non existent  value for "transaction id"
   * def txnId = commonConstants.invalidParameters.passValusAsNull
   # calling search pg transaction pretest
@@ -147,7 +147,7 @@ Scenario: Verify searching transaction details using null/ invalid/non existent 
 
 
   # need to debug this
-  @PGSearch_MultipleTxn_03  @regression @negative  @pgservices
+  @PGSearch_MultipleTxn_03  @coreServices @regression @negative  @pgservices
   Scenario: Verfiy searching transaction details using multiple txn id's
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   * def transactionIdFirst = txnId

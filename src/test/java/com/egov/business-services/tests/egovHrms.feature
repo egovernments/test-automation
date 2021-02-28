@@ -26,14 +26,14 @@ Feature: Business Services - HRMS
     * def toDate = null
     * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithoutEmployeeCodes')
 
-        @HRMS_create_emp01 @regression @positive @hrms_create @hrms @smoke @businessService
+        @HRMS_create_emp01 @businessServices @regression @positive @hrms_create @hrms @smoke @businessService
         Scenario: Test to create a employee
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
     * def code = hrmsResponseBody.Employees[0].user.userName
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
-        @HRMS_create_InvalidEMpStatus_02 @regression @negative @hrms_create @hrms
+        @HRMS_create_InvalidEMpStatus_02 @businessServices @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null status
     # Defining employee status with invalid status
     * def employeeStatus = "Invalid-status-" + ranString(5)
@@ -51,7 +51,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userCreationFailed 
 
-        @HRMS_create_InvalidDOB_04 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidDOB_04 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null DOB
     # Defining employee DOB with invalid DOB
     * def dob = "Invalid-dob-" + ranString(5)
@@ -60,7 +60,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.failedToDeserializeJson
 
-        @HRMS_create_InvalidGender_05 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidGender_05 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null gender
     # Defining employee Gender with invalid Gender
     * def gender = "Invalid-gender-" + ranString(5)
@@ -69,7 +69,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userCreationFailed
 
-        @HRMS_create_NoFatherName_06 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_NoFatherName_06 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with no "fatherOrHusbandName"
     # Defining employee's Father's or Husband's name as null as this value will not considered
     * def fatherOrHusbandName = null
@@ -78,7 +78,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_ExistingMobile_07 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_ExistingMobile_07 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an existing mobile number
     # Create a new Employee
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -89,7 +89,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.userAlreadyExists
 
-        @HRMS_create_NoMobile_08 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_NoMobile_08 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with no "Mobile Number" parameter
     # Defining employee's mobile number as null as this value will not considered
     * def mobileNumber = null
@@ -98,7 +98,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_InvalidMobileNumber_09 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidMobileNumber_09 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null mobile number
     # Defining Invalid mobile number
     * def mobileNumber = "Invalid-mobileNuumber-" + ranString(5)
@@ -108,7 +108,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidMobileNumber
 
-        @HRMS_create_NoEMpStatus_10 @regression @negative @hrms_create @hrms
+        @HRMS_create_NoEMpStatus_10 @businessServices @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee with no "employee status" parameter
     # Defining employeeStatus as null as this value will not considered
     * def employeeStatus = null
@@ -117,7 +117,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_NoUser_11 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_NoUser_11 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with no "user" parameter
     # Defining name as null as this value will not considered
     * def name = null
@@ -126,7 +126,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_Notenantid_12 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_Notenantid_12 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with no "tenantid" parameter
     # Defining tenantId as null as this value will not considered
     * def tenantId = null
@@ -135,7 +135,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_InvalidTenantId_13 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidTenantId_13 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null Tenant Id
     # Defining tenantId as Invalid
     * def tenantId = 'Invalid-tenantId-' + ranString(5)
@@ -145,7 +145,7 @@ Feature: Business Services - HRMS
     
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
-        @HRMS_create_InvalidFromDate_14 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidFromDate_14 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an null assignment from date
     # Defining fromDate as null as this value will not considered
     * def fromDate = null
@@ -154,7 +154,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.notNull
 
-        @HRMS_create_DateValidation_15 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_DateValidation_15 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test when current assignment is true and end date exists for assignments
     # Defining toDate value as current date
     * def toDate = today
@@ -164,7 +164,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert errorMessage == hrmsConstants.expectedMessages.invalidAssignmentPeriod || errorMessage == hrmsConstants.expectedMessages.toDateShouldBeBlank
 
-        @HRMS_create_InvalidEMpStatus_16 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidEMpStatus_16 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null employee type
     # Defining employeeType as Invalid
     * def employeeType = "Invalid-authUserType-" + ranString(5)
@@ -173,7 +173,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.invalidEmployeeType
 
-        @HRMS_create_InvalidJudistrictions_17 @regression @negative @hrmsCreate @hrms
+        @HRMS_create_InvalidJudistrictions_17 @businessServices @regression @negative @hrmsCreate @hrms
         Scenario: Test to create a employee with an invalid/nonexistent/null judistrictions
     # Defining hierarchy as Invalid
     * def hierarchy = "Invalid-hierarchy-" + ranString(5)
@@ -190,7 +190,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API with expected error message for invalid boundary
     * assert hrmsResponseBody.Errors[2].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundary
 
-        @HRMS_create_HierarchySize_18 @regression @negative @hrms_create @hrms
+        @HRMS_create_HierarchySize_18 @businessServices @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee by entering hierarchy invalid value
     # Defining hierarchy value as Invalid
     * def hierarchy = "Invalid-hierarchy-" + ranString(5)
@@ -201,7 +201,7 @@ Feature: Business Services - HRMS
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundaryType
     * assert hrmsResponseBody.Errors[2].message == hrmsConstants.expectedMessages.invalidJurisdictionBoundary
 
-        @HRMS_InvalidCheck_19 @regression @negative @hrms_create @hrms
+        @HRMS_InvalidCheck_19 @businessServices @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee with invalid department & designation
     # Defining department value as Invalid
     * def department = "Invalid-department-" + ranString(5)
@@ -214,7 +214,7 @@ Feature: Business Services - HRMS
     # Checking actual error messages returned by API with expected error message for invalid Designation
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.invalidDesignation
 
-        @HRMS_create_DateValidation1_20 @regression @negative @hrms_create @hrms
+        @HRMS_create_DateValidation1_20 @businessServices @regression @negative @hrms_create @hrms
         Scenario: Test to create a employee when current date is false
     # Defining Current date is false
     * def isCurrentAssignment = false
@@ -224,21 +224,21 @@ Feature: Business Services - HRMS
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.toDateShouldBeBlankForNonCurrentAssignment
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.onlyOneCurrentAssigment
     
-        @HRMS_Search_Emp_01 @regression @positive @hrmsSearch @hrms @smoke
+        @HRMS_Search_Emp_01 @businessServices @regression @positive @hrmsSearch @hrms @smoke
         Scenario: Test to search a employee
     # Defining code with a valid employee code to search
     * def code = employeeCode1
     # Steps to search the employee
     * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfully')
 
-        @HRMS_Search_AllEmp_02 @regression @positive @hrmsSearch @hrms
+        @HRMS_Search_AllEmp_02 @businessServices @regression @positive @hrmsSearch @hrms
         Scenario: Test to search all employee
     # Steps to search all employees hence no specific parameters provided
     * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfully')
     # Validate the response status is Success
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
 
-        @HRMS_Search_Name_05 @regression @negative @hrmsSearch @hrms
+        @HRMS_Search_Name_05 @businessServices @regression @negative @hrmsSearch @hrms
         Scenario: Test to search a name by not passing any tenant id
     # Defining name with Invalid value
     * def name = "Invalid-name-" + ranString(5)
@@ -247,7 +247,7 @@ Feature: Business Services - HRMS
     # Validate actual error message returned by API due to invalid employee name with expected error
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.tenantIdMandatory
 
-        @hrmsSearch_InvalidTenantId_06 @regression @negative @hrmsSearch @hrms
+        @hrmsSearch_InvalidTenantId_06 @businessServices @regression @negative @hrmsSearch @hrms
         Scenario: Test to search a employee with an invalid/nonexistent/null Tenant Id]
     # Defining tenantId with Invalid tenantID
     * def tenantId = "Invalid-tenantId-" + ranString(5)
@@ -256,7 +256,7 @@ Feature: Business Services - HRMS
     # Checking actual error message returned by API due to invalid tenantID 
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
-        @HRMS_Search_Multiple_07 @regression @positive @hrmsSearch @hrms
+        @HRMS_Search_Multiple_07 @businessServices @regression @positive @hrmsSearch @hrms
         Scenario: Test by passing multiple values in the query parameter
     # Defining code with multiple employee code parameters
     * def code = employeeCode1 + ',' + employeeCode2
@@ -269,7 +269,7 @@ Feature: Business Services - HRMS
     # Validating the second employee code from API response
     * assert hrmsResponseBody.Employees[1].code == employeeCode2
 
-        @HRMS_Update_01 @regression @positive @regression @positive @hrmsupdate @hrms
+        @HRMS_Update_01 @businessServices @regression @positive @businessServices @regression @positive @hrmsupdate @hrms
         Scenario: Test to Update an employee
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -294,7 +294,7 @@ Feature: Business Services - HRMS
     # Validating employee's updated father's or husband's name
     * assert hrmsResponseBody.Employees[0].user.fatherOrHusbandName == fatherOrHusbandName + "Updated"
 
-        @HRMS_update_InvalidValidations_02 @regression @negative @hrmsupdate @hrms
+        @HRMS_update_InvalidValidations_02 @businessServices @regression @negative @hrmsupdate @hrms
         Scenario: Test to update an employee with invalid validation
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -311,7 +311,7 @@ Feature: Business Services - HRMS
     # Validate atual error message returned by API with expected error message for invalid designation
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_DESG
 
-        @HRMS_update_DateValDOB_03 @regression @negative @hrmsupdate @hrms
+        @HRMS_update_DateValDOB_03 @businessServices @regression @negative @hrmsupdate @hrms
         Scenario: Test to cupdate an employee invalid date of birth validation
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -329,7 +329,7 @@ Feature: Business Services - HRMS
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_DOB
     * assert hrmsResponseBody.Errors[1].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_ASSIGNMENT_DATES
 
-        @HRMS_update_DateValCurAssign_04 @regression @negative @hrmsupdate @hrms
+        @HRMS_update_DateValCurAssign_04 @businessServices @regression @negative @hrmsupdate @hrms
         Scenario: Test to update an employee with is currently assigned as false and to date as null
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -372,7 +372,7 @@ Feature: Business Services - HRMS
     # Validating actual error message returned by API with expected error message for invalid tenantIDs
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.unauthorized
 
-        @HRMS_update_DateValCurSer_06 @regression @negative @hrmsupdate @hrms
+        @HRMS_update_DateValCurSer_06 @businessServices @regression @negative @hrmsupdate @hrms
         Scenario: Test to update an employee with is currently assigned as true and a valid to date
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
@@ -389,7 +389,7 @@ Feature: Business Services - HRMS
      # Validating actual error message returned by API with expected error message for invalid assignment and current to date
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.ERR_HRMS_INVALID_ASSIGNMENT_CURRENT_TO_DATE
 
-        @HRMS_update_AdhaarVal_07 @regression @negative @hrmsupdate @hrms
+        @HRMS_update_AdhaarVal_07 @businessServices @regression @negative @hrmsupdate @hrms
         Scenario: Test to update an employee with invalid aadhar number
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
