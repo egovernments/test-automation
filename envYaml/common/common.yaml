@@ -118,4 +118,3 @@ endPoints:
   subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
   read: consumers/automation_consumer/instances/automation_consumer_instance/records
   delete: consumers/automation_consumer/instances/automation_consumer_instance
- 
