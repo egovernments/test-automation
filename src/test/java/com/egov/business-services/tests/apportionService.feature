@@ -29,13 +29,13 @@ Feature: Business Services - Apportion service tests
 # This test is dependent on port forwarding which is not automated yet. Hence ignored it.
 # These tests are related to `apportionService` and has been executed with manual port forwarding
 # Next suite of automation code will have automated port forward configuration.
-   @apportion_bill_01 @businessServices @positive @apportionService @ignore
+   @apportion_bill_01 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with valid data
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
 
-   @apportion_billWithAdjustedAmount_02 @businessServices @positive @apportionService @ignore
+   @apportion_billWithAdjustedAmount_02 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with valid adjusted amount
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
@@ -45,42 +45,42 @@ Feature: Business Services - Apportion service tests
      * match apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[2].adjustedAmount == billAmount3
      * match apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].adjustedAmount == billAmount4
 
-   @apportion_bill_InvalidBusinessService_03 @businessServices @negative @apportionService @ignore
+   @apportion_bill_InvalidBusinessService_03 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with Invalid businessService
      * def businessService = commonConstants.invalidParameters.invalidValue
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionServiceData.errorMessages.invalidBusinessService + ' businessService: ' + businessService
 
-   @apportion_bill_amountPaidNULL_04 @businessServices @negative @apportionService @ignore
+   @apportion_bill_amountPaidNULL_04 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with AmountPaid as a NULL
      * def amountPaid = {}
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-   @apportion_bill_IsAdvanceAllowedNULL_05 @businessServices @negative @apportionService @ignore
+   @apportion_bill_IsAdvanceAllowedNULL_05 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with isAdvanceAllowed as a NULL
      * def isAdvanceAllowed = {}
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-   @apportion_bill_WithOneTaxHeadCode_06 @businessServices @positive @apportionService @ignore
+   @apportion_bill_WithOneTaxHeadCode_06 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with one tax HeadCode
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportionWithOneTaxHeadCode')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
 
-   @apportion_bill_WithNoBillAccountDetails_07 @businessServices @negative @apportionService @ignore
+   @apportion_bill_WithNoBillAccountDetails_07 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with no bill account details
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportionWithNoBillDetails')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
-   @apportion_bill_WithexpiryDateNull_08 @businessServices @negative @apportionService @ignore
+   @apportion_bill_WithexpiryDateNull_08 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with Expiry date as NULL
      * def expiryDate = {}
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-   @apportion_bill_NULLtaxHeadCode_09 @businessServices @negative @apportionService @ignore
+   @apportion_bill_NULLtaxHeadCode_09 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with Tax HeadCode as NULL
      * def taxHeadCode1 = {}
      * def taxHeadCode2 = {}
@@ -89,19 +89,19 @@ Feature: Business Services - Apportion service tests
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.unhandledException
 
-   @apportion_bill_NoTenantId_10 @businessServices @negative @apportionService @ignore
+   @apportion_bill_NoTenantId_10 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with No tenantId
      * def tenantId = {}
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
 
-   @apportion_bill_InValidTenantId_11 @businessServices @negative @apportionService @ignore
+   @apportion_bill_InValidTenantId_11 @businessServices @regression @negative @apportionService @ignore
    Scenario: Test to apportion a bill with Invalid tenantId
      * def tenantId = commonConstants.invalidParameters.invalidTenantId
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionServiceData.errorMessages.invalidTenantMessage
 
-   @apportion_bill_PartialAmount_12 @businessServices @positive @apportionService @ignore
+   @apportion_bill_PartialAmount_12 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with Partial Amount
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
@@ -109,7 +109,7 @@ Feature: Business Services - Apportion service tests
      * assert apportionResponseBody.Bills[0].totalAmount == totalAmount
      * assert apportionResponseBody.Bills[0].amountPaid == amountPaid
 
-   @apportion_bill_FullAmount_13 @businessServices @positive @apportionService @ignore
+   @apportion_bill_FullAmount_13 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with Full Amount
      * def amountPaid = totalAmount
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
@@ -118,7 +118,7 @@ Feature: Business Services - Apportion service tests
      * assert apportionResponseBody.Bills[0].totalAmount == totalAmount
      * assert apportionResponseBody.Bills[0].amountPaid == amountPaid
 
-   @apportion_bill_AdvancePayment_14 @businessServices @positive @apportionService @ignore
+   @apportion_bill_AdvancePayment_14 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with Advance payment
      * def amountPaid = 1500
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
@@ -128,7 +128,7 @@ Feature: Business Services - Apportion service tests
      * assert apportionResponseBody.Bills[0].amountPaid == amountPaid
      * print apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].amount
 
-   @apportion_bill_VerifyOrder_15 @businessServices @positive @apportionService @ignore
+   @apportion_bill_VerifyOrder_15 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with an Order
      * call read('../../business-services/pretest/apportionServicePretest.feature@successApportion')
      * match apportionResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success

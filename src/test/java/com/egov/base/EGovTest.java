@@ -20,8 +20,6 @@ import org.yaml.snakeyaml.Yaml;
 import com.intuit.karate.KarateOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
-// import com.intuit.karate.cucumber.CucumberRunner;
-// import com.intuit.karate.cucumber.KarateStats;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 import net.minidev.json.JSONValue;
@@ -30,8 +28,6 @@ import net.minidev.json.JSONValue;
 	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
 			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
 			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
-// below tags will be added for execution once port fowarding is implemented on the system under execution
-// @encService and @apportionService
 
 public class EGovTest {
 	static String karateOutputPath = "target/surefire-reports";

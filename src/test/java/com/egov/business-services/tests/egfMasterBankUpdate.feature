@@ -15,7 +15,7 @@
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
         
   
-@Bank_Update_01 @positive @bankUpdate @egfMaster @businessServices
+@Bank_Update_01 @positive @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify creating bank account throgh API call
         # Set new bank code
         * set updateBankPayload.banks[0].code = randomString(5)
@@ -33,7 +33,7 @@
         * match updateBankResponse.banks[0].description == updateBankPayload.banks[0].description
         * match updateBankResponse.banks[0].type == updateBankPayload.banks[0].type
 
-@Bank_Update_UniqueName_02 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_UniqueName_02 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify updating bank by passing a value for name that already exists and check for errors
         # Set new code and name to create a new Bank 
         * set createBankPayload.banks[0].code = bankCode+'-latest'
@@ -56,7 +56,7 @@
         * match updateBankResponse.errors[0].description == errorDescription
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.nameFieldValueNotUnique
 
-@Bank_Update_UniqueCode_03 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_UniqueCode_03 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify updating bank by passing a value for code that already exists and check for errors
         # Set new code and name to create a new Bank 
         * set createBankPayload.banks[0].code = bankCode+'-latest'
@@ -75,7 +75,7 @@
         * match updateBankResponse.errors[0].description == errorDescription
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.codeFieldValueNotUnique
 
-@Bank_Update_InvalidTenant_04 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_InvalidTenant_04 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify updating bank using API call by passing a invalid/non existing tenant id in the request body
         # Set an Invalid tenantId
         * set updateBankPayload.banks[0].tenantId = 'Invalid'+randomString(5)
@@ -83,7 +83,7 @@
         # Validate that the error description returned by API due to Invalid tenantId is equal with expected error
         * match updateBankResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@Bank_Update_NoTenant_05 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_NoTenant_05 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify updating bank  using API call by not passing tenant id in the request body or by passing null for tenant id
         # Remove tenantId field from upload payload
         * remove updateBankPayload.banks[0].tenantId
@@ -92,7 +92,7 @@
         * match updateBankResponse.errors[0].description == egfMasterConstants.errorMessages.nullTenantIdDescription
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.nullTenantIdMessage
 
-@Bank_Update_activeNull_06 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_activeNull_06 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify updating bank  by passing null value for active and check for errors
         # Set bank type as `null`
         * set updateBankPayload.banks[0].type = null
@@ -101,7 +101,7 @@
         * match updateBankResponse.errors[0].description == egfMasterConstants.errorMessages.nullTypeDescription
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.nullTypeMessage
 
-@Bank_Update_CodeLen_07 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_CodeLen_07 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify by passing more than 50 chars for code and check for errors
         # Set bank code value more that 50 charecters
         * set updateBankPayload.banks[0].code = randomString(55)
@@ -109,7 +109,7 @@
         # Validate that the error returned by API due to invalid char length of bank code is equal with expected error
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.invalidCodeLength
 
-@Bank_Update_NameLen_08 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_NameLen_08 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify by passing more than 100 chars for name and check for error
         # Set bank name with more than 100 charecters
         * set updateBankPayload.banks[0].name = randomString(110)
@@ -117,7 +117,7 @@
         # Validate that the error returned by API due to invalid char length of bank name is equal with expected error
         * match updateBankResponse.errors[0].message == egfMasterConstants.errorMessages.invalidNameLength
 
-@Bank_Update_DescLen_09 @negative @bankUpdate @egfMaster @businessServices
+@Bank_Update_DescLen_09 @negative @bankUpdate @egfMaster @egfMasterBankAccount @businessServices @regression
     Scenario: Verify by passing more than 250 chars for desc field and check for error
         # Set bank description with more than 250 charecters
         * set updateBankPayload.banks[0].description = randomString(260)

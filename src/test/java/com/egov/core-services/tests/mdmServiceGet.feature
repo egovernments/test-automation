@@ -14,7 +14,7 @@ Background:
     *  def active = mdmsServiceConstants.expectedResponse.active
     *  def order = mdmsServiceConstants.expectedResponse.order
 
-@Get_MDMS_01 @coreServices @positive @getMdms @mdmsService
+@Get_MDMS_01 @coreServices @regression @positive @getMdms @mdmsService
 Scenario: Test to get MDMS details
     # calling mdms get pretest
     * call read('../../core-services/pretests/mdmsService.feature@getMdmsSuccessfully')
@@ -29,14 +29,14 @@ Scenario: Test to get MDMS details
     * match  mdmsResponseArray[*].active contains ['#(active)']
     * match  mdmsResponseArray[*].order contains ['#(order)']
 
-@Get_MDMS_MultipleMod_02 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_MultipleMod_02 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with multiple module name
     * set mdmsParam.moduleName = moduleName
     # calling mdms get pretest
     * call read('../../core-services/pretests/mdmsService.feature@getMdmsSuccessfully')
     * match getMdmsResponseBody.MdmsRes == {}
 
-@Get_MDMS_NoModName_03 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_NoModName_03 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with no module name
     * def mdmsParam = {tenantId: '#(tenantId)',masterName: '#(masterName)'}
     # calling mdms get pretest
@@ -44,7 +44,7 @@ Scenario: Test to get MDMS details with no module name
     * match getMdmsResponseBody.Errors[0].message == mdmsServiceConstants.errorMessages.noModuleName.message
     * match getMdmsResponseBody.Errors[0].params[0] == mdmsServiceConstants.errorMessages.noModuleName.params
 
-@Get_MDMS_NoMasterName_04 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_NoMasterName_04 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with no module name
     * def mdmsParam = {moduleName: '#(moduleName.split(",")[0])',tenantId: '#(tenantId)'}
     # calling mdms get pretest
@@ -52,7 +52,7 @@ Scenario: Test to get MDMS details with no module name
     * match getMdmsResponseBody.Errors[0].message == mdmsServiceConstants.errorMessages.noMasterName.message
     * match getMdmsResponseBody.Errors[0].params[0] == mdmsServiceConstants.errorMessages.noMasterName.params
 
-@Get_MDMS_NoTenantId_05 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_NoTenantId_05 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with no tenant Id
     * set mdmsParam.tenantId = null
     # calling mdms get pretest
@@ -60,7 +60,7 @@ Scenario: Test to get MDMS details with no tenant Id
     * match getMdmsResponseBody.Errors[0].message == mdmsServiceConstants.errorMessages.noTenantId.message
     * match getMdmsResponseBody.Errors[0].params[0] == mdmsServiceConstants.errorMessages.noTenantId.params
 
-@Get_MDMS_InvalidTenantId_06 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_InvalidTenantId_06 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with invalid tenant ID
     * set mdmsParam.tenantId = 'invalid_'+ ranString(5)
     # calling mdms get pretest
@@ -69,7 +69,7 @@ Scenario: Test to get MDMS details with invalid tenant ID
     * assert getMdmsResponseBody.Errors[0].message == mdmsServiceConstants.errorMessages.invalidTenantId.message || getMdmsResponseBody.Errors[0].message == mdmsServiceConstants.errorMessages.invalidTenantId.messageQa
     * assert getMdmsResponseBody.Errors[0].code == mdmsServiceConstants.errorMessages.invalidTenantId.code || getMdmsResponseBody.Errors[0].code == mdmsServiceConstants.errorMessages.invalidTenantId.codeQa
 
-@Get_MDMS_Invalidparamvalues_07 @coreServices @negative @getMdms @mdmsService
+@Get_MDMS_Invalidparamvalues_07 @coreServices @regression @negative @getMdms @mdmsService
 Scenario: Test to get MDMS details with invalid module name and service name
     * set mdmsParam.moduleName = 'invalid_'+ ranString(5)
     * set mdmsParam.masterName = 'invalid_'+ ranString(5)
