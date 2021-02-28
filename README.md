@@ -148,9 +148,9 @@ Ex:
 <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1,@tagname2,@tagname3,@tagname4" classpath:com/egov"
 
 - Note: 
- @regression is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
+ @businessServices is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
  
-##### Caution: avoid running @regression to avoid system performence issues and data consumptions at eGov configuarations.
+##### Caution: avoid running @businessServices to avoid system performence issues and data consumptions at eGov configuarations.
 
 ## List Of all services tags
 
