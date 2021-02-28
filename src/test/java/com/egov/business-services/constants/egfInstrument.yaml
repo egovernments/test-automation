@@ -1,0 +1,5 @@
+errorMessages:
+ invalidNameCharacter: size must be between 2 and 50
+ fieldNotBlank: may not be empty
+ fieldValueIsNull : must not be null
+ invalidDescriptionCharacter: size must be between 0 and 100
