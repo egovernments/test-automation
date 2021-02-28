@@ -147,12 +147,16 @@ Ex: AccessControl service feature file is composed of N number of test cases and
 
   `@regression` (for running full set of test cases which are marked as regression) and `@smoke` (for running the set of test cases which are marked as smoke)
 
+4. Running kakfa consumer test cases through kakfa rest api proxy
+  * configure kafka rest api proxy as part of other eGov services in the required environment
+  * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
+
 Note:
   * Currently all the testcases are marked as `@regression`. So, this tag can be used alone for executing all the testcases
 
   * Test cases are yet to be tagged as `@smoke` (will be marked soon)
 
-  * One or tags associated with the above mentioned levels can be used separated by a comma in below format
+  * One or more tags associated with the above mentioned levels can be used separated by a comma in below format
 
   Ex: 
     <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount,@billingServiceDemand classpath:com/egov"
