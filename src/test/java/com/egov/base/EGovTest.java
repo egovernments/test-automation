@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Collection;
-import com.intuit.karate.Results;
-import com.intuit.karate.Runner;
+import java.lang.Runtime;
+import java.io.*;
+import java.lang.management.*;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
@@ -19,6 +20,10 @@ import org.yaml.snakeyaml.Yaml;
 import com.intuit.karate.KarateOptions;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
+// import com.intuit.karate.cucumber.CucumberRunner;
+// import com.intuit.karate.cucumber.KarateStats;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import net.minidev.json.JSONValue;
 
 @KarateOptions(features = {"classpath:com/egov"},
@@ -37,7 +42,6 @@ public class EGovTest {
 
 	@Test
 	public void testParallel() {
-
 		
 		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
 		
@@ -61,7 +65,7 @@ public class EGovTest {
 		
 		// To Store reports in other location in system
 		//Configuration config = new Configuration(new File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov Functional Test");
-		Configuration config = new Configuration(new File("target"), "eGov Functional Test");
+		Configuration config = new Configuration(new File("target"), "eGov Test Automation Results");
 
 		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
 		reportBuilder.generateReports();
