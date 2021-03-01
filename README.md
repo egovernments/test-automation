@@ -48,19 +48,17 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
 
  The step by step setup guidelines are provided below based on operating system.
  ###### On Windows
- * [JAVA Installl/Configure]
- *(https://www.java.com/en/download/help/windows_manual_download.html)
- [JAVA PATH Setting]: (https://javatutorial.net/set-java-home-windows-10)
+ * [JAVA Installl/Configure](https://www.java.com/en/download/help/windows_manual_download.html)
+ * [JAVA PATH Setting](https://javatutorial.net/set-java-home-windows-10)
 
- * [maven 3.6.3]
- (https://maven.apache.org/download.cgi)
-(https://maven.apache.org/install.html)
+ * [maven 3.6.3 Download](https://maven.apache.org/download.cgi)
+ * [Maven Installation](https://maven.apache.org/install.html)
  ###### On Mac
- * [JAVA Installl/Configure] (https://www.java.com/en/download/help/mac_install.html)
- [JAVA PATH Setting]: (https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
+ * [JAVA Installl/Configure](https://www.java.com/en/download/help/mac_install.html)
+ * [JAVA PATH Setting](https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
 
- * [maven 3.6.3]
- (https://www.baeldung.com/install-maven-on-windows-linux-mac)
+ * [maven 3.6.3 Download](https://www.baeldung.com/install-maven-on-windows-linux-mac)
+ * [Maven Installation](https://maven.apache.org/install.html)
 
 <!--Installation-->
 #### KARATE Framework, Source Code, GIT Install
