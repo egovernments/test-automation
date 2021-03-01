@@ -12,14 +12,13 @@ DIGIT, a REST API platform based out of microservices architecture.
 ##### Table of Contents
 * [Project Brief](#project-brief)
 * [Tools and Technologies Used](#tools-and-technologies-used)
-* [Automation Framework Kick off](#automation-framewoprk-kick-off)
+* [Automation Framework Kick Off](#automation-framewoprk-kick-off)
   * [Pre-requisites](#pre-requisites)
-  * [KARATE Framework Source Code GIT Installation](#karate-framework-source-code-git-installation)
+  * [KARATE Framework Source Code GIT Install](#karate-framework-source-code-git-install)
 * [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
-* [List Of Tags](#list-of-tags)
+* [List Of all services tags](#list-of-all-service-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
-* [Upcoming Services](#upcoming-services)
 
 ### Project Brief
 DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
