@@ -11,12 +11,12 @@ DIGIT, a REST API platform based out of microservices architecture.
 
 ##### Table of Contents
 * [Project Brief](#project-brief)
-* [Tools and Technologies Used](#technology-used)
-* [Automation Framework Kick-off](#getting-started)
-  * [Pre-requisites](#prerequisites)
+* [Tools and Technologies Used](#tools-and-technologies-used)
+* [Automation Framework Kick-off](#automation-framewoprk-kick-off)
+  * [Pre-requisites](#pre-requisites)
   * [KARATE Framework, Source Code, GIT Installation](#installation)
   * [Configurations](#configurations)
-* [Generic Command prompt maven commands to start test runs:](#run-with-command-prompt)
+* [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
@@ -125,7 +125,7 @@ employee:
   
 ### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
-##### Generic Command prompt maven commands to start test runs:
+#### Generic Command prompt maven commands to start test runs:
 
 NOTE: Test cases are grouped by TAG names based on DIGIT Services
 
