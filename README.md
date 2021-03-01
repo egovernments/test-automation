@@ -64,10 +64,8 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
 * [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
 
 * [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
-* GIT Installation:
- - Install GIT in your local operating system
- - [Git Download](https://git-scm.com/downloads)
- - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Git Download](https://git-scm.com/downloads)
+* [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Install GIT in your local operating system)
 
  - Create a Local Repository Path Working Directory:
  Windows Example:  <Local Working Directory path>\test-automation
