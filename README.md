@@ -10,7 +10,7 @@ DIGIT, a REST API platform based out of microservices architecture.
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
 ##### Table of Contents
-* [Project Brief](#about-the-project)
+* [Project Brief](#project-brief)
 * [Tools and Technologies Used](#technology-used)
 * [Automation Framework Kick-off](#getting-started)
   * [Pre-requisites](#prerequisites)
