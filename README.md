@@ -12,10 +12,9 @@ DIGIT, a REST API platform based out of microservices architecture.
 ##### Table of Contents
 * [Project Brief](#project-brief)
 * [Tools and Technologies Used](#tools-and-technologies-used)
-* [Automation Framework Kick-off](#automation-framewoprk-kick-off)
+* [Automation Framework Kick off](#automation-framewoprk-kick-off)
   * [Pre-requisites](#pre-requisites)
-  * [KARATE Framework, Source Code, GIT Installation](#installation)
-  * [Configurations](#configurations)
+  * [KARATE Framework, Source Code, GIT Installation](#karate-framework-source-code-git-installation)
 * [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
@@ -133,21 +132,21 @@ Ex: AccessControl service feature file is composed of N number of test cases and
 
   Refer below `List Of all services tags` section for complete list of tags for all the available services
 
-1. Running indiviual service level feature test cases:
+1. **Running indiviual service level feature test cases:**
 
   Below is the command format for running individual services
 
   <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname> classpath:com/egov"
 
-2. Running service category level feature test cases at one shot:
+2. **Running service category level feature test cases at one shot:**
 
   Multiple Services categories are `@businessServices` (for running complete set of business-services test cases), `@coreServices` (for running complete set of core-services test cases)
 
-3. Running test category level feature test cases:
+3. **Running test category level feature test cases:**
 
   `@regression` (for running full set of test cases which are marked as regression) and `@smoke` (for running the set of test cases which are marked as smoke)
 
-4. Running kakfa consumer test cases through kakfa rest api proxy
+4. **Running kakfa consumer test cases through kakfa rest api proxy**
   * configure kafka rest api proxy as part of other eGov services in the required environment
   * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
 
