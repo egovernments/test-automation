@@ -12,11 +12,11 @@ DIGIT, a REST API platform based out of microservices architecture.
 ##### Table of Contents
 * [Project Brief](#project-brief)
 * [Tools and Technologies Used](#tools-and-technologies-used)
-* [Automation Framework Kick Off](#automation-framewoprk-kick-off)
+* [Automation Framework Kick Off](#automation-framework-kick-off)
   * [Pre-requisites](#pre-requisites)
-  * [KARATE Framework Source Code GIT Install](#karate-framework-source-code-git-install)
+  * [KARATE Framework, Source Code, GIT Install](#karate-framework-source-code-git-install)
 * [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
-* [List Of all services tags](#list-of-all-service-tags)
+* [List Of all services tags](#list-of-all-services-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
 
@@ -60,7 +60,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [Maven Installation](https://maven.apache.org/install.html)
 
 <!--Installation-->
-#### KARATE Framework Source Code GIT Install
+#### KARATE Framework, Source Code, GIT Install
 * [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
 
 * [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
