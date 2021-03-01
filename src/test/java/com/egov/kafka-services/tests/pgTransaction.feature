@@ -11,7 +11,7 @@ Background:
     #Subscribe Consumer instance to topic
     * call read('../../kafka-services/pretests/kafkaPretest.feature@subscribeConsumerToTopic')
 
-@kafka_pg_create_01 @positive @kafkaPgTransaction @kafkaService
+@kafka_pg_create_01 @positive @kafkaPgTransaction @kafkaServices
 Scenario: Create a pg transaction and verifdy the response Transaction object with the data obtained from the consumer
     # Create pg transaction
     * call read('../../core-services/tests/pgServices.feature@PGCreate_01')

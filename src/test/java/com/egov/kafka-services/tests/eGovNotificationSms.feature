@@ -32,7 +32,7 @@ Background:
     }
     """
 
-@sms_01 @positive @kafkaEgovNotificationSms @kafkaService
+@sms_01 @positive @kafkaEgovNotificationSms @kafkaServices
 Scenario: Create an Employee user, forgot password, read otp from kafka, update password and login
     # Create an Employee via hrms create employee api
     * call read('../../business-services/tests/egovHrms.feature@HRMS_create_emp01')
@@ -45,8 +45,6 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def recordsFilterCondition = "$[?(@.value.mobileNumber=='" + resetMobileNumber + "' && @.topic=='" + kafkaTopics + "' && @.value.message contains 'OTP')].value.message"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
-    # Check whether we got the records in consumer records or not
-    * assert recordsResponse != null
     # Extract the kafka OTP consumer response messages for above mobile number and notification sms topic
     * def otpMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently
@@ -65,7 +63,7 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * call read('../../common-services/pretests/authenticationToken.feature')
     * print 'Login Success.'
 
-@sms_02 @positive @kafkaEgovNotificationSms @kafkaService
+@sms_02 @positive @kafkaEgovNotificationSms @kafkaServices
 Scenario: Create an Employee user,read generated password from kafka and login
     # Create an Employee via hrms create employee api
     * call read('../../business-services/tests/egovHrms.feature@HRMS_create_emp01')
@@ -76,8 +74,6 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * def recordsFilterCondition = "$[?(@.value.mobileNumber=='" + resetMobileNumber + "' && @.topic=='" + kafkaTopics + "' && @.value.message contains 'Welcome to mSeva')].value.message"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
-    # Check whether we got the records in consumer records or not
-    * assert recordsResponse != null
     # Extract the kafka Welcome Password consumer response messages for above mobile number and notification sms topic
     * def welcomePasswordMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently
