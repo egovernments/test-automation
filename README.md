@@ -14,7 +14,7 @@ DIGIT, a REST API platform based out of microservices architecture.
 * [Tools and Technologies Used](#tools-and-technologies-used)
 * [Automation Framework Kick off](#automation-framewoprk-kick-off)
   * [Pre-requisites](#pre-requisites)
-  * [KARATE Framework, Source Code, GIT Installation](#karate-framework-source-code-git-installation)
+  * [KARATE Framework Source Code GIT Installation](#karate-framework-source-code-git-installation)
 * [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
@@ -42,7 +42,7 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  BDD framework - Behavior Driven Development is a software development approach 
  
-### Automation Framework Kick-Off
+### Automation Framework Kick Off
 ### Pre-requisites
  * Two main software utilities required:  JAVA and MAVEN
 
@@ -61,14 +61,14 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [Maven Installation](https://maven.apache.org/install.html)
 
 <!--Installation-->
-#### KARATE Framework, Source Code, GIT Install
-Supported IDEs for Code/Test Runs: (https://github.com/intuit/karate/wiki/IDE-Support)
+#### KARATE Framework Source Code GIT Install
+* [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
 
-Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
 * GIT Installation:
- - Install GIT in your local operating system 
-  (https://git-scm.com/downloads)
- (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ - Install GIT in your local operating system
+ - [Git Download](https://git-scm.com/downloads)
+ - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
  - Create a Local Repository Path Working Directory:
  Windows Example:  <Local Working Directory path>\test-automation
@@ -199,5 +199,4 @@ DIGIT Test Automation Framework cover validations of below services.
    * Business-services
    * Municipal-services
    
-[Refer Details Product Requirements on Services] :
-(https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)
+[Refer Details Product Requirements on Services](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)
