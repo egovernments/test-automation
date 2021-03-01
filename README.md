@@ -16,7 +16,7 @@ DIGIT, a REST API platform based out of microservices architecture.
   * [Pre-requisites](#prerequisites)
   * [KARATE Framework, Source Code, GIT Installation](#installation)
   * [Configurations](#configurations)
-* [Run with Command Prompt](#run-with-command-prompt)
+* [Generic Command prompt maven commands to start test runs:](#run-with-command-prompt)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
