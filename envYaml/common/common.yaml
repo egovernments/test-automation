@@ -122,7 +122,7 @@ endPoints:
   subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
   read: consumers/automation_consumer/instances/automation_consumer_instance/records
   delete: consumers/automation_consumer/instances/automation_consumer_instance
- egfInstrument:
+ egfInstrumentTypes:
   create: egf-instrument/instrumenttypes/_create
   update: egf-instrument/instrumenttypes/_update
   search: egf-instrument/instrumenttypes/_search

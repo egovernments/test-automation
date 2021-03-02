@@ -234,9 +234,9 @@ function() {
         config.deleteKafkaConsumer = envProps.localhost + path.endPoints.kafkaService.delete
 
         // egfInstrument - Instrument types endpoints
-        config.createInstrumentTypes = envProps.host + path.endPoints.egfInstrument.create
-        config.searchInstrumentTypes = envProps.host + path.endPoints.egfInstrument.search
-        config.updateInstrumentTypes = envProps.host + path.endPoints.egfInstrument.update
+        config.createInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.create
+        config.searchInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.search
+        config.updateInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.update
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
