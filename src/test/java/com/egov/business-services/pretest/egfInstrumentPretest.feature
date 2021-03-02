@@ -24,7 +24,7 @@ Background:
     And request searchInstrumentTypesPayload
     When method post
     Then assert responseStatus == 200 || responseStatus == 403
-    And def seachResponse = response
+    And def searchResponse = response
 
   @updateInstrumentTypes
     Scenario: To update instrument types

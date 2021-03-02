@@ -27,69 +27,76 @@
         * def invalidName = 'Name'+randomString(5)
         * def invalidId = 'Id'+randomString(5)
   
-@InstrumentTypeSearch_All_01 @instrumentTypesSearch
+@InstrumentTypeSearch_All_01 @instrumentTypesSearch @egfInstrument @positive
     Scenario: Search all instrument types
+    # Prepare searchParams with tenantId
     * def searchParams = {tenantId: '#(tenantId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() != 0
+    * match searchResponse.instrumentTypes.size() != 0
 
-@InstrumentTypeSearch_WithName_02 @instrumentTypesSearch 
+@InstrumentTypeSearch_WithName_02 @instrumentTypesSearch @egfInstrument @positive 
     Scenario: Search Instrument type with valid name
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    # Prepare searchParams with name
     * def searchParams = {name:'#(name)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() != 0
-    * match seachResponse.instrumentTypes[0].name == instrumentTypesResponse.instrumentTypes[0].name
+    * match searchResponse.instrumentTypes.size() != 0
+    * match searchResponse.instrumentTypes[0].name == instrumentTypesResponse.instrumentTypes[0].name
 
-@InstrumentTypeSearch_WithInvalidName_03 @instrumentTypesSearch
+@InstrumentTypeSearch_WithInvalidName_03 @instrumentTypesSearch @egfInstrument @nagative
     Scenario: Search Instrument type with Invalid name
+    # Prepare searchParams with invalid name
     * def searchParams = {name: '#(invalidName)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() == 0
+    * match searchResponse.instrumentTypes.size() == 0
 
-@InstrumentTypeSearch_WithId_04 @instrumentTypesSearch
+@InstrumentTypeSearch_WithId_04 @instrumentTypesSearch @egfInstrument @positive
     Scenario: Search Instrument type with valid ID
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    # Prepare searchParams with id
     * def searchParams = {id: '#(id)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() != 0
-    * match seachResponse.instrumentTypes[0].id == id
+    * match searchResponse.instrumentTypes.size() != 0
+    * match searchResponse.instrumentTypes[0].id == id
 
-@InstrumentTypeSearch_WithInvalidID_05 @instrumentTypesSearch 
+@InstrumentTypeSearch_WithInvalidID_05 @instrumentTypesSearch @egfInstrument @nagative 
     Scenario: Search Instrument type with Invalid ID
+    # Prepare searchParams with invalid id
     * def searchParams = {id: '#(invalidId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() == 0
+    * match searchResponse.instrumentTypes.size() == 0
 
-@InstrumentTypeSearch_WithActiveTrue_06 @instrumentTypesSearch
+@InstrumentTypeSearch_WithActiveTrue_06 @instrumentTypesSearch @egfInstrument @positive
     Scenario: Search Instrument type with Active true
+    # Prepare searchParams with active
     * def searchParams = {active: '#(active)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
     * def condition = function(x){ return x.active != 'false' }
-    * def filtered = karate.filter(seachResponse.instrumentTypes, condition)
-    * match seachResponse.instrumentTypes.size() != 0
-    * match filtered[0].active == true
+    * def filtered = karate.filter(searchResponse.instrumentTypes, condition)
+    * match deterMineActiveFieldValue(filtered, true) == true
     
 
-@InstrumentTypeSearch_WithActiveFalse_07 @instrumentTypesSearch
+@InstrumentTypeSearch_WithActiveFalse_07 @instrumentTypesSearch @egfInstrument @positive
     Scenario: Search Instrument type with Active false
     * set instrumentTypesPayload.instrumentTypes[0].active = false
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    # Prepare searchParams with active
     * def searchParams = {active: 'false'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
     * def condition = function(x){ return x.active != 'true' }
-    * def filtered = karate.filter(seachResponse.instrumentTypes, condition)
-    * match seachResponse.instrumentTypes.size() != 0
-    * match filtered[0].active == false
+    * def filtered = karate.filter(searchResponse.instrumentTypes, condition)
+    * match deterMineActiveFieldValue(filtered, false) == true
 
-@InstrumentTypeSearch_WithInvalidtenantID_08 @instrumentTypesSearch
+@InstrumentTypeSearch_WithInvalidtenantID_08 @instrumentTypesSearch @egfInstrument @nagative
     Scenario: Search Instrument type with Invalid tenantID
+    # Prepare searchParams with invalidTenantId
     * def searchParams = {tenantId: '#(invalidTenantId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
+    * match searchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
     
-@InstrumentTypeSearch_WithNotenantID_09 @instrumentTypesSearch
+@InstrumentTypeSearch_WithNotenantID_09 @instrumentTypesSearch @egfInstrument @nagative
     Scenario: Search Instrument type with No tenantID
+    # Prepare serachParams with blank
     * def searchParams = {}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
-    * match seachResponse.instrumentTypes.size() != 0
+    * match searchResponse.instrumentTypes.size() != 0
