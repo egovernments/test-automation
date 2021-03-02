@@ -49,10 +49,12 @@ Scenario: Wait until records are consumed
         i++;
         karate.log('waiting to fetch records');
       }
+      karate.log('failed to fetch records!!!');
       return null;
     }
     """
     * def recordsResponse = call waitUntilRecordsAreRead
+    * assert recordsResponse != null
 
 @deleteConsumerInstance
 Scenario: Delete Consumer Instance

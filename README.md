@@ -10,17 +10,15 @@ DIGIT, a REST API platform based out of microservices architecture.
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
 ##### Table of Contents
-* [Project Brief](#about-the-project)
-* [Tools and Technologies Used](#technology-used)
-* [Automation Framework Kick-off](#getting-started)
-  * [Pre-requisites](#prerequisites)
-  * [KARATE Framework, Source Code, GIT Installation](#installation)
-  * [Configurations](#configurations)
-* [Run with Command Prompt](#run-with-command-prompt)
-* [List Of Tags](#list-of-tags)
+* [Project Brief](#project-brief)
+* [Tools and Technologies Used](#tools-and-technologies-used)
+* [Automation Framework Kick Off](#automation-framework-kick-off)
+  * [Pre-requisites](#pre-requisites)
+  * [KARATE Framework, Source Code, GIT Install](#karate-framework-source-code-git-install)
+* [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
+* [List Of all services tags](#list-of-all-services-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
-* [Upcoming Services](#upcoming-services)
 
 ### Project Brief
 DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
@@ -43,35 +41,31 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  BDD framework - Behavior Driven Development is a software development approach 
  
-### Automation Framework Kick-Off
+### Automation Framework Kick Off
 ### Pre-requisites
  * Two main software utilities required:  JAVA and MAVEN
 
  The step by step setup guidelines are provided below based on operating system.
  ###### On Windows
- * [JAVA Installl/Configure]
- *(https://www.java.com/en/download/help/windows_manual_download.html)
- [JAVA PATH Setting]: (https://javatutorial.net/set-java-home-windows-10)
+ * [JAVA Installl/Configure](https://www.java.com/en/download/help/windows_manual_download.html)
+ * [JAVA PATH Setting](https://javatutorial.net/set-java-home-windows-10)
 
- * [maven 3.6.3]
- (https://maven.apache.org/download.cgi)
-(https://maven.apache.org/install.html)
+ * [maven 3.6.3 Download](https://maven.apache.org/download.cgi)
+ * [Maven Installation](https://maven.apache.org/install.html)
  ###### On Mac
- * [JAVA Installl/Configure] (https://www.java.com/en/download/help/mac_install.html)
- [JAVA PATH Setting]: (https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
+ * [JAVA Installl/Configure](https://www.java.com/en/download/help/mac_install.html)
+ * [JAVA PATH Setting](https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
 
- * [maven 3.6.3]
- (https://www.baeldung.com/install-maven-on-windows-linux-mac)
+ * [maven 3.6.3 Download](https://www.baeldung.com/install-maven-on-windows-linux-mac)
+ * [Maven Installation](https://maven.apache.org/install.html)
 
 <!--Installation-->
 #### KARATE Framework, Source Code, GIT Install
-Supported IDEs for Code/Test Runs: (https://github.com/intuit/karate/wiki/IDE-Support)
+* [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
 
-Visual Studio Setup: (https://visualstudio.microsoft.com/downloads/)
-* GIT Installation:
- - Install GIT in your local operating system 
-  (https://git-scm.com/downloads)
- (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
+* [Git Download](https://git-scm.com/downloads)
+* [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Install GIT in your local operating system)
 
  - Create a Local Repository Path Working Directory:
  Windows Example:  <Local Working Directory path>\test-automation
@@ -125,32 +119,45 @@ employee:
   
 ### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
-##### Run with Command Prompt
-NOTE:
-1. Test cases are grouped by TAG names based on DIGIT Services
+#### Generic Command prompt maven commands to start test runs:
+
+NOTE: Test cases are grouped by TAG names based on DIGIT Services
 
 Ex: AccessControl service feature file is composed of N number of test cases and are tagged as @accessControl
 
-##### Generic Command prompt to start test runs:
+  Refer below `List Of all services tags` section for complete list of tags for all the available services
 
-1. Running one service feature test cases:
+1. **Running indiviual service level feature test cases:**
 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname1>" classpath:com/egov"
+  Below is the command format for running individual services
 
-Ex: 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount classpath:com/egov"
+  <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname> classpath:com/egov"
 
-2. Running multiple services feature test cases at one shot:
+2. **Running service category level feature test cases at one shot:**
 
-Note: Multiple Services and associated Test cases can be run adding multiple tag names with same command format
+  Multiple Services categories are `@businessServices` (for running complete set of business-services test cases), `@coreServices` (for running complete set of core-services test cases)
 
-Ex: 
-<Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags <@tagname1,@tagname2,@tagname3,@tagname4" classpath:com/egov"
+3. **Running test category level feature test cases:**
 
-- Note: 
- @businessServices is a TAG name to run full set of Core, Business, Municipal Services and assiciated test cases as a suite.
- 
-##### Caution: avoid running @businessServices to avoid system performence issues and data consumptions at eGov configuarations.
+  `@regression` (for running full set of test cases which are marked as regression) and `@smoke` (for running the set of test cases which are marked as smoke)
+
+4. **Running kakfa consumer test cases through kakfa rest api proxy**
+  * configure kafka rest api proxy as part of other eGov services in the required environment
+  * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
+
+Note:
+  * Currently all the testcases are marked as `@regression`. So, this tag can be used alone for executing all the testcases
+
+  * Test cases are yet to be tagged as `@smoke` (will be marked soon)
+
+  * One or more tags associated with the above mentioned levels can be used separated by a comma in below format
+
+  Ex: 
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount,@billingServiceDemand classpath:com/egov"
+
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @businessServices classpath:com/egov"
+
+    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @regression classpath:com/egov"
 
 ## List Of all services tags
 
@@ -189,5 +196,4 @@ DIGIT Test Automation Framework cover validations of below services.
    * Business-services
    * Municipal-services
    
-[Refer Details Product Requirements on Services] :
-(https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)
+[Refer Details Product Requirements on Services](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)
