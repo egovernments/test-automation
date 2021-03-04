@@ -208,7 +208,23 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayload
         * print requestPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403
+    Then assert responseStatus == 201
+    And def accountDetailsCreateResponse = response
+
+@errorInCreateChartOfAccountDetails
+    Scenario: Negative pretest to create chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url createAccountDetails
+    And params params
+    And request requestPayload
+        * print requestPayload
+    When method post
+    Then assert responseStatus == 500 || responseStatus == 403
     And def accountDetailsCreateResponse = response
 
 @updateChartOfAccountDetails
@@ -224,7 +240,23 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayloadToUpdate
         * print requestPayloadToUpdate
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 201
+    And def updateResponse = response
+
+@errorInUpdateChartOfAccountDetails
+    Scenario: Negative pretest to update chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url updateAccountDetails
+    And params params
+    And request requestPayloadToUpdate
+        * print requestPayloadToUpdate
+    When method post
+    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def updateResponse = response
     
 @searchChartOfAccountDetails
@@ -235,7 +267,18 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayloadToSearch
         * print requestPayloadToUpdate
     When method post
-    Then assert responseStatus == 200 || responseStatus == 403
+    Then assert responseStatus == 200
+    And def searchResponse = response
+
+@errorInSearchChartOfAccountDetails
+    Scenario: Negative pretest to search chart of account details
+    Given url searchAccountDetails
+    And params searchAccountDetailsParams
+        * print searchAccountDetailsParams
+    And request requestPayloadToSearch
+        * print requestPayloadToUpdate
+    When method post
+    Then assert responseStatus == 403
     And def searchResponse = response
   
   # Pretest scenarios for Bank Service
@@ -251,11 +294,26 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request createBankPayload
         * print createBankPayload
-    When method post
-      * print responseStatus
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    When method post  
+    Then assert responseStatus == 201
     And def createBankResponse = response
     And def bankId = createBankResponse.banks[0].id
+
+@errorInCreateBank
+    Scenario: Negative pretest to create Bank
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankCreate
+    And params params
+    And request createBankPayload
+        * print createBankPayload
+    When method post
+    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    And def createBankResponse = response
 
 @updateBank
     Scenario: To update Bank
@@ -270,7 +328,23 @@ Scenario: Updating chart of accounts and check for error through API call
     And request updateBankPayload
         * print updateBankPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 201
+    And def updateBankResponse = response
+
+@errorInUpdateBank
+    Scenario: Negative pretest to update Bank
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankUpdate
+    And params params
+    And request updateBankPayload
+        * print updateBankPayload
+    When method post
+    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def updateBankResponse = response
 
 @searchBank
@@ -281,7 +355,18 @@ Scenario: Updating chart of accounts and check for error through API call
     And request searchBankPayload
     When method post
       * print responseStatus
-    Then assert responseStatus == 200 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 200
+    And def searchBankResponse = response
+
+@errorInSearchBank
+    Scenario: Negative pretest to search Bank
+    Given url bankSearch
+    And params searchParams
+        * print searchParams
+    And request searchBankPayload
+    When method post
+      * print responseStatus
+    Then assert responseStatus == 403 || responseStatus == 400
     And def searchBankResponse = response
 
 # Pretest scenarios for Bank Branch Service

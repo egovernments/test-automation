@@ -204,3 +204,12 @@ function deterMineActiveFieldValue(filteredArrayOfResponse, valueToBeMatched){
             return flag;
         }
 }
+
+
+function randomFloat(x) {
+    if (x) {
+        return new java.util.Random().nextFloat();
+    } else {
+        return new java.util.Random().nextFloat(100000000);
+    }
+}

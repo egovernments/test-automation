@@ -42,7 +42,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set an updated name with more than 50 characters
     * set instrumentTypesPayload.instrumentTypes[0].name = randomString(55)
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
 
@@ -60,7 +60,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set an updated description with more than 100 characters
     * set instrumentTypesPayload.instrumentTypes[0].description = randomString(105)
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidDescriptionCharacter
 
@@ -89,7 +89,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the instrument type id field as null
     * set instrumentTypesPayload.instrumentTypes[0].id = null
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
     # Validate the error message returned by API which should be equal with expected error
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].message == "id"
@@ -99,7 +99,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the tenant id value with an invalid tenant id
     * set instrumentTypesPayload.instrumentTypes[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
     # Validate the error message returned by API which should be equal with expected error
     * match updateInstrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -116,13 +116,14 @@
     * set instrumentTypesPayload.instrumentTypes[0].instrumentTypeProperties[0].instrumentType = 'Offline'
     # Steps to create instrument type with updated data
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * match updateInstrumentTypesResponse.instrumentTypes.size() != 0
 
 @InstrumentTypeUpdate_NameWithNull_10 @instrumentTypeUpdate @nagative @egfInstrument
     Scenario: Update Name with Null
     # Set name as `null`
     * set instrumentTypesPayload.instrumentTypes[0].name = null
     # Steps to update instrument type with null name
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
     # Validate the error message returned by API which should be equal with expected error
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].fields[*].message contains ['#(fieldMustNotBlank)', '#(fieldMustNotBeNull)']

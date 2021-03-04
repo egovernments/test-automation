@@ -2,6 +2,7 @@ Feature: Billing Services Search tests
 
 Background:
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
+    * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     *  def billingServiceConstants = read('../constants/billing-service.yaml')
     *  def jsUtils = read('classpath:jsUtils.js')
     *  call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
@@ -51,7 +52,7 @@ Scenario: Test to search a bill with service code
     # Defining searchBillParams with tenantId and service code
     * def searchBillParams = {tenantId: '#(tenantId)', service: '#(businessService)'}
     # Steps to search bill with valid parameters
-    * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
+    * call read('../../business-services/pretest/billingServicePretest.feature@errorInSearchBill')
     * assert searchBillResponse.Errors[0].code == mandatoryFieldErrorCode
     * assert searchBillResponse.Errors[0].message == mandatoryFieldErrorMessage
 
@@ -60,7 +61,7 @@ Scenario: Test to search a bill with a valid Consumer code
     # Defining searchBillParams with tenantId and consumerCode
     * def searchBillParams = {tenantId: '#(tenantId)', consumerCode: '#(consumerCode)'}
     # Steps to search bill with valid parameters
-    * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
+    * call read('../../business-services/pretest/billingServicePretest.feature@errorInSearchBill')
     * assert searchBillResponse.Errors[0].code == noBusinessServiceErrorCode
     * assert searchBillResponse.Errors[0].message.trim() == noBusinessServiceErrorMsg
 
@@ -71,7 +72,7 @@ Scenario: Test to search a bill with a business service and mobile number
     * def searchBillParams = {tenantId: '#(tenantId)', service: '#(businessService)', mobileNumber: '#(mobileNumber)'}
     # Steps to search bill with valid parameters
     * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
-    * assert searchBillResponse.Bill[0].mobileNumber == mobileNumber
+    * match searchBillResponse.ResposneInfo.status == commonConstants.expectedStatus.ok
 
 @search_withInvalidService_06 @businessServices @regression @negative @searchBill @billingServiceBill
 Scenario: Test to search a bill with invalid business service
@@ -106,7 +107,7 @@ Scenario: Test to search a bill with tenantId
     # Defining searchBillParams with tenantId only
     * def searchBillParams =  {tenantId: '#(tenantId)'}
     # Steps to search bill with tenantId only and generate error
-    * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
+    * call read('../../business-services/pretest/billingServicePretest.feature@errorInSearchBill')
     * assert searchBillResponse.Errors[0].code == mandatoryFieldErrorCode
     * assert searchBillResponse.Errors[0].message == mandatoryFieldErrorMessage
 
@@ -115,7 +116,7 @@ Scenario: Test to search a bill without any parameters
     # Defininf searchBillParams as empty
     * def searchBillParams =  {}
     # Steps to search bill with empty parameters and generate error
-    * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
+    * call read('../../business-services/pretest/billingServicePretest.feature@errorInSearchBill')
     * karate.log(searchBillResponse)
     * assert searchBillResponse.Errors[0].code == noTenantIdErrorCode
     * assert searchBillResponse.Errors[0].message == noTenantIdErrorMsg
@@ -125,7 +126,7 @@ Scenario: Test to search a bill with an invalid tenantId
     # Defining searchBillParams with tenantId, consumerCode, service
     * def searchBillParams =  {tenantId: '#(invalidTenantId)', consumerCode: '#(consumerCode)', service: '#(businessService)'}
     # Steps to search bill with invalid tenantId
-    * call read('../../business-services/pretest/billingServicePretest.feature@successSearchBill')
+    * call read('../../business-services/pretest/billingServicePretest.feature@errorInSearchBill')
     * assert searchBillResponse.Errors[0].code == invalidTenantIdErrorCode
     * assert searchBillResponse.Errors[0].message == invalidTenantIdErrorMsg
     

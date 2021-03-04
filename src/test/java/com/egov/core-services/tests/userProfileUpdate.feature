@@ -54,7 +54,7 @@ Background:
         # Set invalid username to the name field
         * set profilePayload.user.name = username+'@automation!'
         # Steps to update user profile with invalid name
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidUserName
@@ -66,7 +66,7 @@ Background:
         # Set invalid value to the emailId field
         * set profilePayload.user.emailId = username
         # Steps to update user profile with invalid emailID
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidEmail
@@ -78,7 +78,7 @@ Background:
         # Set an Invalid random mobile number to mobileNumber field
         * set profilePayload.user.mobileNumber = randomMobileNumGen(10)
         # Steps to update user profile with invalid mobile number
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidPhoneNumber
@@ -103,7 +103,7 @@ Background:
         # Set an invalid gender 
         * set profilePayload.user.gender = invalidGender
         # Steps to update user's profile to generate error message for invalid gender
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidGender
@@ -115,7 +115,7 @@ Background:
         # Set tenantId field value as Blank
         * set profilePayload.user.tenantId = null
         # Steps to update user's profile to generate error message as tenantId is blank
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
@@ -127,7 +127,7 @@ Background:
         # Set uuid field value as Blank
         * set profilePayload.user.uuid = ''
         # Steps to update user's profile to generate error message as uuid is blank
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].description == errorMessage.errormessages.invalidUUID
 
@@ -138,7 +138,7 @@ Background:
         # Set an invalid uuid to the uuid field
         * set profilePayload.user.uuid = generateUUID()
         # Steps to update user's profile to generate error message as uuid field is invalid
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
@@ -150,7 +150,7 @@ Background:
         # Removing user id field from the request payload
         * remove profilePayload.user.id
         # Steps to update user's profile to generate error message as user id field is missing from the request
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
@@ -162,7 +162,7 @@ Background:
         # Assigning user's id with random invalid number
         * set profilePayload.user.id = randomNumber(3)
         # Steps to update user's profile to generate error message for invalid user id
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
@@ -174,7 +174,7 @@ Background:
         # Assigning user's name with random string which charecter length is more than 50
         * set profilePayload.user.name = randomString(55)
         # Steps to update user's profile to generate error message for invalid charecter length name
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserProfile')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserProfile')
         
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.nameCharsSize

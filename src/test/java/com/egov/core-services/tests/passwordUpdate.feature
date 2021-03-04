@@ -32,7 +32,7 @@ Scenario: To verify the invalid length password error
         # Set invalid password to newPassword field
         * set updatedUserPassword.newPassword = 'Pas'+ ranString(2)
         # Steps to update user's password with invalid newPassword field value and generate error
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error code and message returned by API due to invalid password length 
         * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.invalidPasswordLengthCode
         * assert updatedPasswordResponseBody.Errors[0].message == errorMessage.errormessages.invalidPasswordMessage
@@ -42,7 +42,7 @@ Scenario: To verify the error message returned by API when an invalid existing p
         # Set existingPassword as invalid
         * set updatedUserPassword.existingPassword = 'Pas'+ ranString(2)
         # Steps to update user's password with invalid existingPassword value and generate error
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].code == errorMessage.errormessages.passwordMismatchCode
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
@@ -52,7 +52,7 @@ Scenario: To verify the error message returned by API when tenantId field is rem
         # Remove tenantId field from the request body
         * remove updatedUserPassword.tenantId
         # Steps to update user's password without tenantId and generate error message 
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
@@ -61,7 +61,7 @@ Scenario: To verify the error message returned by API for an invalid tenantId
         # Set random invalid value as tenantID
         * set updatedUserPassword.tenantId = ranString(5)
         # Steps to update user's password with invalid tenantId and generate error message 
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.authorizedError
 
@@ -70,7 +70,7 @@ Scenario: To verify the error message returned by API when userType field is rem
         # Remove type field from the request body
         * remove updatedUserPassword.type
         # Steps to update user's password without type field to generate error message
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
@@ -79,7 +79,7 @@ Scenario: To verify the error message returned by API when existingPassword fiel
         # Remove existingPassword field from the request body
         * remove updatedUserPassword.existingPassword
         # Steps to update user's password without existingPassword field to generate error message
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
@@ -88,7 +88,7 @@ Scenario: To verify the error message returned by API when newPassword field is 
         # Remove newPassword field from the request body
         * remove updatedUserPassword.newPassword
         # Steps to update user's password without newPassword field to generate error message
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
@@ -97,7 +97,7 @@ Scenario: To verify the error message returned by API when invalid type is provi
          # Set a random invalid value as user type
          * set updatedUserPassword.type = ranString(8)
          # Steps to update user's password and generate error message for invalid user type
-         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@updateUserPassword')
+         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
          # Validate actual error message returned by API is equal to expected error message
          * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 

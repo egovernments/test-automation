@@ -45,7 +45,7 @@
     Scenario: Create InstrumentType with NULL ID
     # Set instrument type id as `null`
     * set instrumentTypesPayload.instrumentTypes[0].id = null
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * print instrumentTypesResponse
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
@@ -60,7 +60,7 @@
 @InstrumentTypeCreate_NameWithMoreThan50Characters_04 @instrumentTypeCreate @egfInstrument @negative  
     Scenario: Create InstrumentType with Name More than 50 characters
     * set instrumentTypesPayload.instrumentTypes[0].name = randomString(55)
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
@@ -69,7 +69,7 @@
     Scenario: Create InstrumentType with Name 1 character
     # Set the name with 1 charater value
     * set instrumentTypesPayload.instrumentTypes[0].name = randomString(1)
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
@@ -86,7 +86,7 @@
     Scenario: Create InstrumentType with NULL Name
     # Set the name with null value
     * set instrumentTypesPayload.instrumentTypes[0].name = null
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * print instrumentTypesResponse
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
@@ -96,7 +96,7 @@
     Scenario: Create InstrumentType with Description More than 100 characters
     # Set the description with more than 100 characters value
     * set instrumentTypesPayload.instrumentTypes[0].description = randomString(105)
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidDescriptionCharacter
@@ -126,7 +126,7 @@
     Scenario: Create InstrumentType with Active NULL
     # Set the Active field value as null
     * set instrumentTypesPayload.instrumentTypes[0].active = null
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.fieldValueIsNull
         
@@ -134,7 +134,7 @@
     Scenario: Create InstrumentType with Invalid tenantId
     # Set the tenantId field value as Invalid
     * set instrumentTypesPayload.instrumentTypes[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -145,7 +145,7 @@
     # Set instrument type id as the duplicate id
     * set instrumentTypesPayload.instrumentTypes[0].id = instrumentTypesResponse.instrumentTypes[0].id
     # Steps to create instrument type with duplicate id
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
 
@@ -158,6 +158,6 @@
     # Set a duplicate instrument type name 
     * set instrumentTypesPayload.instrumentTypes[0].name = instrumentTypesResponse.instrumentTypes[0].name
     # Steps to create instrument type with duplicate name
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.error == commonConstants.errorMessages.internalServerError

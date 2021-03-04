@@ -65,7 +65,7 @@ Scenario: Create chart of account details with invalid ids
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = randomString(5)
     # Set an invalid id to chart of account details id 
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = randomString(5)
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -83,7 +83,7 @@ Scenario: Create chart of account details with invalid tenantId
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.tenantId = invalidTenantId
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.tenantId = invalidTenantId
     * set requestPayload.chartOfAccountDetails[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateChartOfAccountDetails')
     # Validate the actual error message returned by API should be equal to expected error message due to invalid tenantId
     * assert response.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -92,7 +92,7 @@ Scenario: Create chart of account details with null id
     # Set invalid tenantIds into request payload 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = null
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = null
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateChartOfAccountDetails')
     # Validate the actual error message returned by API should be equal to expected error message due to invalid tenantId
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
@@ -129,7 +129,7 @@ Scenario: Create chart of account details with all null values
 Scenario: Create chart of account details with invalid Chart Account Id
     # Set an invalid id to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = 'Invalid-'+randomString(5)
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -137,6 +137,6 @@ Scenario: Create chart of account details with invalid Chart Account Id
 Scenario: Create chart of account details with invalid Account Details Type Id
     # Set an invalid id to chart of account details type id 
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = 'Invalid-'+randomString(5)
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 

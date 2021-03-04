@@ -91,7 +91,7 @@
     Scenario: Search Instrument type with Invalid tenantID
     # Prepare searchParams with invalidTenantId
     * def searchParams = {tenantId: '#(invalidTenantId)'}
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInSearchInstrumentTypes')
     * match searchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
     
 @InstrumentTypeSearch_WithNotenantID_09 @instrumentTypesSearch @egfInstrument @nagative
