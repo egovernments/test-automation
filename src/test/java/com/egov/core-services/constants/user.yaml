@@ -5,7 +5,6 @@ errormessages:
  withoutTenanntId: InvalidUserSearchCriteriaException
  withEmptyStringTenantId: InvalidUserSearchCriteriaException
  # Create citizen
- invalidOtp: OTP validation unsuccessful
  invalidUserNameCode: UserNameNotValidException
  invalidName: InvalidUserCreateException
  invalidTenantId: InvalidUserCreateException

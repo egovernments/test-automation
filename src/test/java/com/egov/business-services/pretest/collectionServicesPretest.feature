@@ -44,7 +44,22 @@ Scenario: Common test to create a Payment
   Given url payment
   And request createPaymentRequest
   When method post
-  Then assert responseStatus == 200 ||  responseStatus == 400
+  Then assert responseStatus == 200
+  And def collectionServicesResponseHeader = responseHeaders
+  And def collectionServicesResponseBody = response
+  And def Payments = collectionServicesResponseBody.Payments
+
+@errorInCreatePayment
+Scenario: Common negative pre test of creating a Payment 
+   * def amount = fetchBillResponse.Bill[0].totalAmount
+   * set createPaymentRequest.Payment.paymentDetails[0].totalDue = amount
+   * set createPaymentRequest.Payment.paymentDetails[0].totalAmountPaid = amount
+   * set createPaymentRequest.Payment.totalDue = amount
+   * set createPaymentRequest.Payment.totalAmountPaid = amount
+  Given url payment
+  And request createPaymentRequest
+  When method post
+  Then assert responseStatus == 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
   And def Payments = collectionServicesResponseBody.Payments

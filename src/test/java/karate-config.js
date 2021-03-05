@@ -238,6 +238,10 @@ function() {
         config.searchInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.search
         config.updateInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.update
 
+        // Property Calculator - Mutation service endpoints
+        config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
+        config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId

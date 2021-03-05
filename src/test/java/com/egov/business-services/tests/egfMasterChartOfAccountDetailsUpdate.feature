@@ -90,7 +90,7 @@ Scenario: Update Chart Of Account Details with New ID
 @ChartOfAccountDeatilsUpdateUsingNullId_03 @chartOfAccountDetailsUpdate @egfMaster
 Scenario: Update Chart Of Account Details null IDs
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateChartOfAccountDetails')
     * assert updateResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * assert updateResponse.errors[0].message == commonConstants.errorMessages.mandatoryFieldError 
 
@@ -98,7 +98,7 @@ Scenario: Update Chart Of Account Details null IDs
 Scenario: Update Chart Of Account Details invalid IDs
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.id = 'Invalid@'+randomString(3)
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.id =  'Invalid@'+randomString(3)
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -107,14 +107,14 @@ Scenario: Update Chart Of Account Details with invalid tenantIds
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.tenantId = invalidTenantId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tenantId =  invalidTenantId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].tenantId =  invalidTenantId
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateChartOfAccountDetails')
     * assert updateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError 
 
 @ChartOfAccountDeatilsUpdate_InvalidChartAccountIdId_06 @chartOfAccountDetailsUpdate @egfMaster
 Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].chartOfAccount.id = null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
@@ -122,7 +122,7 @@ Scenario: Update Chart Of Account Details with invalid chartOfAccountId
 Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     * set requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.id =  null
     * set requestPayloadToUpdate.chartOfAccountDetails[0].id = null
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@updateChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateChartOfAccountDetails')
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 

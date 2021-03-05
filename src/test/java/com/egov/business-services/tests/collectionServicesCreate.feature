@@ -42,7 +42,7 @@ Feature: collection-services-Create tests
      * set createPaymentRequest.Payment.totalDue = amount
      * set createPaymentRequest.Payment.totalAmountPaid = amount
      # Calling steps to Cancel the Payment along with Payment Id
-     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
+     * call read('../../business-services/pretest/collectionServicesPretest.feature@errorInCreatePayment')
      * match collectionServicesResponseBody.Errors[0].message == paidBillIdError
      * call read('../../business-services/pretest/collectionServicesPretest.feature@processworkflow')
 

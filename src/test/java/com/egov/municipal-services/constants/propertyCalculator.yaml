@@ -1,0 +1,3 @@
+errorMessage:
+  nullFixedAmount: NotNull.mutationBillingSlabReq.billingSlab[0].fixedAmount
+  nullRate: NotNull.mutationBillingSlabReq.billingSlab[0].rate

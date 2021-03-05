@@ -1,0 +1,25 @@
+{
+    "RequestInfo": {
+       "authToken": "#(authToken)"
+     },
+    "MutationBillingSlab": [
+        {
+            "tenantId": "#(tenantId)",
+            "id": "#(id)",
+            "propertyType": "#(propertyType)",
+            "propertySubType": "#(propertySubType)",
+            "usageCategoryMajor": "#(usageCategoryMajor)",
+            "usageCategoryMinor": "#(usageCategoryMinor)",
+            "usageCategorySubMinor": "#(usageCategorySubMinor)",
+            "usageCategoryDetail": "#(usageCategoryDetail)",
+            "ownerShipCategory": "#(ownerShipCategory)",
+            "subOwnerShipCategory": "#(subOwnerShipCategory)",
+            "minMarketValue": "#(minMarketValue)",
+            "maxMarketValue": "#(maxMarketValue)",
+            "fixedAmount": "#(fixedAmount)",
+            "rate": "#(rate)",
+            "type": "#(type)"
+        }
+       
+    ]
+}
