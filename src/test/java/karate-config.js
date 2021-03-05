@@ -241,6 +241,7 @@ function() {
         // Property Calculator - Mutation service endpoints
         config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
         config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
+        config.mutationBillingSlabSearch = envProps.host + path.endPoints.propertyCalculatorMutation.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

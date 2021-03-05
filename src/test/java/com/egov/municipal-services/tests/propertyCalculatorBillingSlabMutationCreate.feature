@@ -1,4 +1,4 @@
-Feature: To test property-calculator service endpoint
+Feature: To test property-calculator-billingSlabs-mutation service 'Create' endpoint
 
 Background: 
     * def jsUtils = read('classpath:jsUtils.js')
