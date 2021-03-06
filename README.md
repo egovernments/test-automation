@@ -1,6 +1,11 @@
 ### DIGIT Test Automation Framework and Setup guidelines
 #### Preface:
 DIGIT, a REST API platform based out of microservices architecture.
+
+DIGIT (Digital Infrastructure for Governance, Impact & Transformation) is India's largest platform for governance services.
+
+DIGIT platform is microservices based API platform enabling quick rebundling of services as per specific needs. This repository contains various infra, governance and municipal focused micro services
+
 #### Role of Test Automation:
 1. Robust test framework, functions as platform independent test suite
 2. Framework handles multi tenant by tuning only environment properties file changes
