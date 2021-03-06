@@ -14,7 +14,7 @@
         * def invalidTenantId = 'Invalid-'+randomString(3)
         * def uniqueBankId = 'Unique-'+randomString(4)
   
-@Bank_Search_01 @positive @bankSearch @egfMaster @regression
+@Bank_Search_01 @positive @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify creating bank account throgh API call with tenantId, code, name, description, type and active details
         # Steps to craete a new Bank
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBank')
@@ -31,23 +31,23 @@
         * match searchBankResponse.banks[0].type == bankType
         * match searchBankResponse.banks[0].tenantId == tenantId
 
-@Bank_Search_InvalidTenant_02 @negative @bankSearch @egfMaster @regression
+@Bank_Search_InvalidTenant_02 @negative @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify searching for Bank through API call by passing a invlalid or a non existing tenant id  and check for errors
         # Defining search parameters with InvalidTenantID
         * def searchParams = { tenantId: '#(invalidTenantId)', code: '#(bankCode)', name: '#(bankName)', description: '#(bankDescription)', active: '#(isActive)', type: '#(bankType)'}
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@searchBank')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBank')
         # Validate that the error returns by API due to invalid tenantId should be equal with expected error
         * match searchBankResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
         
-@Bank_Search_TenantIdMandatory_03 @negative @bankSearch @egfMaster @regression
+@Bank_Search_TenantIdMandatory_03 @negative @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify searching for Bank through API call by not passing tenantId
         # Defining search parameters without tenantID
         * def searchParams = { code: '#(bankCode)', name: '#(bankName)', description: '#(bankDescription)', active: '#(isActive)', type: '#(bankType)'}
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@searchBank')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBank')
         # Validate that the error returns by API due to tenantId missing should be equal with expected error 
         * match searchBankResponse == egfMasterConstants.errorMessages.missingTenantId
 
-@Bank_Search_AllRecords_04 @positive @bankSearch @egfMaster @regression
+@Bank_Search_AllRecords_04 @positive @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify searching for bank through API call using tenantId
         # Defining search parameters with only tenantId
         * def searchParams = { tenantId: '#(tenantId)'}
@@ -55,7 +55,7 @@
         # Validate that the searchResponse should not be empty
         * match searchBankResponse.banks.size() != 0
 
-@Bank_Search_empty_05 @positive @bankSearch @egfMaster @regression
+@Bank_Search_empty_05 @positive @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify search by passing different combinations of the search params
         # Defining search parameters without unique or new bank ID 
         * def searchParams = { tenantId: '#(tenantId)', id: '#(uniqueBankId)'}
@@ -63,7 +63,7 @@
         # Validate that the search response should be empty and the new id is not present for the given tenantId
         * match searchBankResponse.banks.size() == 0
 
-@Bank Search_multiple_06 @positive @bankSearch @egfMaster @regression
+@BankSearch_multiple_06 @positive @bankSearch @egfMaster @businessServices @regression
     Scenario: Verify search by passing different combinations of the search params
         # Steps to craete a new Bank 
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBank')

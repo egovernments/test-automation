@@ -160,23 +160,19 @@ function() {
         config.createDemandUrl = envProps.host + path.endPoints.billingServiceDemand.create
         config.searchDemandUrl = envProps.host + path.endPoints.billingServiceDemand.search
         config.updateDemandUrl = envProps.host + path.endPoints.billingServiceDemand.update
-
         //eGov workflow
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
         config.workflowTransition = envProps.host + path.endPoints.eGovWorkFlowV2Process.transition
-	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
-    	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
-    	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
-
+	      config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
+    	  config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
+    	  config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
         config.searchBill = envProps.host + path.endPoints.billingService.search
-
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
         config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
-
         // Property Service
         config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
@@ -193,18 +189,14 @@ function() {
         config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
         config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
         config.signUrl = envProps.localhost + path.endPoints.encService.sign;
-
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
-
         //url shorten
         config.shortenUrl = envProps.host + path.endPoints.urlShorten.shorten
-
         //egfMaster chart of account
         config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
         config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
         config.chartOfAccountUpdate = envProps.host + path.endPoints.egfMasterChartOfAccount.update
-
         // egfMaster-ChartOfAccountDetails - Create account details type
         config.accountDetailsType = envProps.host + path.endPoints.egfMasterChartOfAccountDetails.accountDetailsType
         // egfMaster-ChartOfAccountDetails - Create chart of account details
@@ -219,6 +211,14 @@ function() {
         config.bankUpdate = envProps.host + path.endPoints.egfMasterBank.update
         // egfMaster-Bank - Search
         config.bankSearch = envProps.host + path.endPoints.egfMasterBank.search
+		    //egfMaster chart of account
+        config.chartOfAccountCreate = envProps.host + path.endPoints.egfMasterChartOfAccount.create
+        config.charOfAccountSearch = envProps.host + path.endPoints.egfMasterChartOfAccount.search
+        config.chartOfAccountUpdate = envProps.host + path.endPoints.egfMasterChartOfAccount.update
+		    //egfMaster bank of account
+        config.backAccountCreate = envProps.host + path.endPoints.egfMasterBankAccount.create
+        config.backAccountUpdate = envProps.host + path.endPoints.egfMasterBankAccount.update
+        config.backAccountSearch = envProps.host + path.endPoints.egfMasterBankAccount.search
         // egfMaster - Bank Branches endpoints
         config.bankBranchCreate = envProps.host + path.endPoints.egfMasterBankBranches.create
         config.bankBranchUpdate = envProps.host + path.endPoints.egfMasterBankBranches.update
@@ -236,6 +236,15 @@ function() {
         config.subscribeKafkaConsumer = envProps.localhost + path.endPoints.kafkaService.subscribe
         config.readKafkaConsumer = envProps.localhost + path.endPoints.kafkaService.read
         config.deleteKafkaConsumer = envProps.localhost + path.endPoints.kafkaService.delete
+
+        // egfInstrument - Instrument types endpoints
+        config.createInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.create
+        config.searchInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.search
+        config.updateInstrumentTypes = envProps.host + path.endPoints.egfInstrumentTypes.update
+
+        // Property Calculator - Mutation service endpoints
+        config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
+        config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

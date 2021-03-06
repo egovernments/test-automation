@@ -54,7 +54,7 @@ Scenario: Search chart of account details with invalid Id
 @ChartOfAccountDeatilsSearch_InvalidTenantId_03 @chartOfAccountDetailsSearch @egfMaster
 Scenario: Search chart of account details with invalid tenantId
     * def searchAccountDetailsParams = { tenantId: '#(invalidTenantId)', id: '#(validIdToSearch)'}
-    * call read('../../business-services/pretest/egfMasterPreTest.feature@searchChartOfAccountDetails')
+    * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchChartOfAccountDetails')
     * assert searchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @ChartOfAccountDeatilsSearch_All_04 @chartOfAccountDetailsSearch @egfMaster

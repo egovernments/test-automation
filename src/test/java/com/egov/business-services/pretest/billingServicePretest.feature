@@ -42,4 +42,14 @@ Background:
     When method post
     Then def searchBillResponse = response
     And assert searchBillResponse != null
-    And assert responseStatus == 200 || responseStatus == 400
+    And assert responseStatus == 200
+
+@errorInSearchBill
+    Scenario: Negative pretest to search bill
+    Given url searchBill
+    And params searchBillParams
+    And request fetchBillRequest
+    When method post
+    Then def searchBillResponse = response
+    And assert searchBillResponse != null
+    And assert responseStatus == 400

@@ -10,11 +10,11 @@
 	<description>e-Governance project</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<maven.compiler.version>3.6.0</maven.compiler.version>
 		<activemq.version>5.15.2</activemq.version>
 		<spring.boot.version>2.0.0.RELEASE</spring.boot.version>
-		<karate.version>0.9.6.RC3</karate.version>
+		<karate.version>0.9.6</karate.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<gatling.plugin.version>2.2.4</gatling.plugin.version>
 		<aspectj.version>1.8.10</aspectj.version>
@@ -197,7 +197,7 @@
 				<forkCount>3</forkCount>
     			<reuseForks>true</reuseForks>
                 <argLine>
-					-Xmx1g -XX:MaxPermSize=256m -XX:-UseGCOverheadLimit
+					-XX:-UseGCOverheadLimit
                     -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
                 </argLine>
@@ -229,7 +229,7 @@
                 <jsonFiles>
                     <param>**/*.json</param>
                 </jsonFiles>
-				<argLine>-Xmx1g -XX:MaxPermSize=256m -XX:-UseGCOverheadLimit</argLine>
+				<argLine>-XX:-UseGCOverheadLimit</argLine>
             </configuration>
         </execution>
     </executions>

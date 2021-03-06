@@ -189,3 +189,27 @@ function toReplaceComma(responseMessage)
     responseMessage = responseMessage.replaceAll("'","");
     return responseMessage;
 }
+/**
+ * Check specifically 'active' field value
+ * @param {filtered array of response} filteredArrayOfResponse 
+ * @param {values needs to be matched} valueToBeMatched 
+ * @returns true if success otherwise false
+ */
+function deterMineActiveFieldValue(filteredArrayOfResponse, valueToBeMatched){
+    var flag = false;
+    for(var index=0; index<filteredArrayOfResponse.size(); index++){
+        if(filteredArrayOfResponse[index].active === valueToBeMatched)
+            return flag = true;
+            else
+            return flag;
+        }
+}
+
+
+function randomFloat(x) {
+    if (x) {
+        return new java.util.Random().nextFloat();
+    } else {
+        return new java.util.Random().nextFloat(100000000);
+    }
+}
