@@ -10,9 +10,9 @@ DIGIT, a REST API platform based out of microservices architecture.
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
 ##### Table of Contents
-######* [Project Brief](#project-brief)
-######* [Tools and Technologies Used](#tools-and-technologies-used)
-######* [Automation Framework Kick Off](#automation-framework-kick-off)
+###### * [Project Brief](#project-brief)
+###### * [Tools and Technologies Used](#tools-and-technologies-used)
+###### * [Automation Framework Kick Off](#automation-framework-kick-off)
 - [Pre-requisites](#pre-requisites)
 - [DIGIT automation code setup](#DIGIT automation code setup)
 
@@ -123,8 +123,8 @@ superUser:
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
  		userName: EMP-107-000878
-  		password: Password@2
-  		type: EMPLOYEE
+		password: Password@2
+		type: EMPLOYEE
   ```
   * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
 
