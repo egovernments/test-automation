@@ -10,13 +10,12 @@ DIGIT, a REST API platform based out of microservices architecture.
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
 ##### Table of Contents
-######* [Project Brief](#project-brief)
-######* [Tools and Technologies Used](#tools-and-technologies-used)
-######* [Automation Framework Kick Off](#automation-framework-kick-off)
+###### * [Project Brief](#project-brief)
+###### * [Tools and Technologies Used](#tools-and-technologies-used)
+###### * [Automation Framework Kick Off](#automation-framework-kick-off)
 - [Pre-requisites](#pre-requisites)
-- [DIGIT automation code setup](#DIGIT automation code setup)
-
-###### * [Check List to start automation test Runs](#Check List to start automation test Runs)
+- [DIGIT automation code setup](#DIGITautomationcodesetup)
+###### * [Check List to start automation test Runs](#CheckListtostartautomationtestRuns)
 ###### * [List of all service tags automated in the framework](#list-of-all-services-tags)
 ###### * [Automation Test Reporting](#test-reporting)
 ###### * [Test coverage](#test-coverage)
@@ -33,7 +32,7 @@ it enables to test and validate back end services accross all active environment
 DIGIT Test Automation suite covers most key role in testing eGov configuration "KAFKA" architecture by validating producing and consuming real time event TOPICS to and from KAFKA Server.
 
 For more details on KARATE framework architecture
-please refer the **[KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
+please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
 
 #### Technologies Used
 -  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -44,7 +43,7 @@ please refer the **[KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlass
 
 #### Automation Framework Kick-off
 ##### Pre-requisites
--  Two main software utilities required are : ** Jdk and Maven**
+-  Two main software utilities required are : Jdk and Maven
 
  Step by step setup guidelines are provided below based on operating system.
 
@@ -123,8 +122,8 @@ superUser:
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
  		userName: EMP-107-000878
-  		password: Password@2
-  		type: EMPLOYEE
+		password: Password@2
+		type: EMPLOYEE
   ```
   * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
 
@@ -160,8 +159,8 @@ Example:
 
 4. **Running kakfa consumer test cases through kakfa rest api proxy**
 
-**Kafka workflow:
-****https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+and+Producer+Approach+Document**
+Kafka workflow:
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+and+Producer+Approach+Document
 
   * Configure kafka rest api proxy as part of other eGov services in the required environment
   * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
@@ -176,10 +175,10 @@ Example:
    Example:
    >mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @kafkaServices com/egov"
 
-##### List of all service tags automated in the framework
-**https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1284702657/Automation+Test+Tags**
+#### List of all service tags automated in the framework
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1284702657/Automation+Test+Tags
 #### Automation Test Reporting
-**https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1290371315/Automation+Test+Reporting**
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1290371315/Automation+Test+Reporting
 
 #### Test coverage
 
