@@ -32,7 +32,7 @@ it enables to test and validate back end services accross all active environment
 DIGIT Test Automation suite covers most key role in testing eGov configuration "KAFKA" architecture by validating producing and consuming real time event TOPICS to and from KAFKA Server.
 
 For more details on KARATE framework architecture
-please refer the ** [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
+please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
 
 #### Technologies Used
 -  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -43,7 +43,7 @@ please refer the ** [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlas
 
 #### Automation Framework Kick-off
 ##### Pre-requisites
--  Two main software utilities required are : ** Jdk and Maven **
+-  Two main software utilities required are : Jdk and Maven
 
  Step by step setup guidelines are provided below based on operating system.
 
