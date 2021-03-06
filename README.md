@@ -14,7 +14,7 @@ DIGIT platform is microservices based API platform enabling quick rebundling of 
 5. Test suites catagirisation to utilise automation suite based on platform test requirements - In-progress
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
-##### Table of Contents
+#### Table of Contents
 ###### * [Project Brief](#project-brief)
 ###### * [Tools and Technologies Used](#tools-and-technologies-used)
 ###### * [Automation Framework Kick Off](#automation-framework-kick-off)
