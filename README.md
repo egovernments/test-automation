@@ -160,7 +160,7 @@ Example:
 4. **Running kakfa consumer test cases through kakfa rest api proxy**
 
 Kafka workflow:
-https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+and+Producer+Approach+Document**
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+and+Producer+Approach+Document
 
   * Configure kafka rest api proxy as part of other eGov services in the required environment
   * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
@@ -176,9 +176,9 @@ https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+an
    >mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @kafkaServices com/egov"
 
 #### List of all service tags automated in the framework
-https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1284702657/Automation+Test+Tags**
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1284702657/Automation+Test+Tags
 #### Automation Test Reporting
-https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1290371315/Automation+Test+Reporting**
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1290371315/Automation+Test+Reporting
 
 #### Test coverage
 
