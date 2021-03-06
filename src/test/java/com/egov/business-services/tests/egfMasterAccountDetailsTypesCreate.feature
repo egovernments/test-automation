@@ -5,7 +5,12 @@ Background:
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterAccountDetailTypesConstant = read('../../business-services/constants/egfMaster.yaml')
   * def branchName = randomString(10)
-
+  * def active = egfMasterAccountDetailTypesConstant.chartOfAccountDeatails.params.active
+  * def branchName = randomString(10)
+  * def tableName = egfMasterAccountDetailTypesConstant.chartOfAccountDeatails.params.tableName
+  * def fullyQualifiedName = randomString(3)+"/"+tableName
+  * def description = 'TEST_'+randomString(5)
+  
 @accountdetailtypesCreate
 Scenario: Create Account details types with Unique ID and validate duplicate account type name
 #  Accountdetailtypes Create_UniqueName_01: Create Account details types with Unique ID
@@ -14,7 +19,7 @@ Scenario: Create Account details types with Unique ID and validate duplicate acc
 # Accountdetailtypes Create_DuplicateName_02: Create Account details types with Duplicate ID
 * def branchName = accountDetailTypesCreateResponseBody.accountDetailTypes[0].name
 * def tableName = accountDetailTypesCreateResponseBody.accountDetailTypes[0].name
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.nameFieldValueNotUnique
 
 @accountdetailtypesCreate
@@ -26,43 +31,43 @@ Scenario: Create Account details types Name with 50 Characters
 @accountdetailtypesCreate
 Scenario: Create Account details types Name with > 50 Characters
 * def branchName = randomString(60)
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan50
 
 @accountdetailtypesCreate
 Scenario: Create Account details types Name with empty
 * def branchName = commonConstant.invalidParameters.emptyValue
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan50
 
 @accountdetailtypesCreate
 Scenario: Create Account details types Name with null
 * def branchName = commonConstant.invalidParameters.passValusAsNull
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.branchNameNotNull
 
-@accountdetailtypesCreatetable
+@accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_TableNameWith25Characters_08
 #  Accountdetailtypes Create_TableNameWith25Characters_08: Accountdetailtypes Create_TableNameWith mote than 25Characters
 * def tableName = randomString(25)
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName != null
 
-@accountdetailtypesCreatetable
+@accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_TableNameWithMoreThan25Characters_9
 #  Accountdetailtypes Create_TableNameWithMoreThan25Characters_9: Accountdetailtypes Create_TableName WithMore Than 25 Characters
 * def tableName = randomString(30)
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan25
 
-@accountdetailtypesCreatetable
+@accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_EmptyTableName_10
 #  Accountdetailtypes Create_EmptyTableName_10: Accountdetailtypes Create_EmptyTableName
 * def tableName = commonConstant.invalidParameters.emptyValue
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
 * match accountDetailTypesCreateResponseBody.accountDetailTypes[0].tableName != null
 
-@accountdetailtypesCreatetable
+@accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_NullTableName_11
 * def tableName = commonConstant.invalidParameters.passValusAsNull
 * call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
@@ -79,15 +84,15 @@ Scenario: Accountdetailtypes Create_fullyQualifiedNameWith250Characters_12
 Scenario: Accountdetailtypes Create_fullyQualifiedNameWithMorethan250Characters_13
 #  Accountdetailtypes Create_fullyQualifiedNameWithMorethan250Characters_13: Accountdetailtypes fullyQualifiedName : "<more than 250 characters>"
 * def fullyQualifiedName = randomString(260)
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
 * match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidFQNDescriptionLength
 
 @accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_fullyQualifiedNameWithEmpty_14
 #  Accountdetailtypes Create_fullyQualifiedNameWithEmpty_14: Accountdetailtypes fullyQualifiedName : fullyQualifiedName : ""
-* def fullyQualifiedName = commonConstant.emptyValue
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
-* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].fullyQualifiedName == null
+* def fullyQualifiedName = commonConstant.invalidParameters.emptyValue
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
+* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidFQNDescriptionLength
 
 @accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_fullyQualifiedNameWithNull_15
@@ -106,16 +111,16 @@ Scenario: Accountdetailtypes Create_DescriptionWithMorethan50Characters_16
 @accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_DescriptionWithEmpty_17
 #  Accountdetailtypes Create_DescriptionWithEmpty_17: Accountdetailtypes fullyQualifiedName description : ""
-* def fullyQualifiedName = commonConstant.emptyValue
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
-* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].fullyQualifiedName == null
+* def fullyQualifiedName = commonConstant.invalidParameters.emptyValue
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
+* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidFQNDescriptionLength
 
 @accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_DescriptionWithNull_18
 #  Accountdetailtypes Create_DescriptionWithNull_18: Create Account details types fullyQualifiedName description : null
-* def fullyQualifiedName = commonConstant.invalidParameters.passValusAsNull
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
-* match accountDetailTypesCreateResponseBody.accountDetailTypes[0].fullyQualifiedName == null
+* def description = commonConstant.invalidParameters.passValusAsNull
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
+* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.descriptionNameNotNull
 
 @accountdetailtypesCreate
 Scenario: Accountdetailtypes Create_ActiveWithTrue_19
@@ -128,5 +133,5 @@ Scenario: Accountdetailtypes Create_ActiveWithTrue_19
 Scenario: Accountdetailtypes Create_NullActive_20
 #  Accountdetailtypes Create_NullActive_20: Create Account details types active : null
 * def active = commonConstant.invalidParameters.passValusAsNull
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@createAccountSuccessfully')
-* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.invalidNameGtrThan25
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeTestCase')
+* match accountDetailTypesCreateResponseBody.errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.activeNotNull

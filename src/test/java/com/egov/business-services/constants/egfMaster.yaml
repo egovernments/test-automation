@@ -38,3 +38,4 @@ errorMessages:
  tableNameNotNull: "the field name must be not be null"
  invalidFQNDescriptionLength: "length must be between 1 and 250"
  emptyValue: ''
+ descriptionNameNotNull: the field description must be not be null
