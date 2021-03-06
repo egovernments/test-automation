@@ -15,7 +15,6 @@ DIGIT, a REST API platform based out of microservices architecture.
 ###### * [Automation Framework Kick Off](#automation-framework-kick-off)
 - [Pre-requisites](#pre-requisites)
 - [DIGIT automation code setup](#DIGIT automation code setup)
-
 ###### * [Check List to start automation test Runs](#Check List to start automation test Runs)
 ###### * [List of all service tags automated in the framework](#list-of-all-services-tags)
 ###### * [Automation Test Reporting](#test-reporting)
