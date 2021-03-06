@@ -87,7 +87,7 @@ Scenario: Test by a message in Eng locale to Hindi locale
     * def message = localizationServiceConstants.parameters.hindhiMsg + ranInteger(3)
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     # Upsert new Message and validate the message code in the response
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationSuccessfully')
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationSuccessfully')
     * assert upsertResponseBody.messages[0].message == message
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * match localizationMessageResponseBody.messages[*].message contains message
@@ -98,7 +98,7 @@ Scenario: Test by not passing any value for Message,Code and Module
 	* def code = commonConstants.invalidParameters.emptyValue
     * def module = commonConstants.invalidParameters.emptyValue
     # calling upsert localization pretest
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError')
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationError')
 	* match upsertResponseBody.error.fields[*].message contains localizationServiceConstants.expectedErrorMessages.Empty
 
 @Upsert_InvaliidTenantId_03 @coreServices @regression @negative @localization
@@ -108,7 +108,7 @@ Scenario: Test by passing a invalid value for Tenant ID
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def tenantId = commonConstants.invalidParameters.emptyValue
     # calling upsert localization pretest
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationErrorAccessingResource') 
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationErrorAccessingResource') 
 	* match upsertResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
 
 @Upsert_CharCount_Code_04  @coreServices @regression @negative @localization
@@ -117,7 +117,7 @@ Scenario: Test by passing Maximum value for Code
     * def code = randomString(256)
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     # calling upsert localization pretest
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError')
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationError')
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
 
@@ -127,7 +127,7 @@ Scenario: Test by passing Maximum value for Message
 	* def code = 'AUTOMATION_SECTION_' + ranInteger(4) + '_FIELD_FEE'
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     # calling upsert localization pretest
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError') 
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationError') 
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
 
@@ -138,12 +138,12 @@ Scenario: Test by passing Maximum value for Locale
 	* def locale = randomString(256)
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     # calling upsert localization pretest
-    * call read('../../core-services/pretests/upsert.feature@upsertLocalizationError') 
+    * call read('../../core-services/pretests/localizationUpsert.feature@upsertLocalizationError') 
 	* match upsertResponseBody.error.fields[0].code contains localizationServiceConstants.expectedErrorMessages.Code
 	* match upsertResponseBody.error.fields[0].message contains localizationServiceConstants.expectedErrorMessages.Message
 
-@Update_Localisation_01 @coreServices @regression @positive @localization
-Scenario: Test to update existing localisation message
+@Update_Localization_01 @coreServices @regression @positive @localization
+Scenario: Test to update existing localization message
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
@@ -155,7 +155,7 @@ Scenario: Test to update existing localisation message
     * assert updateResponseBody.messages[0].message == message
     * assert updateResponseBody.messages[0].code == code
 
-@Update_Localisation_02 @coreServices @regression @negative @localization
+@Update_Localization_02 @coreServices @regression @negative @localization
 Scenario: Test to update module/locale
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
@@ -171,7 +171,7 @@ Scenario: Test to update module/locale
     * assert updateResponseBody.messages[0].module == module
     * assert updateResponseBody.messages[0].locale == locale
 
-@Update_Localisation_Null_03 @coreServices @regression @negative @localization
+@Update_Localization_Null_03 @coreServices @regression @negative @localization
 Scenario: Test by passing null values
     * def message = commonConstants.invalidParameters.emptyValue
 	* def code = commonConstants.invalidParameters.emptyValue
@@ -180,15 +180,15 @@ Scenario: Test by passing null values
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageError') 
     * assert updateResponseBody.error.fields[0].message == localizationServiceConstants.expectedErrorMessages.Empty
 
-@Update_Localisation_Invalid_tenantid_06 @coreServices @regression @negative @localization
+@Update_Localization_Invalid_tenantid_06 @coreServices @regression @negative @localization
 Scenario: Test by passing a invalid value for Tenant ID
     * def tenantId = commonConstants.invalidParameters.invalidValue
     # calling update localization pretest 
     * call read('../../core-services/pretests/localizationUpdate.feature@updateLocalizationMessageWithInvalidTenantIdError')  
 	* match updateResponseBody.Errors[0].message contains commonConstants.errorMessages.authorizedError
 
-@Update_Search_Localisation_07 @coreServices @regression @positive @localization
-Scenario: Test to update existing localisation message
+@Update_Search_Localization_07 @coreServices @regression @positive @localization
+Scenario: Test to update existing localization message
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
     * def index = randomNumber(localizationMessageResponseBody.messages.length)
@@ -204,7 +204,7 @@ Scenario: Test to update existing localisation message
     * assert localizationMessageResponseBody.messages[0].message == message
 
 #Create Test cases
-@Create_Localisation_01 @coreServices @regression @positive @localization
+@Create_Localization_01 @coreServices @regression @positive @localization
 Scenario: Test to create a localization
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
@@ -215,8 +215,8 @@ Scenario: Test to create a localization
     * assert createResponseBody.messages[0].code == code
     * assert createResponseBody.messages[0].message == message
 
-@Create_search_Localisation_02 @coreServices @regression @positive @localization
-Scenario: Test searching the creating localisation message
+@Create_search_Localization_02 @coreServices @regression @positive @localization
+Scenario: Test searching the creating localization message
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     * def code = 'AUTOMATION_CODE ' + ranInteger(5)
@@ -230,8 +230,8 @@ Scenario: Test searching the creating localisation message
     * assert localizationMessageResponseBody.messages[0].message == message
     * assert localizationMessageResponseBody.messages[0].code == code
 
-@Create_update_Localisation_03 @coreServices @regression @positive @localization
-Scenario: Test updating a newly created localisation message
+@Create_update_Localization_03 @coreServices @regression @positive @localization
+Scenario: Test updating a newly created localization message
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     * def code = 'AUTOMATION_CODE ' + ranInteger(5)
@@ -279,8 +279,8 @@ Scenario: Test by passing a invalid value for Tenant ID
 
 #V2/Search Test cases
 
-@v2Search_Localisation_01 @coreServices @regression @positive @localization
-Scenario: Test to search a localisation
+@v2Search_Localization_01 @coreServices @regression @positive @localization
+Scenario: Test to search a localization
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[1].value
     # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
@@ -292,8 +292,8 @@ Scenario: Test to search a localisation
     * assert localizationV2SearchResponseBody.messages[0].code == code
     * assert localizationV2SearchResponseBody.messages.length == 1
 
-@v2Search_Localisation_multiple_02 @coreServices @regression @positive @localization
-Scenario: Test to search a localisation by passing multiple values
+@v2Search_Localization_multiple_02 @coreServices @regression @positive @localization
+Scenario: Test to search a localization by passing multiple values
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     # calling search localization pretest 
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationSuccessfully')
@@ -309,8 +309,8 @@ Scenario: Test to search a localisation by passing multiple values
     * match localizationV2SearchResponseBody.messages[*].code contains code1
     * assert localizationV2SearchResponseBody.messages.length == 2
 
-@v2Search_Localisation_v1Url_03 @coreServices @regression @positive @localization
-Scenario: Test to search a localisation with v1 in the url
+@v2Search_Localization_v1Url_03 @coreServices @regression @positive @localization
+Scenario: Test to search a localization with v1 in the url
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value
     # calling search localization pretest 
@@ -320,7 +320,7 @@ Scenario: Test to search a localisation with v1 in the url
     * call read('../../core-services/pretests/localizationMessage.feature@searchLocalizationV1Error')
     * assert localizationV2SearchResponseBody.Errors[0].message == localizationServiceConstants.expectedErrorMessages.Nolocale
 
-@v2Search_Localisation_Invalid_locale_06  @coreServices @regression @negative @localization
+@v2Search_Localization_Invalid_locale_06  @coreServices @regression @negative @localization
 Scenario: Test by passing a invalid , non existent,null value for locale in the request
     * def locale = commonConstants.invalidParameters.invalidValue
     # calling search V2 localization pretest 
@@ -328,7 +328,7 @@ Scenario: Test by passing a invalid , non existent,null value for locale in the 
 	* match localizationV2SearchResponseBody.messages == []
     * assert localizationV2SearchResponseBody.message == null
 
-@v2Search_Localisation_Invalid_tenantid_07 @coreServices @regression @negative @localization
+@v2Search_Localization_Invalid_tenantid_07 @coreServices @regression @negative @localization
 Scenario: Test by passing a invalid , non existent,null value for tenantid in the request
     * def module = mdmsStatecommonMasters.StateInfo[0].localizationModules[index].label
     * def locale = mdmsStatecommonMasters.StateInfo[0].languages[0].value

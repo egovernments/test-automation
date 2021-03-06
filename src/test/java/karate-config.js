@@ -246,6 +246,16 @@ function() {
         config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
         config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
 
+        // egfInstrument - Instrument Account Code endpoints
+        config.instrumentAccountCodeCreate = envProps.host + path.endPoints.egfInstrumentAccountCode.create
+        config.instrumentAccountCodeSearch = envProps.host + path.endPoints.egfInstrumentAccountCode.search
+        config.instrumentAccountCodeUpdate = envProps.host + path.endPoints.egfInstrumentAccountCode.update
+
+        // egfInstrument - Instrument endpoints
+        config.instrumentCreate = envProps.host + path.endPoints.egfInstrument.create
+        config.instrumentUpdate = envProps.host + path.endPoints.egfInstrument.update
+        config.instrumentSearch = envProps.host + path.endPoints.egfInstrument.search
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId

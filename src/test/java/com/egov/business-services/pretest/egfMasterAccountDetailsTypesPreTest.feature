@@ -28,7 +28,7 @@ Background:
     Then assert responseStatus == 201 || responseStatus == 400
     And def accountDetailTypesCreateResponseHeader = responseHeaders
     And def accountDetailTypesCreateResponseBody = response
-    * print accountDetailTypesCreate
-    * print accountCreateParam
-    * print accountDetailTypesCreatePayload
-    * print accountDetailTypesCreateResponseBody
+   # * print accountDetailTypesCreate
+   # * print accountCreateParam
+   # * print accountDetailTypesCreatePayload
+   # * print accountDetailTypesCreateResponseBody
