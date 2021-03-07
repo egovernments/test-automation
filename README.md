@@ -53,19 +53,18 @@ please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassia
  Step by step setup guidelines are provided below based on operating system.
 
 -  [JDK](https://www.java.com/en/):     JDK version : 1.8
-> Java and Maven Environment Path Setup : Windows
-https://mkyong.com/maven/how-to-install-maven-in-windows/
 
- > Java and Maven Environment Path Setup : Mac
-https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/
+> [Java and Maven Environment Path Setup : Windows](https://mkyong.com/maven/how-to-install-maven-in-windows/)
 
-- Maven 3.6.3 download and installation
-> https://maven.apache.org/download.cgi
-   https://maven.apache.org/install.html
+> [Java and Maven Environment Path Setup : Mac](https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
+
+> [Maven 3.6.3 download](https://maven.apache.org/download.cgi)
+> [Install Maven](https://maven.apache.org/install.html)
 
 #### DIGIT automation code setup
 * [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
 * [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
+* [Install Karate Runner Plugin](https://marketplace.visualstudio.com/items?itemName=kirkslota.karate-runner) (for viewing reports via Visual Studio Code)
 
  Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
 

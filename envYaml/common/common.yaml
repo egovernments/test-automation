@@ -154,6 +154,10 @@ endPoints:
     subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
     read: consumers/automation_consumer/instances/automation_consumer_instance/records
     delete: consumers/automation_consumer/instances/automation_consumer_instance
+    getClusters: v3/clusters
+    getConsumerGroups: "v3/clusters/<cluster_id>/consumer-groups"
+    getLags: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
+    getLagSummary: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
 
   egfInstrumentTypes:
     create: egf-instrument/instrumenttypes/_create
@@ -174,3 +178,8 @@ endPoints:
     create: egf-instrument/instrumentaccountcodes/_create
     update: egf-instrument/instrumentaccountcodes/_update
     search: egf-instrument/instrumentaccountcodes/_search
+  
+  egfInstrumentSurrenderReasons:
+    create: egf-instrument/surrenderreasons/_create
+    update: egf-instrument/surrenderreasons/_update
+    search: egf-instrument/surrenderreasons/_search

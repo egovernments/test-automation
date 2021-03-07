@@ -18,6 +18,7 @@ Scenario: Create a pg transaction and verifdy the response Transaction object wi
     # Expected response
     * def createPgTransactionResponse = pgServicesCreateResponseBody.transaction
     # Setting the condition to filter consumer records
+    * print 'Bill Id: ' + billId + ', Consumer Code: ' + consumerCode
     * def recordsFilterCondition = "$[?(@.value.Transaction.billId=='" + billId + "' && @.value.Transaction.consumerCode=='" + consumerCode + "')].value.Transaction"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')

@@ -3,10 +3,6 @@ function() {
     var locale = karate.properties['locale']; // get system property 'karate.locale'
     var tenantId = karate.properties['tenantId']; // get system property 'karate.tenantId'
 
-    if (!env) {
-        env = 'qa'; //intelligent default
-    }
-    
     if(!locale){
     	locale = 'en_IN';
     }
@@ -21,25 +17,19 @@ function() {
 
     var path = karate.read('file:envYaml/common/common.yaml');
 
-    if(!tenantId){
-         var stateCode = 'pb';
-         var cityCode = 'amritsar';
-         tenantId = stateCode + '.' + cityCode;
-    }
-
   try{
 
    var config = {
          env : env,
          stateCode : envProps.stateCode,
          cityCode : envProps.cityCode,
-         tenantId : tenantId,
          locale : locale,
          retryCount : 30,
          retryInterval : 10000 //ms
    };
         
         config.envHost = envProps.host
+        config.envLocalhost = envProps.localhost
 
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
@@ -251,6 +241,11 @@ function() {
         config.instrumentAccountCodeSearch = envProps.host + path.endPoints.egfInstrumentAccountCode.search
         config.instrumentAccountCodeUpdate = envProps.host + path.endPoints.egfInstrumentAccountCode.update
 
+        // egfInsturment - Surrender Reasons endpoint
+        config.createSurrenderReasons = envProps.host + path.endPoints.egfInstrumentSurrenderReasons.create
+        config.updateSurrenderReasons = envProps.host + path.endPoints.egfInstrumentSurrenderReasons.update
+        config.searchSurrenderReasons = envProps.host + path.endPoints.egfInstrumentSurrenderReasons.search
+
         // egfInstrument - Instrument endpoints
         config.instrumentCreate = envProps.host + path.endPoints.egfInstrument.create
         config.instrumentUpdate = envProps.host + path.endPoints.egfInstrument.update
@@ -281,7 +276,7 @@ function() {
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
-    karate.log('tenantId:', tenantId);
+    karate.log('tenantId:', config.tenantId);
     
     karate.configure('readTimeout', 120000);
 

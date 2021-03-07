@@ -23,6 +23,8 @@ errorMessages:
   message: No message available
   instrumentTypeMessage: instrumentTypeSearchResult
   accountCode: accountCode
+  surrenderReasonNameSize: size must be between 5 and 50
+  surrenderReasonDescriptionSize: size must be between 0 and 250
 
 instrumentType:
   params:
