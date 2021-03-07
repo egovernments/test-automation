@@ -161,6 +161,28 @@ function todayDate(){
     return today;
 }
 
+/**
+ * Generates current date with dd-mm-yyyy format
+ * @returns today date
+ */
+function currentDate(){
+    var today = new Date();
+    var dd = String(today.getDate());
+    var mm = String(today.getMonth() + 1);
+    var yyyy = today.getFullYear();
+    today = dd + '-' + mm + '-' + yyyy;
+    return today;
+}
+function yesterdayDate(){
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate()-1);
+    var dd = String(('0' + (yesterday.getDate()+1)).slice(-2));
+    var mm = String(('0' + (yesterday.getMonth()+1)).slice(-2));
+    var yyyy = yesterday.getFullYear();
+    yesterday = dd + '-' + mm + '-' + yyyy;
+    return yesterday;
+}
+
 function generateUUID(){
     var uuid = '' + java.util.UUID.randomUUID();
     return uuid

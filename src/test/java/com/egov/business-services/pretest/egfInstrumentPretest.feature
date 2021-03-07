@@ -3,6 +3,10 @@ Feature: Pretest scenarios of egf-instrument service end points
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
+    #egfInstrumet-Instruments Requests
+  * def instrumentCreateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/create.json')
+  * def instrumentUpdateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/update.json')
+  * def instrumentSearchRequest = read('../../business-services/requestPayload/egfInstrument/instrument/search.json')
 
   # Instrument Types prtests
 
@@ -65,3 +69,202 @@ Background:
     When method post
     Then assert responseStatus == 500 || responseStatus == 400 || responseStatus == 403
     And  def updateInstrumentTypesResponse = response
+
+# Instruments pretests
+@createInstrumentsSuccessfully
+Scenario: Creating an Instruments through API call
+
+    Given url instrumentCreate 
+    And request instrumentCreateRequest
+    When method post
+    Then status 201
+    And def instrumentCreateResponseHeader = responseHeaders
+    And def instrumentCreateResponseBody = response
+    And def id = instrumentCreateResponseBody.instruments[0].id
+
+@errorInCreateInstruments
+Scenario: Creating an instruments and check for error through API call
+
+    Given url instrumentCreate 
+    And request instrumentCreateRequest
+    When method post
+    Then status 400
+    And def instrumentCreateResponseHeader = responseHeaders
+    And def instrumentCreateResponseBody = response
+
+
+@unauthorizedaccessError
+Scenario: Creating an instruments and check for errors through API call
+
+    Given url instrumentCreate 
+    And request instrumentCreateRequest
+    When method post
+    Then status 403
+    And def instrumentCreateResponseHeader = responseHeaders
+    And def instrumentCreateResponseBody = response
+
+
+@updateInstrumentsSuccessfully
+Scenario: Update an Instruments through API call
+
+    Given url instrumentUpdate
+    And request instrumentUpdateRequest
+    When method post
+    Then status 201
+    And def instrumentUpdateResponseHeader = responseHeaders
+    And def instrumentUpdateResponseBody = response
+
+@errorInUpdateInstruments
+Scenario: Updating an instruments and check for error through API call
+
+    Given url instrumentUpdate
+    And request instrumentUpdateRequest
+    When method post
+    Then assert responseStatus == 400 || responseStatus == 500
+    And def instrumentUpdateResponseHeader = responseHeaders
+    And def instrumentUpdateResponseBody = response
+
+@unauthorizedaccessError_Update
+Scenario: Updating an instruments and check for errors through API call
+
+    Given url instrumentUpdate 
+    And request instrumentUpdateRequest
+    When method post
+    Then status 403
+    And def instrumentUpdateResponseHeader = responseHeaders
+    And def instrumentUpdateResponseBody = response
+
+@searchTransactionNumberSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     transactionNumber: '#(transactionNumber)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then status 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@searchInstrumentIdSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     id: '#(id)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then status 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@searchTransactionTypeSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     transactionType: '#(transactionType)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then assert responseStatus == 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@errorInsearchTransactionTypeSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     transactionType: '#(transactionType)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then assert responseStatus == 500
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@searchInstrumentTypesSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     instrumentTypes: '#(instrumentType)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then status 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@searchAllInstrumentsSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then assert responseStatus == 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@errorInsearchAllInstrumentsSuccessfully
+Scenario: error in Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then assert responseStatus == 403
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response
+
+@searchInstrumentTypesAndTransactionTypeSuccessfully
+Scenario: Searching Instruments through API call
+    * def instrumentsSearchParam = 
+    """
+    {
+     tenantId: '#(tenantId)',
+     instrumentTypes: '#(instrumentType)',
+     transactionType: '#(transactionType)'
+    }
+    """ 
+    Given url instrumentSearch
+    And params instrumentsSearchParam
+    And request instrumentSearchRequest
+    When method post
+    Then status 200
+    And def instrumentSearchResponseHeader = responseHeaders
+    And def instrumentSearchResponseBody = response

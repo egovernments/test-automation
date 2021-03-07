@@ -10,7 +10,7 @@
 	<description>e-Governance project</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<maven.compiler.version>3.6.0</maven.compiler.version>
 		<activemq.version>5.15.2</activemq.version>
 		<spring.boot.version>2.0.0.RELEASE</spring.boot.version>

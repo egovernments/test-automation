@@ -223,6 +223,10 @@ function() {
         config.bankBranchCreate = envProps.host + path.endPoints.egfMasterBankBranches.create
         config.bankBranchUpdate = envProps.host + path.endPoints.egfMasterBankBranches.update
         config.bankBranchSearch = envProps.host + path.endPoints.egfMasterBankBranches.search
+        // egfMaster - AccountDetailTypes endpoints
+        config.accountDetailTypesCreate = envProps.host + path.endPoints.egfMasterAccountDetailTypes.create
+        config.accountDetailTypesUpdate = envProps.host + path.endPoints.egfMasterAccountDetailTypes.update
+        config.accountDetailTypesSearch = envProps.host + path.endPoints.egfMasterAccountDetailTypes.search
         // dashboard ingest endpoints
         config.dashboardIngestSave = envProps.host + path.endPoints.dashboardIngest.save
         config.dashboardIngestUpload = envProps.host + path.endPoints.dashboardIngest.upload
@@ -241,6 +245,16 @@ function() {
         // Property Calculator - Mutation service endpoints
         config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
         config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
+
+        // egfInstrument - Instrument Account Code endpoints
+        config.instrumentAccountCodeCreate = envProps.host + path.endPoints.egfInstrumentAccountCode.create
+        config.instrumentAccountCodeSearch = envProps.host + path.endPoints.egfInstrumentAccountCode.search
+        config.instrumentAccountCodeUpdate = envProps.host + path.endPoints.egfInstrumentAccountCode.update
+
+        // egfInstrument - Instrument endpoints
+        config.instrumentCreate = envProps.host + path.endPoints.egfInstrument.create
+        config.instrumentUpdate = envProps.host + path.endPoints.egfInstrument.update
+        config.instrumentSearch = envProps.host + path.endPoints.egfInstrument.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
