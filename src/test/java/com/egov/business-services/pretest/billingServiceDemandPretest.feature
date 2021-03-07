@@ -28,7 +28,7 @@ Feature: Business services - billing service demand calls
             Given url createDemandUrl
               And request createDemandRequest
              When method post
-             Then assert responseStatus == 400 || responseStatus == 403
+             Then assert responseStatus >= 400
               And def billingServiceDemandResponseHeader = responseHeaders
               And def billingServiceDemandResponseBody = response
 
@@ -93,7 +93,7 @@ Feature: Business services - billing service demand calls
             Given url updateDemandUrl
               And request updateDemandRequest
              When method post
-             Then assert responseStatus == 400 || responseStatus == 403
+             Then assert responseStatus >= 400
               And def billingServiceDemandResponseHeader = responseHeaders
               And def billingServiceDemandResponseBody = response
               And def Demands = billingServiceDemandResponseBody.Demands

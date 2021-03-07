@@ -7,6 +7,9 @@ Background:
   * def instrumentCreateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/create.json')
   * def instrumentUpdateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/update.json')
   * def instrumentSearchRequest = read('../../business-services/requestPayload/egfInstrument/instrument/search.json')
+  * def createSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/create.json')
+  * def updateSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/update.json')
+  * def searchSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/search.json')
 
   # Instrument Types prtests
 
@@ -268,3 +271,64 @@ Scenario: Searching Instruments through API call
     Then status 200
     And def instrumentSearchResponseHeader = responseHeaders
     And def instrumentSearchResponseBody = response
+
+@createSurrenderReasonSuccessfully
+Scenario: Create Surrender Reason Successfully
+    Given url createSurrenderReasons
+    And request createSurrenderReasonRequest
+    When method post
+    Then status 201
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+    And def surrenderReasons = surrenderReasonsResponseBody.surrenderReasons
+
+@errorInCreateSurrenderReason
+Scenario: Create Surrender Reason Error
+    Given url createSurrenderReasons
+    And request createSurrenderReasonRequest
+    When method post
+    Then assert responseStatus >= 400
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+
+@updateSurrenderReasonSuccessfully
+Scenario: Update Surrender Reason Successfully
+    * eval updateSurrenderReasonRequest.surrenderReasons = surrenderReasons
+    Given url updateSurrenderReasons
+    And request updateSurrenderReasonRequest
+    When method post
+    Then status 201
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+    And def surrenderReasons = surrenderReasonsResponseBody.surrenderReasons
+    
+@errorInUpdateSurrenderReason
+Scenario: Update Surrender Reason Error
+    * eval updateSurrenderReasonRequest.surrenderReasons = surrenderReasons
+    Given url updateSurrenderReasons
+    And request updateSurrenderReasonRequest
+    When method post
+     * print surrenderReasonsResponseBody
+    Then assert responseStatus >= 400
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+    
+@searchSurrenderReasonSuccessfully
+Scenario: Search Surrender Reason Successfully
+    Given url searchSurrenderReasons
+    And params surrenderReasonsParams
+    And request searchSurrenderReasonRequest
+    When method post
+    Then status 200
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+
+@errorInSearchSurrenderReason
+Scenario: Search Surrender Reason Error
+    Given url searchSurrenderReasons
+    And params surrenderReasonsParams
+    And request searchSurrenderReasonRequest
+    When method post
+    Then assert responseStatus >= 400
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response

@@ -57,7 +57,6 @@ Background:
     Given url chartOfAccountCreate
     And params chartOfAccountCreateParam
     And request chartOfAccountCreatePayload
-      * print chartOfAccountCreatePayload
     When method post
     Then status 400
     And def chartOfAccountCreateResponseHeader = responseHeaders
@@ -206,7 +205,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url createAccountDetails
     And params params
     And request requestPayload
-        * print requestPayload
     When method post
     Then assert responseStatus == 201
     And def accountDetailsCreateResponse = response
@@ -222,7 +220,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url createAccountDetails
     And params params
     And request requestPayload
-        * print requestPayload
     When method post
     Then assert responseStatus == 500 || responseStatus == 403
     And def accountDetailsCreateResponse = response
@@ -238,7 +235,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url updateAccountDetails
     And params params
     And request requestPayloadToUpdate
-        * print requestPayloadToUpdate
     When method post
     Then assert responseStatus == 201
     And def updateResponse = response
@@ -254,7 +250,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url updateAccountDetails
     And params params
     And request requestPayloadToUpdate
-        * print requestPayloadToUpdate
     When method post
     Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def updateResponse = response
@@ -263,9 +258,7 @@ Scenario: Updating chart of accounts and check for error through API call
     Scenario: To search chart of account details
     Given url searchAccountDetails
     And params searchAccountDetailsParams
-        * print searchAccountDetailsParams
     And request requestPayloadToSearch
-        * print requestPayloadToUpdate
     When method post
     Then assert responseStatus == 200
     And def searchResponse = response
@@ -274,9 +267,7 @@ Scenario: Updating chart of accounts and check for error through API call
     Scenario: Negative pretest to search chart of account details
     Given url searchAccountDetails
     And params searchAccountDetailsParams
-        * print searchAccountDetailsParams
     And request requestPayloadToSearch
-        * print requestPayloadToUpdate
     When method post
     Then assert responseStatus == 403
     And def searchResponse = response
@@ -293,7 +284,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url bankCreate
     And params params
     And request createBankPayload
-        * print createBankPayload
     When method post  
     Then assert responseStatus == 201
     And def createBankResponse = response
@@ -310,7 +300,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url bankCreate
     And params params
     And request createBankPayload
-        * print createBankPayload
     When method post
     Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def createBankResponse = response
@@ -326,7 +315,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url bankUpdate
     And params params
     And request updateBankPayload
-        * print updateBankPayload
     When method post
     Then assert responseStatus == 201
     And def updateBankResponse = response
@@ -342,7 +330,6 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url bankUpdate
     And params params
     And request updateBankPayload
-        * print updateBankPayload
     When method post
     Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def updateBankResponse = response
@@ -351,10 +338,8 @@ Scenario: Updating chart of accounts and check for error through API call
     Scenario: To search Bank
     Given url bankSearch
     And params searchParams
-        * print searchParams
     And request searchBankPayload
     When method post
-      * print responseStatus
     Then assert responseStatus == 200
     And def searchBankResponse = response
 
@@ -362,10 +347,8 @@ Scenario: Updating chart of accounts and check for error through API call
     Scenario: Negative pretest to search Bank
     Given url bankSearch
     And params searchParams
-        * print searchParams
     And request searchBankPayload
     When method post
-      * print responseStatus
     Then assert responseStatus == 403 || responseStatus == 400
     And def searchBankResponse = response
 
@@ -382,7 +365,23 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request createBankBranchPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then status 201
+    And def createBankBranchResponse = response
+    * def bankBranches = createBankBranchResponse.bankBranches
+
+@errorInCreateBankBranch
+    Scenario: Create Bank Branch Error
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankBranchCreate
+    And params params
+    And request createBankBranchPayload
+    When method post
+    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
     And def createBankBranchResponse = response
     * def bankBranches = createBankBranchResponse.bankBranches
 
@@ -399,7 +398,7 @@ Scenario: Updating chart of accounts and check for error through API call
     * eval createBankBranchPayload.tenantId = 'InvalidTenantId-'+randomString(10)
     And request createBankBranchPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 403
     And def createBankBranchResponse = response
 
 @createBankBranchWithoutParams
@@ -407,7 +406,7 @@ Scenario: Updating chart of accounts and check for error through API call
     Given url bankBranchCreate
     And request createBankBranchPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 400
     And def createBankBranchResponse = response
     * def bankBranches = createBankBranchResponse.bankBranches
 
@@ -424,16 +423,60 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request updateBankBranchPayload
     When method post
-    Then assert responseStatus == 201 || responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 201
+    And def updateBankBranchResponse = response
+
+@errorInUpdateBankBranch
+    Scenario: Update Bank Branch Error
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    * eval updateBankBranchPayload.bankBranches = bankBranches
+    Given url bankBranchUpdate
+    And params params
+    And request updateBankBranchPayload
+    When method post
+    * print response
+    * print responseStatus
+    Then assert responseStatus >= 400
+    And def updateBankBranchResponse = response
+
+@errorInUpdateBankBranchWithInvalidTenantId
+    Scenario: Update Bank Branch Error
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    * eval updateBankBranchPayload.bankBranches = bankBranches
+    * set updateBankBranchPayload.bankBranches[0].tenantId = 'InvalidTenantId-' + randomString(5)
+    * set updateBankBranchPayload.bankBranches[0].bank.tenantId = 'InvalidTenantId-' + randomString(5)
+    * print updateBankBranchPayload
+    Given url bankBranchUpdate
+    And params params
+    And request updateBankBranchPayload
+    When method post
+    Then status 403
     And def updateBankBranchResponse = response
 
 @searchBankBranch
     Scenario: To search Bank Branch
     Given url bankBranchSearch
     And params searchParams
-        * print searchParams
     And request searchBankBranchPayload
     When method post
-    Then assert responseStatus == 200 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus == 200
     And def searchBankBranchResponse = response
-    * print searchBankBranchResponse
+
+@errorInSearchBankBranch
+    Scenario: To search Bank Branch
+    Given url bankBranchSearch
+    And params searchParams
+    And request searchBankBranchPayload
+    When method post
+    Then assert responseStatus == 403 || responseStatus == 400
+    And def searchBankBranchResponse = response
