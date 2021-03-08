@@ -3,6 +3,11 @@ Feature: Kafka Service Pretest
 Background:
     * def createConsumerPayload = read('../../kafka-services/requestPayload/create.json')
     * def subscribeConsumerPayload = read('../../kafka-services/requestPayload/subscribe.json')
+    * def api = read('file:envYaml/common/common.yaml');
+    * def getClustersUrl = envLocalhost + api.endPoints.kafkaService.getClusters
+    * def getConsumerGroupsUrl = envLocalhost + api.endPoints.kafkaService.getConsumerGroups
+    * def getlagsUrl = envLocalhost + api.endPoints.kafkaService.getLags
+    * def getlagSummaryUrl = envLocalhost + api.endPoints.kafkaService.getLagSummary
 
 @createConsumerInstance
 Scenario: Create consumer instance
@@ -62,3 +67,44 @@ Scenario: Delete Consumer Instance
     Given url deleteKafkaConsumer
     When method delete
     Then assert responseStatus == 204 || responseStatus == 404
+
+@getClusters
+Scenario: Get the list of clusters
+  * print getClustersUrl
+  Given url getClustersUrl
+  When method get
+  Then status 200
+  And def clustersResponse = response
+  And match clustersResponse.data.size() != 0
+  And def clusters = clustersResponse.data
+
+@getConsumerGroups
+Scenario: Get the list of consumer groups
+  * replace getConsumerGroupsUrl.cluster_id = cluster_id
+  * print getConsumerGroupsUrl
+  Given url getConsumerGroupsUrl
+  When method get
+  Then status 200
+  And def consumerGroupsResponse = response
+  And match consumerGroupsResponse.data.size() != 0
+  And def consumerGroups = consumerGroupsResponse.data
+
+@getConsumerGroupLags
+Scenario: Get the lags for comsumer group id
+  * replace getlagsUrl.cluster_id = cluster_id
+  * replace getlagsUrl.consumer_group_id = consumer_group_id
+  Given url getlagsUrl
+  When method get
+  Then status 200
+  And def lagsResponse = response
+  And match lagsResponse.data.size() != 0
+
+@getConsumerGroupLagSummary
+Scenario: Get the lag summary for comsumer group id
+  * replace getlagsUrl.cluster_id = cluster_id
+  * replace getlagsUrl.consumer_group_id = consumer_group_id
+  Given url getlagSummaryUrl
+  When method get
+  Then status 200
+  And def lagSummaryResponse = response
+  And match lagSummaryResponse.size() != 0

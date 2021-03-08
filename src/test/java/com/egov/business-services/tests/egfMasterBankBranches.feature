@@ -5,8 +5,8 @@
         * call read('../../business-services/tests/egfMasterBankCreate.feature@BankCreate_01')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         * def Collections = Java.type('java.util.Collections')
-        * def branchCode = 'BranchCode'+randomString(3)
-        * def branchName = 'BranchName'+randomString(3)
+        * def branchCode = 'BranchCode'+randomString(10)
+        * def branchName = 'BranchName'+randomString(10)
         * def branchAddress = randomString(5)
         * def branchAddress2 = randomString(5)
         * def pincode = '5' + randomMobileNumGen(5)
@@ -34,7 +34,7 @@
         * def branchName = null
         * def bankId = null
         # Creating a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankBranch')
         * def errorMessages = $createBankBranchResponse.errors[*].message
         * Collections.sort(errorMessages, java.lang.String.CASE_INSENSITIVE_ORDER)
         # Validating error messages
@@ -48,7 +48,7 @@
         # Creating a bank branch
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
         # Try to create a bank branch which is already existing
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankBranch')
         * def errorMessages = $createBankBranchResponse.errors[*].message
         * Collections.sort(errorMessages, java.lang.String.CASE_INSENSITIVE_ORDER)
         # Validating error messages
@@ -60,7 +60,7 @@
         # setting request body values
         * def isActive = null
         # Creating a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankBranch')
         # Validating error messages
         * match createBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.activeNotNull
 
@@ -87,7 +87,7 @@
         # setting request body values
         * def tenantId = 'InvalidTenantId-' + randomString(5)
         # Creating a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranchWithInvalidTenantId')
         # Validating error messages
         * match createBankBranchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
@@ -106,7 +106,7 @@
         * def cityCode = randomString(60)
         * def stateCode = randomString(60)
         # Creating a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankBranch')
         * def errorMessages = $createBankBranchResponse.errors[*].message
         * Collections.sort(errorMessages, java.lang.String.CASE_INSENSITIVE_ORDER)
         # Validating error messages
@@ -117,7 +117,7 @@
         # setting request body values
         * def branchName = "!@#$%^&*()"
         # Creating a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankBranch')
         # Validating error messages
         * match createBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.nameInvalid
 
@@ -144,13 +144,13 @@
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
         * def existingBranchName = bankBranches[0].name
         # Creating another Bank Branch to update it with the branch name which is already existing
-        * def branchCode = 'BranchCode'+randomString(3)
-        * def branchName = 'BranchName'+randomString(3)
+        * def branchCode = 'BranchCode'+randomString(10)
+        * def branchName = 'BranchName'+randomString(10)
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
         # Set new brqanch name
         * eval bankBranches[0].name = existingBranchName
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         # Validating error messages
         * match updateBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.nameFieldValueNotUnique
 
@@ -160,13 +160,13 @@
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
         * def existingBranchCode = bankBranches[0].code
         # Creating another Bank Branch to update it with the branch name which is already existing
-        * def branchCode = 'BranchCode'+randomString(3)
-        * def branchName = 'BranchName'+randomString(3)
+        * def branchCode = 'BranchCode'+randomString(10)
+        * def branchName = 'BranchName'+randomString(10)
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
         # Set new brqanch name
         * eval bankBranches[0].code = existingBranchCode
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         # Validating error messages
         * match updateBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.codeFieldValueNotUnique
 
@@ -174,14 +174,10 @@
     Scenario: Verify updating bank branch passing invalid/non-existing tenantId
         # Creating Bank Branch before Updating it
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBankBranch')
-        # setting request body values
-        * def invalidTenantId = 'InvalidTenantId-' + randomString(5)
-        * def tenantId = invalidTenantId
-        * eval bankBranches[0].tenantId = invalidTenantId
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranchWithInvalidTenantId')
         # Validating error messages
-        * match updateBankBranchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+        * assert updateBankBranchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
 #bug: should not accept isActive as null
 @BankBranches_Update_activeNull_05 @negative @bankBranchUpdate @egfMasterBankBranches @egfMaster @businessServices @regression
@@ -191,7 +187,7 @@
         # setting request body values
         * eval bankBranches[0].isActive = null
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         # Validating error messages
         * match updateBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.activeNotNull
 
@@ -212,7 +208,7 @@
         * eval bankBranches[0].cityCode = randomString(60)
         * eval bankBranches[0].stateCode = randomString(60)
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         * def errorMessages = $updateBankBranchResponse.errors[*].message
         * Collections.sort(errorMessages, java.lang.String.CASE_INSENSITIVE_ORDER)
         # Validating error messages
@@ -225,7 +221,7 @@
         # setting request body values
         * eval bankBranches[0].name = "!@#$%^&*()"
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         # Validating error messages
         * match updateBankBranchResponse.errors[0].message == egfMasterConstants.errorMessages.nameInvalid
 
@@ -238,7 +234,7 @@
         * eval bankBranches[0].name = null
         * eval bankBranches[0].bank = null
         # Updating bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@updateBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankBranch')
         * def errorMessages = $updateBankBranchResponse.errors[*].message
         * Collections.sort(errorMessages, java.lang.String.CASE_INSENSITIVE_ORDER)
         # Validating error messages
@@ -270,7 +266,7 @@
         # Defining search parameters
         * def searchParams = { tenantId: '#(tenantId)', code: '#(branchCode)', name: '#(branchName)'}
         # Searching a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@searchBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBankBranch')
         # Validating error messages
         * match searchBankBranchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
@@ -282,7 +278,7 @@
         # Defining search parameters
         * def searchParams = { code: '#(branchCode)', name: '#(branchName)'}
         # Searching a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@searchBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBankBranch')
         * match searchBankBranchResponse ==  egfMasterConstants.errorMessages.tenantParamMandatory
 
 

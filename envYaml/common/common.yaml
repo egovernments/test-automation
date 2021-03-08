@@ -1,128 +1,185 @@
 endPoints:
- localization:
-  searchLocalization: localization/messages/v1/_search
-  v2SearchLocalization: localization/messages/v2/_search
-  updateLocalization: localization/messages/v1/_update
-  deleteLocalization: localization/messages/v1/_delete
-  createLocalization: localization/messages/v1/_create
-  upsertLocalization: localization/messages/v1/_upsert
- authenticationToken:
-  authToken: user/oauth/token
- userOtp: 
-  sendOtp: user-otp/v1/_send
- fileStore:
-  create: filestore/v1/files
-  getFileId: filestore/v1/files/url
- citizen:
-  create: user/users/_createnovalidate
-  search: user/_search
-  createCitizen: user/citizen/_create
- location:
-  search: egov-location/location/v11/boundarys/_search
- idGenerate:
-  idGeneate: egov-idgen/id/_generate
- mdmsService:
-  search: egov-mdms-service/v1/_search
-  get: egov-mdms-service/v1/_get
- searcher:
-  searcher: egov-searcher/bill-genie/billswithaddranduser/_get
-  searcherWS: egov-searcher/bill-genie/waterbills/_get
-  searcherSW: egov-searcher/bill-genie/seweragebills/_get
- reports:
-  metadataGet: report/pgr/DescriptionReport/metadata/_get
-  get: report/pgr/DescriptionReport/_get
- hrms:
-  create: egov-hrms/employees/_create
-  search: egov-hrms/employees/_search
-  update: egov-hrms/employees/_update
- accessControl:
-  search: access/v1/actions/mdms/_get
- pgServices:
-  create: pg-service/transaction/v1/_create?
-  update: pg-service/transaction/v1/_update?
-  search: pg-service/transaction/v1/_search?
-  payload: citizen/egov-common/paymentRedirectPage
- eGovWorkFlowV2Process:
-  search: egov-workflow-v2/egov-wf/process/_search?
-  count: egov-workflow-v2/egov-wf/process/_count?
-  transition: egov-workflow-v2/egov-wf/process/_transition
-  businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
-  businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
-  businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
- billingService:
-  fetchBill: billing-service/bill/v2/_fetchbill
-  search: billing-service/bill/v2/_search
- pdfService:
-  create: pdf-service/v1/_create?
-  createNoSave: pdf-service/v1/_createnosave?
- user:
-  updateProfile: user/profile/_update
-  updatePassword: user/password/_update
-  updateForgetPassword: user/password/nologin/_update
- collectionServices:
-  fetchBill: billing-service/bill/v2/_fetchbill
-  createPayment: collection-services/payments/_create
-  workflow: collection-services/payments/PT/_workflow
-  searchPayment: collection-services/payments/PT/_search
- billingServiceDemand:
-  create: billing-service/demand/_create
-  search: billing-service/demand/_search
-  update: billing-service/demand/_update
- propertyService:
-  create: property-services/property/_create
-  update: property-services/property/_update
-  assessmentCreate: property-services/assessment/_create
-  search: property-services/property/_search
- apportion:
-  bill: apportion-service/v2/bill/_apportion
- dashboard:
-  getDashboardConfig: dashboard-analytics/dashboard/getDashboardConfig/home
-  getChartV2: dashboard-analytics/dashboard/getChartV2
- encService:
-  encrypt: egov-enc-service/crypto/v1/_encrypt
-  decrypt: egov-enc-service/crypto/v1/_decrypt
-  rotateKey: egov-enc-service/crypto/v1/_rotatekey
-  verify: egov-enc-service/crypto/v1/_verify
-  sign: egov-enc-service/crypto/v1/_sign
- eGovWorkFlowBusiness:
-  search: egov-workflow-v2/egov-wf/businessservice/_search
- urlShorten:
-  shorten: egov-url-shortening/shortener
- egfMasterChartOfAccount:
-  create: egf-master/chartofaccounts/_create
-  search: egf-master/chartofaccounts/_search
-  update: egf-master/chartofaccounts/_update
- egfMasterChartOfAccountDetails:
-  accountDetailsType: egf-master/accountdetailtypes/_create
-  create: egf-master/chartofaccountdetails/_create
-  update: egf-master/chartofaccountdetails/_update
-  search: egf-master/chartofaccountdetails/_search
- egfMasterBank:
-  create: egf-master/banks/_create
-  update: egf-master/banks/_update
-  search: egf-master/banks/_search
- egfMasterBankAccount:
-  create: egf-master/bankaccounts/_create
-  update: egf-master/bankaccounts/_update
-  search: egf-master/bankaccounts/_search
- egfMasterBankBranches:
-  create: egf-master/bankbranches/_create
-  update: egf-master/bankbranches/_update
-  search: egf-master/bankbranches/_search
- dashboardIngest:
-  save: dashboard-ingest/ingest/save
-  upload: dashboard-ingest/ingest/upload
-  migrate: dashboard-ingest/ingest/migrate/collectionsindex-v1/v1
- kafkaService:
-  create: consumers/automation_consumer
-  subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
-  read: consumers/automation_consumer/instances/automation_consumer_instance/records
-  delete: consumers/automation_consumer/instances/automation_consumer_instance
- egfInstrumentTypes:
-  create: egf-instrument/instrumenttypes/_create
-  update: egf-instrument/instrumenttypes/_update
-  search: egf-instrument/instrumenttypes/_search
- propertyCalculatorMutation:
-  create: pt-calculator-v2/billingslab/mutation/_create
-  update: pt-calculator-v2/billingslab/_update
-  search: pt-calculator-v2/billingslab/mutation/_search
+  localization:
+    searchLocalization: localization/messages/v1/_search
+    v2SearchLocalization: localization/messages/v2/_search
+    updateLocalization: localization/messages/v1/_update
+    deleteLocalization: localization/messages/v1/_delete
+    createLocalization: localization/messages/v1/_create
+    upsertLocalization: localization/messages/v1/_upsert
+
+  authenticationToken:
+    authToken: user/oauth/token
+
+  userOtp:
+    sendOtp: user-otp/v1/_send
+
+  fileStore:
+    create: filestore/v1/files
+    getFileId: filestore/v1/files/url
+
+  citizen:
+    create: user/users/_createnovalidate
+    search: user/_search
+    createCitizen: user/citizen/_create
+
+  location:
+    search: egov-location/location/v11/boundarys/_search
+
+  idGenerate:
+    idGeneate: egov-idgen/id/_generate
+
+  mdmsService:
+    search: egov-mdms-service/v1/_search
+    get: egov-mdms-service/v1/_get
+
+  searcher:
+    searcher: egov-searcher/bill-genie/billswithaddranduser/_get
+    searcherWS: egov-searcher/bill-genie/waterbills/_get
+    searcherSW: egov-searcher/bill-genie/seweragebills/_get
+
+  reports:
+    metadataGet: report/pgr/DescriptionReport/metadata/_get
+    get: report/pgr/DescriptionReport/_get
+
+  hrms:
+    create: egov-hrms/employees/_create
+    search: egov-hrms/employees/_search
+    update: egov-hrms/employees/_update
+
+  accessControl:
+    search: access/v1/actions/mdms/_get
+
+  pgServices:
+    create: pg-service/transaction/v1/_create?
+    update: pg-service/transaction/v1/_update?
+    search: pg-service/transaction/v1/_search?
+    payload: citizen/egov-common/paymentRedirectPage
+
+  eGovWorkFlowV2Process:
+    search: egov-workflow-v2/egov-wf/process/_search?
+    count: egov-workflow-v2/egov-wf/process/_count?
+    transition: egov-workflow-v2/egov-wf/process/_transition
+    businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
+    businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
+    businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
+
+  billingService:
+    fetchBill: billing-service/bill/v2/_fetchbill
+    search: billing-service/bill/v2/_search
+
+  pdfService:
+    create: pdf-service/v1/_create?
+    createNoSave: pdf-service/v1/_createnosave?
+
+  user:
+    updateProfile: user/profile/_update
+    updatePassword: user/password/_update
+    updateForgetPassword: user/password/nologin/_update
+
+  collectionServices:
+    fetchBill: billing-service/bill/v2/_fetchbill
+    createPayment: collection-services/payments/_create
+    workflow: collection-services/payments/PT/_workflow
+    searchPayment: collection-services/payments/PT/_search
+
+  billingServiceDemand:
+    create: billing-service/demand/_create
+    search: billing-service/demand/_search
+    update: billing-service/demand/_update
+
+  propertyService:
+    create: property-services/property/_create
+    update: property-services/property/_update
+    assessmentCreate: property-services/assessment/_create
+    search: property-services/property/_search
+
+  apportion:
+    bill: apportion-service/v2/bill/_apportion
+
+  dashboard:
+    getDashboardConfig: dashboard-analytics/dashboard/getDashboardConfig/home
+    getChartV2: dashboard-analytics/dashboard/getChartV2
+
+  encService:
+    encrypt: egov-enc-service/crypto/v1/_encrypt
+    decrypt: egov-enc-service/crypto/v1/_decrypt
+    rotateKey: egov-enc-service/crypto/v1/_rotatekey
+    verify: egov-enc-service/crypto/v1/_verify
+    sign: egov-enc-service/crypto/v1/_sign
+
+  eGovWorkFlowBusiness:
+    search: egov-workflow-v2/egov-wf/businessservice/_search
+
+  urlShorten:
+    shorten: egov-url-shortening/shortener
+
+  egfMasterChartOfAccount:
+    create: egf-master/chartofaccounts/_create
+    search: egf-master/chartofaccounts/_search
+    update: egf-master/chartofaccounts/_update
+
+  egfMasterChartOfAccountDetails:
+    accountDetailsType: egf-master/accountdetailtypes/_create
+    create: egf-master/chartofaccountdetails/_create
+    update: egf-master/chartofaccountdetails/_update
+    search: egf-master/chartofaccountdetails/_search
+
+  egfMasterBank:
+    create: egf-master/banks/_create
+    update: egf-master/banks/_update
+    search: egf-master/banks/_search
+
+  egfMasterBankAccount:
+    create: egf-master/bankaccounts/_create
+    update: egf-master/bankaccounts/_update
+    search: egf-master/bankaccounts/_search
+
+  egfMasterBankBranches:
+    create: egf-master/bankbranches/_create
+    update: egf-master/bankbranches/_update
+    search: egf-master/bankbranches/_search
+
+  egfMasterAccountDetailTypes:
+    create: egf-master/accountdetailtypes/_create
+    update: egf-master/accountdetailtypes/_update
+    search: egf-master/accountdetailtypes/_search
+
+  dashboardIngest:
+    save: dashboard-ingest/ingest/save
+    upload: dashboard-ingest/ingest/upload
+    migrate: dashboard-ingest/ingest/migrate/collectionsindex-v1/v1
+
+  kafkaService:
+    create: consumers/automation_consumer
+    subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
+    read: consumers/automation_consumer/instances/automation_consumer_instance/records
+    delete: consumers/automation_consumer/instances/automation_consumer_instance
+    getClusters: v3/clusters
+    getConsumerGroups: "v3/clusters/<cluster_id>/consumer-groups"
+    getLags: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
+    getLagSummary: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
+
+  egfInstrumentTypes:
+    create: egf-instrument/instrumenttypes/_create
+    update: egf-instrument/instrumenttypes/_update
+    search: egf-instrument/instrumenttypes/_search
+
+  propertyCalculatorMutation:
+    create: pt-calculator-v2/billingslab/mutation/_create
+    update: pt-calculator-v2/billingslab/_update
+    search: pt-calculator-v2/billingslab/mutation/_search
+
+  egfInstrument:
+    create: egf-instrument/instruments/_create
+    update: egf-instrument/instruments/_update
+    search: egf-instrument/instruments/_search
+
+  egfInstrumentAccountCode:
+    create: egf-instrument/instrumentaccountcodes/_create
+    update: egf-instrument/instrumentaccountcodes/_update
+    search: egf-instrument/instrumentaccountcodes/_search
+  
+  egfInstrumentSurrenderReasons:
+    create: egf-instrument/surrenderreasons/_create
+    update: egf-instrument/surrenderreasons/_update
+    search: egf-instrument/surrenderreasons/_search

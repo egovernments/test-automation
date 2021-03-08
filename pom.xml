@@ -10,7 +10,7 @@
 	<description>e-Governance project</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<maven.compiler.version>3.6.0</maven.compiler.version>
 		<activemq.version>5.15.2</activemq.version>
 		<spring.boot.version>2.0.0.RELEASE</spring.boot.version>
@@ -210,30 +210,6 @@
                 </dependency>
             </dependencies>
         </plugin>
-			<plugin>
-    <groupId>net.masterthought</groupId>
-    <artifactId>maven-cucumber-reporting</artifactId>
-    <version>5.3.0</version>
-    <executions>
-        <execution>
-            <id>execution</id>
-            <phase>test</phase>
-            <goals>
-                <goal>generate</goal>
-            </goals>
-            <configuration>
-                <projectName>eGov Test Automation Results</projectName>
-                <skip>false</skip>
-                <outputDirectory>reports/html-reports</outputDirectory>
-                <inputDirectory>target/surefire-reports</inputDirectory>
-                <jsonFiles>
-                    <param>**/*.json</param>
-                </jsonFiles>
-				<argLine>-XX:-UseGCOverheadLimit</argLine>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
 		</plugins>
 	</build>
 

@@ -103,6 +103,3 @@ Scenario: Create citizen name with more than 50 characters in the request
    * call read('../../core-services/pretests/citizenCreate.feature@createCitizenWithNameMoreThan50chars')
    # Validate actual error message returned by API for invalid character length of name parameter is equal to expected error message
    * assert createCitizenResponseBody.Errors[0].message == userConstant.errormessages.nameCharsSize
-   
-   
-  

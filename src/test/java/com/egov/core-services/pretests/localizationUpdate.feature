@@ -58,7 +58,7 @@ Feature: Localization Update Messages API call
               And def deleteResponseBody = response
 
         @createLocalizationMessageSuccessfully
-        Scenario: Create Localization messgae Successfully
+        Scenario: Create Localization message Successfully
 
             Given url localizationCreateMessagesUrl
               And request localizationCreateRequest
@@ -68,7 +68,7 @@ Feature: Localization Update Messages API call
               And def createResponseBody = response
 
         @createMultipleLocalizationMessageSuccessfully
-        Scenario: Create Multiple Localization messgae Successfully
+        Scenario: Create Multiple Localization message Successfully
 
             Given url localizationCreateMessagesUrl
               And request localizationMultiMessageCreateRequest

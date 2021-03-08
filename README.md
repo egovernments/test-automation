@@ -1,7 +1,12 @@
-# DIGIT Test Automation Framework and Setup Guide
-### Preface:
+### DIGIT Test Automation Framework and Setup guidelines
+#### Preface:
 DIGIT, a REST API platform based out of microservices architecture.
-### Role of Test Automation:
+
+DIGIT (Digital Infrastructure for Governance, Impact & Transformation) is India's largest platform for governance services.
+
+DIGIT platform is microservices based API platform enabling quick rebundling of services as per specific needs. This repository contains various infra, governance and municipal focused micro services
+
+#### Role of Test Automation:
 1. Robust test framework, functions as platform independent test suite
 2. Framework handles multi tenant by tuning only environment properties file changes
 3. Dynamic test data creations on instant API calls
@@ -9,19 +14,20 @@ DIGIT, a REST API platform based out of microservices architecture.
 5. Test suites catagirisation to utilise automation suite based on platform test requirements - In-progress
 6. Ensure environment specific test data cleanup post test suite complete - In-progress
 
-##### Table of Contents
-* [Project Brief](#project-brief)
-* [Tools and Technologies Used](#tools-and-technologies-used)
-* [Automation Framework Kick Off](#automation-framework-kick-off)
-  * [Pre-requisites](#pre-requisites)
-  * [KARATE Framework, Source Code, GIT Install](#karate-framework-source-code-git-install)
-* [Generic Command prompt maven commands to start test runs:](#generic-command-prompt-maven-commands-to-start-test-runs)
-* [List Of all services tags](#list-of-all-services-tags)
-* [Test Reporting](#test-reporting)
-* [Test Coverage](#test-coverage)
+#### Table of Contents
+###### * [Project Brief](#project-brief)
+###### * [Tools and Technologies Used](#tools-and-technologies-used)
+###### * [Automation Framework Kick Off](#automation-framework-kick-off)
+  - [Pre-requisites](#pre-requisites)
+  - [DIGIT automation code setup](#DIGITautomationcodesetup)
+###### * [Check List to start automation test Runs](#CheckListtostartautomationtestRuns)
+###### * [List of all service tags automated in the framework](#list-of-all-services-tags)
+###### * [Automation Test Reporting](#test-reporting)
+###### * [Test coverage](#test-coverage)
 
-### Project Brief
-DIGIT Test Automation Framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services. automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes. 
+#### Project Brief
+DIGIT Test automation framework plays a significant role in automating DIGIT workflows of Core, Business and Municipal services.
+Automation test suite solves the problem of validating workflows and functionalities of DIGIT at any given point of code changes.
 
 DIGIT Test Automation suite with one click brings quick turnaround of quality validations of DIGIT services and workflows without any manual quality engineering test efforts.
 
@@ -30,170 +36,160 @@ it enables to test and validate back end services accross all active environment
 
 DIGIT Test Automation suite covers most key role in testing eGov configuration "KAFKA" architecture by validating producing and consuming real time event TOPICS to and from KAFKA Server.
 
-For more details on KARATE framework architecture 
+For more details on KARATE framework architecture
 please refer the [KARATE FRAMEWORK Knowldge Base](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
- 
-### Tools and Technologies Used
- * [Java](https://www.java.com/en/):      Java version(s): 8.0
- * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
- * [Karate](https://github.com/intuit/karate/tree/v0.9.6) : 0.9.6
- * [Gherkin](https://cucumber.io/docs/gherkin/reference/)
- * [Cucumber](https://cucumber.io/docs/cucumber/api/)
- BDD framework - Behavior Driven Development is a software development approach 
- 
-### Automation Framework Kick Off
-### Pre-requisites
- * Two main software utilities required:  JAVA and MAVEN
 
- The step by step setup guidelines are provided below based on operating system.
- ###### On Windows
- * [JAVA Installl/Configure](https://www.java.com/en/download/help/windows_manual_download.html)
- * [JAVA PATH Setting](https://javatutorial.net/set-java-home-windows-10)
+#### Technologies Used
+-  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+-  [Karate](https://github.com/intuit/karate/tree/v0.9.6) : version 0.9.6
+-  [Gherkin](https://cucumber.io/docs/gherkin/reference/)
+-  [Cucumber](https://cucumber.io/docs/cucumber/api/)
+-  [Java](https://www.java.com/en/)
 
- * [maven 3.6.3 Download](https://maven.apache.org/download.cgi)
- * [Maven Installation](https://maven.apache.org/install.html)
- ###### On Mac
- * [JAVA Installl/Configure](https://www.java.com/en/download/help/mac_install.html)
- * [JAVA PATH Setting](https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
+#### Automation Framework Kick-off
+##### Pre-requisites
+-  Two main software utilities required are : Jdk and Maven
 
- * [maven 3.6.3 Download](https://www.baeldung.com/install-maven-on-windows-linux-mac)
- * [Maven Installation](https://maven.apache.org/install.html)
+ Step by step setup guidelines are provided below based on operating system.
 
-<!--Installation-->
-#### KARATE Framework, Source Code, GIT Install
+-  [JDK](https://www.java.com/en/):     JDK version : 1.8
+
+> [Java and Maven Environment Path Setup : Windows](https://mkyong.com/maven/how-to-install-maven-in-windows/)
+
+> [Java and Maven Environment Path Setup : Mac](https://mkyong.com/java/how-to-set-java_home-environment-variable-on-mac-os-x/)
+
+> [Maven 3.6.3 download](https://maven.apache.org/download.cgi)
+> [Install Maven](https://maven.apache.org/install.html)
+
+#### DIGIT automation code setup
 * [Supported IDEs for Code/Test Runs](https://github.com/intuit/karate/wiki/IDE-Support)
-
 * [Visual Studio Setup](https://visualstudio.microsoft.com/downloads/)
+* [Install Karate Runner Plugin](https://marketplace.visualstudio.com/items?itemName=kirkslota.karate-runner) (for viewing reports via Visual Studio Code)
+
+ Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
+
 * [Git Download](https://git-scm.com/downloads)
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency
+
 * [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Install GIT in your local operating system)
 
  - Create a Local Repository Path Working Directory:
  Windows Example:  <Local Working Directory path>\test-automation
 
-- Open Visual studio: Ctl+~ (to open terminal)
+ - Open Visual studio: Ctl+~ (to open terminal)
 
-change path to  <Local Working Directory path>\test-automation
+    change path to  <Local Working Directory path>\test-automation
 
-- Perform source code clone to local repository path working directory using git clone
+ - Perform source code clone to local repository path working directory using git clone
 
-Command: to clone the project repository in the system
+  - Clone the DIGIT automation project repository in the system
 
-git clone https://github.com/egovernments/test-automation.git
+  `git clone https://github.com/egovernments/test-automation.git
+  `
+Navigate to test automation folder
 
-git checkout <Your Branch>
- 
-git pull origin karate-master
+   `cd test-automation`
 
-### Check List to ensure to start automation test Runs:
-1. JAVA, MAVEN path set in ENVIRONMENT variables
-2. Visual studio, GIT installed
-3. DIGIT Test Automation Framework is covered with all "Core, Business and Municipal" services feature, pretest, tests, constant, yaml Files.
-4. Create environment configuration yaml file at any given path of your local system, per test environment to input while we run automation suite.
- 
- Environement configuartion file contains parameters such as host, cityCode, stateCode, user credentials etc.
+ Check out your local branch, which created in GITHUB
+  `git checkout <Your Branch>
+  `
 
- Ex:  1. <Local Working Directory path>karate\qa.yaml
-      2. <Local Working Directory path>karate\uat.yaml
-     
-#### Project Level 
-  * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as `.yaml` file. 
-  
+ Pull latest code from karate-master branch
+  `git pull origin karate-master
+  `
+> **Note :** **karate-master** is main branch for DIGIT automation suite
+
+#### Automation test execution from visual studio IDE terminal
+
+1. DIGIT Test Automation Framework is covered with all Core, Business and Municipal services feature, pretest, tests, constant, yaml Files.
+2. Create environment configuration yaml files at any given path of your local system, as per test environment of testing.
+
+ Environment configuartion file contains parameters such as host, cityCode, stateCode, user credentials etc.
+
+ Examples of environment files:
+ 1. <Local Working Directory path>karate/qa.yaml
+ 2. <Local Working Directory path>karate/uat.yaml
+
+ * Create the configuration file for parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments in any path of your local system as .yaml file.
+
   For ex:`/Users/admin/Desktop/config.yaml`
   * Create the environment config file in below format
   ```yaml
-  host: hostUrl
+ host: https://qa.digit.org/
 stateCode: pb
 cityCode: amritsar
 # Super User credentials for login(need to create user manually)
 superUser:
-  userName: userName
-  password: password
-  type: EMPLOYEE
+		userName: EMPAUTO
+		password: eGov@123
+		type: EMPLOYEE
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-  userName: userName
-  password: password
-  type: EMPLOYEE
+ 		userName: EMP-107-000878
+		password: Password@2
+		type: EMPLOYEE
   ```
   * Create multiple config files if execution is required for multiple environments and pass the respective file path while executing the run command
-  
-### Now we are set to start to start automation test runs from Visual studio IDE terminal
 
-#### Generic Command prompt maven commands to start test runs:
+3. Test suite runs, tags and DIGIT services
 
-NOTE: Test cases are grouped by TAG names based on DIGIT Services
+> **NOTE**: Test cases are grouped by TAG names based on DIGIT Services
 
-Ex: AccessControl service feature file is composed of N number of test cases and are tagged as @accessControl
+Ex: AccessControl service feature file is composed set number of test cases and are tagged as `@accessControl`
 
-  Refer below `List Of all services tags` section for complete list of tags for all the available services
+ Refer below `List Of all services tags` for all available services
 
 1. **Running indiviual service level feature test cases:**
+  Below is the command format for running individual service specific test run.
+```javascript
+>mvn clean test "-DconfigPath=<Local Working Directory path>karate/qa.yaml" "-Dkarate.options=--tags <@tagname> classpath:com/egov"
+```
+Example: 
+> mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @egfInstrument classpath:com/egov"
 
-  Below is the command format for running individual services
-
-  <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environment configuration file path>" "-Dkarate.options=--tags <@tagname> classpath:com/egov"
-
-2. **Running service category level feature test cases at one shot:**
-
-  Multiple Services categories are `@businessServices` (for running complete set of business-services test cases), `@coreServices` (for running complete set of core-services test cases)
+2. **Running multiple service level feature test cases at one shot:**
+ Multiple Services categories are `@businessServices` (for running complete set of business-services test cases), `@coreServices` (for running complete set of core-services test cases)
+Example:
+> mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @egfInstrument,@localization classpath:com/egov"
 
 3. **Running test category level feature test cases:**
 
-  `@regression` (for running full set of test cases which are marked as regression) and `@smoke` (for running the set of test cases which are marked as smoke)
+ `@regression` (for running full set of test cases which are marked as regression) or `@smoke` (for running the set of test cases which are marked as smoke)
+
+ Example:
+  >mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @regression com/egov"
+ or
+>mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @smoke com/egov"
 
 4. **Running kakfa consumer test cases through kakfa rest api proxy**
-  * configure kafka rest api proxy as part of other eGov services in the required environment
+
+Kafka workflow:
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1027407906/Consumer+and+Producer+Approach+Document
+
+  * Configure kafka rest api proxy as part of other eGov services in the required environment
   * To run kafka consumer related test cases u can use `@kafkaServices` alone or along with other tags for execution
 
-Note:
+ **Note**:
   * Currently all the testcases are marked as `@regression`. So, this tag can be used alone for executing all the testcases
 
   * Test cases are yet to be tagged as `@smoke` (will be marked soon)
 
   * One or more tags associated with the above mentioned levels can be used separated by a comma in below format
 
-  Ex: 
-    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Local Working Directory path>\qa.yaml" "-Dkarate.options=--tags @egfMasterBankAccount,@billingServiceDemand classpath:com/egov"
+   Example:
+   >mvn clean test "-DconfigPath=karate/qa.yaml" "-Dkarate.options=--tags @kafkaServices com/egov"
 
-    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @businessServices classpath:com/egov"
+#### List of all service tags automated in the framework
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1284702657/Automation+Test+Tags
+#### Automation Test Reporting
+https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1290371315/Automation+Test+Reporting
 
-    <Local Repository Path Working Directory>mvn clean test "-DconfigPath=<Environement configuartion file path>" "-Dkarate.options=--tags @regression classpath:com/egov"
-
-## List Of all services tags
-
-The listed tags are available currently in the framework
-| Tags          		      | Description   			         |        
-| ------------- 		      |:-------------:			         |
-| @reports      		      | Reports tests 			         | 
-| @searchMdms   		      | Search mdms tests         | 
-| @Searcher     		      | Searcher tests            |
-| @location     		      | Location tests			         |
-| @localization 		      | Loacalization tests		     |
-| @userotp      		      | User OTP tests			         |
-| @eGovUser				         | User profile update tests |
-| @accessControl		      | Access control tests 		   |
-| @hrms         		      | HRMS tests				            |
-| @collectionServices 	 | Collecetion Service tests	|
-| @billingServiceDemand | Billing Demand tests		    |
-| @pdfservice           | PDF Service tests			      |
-| @billingServiceBill   | Billing Service Bill tests|
-| @idGenerate			        | ID generation tests		     |
-| @egovWorkflowProcess  | Workflow tests			         |
-| @fileStore			         | File store tests			       |
-| @pgservices			        | PG Service tests			       | 
-
-### Test Reporting
-To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
- * Post execution of test runs, framework will automatically generate `karate-summary.html` file which can be found under `./test-automation/target/cucumber-html-reports/overview-features.html`
- * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
- 
-<!-- Test Coverage -->
-### Test Coverage
+#### Test coverage
 
 DIGIT Test Automation Framework cover validations of below services.
 * Test Coverage details
    * Core-services
    * Business-services
    * Municipal-services
-   
+
 [Refer Details Product Requirements on Services](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/2098331/Product+requirements)

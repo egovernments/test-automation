@@ -1,3 +1,31 @@
+parameters:
+  creditTransactionType: Credit
+  debitTransactionType: Debit
+  instrumentTypeNameCash: Cash
+  instrumentTypeNameCheque: Cheque
+  instrumentTypeNameOnline: Online
+  activeTrue: 'true'
+  activeFalse: 'false'
+  maxAmount: 999999999
+  zeroAmount: 0
+
+errorMessages:
+  transactionNumberError: TransactionNumber(Cash)
+  nullError: must not be null
+  errorDescription : Missing fields
+  minimumSizeError: must be greater than or equal to 1
+  maximumSizeError: must be less than or equal to 999999999
+  sizeError: size must be between 0 and 50
+  invalidNameCharacter: size must be between 2 and 50
+  fieldNotBlank: may not be empty
+  fieldValueIsNull : must not be null
+  invalidDescriptionCharacter: size must be between 0 and 100
+  message: No message available
+  instrumentTypeMessage: instrumentTypeSearchResult
+  accountCode: accountCode
+  surrenderReasonNameSize: size must be between 5 and 50
+  surrenderReasonDescriptionSize: size must be between 0 and 250
+
 instrumentType:
   params:
     transactionType: Credit
@@ -7,8 +35,4 @@ instrumentType:
     statusOnReconcile: Reconciled
     instrumentType: Online
 
-errorMessages:
- invalidNameCharacter: size must be between 2 and 50
- fieldNotBlank: may not be empty
- fieldValueIsNull : must not be null
- invalidDescriptionCharacter: size must be between 0 and 100
+    
