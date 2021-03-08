@@ -35,7 +35,7 @@
         * def invalidName = 'Name'+randomString(5)
         * def invalidId = 'Id'+randomString(5)
   
-@InstrumentTypeCreate_01 @instrumentTypeCreate @egfInstrument @positive
+@InstrumentTypeCreate_01 @instrumentTypeCreate @egfInstrument @regression @businessServices @positive
     Scenario: Create InstrumentType with Unique ID
     # Steps to create Instrument type
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
@@ -49,7 +49,7 @@
     * match instrumentTypesResponse.instrumentTypes[0].active == active
 
 #bug: Internal Server error 500 for null instrument type id. Should throw proper message
-@InstrumentTypeCreate_NullId_02 @instrumentTypeCreate @egfInstrument @negative 
+@InstrumentTypeCreate_NullId_02 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative 
     Scenario: Create InstrumentType with NULL ID
     # Set instrument type id as `null`
     * set instrumentTypesPayload.instrumentTypes[0].id = null
@@ -59,13 +59,13 @@
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
 
     
-@InstrumentTypeCreate_NameWith50Characters_03 @instrumentTypeCreate @egfInstrument @positive  
+@InstrumentTypeCreate_NameWith50Characters_03 @instrumentTypeCreate @egfInstrument @regression @businessServices @positive  
     Scenario: Create InstrumentType with Name 50 characters
     * set instrumentTypesPayload.instrumentTypes[0].name = latestName
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].name == latestName
 
-@InstrumentTypeCreate_NameWithMoreThan50Characters_04 @instrumentTypeCreate @egfInstrument @negative  
+@InstrumentTypeCreate_NameWithMoreThan50Characters_04 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative  
     Scenario: Create InstrumentType with Name More than 50 characters
     * set instrumentTypesPayload.instrumentTypes[0].name = randomString(55)
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
@@ -73,7 +73,7 @@
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
     
-@InstrumentTypeCreate_NameWith1Charater_05 @instrumentTypeCreate @egfInstrument @negative  
+@InstrumentTypeCreate_NameWith1Charater_05 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative  
     Scenario: Create InstrumentType with Name 1 character
     # Set the name with 1 charater value
     * set instrumentTypesPayload.instrumentTypes[0].name = randomString(1)
@@ -83,14 +83,14 @@
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
 
 
-@InstrumentTypeCreate_NameWith2Characters_06 @instrumentTypeCreate @egfInstrument @positive  
+@InstrumentTypeCreate_NameWith2Characters_06 @instrumentTypeCreate @egfInstrument @regression @businessServices @positive  
     Scenario: Create InstrumentType with Name 2 characters
     # Set the name with 2 charaters value
     * set instrumentTypesPayload.instrumentTypes[0].name = nameWithTwoChar
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].name == nameWithTwoChar
 
-@InstrumentTypeCreate_NameWithNull_07 @instrumentTypeCreate @egfInstrument @negative 
+@InstrumentTypeCreate_NameWithNull_07 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative 
     Scenario: Create InstrumentType with NULL Name
     # Set the name with null value
     * set instrumentTypesPayload.instrumentTypes[0].name = null
@@ -100,7 +100,7 @@
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[*].message contains ['#(fieldMustNotBlank)', '#(fieldMustNotBeNull)']
     
-@InstrumentTypeCreate_DescriptionWithMorethan100Characters_08 @instrumentTypeCreate @egfInstrument @negative  
+@InstrumentTypeCreate_DescriptionWithMorethan100Characters_08 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative  
     Scenario: Create InstrumentType with Description More than 100 characters
     # Set the description with more than 100 characters value
     * set instrumentTypesPayload.instrumentTypes[0].description = randomString(105)
@@ -109,28 +109,28 @@
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidDescriptionCharacter
 
-@InstrumentTypeCreate_DescriptionWith100Characters_09 @instrumentTypeCreate @egfInstrument @egfInstrument  
+@InstrumentTypeCreate_DescriptionWith100Characters_09 @instrumentTypeCreate @egfInstrument @regression @businessServices @egfInstrument @regression @businessServices  
     Scenario: Create InstrumentType with Description 100 characters
     # Set the description with 100 characters value
     * set instrumentTypesPayload.instrumentTypes[0].description = randomString(100)
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * assert instrumentTypesResponse.instrumentTypes.size() != 0
 
-@InstrumentTypeCreate_DescriptionWithEmpty_10 @instrumentTypeCreate @egfInstrument @positive  
+@InstrumentTypeCreate_DescriptionWithEmpty_10 @instrumentTypeCreate @egfInstrument @regression @businessServices @positive  
     Scenario: Create InstrumentType with Empty Description
     # Set the description with blank value
     * set instrumentTypesPayload.instrumentTypes[0].description = ""
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].description == ""
 
-@InstrumentTypeCreate_ActiveWithFalse_11 @instrumentTypeCreate @egfInstrument @positive
+@InstrumentTypeCreate_ActiveWithFalse_11 @instrumentTypeCreate @egfInstrument @regression @businessServices @positive
     Scenario: Create InstrumentType with Active False
     # Set the Active field value as false
     * set instrumentTypesPayload.instrumentTypes[0].active = false
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].active == false
 
-@InstrumentTypeCreate_ActiveWithNULL_12 @instrumentTypeCreate @egfInstrument @negative
+@InstrumentTypeCreate_ActiveWithNULL_12 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative
     Scenario: Create InstrumentType with Active NULL
     # Set the Active field value as null
     * set instrumentTypesPayload.instrumentTypes[0].active = null
@@ -138,7 +138,7 @@
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.fieldValueIsNull
         
-@InstrumentTypeCreate_InvalidTenantId_13 @instrumentTypeCreate @egfInstrument @negative 
+@InstrumentTypeCreate_InvalidTenantId_13 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative 
     Scenario: Create InstrumentType with Invalid tenantId
     # Set the tenantId field value as Invalid
     * set instrumentTypesPayload.instrumentTypes[0].tenantId = invalidTenantId
@@ -147,7 +147,7 @@
     * match instrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 #bug: Internal Server error 500 for Duplicate Instrument type id. Should throw proper message
-@InstrumentTypeCreate_DuplicateID_14 @instrumentTypeCreate @egfInstrument @negative
+@InstrumentTypeCreate_DuplicateID_14 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative
     Scenario: Create InstrumentType with Duplicate ID
     # Steps to create instrument types 
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
@@ -159,7 +159,7 @@
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
 
 #bug: Internal Server error 500 for Duplicate Instrument type name. Should throw proper message
-@InstrumentTypeCreate_DuplicateName_15 @instrumentTypeCreate @egfInstrument @negative
+@InstrumentTypeCreate_DuplicateName_15 @instrumentTypeCreate @egfInstrument @regression @businessServices @negative
     Scenario: Create InstrumentType with Duplicate Name
     # Steps to create instrument types 
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
@@ -174,7 +174,7 @@
 
 # Update Instrument Type
 
-@InstrumentTypeUpdate_Name_01 @instrumentTypeUpdate @positive @egfInstrument
+@InstrumentTypeUpdate_Name_01 @instrumentTypeUpdate @positive @egfInstrument @regression @businessServices
     Scenario: Update Name in instrumentType details
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].name == name
@@ -183,7 +183,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
     * match updateInstrumentTypesResponse.instrumentTypes[0].name == updatedName
 
-@InstrumentTypeUpdate_NameWithMorethan50Characters_02 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_NameWithMorethan50Characters_02 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update Name with more than 50 characters
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set an updated name with more than 50 characters
@@ -192,7 +192,7 @@
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidNameCharacter
 
-@InstrumentTypeUpdate_Description_03 @instrumentTypeUpdate @positive @egfInstrument
+@InstrumentTypeUpdate_Description_03 @instrumentTypeUpdate @positive @egfInstrument @regression @businessServices
     Scenario: Update instrument type description 
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     * match instrumentTypesResponse.instrumentTypes[0].description == description
@@ -201,7 +201,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
     * match updateInstrumentTypesResponse.instrumentTypes[0].description == updatedDescription
 
-@InstrumentTypeUpdate_DescriptionWithMorethan100Characters_04 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_DescriptionWithMorethan100Characters_04 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update Description with more than 100 characters
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set an updated description with more than 100 characters
@@ -210,7 +210,7 @@
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].fields[0].message == egfInstrumentConstants.errorMessages.invalidDescriptionCharacter
 
-@InstrumentTypeUpdate_ActiveToTrue_05 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_ActiveToTrue_05 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update instrument type Active to True
     # Set the instrument type active field as false
     * set instrumentTypesPayload.instrumentTypes[0].active = false
@@ -222,7 +222,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
     * match updateInstrumentTypesResponse.instrumentTypes[0].active == true
 
-@InstrumentTypeUpdate_ActiveToFalse_06 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_ActiveToFalse_06 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update instrument type Active to False
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the instrument type active field as false
@@ -230,7 +230,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
     * match updateInstrumentTypesResponse.instrumentTypes[0].active == false
 
-@InstrumentTypeUpdate_WithoutId_07 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_WithoutId_07 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update Null ID in instrumentType
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the instrument type id field as null
@@ -240,7 +240,7 @@
     * match updateInstrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match updateInstrumentTypesResponse['error'].message == "id"
 
-@InstrumentTypeUpdate_InvalidTenantID_08 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_InvalidTenantID_08 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update with Invalid tenantID
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the tenant id value with an invalid tenant id
@@ -249,7 +249,7 @@
     # Validate the error message returned by API which should be equal with expected error
     * match updateInstrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@InstrumentTypeUpdate_InstrumentTypeProperties_09 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_InstrumentTypeProperties_09 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update with Instruemnt Type properties
     # Create an instrument type 
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
@@ -264,7 +264,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@updateInstrumentTypes')
     * match updateInstrumentTypesResponse.instrumentTypes.size() != 0
 
-@InstrumentTypeUpdate_NameWithNull_10 @instrumentTypeUpdate @nagative @egfInstrument
+@InstrumentTypeUpdate_NameWithNull_10 @instrumentTypeUpdate @nagative @egfInstrument @regression @businessServices
     Scenario: Update Name with Null
     # Set name as `null`
     * set instrumentTypesPayload.instrumentTypes[0].name = null
@@ -276,14 +276,14 @@
 
 # Search Instrument Type
 
-@InstrumentTypeSearch_All_01 @instrumentTypesSearch @egfInstrument @positive
+@InstrumentTypeSearch_All_01 @instrumentTypesSearch @egfInstrument @regression @businessServices @positive
     Scenario: Search all instrument types
     # Prepare searchParams with tenantId
     * def searchParams = {tenantId: '#(tenantId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
     * match searchResponse.instrumentTypes.size() != 0
 
-@InstrumentTypeSearch_WithName_02 @instrumentTypesSearch @egfInstrument @positive 
+@InstrumentTypeSearch_WithName_02 @instrumentTypesSearch @egfInstrument @regression @businessServices @positive 
     Scenario: Search Instrument type with valid name
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Prepare searchParams with name
@@ -292,14 +292,14 @@
     * match searchResponse.instrumentTypes.size() != 0
     * match searchResponse.instrumentTypes[0].name == instrumentTypesResponse.instrumentTypes[0].name
 
-@InstrumentTypeSearch_WithInvalidName_03 @instrumentTypesSearch @egfInstrument @nagative
+@InstrumentTypeSearch_WithInvalidName_03 @instrumentTypesSearch @egfInstrument @regression @businessServices @nagative
     Scenario: Search Instrument type with Invalid name
     # Prepare searchParams with invalid name
     * def searchParams = {name: '#(invalidName)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
     * match searchResponse.instrumentTypes.size() == 0
 
-@InstrumentTypeSearch_WithId_04 @instrumentTypesSearch @egfInstrument @positive
+@InstrumentTypeSearch_WithId_04 @instrumentTypesSearch @egfInstrument @regression @businessServices @positive
     Scenario: Search Instrument type with valid ID
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Prepare searchParams with id
@@ -308,14 +308,14 @@
     * match searchResponse.instrumentTypes.size() != 0
     * match searchResponse.instrumentTypes[0].id == id
 
-@InstrumentTypeSearch_WithInvalidID_05 @instrumentTypesSearch @egfInstrument @nagative 
+@InstrumentTypeSearch_WithInvalidID_05 @instrumentTypesSearch @egfInstrument @regression @businessServices @nagative 
     Scenario: Search Instrument type with Invalid ID
     # Prepare searchParams with invalid id
     * def searchParams = {id: '#(invalidId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@searchInstrumentTypes')
     * match searchResponse.instrumentTypes.size() == 0
 
-@InstrumentTypeSearch_WithActiveTrue_06 @instrumentTypesSearch @egfInstrument @positive
+@InstrumentTypeSearch_WithActiveTrue_06 @instrumentTypesSearch @egfInstrument @regression @businessServices @positive
     Scenario: Search Instrument type with Active true
     # Prepare searchParams with active
     * def searchParams = {active: '#(active)'}
@@ -325,7 +325,7 @@
     * match deterMineActiveFieldValue(filtered, true) == true
     
 
-@InstrumentTypeSearch_WithActiveFalse_07 @instrumentTypesSearch @egfInstrument @positive
+@InstrumentTypeSearch_WithActiveFalse_07 @instrumentTypesSearch @egfInstrument @regression @businessServices @positive
     Scenario: Search Instrument type with Active false
     * set instrumentTypesPayload.instrumentTypes[0].active = false
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
@@ -336,14 +336,14 @@
     * def filtered = karate.filter(searchResponse.instrumentTypes, condition)
     * match deterMineActiveFieldValue(filtered, false) == true
 
-@InstrumentTypeSearch_WithInvalidtenantID_08 @instrumentTypesSearch @egfInstrument @nagative
+@InstrumentTypeSearch_WithInvalidtenantID_08 @instrumentTypesSearch @egfInstrument @regression @businessServices @nagative
     Scenario: Search Instrument type with Invalid tenantID
     # Prepare searchParams with invalidTenantId
     * def searchParams = {tenantId: '#(invalidTenantId)'}
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInSearchInstrumentTypes')
     * match searchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
     
-@InstrumentTypeSearch_WithNotenantID_09 @instrumentTypesSearch @egfInstrument @nagative
+@InstrumentTypeSearch_WithNotenantID_09 @instrumentTypesSearch @egfInstrument @regression @businessServices @nagative
     Scenario: Search Instrument type with No tenantID
     # Prepare serachParams with blank
     * def searchParams = {}
