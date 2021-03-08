@@ -24,6 +24,7 @@ Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
   * match instrumentAccountCodeResponse.instrumentAccountCodes[0].accountCode.glcode == glcode 
   * def duplicateTypeName = instrumentTypeName
 
+#bug: Internal Server error 500 for DuplicateInstrumentTypeName. should throw a proper error message
 @InstrumentAccountCode_Create_DuplicateInstrumentTypeName_02 @negative @instrumentAcountCodeCreate @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
 Scenario: Create InstrumentAccountCode with duplicate instrument typeName
   * call read('../../business-services/tests/egfInstrumentAccountCode.feature@InstrumentAccountCode_Create_01')
@@ -90,6 +91,7 @@ Scenario: Update InstrumentAccountCode with valid ID
   * match updateInstrumentAccountCodeResponse.instrumentAccountCodes[0].instrumentType.name == instrumentTypeName 
   * match updateInstrumentAccountCodeResponse.instrumentAccountCodes[0].accountCode.glcode == glcode 
 
+#bug: Internal Server error 500 for Invalid Id. should throw a proper error message
 @InstrumentAccountCode_Update_InvalidID_02 @positive @instrumentAcountCodeUpdate @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
 Scenario: Update InstrumentAccountCode with Invalid ID
 
@@ -174,7 +176,7 @@ Scenario: Update InstrumentAccountCode with Invalid tenantId
   * match updateInstrumentAccountCodeResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @InstrumentAccountCode_Search_ValidID_01 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
-Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
+Scenario: Search Instruemnt Account Code with Valid ID
   # Creating an instrumentAccountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@createInstrumentAccountCode')
   * def id = instrumentAccountCodeResponse.instrumentAccountCodes[0].id
@@ -186,7 +188,7 @@ Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
   * match searchInstrumentAccountCodeResponse.instrumentAccountCodes[0].id == id
 
 @InstrumentAccountCode_Search_InValidID_02 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
-Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
+Scenario: Search Instruemnt Account Code with InValid ID
 
   * def id = commonConstants.invalidParameters.invalidValue
   # Prepare searchParams with name
@@ -195,8 +197,8 @@ Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@searchInstrumentAccountCode')
   * match searchInstrumentAccountCodeResponse.instrumentAccountCodes.size() == 0
   
-@InstrumentAccountCode_Search_InValidID_02 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
-Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
+@InstrumentAccountCode_Search_EmptyID_03 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
+Scenario: Search Instruemnt Account Code with empty ID
 
   * def id = commonConstants.invalidParameters.emptyValue
   # Prepare searchParams with name
@@ -205,8 +207,8 @@ Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@searchInstrumentAccountCode')
   * match searchInstrumentAccountCodeResponse.instrumentAccountCodes.size() == 0
 
-@InstrumentAccountCode_Search_InValidTenantID_02 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
-Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
+@InstrumentAccountCode_Search_InValidTenantID_04 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
+Scenario: Search Instruemnt Account Code with Invalid tenantId
 
   * def tenantId = commonConstants.invalidParameters.invalidValue
   # Prepare searchParams with name
@@ -216,7 +218,7 @@ Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
   * match searchInstrumentAccountCodeResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @InstrumentAccountCode_Search_All_05 @positive @instrumentAcountCodeSearch @egfInstrument_InstrumentsAccountCode @egfInstrument @regression
-Scenario: Create InstrumentAccountCode with valid instrument type & accountCode
+Scenario: Search All Instruemnt Account Code
 
   # Prepare searchParams with name
   * def searchParams = {tenantId:'#(tenantId)'}

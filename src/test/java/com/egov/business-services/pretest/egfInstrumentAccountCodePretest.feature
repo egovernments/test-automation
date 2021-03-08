@@ -23,7 +23,7 @@ Background:
     Given url instrumentAccountCodeCreate
     And request instrumentAccountCodeCreateRequest
     When method post
-    Then assert responseStatus == 500 || responseStatus == 400 || responseStatus == 403
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And def instrumentAccountCodeResponse = response
 
   @searchInstrumentAccountCode
@@ -59,5 +59,5 @@ Background:
     And request instrumentAccountCodeUpdateRequest
     * print instrumentUpdateRequest
     When method post
-    Then assert responseStatus == 500 || responseStatus == 400 || responseStatus == 403
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And def updateInstrumentAccountCodeResponse = response
