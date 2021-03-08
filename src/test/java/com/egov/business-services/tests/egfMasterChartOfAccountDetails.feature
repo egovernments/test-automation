@@ -38,7 +38,7 @@
         * set requestPayloadToUpdate.chartOfAccountDetails = requestPayload.chartOfAccountDetails
         
          
-@ChartOfAccountDeatilsCreate_01 @positive @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_01 @positive @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with valid Id
     # Steps to create Chart Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -64,7 +64,7 @@ Scenario: Create chart of account details with valid Id
     * assert response.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName == accountTypefullyQualifiedName
 
 #bug: Internal Server error 500 for Invalid Ids. Should throw proper message
-@ChartOfAccountDeatilsCreate_InvalidId_02 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_InvalidId_02 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with invalid ids
     # Set an invalid id to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = randomString(5)
@@ -74,7 +74,7 @@ Scenario: Create chart of account details with invalid ids
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
-@ChartOfAccountDeatilsCreate_InvalidGLCode_03 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_InvalidGLCode_03 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with invalid GLCode
     # Set an invalid GLCode to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.glcode = invalidGLCode
@@ -82,7 +82,7 @@ Scenario: Create chart of account details with invalid GLCode
     # Validate that API should not consider the invalid GLCode it should only conder the valid GLCode
     * assert response.chartOfAccountDetails[0]['chartOfAccount'].glcode != invalidGLCode
 
-@ChartOfAccountDeatilsCreate_InvalidTenantId_04 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_InvalidTenantId_04 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with invalid tenantId
     # Set invalid tenantIds into request payload 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.tenantId = invalidTenantId
@@ -93,7 +93,7 @@ Scenario: Create chart of account details with invalid tenantId
     * assert response.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 #bug: Internal Server error 500 for null Id. Should throw proper message
-@ChartOfAccountDeatilsCreate_NullID_05 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_NullID_05 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with null id
     # Set invalid tenantIds into request payload 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = null
@@ -104,7 +104,7 @@ Scenario: Create chart of account details with null id
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
 
-@ChartOfAccountDeatilsCreate_ValidNameAndDescription_06 @positive @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_ValidNameAndDescription_06 @positive @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create Chart Of Account Details with Valid Name & Description
     # Steps to create Chart Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -117,7 +117,7 @@ Scenario: Create Chart Of Account Details with Valid Name & Description
     # Validate chart of account detail type - description 
     * assert response.chartOfAccountDetails[0]['accountDetailType'].description == accountTypeDescription
 
-@ChartOfAccountDeatilsCreate_tableNameAndFullyQualifiedName_07 @positive @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_tableNameAndFullyQualifiedName_07 @positive @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create Chart Of Account Details with Valid tableName & fully qualified name
     # Steps to create Chart Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -127,7 +127,7 @@ Scenario: Create Chart Of Account Details with Valid tableName & fully qualified
     # Validate chart of account detail type - fullyQualifiedName
     * assert response.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName == accountTypefullyQualifiedName
 
-@ChartOfAccountDeatilsCreate_WithNullValues_08 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_WithNullValues_08 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with all null values
     # Set `null` values to the respective fields of Create Account 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.glcode = null
@@ -156,7 +156,7 @@ Scenario: Create chart of account details with all null values
     * assert response.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName != null
 
 #bug: Internal Server error 500 for Invalid Chart Account Id. Should throw proper message
-@ChartOfAccountDeatilsCreate_InvalidChartAccountIdId_09 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_InvalidChartAccountIdId_09 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with invalid Chart Account Id
     # Set an invalid id to chart of account id 
     * set requestPayload.chartOfAccountDetails[0].chartOfAccount.id = 'Invalid-'+randomString(5)
@@ -165,7 +165,7 @@ Scenario: Create chart of account details with invalid Chart Account Id
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
 #bug: Internal Server error 500 for Invalid Account Details Id. Should throw proper message
-@ChartOfAccountDeatilsCreate_InvalidAccountDetailTypeIdId_10 @negative @chartOfAccountDetailsCreate @egfMaster
+@ChartOfAccountDeatilsCreate_InvalidAccountDetailTypeIdId_10 @negative @chartOfAccountDetailsCreate @egfMaster @regression @businessServices
 Scenario: Create chart of account details with invalid Account Details Type Id
     # Set an invalid id to chart of account details type id 
     * set requestPayload.chartOfAccountDetails[0].accountDetailType.id = 'Invalid-'+randomString(5)
@@ -175,7 +175,7 @@ Scenario: Create chart of account details with invalid Account Details Type Id
 
 # Update Chart of Account Details 
 
-@ChartOfAccountDeatilsUpdateUsingExistingId_01 @chartOfAccountDetailsUpdate @egfMaster
+@ChartOfAccountDeatilsUpdateUsingExistingId_01 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with Existing ID
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -201,7 +201,7 @@ Scenario: Update Chart Of Account Details with Existing ID
     * assert updateResponse.chartOfAccountDetails[0]['accountDetailType'].tableName != requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.tableName
     * assert updateResponse.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName != requestPayloadToUpdate.chartOfAccountDetails[0].accountDetailType.fullyQualifiedName
 
-@ChartOfAccountDeatilsUpdateUsingNewId_02 @chartOfAccountDetailsUpdate @egfMaster
+@ChartOfAccountDeatilsUpdateUsingNewId_02 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with New ID
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
