@@ -123,7 +123,7 @@ Scenario: Updating an instruments and check for error through API call
     Given url instrumentUpdate
     And request instrumentUpdateRequest
     When method post
-    Then assert responseStatus == 400 || responseStatus == 500
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And def instrumentUpdateResponseHeader = responseHeaders
     And def instrumentUpdateResponseBody = response
 
@@ -201,7 +201,7 @@ Scenario: Searching Instruments through API call
     And params instrumentsSearchParam
     And request instrumentSearchRequest
     When method post
-    Then assert responseStatus == 500
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And def instrumentSearchResponseHeader = responseHeaders
     And def instrumentSearchResponseBody = response
 
