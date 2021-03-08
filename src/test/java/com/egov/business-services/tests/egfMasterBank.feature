@@ -1,4 +1,4 @@
- Feature: To test egf-master-Bank service 'Create' endpoint
+ Feature: To test egf-master-Bank service endpointS
 
     Background: 
         * def jsUtils = read('classpath:jsUtils.js')
@@ -17,7 +17,9 @@
   
 @BankCreate_01 @positive @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify creating bank account throgh API call
+        # Steps to create Bank
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBank')
+        # Validate the Create Bank details
         * match createBankResponse.banks[0].code == bankCode
         * match createBankResponse.banks[0].name == bankName
         * match createBankResponse.banks[0].description == bankDescription
@@ -26,68 +28,91 @@
 
 @Bank_Create_UniqueName_02 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify updating bank by passing a value for name that already exists and check for errors
+        # Steps to create Bank
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBank')
+        # Re-assigning few field parameter values 
         * set createBankPayload.banks[0].code = randomString(5)
         * set createBankPayload.banks[0].description = 'Desc-'+randomString(3)
         * set createBankPayload.banks[0].type = 'Type-'+randomString(3)
+        # Steps to create bank to generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
+        # Preparing the dynamic error message
         * def errorDescription = "The  value  "+bankName+" for the field name already exists in the system. Please provide different value"
+        # Validate the response
         * match createBankResponse.errors[0].description == errorDescription
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.nameFieldValueNotUnique
 
 @Bank_Create_UniqueCode_03 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify creating bank by passing a value for code that already exists and check for errors
+        # Steps to create Bank
         * call read('../../business-services/pretest/egfMasterPreTest.feature@createBank')
+        # Re-assigning few field parameter values
         * set createBankPayload.banks[0].name = randomString(5)
         * set createBankPayload.banks[0].description = 'Desc-'+randomString(3)
         * set createBankPayload.banks[0].type = 'Type-'+randomString(3)
+        # Steps to create bank to generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
+        # Preparing the dynamic error message
         * def errorDescription = "The  value  "+bankCode+" for the field code already exists in the system. Please provide different value"
+        # Validate the response
         * match createBankResponse.errors[0].description == errorDescription
         * match createBankResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.codeFieldValueNotUnique
 
 @Bank_Create_InvalidTenant_04 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify creating bank using API call by passing a invalid/non existing tenant id in the request body
+        # Assigning tenant id with invalid value
         * set createBankPayload.banks[0].tenantId = 'Invalid'+randomString(5)
+        # Steps to create bank to generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
+        # Validate the response
         * match createBankResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @Bank_Create_NoTenant_05 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify creating bank  using API call by not passing tenant id in the request body or by passing null for tenant id
+        # Remove tenantId field
         * remove createBankPayload.banks[0].tenantId
+        # Steps to create bank to generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
-        * print createBankResponse
+        # Validate the response
         * match createBankResponse.errors[0].description == egfMasterConstants.errorMessages.nullTenantIdDescription
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.nullTenantIdMessage
 
 @Bank_Create_activeNull_06 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify creating bank  by passing null value for active and check for errors
+        # Assigning bank type as null
         * set createBankPayload.banks[0].type = null
+        # Steps to create bank and generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
-        * print createBankResponse
+        # Validate the response
         * match createBankResponse.errors[0].description == egfMasterConstants.errorMessages.nullTypeDescription
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.nullTypeMessage
 
 @Bank_Create_CodeLen_07 @negative @bankCreate @egfMaster  @egfMasterBank @businessServices @regression
     Scenario: Verify by passing more than 50 chars for code and check for errors
+        # Assigning bank code as random value
         * set createBankPayload.banks[0].code = randomString(55)
+        # Steps to create bank and generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
-        * print createBankResponse
+        # Validate the response
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.invalidCodeLength
 
 @Bank_Create_NameLen_08 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify by passing more than 100 chars for name and check for error
+        # Assigning bank name as random value
         * set createBankPayload.banks[0].name = randomString(110)
+        # Steps to create bank and generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
-        * print createBankResponse
+        # Validate the response
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.invalidNameLength
 
 @Bank_Create_DescLen_09 @negative @bankCreate @egfMaster @egfMasterBank @businessServices @regression
     Scenario: Verify by passing more than 250 chars for desc field and check for error
+        # Assigning bank description as random value
         * set createBankPayload.banks[0].description = randomString(260)
+        # Steps to create bank and generate error response
         * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
-        * print createBankResponse
+        # Validate the response
         * match createBankResponse.errors[0].message == egfMasterConstants.errorMessages.invalidDescriptionLength
     
 # Update Bank Tests
