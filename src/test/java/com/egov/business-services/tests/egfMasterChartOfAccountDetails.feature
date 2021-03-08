@@ -235,7 +235,7 @@ Scenario: Update Chart Of Account Details with New ID
     * assert updateResponse.chartOfAccountDetails[0]['accountDetailType'].tableName == accountDetailsCreateResponse.chartOfAccountDetails[0]['accountDetailType'].tableName 
     * assert updateResponse.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName != accountDetailsCreateResponse.chartOfAccountDetails[0]['accountDetailType'].fullyQualifiedName 
   
-@ChartOfAccountDeatilsUpdateUsingNullId_03 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdateUsingNullId_03 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details null IDs
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -248,7 +248,7 @@ Scenario: Update Chart Of Account Details null IDs
     * assert updateResponse.errors[0].message == commonConstants.errorMessages.mandatoryFieldError 
 
 #bug: Internal Server error 500 for Invalid Ids. Should throw proper message
-@ChartOfAccountDeatilsUpdateInvalidChartOfAccountIdAndAccountDetailsTypeId_04 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdateInvalidChartOfAccountIdAndAccountDetailsTypeId_04 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details invalid IDs
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -261,7 +261,7 @@ Scenario: Update Chart Of Account Details invalid IDs
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
-@ChartOfAccountDeatilsUpdateInvalidTenantId_05 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdateInvalidTenantId_05 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with invalid tenantIds
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -275,7 +275,7 @@ Scenario: Update Chart Of Account Details with invalid tenantIds
     * assert updateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError 
 
 #bug: Internal Server error 500 for Invalid chart of account Id. Should throw proper message
-@ChartOfAccountDeatilsUpdate_InvalidChartAccountIdId_06 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdate_InvalidChartAccountIdId_06 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -289,7 +289,7 @@ Scenario: Update Chart Of Account Details with invalid chartOfAccountId
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
 #bug: Internal Server error 500 for Invalid chart of account type Id. Should throw proper message
-@ChartOfAccountDeatilsUpdate_InvalidAccountDetailTypeIdId_7 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdate_InvalidAccountDetailTypeIdId_7 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with invalid Account type id
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -302,7 +302,7 @@ Scenario: Update Chart Of Account Details with invalid Account type id
     * assert response.responseInfo.status == commonConstants.expectedStatus.serverError
     * assert response.error.message == commonConstants.errorMessages.internalServerError 
 
-@ChartOfAccountDeatilsUpdate_NullValues_8 @chartOfAccountDetailsUpdate @egfMaster @regression
+@ChartOfAccountDeatilsUpdate_NullValues_8 @chartOfAccountDetailsUpdate @egfMaster @regression @businessServices
 Scenario: Update Chart Of Account Details with Null values
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -325,7 +325,7 @@ Scenario: Update Chart Of Account Details with Null values
 
 # Search Chart of Account Details
 
-@ChartOfAccountDeatilsSearch_ValidId_01 @chartOfAccountDetailsSearch @egfMaster @regression
+@ChartOfAccountDeatilsSearch_ValidId_01 @chartOfAccountDetailsSearch @egfMaster @regression @businessServices
 Scenario: Search chart of account details with valid Id
     # Steps to create Chart of Account Details
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -339,7 +339,7 @@ Scenario: Search chart of account details with valid Id
     * match searchResponse.chartOfAccountDetails[0].id == validIdToSearch
     * match searchResponse.chartOfAccountDetails[0].tenantId == tenantId
 
-@ChartOfAccountDeatilsSearch_InValidId_02 @chartOfAccountDetailsSearch @egfMaster @regression
+@ChartOfAccountDeatilsSearch_InValidId_02 @chartOfAccountDetailsSearch @egfMaster @regression @businessServices
 Scenario: Search chart of account details with invalid Id
     # Prepare the Search parameters with invalid id
     * def searchAccountDetailsParams = { tenantId: '#(tenantId)', id: '#(invalidId)'}
@@ -347,7 +347,7 @@ Scenario: Search chart of account details with invalid Id
     # Validate the search result
     * match searchResponse.chartOfAccountDetails.size() == 0
 
-@ChartOfAccountDeatilsSearch_InvalidTenantId_03 @chartOfAccountDetailsSearch @egfMaster @regression
+@ChartOfAccountDeatilsSearch_InvalidTenantId_03 @chartOfAccountDetailsSearch @egfMaster @regression @businessServices
 Scenario: Search chart of account details with invalid tenantId
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
     * def validIdToSearch = accountDetailsCreateResponse.chartOfAccountDetails[0].id
@@ -358,7 +358,7 @@ Scenario: Search chart of account details with invalid tenantId
     # Validate the error message
     * assert searchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@ChartOfAccountDeatilsSearch_All_04 @chartOfAccountDetailsSearch @egfMaster @regression
+@ChartOfAccountDeatilsSearch_All_04 @chartOfAccountDetailsSearch @egfMaster @regression @businessServices
 Scenario: Search chart of account details with all details
     # Steps to create chart of account details first
     * call read('../../business-services/pretest/egfMasterPreTest.feature@createChartOfAccountDetails')
@@ -372,7 +372,7 @@ Scenario: Search chart of account details with all details
     * match searchResponse.chartOfAccountDetails[0].id == validIdToSearch
     * match searchResponse.chartOfAccountDetails[0].tenantId == tenantId 
 
-@ChartOfAccountDeatilsSearch_EmptyID_05 @chartOfAccountDetailsSearch @egfMaster @regression
+@ChartOfAccountDeatilsSearch_EmptyID_05 @chartOfAccountDetailsSearch @egfMaster @regression @businessServices
 Scenario: Search chart of account details with empty Id
     # Prepare the Search parameters with empty id
     * def searchAccountDetailsParams = { tenantId: '#(tenantId)', id: ''}
