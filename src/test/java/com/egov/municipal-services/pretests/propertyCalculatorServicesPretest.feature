@@ -34,6 +34,16 @@ Scenario: To update billing slab mutation
         * print mutationUpdateResponse
     And  assert responseStatus == 201
 
+@errorInUpdateBillingSlabMutation
+Scenario: Negative pretest to update billing slab mutation
+    Given url mutationBillingSlabUpdate
+    And request updateBillingSlabMutationPayload
+        * print updateBillingSlabMutationPayload
+    When method post
+    Then def mutationUpdateResponse = response
+        * print mutationUpdateResponse
+   And  assert responseStatus >= 400 && responseStatus <= 403
+
 @searchBillingSlabMutation
 Scenario: To search a billing slab mutation
     Given url mutationBillingSlabSearch
