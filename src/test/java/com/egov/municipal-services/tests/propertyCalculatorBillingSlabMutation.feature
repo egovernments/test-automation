@@ -17,6 +17,21 @@ Background:
     * def fixedAmount = ranInteger(4)+.0
     * def rate = ranInteger(2)+.0
     * def type = "FLAT"
+    # Updated values
+    * def updatedPropertyType = mdmsStatePropertyTax.PropertyType[1].code
+    * def updatedPropertySubType = mdmsStatePropertyTax.PropertySubType[1].code
+    * def updatedUsageCategoryMajor = mdmsStatePropertyTax.UsageCategoryMajor[1].code
+    * def updatedUsageCategoryMinor = mdmsStatePropertyTax.UsageCategoryMinor[1].code
+    * def updatedUsageCategorySubMinor = mdmsStatePropertyTax.UsageCategorySubMinor[1].code
+    * def updatedUsageCategoryDetail = mdmsStatePropertyTax.UsageCategoryDetail[1].code
+    * def updatedOwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[1].code
+    * def updatedSubOwnerShipCategory = mdmsStatePropertyTax.SubOwnerShipCategory[1].code
+    * def updatedMinMarketValue = ranInteger(1)+.0
+    * def updatedMaxMarketValue = ranInteger(3)+.0
+    * def updatedFixedAmount = ranInteger(4)+.0
+    * def updatedRate = ranInteger(2)+.0
+    * def updatedType = "True"
+
     * def invalidTenaniId = 'invalid'+randomString(3)
     * def invalidId = 'id_'+randomNumber(3)
     * def nullFixedAmountError =  propertyCalculatorConstants.errorMessage.nullFixedAmount
@@ -28,34 +43,34 @@ Background:
 @BillingSlabMutation_Create_01 @billingSlabMutationCreate
 Scenario: Verify creating a mutation billing slab for property tax through API call
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
-    * match mutationCreateResponse.ResponseInfo.status == commonConstants.expectedStatus.success
-    * match mutationCreateResponse.MutationBillingSlab[0].propertyType == propertyType
-    * match mutationCreateResponse.MutationBillingSlab[0].propertySubType == propertySubType
-    * match mutationCreateResponse.MutationBillingSlab[0].usageCategoryMajor == usageCategoryMajor
-    * match mutationCreateResponse.MutationBillingSlab[0].usageCategoryMinor == usageCategoryMinor
-    * match mutationCreateResponse.MutationBillingSlab[0].usageCategorySubMinor == usageCategorySubMinor
-    * match mutationCreateResponse.MutationBillingSlab[0].usageCategoryDetail == usageCategoryDetail
-    * match mutationCreateResponse.MutationBillingSlab[0].ownerShipCategory == ownerShipCategory
-    * match mutationCreateResponse.MutationBillingSlab[0].subOwnerShipCategory == subOwnerShipCategory
-    * match mutationCreateResponse.MutationBillingSlab[0].minMarketValue == minMarketValue
-    * match mutationCreateResponse.MutationBillingSlab[0].maxMarketValue == maxMarketValue
-    * match mutationCreateResponse.MutationBillingSlab[0].fixedAmount == fixedAmount
-    * match mutationCreateResponse.MutationBillingSlab[0].rate == rate
-    * match mutationCreateResponse.MutationBillingSlab[0].type == type
+    * match mutationUpdateResponse.ResponseInfo.status == commonConstants.expectedStatus.success
+    * match mutationUpdateResponse.MutationBillingSlab[0].propertyType == propertyType
+    * match mutationUpdateResponse.MutationBillingSlab[0].propertySubType == propertySubType
+    * match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryMajor == usageCategoryMajor
+    * match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryMinor == usageCategoryMinor
+    * match mutationUpdateResponse.MutationBillingSlab[0].usageCategorySubMinor == usageCategorySubMinor
+    * match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryDetail == usageCategoryDetail
+    * match mutationUpdateResponse.MutationBillingSlab[0].ownerShipCategory == ownerShipCategory
+    * match mutationUpdateResponse.MutationBillingSlab[0].subOwnerShipCategory == subOwnerShipCategory
+    * match mutationUpdateResponse.MutationBillingSlab[0].minMarketValue == minMarketValue
+    * match mutationUpdateResponse.MutationBillingSlab[0].maxMarketValue == maxMarketValue
+    * match mutationUpdateResponse.MutationBillingSlab[0].fixedAmount == fixedAmount
+    * match mutationUpdateResponse.MutationBillingSlab[0].rate == rate
+    * match mutationUpdateResponse.MutationBillingSlab[0].type == type
 
 @BillingSlabMutation_create_InValidTenant_02 @billingSlabMutationCreate
 Scenario: Verify creating a mutation billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].tenantId = invalidTenaniId
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlabMutation')
-    * match mutationCreateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
+    * match mutationUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @BillingSlabMutation_Create_nullValues_03 @billingSlabMutationCreate
 Scenario: Verify creating a mutation billing slab for property tax by passing null values in the request
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].fixedAmount = null
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].rate = null
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlabMutation')
-    * print mutationCreateResponse
-    * match mutationCreateResponse.Errors[*].code contains ['#(nullFixedAmountError)', '#(nullRateError)']
+    * print mutationUpdateResponse
+    * match mutationUpdateResponse.Errors[*].code contains ['#(nullFixedAmountError)', '#(nullRateError)']
 
 # Search Billing Slab mutation
 
@@ -121,5 +136,19 @@ Scenario: Verify searching billing slab by passing multiple mutation billing sla
 @BillingSlabMutation_Update_01
 Scenario: Verify creating a mutation billing slab for property tax through API call
 * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
-* set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = mutationCreateResponse.MutationBillingSlab[0].id
+* set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = mutationUpdateResponse.MutationBillingSlab[0].id
 * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@updateBillingSlabMutation')
+* match mutationUpdateResponse.MutationBillingSlab[0].id == id
+* match mutationUpdateResponse.MutationBillingSlab[0].propertyType == updatedPropertyType
+* match mutationUpdateResponse.MutationBillingSlab[0].propertySubType == updatedPropertySubType
+* match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryMajor == updatedUsageCategoryMajor
+* match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryMinor == updatedUsageCategoryMinor
+* match mutationUpdateResponse.MutationBillingSlab[0].usageCategorySubMinor == updatedUsageCategorySubMinor
+* match mutationUpdateResponse.MutationBillingSlab[0].usageCategoryDetail == updatedUsageCategoryDetail
+* match mutationUpdateResponse.MutationBillingSlab[0].ownerShipCategory == updatedOwnerShipCategory
+* match mutationUpdateResponse.MutationBillingSlab[0].subOwnerShipCategory == updatedSubOwnerShipCategory
+* match mutationUpdateResponse.MutationBillingSlab[0].minMarketValue == updatedMinMarketValue
+* match mutationUpdateResponse.MutationBillingSlab[0].maxMarketValue == updatedMaxMarketValue
+* match mutationUpdateResponse.MutationBillingSlab[0].fixedAmount == updatedFixedAmount
+* match mutationUpdateResponse.MutationBillingSlab[0].rate == updatedRate
+* match mutationUpdateResponse.MutationBillingSlab[0].type == updatedType

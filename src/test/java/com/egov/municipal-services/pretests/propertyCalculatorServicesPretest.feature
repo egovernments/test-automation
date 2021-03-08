@@ -30,8 +30,8 @@ Scenario: To update billing slab mutation
     And request updateBillingSlabMutationPayload
         * print updateBillingSlabMutationPayload
     When method post
-    Then def mutationCreateResponse = response
-        * print mutationCreateResponse
+    Then def mutationUpdateResponse = response
+        * print mutationUpdateResponse
     And  assert responseStatus == 201
 
 @searchBillingSlabMutation
