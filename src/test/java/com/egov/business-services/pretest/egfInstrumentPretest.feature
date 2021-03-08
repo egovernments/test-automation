@@ -30,7 +30,7 @@ Background:
     And request instrumentTypesPayload
         * print instrumentTypesPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 400 || responseStatus == 403
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And  def instrumentTypesResponse = response
 
   @searchInstrumentTypes
@@ -70,7 +70,7 @@ Background:
     And request instrumentTypesPayload
         * print instrumentTypesPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 400 || responseStatus == 403
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And  def updateInstrumentTypesResponse = response
 
 # Instruments pretests

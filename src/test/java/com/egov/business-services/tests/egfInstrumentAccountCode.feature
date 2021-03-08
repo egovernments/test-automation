@@ -5,7 +5,7 @@ Background:
   #egf-Instruments Constants file
   * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
   # Creating an instrumentType
-  * call read('../../business-services/tests/egfInstrumentTypesCreate.feature@InstrumentTypeCreate_01')
+  * call read('../../business-services/tests/egfInstrumentTypes.feature@InstrumentTypeCreate_01')
   * def instrumentTypeName = instrumentTypesResponse.instrumentTypes[0].name
   # Creating ChartOfAccount
   * call read('../../business-services/tests/egfMasterChartOfAccountCreate.feature@ChartOfAccountCreate_01')

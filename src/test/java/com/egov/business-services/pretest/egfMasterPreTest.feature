@@ -207,6 +207,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayload
     When method post
     Then assert responseStatus == 201
+    * print accountDetailsCreateResponse
     And def accountDetailsCreateResponse = response
 
 @errorInCreateChartOfAccountDetails

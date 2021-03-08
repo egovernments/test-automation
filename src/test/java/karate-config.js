@@ -235,6 +235,7 @@ function() {
         // Property Calculator - Mutation service endpoints
         config.mutationBillingSlabCreate = envProps.host + path.endPoints.propertyCalculatorMutation.create
         config.mutationBillingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorMutation.update
+        config.mutationBillingSlabSearch = envProps.host + path.endPoints.propertyCalculatorMutation.search
 
         // egfInstrument - Instrument Account Code endpoints
         config.instrumentAccountCodeCreate = envProps.host + path.endPoints.egfInstrumentAccountCode.create

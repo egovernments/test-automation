@@ -6,27 +6,27 @@ Background:
   * def egfMasterBankAccountConstant = read('../../business-services/constants/egfMasterBankAccount.yaml')
   * def invalidTenantId = ranString(3)
 
-@BankAccountSearch_01  @positive  @bankAccountSearch  @egfMasterBankAccount
+@BankAccountSearch_01  @positive  @bankAccountSearch  @egfMasterBankAccount @egfMaster @regression
 Scenario: Verify searching for Bank accounts through API call . Search is performed using the following Name tenantid active 
   # Search with name, glcode, ctive & tenantId parameters
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@searchAccountSuccessfully')
   * match bankAccountSearchResponseBody.chartOfAccounts.length == '##[_ > 0]'
 
-@BankAccountSearch_InvalidTenant_02  @negative  @bankAccountSearch  @egfMasterBankAccount
+@BankAccountSearch_InvalidTenant_02  @negative  @bankAccountSearch  @egfMasterBankAccount @egfMaster @regression
 Scenario: Verify searching for Bank accounts through API call by passing a invlalid or a non existing tenant id  and check for errors
   # Search with invalid tenantid
   * def tenantId = invalidTenantId
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@invalidTenatId')
   * assert bankAccountSearchResponseBody.Errors[0].message == commonConstant.errorMessages.invalidTenantIdError
 
-@BankAccountSearch_TenantIdMandatory_03  @negative  @bankAccountSearch  @egfMasterBankAccount
+@BankAccountSearch_TenantIdMandatory_03  @negative  @bankAccountSearch  @egfMasterBankAccount @egfMaster @regression
 Scenario: Verify searching for Bank accounts through API call by not passing tenantId
   # Search without tenantid
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@withoutTenantId')
   * def validationMessage = toReplaceComma(bankAccountSearchResponseBody)
   * assert validationMessage == egfMasterBankAccountConstant.errorMessages.withoutTenantId
 
-@BankAccountSearch_AllRecords_05  @positive  @bankAccountSearch  @egfMasterBankAccount
+@BankAccountSearch_AllRecords_05  @positive  @bankAccountSearch  @egfMasterBankAccount @egfMaster @regression
 Scenario: Verify searching for bank accounts through API call using tenantId
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@searchAccountS')
   * match bankAccountSearchResponseBody.chartOfAccounts.length == '##[_ > 0]'

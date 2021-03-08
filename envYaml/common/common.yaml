@@ -166,7 +166,7 @@ endPoints:
 
   propertyCalculatorMutation:
     create: pt-calculator-v2/billingslab/mutation/_create
-    update: pt-calculator-v2/billingslab/_update
+    update: pt-calculator-v2/billingslab/mutation/_update
     search: pt-calculator-v2/billingslab/mutation/_search
 
   egfInstrument:
