@@ -264,6 +264,7 @@ Scenario: Update instrument with Transaction Type
   * match instrumentUpdateResponseBody.instruments[0].transactionType == transactionType
   * match instrumentUpdateResponseBody.instruments[0].transactionNumber == transactionNumber
 
+#bug: Internal Server error 500 for InvalidTransactionType. should throw a proper error message
 @egf-instrument_update_InvalidTransactionType_11 @negative @instrumentUpdate @egfInstrument_Instruments @egfInstrument @regression
 Scenario: Update instrument with Transaction Type
   # Creating an instruments
@@ -347,6 +348,7 @@ Scenario: Search instrument details with Credit Transaction type
   # Validating response body
   * match instrumentSearchResponseBody.instruments[*].transactionType contains transactionType
 
+#bug: Internal Server error 500 for InvalidTransactionType. should throw a proper error message
 @egf-instrument_search_InvalidTransactionType_05 @negative @instrumentSearch @egfInstrument_Instruments @egfInstrument @regression
 Scenario: Search instrument details with invalid Transaction type
  
