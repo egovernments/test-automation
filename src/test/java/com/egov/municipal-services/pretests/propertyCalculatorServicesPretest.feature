@@ -65,3 +65,25 @@ Scenario: Negative pretest to search a billing slab mutation
     When method post
     Then def mutationSearchResponse = response
     And  assert responseStatus >= 400 && responseStatus <= 403
+
+
+# Billing Slab
+
+@createBillingSlab
+Scenario: To create billing slab 
+    Given url billingSlabCreate
+    And request billingSlabCreatePayload
+    * print billingSlabCreatePayload
+    When method post
+    Then def billingSlabCreateResponse = response
+    And def id = billingSlabCreateResponse.billingSlab[0].id
+    And  assert responseStatus == 201
+
+@errorInCreateBillingSlab
+Scenario: Ngative pretest To create billing slab 
+    Given url billingSlabCreate
+    And request billingSlabCreatePayload
+    * print billingSlabCreatePayload
+    When method post
+    Then def errorResponse = response
+    And  assert responseStatus >= 400 && responseStatus <= 403
