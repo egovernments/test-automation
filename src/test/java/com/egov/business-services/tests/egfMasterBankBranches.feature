@@ -2,7 +2,7 @@
 
     Background: 
         * def jsUtils = read('classpath:jsUtils.js')
-        * call read('../../business-services/tests/egfMasterBankCreate.feature@BankCreate_01')
+        * call read('../../business-services/tests/egfMasterBank.feature@BankCreate_01')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         * def Collections = Java.type('java.util.Collections')
         * def branchCode = 'BranchCode'+randomString(10)

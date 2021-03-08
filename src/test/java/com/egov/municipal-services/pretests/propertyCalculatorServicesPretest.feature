@@ -21,7 +21,7 @@ Scenario: Not to create billing slab mutation
         * print createBillingSlabMutationPayload
     When method post
     Then def mutationCreateResponse = response
-    And  assert responseStatus == 403 || responseStatus == 400
+    And  assert responseStatus >= 400 && responseStatus <= 403
 
 @updateBillingSlabMutation
 Scenario: To update billing slab mutation
@@ -54,4 +54,4 @@ Scenario: Negative pretest to search a billing slab mutation
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
-    And  assert responseStatus == 400 || responseStatus == 403 || responseStatus == 500
+    And  assert responseStatus >= 400 && responseStatus <= 403
