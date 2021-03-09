@@ -2,23 +2,28 @@
     "RequestInfo": {
        "authToken": "#(authToken)"
      },
-    "MutationBillingSlab": [
+    "BillingSlab": [
         {
             "tenantId": "#(tenantId)",
             "id": "#(id)",
-            "propertyType": "#(propertyType)",
-            "propertySubType": "#(propertySubType)",
             "usageCategoryMajor": "#(usageCategoryMajor)",
             "usageCategoryMinor": "#(usageCategoryMinor)",
             "usageCategorySubMinor": "#(usageCategorySubMinor)",
             "usageCategoryDetail": "#(usageCategoryDetail)",
+            "propertyType": "#(propertyType)",
+            "propertySubType": "#(propertySubType)",
             "ownerShipCategory": "#(ownerShipCategory)",
             "subOwnerShipCategory": "#(subOwnerShipCategory)",
-            "minMarketValue": "#(minMarketValue)",
-            "maxMarketValue": "#(maxMarketValue)",
-            "fixedAmount": "#(fixedAmount)",
-            "rate": "#(rate)",
-            "type": "#(type)"
+            "occupancyType": "#(occupancyType)",
+            "isPropertyMultiFloored": "#(isPropertyMultiFloored)",
+            "fromFloor": "#(updatedFromFloor)",
+            "toFloor": "#(updatedToFloor)",
+            "areaType": "#(updatedAreaType)",
+            "fromPlotSize": "#(updatedFromPlotSize)",
+            "toPlotSize": "#(updatedToPlotSize)",
+            "unBuiltUnitRate": "#(updatedUnBuiltUnitRate)",
+            "arvPercent": "#(updatedArvPercent)",
+            "unitRate": "#(updatedUnitRate)"
         }
        
     ]

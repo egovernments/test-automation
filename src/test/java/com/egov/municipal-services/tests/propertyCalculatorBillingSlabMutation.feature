@@ -136,8 +136,9 @@ Scenario: Verify searching billing slab by passing multiple mutation billing sla
 @BillingSlabMutation_Update_01 @positive @billingSlabMutationUpdate @propertyCalculator
 Scenario: Verify creating a mutation billing slab for property tax through API call
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
-    * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = mutationUpdateResponse.MutationBillingSlab[0].id
+    * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = id
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@updateBillingSlabMutation')
+    * print mutationUpdateResponse
     * match mutationUpdateResponse.MutationBillingSlab[0].id == id
     * match mutationUpdateResponse.MutationBillingSlab[0].propertyType == updatedPropertyType
     * match mutationUpdateResponse.MutationBillingSlab[0].propertySubType == updatedPropertySubType
@@ -151,12 +152,12 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     * match mutationUpdateResponse.MutationBillingSlab[0].maxMarketValue == updatedMaxMarketValue
     * match mutationUpdateResponse.MutationBillingSlab[0].fixedAmount == updatedFixedAmount
     * match mutationUpdateResponse.MutationBillingSlab[0].rate == updatedRate
-    * match mutationUpdateResponse.MutationBillingSlab[0].type == updatedType
 
 @BillingSlabMutation_update_InValidTenant_02 @negative @billingSlabMutationUpdate @propertyCalculator
 Scenario: Verify updating a mutation billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
     * set updateBillingSlabMutationPayload.MutationBillingSlab[0].tenantId = invalidTenaniId
-    * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = mutationCreateResponse.MutationBillingSlab[0].id
+    * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = id
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlabMutation')
     * match mutationUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

@@ -188,3 +188,6 @@ endPoints:
     create: pt-calculator-v2/billingslab/_create
     update: pt-calculator-v2/billingslab/_update
     search: pt-calculator-v2/billingslab/_search
+  
+  propertyCalculatorPropertyTax:
+    calculate: pt-calculator-v2/propertytax/mutation/_calculate  

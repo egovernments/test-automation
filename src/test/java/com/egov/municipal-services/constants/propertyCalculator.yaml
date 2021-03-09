@@ -2,8 +2,13 @@ errorMessage:
   nullFixedAmount: NotNull.mutationBillingSlabReq.billingSlab[0].fixedAmount
   nullRate: NotNull.mutationBillingSlabReq.billingSlab[0].rate
   notNullTenantId: NotNull.mutationBillingSlabSearchCriteria.tenantId
+  notNullTenantIdBillingSlab: NotNull.billingSlabSearchCriteria.tenantId
   duplicateBillinfSlabCode: EG_PT_BILLING_SLAB_DUPLICATE
   duplicateBillinfSlabMessage: "Records in following indices are duplicate, : [0]"
+  outOfBoundBuiltUpAreaCode: Digits.propertyRequestV2.property.units[0].constructionDetail.builtUpArea
+  outOfBoundBuiltUpAreaMessage: numeric value out of bounds (<10 digits>.<2 digits> expected) 
+  invalidMarketValueCode: PT_MARKETVALUE_NULL
+  invalidMarketValueMessage: Market Value is not present in additional details or set as null or not in numeric format 
   nullBillingSlabPropertiesCodes:
     - NotNull.billingSlabReq.billingSlab[0].areaType
     - NotNull.billingSlabReq.billingSlab[0].toFloor
@@ -31,3 +36,4 @@ errorMessage:
     - Usage category Major is invalid
     - Ownership category is invalid
   invalidIdCode: EG_PT_INVALID_IDS
+  
