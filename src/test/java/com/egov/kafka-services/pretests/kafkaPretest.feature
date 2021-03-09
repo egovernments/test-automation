@@ -101,8 +101,8 @@ Scenario: Get the lags for comsumer group id
 
 @getConsumerGroupLagSummary
 Scenario: Get the lag summary for comsumer group id
-  * replace getlagsUrl.cluster_id = cluster_id
-  * replace getlagsUrl.consumer_group_id = consumer_group_id
+  * replace getlagSummaryUrl.cluster_id = cluster_id
+  * replace getlagSummaryUrl.consumer_group_id = consumer_group_id
   Given url getlagSummaryUrl
   When method get
   Then status 200
