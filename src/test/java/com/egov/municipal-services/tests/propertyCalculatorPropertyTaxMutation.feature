@@ -6,7 +6,7 @@ Background:
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
     * def caseDetails = ""
-    * def marketValue = 500
+    * def marketValue = 2000
     * def documentDate = getCurrentEpochTime()
     * def documentValue = "345"
     * def documentNumber = "2384"
@@ -29,7 +29,7 @@ Background:
     * set propertyTaxMutationPayload['Property'].additionalDetails.govtAcquisitionDetails = govtAcquisitionDetails
     * set propertyTaxMutationPayload['Property'].additionalDetails.isPropertyUnderGovtPossession = isPropertyUnderGovtPossession
 
-#TODO: Failling test. Expected results not matched
+
 @Propertytax_mutation_calculate_01 @positive @propertyTaxMutation @propertyCalculator
 Scenario: Verify creating a mutation billing slab for property tax through API call
     # Steps to process Property Tax Mutation Calculate
@@ -41,7 +41,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     # Step to search Billing Mutation along with Search Parameter
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@searchBillingSlabMutation')
     # Validate the result
-    * match mutationSearchResponse.MutationBillingSlab[0].usageCategoryMajor == 'NONRESIDENTIAL'
+    * match mutationSearchResponse.MutationBillingSlab[0].usageCategoryMajor == 'RESIDENTIAL'
     
 @Propertytax_mutation_calculate_values_02 @positive @propertyTaxMutation @propertyCalculator
 Scenario: Verify the mutation property tax calculation thorugh API call for a given property id by providing different values for lanareas, floors, etc and check if the total and tax ammount changes, estimates

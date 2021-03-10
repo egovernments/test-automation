@@ -51,8 +51,10 @@ Background:
     * def updateBillingSlabPayload = read('../../municipal-services/requestPayload/property-calculator/billingSlab/update.json')
 @BillingSlab_Create_01 @billingSlabCreate @regression @municipalService @propertyCalculator
 Scenario: Verify creating a billing slab for property tax through API call
+    # Steps to create Billing Slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
     * match billingSlabCreateResponse.billingSlab[0].usageCategoryMinor == usageCategoryMinor
+    # Validate the details
     * match billingSlabCreateResponse.billingSlab[0].fromPlotSize == fromPlotSize
     * match billingSlabCreateResponse.billingSlab[0].usageCategorySubMinor == usageCategorySubMinor
     * match billingSlabCreateResponse.billingSlab[0].propertySubType == propertySubType
@@ -75,19 +77,26 @@ Scenario: Verify creating a billing slab for property tax through API call
 
  @BillingSlab_Create_InValidTenant_02 @billingSlabCreate @regression @municipalService @propertyCalculator
  Scenario: Verify creating a billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
+   # Set tenantId as invalid
    * set billingSlabCreatePayload.BillingSlab[0].tenantId = 'pb.'+randomString(3)
+   # Steps to generate error for invalid tenantId
    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlab')
+   # Validate the result
    * match errorResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @BillingSlab_Create_Dup_03 @billingSlabCreate @regression @municipalService @propertyCalculator
 Scenario: Verify creating a billing slab for property tax through API call
+    #Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Steps to create billing slab with duplicate details and generate error
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlab') 
+    # Validate the results
     * match errorResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.duplicateBillinfSlabCode
     * match errorResponse.Errors[0].message == propertyCalculatorConstants.errorMessage.duplicateBillinfSlabMessage
 
 @BillingSlab_Create_nullValues_04 @billingSlabCreate @regression @municipalService @propertyCalculator
 Scenario: Verify creating a billing slab for property tax by passing null values in the request
+    # Assigning some specific field values as null
     * set billingSlabCreatePayload.BillingSlab[0].usageCategoryMinor = null
     * set billingSlabCreatePayload.BillingSlab[0].fromPlotSize = null
     * set billingSlabCreatePayload.BillingSlab[0].usageCategorySubMinor = null
@@ -107,17 +116,22 @@ Scenario: Verify creating a billing slab for property tax by passing null values
     * set billingSlabCreatePayload.BillingSlab[0].toPlotSize = null
     * set billingSlabCreatePayload.BillingSlab[0].subOwnerShipCategory = null
     * set billingSlabCreatePayload.BillingSlab[0].usageCategoryDetail = null
+    # Steps to generate error for null values
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlab')
+    # Validate the error messages
     * match errorResponse.Errors[*].code contains ['#(errorAreaType)','#(errorToFloor)','#(errorFromPlotSize)','#(errorUsageCategoryMinor)','#(errorFromFloor)','#(errorUsageCategoryDetail)','#(errorToPlotSize)','#(errorSubOwnerShipCategory)','#(errorPropertyType)','#(errorUsageCategorySubMinor)','#(errorPropertySubType)','#(errorIsPropertyMultiFloored)','#(errorOwnerShipCategory)','#(errorUsageCategoryMajor)']
 
 @Billing_slab_create_invalidValues_05 @billingSlabCreate @regression @municipalService @propertyCalculator
 Scenario: Verify creating a billing slab for property tax by passing null values in the request
+    # Set invalid values for below properties
     * set billingSlabCreatePayload.BillingSlab[0].ownerShipCategory = 'ownerShip'+randomString(3)
     * set billingSlabCreatePayload.BillingSlab[0].usageCategoryMajor = 'usageMajor'+randomString(3)
     * set billingSlabCreatePayload.BillingSlab[0].propertyType = 'propertyType'+randomString(3)
     * set billingSlabCreatePayload.BillingSlab[0].subOwnerShipCategory = 'subOwner'+randomString(3)
     * set billingSlabCreatePayload.BillingSlab[0].occupancyType = 'usageDetails'+randomString(3)
+    # Steps to generate error message for invalid field values
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlab')
+    # Validate the result
     * match errorResponse.Errors[*].code contains ['#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[0])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[1])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[2])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[3])']
     * match errorResponse.Errors[*].message contains ['#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[0])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[1])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[2])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[3])']
 
@@ -125,9 +139,13 @@ Scenario: Verify creating a billing slab for property tax by passing null values
 
 @BillingSlab_Search_01 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify Searching for billing slab details through api call for a given billing slab id
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Prepare search parameter
     * def searchParams = {tenantId: '#(tenantId)', id: '#(id)'}
+    # Steps to search billing slab along with search parameter
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@searchBillingSlab')
+    # Validate the search results
     * match billingSlabSearchResponse.billingSlab[0].usageCategoryMinor == usageCategoryMinor
     * match billingSlabSearchResponse.billingSlab[0].usageCategorySubMinor == usageCategorySubMinor
     * match billingSlabSearchResponse.billingSlab[0].propertySubType == propertySubType
@@ -142,40 +160,60 @@ Scenario: Verify Searching for billing slab details through api call for a given
 
 @BillingSlab_Search_AllRecords_02 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify Searching for billing slab details for a particular tenant id through api call 
+    # Prepare search parameter
     * def searchParams = {tenantId: '#(tenantId)'}
+    # Steps to search billing slab for specified tenantId
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@searchBillingSlab')
+    # Validate the search result
     * match billingSlabSearchResponse.billingSlab[*].tenantId contains ['#(tenantId)']
 
 @BillingSlab_Search_NoTenant_03 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify Searching for billing slab details by not passing tenant id and check for errors
+    # Prepare the search parameter with empty query paramaters
     * def searchParams = {}
+    # Steps to generate error on search
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlab')
+    # Validate the error 
     * match billingSlabSearchResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.notNullTenantIdBillingSlab
 
 @BillingSlab_Search_InValidTenant_04 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify searching billing slab for a invalid or non existant tenant id and check for errors
+    # Prepare searchParams with invalid tenantId
     * def searchParams = {tenantId: '#(invalidTenantId)'}
+    # Steps to generate error on search
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlab')
+    # Validate the error
     * match billingSlabSearchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @BillingSlab_Search_EmptyResponse_05 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify searching billing slab by passing null for billing slab id
+    # Prepare searchParams with tenantId and null Id
     * def searchParams = {tenantId: '#(tenantId)', id: 'null'}
+    # Steps to search billing slab along with specified searchParams
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@searchBillingSlab')
+    # Validate the empty response
     * match billingSlabSearchResponse.billingSlab.size() == 0
 
 @BillingSlab_Search_Multiple_06 @billingSlabSearch @regression @municipalService @propertyCalculator
 Scenario: Verify searching billing slab by passing multiple billing slab ids
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Define first billing slab id
     * def firstId = id
+    # Re-assigning value for below properties
     * set billingSlabCreatePayload.BillingSlab[0].unitRate = ranInteger(1)+'.0'
     * set billingSlabCreatePayload.BillingSlab[0].fromFloor = ranInteger(1)+'.0'
     * set billingSlabCreatePayload.BillingSlab[0].toFloor = ranInteger(1)+'.0'
     * set billingSlabCreatePayload.BillingSlab[0].fromPlotSize = ranInteger(1)+'.0'
+    # Again creating billing slab along with new field details
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Define second billing slab id
     * def secondId = id
+    # Prepare searchParams along with multiple billing slab ids
     * def searchParams = {tenantId: '#(tenantId)', id: ['#(firstId)', '#(secondId)']}
+    # Steps to search billing slab for specified searchParams
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@searchBillingSlab')
+    # Validate the search results
     * match billingSlabSearchResponse.billingSlab.size() == 2
     * match billingSlabSearchResponse.billingSlab[*].id contains ['#(firstId)', '#(secondId)']
 
@@ -183,10 +221,13 @@ Scenario: Verify searching billing slab by passing multiple billing slab ids
 
 @BillingSlab_update_01 @billingSlabUpdate @regression @municipalService @propertyCalculator
 Scenario: Verify updating a billing slab for property tax through API call
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Set billing slab ID to update billing slab
     * set updateBillingSlabPayload.BillingSlab[0].id = id
+    # Steps to update existing billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@updateBillingSlab')
-    * print billingSlabUpdateResponse
+    # Validate the update details
     * match billingSlabUpdateResponse.billingSlab[0].tenantId == tenantId
     * match billingSlabUpdateResponse.billingSlab[0].fromPlotSize == updatedFromPlotSize
     * match billingSlabUpdateResponse.billingSlab[0].fromFloor == updatedFromFloor
@@ -198,25 +239,35 @@ Scenario: Verify updating a billing slab for property tax through API call
 
 @BillingSlab_update_InValidTenant_02 @billingSlabUpdate @regression @municipalService @propertyCalculator
 Scenario: Verify updating a billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Set billing slab ID to update billing slab
     * set updateBillingSlabPayload.BillingSlab[0].id = id
+    # Set invalid tenant 
     * set updateBillingSlabPayload.BillingSlab[0].tenantId = 'pb.'+randomString(3)
+    # Steps to generate error on update billing slab for invalid tenantId
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlab')
+    # Validate the error 
     * match billingSlabUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @BillingSlab_update_InvalidId_03 @billingSlabUpdate @regression @municipalService @propertyCalculator
 Scenario: Verify updating a billing slab for property tax through API call by passing an invalid or non existant id and check for error
+    # Defining invalid billing slab id
     * def invalidId = generateUUID()
     * set updateBillingSlabPayload.BillingSlab[0].id = invalidId
+    # Steps to generate error on update billing slab for invalid id
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlab')
-    * print billingSlabUpdateResponse
+    # Preparing dynamic error message
     * def errorForInvalidId = 'Following records are unavailable, IDs: ['+invalidId+']'
+    # Validate the errors
     * match billingSlabUpdateResponse.Errors[0].message == errorForInvalidId
     * match billingSlabUpdateResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.invalidIdCode
 
 @BillingSlab_update_nullValues_04 @billingSlabUpdate @regression @municipalService @propertyCalculator
 Scenario: Verify updating a billing slab for property tax by passing null values in the request
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Set values for belo properties. Most of it as null
     * set updateBillingSlabPayload.BillingSlab[0].id = id
     * set updateBillingSlabPayload.BillingSlab[0].usageCategoryMinor = null
     * set updateBillingSlabPayload.BillingSlab[0].fromPlotSize = null
@@ -236,19 +287,24 @@ Scenario: Verify updating a billing slab for property tax by passing null values
     * set updateBillingSlabPayload.BillingSlab[0].toPlotSize = null
     * set updateBillingSlabPayload.BillingSlab[0].subOwnerShipCategory = null
     * set updateBillingSlabPayload.BillingSlab[0].usageCategoryDetail = null
+    # Steps to generate error on search
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlab')
-    * print billingSlabUpdateResponse
+    # Validate the error
     * match billingSlabUpdateResponse.Errors[*].code contains ['#(errorAreaType)','#(errorToFloor)','#(errorFromPlotSize)','#(errorUsageCategoryMinor)','#(errorFromFloor)','#(errorUsageCategoryDetail)','#(errorToPlotSize)','#(errorSubOwnerShipCategory)','#(errorPropertyType)','#(errorUsageCategorySubMinor)','#(errorPropertySubType)','#(errorIsPropertyMultiFloored)','#(errorOwnerShipCategory)','#(errorUsageCategoryMajor)']
 
 @Billing_slab_update_invalidValues_05 @billingSlabUpdate @regression @municipalService @propertyCalculator
 Scenario: Verify updating a billing slab for property tax by passing null values in the request
+    # Steps to create billing slab
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlab')
+    # Set values for belo properties. Most of it as invalid
     * set updateBillingSlabPayload.BillingSlab[0].id = id
     * set updateBillingSlabPayload.BillingSlab[0].ownerShipCategory = 'ownerShip'+randomString(3)
     * set updateBillingSlabPayload.BillingSlab[0].usageCategoryMajor = 'usageMajor'+randomString(3)
     * set updateBillingSlabPayload.BillingSlab[0].propertyType = 'propertyType'+randomString(3)
     * set updateBillingSlabPayload.BillingSlab[0].subOwnerShipCategory = 'subOwner'+randomString(3)
     * set updateBillingSlabPayload.BillingSlab[0].occupancyType = 'usageDetails'+randomString(3)
+    # Steps to generate error on search
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlab')
+    # Validate the error
     * match billingSlabUpdateResponse.Errors[*].code contains ['#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[0])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[1])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[2])','#(propertyCalculatorConstants.errorMessage.invalidErroCodeBillingSlab[3])']
     * match billingSlabUpdateResponse.Errors[*].message contains ['#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[0])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[1])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[2])','#(propertyCalculatorConstants.errorMessage.invalidErroMessageBillingSlab[3])']
