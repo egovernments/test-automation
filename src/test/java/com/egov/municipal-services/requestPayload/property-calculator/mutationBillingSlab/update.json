@@ -6,19 +6,19 @@
         {
             "tenantId": "#(tenantId)",
             "id": "#(id)",
-            "propertyType": "#(propertyType)",
-            "propertySubType": "#(propertySubType)",
-            "usageCategoryMajor": "#(usageCategoryMajor)",
-            "usageCategoryMinor": "#(usageCategoryMinor)",
-            "usageCategorySubMinor": "#(usageCategorySubMinor)",
-            "usageCategoryDetail": "#(usageCategoryDetail)",
-            "ownerShipCategory": "#(ownerShipCategory)",
-            "subOwnerShipCategory": "#(subOwnerShipCategory)",
-            "minMarketValue": "#(minMarketValue)",
-            "maxMarketValue": "#(maxMarketValue)",
-            "fixedAmount": "#(fixedAmount)",
-            "rate": "#(rate)",
-            "type": "#(type)"
+            "propertyType": "#(updatedPropertyType)",
+            "propertySubType": "#(updatedPropertySubType)",
+            "usageCategoryMajor": "#(updatedUsageCategoryMajor)",
+            "usageCategoryMinor": "#(updatedUsageCategoryMinor)",
+            "usageCategorySubMinor": "#(updatedUsageCategorySubMinor)",
+            "usageCategoryDetail": "#(updatedUsageCategoryDetail)",
+            "ownerShipCategory": "#(updatedOwnerShipCategory)",
+            "subOwnerShipCategory": "#(updatedSubOwnerShipCategory)",
+            "minMarketValue": "#(updatedMinMarketValue)",
+            "maxMarketValue": "#(updatedMaxMarketValue)",
+            "fixedAmount": "#(updatedFixedAmount)",
+            "rate": "#(updatedRate)",
+            "type": "#(updatedType)"
         }
        
     ]

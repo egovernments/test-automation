@@ -30,14 +30,21 @@ Scenario: To update billing slab mutation
     And request updateBillingSlabMutationPayload
         * print updateBillingSlabMutationPayload
     When method post
-    Then def mutationCreateResponse = response
-        * print mutationCreateResponse
+    Then def mutationUpdateResponse = response
     And  assert responseStatus == 201
+
+@errorInUpdateBillingSlabMutation
+Scenario: Negative pretest to update billing slab mutation
+    Given url mutationBillingSlabUpdate
+    And request updateBillingSlabMutationPayload
+        * print updateBillingSlabMutationPayload
+    When method post
+    Then def mutationUpdateResponse = response
+   And  assert responseStatus >= 400 && responseStatus <= 403
 
 @searchBillingSlabMutation
 Scenario: To search a billing slab mutation
     Given url mutationBillingSlabSearch
-        * print mutationBillingSlabSearch
     And params searchParams
         * print searchParams
     And request searchBillingSlabMutationPayload
@@ -48,10 +55,90 @@ Scenario: To search a billing slab mutation
 @errorInSearchBillingSlabMutation
 Scenario: Negative pretest to search a billing slab mutation
     Given url mutationBillingSlabSearch
-        * print mutationBillingSlabSearch
     And params searchParams
         * print searchParams
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
     And  assert responseStatus >= 400 && responseStatus <= 403
+
+
+# Billing Slab
+
+@createBillingSlab
+Scenario: To create billing slab 
+    Given url billingSlabCreate
+    And request billingSlabCreatePayload
+    * print billingSlabCreatePayload
+    When method post
+    Then def billingSlabCreateResponse = response
+    And def id = billingSlabCreateResponse.billingSlab[0].id
+    And  assert responseStatus == 201
+
+@errorInCreateBillingSlab
+Scenario: Ngative pretest To create billing slab 
+    Given url billingSlabCreate
+    And request billingSlabCreatePayload
+    * print billingSlabCreatePayload
+    When method post
+    Then def errorResponse = response
+    And  assert responseStatus >= 400 && responseStatus <= 403
+
+@searchBillingSlab
+Scenario: To search a billing slab
+    Given url billingSlabSearch
+    And params searchParams
+        * print searchParams
+    And request searchBillingSlabPayload
+    When method post
+    Then def billingSlabSearchResponse = response
+    And  assert responseStatus == 200
+
+@errorInSearchBillingSlab
+Scenario: Negative pretest to search a billing slab
+    Given url billingSlabSearch
+    And params searchParams
+        * print searchParams
+    And request searchBillingSlabPayload
+    When method post
+    Then def billingSlabSearchResponse = response
+    * print billingSlabSearchResponse
+    And  assert responseStatus >= 400 && responseStatus <= 403
+
+@updateBillingSlab
+Scenario: To update billing slab
+    Given url billingSlabUpdate
+    And request updateBillingSlabPayload
+        * print updateBillingSlabPayload
+    When method post
+    Then def billingSlabUpdateResponse = response
+    And  assert responseStatus == 201
+
+@errorInUpdateBillingSlab
+Scenario: Negative pretest to update billing slab
+    Given url billingSlabUpdate
+    And request updateBillingSlabPayload
+        * print updateBillingSlabPayload
+    When method post
+    Then def billingSlabUpdateResponse = response
+    And  assert responseStatus >= 400 && responseStatus <= 403
+
+
+# Property Tax Mutation Calculate
+@calculatePropertyTaxMutation
+Scenario: To Calculate property tax
+    Given url mutationCalculate
+    And request propertyTaxMutationPayload
+        * print propertyTaxMutationPayload
+    When method post
+    Then def propertyTaxMutationResponse = response
+    And  assert responseStatus == 200
+
+@errorInCalculatePropertyTaxMutation
+Scenario: Negative pretest to Calculate property tax
+    Given url mutationCalculate
+    And request propertyTaxMutationPayload
+        * print propertyTaxMutationPayload
+    When method post
+    Then def propertyTaxMutationResponse = response
+     And  assert responseStatus >= 400 && responseStatus <= 403

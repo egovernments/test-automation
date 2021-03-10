@@ -252,6 +252,14 @@ function() {
         config.instrumentUpdate = envProps.host + path.endPoints.egfInstrument.update
         config.instrumentSearch = envProps.host + path.endPoints.egfInstrument.search
 
+        // Property Calculator - Billings Slab service endpoints
+        config.billingSlabCreate = envProps.host + path.endPoints.propertyCalculatorBillingSlab.create
+        config.billingSlabUpdate = envProps.host + path.endPoints.propertyCalculatorBillingSlab.update
+        config.billingSlabSearch = envProps.host + path.endPoints.propertyCalculatorBillingSlab.search
+
+        // Property Calculator - Property Tax Mutation Calculate Service endpoint
+        config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
