@@ -17,7 +17,7 @@ Background:
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * def MobileNum = searcherResponseBody.Bills[0].mobileNumber
 
-@Searcher_Bill_01 @positive @Searcher
+@Searcher_Bill_01 @positive @searcher @regression
 Scenario: Test searching for a bill using egov searcher API service
     * def mobileNumber = MobileNum
     # calling searcher pretest
@@ -27,7 +27,7 @@ Scenario: Test searching for a bill using egov searcher API service
     * assert searcherResponseBody.Bills[0].businessService == businesService
 
 
-@Searcher_InvalidReqUrl_02 @negative @Searcher
+@Searcher_InvalidReqUrl_02 @negative @searcher @regression
 Scenario: Test searching for a bill using egov searcher API service
     * def businesService = businesServiceWS
     * def mobileNumber = MobileNum
@@ -36,21 +36,21 @@ Scenario: Test searching for a bill using egov searcher API service
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * assert searcherResponseBody.Bills.length == 0
 
-@Searcher_InvalidTenant_03 @negative @Searcher
+@Searcher_InvalidTenant_03 @negative @searcher @regression
 Scenario: Test by passing invalid/non existent or null value for tenant id
     * def tenantId = commonConstants.invalidParameters.emptyValue
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchError')
     * assert searcherResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@Searcher_Mandatory_04 @negative @Searcher
+@Searcher_Mandatory_04 @negative @searcher @regression
 Scenario: Test by not passing the mandatory parameter tenantid
     * def tenantId = commonConstants.invalidParameters.nullValue
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchWithoutTenantIdError')
     * match searcherResponseBody.Errors[0].message == errorManadatoryTenantId
     
-@Searcher_MultipleSearch_06 @negative @Searcher
+@Searcher_MultipleSearch_06 @negative @searcher @regression
 Scenario: Test by passing multiple parameters
     * def businesService = multiServiceCode
     * def mobileNumber = MobileNum
@@ -58,7 +58,7 @@ Scenario: Test by passing multiple parameters
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * assert searcherResponseBody.Bills.length == 0
 
-@Searcher_NullMobile_07 @negative @Searcher
+@Searcher_NullMobile_07 @negative @searcher @regression
 Scenario: Test by passing null value for mobile number
     * def businesService = businesServiceWS
     * def mobileNumber = commonConstants.invalidParameters.emptyValue
@@ -67,7 +67,7 @@ Scenario: Test by passing null value for mobile number
     * assert searcherResponseBody.Bills.length == 0
 
 
-@Searcher_NullBusinessSer_08 @negative @Searcher
+@Searcher_NullBusinessSer_08 @negative @searcher @regression
 Scenario: Test by passing null value for Business Service
     * def businesService = commonConstants.invalidParameters.emptyValue
     * def mobileNumber = MobileNum
@@ -76,13 +76,10 @@ Scenario: Test by passing null value for Business Service
     * assert searcherResponseBody.Bills.length == 0
 
 
-@Searcher_NullUrl_09 @negative @Searcher
+@Searcher_NullUrl_09 @negative @searcher @regression
 Scenario: Test by passing null value for URL
     * def mobileNumber = MobileNum
     * def url1 = commonConstants.invalidParameters.emptyValue
     # calling searcher pretest
     * call read('../../core-services/pretests/searcherPretest.feature@searchSuccessfully')
     * assert searcherResponseBody.Bills.length != 0
-   
-
-    

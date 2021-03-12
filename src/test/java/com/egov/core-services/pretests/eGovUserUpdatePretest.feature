@@ -50,6 +50,6 @@ Feature: eGovUser-userProfileUpdate pretest
     And request updatedUserPassword
     When method post
     And  def updatedPasswordResponseBody = response
-    Then assert responseStatus == 400 || responseStatus == 403
+    Then assert responseStatus >= 400 && responseStatus <= 403
 
   

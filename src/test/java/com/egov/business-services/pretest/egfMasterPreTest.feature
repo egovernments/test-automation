@@ -207,6 +207,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayload
     When method post
     Then assert responseStatus == 201
+    #* print accountDetailsCreateResponse
     And def accountDetailsCreateResponse = response
 
 @errorInCreateChartOfAccountDetails
@@ -236,8 +237,9 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request requestPayloadToUpdate
     When method post
-    Then assert responseStatus == 201
-    And def updateResponse = response
+    Then def updateResponse = response
+    And assert responseStatus == 201
+    
 
 @errorInUpdateChartOfAccountDetails
     Scenario: Negative pretest to update chart of account details
@@ -251,7 +253,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request requestPayloadToUpdate
     When method post
-    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then assert responseStatus >= 400 && responseStatus <= 403
     And def updateResponse = response
     
 @searchChartOfAccountDetails
