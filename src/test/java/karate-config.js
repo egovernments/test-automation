@@ -165,6 +165,8 @@ function() {
         config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
         // Property Service
         config.createAssessment =  envProps.host + path.endPoints.propertyService.assessmentCreate
+        config.updateAssessment =  envProps.host + path.endPoints.propertyService.assessmentUpdate
+        config.searchAssessment =  envProps.host + path.endPoints.propertyService.assessmentSearch
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
