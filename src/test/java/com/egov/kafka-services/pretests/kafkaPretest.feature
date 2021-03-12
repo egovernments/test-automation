@@ -41,7 +41,7 @@ Scenario: Wait until records are consumed
     """
     function() {
       var i=0;
-      while (i<10) {
+      while (i<15) {
         var result = karate.call('../../kafka-services/pretests/kafkaPretest.feature@readConsumerRecords');
         var records = result.response;
         karate.log('Kafka Response: ', records);
