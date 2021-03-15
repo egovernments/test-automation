@@ -6,9 +6,9 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Configurations](#configurations)
-* [Run Command Details](#run-command-details)
-* [Configure Test Runner](#configure-test-runner)
-* [Run with Command Prompt](#run-with-command-prompt)
+* [Execution](#execution)
+  * [Configure Test Runner](#configure-test-runner)
+  * [Run with Command Prompt](#run-with-command-prompt)
 * [List Of Tags](#list-of-tags)
 * [Test Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
@@ -59,29 +59,51 @@ Upon installing the above-required software. Follow the below steps to configure
   * Create role action mapping as per the requirement 
   * Create a new user as per the mapped role
   ###### Project Level 
-  * Update the configuration parameters (like: host, cityCode, stateCode, user credentials etc.) as per the environments under `envYaml/<env>/<env>.yaml`
-  * Use the credentials of user created for the newly mapped role
+   Environment configuration files needs to be prepare in `local`, which is required for test execution. Please refer the points to setup below.
+   * Create environment specific files with `.yaml` extension
+   * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml` etc.)
+   * You can keep this file anywhere in the local system
+   * Please refer the below details for initial setup and execution. Data can be change based upon the requirements.
+   ###### For QA
+   ```yaml
+    host: https://qa.digit.org/
+    stateCode: pb
+    cityCode: amritsar
+# Super User credentials for login(need to create user manually)
+superUser:
+    userName: EMPAUTO
+    password: eGov@123
+    type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+    userName: EMP-107-000878
+    password: Password@2
+    type: EMPLOYEE
+ ```
+ ###### For UAT
+   ```yaml
+    host: https://uat.digit.org/
+    stateCode: pg
+    cityCode: citya
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: EMP111
+  password: eGov@123
+  type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-1013-000262
+  password: eGov@uat123
+  type: EMPLOYEE
+ ```
   
   
-## Run Command Details
- ###### On DEV
- *  `mvn clean test "-Dkarate.env=dev"`
- ###### On QA
- *  `mvn clean test "-Dkarate.env=qa"`
- ###### On UAT
- *  `mvn clean test "-Dkarate.env=uat"`
-
-## Configure Test Runner
-By default framework will execute all of the test features, to control this or to specify any particular test feature file follow the below steps
- * Open `EGovTest.java` from `src/test/java/com/egov/base` 
- * Specify the test case tag or service tag followed by `@` under `tags{}`. For example `@collectionServices`
- * Execute the run commands as mentioned
- 
-## Run with Command Prompt
-It is possible to specify certain test tags and environment details from command prompt or terminal itself. Steps mentioned below.
+## Execution
+To start the test execution in `local` please refer the steps below. 
  * Open command prompt or terminal on project folder
- * Execute `mvn test "-Dkarate.options=--tags <tag1>,<tag2> classpath:com/egov" "-Dkarate.env=<env>"`
- ###### For example `mvn test "-Dkarate.options=--tags @searchMdms,@accessControl classpath:com/egov" "-Dkarate.env=qa"`  
+ * Execute `mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<specify the test tag or tags> classpath:com/egov"`
+ ###### For example 
+ `mvn clean test "-DconfigPath= /User/apple/Documents/qa.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
  
 ## List Of Tags
 The listed tags are available currently in the framework
