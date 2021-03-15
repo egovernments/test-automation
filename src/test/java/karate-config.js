@@ -45,6 +45,16 @@ function() {
          config.authPassword = envProps.superUser.password;
          config.authUserType = envProps.superUser.type;
 
+         // username & password for Citizen
+         config.citizenUsername = envProps.citizen.userName;
+         config.citizenPassword = envProps.citizen.password;
+         config.citizenType = envProps.citizen.type;
+
+         // username & password for Citizen
+         config.approverUsername = envProps.superUser.userName;
+         config.approverPassword = envProps.superUser.password;
+         config.approverType = envProps.superUser.type;
+
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 

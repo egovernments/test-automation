@@ -1,7 +1,7 @@
 Feature: Property Service 
 
 Background: 
-	* def createPropertyRequest = read('../../municipal-services/requestPayload/property-services/create.json')
+  * def createPropertyRequest = read('../../municipal-services/requestPayload/property-services/create.json')
   * def updatePropertyRequest = read('../../municipal-services/requestPayload/property-services/update.json')
   * def assessmentRequest = read('../../municipal-services/requestPayload/property-services/createAssessment.json')
   * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
@@ -9,7 +9,7 @@ Background:
 @createPropertySuccessfully 
 Scenario: Create a property successfully 
 	Given url createpropertyUrl 
-	And request createPropertyRequest 
+	And request createPropertyRequest
 	When method post 
 	Then status 201 
 	And def propertyServiceResponseHeaders = responseHeaders 
@@ -184,3 +184,4 @@ Scenario: Create assessment
 	And  request assessmentRequest 
 	When  method post 
 	Then  status 201
+	And   def assessmentResponse = response
