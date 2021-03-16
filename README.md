@@ -10,11 +10,8 @@
 * [Execution](#execution)
 * [List Of Tags](#list-of-tags)
 * [Reporting](#reporting)
-* [Test Coverage](#test-coverage)
-* [Upcoming Services](#upcoming-services)
 
 
-    
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 DIGIT Test Automation framework majorly deals with various API services validation. It enables to test and validate back end services across all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
@@ -73,42 +70,26 @@ git clone https://github.com/egovernments/test-automation.git
   ###### Project Level 
    Environment configuration files needs to be prepare in `local`, which is required for test execution. Please refer the points to setup below.
    * Create environment specific files with `.yaml` extension
+   * This file can be placed anywhere in the local directory
    * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml`, `config.yaml` etc.) 
-   * You can keep this file anywhere in the local system
-   * Please refer the below details for initial setup and execution. Data can be change based upon the requirements.
+   * Please keep the environment specific data in the config file as per below format.  
    ###### For QA
    ```yaml
-    host: https://qa.digit.org/
+    host: https://qa.xxx.xxx/
     stateCode: pb
     cityCode: amritsar
 # Super User credentials for login(need to create user manually)
 superUser:
-    userName: EMPAUTO
-    password: eGov@123
-    type: EMPLOYEE
+    userName: <username goes here>
+    password: <password goes here>
+    type: <user type goes here>
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-    userName: EMP-107-000878
-    password: Password@2
-    type: EMPLOYEE
+    userName: <username goes here>
+    password: <password goes here>
+    type: <user type goes here>
  ```
- ###### For UAT
-   ```yaml
-    host: https://uat.digit.org/
-    stateCode: pg
-    cityCode: citya
-# Super User credentials for login(need to create user manually)
-superUser:
-    userName: EMP111
-    password: eGov@123
-    type: EMPLOYEE
-# Employee username and password to update an existing user's profile (need to create user manually)
-employee:
-    userName: EMP-1013-000262
-    password: eGov@uat123
-    type: EMPLOYEE
- ```
-  
+ 
 <!--Execution-->  
 ## Execution
 To start the test execution in `local` please refer the steps below. 
@@ -119,8 +100,7 @@ To start the test execution in `local` please refer the steps below.
 
 <!--List Of Tags--> 
 ## List Of Tags
-The below listed categories of tags are available currently in the framework.
-Please use the appropriate tags needed for execution.
+Please use the appropriate tags to execute tests based on the requirement.
 
 *** Individual service tags ***
 | Tags          		      | Description   			         |        
@@ -160,22 +140,9 @@ Please use the appropriate tags needed for execution.
 
 <!--Reporting-->
 ## Reporting
-To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
- * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
- <img width="1272" alt="Screenshot 2021-03-16 at 1 24 00 PM" src="https://user-images.githubusercontent.com/68421244/111274649-42745c00-865b-11eb-8e7c-219687a2bb58.png">
-
- * A folder will automatically create under `./target/` folder along with `timestamp` which will contain `overview-features.html`. A snapshot is attached for reference.
+Follow below step to find reports generated post test execution to analyze the results.
+  
+* A folder will automatically create under `./target/` folder along with `timestamp/cucumber-html-reports` which will contain `overview-features.html`. A snapshot is attached for   reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
 
-<!-- Test Coverage -->
-## Test Coverage
-The automated tests cover validations for following services.
-* Test Coverage details
-   * core-services
-   * business-services
-
-<!-- Upcoming Services -->
-### Upcoming Services
-Services to be automated.
-* municipal-services
