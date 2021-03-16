@@ -2,15 +2,14 @@
 ##### Table of Contents
 * [About the Project](#about-the-project)
   * [Technology Used](#technology-used)
+  * [Dependencies Used](#depensencies-used)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
+  * [Clone Project](#cole-project)
   * [Configurations](#configurations)
 * [Execution](#execution)
-  * [Configure Test Runner](#configure-test-runner)
-  * [Run with Command Prompt](#run-with-command-prompt)
 * [List Of Tags](#list-of-tags)
-* [Test Reporting](#test-reporting)
+* [Reporting](#test-reporting)
 * [Test Coverage](#test-coverage)
 * [Upcoming Services](#upcoming-services)
 
@@ -27,7 +26,20 @@ DIGIT Test Automation framework majorly deals with various API services validati
  * [Karate](https://github.com/intuit/karate)
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  * [JUnit](https://junit.org/junit4/)
- 
+
+### Dependencies Used
+In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency`. These depencies can be find under `pom.xml`. 
+* `karate-core` : This is responsible to provide core features of `karate`.
+* `karate-junit4` : To facilate `JUnit` testing this dependency is required.
+* `karate-gatling` : To perform API Performance test this dependency is used. For more details on performance test with karate checkout [here](https://intuit.github.io/karate/karate-gatling/)
+* `karate-apache` : To make use of karate in `maven` project this dependency is required.
+* `karate-netty` : It helps to `mock` API calls locally. For more details please checkout [here](https://intuit.github.io/karate/karate-netty/) 
+* `cucumber-jvm-parallel-plugin` : To facilate `parallel execution` this dependency is required.
+* `poi` and `poi-ooxml` : Used to work with the latest and older versions of `excel` file.
+* `log4j-api` : Provide an interface which is required to implementers to create a logging implementation.
+* `allure-junit4` : To facilate `Test Reports` along with `JUnit` runner this is required.
+* `allure-cucumber4-jvm` : To facilate `Test Reports` along with `Cucumber JVM` this is required. This dependency helps to log `feature` file steps into the test report. 
+
 <!-- Getting Started --> 
 ## Getting Started
 This framework required below prerequisites to be covered
@@ -36,22 +48,27 @@ This framework required below prerequisites to be covered
 ### Prerequisites
 To set up this framework two major software needs to be installed into the system. The step by step setup guideline provided below.
  ###### On Windows
- * [JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
- * [maven 3.6.3](https://maven.apache.org/download.cgi)
+ * [Download JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
+ * [Download maven 3.6.3](https://maven.apache.org/download.cgi)
+ * [JDK Installation Guide](https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
+ * [maven Installation Guide](https://maven.apache.org/install.html)
 ###### On Mac
  * First install [HomeBrew](https://brew.sh/)
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
  
 Apart from JDK and maven `kubectl` configuration is required for `port forwarding`. Steps are mentioned below
- * [Install kubectl](https://gist.github.com/mrbobbytables/d9e5c7224dbba989cf0b8a30d7a231a4)
- * Configure kubectl for port forwarding
+ * [Install kubectl on macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+ * [Install kubectl on windows](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
+ * [Setup Guide](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1344798729/Kubectl+Installation+and+Setup+Guide)
 
-<!--Installation-->
-### Installation
-Upon installing the above-required software. Follow the below steps to configure and start execution
-* Open [git bash](https://git-scm.com/downloads) or any other terminal and execute `git clone https://github.com/egovernments/test-automation.git` to clone the project repository in the system
-* Open command prompt or terminal and run `mvn clean test`, this will start execution on `QA` by default
+<!--Clone Project-->
+### Clone Project
+To clone the framework in your local please follow the below step.
+* Open [git bash](https://git-scm.com/downloads) or any other terminal and execute the below command to clone the project repository in the system
+```
+git clone https://github.com/egovernments/test-automation.git
+```
 
 <!--Configurations-->
 ### Configurations
@@ -61,7 +78,7 @@ Upon installing the above-required software. Follow the below steps to configure
   ###### Project Level 
    Environment configuration files needs to be prepare in `local`, which is required for test execution. Please refer the points to setup below.
    * Create environment specific files with `.yaml` extension
-   * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml` etc.)
+   * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml`, `config.yaml` etc.) 
    * You can keep this file anywhere in the local system
    * Please refer the below details for initial setup and execution. Data can be change based upon the requirements.
    ###### For QA
@@ -87,24 +104,25 @@ employee:
     cityCode: citya
 # Super User credentials for login(need to create user manually)
 superUser:
-  userName: EMP111
-  password: eGov@123
-  type: EMPLOYEE
+    userName: EMP111
+    password: eGov@123
+    type: EMPLOYEE
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-  userName: EMP-1013-000262
-  password: eGov@uat123
-  type: EMPLOYEE
+    userName: EMP-1013-000262
+    password: eGov@uat123
+    type: EMPLOYEE
  ```
   
-  
+<!--Execution-->  
 ## Execution
 To start the test execution in `local` please refer the steps below. 
  * Open command prompt or terminal on project folder
  * Execute `mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<specify the test tag or tags> classpath:com/egov"`
  ###### For example 
- `mvn clean test "-DconfigPath= /User/apple/Documents/qa.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
- 
+ `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
+
+<!--List Of Tags--> 
 ## List Of Tags
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        
@@ -127,6 +145,7 @@ The listed tags are available currently in the framework
 | @fileStore			         | File store tests			       |
 | @pgservices			        | PG Service tests			       | 
 
+<!--Test Reporting-->
 ## Test Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
  * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
