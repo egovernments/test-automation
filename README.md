@@ -149,7 +149,10 @@ The listed tags are available currently in the framework
 ## Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
  * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
+ <img width="1272" alt="Screenshot 2021-03-16 at 1 24 00 PM" src="https://user-images.githubusercontent.com/68421244/111274649-42745c00-865b-11eb-8e7c-219687a2bb58.png">
+
  * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
+ <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
 
 <!-- Test Coverage -->
