@@ -7,8 +7,8 @@
   * [Prerequisites](#prerequisites)
   * [Clone Project](#clone-project)
   * [Configurations](#configurations)
-* [Execution](#execution)
 * [List Of Tags](#list-of-tags)
+* [Execution](#execution)
 * [Reporting](#reporting)
 
 
@@ -39,11 +39,11 @@ In this section we have listed down some of the major libraries which is being u
 
 <!-- Getting Started --> 
 ## Getting Started
-This framework required below prerequisites to be covered
+This framework requires below prerequisites to be covered
 
 <!-- Prerequisites --> 
 ### Prerequisites
-To set up this framework two major software needs to be installed into the system. The step by step setup guideline provided below.
+To set up this framework, two mandatory softwares need to be installed into the system. The step by step setup guideline provided below.
  ###### On Windows
  * [Download JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
  * [Download maven 3.6.3](https://maven.apache.org/download.cgi)
@@ -56,7 +56,7 @@ To set up this framework two major software needs to be installed into the syste
  
 <!--Clone Project-->
 ### Clone Project
-To clone the framework in your local please follow the below step.
+To clone the framework to your local, please follow the below step.
 * Open [git bash](https://git-scm.com/downloads) or any other terminal and execute the below command to clone the project repository in the system
 ```
 git clone https://github.com/egovernments/test-automation.git
@@ -68,12 +68,11 @@ git clone https://github.com/egovernments/test-automation.git
   * Create role action mapping as per the requirement 
   * Create a new user as per the mapped role
   ###### Project Level 
-   Environment configuration files needs to be prepare in `local`, which is required for test execution. Please refer the points to setup below.
-   * Create environment specific files with `.yaml` extension
-   * This file can be placed anywhere in the local directory
+   Environment configuration files needs to be created in `local` by following below steps.
+   * Create environment specific files with `.yaml` extension anywhere in the local directory 
    * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml`, `config.yaml` etc.) 
    * Please keep the environment specific data in the config file as per below format.  
-   ###### For QA
+   ###### For example
    ```yaml
     host: https://qa.xxx.xxx/
     stateCode: pb
@@ -90,14 +89,6 @@ employee:
     type: <user type goes here>
  ```
  
-<!--Execution-->  
-## Execution
-To start the test execution in `local` please refer the steps below. 
- * Open command prompt or terminal on project folder
- * Execute `mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<specify the test tag or tags> classpath:com/egov"`
- ###### For example 
- `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
-
 <!--List Of Tags--> 
 ## List Of Tags
 Please use the appropriate tags to execute tests based on the requirement.
@@ -137,6 +128,17 @@ Please use the appropriate tags to execute tests based on the requirement.
 | @regression           | Runs all regression tests across all services         |
 | @smoke                | Runs all smoke tests across all services (coming soon)|
 
+
+<!--Execution-->  
+## Execution
+To start the test execution in `local`,  
+ * Open command prompt or terminal on project folder
+ * Execute
+ ```
+ mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<tag1,tag2> classpath:com/egov"
+ ```
+ ###### For example 
+ `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
 
 <!--Reporting-->
 ## Reporting
