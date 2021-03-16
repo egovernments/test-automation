@@ -127,7 +127,7 @@ To start the test execution in `local` please refer the steps below.
 The below listed categories of tags are available currently in the framework.
 Please use the appropriate tags needed for execution.
 
-*** individual service tags ***
+*** Individual service tags ***
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         | 
 | @reports      		      | Reports tests 			         | 
