@@ -2,10 +2,10 @@
 ##### Table of Contents
 * [About the Project](#about-the-project)
   * [Technology Used](#technology-used)
-  * [Dependencies Used](#depensencies-used)
+  * [Dependencies Used](#dependencies-used)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Clone Project](#cole-project)
+  * [Clone Project](#clone-project)
   * [Configurations](#configurations)
 * [Execution](#execution)
 * [List Of Tags](#list-of-tags)
