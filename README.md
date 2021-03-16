@@ -9,7 +9,7 @@
   * [Configurations](#configurations)
 * [Execution](#execution)
 * [List Of Tags](#list-of-tags)
-* [Reporting](#test-reporting)
+* [Reporting](#reporting)
 * [Test Coverage](#test-coverage)
 * [Upcoming Services](#upcoming-services)
 
@@ -145,8 +145,8 @@ The listed tags are available currently in the framework
 | @fileStore			         | File store tests			       |
 | @pgservices			        | PG Service tests			       | 
 
-<!--Test Reporting-->
-## Test Reporting
+<!--Reporting-->
+## Reporting
 To determine the test results and analysis the test faliures test reporting is required. This framework can generate two type of test reports
  * Post execution framework will automatically generate `karate-summary.html` file which can be found under `./target/surefire-reports/`
  * A folder will automatically create under `./target/` folder along with timestamp which will contain `cucumber-html-reports` 
