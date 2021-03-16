@@ -124,10 +124,12 @@ To start the test execution in `local` please refer the steps below.
 
 <!--List Of Tags--> 
 ## List Of Tags
-The listed tags are available currently in the framework
+The below listed categories of tags are available currently in the framework.
+Please use the appropriate tags needed for execution.
+
+*** individual service tags ***
 | Tags          		      | Description   			         |        
-| ------------- 		      |:-------------:			         |
-| @regression           | All tests                 | 
+| ------------- 		      |:-------------:			         | 
 | @reports      		      | Reports tests 			         | 
 | @searchMdms   		      | Search mdms tests         | 
 | @Searcher     		      | Searcher tests            |
@@ -146,6 +148,20 @@ The listed tags are available currently in the framework
 | @fileStore			         | File store tests			       |
 | @pgservices			        | PG Service tests			       |
 | @propertyCalculator   | Property Calculator tests |
+
+*** Service Category Tags ***
+| Tags          		      | Description   			                           |        
+| ------------- 		      |:-------------:			                           |
+| @core-services        | Runs all services under core services       |
+| @business-services    | Runs all services under business services   |
+| @municipal-services   | Runs all services under municipal services  |
+
+*** Test Category Tags ***
+| Tags          		      | Description   			                                     |        
+| ------------- 		      |:-------------:			                                     |
+| @regression           | Runs all regression tests across all services         |
+| @smoke                | Runs all smoke tests across all services (coming soon)|
+
 
 <!--Reporting-->
 ## Reporting
