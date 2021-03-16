@@ -28,7 +28,7 @@ DIGIT Test Automation framework majorly deals with various API services validati
  * [JUnit](https://junit.org/junit4/)
 
 ### Dependencies Used
-In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency`. These depencies can be find under `pom.xml`. 
+In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency`. These depencies can be found under `pom.xml`. 
 * `karate-core` : This is responsible to provide core features of `karate`.
 * `karate-junit4` : To facilate `JUnit` testing this dependency is required.
 * `karate-gatling` : To perform API Performance test this dependency is used. For more details on performance test with karate checkout [here](https://intuit.github.io/karate/karate-gatling/)
