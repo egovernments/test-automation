@@ -127,6 +127,7 @@ To start the test execution in `local` please refer the steps below.
 The listed tags are available currently in the framework
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         |
+| @regression           | All tests                 | 
 | @reports      		      | Reports tests 			         | 
 | @searchMdms   		      | Search mdms tests         | 
 | @Searcher     		      | Searcher tests            |
@@ -143,7 +144,8 @@ The listed tags are available currently in the framework
 | @idGenerate			        | ID generation tests		     |
 | @egovWorkflowProcess  | Workflow tests			         |
 | @fileStore			         | File store tests			       |
-| @pgservices			        | PG Service tests			       | 
+| @pgservices			        | PG Service tests			       |
+| @propertyCalculator   | Property Calculator tests |
 
 <!--Reporting-->
 ## Reporting
