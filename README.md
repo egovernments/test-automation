@@ -25,17 +25,17 @@ DIGIT Test Automation framework majorly deals with various API services validati
  * [JUnit](https://junit.org/junit4/)
 
 ### Dependencies Used
-In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency`. These depencies can be found under `pom.xml`. 
-* `karate-core` : This is responsible to provide core features of `karate`.
-* `karate-junit4` : To facilate `JUnit` testing this dependency is required.
-* `karate-gatling` : To perform API Performance test this dependency is used. For more details on performance test with karate checkout [here](https://intuit.github.io/karate/karate-gatling/)
-* `karate-apache` : To make use of karate in `maven` project this dependency is required.
-* `karate-netty` : It helps to `mock` API calls locally. For more details please checkout [here](https://intuit.github.io/karate/karate-netty/) 
-* `cucumber-jvm-parallel-plugin` : To facilate `parallel execution` this dependency is required.
-* `poi` and `poi-ooxml` : Used to work with the latest and older versions of `excel` file.
-* `log4j-api` : Provide an interface which is required to implementers to create a logging implementation.
-* `allure-junit4` : To facilate `Test Reports` along with `JUnit` runner this is required.
-* `allure-cucumber4-jvm` : To facilate `Test Reports` along with `Cucumber JVM` this is required. This dependency helps to log `feature` file steps into the test report. 
+In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency` that is defined in `pom.xml`. 
+* `karate-core` : To provide core features of `karate`.
+* `karate-junit4` : To facilitate `JUnit` testing this dependency is required.
+* `karate-gatling` : To perform API Performance test. For more details on performance test with karate, checkout [here](https://intuit.github.io/karate/karate-gatling/)
+* `karate-apache` : To make use of karate in `maven` project.
+* `karate-netty` : To `mock` API calls locally. For more details please checkout [here](https://intuit.github.io/karate/karate-netty/) 
+* `cucumber-jvm-parallel-plugin` : To facilitate `parallel execution`.
+* `poi` and `poi-ooxml` : To work with the latest and older versions of `excel` file.
+* `log4j-api` : An interface that handles logs.
+* `allure-junit4` : To facilitate `Test Reports` along with `JUnit` runner.
+* `allure-cucumber4-jvm` : To facilitate `Test Reports` along with `Cucumber JVM` and helps to log `feature` file steps into the test report. 
 
 <!-- Getting Started --> 
 ## Getting Started
@@ -43,7 +43,7 @@ This framework requires below prerequisites to be covered
 
 <!-- Prerequisites --> 
 ### Prerequisites
-To set up this framework, two mandatory softwares need to be installed into the system. The step by step setup guideline provided below.
+To set up this framework, two mandatory softwares need to be installed into the system. Follow below step by step setup guidelines.
  ###### On Windows
  * [Download JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
  * [Download maven 3.6.3](https://maven.apache.org/download.cgi)
@@ -79,21 +79,21 @@ git clone https://github.com/egovernments/test-automation.git
     cityCode: amritsar
 # Super User credentials for login(need to create user manually)
 superUser:
-    userName: <username goes here>
-    password: <password goes here>
-    type: <user type goes here>
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-    userName: <username goes here>
-    password: <password goes here>
-    type: <user type goes here>
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
  ```
  
 <!--List Of Tags--> 
 ## List Of Tags
 Please use the appropriate tags to execute tests based on the requirement.
 
-*** Individual service tags ***
+###### Individual service tags
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         | 
 | @reports      		      | Reports tests 			         | 
@@ -115,14 +115,14 @@ Please use the appropriate tags to execute tests based on the requirement.
 | @pgservices			        | PG Service tests			       |
 | @propertyCalculator   | Property Calculator tests |
 
-*** Service Category Tags ***
+###### Service Category Tags
 | Tags          		      | Description   			                           |        
 | ------------- 		      |:-------------:			                           |
 | @core-services        | Runs all services under core services       |
 | @business-services    | Runs all services under business services   |
 | @municipal-services   | Runs all services under municipal services  |
 
-*** Test Category Tags ***
+###### Test Category Tags
 | Tags          		      | Description   			                                     |        
 | ------------- 		      |:-------------:			                                     |
 | @regression           | Runs all regression tests across all services         |
@@ -132,8 +132,8 @@ Please use the appropriate tags to execute tests based on the requirement.
 <!--Execution-->  
 ## Execution
 To start the test execution in `local`,  
- * Open command prompt or terminal on project folder
- * Execute
+ * Open command prompt or terminal 
+ * Navigate to project folder and execute,
  ```
  mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<tag1,tag2> classpath:com/egov"
  ```
@@ -142,9 +142,12 @@ To start the test execution in `local`,
 
 <!--Reporting-->
 ## Reporting
-Follow below step to find reports generated post test execution to analyze the results.
+Follow below step to find location of reports generated post test execution to analyze the results.
   
-* A folder will automatically create under `./target/` folder along with `timestamp/cucumber-html-reports` which will contain `overview-features.html`. A snapshot is attached for   reference.
+* A folder with `timestamp` will be created under `./target/`. 
+* Navigate to `./target/<timestamp>/cucumber-html-reports`
+* Open `overview-features.html`
+#### A snapshot is attached for reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
 
