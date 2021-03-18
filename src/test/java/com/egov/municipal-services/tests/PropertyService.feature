@@ -461,7 +461,6 @@ Scenario: Create Active Property
 
 @verifyProperty
 Scenario: Verify the create property and procceed for the next steps
-    * print "Verifing property"
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
 
@@ -479,6 +478,21 @@ Scenario: Approve the property as an Approver
 Scenario: Assess the property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
+
+@sendBackProperty
+Scenario: Send back the application to the Citizen
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@sendBackToCitizen')
+
+@reopenProperty
+Scenario: Reopen the property application 
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@reopenApplication')
+
+@rejectProperty
+Scenario: Reject the property application
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@rejectApplication')
 
 
 @createPropertyAndAssess

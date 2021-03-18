@@ -192,4 +192,7 @@ endPoints:
     search: pt-calculator-v2/billingslab/_search
   
   propertyCalculatorPropertyTax:
-    calculate: pt-calculator-v2/propertytax/mutation/_calculate  
+    calculate: pt-calculator-v2/propertytax/mutation/_calculate
+  
+  propertyCalculator:
+    estimate: pt-calculator-v2/propertytax/v2/_estimate

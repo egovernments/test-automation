@@ -5,7 +5,7 @@ Background:
   * def updatePropertyRequest = read('../../municipal-services/requestPayload/property-services/update.json')
   * def assessmentRequest = read('../../municipal-services/requestPayload/property-services/createAssessment.json')
   * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
-
+  * def transferOwnershipRequest = read('../../municipal-services/requestPayload/property-services/ownership.json')
 @createPropertySuccessfully 
 Scenario: Create a property successfully 
 	Given url createpropertyUrl 
@@ -170,6 +170,57 @@ Scenario: Approve a property
 	And  def Property = propertyServiceResponseBody.Properties[0] 
 	And  def propertyId = Property.propertyId 
 	And  def consumerCode = propertyId 
+
+@sendBackToCitizen 
+Scenario: Application send back to citizen
+	* def workflow = updatePropertyRequest.Property.workflow 
+	* eval updatePropertyRequest.Property = Property 
+	* eval updatePropertyRequest.Property.workflow = workflow 
+	# Since the action is specifically 'verify', it is hardcoded
+	* eval updatePropertyRequest.Property.workflow.action = 'SENDBACKTOCITIZEN' 
+	Given  url updatePropertyUrl 
+	And  request updatePropertyRequest 
+	When  method post 
+	Then  status 200 
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def sendBackResponseBody = response 
+	And  def Property = propertyServiceResponseBody.Properties[0] 
+	And  def propertyId = Property.propertyId 
+	And  def consumerCode = propertyId 
+
+@reopenApplication 
+Scenario: Reopen the application
+	* def workflow = updatePropertyRequest.Property.workflow 
+	* eval updatePropertyRequest.Property = Property 
+	* eval updatePropertyRequest.Property.workflow = workflow 
+	# Since the action is specifically 'verify', it is hardcoded
+	* eval updatePropertyRequest.Property.workflow.action = 'REOPEN' 
+	Given  url updatePropertyUrl 
+	And  request updatePropertyRequest 
+	When  method post 
+	Then  status 200 
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def reopenResponseBody = response 
+	And  def Property = propertyServiceResponseBody.Properties[0] 
+	And  def propertyId = Property.propertyId 
+	And  def consumerCode = propertyId
+
+@rejectApplication 
+Scenario: Reject the application
+	* def workflow = updatePropertyRequest.Property.workflow 
+	* eval updatePropertyRequest.Property = Property 
+	* eval updatePropertyRequest.Property.workflow = workflow 
+	# Since the action is specifically 'verify', it is hardcoded
+	* eval updatePropertyRequest.Property.workflow.action = 'REJECT' 
+	Given  url updatePropertyUrl 
+	And  request updatePropertyRequest 
+	When  method post 
+	Then  status 200 
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def rejectResponseBody = response 
+	And  def Property = propertyServiceResponseBody.Properties[0] 
+	And  def propertyId = Property.propertyId 
+	And  def consumerCode = propertyId
 	
 @createAssessmentSuccessfully 
 Scenario: Create assessment 
@@ -185,3 +236,26 @@ Scenario: Create assessment
 	When  method post 
 	Then  status 201
 	And   def assessmentResponse = response
+
+@transferOwnership 
+Scenario: Application send back to citizen 
+	* def institution = transferOwnershipRequest.Property.institution
+	* def ownersTemp = transferOwnershipRequest.Property.ownersTemp
+	* def additionalDetails = transferOwnershipRequest.Property.additionalDetails
+	* def ownershipCategory = transferOwnershipRequest.Property.ownershipCategory
+	* def altContactNumber = transferOwnershipRequest.Property.owners[0].altContactNumber
+	* eval transferOwnershipRequest.Property = Property 
+	* eval transferOwnershipRequest.Property.institution = institution
+	* eval transferOwnershipRequest.Property.ownersTemp = ownersTemp
+	* eval transferOwnershipRequest.Property.additionalDetails = additionalDetails
+	* eval transferOwnershipRequest.Property.creationReason = 'MUTATION'
+	* eval transferOwnershipRequest.Property.ownershipCategory = ownershipCategory
+	* eval transferOwnershipRequest.Property.owners[0].altContactNumber = altContactNumber
+	Given  url updatePropertyUrl
+	And params transferParameters 
+	And  request transferOwnershipRequest 
+	* print transferOwnershipRequest
+	When  method post 
+	Then  status 200 
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def transferResponseBody = response 

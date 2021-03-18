@@ -8,10 +8,10 @@ Background:
     * def caseDetails = ""
     * def marketValue = 2000
     * def documentDate = getCurrentEpochTime()
-    * def documentValue = "345"
-    * def documentNumber = "2384"
+    * def documentValue = ranInteger(3)
+    * def documentNumber = randomString(5)
     * def isMutationInCourt = "NO"
-    * def reasonForTransfer = "FAMILYSETTLEMENT"
+    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[0].code
     * def previousPropertyUuid = generateUUID()
     * def govtAcquisitionDetails = ""
     * def isPropertyUnderGovtPossession = "NO"
