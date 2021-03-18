@@ -16,3 +16,4 @@ errorMessages:
   invalidAcknowledgementNumber: "Acknowledgement Number is Invalid OR NULL, Please provide the valid number"
   workflowMandatory: Workflow information is mandatory for update process
   cannotUpdate: The current state of workflow does not allow changes to property
+  authorizedError: Invalid login credentials
