@@ -2,15 +2,15 @@
 "RequestInfo":{
        "authToken":"#(authToken)"
     },
-       "banks":[
+       "accountDetailTypes":[
          {
             "id":"#(bankId)", 
-            "code":"#(bankCode)",
             "name":"#(bankName)",
+            "tableName":"#(tableName)",
+            "fullyQualifiedName":"#(fullyQualifiedName)",
+            "tenantId": "#(tenantId)",
             "description":"#(bankDescription)",
-            "active":"#(isActive)",
-            "type":"#(bankType)",
-            "tenantId": "#(tenantId)"
+            "active":"#(active)"
         }
     ]
 }
