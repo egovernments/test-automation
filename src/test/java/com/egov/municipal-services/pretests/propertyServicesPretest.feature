@@ -10,7 +10,6 @@ Background:
 Scenario: Create a property successfully 
 	Given url createpropertyUrl 
 	And request createPropertyRequest
-	* print createPropertyRequest
 	When method post 
 	Then status 201 
 	And def propertyServiceResponseHeaders = responseHeaders 
