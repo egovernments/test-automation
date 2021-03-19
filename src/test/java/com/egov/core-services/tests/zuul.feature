@@ -69,7 +69,7 @@ Feature: Business Services - HRMS
     * def businessService = mdmsStatePropertyTax.PTWorkflow[1].businessService
     * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')
     
-    @zuul_01 @zuul @regression @positive  @smoke
+    @zuul_01 @zuul @regression @positive @smoke
         Scenario: Test to create a employee
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
     * def code = hrmsResponseBody.Employees[0].user.userName
