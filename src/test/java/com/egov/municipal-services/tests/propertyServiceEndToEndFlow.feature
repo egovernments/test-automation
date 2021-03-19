@@ -60,14 +60,20 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
     * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength
     * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to verify the PT application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
+    # Steps to forward the PT application as a Field Inspector
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
+    # Steps to approve the property application as an approver
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
+    # Steps to re-login as Cityzen type of user
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen') 
+    # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')  
     * print propertyId
     * def consumerCode = propertyId
@@ -80,28 +86,34 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to Fetach bill
     * def consumerCode = propertyId
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
+    # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
     # Steps to initiate Payment
     * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
+    #TODO: Need to add Property Tax Payment steps through Third party payment gateway
     # Steps to update the Payment
     * call read('../../core-services/pretests/pgServiceUpdate.feature@updateTransactionOnly')
     * match pgServicesUpdateResponseBody.Transaction[0].txnStatusMsg != propertyServicesConstants.errorMessages.transactionGatewayFailed
-    # Payment is blocked for automation. It cannot be automate due to 3rd party payment gatway dependencies
     
-
 @ceatePropertAndPayPartialTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Partial Payment)
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to verify the PT application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
+    # Steps to forward the PT application as a Field Inspector
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
+    # Steps to approve the property application as an approver
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
+    # Steps to re-login as Cityzen type of user
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen') 
+    # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')  
     * print propertyId
     * def consumerCode = propertyId
@@ -114,30 +126,35 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     # Steps to Fetach bill
     * def consumerCode = propertyId
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
+    # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
+    # Re defining amount to make partial or customised payment.  
     * def txnAmount = '200'
     * def amountPaid = '200'
     # Steps to initiate Payment
     * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
+    #TODO: Need to add Property Tax Payment steps through Third party payment gateway
     # Steps to update the Payment
     * call read('../../core-services/pretests/pgServiceUpdate.feature@updateTransactionOnly')
     * match pgServicesUpdateResponseBody.Transaction[0].txnStatusMsg != propertyServicesConstants.errorMessages.transactionGatewayFailed
-    # Payment is blocked for automation. It cannot be automate due to 3rd party payment gatway dependencies
     
-
 @searchReceiptAndCancel @propertyTaxEndToEnd 
 Scenario: Receipt search and cancellation
+    # Steps to create an property
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    #* call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
+    # Preparing search parameters
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to ACTIVE the created property and assess
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
+    # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
+    # Steps to create a Payment based upon the bill id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')  
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
     * def parameters = {tenantId: '#(tenantId)',receiptNumber: '#(receiptNumber)'}
@@ -145,106 +162,133 @@ Scenario: Receipt search and cancellation
     * call read('../../business-services/pretest/collectionServicesPretest.feature@searchPaymentWithParams')
     * assert searchResponseBody.Payments[0].paymentDetails.length != 0
     * def paymentId = collectionServicesResponseBody.Payments[0].id
+    # Steps to Cancel the reciept 
     * call read('../../business-services/pretest/collectionServicesPretest.feature@processworkflow')
     * print collectionServicesResponseBody
+    # Validate the receipt number and payment status which should be `CANCELLED` now
     * match collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
     * match collectionServicesResponseBody.Payments[0].paymentStatus == 'CANCELLED'
 
 @sendBackByDocVerifierAndReopen @propertyTaxEndToEnd
 Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Reopen
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to `Send back the property to Cititzen by a Doc Verifier`
     * call read('../../municipal-services/tests/PropertyService.feature@sendBackProperty')
-    #* print sendBackResponseBody
     * def businessIds = sendBackResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the property status which should be `SENDBACKTOCITIZEN`
     * match processSearchResponseBody.ProcessInstances[0].action == 'SENDBACKTOCITIZEN'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'CORRECTIONPENDING'
+    # Re-login as a Citizen
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
+    # Steps to Reopen the property
     * call read('../../municipal-services/tests/PropertyService.feature@reopenProperty')
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the property status which should be `REOPEN`
     * match processSearchResponseBody.ProcessInstances[0].action == 'REOPEN'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'OPEN'
 
 @sendBackByDocVerifierAndEdit @propertyTaxEndToEnd
 Scenario: PT- Doc- Verifier- Send Back to Citizen - Citizen Edit
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to `Send back the property to Cititzen by a Doc Verifier`
     * call read('../../municipal-services/tests/PropertyService.feature@sendBackProperty')
     * print propertyId
     * def businessIds = sendBackResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the property status which should be `SENDBACKTOCITIZEN`
     * match processSearchResponseBody.ProcessInstances[0].action == 'SENDBACKTOCITIZEN'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'CORRECTIONPENDING'
+    # Re-login as a Citizen
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
+    # Steps to edit the property and again submit it
     * call read('../../municipal-services/tests/PropertyService.feature@reopenProperty')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Validate the property status which should be `INWORKFLOW`
     * match propertyServiceResponseBody.Properties[0].status == 'INWORKFLOW'
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the property state which should be `OPEN`
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'OPEN'
-
 
 @sendBackAndRejectByCitizen @propertyTaxEndToEnd
 Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Rejects
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to `Send back the property to Cititzen by a Doc Verifier`
     * call read('../../municipal-services/tests/PropertyService.feature@sendBackProperty')
     * print propertyId
     * def businessIds = sendBackResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the property status which should be `SENDBACKTOCITIZEN`
     * match processSearchResponseBody.ProcessInstances[0].action == 'SENDBACKTOCITIZEN'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'CORRECTIONPENDING'
+    # Re-login as Citizen 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
+    # Steps to Reject the property by Citizen
     * call read('../../municipal-services/tests/PropertyService.feature@rejectProperty')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Validate the status which should be `INACTIVE`
     * match propertyServiceResponseBody.Properties[0].status == 'INACTIVE'
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the state which should be `REJECTED`
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
 @rejectByDocVerifier @propertyTaxEndToEnd
 Scenario: PT- Doc-Verifier- Reject
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to `Reject ` the property application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@rejectProperty')
     * print propertyId
     * def businessIds = rejectResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the action and state which should be `REJECT` and `REJECTED`
     * match processSearchResponseBody.ProcessInstances[0].action == 'REJECT'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
 @rejectByApprover @propertyTaxEndToEnd
 Scenario: PT-Approver-Reject
+    # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
+    # Steps to `Reject ` the property application as a Approver
     * call read('../../municipal-services/tests/PropertyService.feature@rejectProperty')
     * print propertyId
     * def businessIds = rejectResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
+    # Validate the action and state which should be `REJECT` and `REJECTED`
     * match processSearchResponseBody.ProcessInstances[0].action == 'REJECT'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
 #TODO: Need to revisit again. Once Tax payment module is fixed
 @transferOwnerShip @propertyTaxEndToEnd
 Scenario: PT- Transfer Of Ownership- Citizen
+    # Steps to create an Active property and Pay full tax 
     * call read('../../municipal-services/tests/propertyServiceEndToEndFlow.feature@ceatePropertAndPayFullTaxAsCitizen')
     * print propertyId
     * def mobileNumber = '9999999999'
@@ -252,8 +296,10 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[2].code
 	* set transferOwnershipRequest.Property['ownersTemp'][0].permanentAddress = permanentAddress
     * def transferParameters = {tenantId:'#(tenantId)',propertyIds:'#(propertyId)'}
+    # Steps to transfer the owner ship 
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@transferOwnership')
     # TODO: Need to fetch acknowldgementNumber, which is only possible once Property tax paid successfully
+    # Steps to Re-login with alternate Citzen user
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen')
     * def searchPropertyParams = { acknowledgementIds: '#(acknowldgementNumber)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
@@ -295,14 +341,12 @@ Scenario: PT- Create for different ownership category
 
 @propertyCreateAsCounterEmployee @propertyTaxEndToEnd
 Scenario: Login as a counter employee and pay propety tax
-    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
-    * call read('../../common-services/pretests/authenticationToken.feature') 
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
     * print propertyId
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')

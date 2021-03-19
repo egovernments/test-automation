@@ -37,7 +37,6 @@ function() {
          //username & password for Existing User Profile
          config.employeeUserName = envProps.employee.userName;
          config.employeePassword = envProps.employee.password;
-         //config.existingUserTenantId = envProps.existingUser.tenantId
          config.employeeType = envProps.employee.type;
 
          // username & password for global super user
