@@ -296,7 +296,7 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[2].code
 	* set transferOwnershipRequest.Property['ownersTemp'][0].permanentAddress = permanentAddress
     * def transferParameters = {tenantId:'#(tenantId)',propertyIds:'#(propertyId)'}
-    # Steps to transfer the owner ship 
+    # Steps to transfer the owner ship to another citizen
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@transferOwnership')
     # TODO: Need to fetch acknowldgementNumber, which is only possible once Property tax paid successfully
     # Steps to Re-login with alternate Citzen user
@@ -332,15 +332,20 @@ Scenario: PT- Transfer Of Ownership- Citizen
 
 @differentOwnershipCategory @propertyTaxEndToEnd
 Scenario: PT- Create for different ownership category 
+    # Defining another ownership category
     * def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[2].code
+    # Steps to login as a Citizen and create a Property
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Steps to search the property details
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Validate the status as `INWORKFLOW`
     * match propertyServiceResponseBody.Properties[0].status == 'INWORKFLOW'
 
 @propertyCreateAsCounterEmployee @propertyTaxEndToEnd
 Scenario: Login as a counter employee and pay propety tax
+    # Create an Active Property as a Counter Employee
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
@@ -349,6 +354,7 @@ Scenario: Login as a counter employee and pay propety tax
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
     * print propertyId
+    # Steps to Estimate the property tax
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
     * def taxAmount = propertyTaxEstimateResponse.Calculation[0].taxAmount
     * def businessService = businessService.split(".")[0]
@@ -357,20 +363,26 @@ Scenario: Login as a counter employee and pay propety tax
     # Steps to Fetach bill
     * def consumerCode = propertyId
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
+    # Steps to fetch the bill id
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
+    # Steps to create a payment based on the bill id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
     * match collectionServicesResponseBody.Payments[0].totalAmountPaid == taxAmount
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfForPtSuccessfully')
+    # Validate the response message and length of role array 
     * match pdfCreateResponseBody.message == pdfCreateConstant.expectedMessages.message
     * match pdfCreateResponseBody.ResponseInfo.userInfo.roles.length == '##[_ > 0]'
     
 @mCollect @propertyTaxEndToEnd
 Scenario: mCollect- Universal Collection  
+    # Steps to create Billing service demand
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
+    # Steps to fetch the bill id
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
+    # Steps to create a payment based on the bill id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
     * def parameters = {tenantId: '#(tenantId)',receiptNumber: '#(receiptNumber)'}
@@ -385,4 +397,5 @@ Scenario: mCollect- Universal Collection
     # Validate that Payment details should not present in the response body as receipt number is invalid
     * match searchResponseBody.Payments[0] == '#notpresent'
     * def key = pdfCreateConstant.parameters.valid.keyForTl
+    # Steps to create PDF
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfSuccessfully')
