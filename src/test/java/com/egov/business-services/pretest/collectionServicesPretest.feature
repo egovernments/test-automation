@@ -43,6 +43,7 @@ Scenario: Common test to create a Payment
    * set createPaymentRequest.Payment.totalAmountPaid = amount
   Given url payment
   And request createPaymentRequest
+  * print createPaymentRequest
   When method post
   Then assert responseStatus == 200
   And def collectionServicesResponseHeader = responseHeaders

@@ -3,6 +3,7 @@ Background:
   # reading javascript utils for using generic methods
   * def jsUtils = read('classpath:jsUtils.js')
   * def pdfCreateConstant = read('../../core-services/constants/pdfService.yaml')
+  * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
 
 @pdf_create_PT_01  @coreServices @regression @positive  @pdfservice
 Scenario: Verify a pdf is generated successfully for Property Tax  module

@@ -450,8 +450,8 @@ Scenario: Update Property with duplicate worflow action
 
 @createActiveProperty
 Scenario: Create Active Property
-    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
@@ -459,15 +459,41 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
 
-@Verify
-Scenario: Verify property
+@verifyProperty
+Scenario: Verify the create property and procceed for the next steps
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
 
-@forward
-Scenario: forward
+@forwardProperty
+Scenario: Forward the property to the respective approver for further approval
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
+
+@approveProperty
+Scenario: Approve the property as an Approver
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
+
+@assessProperty
+Scenario: Assess the property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
+
+@sendBackProperty
+Scenario: Send back the application to the Citizen
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@sendBackToCitizen')
+
+@reopenProperty
+Scenario: Reopen the property application 
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@reopenApplication')
+
+@rejectProperty
+Scenario: Reject the property application
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@rejectApplication')
+
 
 @createPropertyAndAssess
 Scenario: Create Active Property

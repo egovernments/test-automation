@@ -41,7 +41,7 @@ Background:
     * def searchBillingSlabMutationPayload = read('../../municipal-services/requestPayload/property-calculator/mutationBillingSlab/search.json')
     * def updateBillingSlabMutationPayload = read('../../municipal-services/requestPayload/property-calculator/mutationBillingSlab/update.json')
 
-@BillingSlabMutation_Create_01 @billingSlabMutationCreate @propertyCalculator
+@BillingSlabMutation_Create_01 @billingSlabMutationCreate @propertyCalculator @positive @regression
 Scenario: Verify creating a mutation billing slab for property tax through API call
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
@@ -61,7 +61,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     * match mutationCreateResponse.MutationBillingSlab[0].rate == rate
     * match mutationCreateResponse.MutationBillingSlab[0].type == type
 
-@BillingSlabMutation_create_InValidTenant_02 @billingSlabMutationCreate @propertyCalculator
+@BillingSlabMutation_create_InValidTenant_02 @billingSlabMutationCreate @propertyCalculator @negative @regression
 Scenario: Verify creating a mutation billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
     # Set tenantId as Invalid
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].tenantId = invalidTenaniId
@@ -70,7 +70,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     # Validate the error
     * match mutationCreateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@BillingSlabMutation_Create_nullValues_03 @billingSlabMutationCreate @propertyCalculator
+@BillingSlabMutation_Create_nullValues_03 @billingSlabMutationCreate @propertyCalculator @negative @regression
 Scenario: Verify creating a mutation billing slab for property tax by passing null values in the request
     # Set values for the below properties as null
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].fixedAmount = null
@@ -82,7 +82,7 @@ Scenario: Verify creating a mutation billing slab for property tax by passing nu
 
 # Search Billing Slab mutation
 
-@BillingSlabMutation_Search_01 @positive @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_01 @positive @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify Searching for billing slab mutation details through api call
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
@@ -106,7 +106,7 @@ Scenario: Verify Searching for billing slab mutation details through api call
     * match mutationSearchResponse.MutationBillingSlab[0].rate == rate
     * match mutationSearchResponse.MutationBillingSlab[0].type == type
 
-@BillingSlabMutation_Search_AllRecords_02 @positive @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_AllRecords_02 @positive @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify Searching for billing slab details for a particular tenant id through api call 
     # Defining the searchParams with tenantId
     * def searchParams = {tenantId: '#(tenantId)'}
@@ -116,7 +116,7 @@ Scenario: Verify Searching for billing slab details for a particular tenant id t
     * match mutationSearchResponse.MutationBillingSlab.size() != 0
 
 
-@BillingSlabMutation_Search_NoTenant_03 @negative @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_NoTenant_03 @negative @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify Searching for mutation billing slab details by not passing tenant id and check for errors 
     # Defining the searchParams with no query parameters
     * def searchParams = {}
@@ -125,7 +125,7 @@ Scenario: Verify Searching for mutation billing slab details by not passing tena
     # Validate the error
     * match mutationSearchResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.notNullTenantId
 
-@BillingSlabMutation_Search_InValidTenant_04 @negative @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_InValidTenant_04 @negative @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify searching mutation billing slab for a invalid or non existant tenant id and check for errors 
     # Preparing searchParams with invalidTenantID
     * def searchParams = {tenantId: '#(invalidTenantId)'}
@@ -134,7 +134,7 @@ Scenario: Verify searching mutation billing slab for a invalid or non existant t
     # Validate the error
     * match mutationSearchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
-@BillingSlabMutation_Search_EmptyResponse_05 @positive @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_EmptyResponse_05 @positive @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify searching mutation billing slab by passing null for billing slab id
     # Preparing searchParams with tenantId and invalid billing slab mutation id
     * def searchParams = {tenantId: '#(tenantId)', id: '#(invalidId)'}
@@ -143,7 +143,7 @@ Scenario: Verify searching mutation billing slab by passing null for billing sla
     # Validate the result
     * match mutationSearchResponse.MutationBillingSlab.size() == 0
 
-@BillingSlabMutation_Search_Multiple_06 @positive @billingSlabMutationSearch @propertyCalculator
+@BillingSlabMutation_Search_Multiple_06 @positive @billingSlabMutationSearch @propertyCalculator @regression
 Scenario: Verify searching billing slab by passing multiple mutation billing slab ids
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
@@ -163,7 +163,7 @@ Scenario: Verify searching billing slab by passing multiple mutation billing sla
 
 # Update Billing slabs mutation
 
-@BillingSlabMutation_Update_01 @positive @billingSlabMutationUpdate @propertyCalculator
+@BillingSlabMutation_Update_01 @positive @billingSlabMutationUpdate @propertyCalculator @regression
 Scenario: Verify creating a mutation billing slab for property tax through API call
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
@@ -186,7 +186,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     * match mutationUpdateResponse.MutationBillingSlab[0].fixedAmount == updatedFixedAmount
     * match mutationUpdateResponse.MutationBillingSlab[0].rate == updatedRate
 
-@BillingSlabMutation_update_InValidTenant_02 @negative @billingSlabMutationUpdate @propertyCalculator
+@BillingSlabMutation_update_InValidTenant_02 @negative @billingSlabMutationUpdate @propertyCalculator @regression
 Scenario: Verify updating a mutation billing slab for property tax through API call by passing an invalid or non existant tenant id and check for error
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
@@ -198,7 +198,7 @@ Scenario: Verify updating a mutation billing slab for property tax through API c
     # Validate the result
     * match mutationUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@BillingSlabMutation_update_InValidId_03 @negative @billingSlabMutationUpdate @propertyCalculator
+@BillingSlabMutation_update_InValidId_03 @negative @billingSlabMutationUpdate @propertyCalculator @regression
 Scenario: Verify updating a mutation billing slab for property tax through API call by passing an invalid or non existant id and check for error
     # Set invalid milling slab mutation id
     * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = invalidIdToUpdate
@@ -210,7 +210,7 @@ Scenario: Verify updating a mutation billing slab for property tax through API c
     * match mutationUpdateResponse.Errors[0].message == errorForInvalidId
     * match mutationUpdateResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.invalidIdCode
 
-@BillingSlabMutation_update_nullValues_04 @negative @billingSlabMutationUpdate @propertyCalculator
+@BillingSlabMutation_update_nullValues_04 @negative @billingSlabMutationUpdate @propertyCalculator @regression
 Scenario: Verify updating a mutation billing slab for property tax by passing null values in the request
     # Steps to create billing slab mutation
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@createBillingSlabMutation')
