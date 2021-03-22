@@ -36,11 +36,6 @@ Background:
 
 @createPayment
 Scenario: Common test to create a Payment 
-   * def amount = fetchBillResponse.Bill[0].totalAmount
-   * set createPaymentRequest.Payment.paymentDetails[0].totalDue = amount
-   * set createPaymentRequest.Payment.paymentDetails[0].totalAmountPaid = amount
-   * set createPaymentRequest.Payment.totalDue = amount
-   * set createPaymentRequest.Payment.totalAmountPaid = amount
   Given url payment
   And request createPaymentRequest
   * print createPaymentRequest

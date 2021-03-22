@@ -7,8 +7,8 @@
       {
         "businessService": "#(businessService)",
         "billId": "#(billId)",
-        "totalDue": "#(billedAmount)",
-        "totalAmountPaid": "#(billedAmount)"
+        "totalDue": "#(totalDue)",
+        "totalAmountPaid": "#(totalAmountPaid)"
       }
     ],
     "tenantId": "#(tenantId)",

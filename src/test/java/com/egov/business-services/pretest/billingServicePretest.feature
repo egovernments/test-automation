@@ -34,6 +34,9 @@ Background:
     And request fetchBillRequest
     When method post
     Then def fetchBillResponse = response
+    And def totalAmount = response.Bill[0].totalAmount
+    And def billId = response.Bill[0].id
+    And def txnAmount = totalAmount
     
 @successSearchBill
     Scenario: Search bill with customized parameters
