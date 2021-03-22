@@ -1,0 +1,8 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "demandId": "#(demandId)",
+    "adhocrebate": "#(adhocrebate)",
+    "adhocpenalty": "#(adhocpenalty)"
+}

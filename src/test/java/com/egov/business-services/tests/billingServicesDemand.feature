@@ -4,7 +4,7 @@ Feature: Business Services - Billing Service Demand tests
     * def jsUtils = read('classpath:jsUtils.js')
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * def consumerCode = 'PT-Test-' + ranInteger(6)
+    * def consumerCode = 'Consumer-Code-Test-' + ranInteger(6)
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
     * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()

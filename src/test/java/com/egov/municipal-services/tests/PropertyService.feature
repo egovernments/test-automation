@@ -448,10 +448,12 @@ Scenario: Update Property with duplicate worflow action
     # Validate response body
     * match propertyServiceResponseBody.Errors[0].message == propertyServicesConstants.errorMessages.cannotUpdate
 
+
+
 @createActiveProperty
 Scenario: Create Active Property
-    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
@@ -459,26 +461,85 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
 
-@Verify
-Scenario: Verify property
+@verifyProperty
+Scenario: Verify the create property and procceed for the next steps
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
 
-@forward
-Scenario: forward
+@forwardProperty
+Scenario: Forward the property to the respective approver for further approval
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
+
+@approveProperty
+Scenario: Approve the property as an Approver
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
+
+@assessProperty
+Scenario: Assess the property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
+
+@sendBackProperty
+Scenario: Send back the application to the Citizen
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@sendBackToCitizen')
+
+@reopenProperty
+Scenario: Reopen the property application 
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@reopenApplication')
+
+@rejectProperty
+Scenario: Reject the property application
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@rejectApplication')
+
 
 @createPropertyAndAssess
 Scenario: Create Active Property
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
+    # Search property params
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Search property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Verify property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Forward property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Approve property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    # Create Assessment
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
+    * match propertyServiceResponseBody.Assessments[0].id == "#present"
+    * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
+    * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
+
+@assessment_search_01 @regression @positive @propertyServices @searchAssessment @municipalServices
+Scenario: Search Assessment with valid query parameters
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # Assessment search params
+    * def assessmentParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    # Search Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchAssessmentSuccessfully')
+    * match propertyServiceResponseBody.Assessments[0].id == "#present"
+    * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
+    * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
+
+@assessment_update_01 @regression @positive @propertyServices @updateAssessment @municipalServices
+Scenario: Update Assessment with valid payload
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@updateAssessmentSuccessfully')
+    * match propertyServiceResponseBody.Assessments[0].id == "#present"
+    * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
+    * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
+
 

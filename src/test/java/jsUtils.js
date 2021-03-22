@@ -45,6 +45,11 @@ function getCurrentEpochTime(){
     return new java.util.Date().getTime();
 }
 
+function getCurrentDate1(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
+    return simpleDateFormat.format(new java.util.Date());
+}
+
 /**
  * Generates tomorrows date/time in epoch format
  * @returns tomorrows date/time
@@ -60,6 +65,13 @@ function getTomorrowEpochTime(){
  */
 function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
+}
+
+function getDate1(days){
+    var simpleDateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
+    var cal = java.util.Calendar.getInstance();
+    cal.add(java.util.Calendar.DATE, days);
+    return simpleDateFormat.format(cal.getTime());
 }
 
 

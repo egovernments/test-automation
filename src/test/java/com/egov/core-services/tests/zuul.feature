@@ -91,27 +91,6 @@ Background:
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionConstants.errorMessages.amountErrorMsg
 
-     @zuul_03 @zuul  @positive @regression  @municipalServices
-    Scenario: "Use Counter Employee:Validate Property Create and validate doc verifier"
-    # Below user yaml environment logins required to run this case
-    # Use below qa.yaml details
-    # host: https://qa.digit.org/
-    # stateCode: pb
-    # cityCode: amritsar
-    # # Super User credentials for login(need to create user manually)
-    # superUser:
-    #   userName: EMP-107-000878
-    #   password: Password@2
-    #   type: EMPLOYEE
-    # Create a property
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateProperty')
-    # Validate response body
-    * match propertyServiceResponseBody.Properties[0].id == "#present"
-    * match propertyServiceResponseBody.Properties[0].propertyId == "#present"
-    * match propertyServiceResponseBody.Properties[0].status == "INWORKFLOW"
-    * match propertyServiceResponseBody.Properties[0].tenantId == tenantId
-    * match propertyServiceResponseBody.creationReason == commonConstants.errorMessages.authorizedError 
-
     @zuul_07  @zuul @regression @negative
     Scenario: Create Property invalid tenantId
     # Set request payload variable values
@@ -122,3 +101,9 @@ Background:
     * print createPropertyRequest
     * print propertyServiceResponseBody 
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
+
+    @zuul_03 @zuul @regression @negative
+    Scenario: Create Property invalid tenantId
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
+    # Create a property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertyNegativeCE')

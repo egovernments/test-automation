@@ -37,13 +37,32 @@ function() {
          //username & password for Existing User Profile
          config.employeeUserName = envProps.employee.userName;
          config.employeePassword = envProps.employee.password;
-         //config.existingUserTenantId = envProps.existingUser.tenantId
          config.employeeType = envProps.employee.type;
 
          // username & password for global super user
          config.authUsername = envProps.superUser.userName;
          config.authPassword = envProps.superUser.password;
          config.authUserType = envProps.superUser.type;
+
+         // username & password for Citizen user
+         config.citizenUsername = envProps.citizen.userName;
+         config.citizenPassword = envProps.citizen.password;
+         config.citizenType = envProps.citizen.type;
+        
+         // username & password for alternate Citizen user
+         config.altCitizenUsername = envProps.alternateCitizen.userName;
+         config.altCitizenPassword = envProps.alternateCitizen.password;
+         config.altCitizenType = envProps.alternateCitizen.type;
+
+         // username & password for Approver user
+         config.approverUsername = envProps.superUser.userName;
+         config.approverPassword = envProps.superUser.password;
+         config.approverType = envProps.superUser.type;
+
+         // username & password for Counter Employee user
+         config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
+         config.counterEmployeePassword = envProps.counterEmployeeUser.password;
+         config.counterEmployeeType = envProps.counterEmployeeUser.type;
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
@@ -261,6 +280,20 @@ function() {
 
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
+
+        // ws-servcies : water connection
+        config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
+        config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
+        config.searchWaterConnection = envProps.host + path.endPoints.waterConnection.search
+
+        // ws-calculator
+        config.wsCalculatorEstimate = envProps.host + path.endPoints.wsCalculator.estimate
+        config.wsCalculatorCalculate = envProps.host + path.endPoints.wsCalculator.calculate
+        config.wsCalculatorCreateMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionCreate
+        config.wsCalculatorSearchMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionSearch
+        config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
+        // Property Calculator - Property Tax Service endpoint
+        config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

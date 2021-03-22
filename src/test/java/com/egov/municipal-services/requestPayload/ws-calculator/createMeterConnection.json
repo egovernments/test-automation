@@ -1,0 +1,15 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "meterReadings": {
+        "meterStatus": "#(meterStatus)",
+        "currentReading": "#(currentReading)",
+        "billingPeriod": "#(billingPeriod)",
+        "currentReadingDate": "#(currentReadingDate)",
+        "connectionNo": "#(connectionNo)",
+        "lastReading": "#(lastReading)",
+        "lastReadingDate": "#(lastReadingDate)",
+        "tenantId": "#(tenantId)"
+    }
+}
