@@ -18,6 +18,7 @@ Background:
     """
     Given url fetchBill
     And params fetchBillParams
+    * print fetchBillParams
     And request fetchBillRequest
     When method post
     Then status 201

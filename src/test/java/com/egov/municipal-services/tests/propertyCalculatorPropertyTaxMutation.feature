@@ -8,10 +8,10 @@ Background:
     * def caseDetails = ""
     * def marketValue = 2000
     * def documentDate = getCurrentEpochTime()
-    * def documentValue = "345"
-    * def documentNumber = "2384"
+    * def documentValue = ranInteger(3)
+    * def documentNumber = randomString(5)
     * def isMutationInCourt = "NO"
-    * def reasonForTransfer = "FAMILYSETTLEMENT"
+    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[0].code
     * def previousPropertyUuid = generateUUID()
     * def govtAcquisitionDetails = ""
     * def isPropertyUnderGovtPossession = "NO"
@@ -30,7 +30,7 @@ Background:
     * set propertyTaxMutationPayload['Property'].additionalDetails.isPropertyUnderGovtPossession = isPropertyUnderGovtPossession
 
 
-@Propertytax_mutation_calculate_01 @positive @propertyTaxMutation @propertyCalculator
+@Propertytax_mutation_calculate_01 @positive @propertyTaxMutation @propertyCalculator @regression
 Scenario: Verify creating a mutation billing slab for property tax through API call
     # Steps to process Property Tax Mutation Calculate
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxMutation')
@@ -43,7 +43,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     # Validate the result
     * match mutationSearchResponse.MutationBillingSlab[0].usageCategoryMajor == 'RESIDENTIAL'
     
-@Propertytax_mutation_calculate_values_02 @positive @propertyTaxMutation @propertyCalculator
+@Propertytax_mutation_calculate_values_02 @positive @propertyTaxMutation @propertyCalculator @regression
 Scenario: Verify the mutation property tax calculation thorugh API call for a given property id by providing different values for lanareas, floors, etc and check if the total and tax ammount changes, estimates
     # Steps to process Property Tax Mutation Calculate
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxMutation')   
@@ -62,7 +62,7 @@ Scenario: Verify the mutation property tax calculation thorugh API call for a gi
     * assert propertyTaxMutationResponse[acknowldgementNumber].totalAmount == totalAmountFirst
     * assert propertyTaxMutationResponse[acknowldgementNumber].taxAmount == taxAmountFirst
 
-@Propertytax_mutation_calculate_InvalidBuiltUpArea_03 @negative @propertyTaxMutation @propertyCalculator
+@Propertytax_mutation_calculate_InvalidBuiltUpArea_03 @negative @propertyTaxMutation @propertyCalculator @regression
 Scenario: Verify the mutation property tax calculation thorugh API call for a given property id by passing invalid  values for built up area and check for errors
     # Set builtUpArea with invalid out of bound value
     * set propertyTaxMutationPayload['Property'].units[0].constructionDetail.builtUpArea = 132343458990
@@ -72,7 +72,7 @@ Scenario: Verify the mutation property tax calculation thorugh API call for a gi
     * match propertyTaxMutationResponse.Errors[0].code == propertyCalculatorConstants.errorMessage.outOfBoundBuiltUpAreaCode
     * match propertyTaxMutationResponse.Errors[0].message == propertyCalculatorConstants.errorMessage.outOfBoundBuiltUpAreaMessage
 
-@Propertytax_mutation_calculate_InvalidMarketValue_04 @negative @propertyTaxMutation @propertyCalculator
+@Propertytax_mutation_calculate_InvalidMarketValue_04 @negative @propertyTaxMutation @propertyCalculator @regression
 Scenario: Verify the mutation property tax calculation thorugh API call for a given property id by passing a null value for market value and check for errors
     # Set marketValue with null
     * set propertyTaxMutationPayload['Property'].additionalDetails.marketValue = null
