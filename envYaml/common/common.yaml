@@ -192,4 +192,16 @@ endPoints:
     search: pt-calculator-v2/billingslab/_search
   
   propertyCalculatorPropertyTax:
-    calculate: pt-calculator-v2/propertytax/mutation/_calculate  
+    calculate: pt-calculator-v2/propertytax/mutation/_calculate
+
+  waterConnection:
+    create: ws-services/wc/_create
+    search: ws-services/wc/_search
+    update: ws-services/wc/_update
+
+  wsCalculator:
+    estimate: ws-calculator/waterCalculator/_estimate
+    calculate: ws-calculator/waterCalculator/_calculate
+    meterConnectionCreate: ws-calculator/meterConnection/_create
+    meterConnectionSearch: ws-calculator/meterConnection/_search
+    applyAdhocTax: ws-calculator/waterCalculator/_applyAdhocTax

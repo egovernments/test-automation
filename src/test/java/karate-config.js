@@ -262,6 +262,18 @@ function() {
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
 
+        // ws-servcies : water connection
+        config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
+        config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
+        config.searchWaterConnection = envProps.host + path.endPoints.waterConnection.search
+
+        // ws-calculator
+        config.wsCalculatorEstimate = envProps.host + path.endPoints.wsCalculator.estimate
+        config.wsCalculatorCalculate = envProps.host + path.endPoints.wsCalculator.calculate
+        config.wsCalculatorCreateMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionCreate
+        config.wsCalculatorSearchMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionSearch
+        config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
