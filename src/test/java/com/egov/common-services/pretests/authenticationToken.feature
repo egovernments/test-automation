@@ -76,4 +76,21 @@ Scenario: Auth token Creation for approver
    * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
-
+@authTokenCounterEmployee
+Scenario: Auth token Creation for CounterEmpl
+  * configure headers = read('classpath:oauthTokenHeader.js')
+        Given url authTokenUrl
+        And form field username = counterEmployeeUsername
+		And form field password = counterEmployeePassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = counterEmployeeType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+   * print authResponseBody.access_token
+   * match authResponseBody.access_token == '#present'
+   * print authResponseBody

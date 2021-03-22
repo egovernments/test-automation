@@ -59,6 +59,11 @@ function() {
          config.approverPassword = envProps.superUser.password;
          config.approverType = envProps.superUser.type;
 
+         // username & password for Counter Employee user
+         config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
+         config.counterEmployeePassword = envProps.counterEmployeeUser.password;
+         config.counterEmployeeType = envProps.counterEmployeeUser.type;
+
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 

@@ -21,7 +21,7 @@ Scenario: Create a property successfully
 	And def consumerCode = propertyId 
 	And def acknowldgementNumber = Property.acknowldgementNumber 
 	And def businessId = acknowldgementNumber 
-	
+
 @errorInCreateProperty 
 Scenario: Create a property error 
 	Given url createpropertyUrl 
@@ -336,3 +336,13 @@ Scenario: Application send back to citizen
 	Then  status 200 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def transferResponseBody = response 
+
+@createPropertyNegativeCE 
+Scenario: Create a property with new counter employee 
+	Given url createpropertyUrl 
+	And request createPropertyRequest
+	When method post 
+	Then status 403 
+	And def propertyServiceResponseHeaders = responseHeaders 
+	And def propertyServiceResponseBody = response
+* print createPropertyRequest
