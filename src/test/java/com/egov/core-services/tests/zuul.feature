@@ -1,4 +1,4 @@
-Feature: Business Services - HRMS
+Feature: Core Services - Zuul
 
 Background:
         * def jsUtils = read('classpath:jsUtils.js')
@@ -67,16 +67,16 @@ Background:
         * def businessService = mdmsStatePropertyTax.PTWorkflow[1].businessService
         * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')
     
-    @zuul_01 @zuul @regression @positive @smoke
-        Scenario: Test to create a employee
+    @zuul_01 @zuul @regression @positive @smoke @coreServices
+    Scenario: Verify Authorization is working properly with valid authToken
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
     * def code = hrmsResponseBody.Employees[0].user.userName
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * assert hrmsResponseBody.Employees[0].user.name == name
     * assert hrmsResponseBody.Employees[0].user.mobileNumber == mobileNumber
 
-    @zuul_02 @zuul  @positive @regression  @municipalServices
-    Scenario: Create Property with valid payload
+    @zuul_02 @zuul  @positive @regression  @municipalServices @coreServices
+    Scenario: Verify the user is able to access to particular resources
     # Create a property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
     # Validate response body
@@ -85,14 +85,14 @@ Background:
     * match propertyServiceResponseBody.Properties[0].status == "INWORKFLOW"
     * match propertyServiceResponseBody.Properties[0].tenantId == tenantId
 
-    @zuul_05  @zuul @regression @negative
-        Scenario: Test to apportion a bill with AmountPaid as a NULL
+    @zuul_05  @zuul @regression @positive @coreServices
+    Scenario: Verify the User is able to take action after role action mapping
      * def amountPaid = {}
      * call read('../../business-services/pretest/apportionServicePretest.feature@errorApportion')
      * match apportionResponseBody.Errors[0].message == apportionConstants.errorMessages.amountErrorMsg
 
-    @zuul_07  @zuul @regression @negative
-    Scenario: Create Property invalid tenantId
+    @zuul_07 @zuul @regression @negative @coreServices
+    Scenario: Verify the user is trying to access with different tenantID
     # Set request payload variable values
     * def tenantId = 'pb.jalandhar'
     # Create a property
@@ -102,8 +102,8 @@ Background:
     * print propertyServiceResponseBody 
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-    @zuul_03 @zuul @regression @negative
-    Scenario: Create Property invalid tenantId
+    @zuul_03 @zuul @regression @negative @coreServices
+    Scenario: Verify the user is NOT able to access to particular resources
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
     # Create a property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertyNegativeCE')

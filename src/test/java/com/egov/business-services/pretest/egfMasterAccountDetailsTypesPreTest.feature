@@ -115,7 +115,6 @@ Background:
       And params accountSearchParam
       And request accountDetailTypesSearchPayload
       When method post
-    # Then status 403
       Then assert responseStatus >=400 && responseStatus <=403
       And def accountDetailTypesSearchResponseHeader = responseHeaders
       And def accountDetailTypesSearchResponseBody = response
