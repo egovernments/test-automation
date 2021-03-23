@@ -259,3 +259,10 @@ Scenario: Application send back to citizen
 	Then  status 200 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def transferResponseBody = response 
+
+@UImakePayment
+Scenario: Search property tax by unique id and make payment
+	Given driver envHost
+	And delay(5000)
+	* input('body', Key.ESC)
+	And delay(10000)

@@ -36,4 +36,5 @@ errorMessage:
     - Usage category Major is invalid
     - Ownership category is invalid
   invalidIdCode: EG_PT_INVALID_IDS
+  nullTenantIdCode: NotNull.calculationReq.calculationCriteria[0].tenantId
   

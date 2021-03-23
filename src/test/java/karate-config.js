@@ -278,6 +278,7 @@ function() {
 
         // Property Calculator - Property Tax Service endpoint
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
+        config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);

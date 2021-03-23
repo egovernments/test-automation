@@ -196,3 +196,4 @@ endPoints:
   
   propertyCalculator:
     estimate: pt-calculator-v2/propertytax/v2/_estimate
+    calculator: pt-calculator-v2/propertytax/_calculate
