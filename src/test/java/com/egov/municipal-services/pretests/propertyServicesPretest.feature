@@ -312,7 +312,7 @@ Scenario: Update assessment error
 	Then  assert responseStatus >=400 && responseStatus <=403
 	And  def propertyServiceResponseHeaders = responseHeaders
 	And  def propertyServiceResponseBody = response
-	And   def assessmentResponse = response
+	And def Assessment = propertyServiceResponseBody.Assessments[0]
 
 @transferOwnership 
 Scenario: Application send back to citizen 

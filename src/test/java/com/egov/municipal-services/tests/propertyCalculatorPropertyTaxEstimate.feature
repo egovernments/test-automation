@@ -4,9 +4,9 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * callonce read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
-    * def financialYear = assessmentResponse.Assessments[0].financialYear
-    * def source = assessmentResponse.Assessments[0].source
-    * def channel = assessmentResponse.Assessments[0].channel
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
     * def invalidTenantId = 'pb.'+randomString(3)
     * def invalidFinancialYear = ranInteger(2)+'-'+ranInteger(2)
     * def invalidPropertyId = 'PB-'+randomString(10)

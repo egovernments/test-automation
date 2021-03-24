@@ -60,7 +60,7 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def authUsername = userName
     * def authPassword = newPassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
-    * call read('../../common-services/pretests/authenticationToken.feature')
+    * call read('../../common-services/pretests/authenticationToken@superUser.feature')
     * print 'Login Success.'
 
 @sms_02 @positive @kafkaEgovNotificationSms @kafkaServices
@@ -84,7 +84,7 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * def authUsername = userName
     * def authPassword = welcomePassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
-    * call read('../../common-services/pretests/authenticationToken.feature')
+    * call read('../../common-services/pretests/authenticationToken.feature@superUser')
     * print 'Login Success.'
 
 

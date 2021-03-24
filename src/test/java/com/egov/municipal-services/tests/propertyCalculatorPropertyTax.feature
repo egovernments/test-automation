@@ -31,9 +31,9 @@ Background:
     * def city = searchLocationResponseBody.TenantBoundary[0].boundary[0].name + ', ' + cityCode
     * def type = propertyServiceResponseBody.Properties[0].owners[0].type
     * def status = propertyServiceResponseBody.Properties[0].owners[0].status
-    * def assessmentYear = assessmentResponse.Assessments[0].financialYear
-    * def assessmentNumber = assessmentResponse.Assessments[0].assessmentNumber
-    * def assessmentDate = assessmentResponse.Assessments[0].assessmentDate
+    * def assessmentYear = Assessment.financialYear
+    * def assessmentNumber = Assessment.assessmentNumber
+    * def assessmentDate = Assessment.assessmentDate
     * def propertyTaxPayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/calculate.json')
    
 @propertytax_calculate_01 @positive @propertyTax @propertyCalculator @regression

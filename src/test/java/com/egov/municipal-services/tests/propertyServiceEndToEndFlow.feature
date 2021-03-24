@@ -80,9 +80,9 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     * print propertyId
     * def consumerCode = propertyId
     # Calculate Property Tax estimate
-    * def financialYear = assessmentResponse.Assessments[0].financialYear
-    * def source = assessmentResponse.Assessments[0].source
-    * def channel = assessmentResponse.Assessments[0].channel
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
     * set propertyTaxEstimatePayload['Assessment'].financialYear = financialYear
     * set propertyTaxEstimatePayload['Assessment'].propertyId = propertyId
     * set propertyTaxEstimatePayload['Assessment'].source = source
