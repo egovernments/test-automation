@@ -46,15 +46,20 @@ Background:
     * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')
 
 
-@Property_create_01 @createProperty @propertyServiceCreate @positive @regression @propertyServices @municipalServices
+@Property_create_New_01 @createProperty @propertyServiceCreate @positive @regression @propertyServices @municipalServices
 Scenario: Create Property with valid payload
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
+    * print authResponseBody
+    * print authResponseBody.access_token
     # Create a property
+    * print "11111"
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
+    * print "22222"
     # Validate response body
-    * match propertyServiceResponseBody.Properties[0].id == "#present"
-    * match propertyServiceResponseBody.Properties[0].propertyId == "#present"
-    * match propertyServiceResponseBody.Properties[0].status == "INWORKFLOW"
-    * match propertyServiceResponseBody.Properties[0].tenantId == tenantId
+    # * match propertyServiceResponseBody.Properties[0].id == "#present"
+    # * match propertyServiceResponseBody.Properties[0].propertyId == "#present"
+    # * match propertyServiceResponseBody.Properties[0].status == "INWORKFLOW"
+    # * match propertyServiceResponseBody.Properties[0].tenantId == tenantId
 
 @Property_create_InvalidTenant_02 @propertyServiceCreate @negative @regression @propertyServices @municipalServices
 Scenario: Create Property invalid tenantId

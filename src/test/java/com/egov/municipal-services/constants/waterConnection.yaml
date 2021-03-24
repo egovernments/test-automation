@@ -1,0 +1,10 @@
+parameters:
+  processInstanceActions:
+    initiate: 'INITIATE'
+    submitApplication: 'SUBMIT_APPLICATION'
+    verifyAndForward: 'VERIFY_AND_FORWARD'
+    approveConnection: 'APPROVE_FOR_CONNECTION'
+    activateConnection: 'ACTIVATE_CONNECTION'
+  applicationStatus:
+    initiated: 'INITIATED'
+    pendingForDocVerification: 'PENDING_FOR_DOCUMENT_VERIFICATION'

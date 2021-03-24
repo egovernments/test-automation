@@ -3,7 +3,9 @@ Feature: Property Service
 Background: 
   * def createPropertyRequest = read('../../municipal-services/requestPayload/property-services/create.json')
   * def updatePropertyRequest = read('../../municipal-services/requestPayload/property-services/update.json')
-  * def assessmentRequest = read('../../municipal-services/requestPayload/property-services/createAssessment.json')
+  * def createAssessmentRequest = read('../../municipal-services/requestPayload/property-services/createAssessment.json')
+  * def updateAssessmentRequest = read('../../municipal-services/requestPayload/property-services/updateAssessment.json')
+  * def searchAssessmentRequest = read('../../municipal-services/requestPayload/property-services/searchAssessment.json')
   * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
   * def transferOwnershipRequest = read('../../municipal-services/requestPayload/property-services/ownership.json')
 @createPropertySuccessfully 
@@ -19,7 +21,7 @@ Scenario: Create a property successfully
 	And def consumerCode = propertyId 
 	And def acknowldgementNumber = Property.acknowldgementNumber 
 	And def businessId = acknowldgementNumber 
-	
+
 @errorInCreateProperty 
 Scenario: Create a property error 
 	Given url createpropertyUrl 
@@ -223,7 +225,7 @@ Scenario: Reject the application
 	And  def consumerCode = propertyId
 	
 @createAssessmentSuccessfully 
-Scenario: Create assessment 
+Scenario: Create assessment successfully
 	* def assessmentParams = 
 	"""
     {
@@ -232,9 +234,84 @@ Scenario: Create assessment
     """
 	Given  url createAssessment 
 	And  params assessmentParams 
-	And  request assessmentRequest 
+	And  request createAssessmentRequest
 	When  method post 
 	Then  status 201
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+	And def Assessment = propertyServiceResponseBody.Assessments[0]
+
+@errorInCreateAssessment
+Scenario: Create assessment error
+	* def assessmentParams =
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	Given  url createAssessment
+	And  params assessmentParams
+	And  request createAssessmentRequest
+	When  method post
+	Then  assert responseStatus >=400 && responseStatus <=403
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+
+@searchAssessmentSuccessfully
+Scenario: Search assessment successfully
+	Given  url searchAssessment
+	And  params assessmentParams
+	And  request searchAssessmentRequest
+	When  method post
+	Then  status 200
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+
+@errorInSearchAssessment
+Scenario: Create assessment error
+	Given  url searchAssessment
+	And  params assessmentParams
+	And  request searchAssessmentRequest
+	When  method post
+	Then  assert responseStatus >=400 && responseStatus <=403
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+
+@updateAssessmentSuccessfully
+Scenario: Update assessment successfully
+	* def assessmentParams =
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	* set updatePropertyRequest.Assessment = Assessment
+	* print updateAssessmentRequest
+	Given  url updateAssessment
+	And  params assessmentParams
+	And  request updateAssessmentRequest
+	When  method post
+	Then  status 200
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+	And def Assessment = propertyServiceResponseBody.Assessments[0]
+
+@errorInUpdateAssessment
+Scenario: Update assessment error
+	* def assessmentParams =
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	* eval updatePropertyRequest.Assessment = Assessment
+	Given  url updateAssessment
+	And  params assessmentParams
+	And  request updateAssessmentRequest
+	When  method post
+	Then  assert responseStatus >=400 && responseStatus <=403
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
 	And   def assessmentResponse = response
 
 @transferOwnership 
@@ -260,6 +337,15 @@ Scenario: Application send back to citizen
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def transferResponseBody = response 
 
+@createPropertyNegativeCE
+Scenario: Create a property with new counter employee
+	Given url createpropertyUrl
+	And request createPropertyRequest
+	When method post
+	Then status 403
+	And def propertyServiceResponseHeaders = responseHeaders
+	And def propertyServiceResponseBody = response
+* print createPropertyRequest
 @UImakePayment
 Scenario: Search property tax by unique id and make payment
 	Given driver envHost

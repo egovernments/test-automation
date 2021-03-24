@@ -59,6 +59,11 @@ function() {
          config.approverPassword = envProps.superUser.password;
          config.approverType = envProps.superUser.type;
 
+         // username & password for Counter Employee user
+         config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
+         config.counterEmployeePassword = envProps.counterEmployeeUser.password;
+         config.counterEmployeeType = envProps.counterEmployeeUser.type;
+
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -276,6 +281,17 @@ function() {
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
 
+        // ws-servcies : water connection
+        config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
+        config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
+        config.searchWaterConnection = envProps.host + path.endPoints.waterConnection.search
+
+        // ws-calculator
+        config.wsCalculatorEstimate = envProps.host + path.endPoints.wsCalculator.estimate
+        config.wsCalculatorCalculate = envProps.host + path.endPoints.wsCalculator.calculate
+        config.wsCalculatorCreateMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionCreate
+        config.wsCalculatorSearchMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionSearch
+        config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
         // Property Calculator - Property Tax Service endpoint
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
         config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator

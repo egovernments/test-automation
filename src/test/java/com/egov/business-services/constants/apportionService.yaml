@@ -9,3 +9,4 @@ parameters:
 errorMessages:
   invalidBusinessService: No Advance taxHead found for 
   invalidTenantMessage: Invalid Tenant Id
+  amountErrorMsg: Failed to deserialize certain JSON fields

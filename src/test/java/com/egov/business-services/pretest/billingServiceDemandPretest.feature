@@ -73,6 +73,7 @@ Feature: Business services - billing service demand calls
               And def searchDemandResponseStatus = responseStatus
               And def billingServiceDemandResponseHeader = responseHeaders
               And def billingServiceDemandResponseBody = response
+              And def demandId = billingServiceDemandResponseBody.Demands[0].id
 
         @updateDemand
         Scenario: Update Demand success Call
