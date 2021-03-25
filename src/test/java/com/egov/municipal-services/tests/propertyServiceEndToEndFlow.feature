@@ -11,7 +11,6 @@ Background:
     * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
     # Create Demand details
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
-   # * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()
     * def taxPeriodTo = getEpochDate(2)
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
@@ -53,16 +52,18 @@ Background:
     * def documentValue = ranInteger(3)
     * def key = pdfCreateConstant.parameters.valid.keyForPt
     * def invalidReceipt = 'invalid_'+randomNumber(5)
+    * def propertyTaxEstimatePayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/estimate.json')
      
 @ceatePropertAndPayFullTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Full Payment)
-    # Steps to valid error messages of login attempt with invalid mobile number
+    # Steps to validate error messages of login attempt with invalid mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
     * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength
     * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
+    * print propertyServiceResponseBody
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to verify the PT application as a Doc Verifier
@@ -74,10 +75,17 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to re-login as Cityzen type of user
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen') 
     # Steps to Assess the property
-    * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')  
+    * call read('../../municipal-services/tests/PropertyService.feature@assessProperty') 
     * print propertyId
     * def consumerCode = propertyId
     # Calculate Property Tax estimate
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
+    * set propertyTaxEstimatePayload['Assessment'].financialYear = financialYear
+    * set propertyTaxEstimatePayload['Assessment'].propertyId = propertyId
+    * set propertyTaxEstimatePayload['Assessment'].source = source
+    * set propertyTaxEstimatePayload['Assessment'].channel = channel
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
     * def taxAmount = propertyTaxEstimateResponse.Calculation[0].taxAmount
     * def businessService = businessService.split(".")[0]

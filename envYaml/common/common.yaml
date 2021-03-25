@@ -205,6 +205,12 @@ endPoints:
     meterConnectionCreate: ws-calculator/meterConnection/_create
     meterConnectionSearch: ws-calculator/meterConnection/_search
     applyAdhocTax: ws-calculator/waterCalculator/_applyAdhocTax
-  
+
   propertyCalculator:
     estimate: pt-calculator-v2/propertytax/v2/_estimate
+    calculator: pt-calculator-v2/propertytax/_calculate
+  
+  tradeLicense:
+    create: tl-services/v1/_create
+    update: tl-services/v1/_update
+    search: tl-services/v1/_search

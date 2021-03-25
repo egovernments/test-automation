@@ -294,12 +294,18 @@ function() {
         config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
         // Property Calculator - Property Tax Service endpoint
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
+        config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
+
+        // ws-servcies : water connection
+        config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
+        config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
+        config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
 
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
         config.authToken = authTokenResponse.authToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);

@@ -2,8 +2,7 @@ Feature: Pretest scenarios of property-calculator service end points
 
 Background: 
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def propertyTaxEstimatePayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/estimate.json')
-
+   
 
 @createBillingSlabMutation
 Scenario: To create billing slab mutation
@@ -158,5 +157,35 @@ Scenario: To Calculate property tax estimate
         * print propertyTaxEstimatePayload
     When method post
     Then def propertyTaxEstimateResponse = response
-    * print propertyTaxEstimateResponse
     And  assert responseStatus == 200
+
+@errorInCalculatePropertyTaxEstimate
+Scenario: Negative pretest to Calculate property tax estimate
+    * def params =
+    """
+    {
+        tenantId:'#(tenantId)'
+    }
+    """
+    Given url propertyTaxEstimate
+    And params params
+    And request propertyTaxEstimatePayload
+    When method post
+    Then def propertyTaxEstimateErrorResponse = response
+    And  assert responseStatus >= 400 && responseStatus <= 403
+
+@calculatePropertyTax
+Scenario: To Calculate property tax
+  Given url propertyTaxCalculate
+  And request propertyTaxPayload
+  When method post
+  Then def propertyTaxResponse = response
+  And  assert responseStatus == 200
+
+@errorInCalculatePropertyTax
+Scenario: Negative pretest to Calculate property tax
+    Given url propertyTaxCalculate
+    And request propertyTaxPayload
+    When method post
+    Then def propertyTaxErrorResponse = response
+     And  assert responseStatus >= 400 && responseStatus <= 403

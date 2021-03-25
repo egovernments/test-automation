@@ -2,12 +2,13 @@ Feature: Auth token Creation for Employee
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:oauthTokenHeader.js') 
   * print authTokenUrl
   * print tenantId
   
+  @superUser
   Scenario: Auth token Creation scenario
-  * configure headers = read('classpath:oauthTokenHeader.js') 
-        Given url authTokenUrl
+  		Given url authTokenUrl
         And form field username = authUsername
 		And form field password = authPassword
 		And form field grant_type = 'password'
@@ -24,7 +25,6 @@ Background:
 
 @authTokenCitizen
 Scenario: Auth token Creation for citizen
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = citizenUsername
 		And form field password = citizenPassword
@@ -42,7 +42,6 @@ Scenario: Auth token Creation for citizen
 
 @authTokenOfAltCitizen
 Scenario: Auth token Creation for alternative citizen
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = altCitizenUsername
 		And form field password = altCitizenPassword
@@ -60,7 +59,6 @@ Scenario: Auth token Creation for alternative citizen
 
 @authTokenApprover
 Scenario: Auth token Creation for approver
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = approverUsername
 		And form field password = approverPassword
@@ -78,7 +76,6 @@ Scenario: Auth token Creation for approver
 
 @authTokenCounterEmployee
 Scenario: Auth token Creation for CounterEmpl
-  * configure headers = read('classpath:oauthTokenHeader.js')
         Given url authTokenUrl
         And form field username = counterEmployeeUsername
 		And form field password = counterEmployeePassword
@@ -93,4 +90,4 @@ Scenario: Auth token Creation for CounterEmpl
    	And def authToken = authResponseBody.access_token
    * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
-   * print authResponseBody
+   
