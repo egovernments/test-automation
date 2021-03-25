@@ -11,7 +11,6 @@ Background:
     * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
     # Create Demand details
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
-   # * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()
     * def taxPeriodTo = getEpochDate(2)
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
@@ -57,7 +56,7 @@ Background:
      
 @ceatePropertAndPayFullTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Full Payment)
-    # Steps to valid error messages of login attempt with invalid mobile number
+    # Steps to validate error messages of login attempt with invalid mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
     * assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength
     * assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo

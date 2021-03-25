@@ -245,5 +245,5 @@ function randomFloat(x) {
         return new java.util.Random().nextFloat();
     } else {
         return new java.util.Random().nextFloat(100000000);
-    }
+   }
 }

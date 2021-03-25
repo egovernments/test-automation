@@ -296,6 +296,11 @@ function() {
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
         config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
 
+        // ws-servcies : water connection
+        config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
+        config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
+        config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
