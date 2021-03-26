@@ -306,7 +306,14 @@ function() {
         config.fileStoreId = fileUploadResponse.fileStoreId
 
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
-        config.authToken = authTokenResponse.authToken;
+        config.superUserAuthToken = authTokenResponse.authToken;
+        config.authToken = authTokenResponse.superUserAuthToken;
+
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+
+        var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
+        config.approverAuthToken = approverAuthTokenResponse.authToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
