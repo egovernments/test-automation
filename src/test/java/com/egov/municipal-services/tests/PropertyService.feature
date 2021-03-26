@@ -448,8 +448,6 @@ Scenario: Update Property with duplicate worflow action
     # Validate response body
     * match propertyServiceResponseBody.Errors[0].message == propertyServicesConstants.errorMessages.cannotUpdate
 
-
-
 @createActiveProperty
 Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
@@ -460,6 +458,7 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
 
 @verifyProperty
 Scenario: Verify the create property and procceed for the next steps
@@ -497,8 +496,8 @@ Scenario: Reject the property application
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@rejectApplication')
 
 
-@createPropertyAndAssess
-Scenario: Create Active Property
+@createPropertyAndAssess @assessment_create_01 @regression @positive @propertyAssessment @createAssessment @municipalServices
+Scenario: Create Active Property and Assess the Property
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
     # Search property params
@@ -516,11 +515,58 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     # Create Assessment
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
+    # validate response body
     * match propertyServiceResponseBody.Assessments[0].id == "#present"
     * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
     * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
 
-@assessment_search_01 @regression @positive @propertyServices @searchAssessment @municipalServices
+@assessment_create_InvalidTenant_02 @regression @negative @propertyAssessment @createAssessment @municipalServices
+Scenario: Assess the Property with invalid tenantId
+    # Create Active property
+    * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
+    # Assess property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateAssessmentWithInvalidTenantId')
+    # validate response body
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+
+@assessment_create_Validations_03 @regression @negative @propertyAssessment @createAssessment @municipalServices
+Scenario: Assess the Property with null values for propertyId, assessmentYear, assessmentDate
+    # Create Active property
+    * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
+    # set variable values
+    * def assessmentDate = null
+    * def assessmentYear = null
+    * def propertyId = null
+    # Assess property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateAssessment')
+    # validate response body
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
+
+@assessment_create_InValidPropertyId_04 @regression @negative @propertyAssessment @createAssessment @municipalServices
+Scenario: Assess the Property with invalid propertyId
+    # Create Active property
+    * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
+    # set variable values
+    * def propertyId = 'invalid-property-' + randomString(5)
+    # Assess property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateAssessment')
+    # validate response body
+    * def expectedMessage = propertyServicesConstants.errorMessages.propertyNotFound
+    * replace expectedMessage.propertyId = propertyId
+    * match propertyServiceResponseBody.Errors[0].message == expectedMessage
+
+@assessment_create_InValidFinancialYear_05 @regression @negative @propertyAssessment @createAssessment @municipalServices
+Scenario: Assess the Property with invalid financialYear
+    # Create Active property
+    * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
+    # set variable values
+    * def financialYear = 'invalid-financialYear'
+    # Assess property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateAssessment')
+    # validate response body
+    * match propertyServiceResponseBody.Errors[0].message == propertyServicesConstants.errorMessages.invalidFinancialYear + financialYear
+
+@assessment_search_01 @regression @positive @propertyAssessment @searchAssessment @municipalServices
 Scenario: Search Assessment with valid query parameters
     # Create property and assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
@@ -528,11 +574,60 @@ Scenario: Search Assessment with valid query parameters
     * def assessmentParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Search Assessment
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchAssessmentSuccessfully')
+    # Validate response body
     * match propertyServiceResponseBody.Assessments[0].id == "#present"
     * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
     * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
 
-@assessment_update_01 @regression @positive @propertyServices @updateAssessment @municipalServices
+@assessment_search_AllRecords_02 @regression @positive @propertyAssessment @searchAssessment @municipalServices
+Scenario: Search all Assessments by passing only tenantId
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # Assessment search params
+    * def assessmentParams = { tenantId: '#(tenantId)'}
+    # Search Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchAssessmentSuccessfully')
+    # Validate response body
+    * match propertyServiceResponseBody.Assessments.size() != 0
+
+@assessment_search_NoTenantId_03 @regression @negative @propertyAssessment @searchAssessment @municipalServices
+Scenario: Search all Assessments by passing only tenantId
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # Assessment search params
+    * def assessmentParams = { propertyIds: '#(propertyId)'}
+    # Search Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInSearchAssessment')
+    # Validate response body
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
+
+@assessment_search_InvalidTenantId_04 @regression @negative @propertyAssessment @searchAssessment @municipalServices
+Scenario: Search all Assessments by passing only tenantId
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # Assessment search params
+    * def assessmentParams = { tenantId: 'invalid-tenant-id'}
+    # Search Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInSearchAssessment')
+    # Validate response body
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+
+@assessment_search_Multiple_05 @positive @propertyAssessment @searchAssessment @municipalServices
+Scenario: Search Assessment with valid query parameters
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    * def propertyIds = propertyId
+    # Create property again and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    * def propertyIds = propertyIds + ',' + propertyId
+    # Assessment search params
+    * def assessmentParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyIds)'}
+    # Search Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchAssessmentSuccessfully')
+    # Validate response body
+    * match propertyServiceResponseBody.Assessments.size() != 0
+
+@assessment_update_01 @regression @positive @propertyAssessment @updateAssessment @municipalServices
 Scenario: Update Assessment with valid payload
     # Create property and assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
@@ -542,4 +637,57 @@ Scenario: Update Assessment with valid payload
     * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
     * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
 
+@assessment_update_InvalidID_02 @negative @propertyAssessment @updateAssessment @municipalServices
+Scenario: Update Assessment with invalid id
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # setting variable values
+    * def assessmentId = 'invalid-id-' + randomString(5)
+    * eval Assessment.id = assessmentId
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateAssessment')
+    * def expectedMessage = propertyServicesConstants.errorMessages.assessmentIdNotFound
+    * replace expectedMessage.assessmentId = assessmentId
+    * match propertyServiceResponseBody.Errors[0].message == expectedMessage
 
+@assessment_update_InvalidFY_03 @negative @propertyAssessment @updateAssessment @municipalServices
+Scenario: Update Assessment with invalid financialYear
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # setting variable values
+    * eval Assessment.financialYear = 'invalid-finalcialYear'
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateAssessment')
+    * match propertyServiceResponseBody.Errors[0].message == propertyServicesConstants.errorMessages.invalidFinancialYear + Assessment.financialYear
+
+@assessment_update_Error_04 @negative @propertyAssessment @updateAssessment @municipalServices
+Scenario: Update Assessment with invalid financialYear
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # setting variable values
+    * eval Assessment.assessmentDate = null
+    * eval Assessment.assessmentYear = null
+    * eval Assessment.propertyId = null
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateAssessment')
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
+
+@assessment_create_InvalidTenant_05 @negative @propertyAssessment @updateAssessment @municipalServices
+Scenario: Update Assessment with invalid tenantId
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # setting variable values
+    * eval Assessment.tenantId = 'invalid-tenantId'
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateAssessment')
+    * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
+
+@assessment_update_StatusErr_06 @negative @propertyAssessment @updateAssessment @municipalServices
+Scenario: Update Assessment with invalid status
+    # Create property and assess the property
+    * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
+    # setting variable values
+    * eval Assessment.status = 'invalid-status'
+    # Update Assessment
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateAssessment')
+    * match propertyServiceResponseBody.Errors[0].message == propertyServicesConstants.errorMessages.invalidAssessmentStatus

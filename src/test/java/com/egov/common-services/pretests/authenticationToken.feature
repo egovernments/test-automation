@@ -2,11 +2,12 @@ Feature: Auth token Creation for Employee
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:oauthTokenHeader.js')
   * print authTokenUrl
   * print tenantId
   
-  Scenario: Auth token Creation scenario
-  * configure headers = read('classpath:oauthTokenHeader.js') 
+  @authTokenSuperuser
+  Scenario: Auth token Creation scenario 
         Given url authTokenUrl
         And form field username = authUsername
 		And form field password = authPassword
@@ -24,7 +25,6 @@ Background:
 
 @authTokenCitizen
 Scenario: Auth token Creation for citizen
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = citizenUsername
 		And form field password = citizenPassword
@@ -42,7 +42,6 @@ Scenario: Auth token Creation for citizen
 
 @authTokenOfAltCitizen
 Scenario: Auth token Creation for alternative citizen
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = altCitizenUsername
 		And form field password = altCitizenPassword
@@ -60,7 +59,6 @@ Scenario: Auth token Creation for alternative citizen
 
 @authTokenApprover
 Scenario: Auth token Creation for approver
-  * configure headers = read('classpath:oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = approverUsername
 		And form field password = approverPassword

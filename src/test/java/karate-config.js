@@ -29,8 +29,13 @@ function() {
    };
         
         config.envHost = envProps.host
-        config.envLocalhost = envProps.localhost
-
+        if(envProps.localhost){
+            config.envLocalhost = envProps.localhost
+        }
+        if(envProps.mockHost){
+            config.envMockHost = envProps.mockHost
+        }
+        
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         

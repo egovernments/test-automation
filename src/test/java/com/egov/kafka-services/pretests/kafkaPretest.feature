@@ -1,12 +1,13 @@
 Feature: Kafka Service Pretest
 
 Background:
+    * def jsUtils = read('classpath:jsUtils.js')
     * def createConsumerPayload = read('../../kafka-services/requestPayload/create.json')
     * def subscribeConsumerPayload = read('../../kafka-services/requestPayload/subscribe.json')
     * def api = read('file:envYaml/common/common.yaml');
     * def getClustersUrl = envLocalhost + api.endPoints.kafkaService.getClusters
     * def getConsumerGroupsUrl = envLocalhost + api.endPoints.kafkaService.getConsumerGroups
-    * def getlagsUrl = envLocalhost + api.endPoints.kafkaService.getLags
+    * def getlagsUrl = envMockHost + api.endPoints.kafkaService.getLags
     * def getlagSummaryUrl = envLocalhost + api.endPoints.kafkaService.getLagSummary
 
 @createConsumerInstance
@@ -98,6 +99,8 @@ Scenario: Get the lags for comsumer group id
   Then status 200
   And def lagsResponse = response
   And match lagsResponse.data.size() != 0
+  And def data = lagsResponse.data
+  And def lagData = extractLagsData(data)
 
 @getConsumerGroupLagSummary
 Scenario: Get the lag summary for comsumer group id

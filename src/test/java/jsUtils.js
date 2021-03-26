@@ -239,6 +239,30 @@ function deterMineActiveFieldValue(filteredArrayOfResponse, valueToBeMatched){
         }
 }
 
+function extractLagsData(data){
+    var lagData = [];
+    for(var i=0;i<data.size();i++){
+        lagData.push({
+            "partition_id" : data[i].partition_id,
+            "current_offset"  : data[i].current_offset
+        });
+    }
+    return lagData;
+}
+
+function compareOffsetMovement(dataBefore, dataAfter){
+    var flag = false;
+    for(var i=0;i<dataBefore.size();i++){
+        flag = false;
+        if(dataAfter[i].current_offset > dataBefore[i].current_offset){
+            flag = true;
+            
+            java.lang.System.out.println("Current Offset has been moved by "+
+            (dataAfter[i].current_offset-dataBefore[i].current_offset));
+        }
+    }
+    return flag;
+}
 
 function randomFloat(x) {
     if (x) {

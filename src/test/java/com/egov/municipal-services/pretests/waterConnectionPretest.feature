@@ -1,6 +1,7 @@
 Feature: Water Connection service pretests
 
 Background:
+    * def jsUtils = read('classpath:jsUtils.js')
     * def createWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/create.json')
     * def updateWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/update.json')
     * def searchWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/search.json')
@@ -21,6 +22,16 @@ Scenario: Create water connection successfully
 @errorInCreateWaterConnection
 Scenario: Create water connection error
     Given url createWaterConnection
+    And request createWaterConnectionRequest 
+	When method post 
+	Then assert responseStatus >= 400 && responseStatus <= 403
+	And def waterConnectionResponseHeaders = responseHeaders 
+	And def waterConnectionResponseBody = response
+
+@errorInCreateWaterConnectionWithInvalidTenantId
+Scenario: Create water connection error with invalid tenantId
+    Given url createWaterConnection
+    * eval createWaterConnectionRequest.WaterConnection.tenantId = 'invalid-tenant-' + randomString(5)
     And request createWaterConnectionRequest 
 	When method post 
 	Then assert responseStatus >= 400 && responseStatus <= 403
@@ -75,3 +86,6 @@ Scenario: Update Water connection error
     Then assert responseStatus >= 400 && responseStatus <= 403
     And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response
+
+@setWaterConnectionVariablesToUpdate
+Scenario: Set Water Connection variables to update

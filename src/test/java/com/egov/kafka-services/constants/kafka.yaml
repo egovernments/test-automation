@@ -5,3 +5,8 @@ topics:
   UpdateProperty: "update-property-registry"
   createPgTransaction: "save-pg-txns"
   createWorkflowTransition: "save-wf-transitions"
+parameters:
+  clusterId: eGov-kafka-cluster
+  consumerGroupId: sms
+  topic: egov.topic.sms
+  consumerId: sms-consumer

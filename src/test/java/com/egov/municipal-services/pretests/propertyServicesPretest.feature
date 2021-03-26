@@ -1,6 +1,7 @@
 Feature: Property Service 
 
 Background: 
+  * def jsUtils = read('classpath:jsUtils.js')
   * def createPropertyRequest = read('../../municipal-services/requestPayload/property-services/create.json')
   * def updatePropertyRequest = read('../../municipal-services/requestPayload/property-services/update.json')
   * def createAssessmentRequest = read('../../municipal-services/requestPayload/property-services/createAssessment.json')
@@ -254,6 +255,23 @@ Scenario: Create assessment error
 	And  request createAssessmentRequest 
 	When  method post 
 	Then  assert responseStatus >=400 && responseStatus <=403 
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def propertyServiceResponseBody = response
+
+@errorInCreateAssessmentWithInvalidTenantId
+Scenario: Create assessment error with invalid tenantId
+	* def assessmentParams = 
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	* eval createAssessmentRequest.Assessment.tenantId = 'invalid-tenant-' + randomString(5)
+	Given  url createAssessment 
+	And  params assessmentParams 
+	And  request createAssessmentRequest 
+	When  method post 
+	Then  status 403 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response
 
