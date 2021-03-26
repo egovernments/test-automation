@@ -100,6 +100,23 @@ Scenario: To submit the application
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.submitApplication
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
+
+@submitApplicationForNonMetered
+Scenario: To submit the application for Non metered connection
+    * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
+    # Search Water Connection
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
+    * set WaterConnection.roadCuttingInfo = [{"roadType": "BRICKPAVING","roadCuttingArea": 50}]
+    * set WaterConnection.connectionType = "Non Metered"
+    * set WaterConnection.additionalDetails.initialMeterReading = 100
+    * set WaterConnection.waterSource = "GROUND.BOREWELL"
+    * set WaterConnection.connectionExecutionDate = getCurrentEpochTime()
+    * set WaterConnection.meterId = randomMobileNumGen(8)
+    * set WaterConnection.meterInstallationDate = getCurrentEpochTime()
+    * set WaterConnection.waterSubSource = "BOREWELL"
+    * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.submitApplication
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
+
 @verify
 Scenario: To verify the application
     # Search Water Connection
@@ -135,6 +152,7 @@ Scenario: To actvate the connection
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.activateConnection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * def connectionNo = waterConnectionResponseBody.WaterConnection[0].connectionNo
+    * def connectionType = waterConnectionResponseBody.WaterConnection[0].connectionType
 
 @sendsBack
 Scenario: To sends back the application
@@ -145,5 +163,23 @@ Scenario: To sends back the application
 @resubmit
 Scenario: To sends back the application
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.resubmitApplication
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
+
+@reject
+Scenario: To reject the application
+    * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.rejectApplication
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
+
+@sendBackToDocVerifier
+Scenario: To send back to the Doc verifier
+    * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.sendBackToDocVerifier
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
+    * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
+
+@sendBackForInspection
+Scenario: To send back to the Field Inspector
+    * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.sendBackForInspection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')

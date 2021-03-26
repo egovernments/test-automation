@@ -214,3 +214,8 @@ endPoints:
     create: tl-services/v1/_create
     update: tl-services/v1/_update
     search: tl-services/v1/_search
+  
+  sewerageConnection:
+    create: sw-services/swc/_create
+    search: sw-services/swc/_search
+    update: sw-services/swc/_update

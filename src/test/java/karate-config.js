@@ -296,24 +296,29 @@ function() {
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
         config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
 
-        // ws-servcies : water connection
+        // TL-servcies : Trade License
         config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
         config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
         config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
 
+        // sw-servcies : sewerage connection
+        config.createSewerageConnection = envProps.host + path.endPoints.sewerageConnection.create
+        config.updateSewerageConnection = envProps.host + path.endPoints.sewerageConnection.update
+        config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
-
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
-        config.superUserAuthToken = authTokenResponse.authToken;
-        config.authToken = authTokenResponse.superUserAuthToken;
 
         var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
         config.citizenAuthToken = citizenAuthTokenResponse.authToken;
 
         var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
         config.approverAuthToken = approverAuthTokenResponse.authToken;
+
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
+        config.superUserAuthToken = authTokenResponse.authToken;
+        config.authToken = authTokenResponse.superUserAuthToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
