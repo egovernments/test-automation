@@ -126,6 +126,13 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     * print propertyId
     * def consumerCode = propertyId
     # Calculate Property Tax estimate
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
+    * set propertyTaxEstimatePayload['Assessment'].financialYear = financialYear
+    * set propertyTaxEstimatePayload['Assessment'].propertyId = propertyId
+    * set propertyTaxEstimatePayload['Assessment'].source = source
+    * set propertyTaxEstimatePayload['Assessment'].channel = channel
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
     * def taxAmount = propertyTaxEstimateResponse.Calculation[0].taxAmount
     * def businessService = businessService.split(".")[0]
@@ -320,6 +327,13 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
     * def consumerCode = propertyId
     # Calculate Property Tax estimate
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
+    * set propertyTaxEstimatePayload['Assessment'].financialYear = financialYear
+    * set propertyTaxEstimatePayload['Assessment'].propertyId = propertyId
+    * set propertyTaxEstimatePayload['Assessment'].source = source
+    * set propertyTaxEstimatePayload['Assessment'].channel = channel
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
     * def taxAmount = propertyTaxEstimateResponse.Calculation[0].taxAmount
     * def businessService = businessService.split(".")[0]
@@ -363,6 +377,13 @@ Scenario: Login as a counter employee and pay propety tax
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
     * print propertyId
     # Steps to Estimate the property tax
+    * def financialYear = Assessment.financialYear
+    * def source = Assessment.source
+    * def channel = Assessment.channel
+    * set propertyTaxEstimatePayload['Assessment'].financialYear = financialYear
+    * set propertyTaxEstimatePayload['Assessment'].propertyId = propertyId
+    * set propertyTaxEstimatePayload['Assessment'].source = source
+    * set propertyTaxEstimatePayload['Assessment'].channel = channel
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
     * def taxAmount = propertyTaxEstimateResponse.Calculation[0].taxAmount
     * def businessService = businessService.split(".")[0]
