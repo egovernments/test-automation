@@ -1,7 +1,7 @@
 Feature: TL-Service pretest scenarios
 
 Background:
-    * def createTradeLicenseRequest = read('../../municipal-services/requestpayload/tradeLicense/create.json')
+    * def createTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/create.json')
     # TODO: Need to add request payloads for below. 
     # * def updateWaterConnectionRequest = read('../../municipal-services/requestpayload/tradeLicense/update.json')
     # * def searchWaterConnectionRequest = read('../../municipal-services/requestpayload/tradeLicense/search.json')
