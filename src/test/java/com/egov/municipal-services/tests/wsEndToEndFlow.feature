@@ -83,16 +83,11 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * print propertyServiceResponseBody
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
-    # Steps to verify the PT application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
-    # Steps to forward the PT application as a Field Inspector
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
-    # Steps to approve the property application as an approver
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
-    # Steps to re-login as Cityzen type of user
-    # * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen') 
-    # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
+    # WS Steps
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
     * call read('../../municipal-services/tests/waterConnection.feature@createWaterServiceConnection')

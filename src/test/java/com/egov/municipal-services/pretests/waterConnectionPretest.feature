@@ -9,7 +9,6 @@ Background:
 Scenario: Create water connection successfully
     Given url createWaterConnection
     And request createWaterConnectionRequest 
-    * print createWaterConnectionRequest
 	When method post 
 	Then status 200
 	And def waterConnectionResponseHeaders = responseHeaders 
