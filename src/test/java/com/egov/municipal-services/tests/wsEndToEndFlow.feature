@@ -103,10 +103,10 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
 
 @troubleShoot
 Scenario: Login as a citizen and pay Water service tax-Metered (Full)
-    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
+    * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
     * print propertyServiceResponseBody
-    * call read('../../common-services/pretests/authenticationToken.feature@authTokenApprover')
+    * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to verify the PT application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -118,15 +118,15 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     # * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen') 
     # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
-    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
+    * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/waterConnection.feature@createWaterServiceConnection')
     * call read('../../municipal-services/tests/waterConnection.feature@submitApplication')
-    * call read('../../common-services/pretests/authenticationToken.feature@superUser')
-    * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
+    * def authToken = superUserAuthToken
     * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     * call read('../../municipal-services/tests/waterConnection.feature@verify')
     * call read('../../municipal-services/tests/waterConnection.feature@forward')
     * call read('../../municipal-services/tests/waterConnection.feature@approve')
+    * call read('../../municipal-services/tests/waterConnection.feature@generateBill')
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     #* print collectionServicesResponseBody
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
