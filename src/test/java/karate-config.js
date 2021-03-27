@@ -195,11 +195,11 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
-        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
+        config.signUrl = envProps.host + path.endPoints.encService.sign;
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
         //url shorten
@@ -300,6 +300,13 @@ function() {
         config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
         config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
         config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
+
+        // tl-calculator
+        config.tlCalculatorGetBill = envProps.host + path.endPoints.tlCalculator.getBill
+        config.tlCalculatorCreateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabCreate
+        config.tlCalculatorUpdateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabUpdate
+        config.tlCalculatorSearchBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabSearch
+        config.tlCalculatorCalculate = envProps.host + path.endPoints.tlCalculator.calculate
 
         // sw-servcies : sewerage connection
         config.createSewerageConnection = envProps.host + path.endPoints.sewerageConnection.create

@@ -214,8 +214,15 @@ endPoints:
     create: tl-services/v1/_create
     update: tl-services/v1/_update
     search: tl-services/v1/_search
-  
+
   sewerageConnection:
     create: sw-services/swc/_create
     search: sw-services/swc/_search
     update: sw-services/swc/_update
+
+  tlCalculator:
+    getBill: tl-calculator/v1/_getbill
+    billingSlabCreate: tl-calculator/billingslab/_create
+    billingSlabUpdate: tl-calculator/billingslab/_update
+    billingSlabSearch: tl-calculator/billingslab/_search
+    calculate: tl-calculator/v1/_calculate

@@ -144,6 +144,14 @@
       },
       {
         "moduleName": "TradeLicense",
+        "masterDetails": [
+          {
+            "name": "TradeType"
+          }
+        ]
+      },
+      {
+        "moduleName": "TradeLicense",
         "masterDetails":[
           {
             "name": "AccessoriesCategory"

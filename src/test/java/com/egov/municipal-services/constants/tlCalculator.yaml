@@ -1,0 +1,20 @@
+parameters:
+  licenseType: ['PERMANENT','TEMPORARY']
+  applicationType: ['NEW','RENEWAL']
+  type: FLAT
+  businessService: TL
+  otherTenantId: pb
+
+errorMessages:
+  businessServiceError: Business Service in Path variable and bill criteria are different
+  consumerCodeError: Bill cannot be generated.No demand exists for the given consumerCode
+  noConsumerCodeError: Valid search criteria fields missing, please give some valid criteria like mobileNumber/email OR 'businessService & consumerCode' OR demandId
+  noDemandError: No Demands Found for the given bill generate criteria
+  tenantError: All Billingslabs being created must belong to one single tenant
+  duplicateCode: DUPLICATE_BILLINGSLABS
+  duplicateMessage: The following Billing slabs are already available in the system
+  structureTypeSizeError: size must be between 2 and 64
+  tradeTypeError: The following TradeType is invalid
+  structureTypeError: The following StructureType is invalid
+  invalidIDError: The following Billing slabs are not available in the system, IDS
+  invalidSlabError: Billing slab must contain either TradeType OR AccesoriesCategory, not both.
