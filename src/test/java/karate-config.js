@@ -318,7 +318,7 @@ function() {
 
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
-        config.authToken = authTokenResponse.superUserAuthToken;
+        config.authToken = authTokenResponse.authToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
@@ -335,6 +335,7 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

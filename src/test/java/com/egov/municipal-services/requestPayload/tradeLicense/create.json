@@ -19,6 +19,14 @@
                         "tradeType": "#(tradeType)"
                     }
                 ],
+                "accessories": [
+                    {
+                        "uom":  "#(uom)",
+                        "accessoryCategory":  "#(accessoryCategory)",
+                        "count":  "#(count)",
+                        "uomValue":  "#(uomValue)"
+                    }
+                ],
                 "subOwnerShipCategory": "#(subOwnerShipCategory)",
                 "owners": [
                     {

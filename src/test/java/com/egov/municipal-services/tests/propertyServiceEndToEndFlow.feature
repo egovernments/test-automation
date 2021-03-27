@@ -53,7 +53,14 @@ Background:
     * def key = pdfCreateConstant.parameters.valid.keyForPt
     * def invalidReceipt = 'invalid_'+randomNumber(5)
     * def propertyTaxEstimatePayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/estimate.json')
-     
+
+###########################
+#    TODO: Need to revisit the below tests where Payment needs to be made through third party payment gateway
+#        @ceatePropertAndPayFullTaxAsCitizen
+#        @ceatePropertAndPayPartialTaxAsCitizen
+#        @transferOwnerShip
+###########################
+
 @ceatePropertAndPayFullTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to validate error messages of login attempt with invalid mobile number

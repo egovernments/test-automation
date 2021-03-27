@@ -141,6 +141,14 @@
             "name": "dashboard-config"
           }
         ]
+      },
+      {
+        "moduleName": "TradeLicense",
+        "masterDetails":[
+          {
+            "name": "AccessoriesCategory"
+          }
+        ]
       }
     ]
   }

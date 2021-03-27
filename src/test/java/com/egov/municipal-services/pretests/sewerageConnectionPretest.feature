@@ -17,6 +17,7 @@ Scenario: success sewerage connection create
   And def sewerageConnectionApplicationId = sewerageConnection.applicationNo
   And def sewerageConnectionNumber = sewerageConnection.connectionNo
   And def sewerageConnectionApplicationNumber = sewerageResponseBody.SewerageConnections[0].applicationNo
+  And def sewerageConnectionId = sewerageConnection.id
 
 @sewerageCreateInvalidSewerageConnection
 Scenario: sewerage connection create - Invalid Property ID
@@ -31,8 +32,9 @@ Scenario: sewerage connection create - Invalid Property ID
 
 @searchSewerageConnectionSuccessfully
 Scenario: Search a Sewerage Connection with Valid Parameters
-	Given  url searchSewerageConnectionUrl 
+	Given  url searchSewerageConnection 
 	And params searchSewerageConnectionParams
+  * print searchSewerageConnectionParams
 	And request searchPropertyRequest
 	When method post
 	Then status 200 
@@ -41,10 +43,11 @@ Scenario: Search a Sewerage Connection with Valid Parameters
 	And def sewerageResponseBody = response
   And def sewerageConnection = sewerageResponseBody.SewerageConnections[0]
   And def sewerageConnectionNumber = sewerageConnection.connectionNo
+  And def sewerageConnectionApplicationStatus = sewerageConnection.applicationStatus
 
 @searchSewerageConnectionInvalidParameters
 Scenario: Search a Sewerage Connection with InValid Parameters
-	Given  url searchSewerageConnectionUrl 
+	Given  url searchSewerageConnection 
 	And params searchSewerageConnectionParams
 	And request searchPropertyRequest
 	When method post
@@ -60,8 +63,8 @@ Scenario: Search a Sewerage Connection with Valid Parameters
   * eval sewerageUpdateRequest.SewerageConnection.roadCuttingInfo = roadCuttingInfo
   * eval sewerageUpdateRequest.SewerageConnection.connectionType = sewerageConnectionType
   * eval sewerageUpdateRequest.SewerageConnection.connectionExecutionDate = connectionExecutionDate
-	Given  url updateSewerageConnectionUrl 
-	And params searchSewerageConnectionParams
+	Given  url updateSewerageConnection 
+	#And params searchSewerageConnectionParams
 	And request sewerageUpdateRequest
 	When method post
 	Then status 200 
@@ -75,7 +78,7 @@ Scenario: Search a Sewerage Connection with Valid Parameters
 Scenario: Update a Sewerage Connection with invalid Parameters
   * eval sewerageUpdateRequest.SewerageConnection = sewerageConnection
   * eval sewerageUpdateRequest.SewerageConnection.applicationNo = sewerageConnectionApplicationId
-	Given  url updateSewerageConnectionUrl 
+	Given  url updateSewerageConnection 
 	And request sewerageUpdateRequest
 	When method post
 	Then status 200 
