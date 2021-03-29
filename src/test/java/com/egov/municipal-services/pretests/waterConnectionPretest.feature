@@ -31,7 +31,9 @@ Scenario: Create water connection error
 Scenario: Search water connection successfully
     Given url searchWaterConnection
     And params waterConnectionParams
+    * print waterConnectionParams
     And request searchWaterConnectionRequest 
+    * print searchWaterConnectionRequest
 	When method post
     Then status 200
     And def waterConnectionResponseHeaders = responseHeaders 
@@ -39,6 +41,7 @@ Scenario: Search water connection successfully
     And def WaterConnection = waterConnectionResponseBody.WaterConnection[0]
     And def waterConnectionId = WaterConnection.id
     And def waterConnectionApplicationNo = WaterConnection.applicationNo
+    And def waterConnectionApplicationStatus = WaterConnection.applicationStatus
 
 @errorInSearchWaterConnection
 Scenario: Search water connection error
@@ -56,7 +59,9 @@ Scenario: Update Water connection successfully
     * eval updateWaterConnectionRequest.WaterConnection.processInstance.action = processInstanceAction
     Given url updateWaterConnection
     And request updateWaterConnectionRequest 
+    * print updateWaterConnectionRequest
 	When method post
+    * print response
     Then status 200
     And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response

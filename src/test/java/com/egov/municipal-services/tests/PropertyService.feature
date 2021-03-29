@@ -499,7 +499,7 @@ Scenario: Reject the property application
 
 @createPropertyAndAssess
 Scenario: Create Active Property
-    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    #* def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully')
     # Search property params
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
