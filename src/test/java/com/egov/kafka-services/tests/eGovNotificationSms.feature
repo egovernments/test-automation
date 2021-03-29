@@ -59,9 +59,12 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def dataAfterApiCall = lagData
     * print dataAfterApiCall
     # Compare the offset
-    * def isOffsetMoved = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * print offsetDiff
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
+    * print isThreshHold
     # Fail the test if there is no offset change
-    * eval if(!isOffsetMoved) karate.fail("No Movement in offset!!!")
+    * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka OTP consumer response messages for above mobile number and notification sms topic
     * def otpMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently
@@ -95,13 +98,17 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
     # Simulating offset Change by updating the offset values manually
-    * eval dataAfterApiCall[0].log_end_offset = (parseInt(~~(dataAfterApiCall[0].log_end_offset + 10)))
     * eval dataAfterApiCall[0].current_offset = (parseInt(~~(dataAfterApiCall[0].current_offset + 10)))
+    * eval dataAfterApiCall[1].current_offset = (parseInt(~~(dataAfterApiCall[1].current_offset + 5)))
+    * eval dataAfterApiCall[2].current_offset = (parseInt(~~(dataAfterApiCall[2].current_offset + 15)))
     * print dataAfterApiCall
     # Compare the offset
-    * def isOffsetMoved = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * print offsetDiff
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
+    * print isThreshHold
     # Fail the test if there is no offset change
-    * eval if(!isOffsetMoved) karate.fail("No Movement in offset!!!")
+    * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka Welcome Password consumer response messages for above mobile number and notification sms topic
     * def welcomePasswordMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently

@@ -247,21 +247,33 @@ function extractLagsData(data){
             "current_offset"  : data[i].current_offset
         });
     }
+    lagData.sort(GetSortOrder("partition_id"));
     return lagData;
 }
 
+//Comparer Function    
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}
+
 function compareOffsetMovement(dataBefore, dataAfter){
-    var flag = false;
+    var offsetDiff = [];
     for(var i=0;i<dataBefore.size();i++){
-        flag = false;
-        if(dataAfter[i].current_offset > dataBefore[i].current_offset){
-            flag = true;
-            
-            java.lang.System.out.println("Current Offset has been moved by "+
-            (dataAfter[i].current_offset-dataBefore[i].current_offset));
-        }
+        // var diff = ((dataAfter[i].current_offset - dataBefore[i].current_offset) * 100) / dataBefore[i].current_offset;
+        var diff = dataAfter[i].current_offset - dataBefore[i].current_offset
+        offsetDiff.push({
+            "partition_id" : data[i].partition_id,
+            "offset_diff"  : diff
+        });
     }
-    return flag;
+    return offsetDiff;
 }
 
 function randomFloat(x) {

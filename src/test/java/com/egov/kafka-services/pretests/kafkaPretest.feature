@@ -9,6 +9,17 @@ Background:
     * def getConsumerGroupsUrl = envLocalhost + api.endPoints.kafkaService.getConsumerGroups
     * def getlagsUrl = envMockHost + api.endPoints.kafkaService.getLags
     * def getlagSummaryUrl = envLocalhost + api.endPoints.kafkaService.getLagSummary
+    * def checkThreshold =
+  """
+    function(diff) {
+      for(var i=0;i<diff.size();i++){
+        if(diff[i].offset_diff == 0){
+          return false;
+        }
+      }
+      return true;
+    }
+  """
 
 @createConsumerInstance
 Scenario: Create consumer instance
@@ -111,3 +122,8 @@ Scenario: Get the lag summary for comsumer group id
   Then status 200
   And def lagSummaryResponse = response
   And match lagSummaryResponse.size() != 0
+
+@checkOffsetThreshold
+Scenario: Check threshold of offset movement
+  * def isThreshHold = checkThreshold(offsetDiff)
+  
