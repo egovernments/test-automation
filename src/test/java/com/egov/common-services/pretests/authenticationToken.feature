@@ -90,4 +90,55 @@ Scenario: Auth token Creation for CounterEmpl
    	And def authToken = authResponseBody.access_token
    * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
+
+@authTokenDocVerifierTL
+Scenario: Auth token Creation for CounterEmpl
+        Given url authTokenUrl
+        And form field username = TLDocVerifierUsername
+		And form field password = TLDocVerifierPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = TLDocVerifierType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+   * print authResponseBody.access_token
+   * match authResponseBody.access_token == '#present'
+
+@authTokenFieldInspectorTL
+Scenario: Auth token Creation for CounterEmpl
+        Given url authTokenUrl
+        And form field username = FieldInspectorUsername
+		And form field password = FieldInspectorPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = FieldInspectorType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+   * print authResponseBody.access_token
+   * match authResponseBody.access_token == '#present'
+
+@authTokenApproverTL
+Scenario: Auth token Creation for CounterEmpl
+        Given url authTokenUrl
+        And form field username = ApproverUsername
+		And form field password = ApproverPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = ApproverType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+   * print authResponseBody.access_token
+   * match authResponseBody.access_token == '#present'
    

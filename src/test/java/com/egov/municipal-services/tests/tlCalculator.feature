@@ -4,13 +4,14 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def tlCalculatorConstants = read('../../municipal-services/constants/tlCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-    * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseCreate_1')
+    * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseCreate1')
     * def consumerCode = tradeLicenseResponseBody.Licenses[0].applicationNumber
     * def index = randomNumber(mdmsStatecommonMasters.StructureType.length)
-    * def indexTL = randomNumber(mdmsStateTradeLicense.TradeType.length)
+    * def indexTL = randomNumber(200)
+    * print indexTL
     * def businessService = tlCalculatorConstants.parameters.businessService
     #TODO : Need a Consumer Code with No Demands, Yet to get from TL service TC(After approving TL)
-    * def noDemandsConsumerCode = 'PB-TL-2021-02-24-009258'
+
     * def invalidValue = commonConstants.invalidParameters.invalidValue
     * def emptyValue = commonConstants.invalidParameters.emptyValue
     * def indexLicenseType = randomNumber(tlCalculatorConstants.parameters.licenseType.length)
@@ -64,6 +65,9 @@ Scenario: Verify searching for bill details through API call by not passing any 
 
 @TL-getBillNodemands_07 @negative @regression @tlCalculatorGetBill @tlCalculator
 Scenario: Verify searching for bill details through API call by passing any value for applicationNumber which doesnt have any demands associated with it and check for errors
+    * call read('../../municipal-services/tests/tradeLicenseEndToEndFlow.feature@createTradeLicenseAndApproveCounterEmployee')
+    * def noDemandsConsumerCode = consumerCode
+    * print noDemandsConsumerCode
     * def getBillSearchParam = {"tenantId": '#(tenantId)',"consumerCode": '#(noDemandsConsumerCode)',"businessService": "#(businessService)"}
     * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@searchBillError')
     * match billSearchResponseBody.Errors[0].message == tlCalculatorConstants.errorMessages.noDemandError

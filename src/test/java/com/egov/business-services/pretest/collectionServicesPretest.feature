@@ -40,7 +40,7 @@ Scenario: Common test to create a Payment
   And request createPaymentRequest
   * print createPaymentRequest
   When method post
-  Then assert responseStatus == 200
+  Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
   And def Payments = collectionServicesResponseBody.Payments

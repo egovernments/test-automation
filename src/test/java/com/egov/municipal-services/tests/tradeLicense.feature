@@ -2,13 +2,16 @@ Feature: Trade License Service Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
+    #* call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
     * def tradeLicenseConstants = read('../../municipal-services/constants/tradeLicense.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # initializing request payload variables
     * def licenseType = tradeLicenseConstants.licenseType.permenant
     * def tenantId = tenantId
     * def city = tenantId.split(".")[0]
+    * def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode
+    * def boundaryType = commonConstants.parameters.boundaryType
+    * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
     * def localityCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].code
     * def department = mdmsStatecommonMasters.Department[0].code
     * def structureType = mdmsStatecommonMasters.StructureType[1].code
@@ -22,11 +25,15 @@ Background:
     * def dob = getPastEpochDate(5000)
     * def permenantAddress = randomString(50)
     * def financialYear = commonConstants.parameters.financialYear
+    * def financialYear2 = tradeLicenseConstants.financialYear
     * def tradeName = randomString(20)
     * def commencementDate = getPastEpochDate(50)
     * def workflowCode = tradeLicenseConstants.workflowCode.newTradeLicense
     * def applicationType = tradeLicenseConstants.applicationType.new
     * def tlAction = tradeLicenseConstants.processInstanceActions.initiate
+    * def documentType1 = tradeLicenseConstants.documentType.type1
+    * def documentType2 = tradeLicenseConstants.documentType.type2
+    * def documentType3 = tradeLicenseConstants.documentType.type3    
     * def uom = mdmsStateTradeLicense.AccessoriesCategory[0].uom
     * def accessoryCategory = mdmsStateTradeLicense.AccessoriesCategory[0].code
     * def count = randomNumber(200)
@@ -41,7 +48,7 @@ Background:
     * def tradeLicenseOffset = 0
 
 
-    @tradeLicenseCreate1 @municipalServices @regression @positive @tradeLicenseCreate @sewerageConnection
+    @tradeLicenseCreate1 @municipalServices @regression @positive @tradeLicenseCreate @tradeLicense
     Scenario: Test to create Trade License With Valid Payload
     # Steps to create a new Employee through HRMS    
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
@@ -53,7 +60,6 @@ Background:
     * match tradeLicenseResponseBody.Licenses[0].applicationNumber == "#present"
     * match tradeLicenseResponseBody.Licenses[0].status == tradeLicenseConstants.status.initiated
     * match tradeLicenseResponseBody.Licenses[0].applicationType == tradeLicenseConstants.applicationType.new
-    * match tradeLicenseResponseBody.Licenses[0].status == tradeLicenseConstants.status.initiated
 
     #BUG - INVALID LICENSE TYPE - ERROR RESPONSE IS NOT PROPER
      @tradeLicenseCreate2 @municipalServices @regression @negative @tradeLicenseCreate @tradeLicense
@@ -120,13 +126,12 @@ Background:
     * match tradeLicenseResponseBody.Errors[0].message == errorMessage
     
 
-    @tradeLicenseSearch1 @tradeLicenseSearch @tradeLicense @positive @regression @municipalServices
+    @tradeLicenseSearch1 @tradeLicense @positive @regression @municipalServices
     Scenario: Search Trade License with valid query parameters
     # Steps to create a new Trade License
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
     # Initializing search query params
     * def searchTradeLicenseParams = { offset: #(tradeLicenseOffset), tenantId: '#(tenantId)', offset: #(tradeLicenseOffset), mobileNumber: '#(tlmobileNumber)', applicationType: '#(applicationType)', applicationNumber: '#(tradeLicenseApplicationNumber)', status: '#(tradeLicenseStatus)'}
-    # Search a sewerage connection
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseSuccessfully')
     # Validate response body
     * match tradeLicenseResponseBody.Licenses[0].id == "#present"
@@ -134,25 +139,23 @@ Background:
     * match tradeLicenseResponseBody.Licenses[0].status == tradeLicenseStatus
     * match tradeLicenseResponseBody.Licenses[0].tenantId == tenantId
 
-    @tradeLicenseSearch2 @tradeLicenseSearch @tradeLicense @negative @regression @municipalServices
+    @tradeLicenseSearch2 @tradeLicense @negative @regression @municipalServices
     Scenario: Search Trade License with No Tenant
     # Steps to create a new Trade License
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
     # Initializing search query params
     * def searchTradeLicenseParams = { offset: #(tradeLicenseOffset), mobileNumber: '#(tlmobileNumber)', applicationType: '#(applicationType)', applicationNumber: '#(tradeLicenseApplicationNumber)', status: '#(tradeLicenseStatus)'}
-    # Search a sewerage connection
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseError')
     # Validate response body
     * match tradeLicenseResponseBody.Errors[0].code == tradeLicenseConstants.errors.errorCodes.noTenantId
     * match tradeLicenseResponseBody.Errors[0].message == tradeLicenseConstants.errors.errorMessages.noTenantId
 
-    @tradeLicenseSearch3 @tradeLicenseSearch @tradeLicense @negative @regression @municipalServices
+    @tradeLicenseSearch3 @tradeLicense @negative @regression @municipalServices
     Scenario: Search Trade License with Invalid License Type
     # Steps to create a new Trade License
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
     # Initializing search query params
     * def searchTradeLicenseParams = { tenantId: '#(tenantId)'}
-    # Search a sewerage connection
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseError')
     # Validate response body
     * match tradeLicenseResponseBody.Errors[0].code == tradeLicenseConstants.errors.errorCodes.onlyTenantId
@@ -160,7 +163,7 @@ Background:
 
 
 
-    @tradeLicenseSearch4 @tradeLicenseSearch @tradeLicense @positive @regression @municipalServices
+    @tradeLicenseSearch4 @tradeLicense @positive @regression @municipalServices
     Scenario: Search Trade License with valid query parameters
     # Steps to create a new Trade License
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
@@ -169,19 +172,17 @@ Background:
     * def invalidtlmobileNumber = randomNumber(10)
 
     * def searchTradeLicenseParams = { tenantId: '#(tenantId)', mobileNumber: '#(invalidtlmobileNumber)', applicationType: '#(applicationType)', applicationNumber: '#(invalidTradeLicenseApplicationNumber)', status: '#(tradeLicenseStatus)'}
-    # Search a sewerage connection
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseSuccessfullyWithInvalidData')
     # Validate response body
     * assert tradeLicenseResponseBody.Licenses.length == 0
 
 
-    @tradeLicenseSearch5 @tradeLicenseSearch @tradeLicense @positive @regression @municipalServices
+    @tradeLicenseSearch5 @tradeLicense @positive @regression @municipalServices
     Scenario: Search Trade License with tenant Id and Mobile Number
     # Steps to create a new Trade License
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
     # Initializing search query params
     * def searchTradeLicenseParams = { tenantId: '#(tenantId)', mobileNumber: '#(tlmobileNumber)'}
-    # Search a sewerage connection
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseSuccessfully')
     # Validate response body
     * match tradeLicenseResponseBody.Licenses[0].id == "#present"
@@ -191,7 +192,6 @@ Background:
 
     @tradeLicenseUpdate1  @tradeLicenseUpdate @positive  @regression  @municipalServices @tradeLicense
     Scenario: Update Trade License - Update To Document Verification
-        # Create a sewerage connection
         * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
         # Initializing search query params
         * set tradeLicense.action = tradeLicenseConstants.processInstanceActions.initiate
@@ -304,3 +304,103 @@ Background:
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@updateTradeLicenseError')
     * match tradeLicenseResponseBody.Errors[0].code == tradeLicenseConstants.errors.errorCodes.updateInvalidApplicationId
     * match tradeLicenseResponseBody.Errors[0].message == invalidapperrormessage 
+
+    @createAndupdateTL
+    Scenario: Create and Update Trade License - Update To Document Verification
+        * def financialYear = financialYear2
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@forwardTradeLicenseToDocumentVerifier')
+        * match tradeLicenseResponseBody.Licenses[0].id == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].applicationNumber == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].tenantId == tenantId
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @updateTL_Only
+    Scenario: Update Trade License - Update To Document Verification
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@citizenToDocumentVerifier')
+        * match tradeLicenseResponseBody.Licenses[0].id == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].applicationNumber == "#present"
+
+    @docVerTL
+    Scenario: Update Trade License - Update To Field Inspector
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@forwardTradeLicenseToFieldInspector')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @fiTL
+    Scenario: Update Trade License - Update To Approver
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@forwardTradeLicenseToApprover')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @approveTL
+    Scenario: Update Trade License - Update To Payment pending
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@forwardTradeLicenseToPendingPayment')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @rejectTLAsdocVer
+    Scenario: Update Trade License - Reject as Doc Verifier
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@rejectDocVerifier')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @rejectTLAsFieldInspector
+    Scenario: Reject As Field Ispector
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@rejectFieldInspector')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @rejectTLAsApprover
+    Scenario: Reject TL As Approver
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@rejectApprover')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @sendBackToCitizenFromFieldInspector
+    Scenario: Send Back to Citizen from Field Inspector
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@sendBackToCitizen_FI')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @sendBackToDocVerifierFromFieldInspector
+    Scenario: Send Back to DocVerifier from Field Inspector
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@sendBackToDocVerifier_FI')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @sendBackToFieldInspectorFromApprover
+    Scenario: Send Back to FieldInspector from Approver
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@sendBackToFieldInspector_Approver')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+
+    @tradeLicenseSearch
+    Scenario: Search Trade License with valid query parameters
+        # Initializing search query params
+        * def searchTradeLicenseParams = { tenantId: '#(tenantId)', applicationNumber: '#(tradeLicenseApplicationNumber)'}
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@searchTradeLicenseSuccessfully')
+        # Validate response body
+        * match tradeLicenseResponseBody.Licenses[0].id == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].applicationNumber == tradeLicenseApplicationNumber
+        * match tradeLicenseResponseBody.Licenses[0].tenantId == tenantId
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+        * def validTo = tradeLicense.validTo
+
+    @cancelTL
+    Scenario: Cancel TL application : Approver
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@cancel_Approver')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+        * match tradeLicense.status == 'CANCELLED'
+
+    @submitRenewal
+    Scenario: Submit for Renewal
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@submitForRenewal')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+        * match tradeLicense.status == 'PENDINGPAYMENT'
+
+    @editRenewal
+    Scenario: Edit Renewal : Counter Employee
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@editForRenewal')
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
+        #* match tradeLicense.status == 'PENDINGPAYMENT'
+
+    @updateTLAfterEdit
+    Scenario: Update After Editing Trade License - Update To Document Verification
+
+        * call read('../../municipal-services/pretests/tradeLicensePretest.feature@forwardTradeLicenseToDocumentVerifierAfterEditing')
+        * match tradeLicenseResponseBody.Licenses[0].id == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].applicationNumber == "#present"
+        * match tradeLicenseResponseBody.Licenses[0].tenantId == tenantId
+        * def tradeLicense = tradeLicenseResponseBody.Licenses[0]
