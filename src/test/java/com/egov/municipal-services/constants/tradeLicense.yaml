@@ -17,6 +17,12 @@ processInstanceActions:
 tradeType:
   goodsManufactureT15: "GOODS.MANUFACTURE.TST-15"
 
+documentType:
+  type1: OWNERIDPROOF
+  type2: OWNERSHIPPROOF
+  type3: OWNERPHOTO
+
+financialYear: '2019-20'
 
 status:
   initiated: "INITIATED"

@@ -64,6 +64,22 @@ function() {
          config.counterEmployeePassword = envProps.counterEmployeeUser.password;
          config.counterEmployeeType = envProps.counterEmployeeUser.type;
 
+         // username & password for DocVerifier-TL
+         config.TLDocVerifierUsername = envProps.tlDocVerifierUser.userName;
+         config.TLDocVerifierPassword = envProps.tlDocVerifierUser.password;
+         config.TLDocVerifierType = envProps.tlDocVerifierUser.type;
+        
+         // username & password for FieldInspector-TL
+         config.FieldInspectorUsername = envProps.tlFieldInspectorUser.userName;
+         config.FieldInspectorPassword = envProps.tlFieldInspectorUser.password;
+         config.FieldInspectorType = envProps.tlFieldInspectorUser.type;
+        
+         // username & password for Approver-TL
+         config.ApproverUsername = envProps.tlApproverUser.userName;
+         config.ApproverPassword = envProps.tlApproverUser.password;
+         config.ApproverType = envProps.tlApproverUser.type;
+        
+
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -314,8 +330,17 @@ function() {
         config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
 
         // Calling pretest features which is consumed by almost all tests
-        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
+
+        var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
+        config.fileStoreId1 = fileUploadResponse1.fileStoreId
+
+        var fileUploadResponse2 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore2', config);
+        config.fileStoreId2 = fileUploadResponse2.fileStoreId
+
+        var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
+        config.fileStoreId3 = fileUploadResponse3.fileStoreId
 
         var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
         config.citizenAuthToken = citizenAuthTokenResponse.authToken;
