@@ -15,7 +15,7 @@ Background:
 ###########################
 
 
-@createTradeLicenseAndApproveCitizen @positive @regression
+@createTradeLicenseAndApproveCitizen @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a citizen, create, approve and make payment for TL
      # Steps to validate error messages of login attempt with invalid mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
@@ -44,7 +44,7 @@ Scenario: Login as a citizen, create, approve and make payment for TL
     #TODO : Need to add Trade License Payment steps through Third party payment gateway
     * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
 
-@editAsDocVerifier @positive @regression
+@editAsDocVerifier @positive @regression @tradeLicenseEndToEnd
 Scenario: Edit as Doc-Verifier
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -54,7 +54,7 @@ Scenario: Edit as Doc-Verifier
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenDocVerifierTL')
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch')
 
-@rejectAsDocVerifier @positive @regression
+@rejectAsDocVerifier @positive @regression @tradeLicenseEndToEnd
 Scenario: Reject as Doc-Verifier
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -65,7 +65,7 @@ Scenario: Reject as Doc-Verifier
     * call read('../../municipal-services/tests/tradeLicense.feature@rejectTLAsdocVer')
     * match tradeLicenseResponseBody.Licenses[0].status == 'REJECTED'
 
-@editAsFieldInspector @positive @regression
+@editAsFieldInspector @positive @regression @tradeLicenseEndToEnd
 Scenario: Edit as Field Inspector
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -79,7 +79,7 @@ Scenario: Edit as Field Inspector
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenFieldInspectorTL')
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch')
 
-@rejectAsFieldInspector @positive @regression
+@rejectAsFieldInspector @positive @regression @tradeLicenseEndToEnd
 Scenario: Reject as Field Inspector
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -93,7 +93,7 @@ Scenario: Reject as Field Inspector
     * call read('../../municipal-services/tests/tradeLicense.feature@rejectTLAsFieldInspector')
     * match tradeLicenseResponseBody.Licenses[0].status == 'REJECTED'
 
-@sendBackToCitizenAsFieldInspector @positive @regression
+@sendBackToCitizenAsFieldInspector @positive @regression @tradeLicenseEndToEnd
 Scenario: Send Back to Citizen as Field Inspector
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -110,7 +110,7 @@ Scenario: Send Back to Citizen as Field Inspector
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
     * call read('../../municipal-services/tests/tradeLicense.feature@updateTL_Only')
 
-@sendBackToDocVerifierAsFieldInspector @positive @regression
+@sendBackToDocVerifierAsFieldInspector @positive @regression @tradeLicenseEndToEnd
 Scenario: Send Back to Doc Verifier as Field Inspector
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -123,7 +123,7 @@ Scenario: Send Back to Doc Verifier as Field Inspector
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenFieldInspectorTL')
     * call read('../../municipal-services/tests/tradeLicense.feature@sendBackToDocVerifierFromFieldInspector')
 
-@rejectAsApprover @positive @regression
+@rejectAsApprover @positive @regression @tradeLicenseEndToEnd
 Scenario: Reject as Approver
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -139,7 +139,7 @@ Scenario: Reject as Approver
     * call read('../../municipal-services/tests/tradeLicense.feature@rejectTLAsApprover')
     * match tradeLicenseResponseBody.Licenses[0].status == 'REJECTED'
 
-@sendBackToFieldInspectorAsApprover @positive @regression
+@sendBackToFieldInspectorAsApprover @positive @regression @tradeLicenseEndToEnd
 Scenario: Send Back to Field Inspector as Approver
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -155,7 +155,7 @@ Scenario: Send Back to Field Inspector as Approver
     * call read('../../municipal-services/tests/tradeLicense.feature@sendBackToFieldInspectorFromApprover')
     * match tradeLicenseResponseBody.Licenses[0].status == 'FIELDINSPECTION'
 
-@createTradeLicenseAndApproveCounterEmployee @positive @regression
+@createTradeLicenseAndApproveCounterEmployee @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a CounterEmployee, create, approve and make payment for TL
     # Steps to login as Counter Employee and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
@@ -186,7 +186,7 @@ Scenario: Login as a CounterEmployee, create, approve and make payment for TL
 
 
 
-@createTradeLicenseAndCancelAfterApproveCounterEmployee @positive @regression
+@createTradeLicenseAndCancelAfterApproveCounterEmployee @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a CounterEmployee, make payment for TL and cancel the Application
     # Steps to login as Counter Employee and Create a Trade License 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
@@ -214,7 +214,7 @@ Scenario: Login as a CounterEmployee, make payment for TL and cancel the Applica
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch') 
     * call read('../../municipal-services/tests/tradeLicense.feature@cancelTL')
 
-@createTradeLicenseAndCancelAfterApproveCitizen @positive @regression
+@createTradeLicenseAndCancelAfterApproveCitizen @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a citizen, make payment for TL and Cancel the Application
     # Steps to login as Citizen and Create a Trade License
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -237,7 +237,7 @@ Scenario: Login as a citizen, make payment for TL and Cancel the Application
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch') 
     * call read('../../municipal-services/tests/tradeLicense.feature@cancelTL')
 
-@createTradeLicenseAndSubmitForRenewalCounterEmployee @positive @regression
+@createTradeLicenseAndSubmitForRenewalCounterEmployee @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a CounterEmployee, Submit for Renewal and make payment for TL
     # Steps to login as Counter Employee and Create a Trade License 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
@@ -278,7 +278,7 @@ Scenario: Login as a CounterEmployee, Submit for Renewal and make payment for TL
     * def key = 'tradelicense-receipt'
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfSuccessfully')
 
-@createTradeLicenseAndEditForRenewalCounterEmployee @positive @regression
+@createTradeLicenseAndEditForRenewalCounterEmployee @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a CounterEmployee, Edit for Renewal and make payment for TL
     # Steps to login as Counter Employee and Create a Trade License 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
@@ -329,7 +329,7 @@ Scenario: Login as a CounterEmployee, Edit for Renewal and make payment for TL
     * def key = 'tradelicense-receipt'
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfSuccessfully')
 
-@createTradeLicenseAndSendForRenewalCitizen @positive @regression
+@createTradeLicenseAndSendForRenewalCitizen @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a citizen and Send for Renewal
     # Steps to login as Citizen and Create a Trade License 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
@@ -352,7 +352,7 @@ Scenario: Login as a citizen and Send for Renewal
     * call read('../../municipal-services/tests/tradeLicense.feature@submitRenewal')
     #TODO : Need to add Trade License Payment steps through Third party payment gateway
 
-@createTradeLicenseAndEditRenewalCitizen @positive @regression
+@createTradeLicenseAndEditRenewalCitizen @positive @regression @tradeLicenseEndToEnd
 Scenario: Login as a citizen and EditRenewal 
     # Steps to login as Citizen and Create a Trade License 
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizen')
