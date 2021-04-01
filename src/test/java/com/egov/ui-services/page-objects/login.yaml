@@ -1,0 +1,14 @@
+urls:
+  languageSelection: '/citizen/language-selection'
+  register: '/citizen/user/register'
+  login: '/citizen/user/login'
+  otp: '/citizen/user/otp'
+
+objects:
+  languageEnglishButton: "{span}ENGLISH"
+  continueButton: "#continue-action"
+  resendOtpButton: "#otp-resend"
+  mobileNumberField: "#person-phone"
+  loginSubmitButton: "#login-submit-action"
+  otpField: "input[id=otp]"
+  submitOtpButton: "#otp-start"

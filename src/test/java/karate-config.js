@@ -29,13 +29,8 @@ function() {
    };
         
         config.envHost = envProps.host
-        if(envProps.localhost){
-            config.envLocalhost = envProps.localhost
-        }
-        if(envProps.mockHost){
-            config.envMockHost = envProps.mockHost
-        }
-        
+        config.envLocalhost = envProps.localhost
+
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
         
@@ -63,6 +58,11 @@ function() {
          config.approverUsername = envProps.superUser.userName;
          config.approverPassword = envProps.superUser.password;
          config.approverType = envProps.superUser.type;
+
+         // username & password for Counter Employee user
+         config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
+         config.counterEmployeePassword = envProps.counterEmployeeUser.password;
+         config.counterEmployeeType = envProps.counterEmployeeUser.type;
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
@@ -195,11 +195,11 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
-        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
+        config.signUrl = envProps.host + path.endPoints.encService.sign;
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
         //url shorten
@@ -294,12 +294,40 @@ function() {
         config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
         // Property Calculator - Property Tax Service endpoint
         config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
+        config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
+
+        // TL-servcies : Trade License
+        config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
+        config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
+        config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
+
+        // tl-calculator
+        config.tlCalculatorGetBill = envProps.host + path.endPoints.tlCalculator.getBill
+        config.tlCalculatorCreateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabCreate
+        config.tlCalculatorUpdateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabUpdate
+        config.tlCalculatorSearchBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabSearch
+        config.tlCalculatorCalculate = envProps.host + path.endPoints.tlCalculator.calculate
+
+        // sw-servcies : sewerage connection
+        config.createSewerageConnection = envProps.host + path.endPoints.sewerageConnection.create
+        config.updateSewerageConnection = envProps.host + path.endPoints.sewerageConnection.update
+        config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
 
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+
+        var AltitizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen', config);
+        config.altCitizenAuthToken = AltitizenAuthTokenResponse.authToken;
+
+        var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
+        config.approverAuthToken = approverAuthTokenResponse.authToken;
+
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
+        config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
@@ -317,6 +345,11 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+
+        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        karate.configure('driver', driverConfig);
+        config.driverConfig = driverConfig;
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
