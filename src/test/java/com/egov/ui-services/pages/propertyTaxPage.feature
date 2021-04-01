@@ -25,7 +25,7 @@ Scenario: Search property tax by unique id and make full payment
 	* delay(3000)
 	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(3, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
 	* print paymentReceiptNumber
 
@@ -53,7 +53,7 @@ Scenario: Search property tax by unique id and make partial payment
 	* input(pTPageObjects.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
 	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(3, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
 	* print paymentReceiptNumber
 
@@ -72,6 +72,6 @@ Scenario: Search property tax by unique id and make full payment
 	* delay(3000)
 	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(3, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
 	* print paymentReceiptNumber

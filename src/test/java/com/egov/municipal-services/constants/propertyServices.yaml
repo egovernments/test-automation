@@ -21,3 +21,4 @@ errorMessages:
   invalidFinancialYear: "No Financial Year data is available for the given year value of : "
   assessmentIdNotFound: "The assessment with id: <assessmentId> is not found in DB"
   invalidAssessmentStatus: "Assessment Status cannot be empty"
+  authorizedError: Invalid login credentials

@@ -33,6 +33,8 @@ function randomNumber(length) {
     var number =  Math.floor(Math.random() * length);
     if(number>=length){
         number = length -1;
+    }else if(number==0){
+        number = 1
     }
     return number; 
 }
@@ -281,5 +283,5 @@ function randomFloat(x) {
         return new java.util.Random().nextFloat();
     } else {
         return new java.util.Random().nextFloat(100000000);
-    }
+   }
 }

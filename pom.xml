@@ -66,6 +66,12 @@
 			<artifactId>karate-gatling</artifactId>
 			<version>${karate.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>4.3.1</version>
+</dependency>
 
 		<dependency>
 			<groupId>com.intuit.karate</groupId>

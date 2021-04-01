@@ -314,7 +314,7 @@ function() {
         config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
 
         // Calling pretest features which is consumed by almost all tests
-        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
 
         var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
@@ -323,10 +323,19 @@ function() {
         var AltitizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen', config);
         config.altCitizenAuthToken = AltitizenAuthTokenResponse.authToken;
 
+        var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
+        config.fileStoreId1 = fileUploadResponse1.fileStoreId
+
+        var fileUploadResponse2 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore2', config);
+        config.fileStoreId2 = fileUploadResponse2.fileStoreId
+
+        var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
+        config.fileStoreId3 = fileUploadResponse3.fileStoreId
+
         var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
         config.approverAuthToken = approverAuthTokenResponse.authToken;
 
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
 
@@ -347,7 +356,7 @@ function() {
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
 
-        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 

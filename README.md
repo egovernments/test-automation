@@ -87,6 +87,21 @@ employee:
      userName: <username goes here>
      password: <password goes here>
      type: <user type goes here>
+# Citizen's username and password needed for Property End to End flow (need to create user manually)
+citizen:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
+# Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
+alternateCitizen:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
+# Counter Employee's username and password, required for multiple use (need to create user manually)
+counterEmployeeUser:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
  ```
  
 <!--List Of Tags--> 

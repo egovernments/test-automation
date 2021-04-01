@@ -2,16 +2,13 @@ Feature: eGov_User - This feature is to test Update user's password scenarios
 
 Background:
      * def jsUtils = read('classpath:jsUtils.js')
-     * def authUsername = employeeUserName
-     * def authPassword = employeePassword
-     * def authUserType = employeeType
-     * call read('../../common-services/pretests/authenticationToken.feature')
+     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
      * def errorMessage = read('../../core-services/constants/user.yaml')
      * def genericError = read("../../common-services/constants/genericConstants.yaml")
-     * def existingPassword = authPassword
+     * def existingPassword = counterEmployeePassword
      * def newPassword = 'Password@'+randomNumber(4)
-     * def username = authUsername
-     * def type = authUserType
+     * def username = counterEmployeeUsername
+     * def type = counterEmployeeType
      * def updatedUserPassword = read('../../core-services/requestPayload/user/updatePassword/updatePassword.json')
 
 @Update_Password_ValidExistingPassword_validNewPassword_01 @Update_Password_SameAsExistingPassword_10 @coreServices @regression @positive @userPassword @eGovUser

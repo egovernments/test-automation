@@ -3,6 +3,7 @@ urls:
   register: '/citizen/user/register'
   login: '/citizen/user/login'
   otp: '/citizen/user/otp'
+  homePage: '/citizen/'
 
 objects:
   languageEnglishButton: "{span}ENGLISH"
@@ -12,3 +13,4 @@ objects:
   loginSubmitButton: "#login-submit-action"
   otpField: "input[id=otp]"
   submitOtpButton: "#otp-start"
+  homePageLink: "div[data-localization='Home']"

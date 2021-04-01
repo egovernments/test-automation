@@ -36,3 +36,8 @@ Scenario: Login to UI as Citizen
 	* waitForUrl(loginPageurls.otp)
 	* input(loginPageObjects.otpField, '123456')
 	* click(loginPageObjects.submitOtpButton)
+
+@naviagteToHomePage
+Scenario: Navigate To Home Page
+	* waitFor(loginPageObjects.homePageLink).click()
+	* waitForUrl(loginPageurls.homePage)

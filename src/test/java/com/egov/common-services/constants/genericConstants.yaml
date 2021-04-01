@@ -16,7 +16,7 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
-  financialYear: 2020-21
+  financialYear: 2019-20
   # to upload file on fire-noc module
   module:
     - fire-noc

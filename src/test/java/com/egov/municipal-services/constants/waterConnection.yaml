@@ -17,6 +17,8 @@ parameters:
     activated: 'CONNECTION_ACTIVATED'
     pendingForCitizenAction: 'PENDING_FOR_CITZEN_ACTION'
     rejected: 'REJECTED'
+    pendingApprovalForConnection: 'PENDING_APPROVAL_FOR_CONNECTION'
+    connectionActivated: 'CONNECTION_ACTIVATED'
 errorMessages:
   invalidPropertyId: "Incorrect Property Id. Water Connection cannot be created."
   propertyIdNotNull: "Property Unique Id should not be empty"

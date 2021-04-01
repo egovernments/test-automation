@@ -23,6 +23,7 @@ Feature: Generated pdf successfully
     """ 
             Given url createPdf
               And params pdfCreateParam
+            * eval pdfCreatePayloadSecond.Payments = Payments
               And request pdfCreatePayloadFirst
              When method post
              Then status 201
