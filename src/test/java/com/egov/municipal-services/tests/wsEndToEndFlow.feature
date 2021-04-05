@@ -3,18 +3,20 @@ Feature: Water and Sewerage End to End test flow
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
+    * def Thread = Java.type('java.lang.Thread')
     * def taxPeriodFrom = getCurrentEpochTime() + ''
     * def taxPeriodTo = getEpochDate(2) + ''
     * def taxAmount = 200
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
+    * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+    * Thread.sleep(15000)
 
 # WS Metered Connection
 @payWaterServiceTaxFullAsCitizen @wsConnection @wsEndToEnd @regression
 Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')

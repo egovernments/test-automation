@@ -17,7 +17,7 @@ Background:
     * def structureType = mdmsStatecommonMasters.StructureType[1].code
     * def tradeType = tradeLicenseConstants.tradeType.goodsManufactureT15
     * def subOwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[0].code +"."+mdmsStatePropertyTax.SubOwnerShipCategory[0].code
-    * def tlmobileNumber = '78' + randomMobileNumGen(8)
+    * def tlmobileNumber = citizenUsername
     * def ownerName = randomString(20)
     * def fatherHusbandName = randomString(20)
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]

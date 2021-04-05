@@ -16,7 +16,7 @@ objects:
   makePaymentButton: "#material-ui-makePayment"
   propertyIdHeader: "span[data-localization='PT_COMMON_TABLE_COL_PT_ID']"
   uniquePropertyIdHeader: "{}<propertyId"
-  paymentReceiptNumber: "//span[@data-localization='CITIZEN_SUCCESS_PT_PAYMENT_RECEIPT_NO']/../following-sibling::h1/span"
+  paymentReceiptNumber: "//span[text()='Payment Receipt No.']/../following-sibling::h1/span"
   partialAmountRadioButton: "input[value='partial_amount']"
   amountToPayField: "#custom-containers-displayAmount"
   takeActionButton: "span[data-localization='WF_TAKE_ACTION']"

@@ -14,3 +14,5 @@ objects:
   otpField: "input[id=otp]"
   submitOtpButton: "#otp-start"
   homePageLink: "div[data-localization='Home']"
+  userSettingsDropdown: ".userSettingsInnerContainer svg"
+  logoutButton: "#header-logout"

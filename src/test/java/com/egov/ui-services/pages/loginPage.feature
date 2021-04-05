@@ -4,6 +4,8 @@ Background:
     * def loginPage = read('../../ui-services/page-objects/login.yaml')
     * def loginPageurls = loginPage.urls
     * def loginPageObjects = loginPage.objects
+	* configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen
@@ -41,3 +43,8 @@ Scenario: Login to UI as Citizen
 Scenario: Navigate To Home Page
 	* waitFor(loginPageObjects.homePageLink).click()
 	* waitForUrl(loginPageurls.homePage)
+
+@logout
+Scenario: Logout
+	* retry(3, 5000).waitFor(loginPageObjects.userSettingsDropdown).click()
+	* waitFor(loginPageObjects.logoutButton).click()

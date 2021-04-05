@@ -11,7 +11,7 @@ Background:
     * def documentValue = ranInteger(3)
     * def documentNumber = randomString(5)
     * def isMutationInCourt = "NO"
-    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[0].code
+    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[mdmsStatePropertyTax.ReasonForTransfer.size()-2].code
     * def previousPropertyUuid = generateUUID()
     * def govtAcquisitionDetails = ""
     * def isPropertyUnderGovtPossession = "NO"

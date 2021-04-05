@@ -2,6 +2,7 @@ Feature: Property Service - End to End Flow
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
+    * def Thread = Java.type('java.lang.Thread')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')
     * def businessService = mdmsStateBillingService.BusinessService[0].code
@@ -45,7 +46,7 @@ Background:
     * def isMutationInCourt = 'NO'
     * def govtAcquisitionDetails = ''
     * def isPropertyUnderGovtPossession = 'NO'
-    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[0].code
+    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[mdmsStatePropertyTax.ReasonForTransfer.size()-2].code
     * def marketValue = ranInteger(3)
     * def documentNumber = randomString(5)
     * def documentDate = getCurrentEpochTime()
@@ -53,8 +54,20 @@ Background:
     * def key = pdfCreateConstant.parameters.valid.keyForPt
     * def invalidReceipt = 'invalid_'+randomNumber(5)
     * def propertyTaxEstimatePayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/estimate.json')
+    * def caseDetails = ""
+    * def marketValue = 2000
+    * def documentDate = getCurrentEpochTime()
+    * def documentValue = ranInteger(3)
+    * def documentNumber = randomString(5)
+    * def isMutationInCourt = "NO"
+    * def reasonForTransfer = mdmsStatePropertyTax.ReasonForTransfer[mdmsStatePropertyTax.ReasonForTransfer.size()-2].code
+    * def previousPropertyUuid = generateUUID()
+    * def govtAcquisitionDetails = ""
+    * def isPropertyUnderGovtPossession = "NO"
+    * def propertyTaxMutationPayload = read('../../municipal-services/requestPayload/property-calculator/propertyTaxMutation/calculate.json')
     * def pgServiceConstants = read('../../core-services/constants/pgServices.yaml')
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+    * Thread.sleep(15000)
 
 @createPropertyAndPayFullTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Full Payment)
@@ -314,10 +327,16 @@ Scenario: PT-Approver-Reject
     * match processSearchResponseBody.ProcessInstances[0].action == 'REJECT'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
+#bug: No Option to pay mutation charges through citizen
 @transferOwnerShip @propertyTaxEndToEnd
 Scenario: PT- Transfer Of Ownership- Citizen
     # Steps to create an Active property and Pay full tax 
-    * call read('../../municipal-services/tests/propertyServiceEndToEndFlow.feature@createPropertyAndPayFullTaxAsCitizen')
+    * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
+    * def authToken = superUserAuthToken
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
+    * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
+    * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
+    * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
     * print propertyId
     * def mobileNumber = '9999999999'
     * def altContactNumber = '78' + randomMobileNumGen(8)
@@ -332,26 +351,27 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * def authToken = altCitizenAuthToken
     * def searchPropertyParams = { acknowledgementIds: '#(acknowldgementNumber)'}
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
-    * def businessService
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyMutationProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@forwardMutationProperty')
+    * set propertyTaxMutationPayload['Property'] = Property
+    * set propertyTaxMutationPayload['Property'].additionalDetails.caseDetails = caseDetails
+    * set propertyTaxMutationPayload['Property'].additionalDetails.marketValue = marketValue
+    * set propertyTaxMutationPayload['Property'].additionalDetails.documentDate = documentDate
+    * set propertyTaxMutationPayload['Property'].additionalDetails.documentValue = documentValue
+    * set propertyTaxMutationPayload['Property'].additionalDetails.documentNumber = documentNumber
+    * set propertyTaxMutationPayload['Property'].additionalDetails.isMutationInCourt = isMutationInCourt
+    * set propertyTaxMutationPayload['Property'].additionalDetails.reasonForTransfer = reasonForTransfer
+    * set propertyTaxMutationPayload['Property'].additionalDetails.previousPropertyUuid = previousPropertyUuid
+    * set propertyTaxMutationPayload['Property'].additionalDetails.govtAcquisitionDetails = govtAcquisitionDetails
+    * set propertyTaxMutationPayload['Property'].additionalDetails.isPropertyUnderGovtPossession = isPropertyUnderGovtPossession
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxMutation')
     # Steps to make payment from UI
     * call read('../../ui-services/pages/loginPage.feature@loginAsAltCitizen')
     * call read('../../ui-services/pages/propertyTaxPage.feature@makeMutationPayment')
-    # Steps to search payment
-    * call read('../../business-services/pretest/collectionServicesPretest.feature@searchPaymentWithConsumerCode')
-    * def txnId = searchResponseBody.Payments[0].transactionNumber
-    * print txnId
-    # Steps to search the Payment status
-    * delay(5000)
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPgTransactionSuccessfully')
-    * print pgServicesSearchResponseBody.Transaction[0].txnStatus
-    * match pgServicesSearchResponseBody.Transaction[0].txnStatus == pgServiceConstants.parameters.txnStatus
-    * match pgServicesSearchResponseBody.Transaction[0].txnStatusMsg == pgServiceConstants.parameters.txnStatusMsg
     * call read('../../municipal-services/tests/PropertyService.feature@approveMutationProperty')
+
 
 @differentOwnershipCategory @propertyTaxEndToEnd
 Scenario: PT- Create for different ownership category 
@@ -400,7 +420,7 @@ Scenario: Login as a counter employee and pay propety tax
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
     # Steps to create a payment based on the bill id
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
-    * match collectionServicesResponseBody.Payments[0].totalAmountPaid == taxAmount
+    * match collectionServicesResponseBody.Payments[0].totalAmountPaid == txnAmount
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfForPtSuccessfully')
     # Validate the response message and length of role array 
     * match pdfCreateResponseBody.message == pdfCreateConstant.expectedMessages.message

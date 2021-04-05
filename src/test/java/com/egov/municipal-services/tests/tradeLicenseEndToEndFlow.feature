@@ -5,6 +5,9 @@ Background:
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
     * def tlCalculatorConstants = read('../../municipal-services/constants/tlCalculator.yaml')
+    * def Thread = Java.type('java.lang.Thread')
+    * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+    * Thread.sleep(15000)
 
 ###########################
 #    TODO: Need to revisit the below tests where Payment needs to be made through third party payment gateway

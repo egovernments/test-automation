@@ -3,11 +3,6 @@ function waitTimeSec(x) {
     java.lang.Thread.sleep(x * 1000);
 }
 
-/**
- * Generates random string
- * @param {character length of string} x
- * @returns random string
- */
 function ranString(x) {
     return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
 }
