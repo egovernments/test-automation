@@ -5,13 +5,11 @@ Background:
   * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def tenantId = tenantId
-  * def businessService = fetchBillResponse.Bill[0].businessService
   * def paymentMode = collectionServicesConstants.parameters.paymentMode
   * def paidBy = 'Payer ' + randomString(10)
   * def mobileNumber = '78' + randomMobileNumGen(8)
-  * def payerName = fetchBillResponse.Bill[0].payerName
+  * def payerName = 'Payer ' + randomString(10)
   * def totalDue = 0
-  * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
   * def transactionNumber = collectionServicesConstants.parameters.transactionNumber
   * def instrumentNumber = collectionServicesConstants.parameters.instrumentNumber
   * def paymentModeForCard = collectionServicesConstants.parameters.paymentMode2

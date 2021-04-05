@@ -64,22 +64,6 @@ function() {
          config.counterEmployeePassword = envProps.counterEmployeeUser.password;
          config.counterEmployeeType = envProps.counterEmployeeUser.type;
 
-         // username & password for DocVerifier-TL
-         config.TLDocVerifierUsername = envProps.tlDocVerifierUser.userName;
-         config.TLDocVerifierPassword = envProps.tlDocVerifierUser.password;
-         config.TLDocVerifierType = envProps.tlDocVerifierUser.type;
-        
-         // username & password for FieldInspector-TL
-         config.FieldInspectorUsername = envProps.tlFieldInspectorUser.userName;
-         config.FieldInspectorPassword = envProps.tlFieldInspectorUser.password;
-         config.FieldInspectorType = envProps.tlFieldInspectorUser.type;
-        
-         // username & password for Approver-TL
-         config.ApproverUsername = envProps.tlApproverUser.userName;
-         config.ApproverPassword = envProps.tlApproverUser.password;
-         config.ApproverType = envProps.tlApproverUser.type;
-        
-
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -333,6 +317,12 @@ function() {
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
 
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+
+        var AltitizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen', config);
+        config.altCitizenAuthToken = AltitizenAuthTokenResponse.authToken;
+
         var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
         config.fileStoreId1 = fileUploadResponse1.fileStoreId
 
@@ -342,13 +332,10 @@ function() {
         var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
         config.fileStoreId3 = fileUploadResponse3.fileStoreId
 
-        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
-        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
-
         var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
         config.approverAuthToken = approverAuthTokenResponse.authToken;
 
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@superUser', config);
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
 
@@ -368,6 +355,10 @@ function() {
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+
+        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        karate.configure('driver', driverConfig);
+        config.driverConfig = driverConfig;
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

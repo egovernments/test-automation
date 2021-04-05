@@ -156,10 +156,10 @@ endPoints:
     subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
     read: consumers/automation_consumer/instances/automation_consumer_instance/records
     delete: consumers/automation_consumer/instances/automation_consumer_instance
-    getClusters: v3/clusters
-    getConsumerGroups: "v3/clusters/<cluster_id>/consumer-groups"
-    getLags: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
-    getLagSummary: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
+    getClusters: clusters
+    getConsumerGroups: "clusters/<cluster_id>/consumer-groups"
+    getLags: "clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
+    getLagSummary: "clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
 
   egfInstrumentTypes:
     create: egf-instrument/instrumenttypes/_create

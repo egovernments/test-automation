@@ -3,25 +3,20 @@ Feature: Water and Sewerage End to End test flow
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
-
-
-###########################
-#    TODO: Need to revisit the below tests where Payment needs to be made through third party payment gateway
-#        @payWaterServiceTaxFullAsCitizen
-#        @payWaterServiceTaxPartialAsCitizen
-#        @payWaterServiceTaxNonMeteredFullAsCitizen
-#        @payWaterServiceTaxNonMeteredPartialAsCitizen
-#        @paySewerageServiceTaxFullAsCitizen
-#        @paySewerageServiceTaxPartialAsCitizen
-###########################
-
+    * def Thread = Java.type('java.lang.Thread')
+    * def taxPeriodFrom = getCurrentEpochTime() + ''
+    * def taxPeriodTo = getEpochDate(2) + ''
+    * def taxAmount = 200
+    * def collectionAmount = 0
+    * def minimumAmountPayable = 1
+    * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+    * Thread.sleep(15000)
 
 # WS Metered Connection
 @payWaterServiceTaxFullAsCitizen @wsConnection @wsEndToEnd @regression
 Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -41,9 +36,15 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
     * print propertyId
-    * print waterConnectionApplicationNo
+    * print connectionType
     * print connectionNo
-    #TODO: Need to add payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'WaterService'
+    * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
+    * def businessService = 'WS'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
 @payWaterServiceTaxPartialAsCitizen @wsConnection @wsEndToEnd @regression
 Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
@@ -74,7 +75,14 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * print propertyId
     * print waterConnectionApplicationNo
     * print connectionNo
-    #TODO: Need to add payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'WaterService'
+    * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
+    * def businessService = 'WS'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * def amountToPay = 100
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makePartialPayment')
 
 @WSsendsBackByDocVerifierAndResubmit @wsConnection @wsEndToEnd @regression
 Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
@@ -293,7 +301,13 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
     * print propertyId
     * print waterConnectionApplicationNo
     * print connectionNo
-    #TODO: Need to add payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'WaterService'
+    * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
+    * def businessService = 'WS'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
 @payWaterServiceTaxNonMeteredPartialAsCitizen @wsConnection @wsEndToEnd @regression
 Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
@@ -322,7 +336,14 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
     * print propertyId
     * print waterConnectionApplicationNo
     * print connectionNo
-    #TODO: Need to add partial payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'WaterService'
+    * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
+    * def businessService = 'WS'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * def amountToPay = 100
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makePartialPayment')
     
 # SW - Non-Metered Connection
 
@@ -353,7 +374,13 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     * print propertyId
     * print sewerageConnectionApplicationNumber
     * print connectionNo
-    #TODO: Need to add payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'SewerageService'
+    * def taxHeadMasterCode = 'SW_TIME_ADHOC_PENALTY'
+    * def businessService = 'SW'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
 @paySewerageServiceTaxPartialAsCitizen @swConnection @wsEndToEnd @regression
 Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
@@ -381,7 +408,14 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
     * print propertyId
     * print sewerageConnectionApplicationNumber
     * print connectionNo
-    #TODO: Need to add partial payment steps as a Citizen
+    * def consumerCode = connectionNo
+    * def consumerType = 'SewerageService'
+    * def taxHeadMasterCode = 'SW_TIME_ADHOC_PENALTY'
+    * def businessService = 'SW'
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@createBillDemand')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * def amountToPay = 100
+    * call read('../../ui-services/pages/waterAndSeweragePage.feature@makePartialPayment')
 
 @SWsendsBackByDocVerifierAndResubmit @swConnection @wsEndToEnd @regression
 Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
