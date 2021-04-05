@@ -356,7 +356,7 @@ function() {
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
 
-        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 
