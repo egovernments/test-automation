@@ -247,3 +247,8 @@ function randomFloat(x) {
         return new java.util.Random().nextFloat(100000000);
    }
 }
+
+function jsonToString(obj) {
+    var myJSON = JSON.stringify(obj);
+    return myJSON
+}

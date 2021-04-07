@@ -157,6 +157,26 @@
             "name": "AccessoriesCategory"
           }
         ]
+      },
+      {
+        "moduleName": "BPA",
+        "masterDetails":[
+          {
+            "name": "ApplicationType"
+          },
+          {
+            "name": "ServiceType"
+          },
+          {
+            "name": "RiskTypeComputation"
+          },
+          {
+            "name": "OccupancyType"
+          },
+          {
+            "name": "CalculationType"
+          }
+        ]
       }
     ]
   }

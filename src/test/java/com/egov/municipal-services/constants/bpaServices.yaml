@@ -1,0 +1,32 @@
+parameters: 
+  unitType: Block
+  florNo: '1'
+
+status:
+  initiate: INITIATED
+
+actions:
+  initiate: INITIATE
+  sendToCitizen: SEND_TO_CITIZEN
+
+documentType:
+  type1: 'APPL.IDENTITYPROOF.AADHAAR'
+  type2: 'APPL.ADDRESSPROOF.ELECTRICITYBILL'
+  type3: 'APPL.LTR.LTR'
+  type4: 'APPL.TDP.TDP'
+  type5: 'BPD.SP.SP'
+
+errorMessages:
+  duplicateEDCR: ' Application already exists with EDCR Number '
+  duplicateCode: DUPLICATE EDCR
+  invalidEDCR: ' EDCR Number is Invalid'
+  riskTypeSizeError: size must be between 1 and 64
+  mismatchError: typeMismatch.BPASearchCriteria.fromDate
+  invalidAction: The action cannot be performed by this user
+  tenantError: Invalid Tenant Id
+  applicationError: 'The application number from search: '
+  statusError: No workflow state configured for the current status of the application
+  idError: Failed to Update the Application, Found None or multiple applications!
+  invalidId: UPDATE ERROR
+  ownershipError: ' LandInfo service call failed.'
+  calculateError: Failed to get calculationType
