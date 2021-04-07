@@ -91,7 +91,6 @@ Scenario: Forward TL
     * set tradeLicense.wfDocuments = tlDocuments.wfDocuments
     * set tradeLicense.tradeLicenseDetail.applicationDocuments = tlDocuments.wfDocuments
     * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
-	* print updateTradeLicenseRequest
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 

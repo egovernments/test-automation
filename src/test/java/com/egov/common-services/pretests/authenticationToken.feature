@@ -2,13 +2,13 @@ Feature: Auth token Creation for Employee
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:oauthTokenHeader.js') 
+  * configure headers = read('classpath:oauthTokenHeader.js')
   * print authTokenUrl
   * print tenantId
   
-  @superUser
-  Scenario: Auth token Creation scenario
-  		Given url authTokenUrl
+  @authTokenSuperuser
+  Scenario: Auth token Creation scenario 
+        Given url authTokenUrl
         And form field username = authUsername
 		And form field password = authPassword
 		And form field grant_type = 'password'

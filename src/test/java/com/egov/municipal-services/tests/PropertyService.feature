@@ -460,6 +460,8 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * print propertyId
 
 @verifyProperty
 Scenario: Verify the create property and procceed for the next steps
@@ -476,8 +478,27 @@ Scenario: Approve the property as an Approver
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
 
+@verifyMutationProperty
+Scenario: Verify the create property and procceed for the next steps
+    * def businessService = 'PT.MUTATION'
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@verifyPropertySuccessfully')
+
+@forwardMutationProperty
+Scenario: Forward the property to the respective approver for further approval
+    * def businessService = 'PT.MUTATION'
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@forwardPropertySuccessfully')
+
+@approveMutationProperty
+Scenario: Approve the property as an Approver
+    * def businessService = 'PT.MUTATION'
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
+
 @assessProperty
 Scenario: Assess the property
+    * def businessService = 'PT.MUTATION'
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@createAssessmentSuccessfully')
 
@@ -519,6 +540,8 @@ Scenario: Create Active Property
     * match propertyServiceResponseBody.Assessments[0].id == "#present"
     * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
     * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+    * print propertyId
 
 @assessment_search_01 @regression @positive @propertyServices @searchAssessment @municipalServices
 Scenario: Search Assessment with valid query parameters

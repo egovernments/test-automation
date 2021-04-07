@@ -38,11 +38,10 @@ Feature: BPA-Service pretests
 
     @createBPAError2
     Scenario: Create BPA Error
-        * set createBPARequest.RequestInfo.authToken = '#(authToken)'
         Given url createBPA
         And request createBPARequest
         When method post
-        Then status 403
+        Then status 400
         And def bpaResponseHeaders = responseHeaders
         And def bpaResponseBody = response
         * print bpaResponseBody

@@ -114,9 +114,10 @@ Scenario: Verify updating a BPA application through API Call
 
 @bpa_update_02 @negative @regression @bpaService
 Scenario: Verify updating a BPA application through API Call when the user doesn't have the permission
-    * call read('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen')
-    * def authToken = authResponseBody.access_token
+    
+    * def authToken = citizenAuthToken
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAError2')
+    * match bpaResponseBody.Errors[0].code == bpaConstants.errorMessages.invalidUserError
     
 @bpa_update_03 @negative @regression @bpaService
 Scenario: Verify updating a BPA application through API Call with an invalid action

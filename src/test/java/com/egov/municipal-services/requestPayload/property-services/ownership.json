@@ -27,6 +27,7 @@
       "propertyType": "#(PropertyType)",
       "noOfFloors": 2,
       "ownershipCategory": "#(OwnerShipCategory)",
+      "ownersInit": [],
       "owners": [
         {
           "name": "#(name)",
@@ -44,27 +45,22 @@
       "channel": "#(channel)",
       "documents": [
         {
-          "documentType": "#(addressProofDocumentType1)",
+          "documentType": "OWNER.ADDRESSPROOF.ELECTRICITYBILL",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
         },
         {
-          "documentType": "#(addressProofDocumentType2)",
+          "documentType": "OWNER.IDENTITYPROOF.AADHAAR",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
         },
         {
-          "documentType": "#(addressProofDocumentType3)",
+          "documentType": "#(reasonForTransfer)",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
         },
         {
-          "documentType": "#(addressProofDocumentType4)",
-          "fileStoreId": "#(fileStoreId)",
-          "documentUid": "#(fileStoreId)"
-        },
-        {
-          "documentType": "#(addressProofDocumentType5)",
+          "documentType": "OWNER.USAGEPROOF.ELECTRICITYBILL",
           "fileStoreId": "#(fileStoreId)",
           "documentUid": "#(fileStoreId)"
         }
@@ -80,15 +76,14 @@
        },
        "ownersTemp": [
         {
-            "institutionName": "#(institutionName)",
-            "institutionType": "#(institutionType)",
             "name": "#(name)",
+            "gender": "#(gender)",
             "designation": "#(designation)",
             "mobileNumber": "#(mobileNumber)",
-            "landlineNumber": "#(landlineNumber)",
-            "correspondenceAddress": "#(correspondenceAddress)",
             "fatherOrHusbandName": "#(fatherOrHusbandName)",
-            "permanentAddress": "#(permanentAddress)"
+            "permanentAddress": "#(permanentAddress)",
+            "ownerType": "NONE",
+            "status": "ACTIVE"
         }
     ],
     "additionalDetails": {

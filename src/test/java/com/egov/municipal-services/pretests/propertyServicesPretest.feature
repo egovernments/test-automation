@@ -8,6 +8,7 @@ Background:
   * def searchAssessmentRequest = read('../../municipal-services/requestPayload/property-services/searchAssessment.json')
   * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
   * def transferOwnershipRequest = read('../../municipal-services/requestPayload/property-services/ownership.json')
+  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pgServices/pgServicesSearch.json')
 @createPropertySuccessfully 
 Scenario: Create a property successfully 
 	Given url createpropertyUrl 
@@ -165,7 +166,8 @@ Scenario: Approve a property
 	* eval updatePropertyRequest.Property.workflow.action = 'APPROVE' 
 	Given  url updatePropertyUrl 
 	And  request updatePropertyRequest 
-	When  method post 
+	When  method post
+	* print propertyServiceResponseBody
 	Then  status 200 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response 
@@ -316,26 +318,36 @@ Scenario: Update assessment error
 
 @transferOwnership 
 Scenario: Application send back to citizen 
-	* def institution = transferOwnershipRequest.Property.institution
 	* def ownersTemp = transferOwnershipRequest.Property.ownersTemp
 	* def additionalDetails = transferOwnershipRequest.Property.additionalDetails
-	* def ownershipCategory = transferOwnershipRequest.Property.ownershipCategory
-	* def altContactNumber = transferOwnershipRequest.Property.owners[0].altContactNumber
-	* eval transferOwnershipRequest.Property = Property 
-	* eval transferOwnershipRequest.Property.institution = institution
-	* eval transferOwnershipRequest.Property.ownersTemp = ownersTemp
+	* def documents = transferOwnershipRequest.Property.documents
+	* eval transferOwnershipRequest.Property = Property
 	* eval transferOwnershipRequest.Property.additionalDetails = additionalDetails
+	* eval transferOwnershipRequest.Property.documents = documents
+	* eval transferOwnershipRequest.Property.ownershipCategoryInit = OwnerShipCategory
+	* eval Property.owners[0].status = 'INACTIVE'
+	* set transferOwnershipRequest.Property.ownersInit[0] = Property.owners[0]
+	* def owners = karate.append(Property.owners, ownersTemp)
+	* eval transferOwnershipRequest.Property.owners = owners
 	* eval transferOwnershipRequest.Property.creationReason = 'MUTATION'
-	* eval transferOwnershipRequest.Property.ownershipCategory = ownershipCategory
-	* eval transferOwnershipRequest.Property.owners[0].altContactNumber = altContactNumber
+	* set transferOwnershipRequest.Property.workflow = 
+	"""
+	{
+    	businessService: 'PT.MUTATION',
+    	tenantId: '#(tenantId)',
+    	action: 'OPEN',
+    	moduleName: 'PT'
+    }
+	"""
 	Given  url updatePropertyUrl
 	And params transferParameters 
 	And  request transferOwnershipRequest 
-	* print transferOwnershipRequest
 	When  method post 
 	Then  status 200 
 	And  def propertyServiceResponseHeaders = responseHeaders 
-	And  def transferResponseBody = response 
+	And  def propertyServiceResponseBody = response
+	And def Property = propertyServiceResponseBody.Properties[0] 
+	And def propertyId = Property.propertyId 
 
 @createPropertyNegativeCE
 Scenario: Create a property with new counter employee
@@ -346,9 +358,22 @@ Scenario: Create a property with new counter employee
 	And def propertyServiceResponseHeaders = responseHeaders
 	And def propertyServiceResponseBody = response
 * print createPropertyRequest
-@UImakePayment
-Scenario: Search property tax by unique id and make payment
-	Given driver envHost
-	And delay(5000)
-	* input('body', Key.ESC)
-	And delay(10000)
+
+@searchPgTransactionSuccessfully
+        Scenario: Search a payment gateway transaction successfully
+  * configure headers = read('classpath:websCommonHeaders.js')
+  * def pgServicesSearchParam = 
+    """
+    {
+     txnId: '#(txnId)'
+    }
+    """ 
+            Given url pgServicesSearch
+     
+              And params pgServicesSearchParam
+              And request pgServicesSearchPayload
+     
+             When method post
+             Then status 200
+              And def pgServicesSearchResponseHeader = responseHeaders
+              And def pgServicesSearchResponseBody = response

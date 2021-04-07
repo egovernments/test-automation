@@ -13,6 +13,7 @@ Feature: Business services - billing service demand calls
         @createBillDemand
         Scenario: Create Demand success Call
             Given url createDemandUrl
+            * print createDemandRequest
               And request createDemandRequest
              When method post
              Then status 201

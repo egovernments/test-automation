@@ -26,6 +26,7 @@ Background:
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
     And def txnAmount = totalAmount
+    And def totalAmountPaid = totalAmount
     
 @fetchBillWithCustomizedParameters
     Scenario: Fetch Bill with customized parameters

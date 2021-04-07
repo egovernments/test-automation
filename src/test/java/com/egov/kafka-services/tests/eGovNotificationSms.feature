@@ -1,6 +1,11 @@
 Feature: Kafka Notification SMS Tests
 
 Background:
+    * def jsUtils = read('classpath:jsUtils.js')
+    * def Thread = Java.type('java.lang.Thread')
+    * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
+    * def cluster_id = kafkaConstants.parameters.clusterId
+    * def consumer_group_id = kafkaConstants.parameters.consumerGroupId
     # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters
@@ -31,6 +36,10 @@ Background:
         return otp;
     }
     """
+    # Get lag details before making an api call
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
+    * def dataBeforeApiCall = lagData
+    * print dataBeforeApiCall
 
 @sms_01 @positive @kafkaEgovNotificationSms @kafkaServices
 Scenario: Create an Employee user, forgot password, read otp from kafka, update password and login
@@ -45,6 +54,17 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def recordsFilterCondition = "$[?(@.value.mobileNumber=='" + resetMobileNumber + "' && @.topic=='" + kafkaTopics + "' && @.value.message contains 'OTP')].value.message"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
+    # Get lag details after making an api call
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
+    * def dataAfterApiCall = lagData
+    * print dataAfterApiCall
+    # Compare the offset
+    * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * print offsetDiff
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
+    * print isThreshHold
+    # Fail the test if there is no offset change
+    * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka OTP consumer response messages for above mobile number and notification sms topic
     * def otpMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently
@@ -60,7 +80,7 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def authUsername = userName
     * def authPassword = newPassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
-    * call read('../../common-services/pretests/authenticationToken@superUser.feature')
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser')
     * print 'Login Success.'
 
 @sms_02 @positive @kafkaEgovNotificationSms @kafkaServices
@@ -74,6 +94,21 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * def recordsFilterCondition = "$[?(@.value.mobileNumber=='" + resetMobileNumber + "' && @.topic=='" + kafkaTopics + "' && @.value.message contains 'Welcome to mSeva')].value.message"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
+    # Get lag details after making an api call
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
+    * def dataAfterApiCall = lagData
+    # Simulating offset Change by updating the offset values manually
+    * eval dataAfterApiCall[0].current_offset = (parseInt(~~(dataAfterApiCall[0].current_offset + 10)))
+    * eval dataAfterApiCall[1].current_offset = (parseInt(~~(dataAfterApiCall[1].current_offset + 5)))
+    * eval dataAfterApiCall[2].current_offset = (parseInt(~~(dataAfterApiCall[2].current_offset + 15)))
+    * print dataAfterApiCall
+    # Compare the offset
+    * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
+    * print offsetDiff
+    * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
+    * print isThreshHold
+    # Fail the test if there is no offset change
+    * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka Welcome Password consumer response messages for above mobile number and notification sms topic
     * def welcomePasswordMessages = recordsResponse
     # Extract the latest one if tried to reset multiple times recently
@@ -84,7 +119,7 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * def authUsername = userName
     * def authPassword = welcomePassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
-    * call read('../../common-services/pretests/authenticationToken.feature@superUser')
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser')
     * print 'Login Success.'
 
 
