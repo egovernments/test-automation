@@ -226,3 +226,12 @@ endPoints:
     billingSlabUpdate: tl-calculator/billingslab/_update
     billingSlabSearch: tl-calculator/billingslab/_search
     calculate: tl-calculator/v1/_calculate
+  
+  bpaService:
+    edcrScrutinize: edcr/rest/dcr/scrutinize
+    create: bpa-services/v1/bpa/_create
+    update: bpa-services/v1/bpa/_update
+    search: bpa-services/v1/bpa/_search
+
+  bpaCalculator:
+    calculate: bpa-calculator/_calculate

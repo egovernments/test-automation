@@ -8,10 +8,7 @@ Background:
     * def consumerCode = tradeLicenseResponseBody.Licenses[0].applicationNumber
     * def index = randomNumber(mdmsStatecommonMasters.StructureType.length)
     * def indexTL = randomNumber(200)
-    * print indexTL
     * def businessService = tlCalculatorConstants.parameters.businessService
-    #TODO : Need a Consumer Code with No Demands, Yet to get from TL service TC(After approving TL)
-
     * def invalidValue = commonConstants.invalidParameters.invalidValue
     * def emptyValue = commonConstants.invalidParameters.emptyValue
     * def indexLicenseType = randomNumber(tlCalculatorConstants.parameters.licenseType.length)
