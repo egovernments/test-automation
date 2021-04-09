@@ -19,7 +19,8 @@ Background:
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
+   	    And def authToken = authResponseBody.access_token
+	   And def id = authResponseBody.UserRequest.uuid
    * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
@@ -37,6 +38,7 @@ Scenario: Auth token Creation for citizen
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
+	And def id = authResponseBody.UserRequest.uuid
    * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 

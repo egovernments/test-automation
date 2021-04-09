@@ -313,6 +313,15 @@ function() {
         config.updateSewerageConnection = envProps.host + path.endPoints.sewerageConnection.update
         config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
 
+        // BPA-Services
+        config.createEdcrScrutinize = envProps.host + path.endPoints.bpaService.edcrScrutinize
+        config.createBPA = envProps.host + path.endPoints.bpaService.create
+        config.searchBPA = envProps.host + path.endPoints.bpaService.search
+        config.updateBPA = envProps.host + path.endPoints.bpaService.update
+
+        // BPA- Calculator
+        config.calculateBPA = envProps.host + path.endPoints.bpaCalculator.calculate
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -331,6 +340,15 @@ function() {
 
         var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
         config.fileStoreId3 = fileUploadResponse3.fileStoreId
+
+        var fileUploadResponse4 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore4', config);
+        config.fileStoreId4 = fileUploadResponse4.fileStoreId
+
+        var fileUploadResponse5 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore5', config);
+        config.fileStoreId5 = fileUploadResponse5.fileStoreId
+
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
 
         var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
         config.approverAuthToken = approverAuthTokenResponse.authToken;
@@ -355,6 +373,7 @@ function() {
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+        config.mdmsStateBPA = MdmsStateRes['BPA']
 
         var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
