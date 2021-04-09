@@ -13,7 +13,7 @@ Scenario: Search water and sewerage by unique id and make full payment
 	* waitFor(tlApplicationDetails).click()
 	* delay(3000)
 	* waitFor(tlPageObjects.takeActionButton).click()
-	* waitFor(tlPageObjects.citizenPayActionButton).click()
+	* waitFor(tlPageObjects.citizenRenewalPayActionButton).click()
 	* delay(3000)
     * retry(3, 5000).waitFor(tlPageObjects.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
