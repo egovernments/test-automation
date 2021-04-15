@@ -262,6 +262,17 @@ function() {
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
 
+        // PGR endpoints
+        config.createPGRUrl = envProps.host + path.endPoints.pgr.create
+        config.updatePGRUrl = envProps.host + path.endPoints.pgr.update
+        config.searchPGRUrl = envProps.host + path.endPoints.pgr.search
+        config.countPGRUrl = envProps.host + path.endPoints.pgr.count
+
+        // NOC endpoints
+        config.createNOCUrl = envProps.host + path.endPoints.noc.create
+        config.updateNOCUrl = envProps.host + path.endPoints.noc.update
+        config.searchNOCUrl = envProps.host + path.endPoints.noc.search
+        
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -284,6 +295,7 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

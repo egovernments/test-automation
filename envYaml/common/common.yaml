@@ -193,3 +193,14 @@ endPoints:
   
   propertyCalculatorPropertyTax:
     calculate: pt-calculator-v2/propertytax/mutation/_calculate  
+
+  pgr:
+    create: pgr-services/v2/request/_create
+    update: pgr-services/v2/request/_update
+    search: pgr-services/v2/request/_search
+    count: pgr-services/v2/request/_count
+
+  noc:
+    create: noc-services/v1/noc/_create
+    update: noc-services/v1/noc/_update
+    search: noc-services/v1/noc/_search

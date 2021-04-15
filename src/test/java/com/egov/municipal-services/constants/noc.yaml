@@ -1,0 +1,21 @@
+nocType:
+  fireNoc: "FIRE_NOC"
+Errors:
+  errorCodes:
+    invalidTenantId: "CustomException"
+    invalidNOCType: "MDMS DATA ERROR"
+    invalidSource: "Size.nocRequest.noc.source"
+    searchNoTenantId: "NotNull.nocSearchCriteria.tenantId"
+    invalidId: "INVALID_NOC_SEARCH"
+  errorMessages:
+    invalidNOCType: "Unable to fetch <<noc_type>> workflow mode from MDMS"
+    invalidSource: "size must be between 1 and 64"
+    searchNoTenantId: "may not be null"
+    invalidId: "Noc Application not found for: <<invalid_id>> :ID"
+
+actions:
+  forward: "FORWARD"
+  
+
+
+    
