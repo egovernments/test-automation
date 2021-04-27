@@ -204,3 +204,11 @@ endPoints:
     create: noc-services/v1/noc/_create
     update: noc-services/v1/noc/_update
     search: noc-services/v1/noc/_search
+
+  fireNOCBillingSlab:
+    create: /firenoc-calculator/billingslab/_create
+    search: /firenoc-calculator/billingslab/_search
+    calculate: firenoc-calculator/v1/_calculate
+  
+  
+  

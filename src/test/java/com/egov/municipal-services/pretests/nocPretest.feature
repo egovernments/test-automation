@@ -1,4 +1,4 @@
-Feature: PGR Service Pretest
+Feature: NOC Service Pretest
 
 Background:
     * def createNocRequest = read('../../municipal-services/requestpayload/noc/create.json')

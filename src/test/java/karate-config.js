@@ -272,7 +272,11 @@ function() {
         config.createNOCUrl = envProps.host + path.endPoints.noc.create
         config.updateNOCUrl = envProps.host + path.endPoints.noc.update
         config.searchNOCUrl = envProps.host + path.endPoints.noc.search
-        
+
+        //BillingSlabNOC
+        config.createFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.create
+        config.searchFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.search
+        config.calculateFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.calculate
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
