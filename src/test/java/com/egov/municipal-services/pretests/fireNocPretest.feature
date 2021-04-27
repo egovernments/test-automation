@@ -67,7 +67,6 @@ Feature: FIRE-NOC-Service pretests
         Then status 400
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
-        * print fireNocResponseBody
 
     @searchFireNocAuthorizedError
     Scenario: Search FireNoc Error
@@ -79,7 +78,6 @@ Feature: FIRE-NOC-Service pretests
         Then status 403
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
-        * print fireNocResponseBody
 
     @updateFireNocSuccessfully
     Scenario: Update FireNoc Successfully

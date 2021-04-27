@@ -112,7 +112,10 @@
           },
           {
             "name": "StructureType"
-          } 
+          },
+          {
+            "name": "OwnerShipCategory"
+          }
         ]
       },
       {
