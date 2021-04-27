@@ -235,3 +235,8 @@ endPoints:
 
   bpaCalculator:
     calculate: bpa-calculator/_calculate
+
+  landService:
+    create: land-services/v1/land/_create
+    update: land-services/v1/land/_update
+    search: land-services/v1/land/_search

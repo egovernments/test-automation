@@ -322,6 +322,11 @@ function() {
         // BPA- Calculator
         config.calculateBPA = envProps.host + path.endPoints.bpaCalculator.calculate
 
+        // Land Services
+        config.createLand = envProps.host + path.endPoints.landService.create
+        config.searchLand = envProps.host + path.endPoints.landService.search
+        config.updateLand = envProps.host + path.endPoints.landService.update        
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
