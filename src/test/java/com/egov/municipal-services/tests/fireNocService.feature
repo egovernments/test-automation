@@ -2,7 +2,8 @@ Feature: Fire NOC Service Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-
+    * def Thread = Java.type('java.lang.Thread')
+    * Thread.sleep(10000)
     * def propertyLocalityCity = mdmsStateFireNocService.FireStations[0].city
     * def propertyLocalityCode = mdmsStateFireNocService.FireStations[0].code
     * def stationCode = mdmsStateFireNocService.FireStations[0].code
@@ -104,7 +105,7 @@ Background:
     @search_01 @positive @regression @municipalService @fireNocService @fireNocServiceSearch
     Scenario: Verify searching for a firenoc service
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
-    * def getFireNocSearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
+    * def getFireNocSearchParam = {"tenantId": '#(tenantId)',"applicationNumber": '#(applicationNo)'}
     * call read('../../municipal-services/pretests/fireNocPretest.feature@searchFireNocSuccessfully')
     * match fireNocResponseBody.FireNOCs[0] == '#present'
 
