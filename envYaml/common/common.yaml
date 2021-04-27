@@ -240,3 +240,15 @@ endPoints:
     create: land-services/v1/land/_create
     update: land-services/v1/land/_update
     search: land-services/v1/land/_search
+  
+  dcrServices:
+    scrutinize: edcr/rest/dcr/scrutinize
+    scrutinydetails: edcr/rest/dcr/scrutinydetails
+    occomparison: edcr/rest/dcr/occomparison
+
+  firenocService:
+    create: firenoc-services/v1/_create
+    update: firenoc-services/v1/_update
+    search: firenoc-services/v1/_search
+
+  

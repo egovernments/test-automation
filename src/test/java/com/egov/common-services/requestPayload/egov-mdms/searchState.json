@@ -177,6 +177,34 @@
             "name": "CalculationType"
           }
         ]
+      },
+      {
+        "moduleName": "firenoc",
+        "masterDetails":[
+          {
+            "name": "ApplicationType"
+          },
+          {
+            "name": "BuildingType"
+          },
+          {
+            "name": "PropertyType"
+          },
+          {
+            "name": "UOMs"
+          },
+          {
+            "name": "FireStations"
+          }
+        ]
+      },
+      {
+        "moduleName": "egf-master",
+        "masterDetails":[
+          {
+            "name": "FinancialYear"
+          }
+        ]
       }
     ]
   }
