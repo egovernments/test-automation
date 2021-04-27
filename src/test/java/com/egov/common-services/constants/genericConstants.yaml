@@ -55,3 +55,4 @@ invalidParameters:
   invalidValue: Abc@123
   invalidValue: abc
   passValusAsNull: null
+  invalidMobileNumber: '98765432'

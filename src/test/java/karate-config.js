@@ -330,6 +330,21 @@ function() {
         // BPA- Calculator
         config.calculateBPA = envProps.host + path.endPoints.bpaCalculator.calculate
 
+        // Land Services
+        config.createLand = envProps.host + path.endPoints.landService.create
+        config.searchLand = envProps.host + path.endPoints.landService.search
+        config.updateLand = envProps.host + path.endPoints.landService.update    
+        
+        //DCR-Services
+        config.scrutinizeUrl = envProps.host + path.endPoints.dcrServices.scrutinize
+        config.scrutinydetailsUrl = envProps.host + path.endPoints.dcrServices.scrutinydetails
+        config.occomparisonUrl = envProps.host + path.endPoints.dcrServices.occomparison
+
+        // Fire-Noc-Service
+        config.createFireNocService = envProps.host + path.endPoints.firenocService.create
+        config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
+        config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -382,6 +397,8 @@ function() {
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
         config.mdmsStateBPA = MdmsStateRes['BPA']
+        config.mdmsStateFireNocService = MdmsStateRes['firenoc']
+        config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
 
         var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
