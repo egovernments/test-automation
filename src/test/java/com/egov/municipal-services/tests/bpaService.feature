@@ -39,6 +39,7 @@ Background:
 Scenario: Verify creating a bpa application through API 
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
     * match bpaResponseBody.BPA[0].status == bpaConstants.status.initiate
+    * print bpaResponseBody
 
 @bpa_create_duplicate_02 @negative @regression @bpaService
 Scenario: Verify creating a bpa application through API  with the same edcr number
