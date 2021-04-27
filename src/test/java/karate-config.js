@@ -27,6 +27,14 @@ function() {
          retryCount : 30,
          retryInterval : 10000 //ms
    };
+
+   if(karate.properties['useKafkaSimulation']){
+       if(karate.properties['useKafkaSimulation'] == 'yes'){
+        config.kafkaHost = envProps.mockHost
+       }
+   }else{
+    config.kafkaHost = envProps.host
+   }
         
         config.envHost = envProps.host
         config.envLocalhost = envProps.localhost
