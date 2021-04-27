@@ -2,7 +2,8 @@ Feature: Fire NOC Service Tests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-
+    * def Thread = Java.type('java.lang.Thread')
+    * Thread.sleep(10000)
     * def propertyLocalityCity = mdmsStateFireNocService.FireStations[0].city
     * def propertyLocalityCode = mdmsStateFireNocService.FireStations[0].code
     * def stationCode = mdmsStateFireNocService.FireStations[0].code
@@ -50,7 +51,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocError1')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidBuildType
 
-    @fireNoc_Create_nvalid_UsageType_03 @negative @regression @municipalService @fireNocService @fireNocServiceCreate1
+    @fireNoc_Create_nvalid_UsageType_03 @negative @regression @municipalService @fireNocService @fireNocServiceCreate
     Scenario: Verify creating a fire noc service application through API with invalid usage type
     * def usageType = commonConstants.invalidParameters.invalidValue
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocError1')
@@ -64,7 +65,7 @@ Background:
     * match fireNocResponseBody.Errors[0].params.keyword == fireNocConstants.errorMessages.invlidUom
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidUomCode
 
-    @fireNoc_Create_Invalid_active_05 @negative @regression @municipalService @fireNocService @fireNocServiceCreate1
+    @fireNoc_Create_Invalid_active_05 @negative @regression @municipalService @fireNocService @fireNocServiceCreate
     Scenario: Verify creating a fire noc service application through API with invalid active
     * def isActiveUom = commonConstants.invalidParameters.nullValue
     * def active = commonConstants.invalidParameters.nullValue
@@ -77,7 +78,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocError1')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidMobileNumber
 
-    @fireNoc_Create_null_values_07 @negative @regression @municipalService @fireNocService @fireNocServiceCreate1
+    @fireNoc_Create_null_values_07 @negative @regression @municipalService @fireNocService @fireNocServiceCreate
     Scenario: Verify creating a fire noc service application through API with invalid relationship
     * def relationship = commonConstants.invalidParameters.nullValue
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocError1')
@@ -95,7 +96,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createBPAError2')
     * match fireNocResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-    @fireNoc_Create_invalid_FirestnID_10 @negative @regression @municipalService @fireNocService @fireNocServiceCreate1
+    @fireNoc_Create_invalid_FirestnID_10 @negative @regression @municipalService @fireNocService @fireNocServiceCreate
     Scenario: Verify creating a fire noc service application through API with invalid firestationId
     * def stationCode = randomString(8)
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocError1')
@@ -104,11 +105,11 @@ Background:
     @search_01 @positive @regression @municipalService @fireNocService @fireNocServiceSearch
     Scenario: Verify searching for a firenoc service
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
-    * def getFireNocSearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
+    * def getFireNocSearchParam = {"tenantId": '#(tenantId)',"applicationNumber": '#(applicationNo)'}
     * call read('../../municipal-services/pretests/fireNocPretest.feature@searchFireNocSuccessfully')
     * match fireNocResponseBody.FireNOCs[0] == '#present'
 
-    @search_AllRecords_02 @positive @regression @municipalService @fireNocService
+    @search_AllRecords_02 @positive @regression @municipalService @fireNocService @fireNocServiceSearch
     Scenario: Verify searching for a firenoc service without Params
     * call read('../../municipal-services/pretests/fireNocPretest.feature@searchFireNocWithoutParamsSuccessfully')
     * match fireNocResponseBody.FireNOCs[0] == '#present'
@@ -143,7 +144,7 @@ Background:
     * match fireNocResponseBody.FireNOCs[0].fireNOCDetails.applicationNumber == "#present"
     * match fireNocResponseBody.FireNOCs[0].tenantId == tenantId
 
-    @update_Invalid_noBuildings_02 @negative  @regression @municipalService @fireNocServiceUpdate
+    @update_Invalid_noBuildings_02 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid building type
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -151,7 +152,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.billingSlabError
     
-    @update_Invalid_UsageType_03 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_UsageType_03 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid usage type
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -159,7 +160,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidUsageType
 
-    @update_Invalid_uom_04 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_uom_04 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid UOM values
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -167,7 +168,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidUomCode
 
-    @update_Invalid_active_05 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_active_05 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid active and isActiveUom
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -176,7 +177,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidUomActive
 
-    @update_Invalid_mob_06 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_mob_06 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid mobile number
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -184,7 +185,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidMobileNumber
 
-    @update_null_values_07 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_null_values_07 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid relationship
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -193,7 +194,7 @@ Background:
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.relationShipError
     * match fireNocResponseBody.Errors[1].message == fireNocConstants.errorMessages.invalidBuildType
 
-    @update_action_error_08 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_action_error_08 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid action
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     * def applicationNo = fireNocResponseBody.FireNOCs[0].fireNOCDetails.applicationNumber
@@ -202,7 +203,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidAction + ': ' + applicationNo
 
-    @update_Invalid_tenant_09 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_tenant_09 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid tanentID
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -210,7 +211,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocUnAuthError')
     * match fireNocResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-    @update_Invalid_action_10 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_Invalid_action_10 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid action
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
@@ -218,7 +219,7 @@ Background:
     * call read('../../municipal-services/pretests/fireNocPretest.feature@updateFireNocError')
     * match fireNocResponseBody.Errors[0].message == fireNocConstants.errorMessages.invalidBuildType
 
-    @update_invalid_FirestnID_11 @negative  @regression @municipalService  @fireNocServiceUpdate
+    @update_invalid_FirestnID_11 @negative  @regression @municipalService @fireNocService @fireNocServiceUpdate
     Scenario: Update FireNoc service with invalid action
     * call read('../../municipal-services/pretests/fireNocPretest.feature@createFireNocSuccessfully')
     # Initializing search query params
