@@ -337,6 +337,14 @@ function() {
         config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
         config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
 
+        // Fire-Noc-Service
+        config.notificationEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.notificationCount
+        config.createEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.create
+        config.updateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.update
+        config.searchEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.search
+        config.latUpdateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.latUpdate
+
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -371,6 +379,7 @@ function() {
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
+        config.uuid = authTokenResponse.id;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes

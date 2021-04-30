@@ -1,0 +1,14 @@
+events:
+  eventType: SYSTEMGENERATED
+  source: webapp
+  recepientUser: 5417dbb7-14b9-4be2-ac46-ce2decb30444
+  wrongEventy: BROADCAST
+  status: ACTIV
+
+errorMessages:
+  withoutTenantID: must not be null
+  invalidEventType: The provided eventType is not valid.
+  invalidUUIID: toUsers should only contain ids with the UUID type.
+  wrongEventType: EventDetails are mandatory for this type of event.
+  invalidEventId: The events you're trying update are missing in the system.
+  invalidStatus: Status cannot be null while updating the event.

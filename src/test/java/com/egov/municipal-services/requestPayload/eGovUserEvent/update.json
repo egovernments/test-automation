@@ -1,0 +1,16 @@
+{
+    "RequestInfo": {
+        "apiId": "org.egov.pt",
+        "ver": "1.0",
+        "ts": 1502890899493,
+        "action": "asd",
+        "did": "4354648646",
+        "key": "xyz",
+        "msgId": "654654",
+        "requesterId": "61",
+        "authToken": "#(authToken)"
+      },
+    "events": [
+        "#(eGovUserEventBody)"
+    ]        
+}
