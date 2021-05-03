@@ -14,7 +14,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-DIGIT Test Automation framework majorly deals with various API services validation. It enables to test and validate back end services across all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
+DIGIT Test Automation framework majorly deals with various API services validation. It enables to test and validate back end services across all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base). For guide on Kafka Producer Consumer approach, please refer to [documentation](https://digit-discuss.atlassian.net/wiki/spaces/DD/pages/1540587710/Kafka+Consumer+Producer+Approach)
  
 <!-- Technology Used -->
 ### Technology Used
@@ -87,6 +87,21 @@ employee:
      userName: <username goes here>
      password: <password goes here>
      type: <user type goes here>
+# Citizen's username and password needed for Property End to End flow (need to create user manually)
+citizen:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
+# Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
+alternateCitizen:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
+# Counter Employee's username and password, required for multiple use (need to create user manually)
+counterEmployeeUser:
+     userName: <username goes here>
+     password: <password goes here>
+     type: <user type goes here>
  ```
  
 <!--List Of Tags--> 
@@ -150,4 +165,3 @@ Follow below step to find location of reports generated post test execution to a
 #### A snapshot is attached for reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
-
