@@ -16,7 +16,7 @@ parameters:
     - 'OWNER.USAGEPROOF'
     - 'OWNER.OCCUPANCYPROOF'
   creationReason: 'CREATE'
-  financialYear: 2020-21
+  financialYear: 2018-19
   # to upload file on fire-noc module
   module:
     - fire-noc
@@ -55,3 +55,4 @@ invalidParameters:
   invalidValue: Abc@123
   invalidValue: abc
   passValusAsNull: null
+  invalidMobileNumber: '98765432'

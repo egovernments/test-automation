@@ -1,8 +1,8 @@
 Feature: Generated pdf successfully
 
         Background:
-* call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
-* def Payments = Payments
+# * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
+#* def Payments = Payments
 * def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
 # initializing pdf create payload objects
 * def pdfCreatePayloadFirst = pdfCreatePayload.TL
@@ -23,6 +23,7 @@ Feature: Generated pdf successfully
     """ 
             Given url createPdf
               And params pdfCreateParam
+            * eval pdfCreatePayloadSecond.Payments = Payments
               And request pdfCreatePayloadFirst
              When method post
              Then status 201

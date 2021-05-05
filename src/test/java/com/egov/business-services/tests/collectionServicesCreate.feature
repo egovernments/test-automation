@@ -140,3 +140,9 @@ Feature: collection-services-Create tests
    # Make a payment with cheeque
    * call read('../../business-services/pretest/collectionServicesPretest.feature@errorForTransactionNumberWihChequePayment')
    * match response.Errors[0].message == transactionNumberError
+
+@CreatePaymentGeneric @businessServices @regression @positive @CreatePayment @collectionServices
+        Scenario: Make payment with valid Bill id
+     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
+     * match response.ResponseInfo.status == '200 OK'
+     * def paymentId = collectionServicesResponseBody.Payments[0].id

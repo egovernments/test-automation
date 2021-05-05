@@ -15,6 +15,7 @@
 		<activemq.version>5.15.2</activemq.version>
 		<spring.boot.version>2.0.0.RELEASE</spring.boot.version>
 		<karate.version>0.9.6</karate.version>
+		<karate.apache.version>0.9.6</karate.apache.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<gatling.plugin.version>2.2.4</gatling.plugin.version>
 		<aspectj.version>1.8.10</aspectj.version>
@@ -41,6 +42,26 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+	<dependency>
+    	<groupId>com.intuit.karate</groupId>
+    	<artifactId>karate-ui</artifactId>
+    	<version>0.9.5.RC3</version>
+		<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+	</dependency>
+
 		<dependency>
 			<groupId>com.intuit.karate</groupId>
 			<artifactId>karate-junit4</artifactId>
@@ -66,11 +87,17 @@
 			<artifactId>karate-gatling</artifactId>
 			<version>${karate.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>4.3.1</version>
+</dependency>
 
 		<dependency>
 			<groupId>com.intuit.karate</groupId>
 			<artifactId>karate-apache</artifactId>
-			<version>${karate.version}</version>
+			<version>${karate.apache.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>

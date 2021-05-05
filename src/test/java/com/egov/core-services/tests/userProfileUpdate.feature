@@ -2,11 +2,8 @@ Feature: eGov_User - Update user profile tests
 
 Background:
         * def jsUtils = read('classpath:jsUtils.js')
-        * def authUsername = employeeUserName
-        * def authPassword = employeePassword
-        * def authUserType = employeeType
-        * call read('../../common-services/pretests/authenticationToken.feature')
-        * def code = authUsername
+        * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
+        * def code = counterEmployeeUsername
         * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')
         * def profilePayload = read('../../core-services/requestPayload/user/update/updateUser.json')
         * def errorMessage = read("../../core-services/constants/user.yaml")

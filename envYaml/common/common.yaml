@@ -156,10 +156,10 @@ endPoints:
     subscribe: consumers/automation_consumer/instances/automation_consumer_instance/subscription
     read: consumers/automation_consumer/instances/automation_consumer_instance/records
     delete: consumers/automation_consumer/instances/automation_consumer_instance
-    getClusters: v3/clusters
-    getConsumerGroups: "v3/clusters/<cluster_id>/consumer-groups"
-    getLags: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
-    getLagSummary: "v3/clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
+    getClusters: clusters
+    getConsumerGroups: "clusters/<cluster_id>/consumer-groups"
+    getLags: "clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lags"
+    getLagSummary: "clusters/<cluster_id>/consumer-groups/<consumer_group_id>/lag-summary"
 
   egfInstrumentTypes:
     create: egf-instrument/instrumenttypes/_create
@@ -210,5 +210,61 @@ endPoints:
     search: /firenoc-calculator/billingslab/_search
     calculate: firenoc-calculator/v1/_calculate
   
+  waterConnection:
+    create: ws-services/wc/_create
+    search: ws-services/wc/_search
+    update: ws-services/wc/_update
+
+  wsCalculator:
+    estimate: ws-calculator/waterCalculator/_estimate
+    calculate: ws-calculator/waterCalculator/_calculate
+    meterConnectionCreate: ws-calculator/meterConnection/_create
+    meterConnectionSearch: ws-calculator/meterConnection/_search
+    applyAdhocTax: ws-calculator/waterCalculator/_applyAdhocTax
+
+  propertyCalculator:
+    estimate: pt-calculator-v2/propertytax/v2/_estimate
+    calculator: pt-calculator-v2/propertytax/_calculate
   
+  tradeLicense:
+    create: tl-services/v1/_create
+    update: tl-services/v1/_update
+    search: tl-services/v1/_search
+
+  sewerageConnection:
+    create: sw-services/swc/_create
+    search: sw-services/swc/_search
+    update: sw-services/swc/_update
+
+  tlCalculator:
+    getBill: tl-calculator/v1/_getbill
+    billingSlabCreate: tl-calculator/billingslab/_create
+    billingSlabUpdate: tl-calculator/billingslab/_update
+    billingSlabSearch: tl-calculator/billingslab/_search
+    calculate: tl-calculator/v1/_calculate
+  
+  bpaService:
+    edcrScrutinize: edcr/rest/dcr/scrutinize
+    create: bpa-services/v1/bpa/_create
+    update: bpa-services/v1/bpa/_update
+    search: bpa-services/v1/bpa/_search
+
+  bpaCalculator:
+    calculate: bpa-calculator/_calculate
+
+  landService:
+    create: land-services/v1/land/_create
+    update: land-services/v1/land/_update
+    search: land-services/v1/land/_search
+  
+  dcrServices:
+    scrutinize: edcr/rest/dcr/scrutinize
+    scrutinydetails: edcr/rest/dcr/scrutinydetails
+    occomparison: edcr/rest/dcr/occomparison
+
+  firenocService:
+    create: firenoc-services/v1/_create
+    update: firenoc-services/v1/_update
+    search: firenoc-services/v1/_search
+
   

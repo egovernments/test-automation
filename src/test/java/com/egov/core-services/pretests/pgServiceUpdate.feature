@@ -19,7 +19,6 @@ Feature: Update a payment transaction
               And params pgServicesUpdateParam
      
               And request pgServicesUpdatePayload
-     
              When method post
              Then status 200
               And def pgServicesUpdateResponseHeader = responseHeaders
@@ -81,3 +80,21 @@ Feature: Update a payment transaction
               And def pgServicesUpdateResponseHeader = responseHeaders
               And def pgServicesUpdateResponseBody = response
      
+
+@updateTransactionOnly
+Scenario: To update Payment Gateway transaction only
+  * configure headers = read('classpath:websCommonHeaders.js')
+  * def pgServicesUpdateParam = 
+    """
+    {
+     transactionId: '#(txnId)'
+    }
+    """ 
+      Given url pgServicesUpdate
+      And params pgServicesUpdateParam
+     And request pgServicesUpdatePayload
+      * print pgServicesUpdatePayload
+     When method post
+     Then status 200
+     And def pgServicesUpdateResponseHeader = responseHeaders
+     And def pgServicesUpdateResponseBody = response

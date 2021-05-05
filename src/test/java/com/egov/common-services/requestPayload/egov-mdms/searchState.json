@@ -67,6 +67,9 @@
           },
           {
             "name": "UsageCategoryDetail"
+          },
+          {
+            "name": "ReasonForTransfer"
           }
         ]
       },
@@ -106,6 +109,12 @@
           },
           {
             "name": "StateInfo"
+          },
+          {
+            "name": "StructureType"
+          },
+          {
+            "name": "OwnerShipCategory"
           }
         ]
       },
@@ -133,6 +142,70 @@
         "masterDetails": [
           {
             "name": "dashboard-config"
+          }
+        ]
+      },
+      {
+        "moduleName": "TradeLicense",
+        "masterDetails": [
+          {
+            "name": "TradeType"
+          }
+        ]
+      },
+      {
+        "moduleName": "TradeLicense",
+        "masterDetails":[
+          {
+            "name": "AccessoriesCategory"
+          }
+        ]
+      },
+      {
+        "moduleName": "BPA",
+        "masterDetails":[
+          {
+            "name": "ApplicationType"
+          },
+          {
+            "name": "ServiceType"
+          },
+          {
+            "name": "RiskTypeComputation"
+          },
+          {
+            "name": "OccupancyType"
+          },
+          {
+            "name": "CalculationType"
+          }
+        ]
+      },
+      {
+        "moduleName": "firenoc",
+        "masterDetails":[
+          {
+            "name": "ApplicationType"
+          },
+          {
+            "name": "BuildingType"
+          },
+          {
+            "name": "PropertyType"
+          },
+          {
+            "name": "UOMs"
+          },
+          {
+            "name": "FireStations"
+          }
+        ]
+      },
+      {
+        "moduleName": "egf-master",
+        "masterDetails":[
+          {
+            "name": "FinancialYear"
           }
         ]
       }

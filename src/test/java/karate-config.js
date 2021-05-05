@@ -37,13 +37,32 @@ function() {
          //username & password for Existing User Profile
          config.employeeUserName = envProps.employee.userName;
          config.employeePassword = envProps.employee.password;
-         //config.existingUserTenantId = envProps.existingUser.tenantId
          config.employeeType = envProps.employee.type;
 
          // username & password for global super user
          config.authUsername = envProps.superUser.userName;
          config.authPassword = envProps.superUser.password;
          config.authUserType = envProps.superUser.type;
+
+         // username & password for Citizen user
+         config.citizenUsername = envProps.citizen.userName;
+         config.citizenPassword = envProps.citizen.password;
+         config.citizenType = envProps.citizen.type;
+        
+         // username & password for alternate Citizen user
+         config.altCitizenUsername = envProps.alternateCitizen.userName;
+         config.altCitizenPassword = envProps.alternateCitizen.password;
+         config.altCitizenType = envProps.alternateCitizen.type;
+
+         // username & password for Approver user
+         config.approverUsername = envProps.superUser.userName;
+         config.approverPassword = envProps.superUser.password;
+         config.approverType = envProps.superUser.type;
+
+         // username & password for Counter Employee user
+         config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
+         config.counterEmployeePassword = envProps.counterEmployeeUser.password;
+         config.counterEmployeeType = envProps.counterEmployeeUser.type;
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
@@ -176,11 +195,11 @@ function() {
         config.configHomeUrl = envProps.host + path.endPoints.dashboard.getDashboardConfig;
         config.getChartUrl = envProps.host + path.endPoints.dashboard.getChartV2;
         //encService
-        config.encryptUrl = envProps.localhost + path.endPoints.encService.encrypt;
-        config.decryptUrl = envProps.localhost + path.endPoints.encService.decrypt;
-        config.rotateKeyUrl = envProps.localhost + path.endPoints.encService.rotateKey;
-        config.verifyUrl = envProps.localhost + path.endPoints.encService.verify;
-        config.signUrl = envProps.localhost + path.endPoints.encService.sign;
+        config.encryptUrl = envProps.host + path.endPoints.encService.encrypt;
+        config.decryptUrl = envProps.host + path.endPoints.encService.decrypt;
+        config.rotateKeyUrl = envProps.host + path.endPoints.encService.rotateKey;
+        config.verifyUrl = envProps.host + path.endPoints.encService.verify;
+        config.signUrl = envProps.host + path.endPoints.encService.sign;
         //eGovWorkFlow Business
         config.businessSearch = envProps.host + path.endPoints.eGovWorkFlowBusiness.search
         //url shorten
@@ -277,11 +296,95 @@ function() {
         config.createFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.create
         config.searchFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.search
         config.calculateFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.calculate
+        // ws-servcies : water connection
+        config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
+        config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
+        config.searchWaterConnection = envProps.host + path.endPoints.waterConnection.search
+
+        // ws-calculator
+        config.wsCalculatorEstimate = envProps.host + path.endPoints.wsCalculator.estimate
+        config.wsCalculatorCalculate = envProps.host + path.endPoints.wsCalculator.calculate
+        config.wsCalculatorCreateMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionCreate
+        config.wsCalculatorSearchMeterConnection = envProps.host + path.endPoints.wsCalculator.meterConnectionSearch
+        config.wsCalculatorApplyAdhocTax = envProps.host + path.endPoints.wsCalculator.applyAdhocTax
+        // Property Calculator - Property Tax Service endpoint
+        config.propertyTaxEstimate = envProps.host + path.endPoints.propertyCalculator.estimate
+        config.propertyTaxCalculate = envProps.host + path.endPoints.propertyCalculator.calculator
+
+        // TL-servcies : Trade License
+        config.createTradeLicense = envProps.host + path.endPoints.tradeLicense.create
+        config.updateTradeLicense = envProps.host + path.endPoints.tradeLicense.update
+        config.searchTradeLicense = envProps.host + path.endPoints.tradeLicense.search
+
+        // tl-calculator
+        config.tlCalculatorGetBill = envProps.host + path.endPoints.tlCalculator.getBill
+        config.tlCalculatorCreateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabCreate
+        config.tlCalculatorUpdateBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabUpdate
+        config.tlCalculatorSearchBillingSlab = envProps.host + path.endPoints.tlCalculator.billingSlabSearch
+        config.tlCalculatorCalculate = envProps.host + path.endPoints.tlCalculator.calculate
+
+        // sw-servcies : sewerage connection
+        config.createSewerageConnection = envProps.host + path.endPoints.sewerageConnection.create
+        config.updateSewerageConnection = envProps.host + path.endPoints.sewerageConnection.update
+        config.searchSewerageConnection = envProps.host + path.endPoints.sewerageConnection.search
+
+        // BPA-Services
+        config.createEdcrScrutinize = envProps.host + path.endPoints.bpaService.edcrScrutinize
+        config.createBPA = envProps.host + path.endPoints.bpaService.create
+        config.searchBPA = envProps.host + path.endPoints.bpaService.search
+        config.updateBPA = envProps.host + path.endPoints.bpaService.update
+
+        // BPA- Calculator
+        config.calculateBPA = envProps.host + path.endPoints.bpaCalculator.calculate
+
+        // Land Services
+        config.createLand = envProps.host + path.endPoints.landService.create
+        config.searchLand = envProps.host + path.endPoints.landService.search
+        config.updateLand = envProps.host + path.endPoints.landService.update    
+        
+        //DCR-Services
+        config.scrutinizeUrl = envProps.host + path.endPoints.dcrServices.scrutinize
+        config.scrutinydetailsUrl = envProps.host + path.endPoints.dcrServices.scrutinydetails
+        config.occomparisonUrl = envProps.host + path.endPoints.dcrServices.occomparison
+
+        // Fire-Noc-Service
+        config.createFireNocService = envProps.host + path.endPoints.firenocService.create
+        config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
+        config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
+
         // Calling pretest features which is consumed by almost all tests
-        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature', config);
+        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
 
-        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature', config);
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+
+        var AltitizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen', config);
+        config.altCitizenAuthToken = AltitizenAuthTokenResponse.authToken;
+
+        var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
+        config.fileStoreId1 = fileUploadResponse1.fileStoreId
+
+        var fileUploadResponse2 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore2', config);
+        config.fileStoreId2 = fileUploadResponse2.fileStoreId
+
+        var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
+        config.fileStoreId3 = fileUploadResponse3.fileStoreId
+
+        var fileUploadResponse4 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore4', config);
+        config.fileStoreId4 = fileUploadResponse4.fileStoreId
+
+        var fileUploadResponse5 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore5', config);
+        config.fileStoreId5 = fileUploadResponse5.fileStoreId
+
+        var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+        config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+
+        var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
+        config.approverAuthToken = approverAuthTokenResponse.authToken;
+
+        var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
+        config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
@@ -300,6 +403,14 @@ function() {
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
         config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
+        config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+        config.mdmsStateBPA = MdmsStateRes['BPA']
+        config.mdmsStateFireNocService = MdmsStateRes['firenoc']
+        config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
+
+        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        karate.configure('driver', driverConfig);
+        config.driverConfig = driverConfig;
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);

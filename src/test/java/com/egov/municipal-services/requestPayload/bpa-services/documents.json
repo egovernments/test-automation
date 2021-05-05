@@ -1,0 +1,29 @@
+{
+    "bpaDocuments": [
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId1)",
+            "documentType": "#(documentType1)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId2)",
+            "documentType": "#(documentType2)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId3)",
+            "documentType": "#(documentType3)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId4)",
+            "documentType": "#(documentType4)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId5)",
+            "documentType": "#(documentType5)"
+        }
+    ]
+}

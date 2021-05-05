@@ -5,13 +5,11 @@ Background:
   * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def tenantId = tenantId
-  * def businessService = fetchBillResponse.Bill[0].businessService
   * def paymentMode = collectionServicesConstants.parameters.paymentMode
   * def paidBy = 'Payer ' + randomString(10)
   * def mobileNumber = '78' + randomMobileNumGen(8)
-  * def payerName = fetchBillResponse.Bill[0].payerName
+  * def payerName = 'Payer ' + randomString(10)
   * def totalDue = 0
-  * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
   * def transactionNumber = collectionServicesConstants.parameters.transactionNumber
   * def instrumentNumber = collectionServicesConstants.parameters.instrumentNumber
   * def paymentModeForCard = collectionServicesConstants.parameters.paymentMode2
@@ -36,15 +34,11 @@ Background:
 
 @createPayment
 Scenario: Common test to create a Payment 
-   * def amount = fetchBillResponse.Bill[0].totalAmount
-   * set createPaymentRequest.Payment.paymentDetails[0].totalDue = amount
-   * set createPaymentRequest.Payment.paymentDetails[0].totalAmountPaid = amount
-   * set createPaymentRequest.Payment.totalDue = amount
-   * set createPaymentRequest.Payment.totalAmountPaid = amount
   Given url payment
   And request createPaymentRequest
+  * print createPaymentRequest
   When method post
-  Then assert responseStatus == 200
+  Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
   And def Payments = collectionServicesResponseBody.Payments
