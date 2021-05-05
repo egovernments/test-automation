@@ -4,41 +4,49 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Collection;
+import java.lang.Runtime;
+import java.io.*;
+import java.lang.management.*;
 import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
 import com.intuit.karate.KarateOptions;
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = {"classpath:com/egov/core-services",
-	"classpath:com/egov/business-services",
-	"classpath:com/egov/common-services",
-	"classpath:com/egov/municipal-services"},
- 	tags = {"@Searcher,@localization,@accessControl,@hrms,@collectionServices,@billingServiceDemand," + "
-	 @billingServiceBill,@userOtp,@fileStore,@reports,@location,@searchmdms,@eGovUser"})
-public class EGovTest {
+@KarateOptions(features = {"classpath:com/egov"},
+	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
+			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
+			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
 
+public class EGovTest {
+	static String karateOutputPath = "target/surefire-reports";
 	@BeforeClass
 	public static void before() {
-
+		
 	}
 
 	@Test
 	public void testParallel() {
-		String karateOutputPath = "target/surefire-reports";
-		KarateStats stats = CucumberRunner.parallel(getClass(), 1, karateOutputPath);
-		generateReport(karateOutputPath);
+		
+		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
+		
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
+	}
+
+	@AfterClass
+	public static void after(){
+		generateReport(karateOutputPath);
 	}
 
 	private static void generateReport(String karateOutputPath) {
@@ -53,7 +61,7 @@ public class EGovTest {
 		
 		// To Store reports in other location in system
 		//Configuration config = new Configuration(new File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov Functional Test");
-		Configuration config = new Configuration(new File("target/" + currentDate), "eGov Functional Test");
+		Configuration config = new Configuration(new File("target/" + currentDate), "eGov Test Automation Results");
 
 		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
 		reportBuilder.generateReports();

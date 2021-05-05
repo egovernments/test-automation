@@ -1,0 +1,12 @@
+parameters:
+  #Valid data
+  businessService: WS
+  isAdvanceAllowed: true
+  taxHeadCode1: WS_TIME_REBATE
+  taxHeadCode2: WS_TIME_INTEREST
+  taxHeadCode3: WS_CHARGE
+  taxHeadCode4: WS_ADVANCE_CARRYFORWARD
+errorMessages:
+  invalidBusinessService: No Advance taxHead found for 
+  invalidTenantMessage: Invalid Tenant Id
+  amountErrorMsg: Failed to deserialize certain JSON fields

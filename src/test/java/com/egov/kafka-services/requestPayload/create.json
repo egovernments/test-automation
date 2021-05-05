@@ -1,0 +1,5 @@
+{
+    "name": "automation_consumer_instance",
+    "format": "json",
+    "auto.offset.reset": "latest"
+}

@@ -1,15 +1,2 @@
-parameters:
-  userType: EMPLOYEE
-  businesServicePT: PT
-  businesServiceWS: WS
-  businesServiceSW: SW
-  allServices: PT,WS,SW
-  mobileNumber: '9494949494'
-  noMobileNumber: ''
-  noURL: ''
-  nobusinesService: ''
-  invalidtenantId: '123'
-  searcherWSURL: egov-searcher/bill-genie/waterbills/_get
-
-expectedErrorMessages:
-  Authorized: Not authorized to access this resource
+errorMessages: 
+  tenantIdMandatory: 'Missiing Mandatory Property: $.searchCriteria.tenantId'

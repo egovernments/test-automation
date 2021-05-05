@@ -5,11 +5,23 @@ errormessages:
  withoutTenanntId: InvalidUserSearchCriteriaException
  withEmptyStringTenantId: InvalidUserSearchCriteriaException
  # Create citizen
- invalidOtp: OTP validation unsuccessful
- invalidUserName: UserNameNotValidException
+ invalidUserNameCode: UserNameNotValidException
  invalidName: InvalidUserCreateException
  invalidTenantId: InvalidUserCreateException
  nameCharsSize: size must be between 0 and 50
+ # Update user profile related error messages
+ invalidUserName:  must match "^[^\"$'<>?\\~`!@#$%^()+={}\[\]*,:;“”‘’]*$"
+ invalidPhoneNumber: must match "(^$|[0-9]{10})"
+ invalidEmail: not a well-formed email address
+ invalidGender: must match "^[a-zA-Z ]*$"
+ invalidUUID: "User not found for given criteria: UserSearchCriteria(id=null, uuid=[], userName=null, name=null, mobileNumber=null, emailId=null, fuzzyLogic=false, active=null, offset=null, limit=null, sort=null, type=null, tenantId=null, roleCodes=null)"
+ # Update user password related error code and message
+ passwordMismatchCode: PasswordMismatchException
+ invalidPasswordLengthCode: INVALID_PWD_LENGTH
+ invalidPasswordMessage: "Password must be of minimum: 8 and maximum: 15 characters."
+ # Update user password without login related errors
+ invalidOTP: OTP validation unsuccessful
+ userNotFoundCode: UserNotFoundException
  
 
 

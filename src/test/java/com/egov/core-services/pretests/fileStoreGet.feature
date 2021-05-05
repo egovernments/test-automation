@@ -1,21 +1,18 @@
-Feature: FileStore get API call 
-Background:
+Feature: FileStore get API call
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadSuccess')
-  * print filecreateResponseBody
+  # calling upload single document file pretest
+  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadDocumentsSuccessfully')
+  
   * def getFileId = filecreateResponseBody.files[0].fileStoreId
-  * print getFileId
-  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadDocsSuccess')
-  * print filecreateResponseBody.files[0].fileStoreId, filecreateResponseBody.files[1].fileStoreId
+  # calling upload multiple document files pretest
+  * call read('../../core-services/pretests/fileStoreCreate.feature@uploadMultipleDocumentsSuccessfully')
   * def getFileIdsFirst = filecreateResponseBody.files[0].fileStoreId
-  * print getFileIdsFirst
   * def getFileIdsSecond = filecreateResponseBody.files[1].fileStoreId
-  * print getFileIdsSecond
   * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
-  * print getFileIds
-
-@getFileIdSuccess
-Scenario: get the uploaded document id
+  
+        @getFileIdSuccessfully
+        Scenario: get the uploaded document id successfully
   * def getFileIdParam = 
     """
     {
@@ -23,26 +20,15 @@ Scenario: get the uploaded document id
        fileStoreIds: '#(getFileId)'
     }
     """
-     Given url fileStoreGet
-     * print fileStoreGet
-     And params getFileIdParam
-     * print getFileIdParam
-     When method get
-     Then status 200
-     And def fileStoreGetResponseHeader = responseHeaders
-     And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
+            Given url fileStoreGet
+              And params getFileIdParam
+             When method get
+             Then status 200
+              And def fileStoreGetResponseHeader = responseHeaders
+              And def fileStoreGetResponseBody = response
 
-@getMultiFileIdSuccess
-Scenario: get the uploaded document id
-#  * def uploadMultifile = call read('../pretests/fileStoreCreate.feature@uploadDocsSuccess')
-#  * print uploadMultifile.filecreateResponseBody.files[0].fileStoreId, uploadMultifile.filecreateResponseBody.files[1].fileStoreId
-#  * def getFileIdsFirst = uploadMultifile.filecreateResponseBody.files[0].fileStoreId
-#  * print getFileIdsFirst
-#  * def getFileIdsSecond = uploadMultifile.filecreateResponseBody.files[1].fileStoreId
-#  * print getFileIdsSecond
-#  * def getFileIds = getFileIdsFirst + ',' + getFileIdsSecond
-#  * print getFileIds
+        @getMultiFileIdSuccessfully
+        Scenario: get the uploaded multiple document ids successfully
   * def getMultiFileIdParam = 
     """
     {
@@ -50,45 +36,40 @@ Scenario: get the uploaded document id
        fileStoreIds: '#(getFileIds)'
     }
     """
-     Given url fileStoreGet
-     * print fileStoreGet
-     And params getMultiFileIdParam
-     * print getMultiFileIdParam
-     When method get
-     Then status 200
-     And def fileStoreGetResponseHeader = responseHeaders
-     And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
+            Given url fileStoreGet
+              And params getMultiFileIdParam
+             When method get
+             Then status 200
+              And def fileStoreGetResponseHeader = responseHeaders
+              And def fileStoreGetResponseBody = response
 
 
-@getFileIdFail
-Scenario: get the uploaded document id
+        @getFileIdFail
+        Scenario: get document id error
   * def getFileIdParam = 
     """
     {
        fileStoreIds: '#(getFileId)'
     }
     """
-     Given url fileStoreGet
-     And params getFileIdParam
-     When method get
-     Then status 400
-     And def fileStoreGetResponseHeader = responseHeaders
-     And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
+            Given url fileStoreGet
+              And params getFileIdParam
+             When method get
+             Then status 400
+              And def fileStoreGetResponseHeader = responseHeaders
+              And def fileStoreGetResponseBody = response
 
-@noFileId
-Scenario: get the uploaded document id
+        @getFileWithoutFileId
+        Scenario: get the document without document id
   * def getFileIdParam = 
     """
     {
        tenantId: '#(tenantId)'
     }
     """
-     Given url fileStoreGet
-     And params getFileIdParam
-     When method get
-     Then status 400
-     And def fileStoreGetResponseHeader = responseHeaders
-     And def fileStoreGetResponseBody = response
-     * print fileStoreGetResponseBody
+            Given url fileStoreGet
+              And params getFileIdParam
+             When method get
+             Then status 400
+              And def fileStoreGetResponseHeader = responseHeaders
+              And def fileStoreGetResponseBody = response

@@ -3,11 +3,6 @@ function waitTimeSec(x) {
     java.lang.Thread.sleep(x * 1000);
 }
 
-/**
- * Generates random string
- * @param {character length of string} x
- * @returns random string
- */
 function ranString(x) {
     return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, x);
 }
@@ -33,6 +28,8 @@ function randomNumber(length) {
     var number =  Math.floor(Math.random() * length);
     if(number>=length){
         number = length -1;
+    }else if(number==0){
+        number = 1
     }
     return number; 
 }
@@ -43,6 +40,11 @@ function randomNumber(length) {
  */
 function getCurrentEpochTime(){
     return new java.util.Date().getTime();
+}
+
+function getCurrentDate1(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
+    return simpleDateFormat.format(new java.util.Date());
 }
 
 /**
@@ -60,6 +62,13 @@ function getTomorrowEpochTime(){
  */
 function getEpochDate(days){
     return new Date(new java.util.Date().getTime() + (1000 * 60 * 60 * 24 * days)).getTime();
+}
+
+function getDate1(days){
+    var simpleDateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
+    var cal = java.util.Calendar.getInstance();
+    cal.add(java.util.Calendar.DATE, days);
+    return simpleDateFormat.format(cal.getTime());
 }
 
 
@@ -110,7 +119,7 @@ function randomMobileNumGen(x)
  */
 function randomString(length) {
     var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     var charactersLength = characters.length;
     for ( var i = 0; i < length; i++ ) {
        result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -161,7 +170,118 @@ function todayDate(){
     return today;
 }
 
+/**
+ * Generates current date with dd-mm-yyyy format
+ * @returns today date
+ */
+function currentDate(){
+    var today = new Date();
+    var dd = String(today.getDate());
+    var mm = String(today.getMonth() + 1);
+    var yyyy = today.getFullYear();
+    today = dd + '-' + mm + '-' + yyyy;
+    return today;
+}
+function yesterdayDate(){
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate()-1);
+    var dd = String(('0' + (yesterday.getDate()+1)).slice(-2));
+    var mm = String(('0' + (yesterday.getMonth()+1)).slice(-2));
+    var yyyy = yesterday.getFullYear();
+    yesterday = dd + '-' + mm + '-' + yyyy;
+    return yesterday;
+}
+
 function generateUUID(){
     var uuid = '' + java.util.UUID.randomUUID();
     return uuid
+}
+
+/** To validate expected result and actual result with dynamic value
+ * response: will get after execution
+ * constant: constant value in constant yaml file
+ */
+function toGetDynamicValueFromResponse(response, constant)
+{        
+        var responseArray = response.split("  ", 3);   
+        var messageStringArray = responseArray[2];
+        var tokenValue = messageStringArray.split(" ",1);
+        response = response.replace(tokenValue,'$token');
+        if(response === constant)
+         return true;
+        else
+         return false;
+
+}
+
+/** To replace comma and validate the response */
+function toReplaceComma(responseMessage)
+{
+    responseMessage = responseMessage.replaceAll("'","");
+    return responseMessage;
+}
+/**
+ * Check specifically 'active' field value
+ * @param {filtered array of response} filteredArrayOfResponse 
+ * @param {values needs to be matched} valueToBeMatched 
+ * @returns true if success otherwise false
+ */
+function deterMineActiveFieldValue(filteredArrayOfResponse, valueToBeMatched){
+    var flag = false;
+    for(var index=0; index<filteredArrayOfResponse.size(); index++){
+        if(filteredArrayOfResponse[index].active === valueToBeMatched)
+            return flag = true;
+            else
+            return flag;
+        }
+}
+
+function extractLagsData(data){
+    var lagData = [];
+    for(var i=0;i<data.size();i++){
+        lagData.push({
+            "partition_id" : data[i].partition_id,
+            "current_offset"  : data[i].current_offset
+        });
+    }
+    lagData.sort(GetSortOrder("partition_id"));
+    return lagData;
+}
+
+//Comparer Function    
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}
+
+function compareOffsetMovement(dataBefore, dataAfter){
+    var offsetDiff = [];
+    for(var i=0;i<dataBefore.size();i++){
+        // var diff = ((dataAfter[i].current_offset - dataBefore[i].current_offset) * 100) / dataBefore[i].current_offset;
+        var diff = dataAfter[i].current_offset - dataBefore[i].current_offset
+        offsetDiff.push({
+            "partition_id" : data[i].partition_id,
+            "offset_diff"  : diff
+        });
+    }
+    return offsetDiff;
+}
+
+function randomFloat(x) {
+    if (x) {
+        return new java.util.Random().nextFloat();
+    } else {
+        return new java.util.Random().nextFloat(100000000);
+   }
+}
+
+function jsonToString(obj) {
+    var myJSON = JSON.stringify(obj);
+    return myJSON
 }

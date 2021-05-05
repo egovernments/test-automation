@@ -1,14 +1,9 @@
 Feature: Reports
 
-Background:
+  Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  # Calling authtoken
-  * def authUsername = employeeUserName
-  * def authPassword = employeePassword
-  * def authUserType = employeeType
-  * call read('../../core-services/pretests/authenticationToken.feature')
-  # calling report constant
   * def reportConstant = read('../../core-services/constants/reports.yaml')
+  # initializing get report request payload objects
   * def reportName = reportConstant.parameters.reportName
   * def pageSize = 'false'
   * def offset = '0'
@@ -24,56 +19,64 @@ Background:
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
 
-@MetadataGet_01  @positive  @reports
+@MetadataGet_01  @coreServices @regression @positive  @reports
 Scenario: Test to fetch the details of a report for a particular module
-      * call read('../../core-services/pretests/metadataGetReport.feature@reportSuccess')
-      * print reportsResponseBody
+      # calling get report metadata pretest
+      * call read('../../core-services/pretests/metadataGetReport.feature@getReportMetadataSuccessfully')
+      
       * match reportsResponseBody == '#present'
 
-@MetadataGet_InvalidReportName_02  @negative  @reports
+@MetadataGet_InvalidReportName_02  @coreServices @regression @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for reportname id
       * def reportName = invalidReportName
-      * call read('../../core-services/pretests/metadataGetReport.feature@reportFail')
-      * print reportsResponseBody
+      # calling get report metadata pretest
+      * call read('../../core-services/pretests/metadataGetReport.feature@getReportMetadataError')
+      
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.withoutReportName
 
-@MetadataGet_InvalidTenant_03  @negative  @reports
+@MetadataGet_InvalidTenant_03  @coreServices @regression @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
       * def tenantId = invalidTenantId
-      * call read('../../core-services/pretests/metadataGetReport.feature@reportForbidden')
-      * print reportsResponseBody
+      # calling get report metadata pretest
+      * call read('../../core-services/pretests/metadataGetReport.feature@getReportMetadata403Error')
+      
       * assert reportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
 
-@Report_Get_01  @positive  @reports
+@Report_Get_01  @coreServices @regression @positive  @reports
 Scenario: Test to search for report data with different combinations of search inputs
-      * call read('../../core-services/pretests/getReport.feature@getreportSuccess')
-      * print getReportsResponseBody
+      # calling get report pretest
+      * call read('../../core-services/pretests/getReport.feature@getReportSuccessfully')
+      
       * match getReportsResponseBody == '#present'
 
-@Report_InvalidTenant_02  @negative  @reports
+@Report_InvalidTenant_02  @coreServices @regression @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for tenant id
       * def tenantId = invalidTenantId
-      * call read('../../core-services/pretests/getReport.feature@getreportForbidden')
-      * print getReportsResponseBody
+      # calling get report pretest
+      * call read('../../core-services/pretests/getReport.feature@getReport403Error')
+      
       * assert getReportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidTenantId
 
-@Report_InvalidReportName_03  @negative  @reports
+@Report_InvalidReportName_03  @coreServices @regression @negative  @reports
 Scenario: Test by passing invalid/non existent or null value for reportname id
       * def secondReportName = invalidReportName
-      * call read('../../core-services/pretests/getReport.feature@getreportFail')
-      * print getReportsResponseBody
+      # calling get report pretest
+      * call read('../../core-services/pretests/getReport.feature@getReportError')
+      
       * assert getReportsResponseBody.Errors[0].code == reportConstant.errormessages.noReportName
 
-@Report_NoSeacrhParama_04  @positive  @reports
+@Report_NoSeacrhParama_04  @coreServices @regression @positive  @reports
 Scenario: Test by removing search params
       * def searchParams = []
-      * call read('../../core-services/pretests/getReport.feature@getreportSuccess')
-      * print getReportsResponseBody
+      # calling get report pretest
+      * call read('../../core-services/pretests/getReport.feature@getReportSuccessfully')
+      
       * match getReportsResponseBody == '#present'
 
-@Report_InvalidSearchParams_05  @negative  @reports
+@Report_InvalidSearchParams_05  @coreServices @regression @negative  @reports
 Scenario: Test by adding a invalid search param value
-      * def searchParams = invalidSearchParams
-      * call read('../../core-services/pretests/getReport.feature@getreportFail')
-      * print getReportsResponseBody
+      * def searchParams = commonConstants.invalidParameters.invalidValue
+      # calling get report pretest
+      * call read('../../core-services/pretests/getReport.feature@getReportError')
+      
       * assert getReportsResponseBody.Errors[0].message == reportConstant.errormessages.invalidSearchparam

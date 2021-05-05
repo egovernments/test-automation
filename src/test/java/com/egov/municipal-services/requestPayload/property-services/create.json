@@ -25,7 +25,7 @@
       "usageCategoryMajor": "#(UsageCategoryMajor)",
       "landArea": "#(landArea)",
       "propertyType": "#(PropertyType)",
-      "noOfFloors": 1,
+      "noOfFloors": "#(noOfFloors)",
       "ownershipCategory": "#(OwnerShipCategory)",
       "owners": [
         {

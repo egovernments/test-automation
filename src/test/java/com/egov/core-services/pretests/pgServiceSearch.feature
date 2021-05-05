@@ -1,13 +1,12 @@
 Feature: Verify searching transaction details using txn id
 
-Background:
+        Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * call read('../../core-services/pretests/pgServiceCreate.feature@createpgservicesuccess')
-  * transactionId = pgServicesCreateResponseBody.Transaction.taxAndPayments[0].txnId
-  * def pgServicesSearchPayload = read('../requestPayload/pgServices/pgServicesSearch.json')
+  * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
+  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pgServices/pgServicesSearch.json')
 
-@searchpgservicesuccess
-Scenario: Update a payment transaction
+        @searchPgTransactionSuccessfully
+        Scenario: Search a payment gateway transaction successfully
   * configure headers = read('classpath:websCommonHeaders.js')
   * def pgServicesSearchParam = 
     """
@@ -15,33 +14,32 @@ Scenario: Update a payment transaction
      txnId: '#(txnId)'
     }
     """ 
-     Given url pgServicesSearch 
-     * print pgServicesSearch 
-     And params pgServicesSearchParam 
-     And request pgServicesSearchPayload
-     * print pgServicesSearchPayload
-     When method post
-     Then status 200
-     And def pgServicesSearchResponseHeader = responseHeaders
-     And def pgServicesSearchResponseBody = response
-     * print pgServicesSearchResponseBody
+            Given url pgServicesSearch
+     
+              And params pgServicesSearchParam
+              And request pgServicesSearchPayload
+     
+             When method post
+             Then status 200
+              And def pgServicesSearchResponseHeader = responseHeaders
+              And def pgServicesSearchResponseBody = response
+     
 
-@searchpgservicefail
-Scenario: Update a payment transaction
-  * configure headers = read('classpath:websCommonHeaders.js')
+        @searchPgTransactionError
+        Scenario: Search a payment gateway transaction error
   * def pgServicesSearchParam = 
     """
     {
      txnId: '#(txnId)'
     }
     """ 
-     Given url pgServicesSearch 
-     * print pgServicesSearch 
-     And params pgServicesSearchParam 
-     And request pgServicesSearchPayload
-     * print pgServicesSearchPayload
-     When method post
-     Then status 400
-     And def pgServicesSearchResponseHeader = responseHeaders
-     And def pgServicesSearchResponseBody = response
-     * print pgServicesSearchResponseBody
+            Given url pgServicesSearch
+     
+              And params pgServicesSearchParam
+              And request pgServicesSearchPayload
+     
+             When method post
+             Then status 400
+              And def pgServicesSearchResponseHeader = responseHeaders
+              And def pgServicesSearchResponseBody = response
+     

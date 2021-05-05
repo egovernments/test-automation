@@ -1,0 +1,10 @@
+
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Licenses": [
+        "#(tradeLicense)"
+    ]
+}
+

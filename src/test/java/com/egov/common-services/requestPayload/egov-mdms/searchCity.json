@@ -31,22 +31,6 @@
             "name": "Documents"
           }
         ]
-      },
-      {
-        "moduleName": "egov-location",
-        "masterDetails": [
-          {
-            "name": "TenantBoundary"
-          }
-        ]
-      },
-      {
-        "moduleName": "egov-location",
-        "masterDetails": [
-          {
-            "name": "TenantBoundary"
-          }
-        ]
       }
     ]
   }

@@ -1,0 +1,10 @@
+topics:
+  smsNotification: "egov.core.notification.sms"
+  emailNotification: "egov.core.notification.email"
+  createProperty: "save-property-registry"
+  UpdateProperty: "update-property-registry"
+  createPgTransaction: "save-pg-txns"
+  createWorkflowTransition: "save-wf-transitions"
+parameters:
+  clusterId: "Q4JvuYyESKer14_lxPieWA"
+  consumerGroupId: "sms"

@@ -1,5 +1,8 @@
 # response status
 status: SUCCESSFUL
+parameters:
+  txnStatus: SUCCESS
+  txnStatusMsg: Transaction successful
 # error messages
 errorMessages:
  invalidTxnAmount: An unhandled exception occurred on the server
@@ -8,3 +11,4 @@ errorMessages:
  withInvalidTransactionId: Transaction not found
  withoutTransactionId: Cannot process request, missing transaction id
  transactionIdwithBillPaid: Transaction not found
+ jsonException: Failed to deserialize certain JSON fields

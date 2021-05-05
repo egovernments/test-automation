@@ -1,0 +1,17 @@
+{
+    "requestInfo":{
+        "authToken":"#(authToken)"
+    },
+    "instrumentAccountCodes":[
+        {
+          "instrumentType":{
+             "name":"#(instrumentTypeName)"
+         },
+         "accountCode":{
+             "glcode": "#(glcode)",
+             "tenantId":"#(tenantId)"
+         },
+         "tenantId":"#(tenantId)"
+        }
+    ]
+}

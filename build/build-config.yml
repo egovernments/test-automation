@@ -10,6 +10,6 @@
 config:
   - name: "builds/test-automation"
     build:
-      - work-dir  : "."
+      - work-dir: "."
         image-name: "name"
         dockerfile: "build/maven/Dockerfile"

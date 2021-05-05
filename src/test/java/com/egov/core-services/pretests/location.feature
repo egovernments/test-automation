@@ -1,13 +1,13 @@
 Feature: Location
 
-Background:
+        Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
   * def locationconstant = read('../../core-services/constants/location.yaml')
   * def locationPayload = read('../../core-services/requestPayload/location/searchLocation.json')
 
-@locationsuccess
-Scenario: search for location detail
+        @searchLocationSuccessfully
+        Scenario: search for location detail successfully
       * def locationParam = 
     """
     {
@@ -16,34 +16,33 @@ Scenario: search for location detail
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request locationPayload
-     When method post
-     Then status 200
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 200
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
 
-@locationsuccesswithtenantid
-Scenario: search for location detail  
+        @searchLocationSuccessfulyWithOnlyTenantId
+        Scenario: search for location detail with only tenantId successfully
    * def locationParam = 
     """
     {
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request locationPayload
-     When method post
-     Then status 200
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 200
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
+     
 
-@locationwithnotenantid
-Scenario: search for location detail
+        @searchLocationWithoutTenantIdError
+        Scenario: search for location detail without tenantId error
   * def locationParam = 
     """
     {
@@ -51,17 +50,17 @@ Scenario: search for location detail
      boundaryType: '#(boundaryType)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request locationPayload
-     When method post
-     Then status 400
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 400
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
+     
 
-@locationerror
-Scenario: search for location detail 
+        @searchLocationError
+        Scenario: search for location detail error
   * def locationParam = 
     """
     {
@@ -70,11 +69,11 @@ Scenario: search for location detail
      tenantId: '#(tenantId)'
     }
     """
-     Given url searchloc
-     And params locationParam
-     And request locationPayload
-     When method post
-     Then status 400
-     And def searchLocationResponseHeader = responseHeaders
-     And def searchLocationResponseBody = response
-     * print searchLocationResponseBody
+            Given url searchloc
+              And params locationParam
+              And request locationPayload
+             When method post
+             Then status 400
+              And def searchLocationResponseHeader = responseHeaders
+              And def searchLocationResponseBody = response
+     
