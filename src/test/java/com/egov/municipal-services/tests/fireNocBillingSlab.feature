@@ -12,26 +12,26 @@ Background:
     * def fireNocBillignSlabConstants = read('../../municipal-services/constants/fireNocBillingSlab.yaml')
     # initialising request payload variables
     * configure headers = read('classpath:websCommonHeaders.js')
-    * def uom = "HEIGHT_OF_BUILDING"
+    * def uom = mdmsStateTradeLicense.AccessoriesCategory[0].uom
     * def calculationType = fireNocBillignSlabConstants.calculationTypes.flat
     * def buildingUsageType = "GROUP_A_RESIDENTIAL.SUBDIVISIONA-1"
     * def fireNOCId = randomString(10)
-    * def fireNOCType = "NEW"
+    * def fireNOCType = fireNocBillignSlabConstants.allowedValues.fireNOCNew
     * def apiId = "Rainmaker"
     * def ver = ".01"
     * def action = ""
     * def did = "1"
     * def msgId = "20170310130900|en_IN"
-    * def rate = 1000
+    * def rate = ranInteger(2)
     * def fireNOCApplicationNumber = "PB-FN-2021-04-06-010023"
-    * def fireStationId = "FS_AMRITSAR_01"
+    * def fireStationId = mdmsStateFireNocService.FireStations[0].code
     * def financialYear = "2019-20"
-    * def action = "APPLY"
-    * def channel = "COUNTER"
-    * def noOfBuildings = "SINGLE"
+    * def action = fireNocBillignSlabConstants.actions.apply
+    * def channel = fireNocBillignSlabConstants.channel.counter
+    * def noOfBuildings = fireNocBillignSlabConstants.building.single
     * def buildingName = randomString(10)
     * def buildingUsageType = "GROUP_A_RESIDENTIAL.SUBDIVISIONA-1"
-    * def ownerShipType = "INDIVIDUAL.SINGLEOWNER"
+    * def ownerShipType = mdmsStatecommonMasters.OwnerShipCategory[0].code
     * def tenantIdRoles = tenantId
 
 @SearchFireNOCBillingFeature1 @fireNOCBillingFeature  @positive @regression @NOCService @municipalServices
@@ -71,7 +71,6 @@ Scenario: Search Fire NOC BIlling Slab Feature - all records
     * match fireNOCBillingSlabResponse.BillingSlabs[0].tenantId == "#present"
     * match fireNOCBillingSlabResponse.BillingSlabs[0].id == "#present"
     * match fireNOCBillingSlabResponse.BillingSlabs[0].buildingUsageType == buildingUsageType
-    * match fireNOCBillingSlabResponse.BillingSlabs[0].uom == uom
 @SearchFireNOCBillingFeature5 @fireNOCBillingFeature  @negative @regression @NOCService @municipalServices
 Scenario: Search Fire NOC BIlling Slab Feature - No records
     # Search FireNOC Billing slab

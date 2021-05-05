@@ -22,8 +22,7 @@ Scenario: Create Fire Noc With Valid Data
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     # Validate response body
     * match nocResponseBody.Noc[0].tenantId == "#present"
-    * match nocResponseBody.Noc[0].nocType == "FIRE_NOC"
-
+    * match nocResponseBody.Noc[0].nocType == nocType
 @NOCCreate1 @createNOC  @positive @regression @NOCService @municipalServices
 Scenario: Create Fire Noc With Valid Data
     # Create a NOC

@@ -29,16 +29,24 @@ Errors:
   params:
     missingProperty:
       tenandId: "tenantId"
-  allowedValues:
-    fireNOCNew: "NEW"
-    fireNOCProvisional: "PROVISIONAL"
+      
+allowedValues:
+  fireNOCNew: "NEW"
+  fireNOCProvisional: "PROVISIONAL"
 
   
 
 actions:
+  apply: "APPLY"
   forward: "FORWARD"
 
 calculationTypes:
   singleSlab: "SINGLESLAB"
   multipleSlab: "MULTIPLESLAB"
   flat: "FLAT"
+
+channel:
+  counter: "COUNTER"
+
+building:
+  single: "SINGLE"
