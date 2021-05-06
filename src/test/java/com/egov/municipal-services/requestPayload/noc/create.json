@@ -1,0 +1,10 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Noc": {
+        "tenantId": "#(tenantId)",
+        "nocType": "#(nocType)",
+        "source": "#(source)"
+    }
+}

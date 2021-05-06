@@ -11,6 +11,7 @@ Feature: FIRE-NOC-Service pretests
         And request createFireNocRequest
         When method post
         Then status 200
+        * print response
         And def fireNocResponseBody = response
         And def fireNocBody = fireNocResponseBody.FireNOCs[0]
         And def fireNocId = fireNocResponseBody.FireNOCs[0].id

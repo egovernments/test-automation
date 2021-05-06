@@ -31,6 +31,14 @@
             "name": "Documents"
           }
         ]
+      },
+      {
+        "moduleName": "RAINMAKER-PGR",
+        "masterDetails": [
+          {
+            "name": "ServiceDefs"
+          }
+        ]
       }
     ]
   }

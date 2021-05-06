@@ -1,0 +1,23 @@
+{
+  "RequestInfo": {
+        "apiId": "#(apiId)",
+        "ver": "#(ver)",
+        "action": "#(action)",
+        "did": "#(did)",
+        "msgId": "#(msgId)",
+        "authToken": "#(authToken)",
+       "userInfo": {
+     "tenantId": "#(tenantId)"
+        }       
+    },
+  "BillingSlabs": [
+  {
+    "tenantId": "#(tenantId)",
+    "fireNOCType": "#(fireNOCType)",
+    "buildingUsageType": "#(buildingUsageType)",
+    "uom": "#(uom)",
+    "rate": "#(rate)",
+    "calculationType": "#(calculationType)"
+  }
+]
+}

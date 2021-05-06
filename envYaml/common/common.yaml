@@ -192,8 +192,24 @@ endPoints:
     search: pt-calculator-v2/billingslab/_search
   
   propertyCalculatorPropertyTax:
-    calculate: pt-calculator-v2/propertytax/mutation/_calculate
+    calculate: pt-calculator-v2/propertytax/mutation/_calculate  
 
+  pgr:
+    create: pgr-services/v2/request/_create
+    update: pgr-services/v2/request/_update
+    search: pgr-services/v2/request/_search
+    count: pgr-services/v2/request/_count
+
+  noc:
+    create: noc-services/v1/noc/_create
+    update: noc-services/v1/noc/_update
+    search: noc-services/v1/noc/_search
+
+  fireNOCBillingSlab:
+    create: /firenoc-calculator/billingslab/_create
+    search: /firenoc-calculator/billingslab/_search
+    calculate: firenoc-calculator/v1/_calculate
+  
   waterConnection:
     create: ws-services/wc/_create
     search: ws-services/wc/_search
