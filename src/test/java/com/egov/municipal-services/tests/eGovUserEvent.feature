@@ -11,6 +11,7 @@ Background:
     * def name = 'AUTO_' + randomString(10)
     * def eventType = eGovUserEventConstants.events.eventType
     * def source = eGovUserEventConstants.events.source
+    * def description = eGovUserEventConstants.events.description
     
     @notifications_count_01 @positive @regression @municipalService @eGovUserEvent @eGovUserEventNotification
     Scenario: Verify get notification count through API

@@ -257,3 +257,11 @@ endPoints:
     update: egov-user-event/v1/events/_update
     search: egov-user-event/v1/events/_search
     latUpdate: egov-user-event/v1/events/lat/_update
+
+  eGovPdf:
+    ptmutationcertificate: egov-pdf/download/PT/ptmutationcertificate
+    consolidatedreceipt: egov-pdf/download/PAYMENT/consolidatedreceipt
+    tlrenewalcertificate: egov-pdf/download/TL/tlrenewalcertificate
+    tlreceipt: egov-pdf/download/TL/tlreceipt
+    ptreceipt: egov-pdf/download/PT/ptreceipt
+    ptbill: egov-pdf/download/PT/ptbill

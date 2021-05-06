@@ -4,6 +4,7 @@ events:
   recepientUser: 5417dbb7-14b9-4be2-ac46-ce2decb30444
   wrongEventy: BROADCAST
   status: ACTIV
+  description: Dear Citizen, Payment for PT assessment Proceed to Pay
 
 errorMessages:
   withoutTenantID: must not be null

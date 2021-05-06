@@ -337,13 +337,20 @@ function() {
         config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
         config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
 
-        // Fire-Noc-Service
+        // egov user event
         config.notificationEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.notificationCount
         config.createEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.create
         config.updateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.update
         config.searchEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.search
         config.latUpdateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.latUpdate
 
+        // egov PDF 
+        config.ptmutationcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.ptmutationcertificate
+        config.consolidatedreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.consolidatedreceipt
+        config.tlrenewalcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.tlrenewalcertificate
+        config.tlreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.tlreceipt
+        config.ptreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.ptreceipt
+        config.ptbillEgovPDF = envProps.host + path.endPoints.eGovPdf.ptbill
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);

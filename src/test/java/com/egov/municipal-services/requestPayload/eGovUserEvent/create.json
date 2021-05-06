@@ -13,7 +13,7 @@
       {
         "tenantId": "#(tenantId)",
         "eventType": "#(eventType)",
-        "description": "Dear Citizen, Payment for PT assessment with ID: AS-2019-07-17-057018 is Pending. Proceed to Pay",
+        "description": "#(description)",
         "name":"#(name)",
         "source": "#(source)",
         "actions": {
