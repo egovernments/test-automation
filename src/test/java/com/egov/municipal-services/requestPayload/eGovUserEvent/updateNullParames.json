@@ -1,0 +1,19 @@
+{
+    "RequestInfo": {
+        "apiId": "",
+        "ver": "",
+        "action": "",
+        "did": "",
+        "key": "",
+        "msgId": "",
+        "requesterId": "",
+        "authToken": "#(authToken)"
+      },
+      "events": [
+        {  
+            "eventDetails": null,
+            "recepientEventMap": null,
+            "generateCounterEvent": null
+        }
+    ]       
+}

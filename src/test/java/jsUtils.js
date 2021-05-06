@@ -278,8 +278,15 @@ function randomFloat(x) {
         return new java.util.Random().nextFloat();
     } else {
         return new java.util.Random().nextFloat(100000000);
-   }
+    }
 }
+
+function replaceString(stringText,texttoReplace,textToReplaceWith)
+{
+    text = stringText.replaceAll(texttoReplace,textToReplaceWith);
+    return text;
+   }
+
 
 function jsonToString(obj) {
     var myJSON = JSON.stringify(obj);
