@@ -30,6 +30,7 @@ function() {
         
         config.envHost = envProps.host
         config.envLocalhost = envProps.localhost
+        config.envMockHost = envProps.mockhost
 
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
