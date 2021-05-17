@@ -68,7 +68,7 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * call read('../../municipal-services/tests/waterConnection.feature@approve')
     * call read('../../municipal-services/tests/waterConnection.feature@generateBill')
     * print totalAmount
-    * def totalAmountPaid = '150'
+    # * def totalAmountPaid = '150'
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     * print collectionServicesResponseBody
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')

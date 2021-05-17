@@ -5,11 +5,12 @@ Background:
     * def createConsumerPayload = read('../../kafka-services/requestPayload/create.json')
     * def subscribeConsumerPayload = read('../../kafka-services/requestPayload/subscribe.json')
     * def api = read('file:envYaml/common/common.yaml');
+    * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
     * def getClustersUrl = envLocalhost + api.endPoints.kafkaService.getClusters
     * def getConsumerGroupsUrl = envLocalhost + api.endPoints.kafkaService.getConsumerGroups
-    * def getlagsUrl = envMockHost + api.endPoints.kafkaService.getLags
-    * def getlagSummaryUrl = envLocalhost + api.endPoints.kafkaService.getLagSummary
-    * def checkThreshold =
+    * def getlagsUrl = kafkaHost + api.endPoints.kafkaService.getLags
+    * def cluster_id = kafkaConstants.clusterId
+    * def checkThreshold = 
   """
     function(diff) {
       for(var i=0;i<diff.size();i++){
