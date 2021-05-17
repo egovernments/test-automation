@@ -14,7 +14,8 @@ Background:
   """
     function(diff) {
       for(var i=0;i<diff.size();i++){
-        if(diff[i].offset_diff == 0){
+        if(diff[i].offset_diff <= 5.0){
+        // if(diff[i].offset_diff == 0){
           return false;
         }
       }

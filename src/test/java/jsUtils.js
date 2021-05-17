@@ -263,8 +263,8 @@ function GetSortOrder(prop) {
 function compareOffsetMovement(dataBefore, dataAfter){
     var offsetDiff = [];
     for(var i=0;i<dataBefore.size();i++){
-        // var diff = ((dataAfter[i].current_offset - dataBefore[i].current_offset) * 100) / dataBefore[i].current_offset;
-        var diff = dataAfter[i].current_offset - dataBefore[i].current_offset
+        var diff = ((dataAfter[i].current_offset - dataBefore[i].current_offset) * 100) / dataBefore[i].current_offset;
+        // var diff = dataAfter[i].current_offset - dataBefore[i].current_offset
         offsetDiff.push({
             "partition_id" : data[i].partition_id,
             "offset_diff"  : diff
