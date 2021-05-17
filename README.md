@@ -49,10 +49,12 @@ To set up this framework, two mandatory softwares need to be installed into the 
  * [Download maven 3.6.3](https://maven.apache.org/download.cgi)
  * [JDK Installation Guide](https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
  * [maven Installation Guide](https://maven.apache.org/install.html)
+ * [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/windows)
 ### On Mac
  * First install [HomeBrew](https://brew.sh/)
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
+ * [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/mac)
  
 <!--Clone Project-->
 ## Clone Project
