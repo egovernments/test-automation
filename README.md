@@ -1,5 +1,5 @@
 # DIGIT Test Automation Framework Setup guide
-### Table of Contents
+## Table of Contents
 * [About the Project](#about-the-project)
   * [Technology Used](#technology-used)
   * [Dependencies Used](#dependencies-used)
