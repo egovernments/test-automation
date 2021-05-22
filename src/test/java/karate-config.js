@@ -16,7 +16,7 @@ function() {
     var envProps = karate.read('file:' + karate.properties['configPath']);
 
     var path = karate.read('file:envYaml/common/common.yaml');
-    // var driverConfigJson = karate.read('file:src/test/resources/conf.json');
+    var driverConfigJson = karate.read('file:src/test/resources/conf.json');
 
   try{
 
@@ -434,14 +434,14 @@ function() {
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
 
-        // config.deviceConfigs = driverConfigJson.environments;
-        // config.browserstackUrl = driverConfigJson.server;
-        // config.browserstackUsername = driverConfigJson.user;
-        // config.browserstackKey = driverConfigJson.key;
-        // config.commonCapabilities = driverConfigJson.capabilities;
+        config.deviceConfigs = driverConfigJson.environments;
+        config.browserstackUrl = driverConfigJson.server;
+        config.browserstackUsername = driverConfigJson.user;
+        config.browserstackKey = driverConfigJson.key;
+        config.commonCapabilities = driverConfigJson.capabilities;
 
-        // var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);
-        // config.currentEpochTime = driverResult.currentEpochTime;
+        var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);
+        config.currentEpochTime = driverResult.currentEpochTime;
 
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
