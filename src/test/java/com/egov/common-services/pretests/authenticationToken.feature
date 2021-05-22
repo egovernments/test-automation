@@ -1,7 +1,6 @@
 Feature: Auth token Creation for Employee
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:oauthTokenHeader.js')
   * print authTokenUrl
   * print tenantId
