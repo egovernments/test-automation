@@ -1,0 +1,34 @@
+{
+    "RequestInfo": {
+      "apiId": "",
+      "ver": "",
+      "action": "",
+      "did": "",
+      "key": "",
+      "msgId": "",
+      "requesterId": "",
+      "authToken": "#(authToken)"
+    },
+    "events": [
+      {
+        "tenantId": "#(tenantId)",
+        "eventType": "#(eventType)",
+        "description": "#(description)",
+        "name":"#(name)",
+        "source": "#(source)",
+        "actions": {
+          "actionUrls": [
+            {
+              "actionUrl": "",
+              "code": "PAY"
+            }
+          ]
+        },
+        "recepient": {
+          "toUsers": [
+            "#(uuid)"
+          ]
+        }
+      }
+    ]
+  }

@@ -290,6 +290,21 @@ function() {
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
 
+        // PGR endpoints
+        config.createPGRUrl = envProps.host + path.endPoints.pgr.create
+        config.updatePGRUrl = envProps.host + path.endPoints.pgr.update
+        config.searchPGRUrl = envProps.host + path.endPoints.pgr.search
+        config.countPGRUrl = envProps.host + path.endPoints.pgr.count
+
+        // NOC endpoints
+        config.createNOCUrl = envProps.host + path.endPoints.noc.create
+        config.updateNOCUrl = envProps.host + path.endPoints.noc.update
+        config.searchNOCUrl = envProps.host + path.endPoints.noc.search
+
+        //BillingSlabNOC
+        config.createFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.create
+        config.searchFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.search
+        config.calculateFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.calculate
         // ws-servcies : water connection
         config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
         config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
@@ -346,6 +361,21 @@ function() {
         config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
         config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
 
+        // egov user event
+        config.notificationEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.notificationCount
+        config.createEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.create
+        config.updateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.update
+        config.searchEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.search
+        config.latUpdateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.latUpdate
+
+        // egov PDF 
+        config.ptmutationcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.ptmutationcertificate
+        config.consolidatedreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.consolidatedreceipt
+        config.tlrenewalcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.tlrenewalcertificate
+        config.tlreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.tlreceipt
+        config.ptreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.ptreceipt
+        config.ptbillEgovPDF = envProps.host + path.endPoints.eGovPdf.ptbill
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -380,6 +410,7 @@ function() {
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
+        config.uuid = authTokenResponse.id;
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
@@ -396,12 +427,13 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
         config.mdmsStateBPA = MdmsStateRes['BPA']
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
 
-        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 

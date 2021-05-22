@@ -15,7 +15,7 @@ Feature: User Search
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
   * def findUser = read('../../core-services/requestPayload/userCreation/searchUser.json')
   
-        @finduser
+        @findUser
         Scenario: Search user with valid details
      * def payload = findUser.validPayload
             Given url searchUser
@@ -27,7 +27,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
 
-        @finduserwithmultipletenantid
+        @findUserWithMultipleTenantid
         Scenario: Search user with multiple tenantIds
      * def payload = findUser.validPayload
      * set findUser.validPayload.tenantId = multipleTenantId
@@ -40,7 +40,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
   
-        @finduserwithinvalidusername
+        @findUserWithInvalidUsername
         Scenario: Search user with invalid username
      * def payload = findUser.validPayload
      * set findUser.validPayload.userName = unRegisteredNumber
@@ -53,7 +53,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
 
-        @finduserwithinvalidtenantid
+        @findUserWithInvalidTenantid
         Scenario: Search user with invalid tenantId
      * def payLoad = findUser.validPayload  
      * set findUser.validPayload.tenantId = invalidTenantId
@@ -66,7 +66,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
 
-        @finduserwithoutusername
+        @findUserWithoutUsername
         Scenario: Search user without username
      * def payLoad = findUser.validPayload 
      * set findUser.validPayload.userName = withoutUserName
@@ -79,7 +79,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
 
-        @finduserwithouttenantid
+        @findUserWithoutTenantid
         Scenario: Search user without tenantId
      * def payLoad = findUser.invalidPayload
             Given url searchUser
@@ -91,7 +91,7 @@ Feature: User Search
               And def searchUserResponseHeader = responseHeaders
               And def searchUserResponseBody = response
 
-        @finduseremptytenantid
+        @findUserEmptyTenantid
         Scenario: Search user with empty tenantId
      * def payLoad = findUser.validPayload
      * set findUser.validPayload.tenantId = emptyStringInTenantId

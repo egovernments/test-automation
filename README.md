@@ -1,5 +1,5 @@
 # DIGIT Test Automation Framework Setup guide
-##### Table of Contents
+## Table of Contents
 * [About the Project](#about-the-project)
   * [Technology Used](#technology-used)
   * [Dependencies Used](#dependencies-used)
@@ -14,17 +14,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-DIGIT Test Automation framework majorly deals with various API services validation. It enables to test and validate back end services across all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base)
+DIGIT Test Automation framework majorly deals with various API services validation. It enables to test and validate back end services across all active environments and as well as tenant ids. For more details on framework architecture please refer the [documentation](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1028521985/Automation+Framework+Knowledge+Base). For guide on Kafka Producer Consumer approach, please refer to [documentation](https://digit-discuss.atlassian.net/wiki/spaces/DD/pages/1540587710/Kafka+Consumer+Producer+Approach)
  
 <!-- Technology Used -->
-### Technology Used
+## Technology Used
  * [Java](https://www.java.com/en/)
  * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  * [Karate](https://github.com/intuit/karate)
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  * [JUnit](https://junit.org/junit4/)
 
-### Dependencies Used
+## Dependencies Used
 In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency` that is defined in `pom.xml`. 
 * `karate-core` : To provide core features of `karate`.
 * `karate-junit4` : To facilitate `JUnit` testing this dependency is required.
@@ -42,20 +42,22 @@ In this section we have listed down some of the major libraries which is being u
 This framework requires below prerequisites to be covered
 
 <!-- Prerequisites --> 
-### Prerequisites
+## Prerequisites
 To set up this framework, two mandatory softwares need to be installed into the system. Follow below step by step setup guidelines.
- ###### On Windows
+ ### On Windows
  * [Download JDK 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
  * [Download maven 3.6.3](https://maven.apache.org/download.cgi)
  * [JDK Installation Guide](https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
  * [maven Installation Guide](https://maven.apache.org/install.html)
-###### On Mac
+ * [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/windows)
+### On Mac
  * First install [HomeBrew](https://brew.sh/)
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
+ * [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/mac)
  
 <!--Clone Project-->
-### Clone Project
+## Clone Project
 To clone the framework to your local, please follow the below step.
 * Open [git bash](https://git-scm.com/downloads) or any other terminal and execute the below command to clone the project repository in the system
 ```
@@ -63,16 +65,16 @@ git clone https://github.com/egovernments/test-automation.git
 ```
 
 <!--Configurations-->
-### Configurations
-  ###### Application Level 
+## Configurations
+  ### Application Level 
   * Create role action mapping as per the requirement 
   * Create a new user as per the mapped role
-  ###### Project Level 
+  ### Project Level 
    Environment configuration files needs to be created in `local` by following below steps.
    * Create environment specific files with `.yaml` extension anywhere in the local directory 
    * It is recommended to provide environment specific names to the files (like: `qa.yaml`, `uat.yaml`, `config.yaml` etc.) 
    * Please keep the environment specific data in the config file as per below format.  
-   ###### For example
+   #### For example
    ```yaml
     host: https://qa.xxx.xxx/
     stateCode: pb
@@ -108,7 +110,7 @@ counterEmployeeUser:
 ## List Of Tags
 Please use the appropriate tags to execute tests based on the requirement.
 
-###### Individual service tags
+### Individual service tags
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         | 
 | @reports      		      | Reports tests 			         | 
@@ -130,14 +132,14 @@ Please use the appropriate tags to execute tests based on the requirement.
 | @pgservices			        | PG Service tests			       |
 | @propertyCalculator   | Property Calculator tests |
 
-###### Service Category Tags
+### Service Category Tags
 | Tags          		      | Description   			                           |        
 | ------------- 		      |:-------------:			                           |
 | @core-services        | Runs all services under core services       |
 | @business-services    | Runs all services under business services   |
 | @municipal-services   | Runs all services under municipal services  |
 
-###### Test Category Tags
+### Test Category Tags
 | Tags          		      | Description   			                                     |        
 | ------------- 		      |:-------------:			                                     |
 | @regression           | Runs all regression tests across all services         |
@@ -152,7 +154,7 @@ To start the test execution in `local`,
  ```
  mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<tag1,tag2> classpath:com/egov"
  ```
- ###### For example 
+ ### For example 
  `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
 
 <!--Reporting-->
@@ -162,7 +164,6 @@ Follow below step to find location of reports generated post test execution to a
 * A folder with `timestamp` will be created under `./target/`. 
 * Navigate to `./target/<timestamp>/cucumber-html-reports`
 * Open `overview-features.html`
-#### A snapshot is attached for reference.
+### A snapshot is attached for reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
-

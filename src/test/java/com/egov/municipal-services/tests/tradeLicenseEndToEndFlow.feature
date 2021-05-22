@@ -174,6 +174,7 @@ Scenario: Login as a CounterEmployee, create, approve and make payment for TL
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
     # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
+    * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment') 
     * def consumerCode = collectionServicesResponseBody.Payments[0].paymentDetails[0].bill.consumerCode
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
