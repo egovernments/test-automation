@@ -21,6 +21,7 @@ function() {
 
    var config = {
          env : env,
+         basicAuthorization: envProps.basicAuthorization,
          stateCode : envProps.stateCode,
          cityCode : envProps.cityCode,
          locale : locale,
