@@ -10,13 +10,13 @@ Background:
 @loginAsCitizen
 Scenario: Login to UI as Citizen
 	Given driver envHost
-	* driver.fullscreen()
 	* waitForUrl(loginPageurls.languageSelection)
 	* click(loginPageObjects.languageEnglishButton)
 	* click(loginPageObjects.continueButton)
 	* waitForUrl(loginPageurls.register)
 	* click(loginPageObjects.resendOtpButton)
 	* waitForUrl(loginPageurls.login)
+	* click(loginPageObjects.mobileNumberField)
 	* input(loginPageObjects.mobileNumberField, citizenUsername)
 	* click(loginPageObjects.loginSubmitButton)
 	* waitForUrl(loginPageurls.otp)
