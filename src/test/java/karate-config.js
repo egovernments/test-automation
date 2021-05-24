@@ -441,6 +441,9 @@ function() {
             config.browserstackUsername = driverConfigJson.user;
             config.browserstackKey = driverConfigJson.key;
             config.commonCapabilities = driverConfigJson.capabilities;
+            if(karate.properties['BROWSERSTACK_BUILD_NAME'] != null){
+                config.commonCapabilities.build = BROWSERSTACK_BUILD_NAME;
+            }
 
             var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);
             config.currentEpochTime = driverResult.currentEpochTime;
