@@ -1,0 +1,9 @@
+{
+"RequestInfo": {
+  "authToken": "#(authToken)"
+},
+"service": "#(serviceDetails)",
+"workflow":{
+  "action" : "#(action)"
+}
+}

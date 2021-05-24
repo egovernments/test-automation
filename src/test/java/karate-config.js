@@ -21,12 +21,21 @@ function() {
 
    var config = {
          env : env,
+         basicAuthorization: envProps.basicAuthorization,
          stateCode : envProps.stateCode,
          cityCode : envProps.cityCode,
          locale : locale,
          retryCount : 30,
          retryInterval : 10000 //ms
    };
+
+   if(karate.properties['useKafkaSimulation']){
+       if(karate.properties['useKafkaSimulation'] == 'yes'){
+        config.kafkaHost = envProps.mockHost
+       }
+   }else{
+    config.kafkaHost = envProps.host
+   }
         
         config.envHost = envProps.host
         config.envLocalhost = envProps.localhost
@@ -282,6 +291,21 @@ function() {
         // Property Calculator - Property Tax Mutation Calculate Service endpoint
         config.mutationCalculate = envProps.host + path.endPoints.propertyCalculatorPropertyTax.calculate
 
+        // PGR endpoints
+        config.createPGRUrl = envProps.host + path.endPoints.pgr.create
+        config.updatePGRUrl = envProps.host + path.endPoints.pgr.update
+        config.searchPGRUrl = envProps.host + path.endPoints.pgr.search
+        config.countPGRUrl = envProps.host + path.endPoints.pgr.count
+
+        // NOC endpoints
+        config.createNOCUrl = envProps.host + path.endPoints.noc.create
+        config.updateNOCUrl = envProps.host + path.endPoints.noc.update
+        config.searchNOCUrl = envProps.host + path.endPoints.noc.search
+
+        //BillingSlabNOC
+        config.createFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.create
+        config.searchFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.search
+        config.calculateFireNOCBillingSlabUrl = envProps.host + path.endPoints.fireNOCBillingSlab.calculate
         // ws-servcies : water connection
         config.createWaterConnection = envProps.host + path.endPoints.waterConnection.create
         config.updateWaterConnection = envProps.host + path.endPoints.waterConnection.update
@@ -417,13 +441,14 @@ function() {
         config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
         config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
         config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
         config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
         config.mdmsStateBPA = MdmsStateRes['BPA']
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
         config.mdmsStateFsmService = MdmsStateRes['FSM']
 
-        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 

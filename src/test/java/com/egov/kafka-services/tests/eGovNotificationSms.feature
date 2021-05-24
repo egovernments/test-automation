@@ -4,14 +4,13 @@ Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
-    * def cluster_id = kafkaConstants.parameters.clusterId
-    * def consumer_group_id = kafkaConstants.parameters.consumerGroupId
+    * def consumer_group_id = kafkaConstants.sms.consumerGroupId
     # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters
     * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
     * def notificationSmsConstants = read('../../kafka-services/constants/notificationSms.yaml')
-    * def kafkaTopics = kafkaConstants.topics.smsNotification
+    * def kafkaTopics = kafkaConstants.sms.topics
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -36,10 +35,6 @@ Background:
         return otp;
     }
     """
-    # Get lag details before making an api call
-    * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
-    * def dataBeforeApiCall = lagData
-    * print dataBeforeApiCall
 
 @sms_01 @positive @kafkaEgovNotificationSms @kafkaServices
 Scenario: Create an Employee user, forgot password, read otp from kafka, update password and login

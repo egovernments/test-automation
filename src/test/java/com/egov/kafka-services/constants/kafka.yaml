@@ -1,9 +1,5 @@
 topics:
-  smsNotification: "egov.core.notification.sms"
   emailNotification: "egov.core.notification.email"
-  createProperty: "save-property-registry"
-  UpdateProperty: "update-property-registry"
-  createPgTransaction: "save-pg-txns"
   createWorkflowTransition: "save-wf-transitions"
   createFirenocService: "save-fn-firenoc"
   updateFirenocService: "update-fn-firenoce"
@@ -15,3 +11,20 @@ topics:
 parameters:
   clusterId: "Q4JvuYyESKer14_lxPieWA"
   consumerGroupId: "firenoc-consumer-grp"
+sms:
+  topics: "egov.core.notification.sms"
+  consumerGroupId: "sms"
+createProperty:
+  topics: "save-property-registry"
+  consumerGroupId: "egov-property-services"
+updateProperty:
+  topics: "update-property-registry"
+  consumerGroupId: "egov-property-services"
+createPayment:
+  topics: "egov.collection.payment-create"
+  consumerGroupId: "collection-persist"
+createPdf:
+  topics: "PDF_GEN_CREATE"
+createPgTransaction:
+  topics: "save-pg-txns"
+  consumerGroupId: "egov-pg-service"
