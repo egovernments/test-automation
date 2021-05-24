@@ -1,0 +1,18 @@
+errorMessages:
+  invalidMobileNo: must match "(^$|[0-9]{10})"
+  invalidProperity: " Property Type is invalid"
+  invalidVehicleType: " VehicleType  is invalid"
+  invalidSource: " Application Channel is invalid"
+  invalidTenant: Invalid Tenant Id
+  invalidLocalityCode: The boundary data was not found
+  invalidNoofTrips: Failed to deserialize certain JSON fields
+  invalidSanitationType: " On Site PitType is invalid"
+  invalidStatus: No workflow state configured for the current status of the application
+  invalidDSO: " DSO Does not belong to DSO!"
+  invalidAction: "Action ASSIGN not found in config for the businessId: "
+  noTenanteID: An unhandled exception occurred on the server
+  invalidFromDate: typeMismatch.FSMSearchCriteria.fromDate
+  noApplicationNo: applicationNo or id is mandatory in search
+  noTenantId: TenantId is mandatory in search
+  noParams: "Search without any paramters is not allowed"
+  onlyTenantId: ' Atlest one parameter is mandatory!'
