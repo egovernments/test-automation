@@ -441,7 +441,8 @@ function() {
             config.browserstackUsername = driverConfigJson.user;
             config.browserstackKey = driverConfigJson.key;
             config.commonCapabilities = driverConfigJson.capabilities;
-            if(karate.properties['BROWSERSTACK_BUILD_NAME'] != null){
+            karate.log('Java System Env Variable: ' + java.lang.System.getenv['BROWSERSTACK_BUILD_NAME']);
+            if(java.lang.System.getenv['BROWSERSTACK_BUILD_NAME'] != null){
                 config.browserstackBuildName = BROWSERSTACK_BUILD_NAME;
                 karate.log("Browserstack Build Name: " + config.browserstackBuildName);
             }
