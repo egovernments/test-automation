@@ -2,11 +2,14 @@ Feature: Kafka Firenoc Service Tests
 
 @fire_NOC_Create_Kafka @positive @kafkaCreateFireNoc @kafkaServices
 Scenario: Create FireNoc using kafka service
+    * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
+    * def consumer_group_id = kafkaConstants.createFireNoc.consumerGroupId
     # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters
     * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
-    * def kafkaTopics = kafkaConstants.topics.createFirenocService
+    * def notificationSmsConstants = read('../../kafka-services/constants/notificationSms.yaml')
+    * def kafkaTopics = kafkaConstants.createFireNoc.topics
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -33,11 +36,13 @@ Scenario: Create FireNoc using kafka service
 
 @fire_NOC_update_Kafka @positive @kafkaUpdateFireNoc @kafkaServices
 Scenario: Update FireNoc using kafka service
-      # Try to delete the kafka consumer instance if it is not already deleted
+    * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
+    * def consumer_group_id = kafkaConstants.updateFireNoc.consumerGroupId
+    # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters
-    * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
-    * def kafkaTopics = kafkaConstants.topics.updateFirenocService
+    * def notificationSmsConstants = read('../../kafka-services/constants/notificationSms.yaml')
+    * def kafkaTopics = kafkaConstants.updateFireNoc.topics
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
