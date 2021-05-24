@@ -441,10 +441,8 @@ function() {
             config.browserstackUsername = driverConfigJson.user;
             config.browserstackKey = driverConfigJson.key;
             config.commonCapabilities = driverConfigJson.capabilities;
-            karate.log('Java System Env Variable: ' + java.lang.System.getenv['browserstackBuildName']);
             if(karate.properties['browserstackBuildName']){
                 config.browserstackBuildName = karate.properties['browserstackBuildName'];
-                karate.log("Browserstack Build Name: " + config.browserstackBuildName);
             }
 
             var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);

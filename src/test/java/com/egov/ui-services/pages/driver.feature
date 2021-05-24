@@ -26,8 +26,7 @@ Scenario: Create Browserstack Config
     * def deviceCapabilities = deviceConfigs[__num]
 	* def driverUrl = 'https://' + browserstackUsername + ':' + browserstackKey + '@' + browserstackUrl + '/wd/hub'
     * eval commonCapabilities.build = (karate.match(typeof browserstackBuildName, 'undefined').pass) ? commonCapabilities.build + currentEpochTime : browserstackBuildName
-    * print "Browserstack Build Name: " + commonCapabilities.build
-	* def desiredCapabilities = karate.merge(deviceCapabilities, commonCapabilities)
+    * def desiredCapabilities = karate.merge(deviceCapabilities, commonCapabilities)
 	* def driverType = (karate.match(desiredCapabilities.browserName, "#notnull").pass) ? desiredCapabilities.browserName : desiredCapabilities.browser + 'driver'
     * eval driverType = (karate.match(driverType, 'firefoxdriver').pass) ?  'geckodriver' : driverType
     * eval desiredCapabilities.name = (karate.match(desiredCapabilities.browserName, "#notnull").pass) ? desiredCapabilities.browserName : desiredCapabilities.browser
