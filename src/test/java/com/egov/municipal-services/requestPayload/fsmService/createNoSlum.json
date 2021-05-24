@@ -1,0 +1,8 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "fsm": [
+        "#(fsmBody)"
+    ]        
+}

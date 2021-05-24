@@ -1,0 +1,8 @@
+{
+    "RequestInfo": {
+        "authToken": "#(citizenAuthToken)"
+    },
+    "vehicleTrip": [
+        "#(vehicakBody)"
+    ]        
+}

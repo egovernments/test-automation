@@ -2,6 +2,7 @@ Feature: Kafka Egov User Events Tests
 
 Background:
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+    * def Thread = Java.type('java.lang.Thread')
 
 @create_User_events_Kafka @positive @kafkaCreateUserEvents @kafkaServices
 Scenario: Create Egov User Events using kafka service
@@ -55,7 +56,6 @@ Scenario: update Egov User Events using kafka service
     * def recordsFilterCondition = "$[?(@.value.events.id=='" + id + "')].value.events"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
-    * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(3000)
     # Check whether we got the records in Egov User Events or not
     * assert recordsResponse != null

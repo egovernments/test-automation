@@ -1,0 +1,30 @@
+{
+    "RequestInfo": {
+        "authToken": "#(citizenAuthToken)"
+    },
+    "vehicle": {
+        "tenantId": "#(tenantId)",
+        "registrationNumber": "#(registrationNumber)",
+        "model": "#(model)",
+        "type": "#(type)",
+        "tankCapacity": "#(tankCapacity)",
+        "suctionType": "#(suctionType)",
+        "pollutionCertiValidTill": "#(pollutionCertiValidTill)",
+        "InsuranceCertValidTill": "#(pollutionCertiValidTill)",
+        "fitnessValidTill": "#(pollutionCertiValidTill)",
+        "roadTaxPaidTill": "#(pollutionCertiValidTill)",
+        "gpsEnabled": true,
+        "source": "#(source)",
+        "owner": {
+            "tenantId": "#(tenantId)",
+            "name": "#(ownerName)",
+            "fatherOrHusbandName": "#(fatherOrHusbandName)",
+            "relationship": "#(relationship)",
+            "gender": "#(gender)",
+            "dob": "#(dob)",
+            "emailId": "#(emailId)",
+            "correspondenceAddress": "#(correspondenceAddress)",
+            "mobileNumber": "#(mobileNumber)"
+        }
+    }
+}

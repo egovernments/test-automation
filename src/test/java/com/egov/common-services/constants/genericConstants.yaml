@@ -56,3 +56,4 @@ invalidParameters:
   invalidValue: abc
   passValusAsNull: null
   invalidMobileNumber: '98765432'
+  wrongTenantId: pb.amritsa
