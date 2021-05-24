@@ -281,3 +281,16 @@ endPoints:
     tlreceipt: egov-pdf/download/TL/tlreceipt
     ptreceipt: egov-pdf/download/PT/ptreceipt
     ptbill: egov-pdf/download/PT/ptbill
+
+  fsmService:
+    create: fsm/v1/_create
+    update: fsm/v1/_update
+    search: fsm/v1/_search
+    audit: fsm/v1/_audit
+    vendorCreate: vendor/v1/_create
+    vendorSearch: vendor/v1/_search
+    vehicalCreate: vehicle/v1/_create
+    vehicalSearch: vehicle/v1/_search
+    vehicalTripCreate: vehicle/trip/v1/_create
+    vehicalTripSearch: vehicle/trip/v1/_search
+    vehicalTripUpdate: vehicle/trip/v1/_update

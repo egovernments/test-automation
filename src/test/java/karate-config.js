@@ -39,6 +39,7 @@ function() {
         
         config.envHost = envProps.host
         config.envLocalhost = envProps.localhost
+        config.envMockHost = envProps.mockhost
 
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
@@ -376,6 +377,19 @@ function() {
         config.ptreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.ptreceipt
         config.ptbillEgovPDF = envProps.host + path.endPoints.eGovPdf.ptbill
 
+        // fsm Service
+        config.createFsmEvent = envProps.host + path.endPoints.fsmService.create
+        config.updateFsmEvent = envProps.host + path.endPoints.fsmService.update
+        config.searchFsmEvent = envProps.host + path.endPoints.fsmService.search
+        config.auditFsmEvent = envProps.host + path.endPoints.fsmService.audit
+        config.vendorCreateFsmEvent = envProps.host + path.endPoints.fsmService.vendorCreate
+        config.vendorSearchFsmEvent = envProps.host + path.endPoints.fsmService.vendorSearch
+        config.vehicalCreateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalCreate
+        config.vehicalSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalSearch
+        config.vehicalTripCreateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripCreate
+        config.vehicalTripSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripSearch
+        config.vehicalTripUpdateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripUpdate
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -432,6 +446,7 @@ function() {
         config.mdmsStateBPA = MdmsStateRes['BPA']
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
+        config.mdmsStateFsmService = MdmsStateRes['FSM']
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
