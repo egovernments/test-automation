@@ -308,11 +308,13 @@ Background:
 
     @vehicle_create_access_05 @negative @regression @municipalService @fsmService @fsmServiceVehicalCreate
     Scenario: Verify vehical create for a fsm service with invalid Access Token
+
     * def getFsmVendorSearchParam = {"tenantId": '#(tenantId)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vendorSearchFsmSuccessfully')
     * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
     * def registrationNumber = regNumber+randomMobileNumGen(4)
+    * def authToken = regNumber+randomMobileNumGen(4)
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalCreateFsmError1')
     * match fsmResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -322,7 +324,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vendorSearchFsmSuccessfully')
     * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
-    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalCreateFsmError2')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalCreateFsmError2'){'removeFieldPath': '$.vehicle[0].registrationNumber'}
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.withOutRegistration
 
     @vehicle_search_01 @positive @regression @municipalService @fsmService @fsmServiceVehicalSearch
@@ -371,6 +373,7 @@ Background:
 
     @trip_search_No_Access_02 @positive @regression @municipalService @fsmService @fsmServiceTripSearch
     Scenario: Verify vehical Trip Search for a fsm service with invalid access token
+    * def authToken = randomString(8)+randomNumber(4)
     * def getFsmTripSearchParam = {"tenantId": '#(tenantId)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripSearchFsmError')
     * match fsmResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
@@ -445,6 +448,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vendorSearchFsmSuccessfully')
     * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
+    * def authToken = randomString(8)+randomNumber(4)
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmError1')
     * match fsmResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -455,7 +459,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vendorSearchFsmSuccessfully')
     * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
-    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmError2')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmError2'){'removeFieldPath': '$.vehicle[0].id'}
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.withoutVehicalId
 
     @trip_Create_Invalid_Tank_05 @positive @regression @municipalService @fsmService @fsmServiceVehicalTripCreate
@@ -510,6 +514,7 @@ Background:
     * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmSuccessfully')
+    * def authToken = randomString(8)
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripUpdateFsmError1')
     * match fsmResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 

@@ -9,16 +9,10 @@ Feature: FIRE-NOC-Service pretests
         * def vendorCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vendorCreate.json')
         * def vendorSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vendorSearch.json')
         * def vehicalCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalCreate.json')
-        * def vehicalCreateAccessFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalCreateAccess.json')
-        * def vehicalCreateWithoutRegNoFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalCreateWithoutRegNo.json')
         * def vehicalSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalSearch.json')
         * def vehicalTripSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripSearch.json')
-        * def vehicalTripWithNoAcessSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripWithNoAcessSearch.json')
         * def vehicalTripCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripCreate.json')
-        * def vehicalTripCreateWithNoAccessFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripCreateWithNoAccess.json')
-        * def vehicalTripCreateWithoutVehicalIdFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripCreateWithoutVehicalId.json')
         * def vehicalTripUpdateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripUpdate.json')
-        * def vehicalTripWithNoAcessSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripWithNoAcessSearch.json')
         * def createNoSlumFsmRequest = read('../../municipal-services/requestPayload/fsmService/createNoSlum.json')
 
     @createFsmSuccessfully
@@ -124,7 +118,6 @@ Feature: FIRE-NOC-Service pretests
     @vendorCreateFsmError
     Scenario: Vendor Create FSM error
         Given url vendorCreateFsmEvent
-        * print vendorCreateFsmRequest
         And request vendorCreateFsmRequest
         When method post
         Then status 400
@@ -170,15 +163,16 @@ Feature: FIRE-NOC-Service pretests
     @vehicalCreateFsmError1
     Scenario: Vehical Create FSM Error
         Given url vehicalCreateFsmEvent
-        And request vehicalCreateAccessFsmRequest
+        And request vehicalCreateFsmRequest
         When method post
         Then status 403
         And def fsmResponseBody = response
 
     @vehicalCreateFsmError2
     Scenario: Vehical Create FSM Error without Registation Number
+        * eval karate.remove('createDemandRequest', removeFieldPath)
         Given url vehicalCreateFsmEvent
-        And request vehicalCreateWithoutRegNoFsmRequest
+        And request vehicalCreateFsmRequest
         When method post
         Then status 400
         And def fsmResponseBody = response
@@ -257,7 +251,7 @@ Feature: FIRE-NOC-Service pretests
     Scenario: Vehical Trip Search FSM Error
         Given url vehicalTripSearchFsmEvent
         And params getFsmTripSearchParam
-        And request vehicalTripWithNoAcessSearchFsmRequest
+        And request vehicalTripSearchFsmRequest
         When method post
         Then status 403
         And def fsmResponseBody = response
@@ -282,15 +276,16 @@ Feature: FIRE-NOC-Service pretests
     @vehicalTripCreateFsmError1
     Scenario: Vehical Trip Create FSM Error
         Given url vehicalTripCreateFsmEvent
-        And request vehicalTripCreateWithNoAccessFsmRequest
+        And request vehicalTripCreateFsmRequest
         When method post
         Then status 403
         And def fsmResponseBody = response
 
     @vehicalTripCreateFsmError2
     Scenario: Vehical Trip Create FSM Error without vehical ID
+        * eval karate.remove('createDemandRequest', removeFieldPath)
         Given url vehicalTripCreateFsmEvent
-        And request vehicalTripCreateWithoutVehicalIdFsmRequest
+        And request vehicalTripCreateFsmRequest
         When method post
         Then status 400
         And def fsmResponseBody = response
@@ -314,7 +309,7 @@ Feature: FIRE-NOC-Service pretests
     @vehicalTripUpdateFsmError1
     Scenario: Vehical Trip Update FSM Error
         Given url vehicalTripUpdateFsmEvent
-        And request vehicalTripWithNoAcessSearchFsmRequest
+        And request vehicalTripUpdateFsmRequest
         When method post
         Then status 403
         And def fsmResponseBody = response

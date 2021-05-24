@@ -61,7 +61,7 @@
             "otpReference": null,
             "tenantId": "#(ownerRoleTenantId)"
         },
-        "insuranceCertValidTill": 1611584416772
+        "insuranceCertValidTill": "#(pollutionCertiValidTill)"
     },
     "businessService":"#(businessService)",
     "tripDetails": [

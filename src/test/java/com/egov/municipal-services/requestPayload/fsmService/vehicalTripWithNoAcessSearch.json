@@ -1,9 +1,0 @@
-{
-    "RequestInfo": {
-        "apiId": "",
-        "ver": ".01",
-        "action": "",
-        "msgId": "",
-        "authToken": "#(citizenAuthToken)"
-    }
-}
