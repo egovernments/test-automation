@@ -10,6 +10,7 @@ Background:
 @loginAsCitizen
 Scenario: Login to UI as Citizen
 	Given driver envHost
+	* driver.fullscreen()
 	* waitForUrl(loginPageurls.languageSelection)
 	* click(loginPageObjects.languageEnglishButton)
 	* click(loginPageObjects.continueButton)
