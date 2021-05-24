@@ -442,7 +442,8 @@ function() {
             config.browserstackKey = driverConfigJson.key;
             config.commonCapabilities = driverConfigJson.capabilities;
             if(karate.properties['BROWSERSTACK_BUILD_NAME'] != null){
-                config.commonCapabilities.build = BROWSERSTACK_BUILD_NAME;
+                config.browserstackBuildName = BROWSERSTACK_BUILD_NAME;
+                karate.log("Browserstack Build Name: " + config.browserstackBuildName);
             }
 
             var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);
