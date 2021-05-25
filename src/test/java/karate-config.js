@@ -445,7 +445,7 @@ function() {
                 config.browserstackBuildName = karate.properties['browserstackBuildName'];
             }
 
-            var driverResult = karate.callSingle('../../ui-services/pages/driver.feature@getCurrentEpochTime', config);
+            var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
             config.currentEpochTime = driverResult.currentEpochTime;
         }else{
             config.browserstack = 'no';

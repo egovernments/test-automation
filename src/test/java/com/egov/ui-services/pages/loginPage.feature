@@ -4,14 +4,13 @@ Background:
     * def loginPage = read('../../ui-services/page-objects/login.yaml')
     * def loginPageurls = loginPage.urls
     * def loginPageObjects = loginPage.objects
-	* configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
+	# * def geoLocationScript = "window.navigator.geolocation.getCurrentPosition = function(success){ var position = {'coords' : {  'latitude': '18.975080',   'longitude': '72.825838' }  };  success(position);}"
 
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen
-	Given driver envHost
-	* driver.fullscreen()
 	* waitForUrl(loginPageurls.languageSelection)
+	# * print 'GeoLocation Popup Status: ' + script(geoLocationScript)
 	* click(loginPageObjects.languageEnglishButton)
 	* click(loginPageObjects.continueButton)
 	* waitForUrl(loginPageurls.register)
@@ -26,8 +25,6 @@ Scenario: Login to UI as Citizen
 
 @loginAsAltCitizen
 Scenario: Login to UI as Citizen
-	Given driver envHost
-	* driver.fullscreen()
 	* waitForUrl(loginPageurls.languageSelection)
 	* click(loginPageObjects.languageEnglishButton)
 	* click(loginPageObjects.continueButton)

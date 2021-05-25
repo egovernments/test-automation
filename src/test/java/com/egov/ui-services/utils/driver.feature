@@ -2,15 +2,33 @@ Feature: Driver Related Feature
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
+    * def scenarioStatus = {}
     * def getDriverConfig = 
     """
         function(){
             if(browserstack == "yes"){
-                var configResult = karate.call('../pages/driver.feature@createBrowserStackConfig');
+                var configResult = karate.call('../../ui-services/utils/driver.feature@createBrowserStackConfig');
                 var browserstackConfig = configResult.browserstackConfig;
                 return browserstackConfig;
             }else{
                 return deviceConfigs[__num];
+            }
+        }
+    """
+    * configure afterScenario = 
+    """
+        function(){
+            if(browserstack == "yes"){
+                if(karate.match(karate.info.errorMessage, "null").pass){
+                    scenarioStatus.status = 'failed';
+                    scenarioStatus.reason = karate.info.errorMessage;
+                    driver.screenshot();
+                }else{
+                    scenarioStatus.status = 'passed';
+                    scenarioStatus.reason = '';
+                }
+                karate.call('../../ui-services/utils/browserstack.feature@updateScenarioStatus', scenarioStatus);
+                
             }
         }
     """
@@ -20,6 +38,13 @@ Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
+    * driver envHost
+	* def browserstackSessionId = driver.sessionId
+    * driver.fullscreen()
+
+@takeScreenshot
+Scenario: Take screenshot
+    * driver.screenshot()
 
 @createBrowserStackConfig
 Scenario: Create Browserstack Config
