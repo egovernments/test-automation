@@ -471,6 +471,8 @@ function() {
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
         config.mdmsStateFsmService = MdmsStateRes['FSM']
+        config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
+
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);

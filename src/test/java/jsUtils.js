@@ -304,3 +304,18 @@ function jsonToString(obj) {
     var myJSON = JSON.stringify(obj);
     return myJSON
 }
+
+function intergerToString(x) {
+    return x.toString();
+}
+
+function getCurrentDate2(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    return simpleDateFormat.format(new java.util.Date());
+}
+
+
+function getCurrentTime(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
+  return simpleDateFormat.format(new java.util.Date().getTime());
+}

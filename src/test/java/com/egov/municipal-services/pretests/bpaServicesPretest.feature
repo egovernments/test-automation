@@ -148,13 +148,17 @@ Feature: BPA-Service pretests
             },
             applicantName: "#(applicantName)",
             appliactionType: "#(appliactionType)",
-            applicationSubType :"#(applicationSubType)"
+            applicationSubType :"#(applicationSubType)",
+            permitDate :"#(permitDate)",
+            permitNumber :"#(permitNumber)",
+            comparisonEdcrNumber :"#(comparisonEdcrNumber)"
+
             }
             """
         * print edcrRequest
         Given url createEdcrScrutinize + "?tenantId=" + tenantId
         And header auth-token = authToken
-        And header Content-Type = "multipart/form-data; boundary=----WebKitFormBoundaryac7WcrRamAPfptBJ"
+        And header Content-Type = "multipart/form-data; boundary=----WebKitFormBoundaryb6BUkUepG1X2UVP2"
         And multipart file planFile = {read: '#(testData)' , filename: 'scrunity.dxf', contentType: 'application/dxf'}
         * print testData
         And param edcrRequest = edcrRequest
@@ -287,22 +291,10 @@ Feature: BPA-Service pretests
         Then  status 200
         And  def bpaResponseHeaders = responseHeaders
         And  def bpaResponseBody = response
+        * print "updateBPASuccessfullyForFieldInsecptor RESPONSE BODY"
         * print bpaResponseBody
         And  def BPA = bpaResponseBody.BPA[0]
 
-    @updateBPASuccessfullyForFieldInsecptor
-    Scenario: Update BPA
-        * set BPA.additionalDetails.fieldinspection_pending[0].docs = bpaDocument.bpaDocuments
-        * def updateBPARequest = read('../../municipal-services/requestPayload/bpa-services/update.json')
-        * print updateBPARequest
-        Given  url updateBPA
-        And  request updateBPARequest
-        When  method post
-        Then  status 200
-        And  def bpaResponseHeaders = responseHeaders
-        And  def bpaResponseBody = response
-        * print bpaResponseBody
-        And  def BPA = bpaResponseBody.BPA[0]
     @createBPAStakeholderSuccessfully
     Scenario: Create BPA Stakeholder successfully
         * print dob

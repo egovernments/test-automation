@@ -35,7 +35,7 @@ Background:
     * def name = 'AUTO_' + randomString(10)
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
-  #  * def dob = getPastEpochDate(5000)
+   # * def dob = getPastEpochDate(5000)
     * def dob = "676578599000"
     * def correspondenceAddress = randomString(50)
     * def ownershipCategory = mdmsStatePropertyTax.OwnerShipCategory[0].code +"."+mdmsStatePropertyTax.SubOwnerShipCategory[0].code
@@ -51,75 +51,85 @@ Background:
     * def documentType3 = bpaConstants.documentType.type3
     * def documentType4 = bpaConstants.documentType.type4
     * def documentType5 = bpaConstants.documentType.type5
-   # * def transactionNumber = randomString(20)
-  #  * def applicantName = 'AUTO_NAME_' + ranInteger(10)
     * def emailId = randomString(10) + '@' + randomString(5) + '.com'
     * def subOwnerShipCategory = "INDIVIDUAL"
-    * def tradeType = "ARCHITECT.CLASSA"
-    * def counsilForArchNo = "12345"
+    * def tradeType = bpaConstants.tradeType.architect
+    * def counsilForArchNo = randomNumber(5)
     * def landmark = randomString(10)
-    * def licenseType = "PERMENANT"
-    * def businessService = "BPAREG"
+    * def licenseType = bpaConstants.licenseType.permenant
+    * def businessService = bpaConstants.businessService.bpaReg
     * def testData = '../../common-services/testData/scrunity.dxf'
     * def dcrConstants = read('../../municipal-services/constants/dcrServices.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # TODO : taking hardCode value of ocdcrNumber as pf now, once end to end BPA is done will remove this ocdcrNumber hardCoded value
     * def ocdcrNumber = 'OCDCR42021JH3YL'
     * def city = tenantId.split(".")[0]
+    * def wfstate =  'FIELDINSPECTION_PENDING';
+    * def questions = karate.jsonPath(mdmsStatebpaChecklist, "$.[?(@.WFState=='" + wfstate + "')].questions")
+    * def question1 = questions[0][0].question
+    * def question2 = questions[0][1].question
+    * def question3 = questions[0][2].question
+    * def question4 = questions[0][3].question
+    * def questions1Json = {"question":"#(question1)","value":"NA"}
+    * def questions2Json = {"question":#(question2),"value":"NA"}
+    * def questions3Json = {"question":#(question3),"value":"NA"}
+    * def questions4Json = {"question":#(question4),"value":"NA"}
+    
+
    # * def otpReference = 123456
 
 
 
-# @bpaStakeholder
-# Scenario: Register Architect
-#     * def authToken = citizenAuthToken
+@bpaStakeholder
+Scenario: Register Architect
+    * def authToken = citizenAuthToken
 
-#     * def mobileNumber = '77' + randomMobileNumGen(8)
-#     * def createdUser = mobileNumber
-#     * print mobileNumber
-#     * call read('../../core-services/pretests/userCreationPretest.feature@usercreationForBPA')
-#     * print ("USER CREATION BPA DONE")
-#     * def mobileNumber = createdUser
-#     * print mobileNumber
-#     * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
-#     * print ("USER SUCCESSFULLY RUN")
-#     * def dob = "676578599000"
-#     * def action = "NOWORKFLOW"
-#     * def mobileNumber = createdUser
-#     * def citizenUsername3 = mobileNumber
-#     * def citizenPassword3 = 123456
-#     * print mobileNumber
-#     # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
-#     #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
-#     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
-#     * def citizenAuthToken3 = authToken3;
-#     * def authToken = citizenAuthToken3
-#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAStakeholderSuccessfully')
+    * def mobileNumber = '77' + randomMobileNumGen(8)
+    * def createdUser = mobileNumber
+    * print mobileNumber
+    * call read('../../core-services/pretests/userCreationPretest.feature@usercreationForBPA')
+    * print ("USER CREATION BPA DONE")
+    * def mobileNumber = createdUser
+    * print mobileNumber
+    * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
+    * print ("USER SUCCESSFULLY RUN")
+    * def dob = "676578599000"
+    * def action = "NOWORKFLOW"
+    * def mobileNumber = createdUser
+    * def citizenUsername3 = mobileNumber
+    * def citizenPassword3 = 123456
+    * print mobileNumber
+    # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+    #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
+    * def citizenAuthToken3 = authToken3;
+    * def authToken = citizenAuthToken3
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAStakeholderSuccessfully')
 # @bpaStakeholder
-# Scenario: Register Architect
-#     * def authToken = citizenAuthToken
+Scenario: Register Architect
+    * def authToken = citizenAuthToken
 
-#     * def mobileNumber = '77' + randomMobileNumGen(8)
-#     * def createdUser = mobileNumber
-#     * print mobileNumber
-#     * call read('../../core-services/pretests/userCreationPretest.feature@createCitizen')
-#     * print ("USER CREATION BPA DONE")
-#     * def mobileNumber = createdUser
-#     * print mobileNumber
-#    # * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
-#     * print ("USER SUCCESSFULLY RUN")
-#     * def dob = "676578599000"
-#     * def action = "NOWORKFLOW"
-#     * def mobileNumber = createdUser
-#     * def citizenUsername3 = mobileNumber
-#     * def citizenPassword3 = 123456
-#     * print mobileNumber
-#     # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
-#     #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
-#     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
-#     * def citizenAuthToken3 = authToken3;
-#     * def authToken = citizenAuthToken3
-#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAStakeholderSuccessfully')
+    * def mobileNumber = '77' + randomMobileNumGen(8)
+    * def createdUser = mobileNumber
+    * print mobileNumber
+    * call read('../../core-services/pretests/userCreationPretest.feature@createCitizen')
+    * print ("USER CREATION BPA DONE")
+    * def mobileNumber = createdUser
+    * print mobileNumber
+   # * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
+    * print ("USER SUCCESSFULLY RUN")
+    * def dob = "676578599000"
+    * def action = "NOWORKFLOW"
+    * def mobileNumber = createdUser
+    * def citizenUsername3 = mobileNumber
+    * def citizenPassword3 = 123456
+    * print mobileNumber
+    # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
+    #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
+    * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
+    * def citizenAuthToken3 = authToken3;
+    * def authToken = citizenAuthToken3
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAStakeholderSuccessfully')
 
 
 
@@ -137,9 +147,9 @@ Scenario: Verify BPA e2e scenarios
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@sendToCitizen')
     #Citizen_Login_19
     * def authToken = citizenAuthToken
-    #Payment_20
-
+    #Approve From Citizen
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@approveFromCitizen')
+    #Update BPA - Apply
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
     * print getBPASearchParam
@@ -148,6 +158,7 @@ Scenario: Verify BPA e2e scenarios
     * set BPA.status = 'INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+    #Calculate Fee
     * call read('../../municipal-services/pretests/bpaCalculatorPretest.feature@calcuateBPASuccessfully')
 
     * def fetchBillParams = 
@@ -159,15 +170,17 @@ Scenario: Verify BPA e2e scenarios
     }
     """
     * print fetchBillParams
+    # Fetch Bill
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * def totalAmountPaid = txnAmount
+    #Create Payment
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
-
+    # Verification Forward by Document Verifier
     * set BPA.workflow.action = 'FORWARD'
     * set BPA.status = 'DOC_VERIFICATION_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
-
+    # Approval For Fire NOC
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'FIRE_NOC'}
     * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidDataForBPA')
     * set nocDetail.applicationStatus = "INPROGRESS"
@@ -176,6 +189,7 @@ Scenario: Verify BPA e2e scenarios
     * set nocDetail.documents[0].documentType = bpaConstants.documentType.type11
     * set nocDetail.documents[0].fileStoreId = fileStoreId3
     * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
+    # Approval From Field Inspector
     * set BPA.workflow.action = 'FORWARD'
     * set BPA.status = 'FIELDINSPECTION_INPROGRESS'    
     * def documentType1 = bpaConstants.documentType.type6
@@ -184,30 +198,60 @@ Scenario: Verify BPA e2e scenarios
     * def documentType4 = bpaConstants.documentType.type9
     * def documentType5 = bpaConstants.documentType.type10
     * set BPA.additionalDetails.fieldinspection_pending = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
+    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate2()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NO"}
-    * print BPA
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = {"question":"TREE_EXISTS_ON_SITE","value":"NO"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = {"question":"PLAN_AS_PER_THE_SITE","value":"NO"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = {"question":"ROADWIDTH_AS_PER_THE_PLAN","value":"NO"}
-    * print ("FIELD INSPECTOR UPDATE")
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = questions1Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = questions2Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = questions3Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = questions4Json
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfullyForFieldInsecptor')
+    # Approval From NOC Verifier
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+    * print "BELOW ARE OF ACTION TYPE NOC VERIFICATION IN PROGRESS"
+    * set BPA.workflow.action = 'FORWARD'
+    * set BPA.status = 'NOC_VERIFICATION_INPROGRESS'
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
+    # Approval From NOC Approver
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+    * print "BELOW ARE OF ACTION TYPE APPROVE"
     * set BPA.workflow.action = 'APPROVE'
     * set BPA.status = 'APPROVAL_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+    * match BPA.edcrNumber == "#present"
+    * match BPA.landId == "#present"
+    * match BPA.landInfo == "#present"
+    * match BPA.approvalNo == "#present"
+    * match BPA.approvalDate == "#present"
+    * match BPA.accountId == "#present"
+    * match BPA.applicationNo == "#present"
+    * def comparisonParams = { edcrNumber: '#(edcrNumber)', ocdcrNumber: '#(ocdcrNumber)',tenantId: '#(tenantId)'}
+    # Compare files
+  #  * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchComparisonSuccessfully')
+  #  # Search For BPA For getting permit number and date
+#     * def appNumber = BPA.applicationNo
+#     * def getBPASearchParam = {  applicationNo: '#(appNumber)',tenantId: '#(tenantId)'}
+#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+#     * print "SEARCH AFTER APPROVAL"
+#     # Login To Citizen
+#     * def authToken = citizenArchitectAuthToken
+#     # Send Occupancy Ceritificate Scrutiny
+#     * def transactionNumber = randomString(20)
+#     * def permitDate = bpaResponseBody.BPA.applicationDate
+#     * def permitNumber = bpaResponseBody.BPA.approvalNo
+#     * def appliactionType = "BUILDING_OC_PLAN_SCRUTINY"
+#     * def applicationSubType = "NEW_CONSTRUCTION"
+#     * def comparisonEdcrNumber = comparisonResponseBody.comparisonDetail.edcrNumber
+#    # * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunityOCDR')
+#     * print "SCRUTINY ODCR DONE"
+#     #--------
+#     * def businessService = "BPA_OC"
+#     * set BPA.workflow.action = 'SEND_TO_CITIZEN'
+#     * set BPA.status = 'INITIATED'
+#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
 
-    # * match BPA.edcrNumber == "#present"
-    # * match BPA.landId == "#present"
-    # * match BPA.landInfo == "#present"
-    # * match BPA.approvalNo == "#present"
-    # * match BPA.approvalDate == "#present"
-    # * match BPA.accountId == "#present"
-    # * match BPA.applicationNo == "#present"
-    # * def comparisonParams = { edcrNumber: '#(edcrNumber)', ocdcrNumber: '#(ocdcrNumber)',tenantId: '#(tenantId)'}
-    # * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchComparisonSuccessfully')
+
 
 
 @bpae2e2 @positive @regression @bpae2eservice
@@ -244,6 +288,7 @@ Scenario: Verify BPA e2e scenarios - Highend
     * set BPA.status = 'DOC_VERIFICATION_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+ 
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'FIRE_NOC'}
     * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidDataForBPA')
     * set nocDetail.applicationStatus = "INPROGRESS"
@@ -260,15 +305,17 @@ Scenario: Verify BPA e2e scenarios - Highend
     * def documentType4 = bpaConstants.documentType.type9
     * def documentType5 = bpaConstants.documentType.type10
     * set BPA.additionalDetails.fieldinspection_pending = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
+    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate2()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NA"}
-    * print BPA
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = {"question":"TREE_EXISTS_ON_SITE","value":"NA"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = {"question":"PLAN_AS_PER_THE_SITE","value":"NA"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = {"question":"ROADWIDTH_AS_PER_THE_PLAN","value":"NA"}
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = questions1Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = questions2Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = questions3Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = questions4Json
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfullyForFieldInsecptor')
+    * set BPA.workflow.action = 'FORWARD'
+    * set BPA.status = 'NOC_VERIFICATION_INPROGRESS'
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * set BPA.workflow.action = 'APPROVE'
     * set BPA.status = 'APPROVAL_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
@@ -378,20 +425,25 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * set BPA.status = 'DOC_VERIFICATION_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+
+    * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'FIRE_NOC'}
+    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
+    * set nocDetail.applicationStatus = "INPROGRESS"
+    * set nocDetail.workflow.action = "APPROVE"
+    * set nocDetail.documents = []
+    * set nocDetail.documents[0].documentType = bpaConstants.documentType.type11
+    * set nocDetail.documents[0].fileStoreId = fileStoreId3
+  #  * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'AIRPORT_AUTHORITY'}
     * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
     * print "UPDATING AIRPORT NOC:::"
     * set nocDetail.applicationStatus = "INPROGRESS"
-    * set nocDetail.workflow = null
-    * set nocDetail.documents = null
-    * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
-    * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'FIRE_NOC'}
-    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
-    * set nocDetail.applicationStatus = "INPROGRESS"
-    * set nocDetail.workflow = null
-    * set nocDetail.documents = null
-    * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
-    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
+    * set nocDetail.workflow = "APPROVE"
+    * set nocDetail.documents = []
+    * set nocDetail.documents[0].documentType = bpaConstants.documentType.type11
+    * set nocDetail.documents[0].fileStoreId = fileStoreId3
+   # * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
     * set BPA.workflow.action = 'REVOCATE'
     * set BPA.workflow.comments = randomString(20)
     * set BPA.status = 'FIELDINSPECTION_INPROGRESS'    
@@ -404,11 +456,11 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NO"}
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = questions1Json
     * print BPA
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = {"question":"TREE_EXISTS_ON_SITE","value":"NO"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = {"question":"PLAN_AS_PER_THE_SITE","value":"NO"}
-    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = {"question":"ROADWIDTH_AS_PER_THE_PLAN","value":"NO"}
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = questions2Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = questions3Json
+    * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = questions4Json
     * print ("FIELD INSPECTOR UPDATE")
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfullyForFieldInsecptor')
     * match BPA.edcrNumber == "#present"
@@ -418,3 +470,6 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * match BPA.approvalDate == "#present"
     * match BPA.accountId == "#present"
     * match BPA.applicationNo == "#present"
+    * match BPA.status == bpaConstants.status.revocationSuccessful
+
+

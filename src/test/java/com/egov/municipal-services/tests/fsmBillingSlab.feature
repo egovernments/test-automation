@@ -1,4 +1,4 @@
-Feature: Land Services Tests
+Feature: FSM BILLING SLAB FEATURE
 
 Background:    
     * def jsUtils = read('classpath:jsUtils.js')
@@ -201,7 +201,7 @@ Scenario: Verify calculating a FSM Billing Slab With No Tenant Type
     * def tenantId = null
     * match fsmBillingSlabResponseBody.Errors[0].code == fsmBillingSlabConstants.Errors.errorCodes.calculateInvalidTenantId
     * match fsmBillingSlabResponseBody.Errors[0].message == fsmBillingSlabConstants.Errors.errorMessages.calculateInvalidTenantId
- l
+ 
 @fsm_billing_slab_estimate_1 @positive @regression @fsmBillingSlab
 Scenario: Verify calculating a FSM Billing Slab
     * call read('../../municipal-services/tests/fsmService.feature@fsm_create_01')
@@ -230,6 +230,3 @@ Scenario: Verify calculating a FSM Billing Slab With No Tenant Type
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@estimateFSMBillingSlabUnSuccessfully')
     * match fsmBillingSlabResponseBody.Errors[0].code == fsmBillingSlabConstants.Errors.errorCodes.calculateInvalidTenantId
     * match fsmBillingSlabResponseBody.Errors[0].message == fsmBillingSlabConstants.Errors.errorMessages.calculateInvalidTenantId
-
-
-    

@@ -4,6 +4,7 @@ parameters:
 
 status:
   initiate: INITIATED
+  revocationSuccessful: "PERMIT REVOCATION"
 
 actions:
   initiate: INITIATE
@@ -22,7 +23,14 @@ documentType:
   type10: "FI.SIWS.SIWS"
   type11: "NOC.FIRE.CERTIFICATE"
   
+tradeType:
+  architect: "ARCHITECT.CLASSA"
 
+licenseType:
+  permenant: "PERMENANT"
+
+businessService:
+  bpaReg: "BPAREG"
 errorMessages:
   duplicateEDCR: ' Application already exists with EDCR Number '
   duplicateCode: DUPLICATE EDCR

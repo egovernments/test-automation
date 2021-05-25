@@ -61,10 +61,13 @@ Scenario: Search NOC With Valid Data
 Scenario: Update NOC With Valid Data
     Given url updateNOCUrl
     And request updateNOCRequest 
+    * print "NOC REQUEST"
+    * print updateNOCRequest
     When method post
     Then status 200
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
+    * print "NOC RESPONSE BODY"
     * print nocResponseBody
 
 @updateNOCWithInValidData

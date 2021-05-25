@@ -178,6 +178,9 @@
           },
           {
             "name": "CalculationType"
+          },
+          {
+            "name": "CheckList"
           }
         ]
       },
@@ -231,8 +234,15 @@
             "name": "PitType"
             }
         ]
+      },
+      {
+        "moduleName": "StakeholderRegistraition",
+        "masterDetails":[
+          {
+            "name": "PropertyType"
+          }
+        ]
       }
-      
     ]
   }
 }
