@@ -37,6 +37,7 @@ Scenario: Search NOC With Valid Data
     And request searchNOCRequest 
     When method post 
     Then status 200
+    * print response
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     And def nocDetail = nocResponseBody.Noc[0]
@@ -75,4 +76,20 @@ Scenario: Update NOC With InValid Data
     Then assert responseStatus >= 400 && responseStatus <= 403
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
+    * print nocResponseBody
+
+@searchNOCWithValidDataForBPA
+Scenario: Search NOC With Valid Data For BPA
+    Given url searchNOCUrl
+    And params searchNOCParams
+    * print searchNOCParams
+    And request searchNOCRequest 
+    When method post 
+    Then status 200
+    * print response
+    And def nocResponseHeaders = responseHeaders 
+    And def nocResponseBody = response
+    And def nocDetail = nocResponseBody.Noc[0]
+    And def nocId = nocDetail.id
+    And def nocApplicationNo = nocDetail.applicationNo
     * print nocResponseBody

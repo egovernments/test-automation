@@ -47,6 +47,7 @@ Feature: FIRE-NOC-Service pretests
         Then status 200
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
+        * print fireNocResponseBody
 
     @searchFireNocWithoutParamsSuccessfully
     Scenario: Search FireNoc Successfully

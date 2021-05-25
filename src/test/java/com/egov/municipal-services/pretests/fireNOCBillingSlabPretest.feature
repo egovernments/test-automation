@@ -2,6 +2,8 @@ Feature: Fire NOC Billing Slab Feature
 
 Background:
     * def createFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/create.json')
+#    * def createFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/create2.json')
+
     * def searchFireNOCBillingLabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/search.json')
     * def calculateFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/calculate.json')
     * def calculateFireNOCBillingSlabRequestMandatoryParams = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/calculateMandatory.json')

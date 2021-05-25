@@ -238,4 +238,3 @@ Scenario: verify by not passing "gender" in the request body
     * def gender = null
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@sendToCitizen_Invalid')
     * match bpaResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
-

@@ -15,6 +15,13 @@ documentType:
   type3: 'APPL.LTR.LTR'
   type4: 'APPL.TDP.TDP'
   type5: 'BPD.SP.SP'
+  type6: "FI.FIR.FIR"
+  type7: "FI.SINS.SINS"
+  type8: "FI.SISS.SISS"
+  type9: "FI.SIES.SIES"
+  type10: "FI.SIWS.SIWS"
+  type11: "NOC.FIRE.CERTIFICATE"
+  
 
 errorMessages:
   duplicateEDCR: ' Application already exists with EDCR Number '

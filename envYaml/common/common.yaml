@@ -248,6 +248,7 @@ endPoints:
     create: bpa-services/v1/bpa/_create
     update: bpa-services/v1/bpa/_update
     search: bpa-services/v1/bpa/_search
+    createStakeHolder: tl-services/v1/BPAREG/_create
 
   bpaCalculator:
     calculate: bpa-calculator/_calculate
@@ -267,4 +268,38 @@ endPoints:
     update: firenoc-services/v1/_update
     search: firenoc-services/v1/_search
 
-  
+  eGovUserEvent:
+    notificationCount: egov-user-event/v1/events/notifications/_count 
+    create: egov-user-event/v1/events/_create
+    update: egov-user-event/v1/events/_update
+    search: egov-user-event/v1/events/_search
+    latUpdate: egov-user-event/v1/events/lat/_update
+
+  eGovPdf:
+    ptmutationcertificate: egov-pdf/download/PT/ptmutationcertificate
+    consolidatedreceipt: egov-pdf/download/PAYMENT/consolidatedreceipt
+    tlrenewalcertificate: egov-pdf/download/TL/tlrenewalcertificate
+    tlreceipt: egov-pdf/download/TL/tlreceipt
+    ptreceipt: egov-pdf/download/PT/ptreceipt
+    ptbill: egov-pdf/download/PT/ptbill
+
+  fsmService:
+    create: fsm/v1/_create
+    update: fsm/v1/_update
+    search: fsm/v1/_search
+    audit: fsm/v1/_audit
+    vendorCreate: vendor/v1/_create
+    vendorSearch: vendor/v1/_search
+    vehicalCreate: vehicle/v1/_create
+    vehicalSearch: vehicle/v1/_search
+    vehicalTripCreate: vehicle/trip/v1/_create
+    vehicalTripSearch: vehicle/trip/v1/_search
+    vehicalTripUpdate: vehicle/trip/v1/_update
+  fsmBillingSlab:
+    create: fsm-calculator/v1/billingSlab/_create
+    update: fsm-calculator/v1/billingSlab/_update
+    search: fsm-calculator/v1/billingSlab/_search
+    calculate: fsm-calculator/v1/_calculate
+    estimate: fsm-calculator/v1/_estimate
+  fsm:
+    create: fsm/v1/_create

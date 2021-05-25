@@ -21,15 +21,25 @@ function() {
 
    var config = {
          env : env,
+         basicAuthorization: envProps.basicAuthorization,
          stateCode : envProps.stateCode,
          cityCode : envProps.cityCode,
          locale : locale,
          retryCount : 30,
          retryInterval : 10000 //ms
    };
+
+   if(karate.properties['useKafkaSimulation']){
+       if(karate.properties['useKafkaSimulation'] == 'yes'){
+        config.kafkaHost = envProps.mockHost
+       }
+   }else{
+    config.kafkaHost = envProps.host
+   }
         
         config.envHost = envProps.host
         config.envLocalhost = envProps.localhost
+        config.envMockHost = envProps.mockhost
 
         //username & password for authtoken
         config.stateCode = envProps.stateCode;
@@ -63,7 +73,16 @@ function() {
          config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
          config.counterEmployeePassword = envProps.counterEmployeeUser.password;
          config.counterEmployeeType = envProps.counterEmployeeUser.type;
+        
+         // username & password for Architect Employee user
+         config.citizenArchitectUsername = envProps.citizenArchitect.userName;
+         config.citizenArchitectPassword = envProps.citizenArchitect.password;
+         config.citizenType = envProps.citizen.type;
 
+       //  username & password for Architect Employee user
+         config.citizenArchitectUsername = envProps.citizenArchitect.userName;
+         config.citizenArchitectPassword = envProps.citizenArchitect.password;
+         config.citizenType = envProps.citizen.type;
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -333,7 +352,7 @@ function() {
         config.createBPA = envProps.host + path.endPoints.bpaService.create
         config.searchBPA = envProps.host + path.endPoints.bpaService.search
         config.updateBPA = envProps.host + path.endPoints.bpaService.update
-
+        config.createBPAStakeHolder = envProps.host + path.endPoints.bpaService.createStakeHolder
         // BPA- Calculator
         config.calculateBPA = envProps.host + path.endPoints.bpaCalculator.calculate
 
@@ -352,6 +371,41 @@ function() {
         config.searchFireNocService = envProps.host + path.endPoints.firenocService.search
         config.updateFireNocService = envProps.host + path.endPoints.firenocService.update
 
+        // egov user event
+        config.notificationEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.notificationCount
+        config.createEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.create
+        config.updateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.update
+        config.searchEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.search
+        config.latUpdateEgovUserEvent = envProps.host + path.endPoints.eGovUserEvent.latUpdate
+
+        // egov PDF 
+        config.ptmutationcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.ptmutationcertificate
+        config.consolidatedreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.consolidatedreceipt
+        config.tlrenewalcertificateEgovPDF = envProps.host + path.endPoints.eGovPdf.tlrenewalcertificate
+        config.tlreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.tlreceipt
+        config.ptreceiptEgovPDF = envProps.host + path.endPoints.eGovPdf.ptreceipt
+        config.ptbillEgovPDF = envProps.host + path.endPoints.eGovPdf.ptbill
+
+        // fsm Service
+        config.createFsmEvent = envProps.host + path.endPoints.fsmService.create
+        config.updateFsmEvent = envProps.host + path.endPoints.fsmService.update
+        config.searchFsmEvent = envProps.host + path.endPoints.fsmService.search
+        config.auditFsmEvent = envProps.host + path.endPoints.fsmService.audit
+        config.vendorCreateFsmEvent = envProps.host + path.endPoints.fsmService.vendorCreate
+        config.vendorSearchFsmEvent = envProps.host + path.endPoints.fsmService.vendorSearch
+        config.vehicalCreateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalCreate
+        config.vehicalSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalSearch
+        config.vehicalTripCreateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripCreate
+        config.vehicalTripSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripSearch
+        config.vehicalTripUpdateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripUpdate
+        //FSM Billing Slab
+        config.createFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.create
+        config.updateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.update
+        config.searchFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.search
+        config.calculateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.calculate
+        config.estimateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.estimate
+        config.createFsmEvent = envProps.host + path.endPoints.fsm.create
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -361,6 +415,9 @@ function() {
 
         var AltitizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenOfAltCitizen', config);
         config.altCitizenAuthToken = AltitizenAuthTokenResponse.authToken;
+
+        var citizenArchitectAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizenArchitect', config);
+        config.citizenArchitectAuthToken = citizenArchitectAuthTokenResponse.authToken;
 
         var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
         config.fileStoreId1 = fileUploadResponse1.fileStoreId
@@ -386,12 +443,18 @@ function() {
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
+        config.uuid = authTokenResponse.id;
+
+        var citizenArchitectAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizenArchitect', config);
+        config.citizenArchitectAuthToken = citizenArchitectAuthTokenResponse.authToken;
+
 
         var MdmsCityResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByCity', config);
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
 
+        
         var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
         var MdmsStateRes = MdmsStateResponse.MdmsStateRes
         config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
@@ -407,8 +470,9 @@ function() {
         config.mdmsStateBPA = MdmsStateRes['BPA']
         config.mdmsStateFireNocService = MdmsStateRes['firenoc']
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
+        config.mdmsStateFsmService = MdmsStateRes['FSM']
 
-        var driverConfig = { type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
+        var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 

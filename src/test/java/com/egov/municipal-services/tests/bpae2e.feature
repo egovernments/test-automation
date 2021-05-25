@@ -184,7 +184,7 @@ Scenario: Verify BPA e2e scenarios
     * def documentType4 = bpaConstants.documentType.type9
     * def documentType5 = bpaConstants.documentType.type10
     * set BPA.additionalDetails.fieldinspection_pending = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate2()
+    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NO"}
@@ -260,7 +260,7 @@ Scenario: Verify BPA e2e scenarios - Highend
     * def documentType4 = bpaConstants.documentType.type9
     * def documentType5 = bpaConstants.documentType.type10
     * set BPA.additionalDetails.fieldinspection_pending = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate2()
+    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NA"}
@@ -340,7 +340,7 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
 Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
-        * def authToken = citizenArchitectAuthToken
+  #  * def authToken = citizenArchitectAuthToken
     #Create New BPA Application (Architect)
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
     #Land_Create_17
@@ -350,7 +350,6 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     #Citizen_Login_19
     * def authToken = citizenAuthToken
     #Payment_20
-
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@approveFromCitizen')
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
@@ -380,14 +379,14 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'AIRPORT_AUTHORITY'}
-    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidDataForBPA')
+    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
     * print "UPDATING AIRPORT NOC:::"
     * set nocDetail.applicationStatus = "INPROGRESS"
     * set nocDetail.workflow = null
     * set nocDetail.documents = null
     * call read('../../municipal-services/pretests/NOCPretest.feature@updateNOCWithValidData')
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'FIRE_NOC'}
-    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidDataForBPA')
+    * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
     * set nocDetail.applicationStatus = "INPROGRESS"
     * set nocDetail.workflow = null
     * set nocDetail.documents = null
@@ -402,7 +401,7 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * def documentType4 = bpaConstants.documentType.type9
     * def documentType5 = bpaConstants.documentType.type10
     * set BPA.additionalDetails.fieldinspection_pending = []
-    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate2()
+    * set BPA.additionalDetails.fieldinspection_pending[0].date = getCurrentDate1()
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = {"question":"RIVER_EXISTS_ON_SITE","value":"NO"}

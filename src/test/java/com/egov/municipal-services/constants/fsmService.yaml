@@ -16,3 +16,15 @@ errorMessages:
   noTenantId: TenantId is mandatory in search
   noParams: "Search without any paramters is not allowed"
   onlyTenantId: ' Atlest one parameter is mandatory!'
+  wrongMobileNo: MobileNumber should be 10 digit number
+  invalidRegistration: "Vehicle already exists "
+  wrongVehical: ' Vehicle Type is invalid'
+  invalidSuctionType: " Vehicle SuctionType is invalid"
+  withOutRegistration: Registation is mandatory
+  invalidSort: typeMismatch.vehicleTripSearchCriteria.sortBy
+  invalidSortedOrder: typeMismatch.vehicleTripSearchCriteria.sortOrder
+  invalidVehicalId: "vehicle does not exists with id "
+  withoutVehicalId: vehicleId is mandatory
+  invalidTankCapacity: must not be null
+  invalidRefStatus: must not be blank
+  invalidTripId: vehicleLogId not found in the Requestorg.egov.vehicle.trip.web.model.VehicleTrip@39ebeeb9

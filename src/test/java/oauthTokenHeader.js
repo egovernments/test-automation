@@ -8,10 +8,10 @@ function() {
         locale: locale,
 	};
 
-	out['referer'] = karate.get('authReferer');
+	// out['referer'] = karate.get('authReferer');
 	out['Content-Type'] = 'application/x-www-form-urlencoded';
-	out['webRequest.ContentType'] = 'application/x-www-form-urlencoded';
-	out['authority'] = karate.get('authorityHeader');
-	out['authorization'] = 'Basic ZWdvdi11c2VyLWNsaWVudDplZ292LXVzZXItc2VjcmV0';
+	// out['webRequest.ContentType'] = 'application/x-www-form-urlencoded';
+	// out['authority'] = karate.get('authorityHeader');
+	out['authorization'] = 'Basic ZWdvdi11c2VyLWNsaWVudDo=';
 	return out;
 }

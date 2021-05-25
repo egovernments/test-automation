@@ -208,7 +208,31 @@
             "name": "FinancialYear"
           }
         ]
+      },
+      {
+        "moduleName": "FSM",
+        "masterDetails":[
+          {
+            "name": "PropertyType"
+          },
+          {
+            "name": "VehicleType"
+            },
+            {
+            "name": "Config"
+            },
+            {
+            "name": "ApplicationChannel"
+            },
+            {
+            "name": "SanitationType"
+            },
+            {
+            "name": "PitType"
+            }
+        ]
       }
+      
     ]
   }
 }

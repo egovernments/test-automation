@@ -174,6 +174,7 @@ Scenario: Login as a CounterEmployee, create, approve and make payment for TL
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
     # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
+    * def totalAmountPaid = fetchBillResponse.Bill[0].totalAmount
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment') 
     * def consumerCode = collectionServicesResponseBody.Payments[0].paymentDetails[0].bill.consumerCode
     * def receiptNumber = collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber
@@ -345,11 +346,16 @@ Scenario: Login as a citizen and Send for Renewal
     * def consumerCode = tradeLicense.applicationNumber
     * def businessService = tradeLicense.businessService
     * print consumerCode
-    # Steps to login as Citizen and make payment
+    * def authToken = superUserAuthToken
+    * def consumerCode = tradeLicense.applicationNumber
+    * def businessService = tradeLicense.businessService
+    # * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
+    # # Steps to fetch the bill details
+    # * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
+    # * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
+    * def authToken = citizenAuthToken
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/tradeLicensePage.feature@makeFullPayment')
-    * delay(10000)
-    * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch')
     * call read('../../municipal-services/tests/tradeLicense.feature@submitRenewal')
     * print consumerCode
