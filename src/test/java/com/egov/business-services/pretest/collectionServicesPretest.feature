@@ -331,7 +331,8 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalDue = amount
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
-  * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(91)
+  * def daysFromToday = 91
+  * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(daysFromToday)
   Given url payment
   And request createPaymentRequestForCheque
   When method post

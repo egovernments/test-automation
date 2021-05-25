@@ -8,7 +8,8 @@ Feature: Business Services - Billing Service Demand tests
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
     * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()
-    * def taxPeriodTo = getEpochDate(2)
+    * def daysFromToday = 2
+    * def taxPeriodTo = getEpochDate(daysFromToday)
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
     * def taxHeadMasterCode = taxHeadMasterCodes[randomNumber(taxHeadMasterCodes.length)]
     * def taxAmount = 200
