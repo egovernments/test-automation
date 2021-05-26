@@ -32,10 +32,19 @@ Feature: BPA-Service pretests
         Given url createBPA
         And request createBPARequest
         When method post
-        Then assert responseStatus >= 400 && responseStatus <= 403
+        Then status 400
         And def bpaResponseHeaders = responseHeaders
         And def bpaResponseBody = response
 
+    @createBPAErrorUnAuthorized
+    Scenario: Create BPA Error
+        Given url createBPA
+        And request createBPARequest
+        When method post
+        Then status 403
+        And def bpaResponseHeaders = responseHeaders
+        And def bpaResponseBody = response
+    
     @createBPAError2
     Scenario: Create BPA Error
         Given url createBPA

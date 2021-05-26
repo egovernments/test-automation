@@ -42,7 +42,7 @@ Scenario: Verify creating land through API call
 @land_create_InValidTenant_02 @negative @regression @landService
 Scenario: Verify creating land through API call by passing an invalid tenant id and check for errors
     * def tenantId = commonConstants.invalidParameters.invalidValue
-    * call read('../../municipal-services/pretests/landServicesPretest.feature@createLandError')
+    * call read('../../municipal-services/pretests/landServicesPretest.feature@createLandErrorUnAuthorized')
     * match landResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @land_create_InValidOwnership_03 @negative @regression @landService
@@ -83,7 +83,7 @@ Scenario: Verify updating land info through API call by passing an invalid tenan
     * call read('../../municipal-services/pretests/landServicesPretest.feature@createLandSuccessfully')
     * def id = landResponseBody.LandInfo[0].id
     * def tenantId = commonConstants.invalidParameters.invalidValue
-    * call read('../../municipal-services/pretests/landServicesPretest.feature@updateLandError')
+    * call read('../../municipal-services/pretests/landServicesPretest.feature@updateLandErrorUnAuthorized')
     * match landResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @land_update_InValidOwnership_03 @negative @regression @landService
@@ -133,7 +133,7 @@ Scenario: Verify searching for a Land application by passing invalid/non existan
     * def id = landResponseBody.LandInfo[0].id
     * def tenantId = commonConstants.invalidParameters.invalidValue
     * def searchParam = {"tenantId": '#(tenantId)',"ids": '#(id)'}
-    * call read('../../municipal-services/pretests/landServicesPretest.feature@searchLandError')
+    * call read('../../municipal-services/pretests/landServicesPretest.feature@searchLandErrorUnAuthorized')
     * match landResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @land_search_NoTenantiId_03 @negative @regression @landService

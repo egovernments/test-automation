@@ -93,7 +93,7 @@ Background:
     @fireNoc_Create_Invalid_tenant_09 @negative @regression @municipalService @fireNocService @fireNocServiceCreate
     Scenario: Verify creating a fire noc service application through API with invalid tenantID
     * def tenantId = randomString(8)
-    * call read('../../municipal-services/pretests/fireNocPretest.feature@createBPAError2')
+    * call read('../../municipal-services/pretests/fireNocPretest.feature@createBPAErrorUnAuthorized')
     * match fireNocResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
     @fireNoc_Create_invalid_FirestnID_10 @negative @regression @municipalService @fireNocService @fireNocServiceCreate

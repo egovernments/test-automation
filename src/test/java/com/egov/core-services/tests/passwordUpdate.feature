@@ -58,7 +58,7 @@ Scenario: To verify the error message returned by API for an invalid tenantId
         # Set random invalid value as tenantID
         * set updatedUserPassword.tenantId = ranString(5)
         # Steps to update user's password with invalid tenantId and generate error message 
-        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPassword')
+        * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdateUserPasswordUnAuthorized')
         # Validate actual error message returned by API is equal to expected error message
         * assert updatedPasswordResponseBody.Errors[0].message == genericError.errorMessages.authorizedError
 

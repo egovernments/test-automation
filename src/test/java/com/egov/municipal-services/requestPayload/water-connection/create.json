@@ -1,0 +1,22 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "WaterConnection": {
+        "water": "#(isWater)",
+        "action": "#(processInstanceAction)",
+        "sewerage": "#(isSewerage)",
+        "property": "#(Property)",
+        "proposedTaps": "#(proposedTaps)",
+        "proposedPipeSize": "#(proposedPipeSize)",
+        "service": "#(service)",
+        "propertyId": "#(propertyId)",
+        "additionalDetails": {
+            "locality": "#(localityCode)"
+        },
+        "tenantId": "#(tenantId)",
+        "processInstance": {
+            "action": "#(processInstanceAction)"
+        }
+    }
+}

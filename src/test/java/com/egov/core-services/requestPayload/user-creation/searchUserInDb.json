@@ -1,0 +1,7 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"userName": "#(existingUser)",
+	"tenantId": "pb"
+}

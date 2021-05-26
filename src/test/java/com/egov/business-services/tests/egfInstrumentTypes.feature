@@ -4,8 +4,8 @@
         * def jsUtils = read('classpath:jsUtils.js')
         * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-        * def instrumentTypesPayload = read('../../business-services/requestPayload/egfInstrument/instrumentType/create.json')
-        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/egfInstrument/instrumentType/search.json')
+        * def instrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/create.json')
+        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/search.json')
         # Instrument types details
         * def id = randomString(5)
         * def name = "Instrument_"+randomString(3)
@@ -53,7 +53,7 @@
     Scenario: Create InstrumentType with NULL ID
     # Set instrument type id as `null`
     * set instrumentTypesPayload.instrumentTypes[0].id = null
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypesServerError')
     # Validate that the error message returned by the API should be equal with expected error
     * print instrumentTypesResponse
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
@@ -142,7 +142,7 @@
     Scenario: Create InstrumentType with Invalid tenantId
     # Set the tenantId field value as Invalid
     * set instrumentTypesPayload.instrumentTypes[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypesUnAuthorized')
     # Validate that the error message returned by the API should be equal with expected error
     * match instrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -245,7 +245,7 @@
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentTypes')
     # Set the tenant id value with an invalid tenant id
     * set instrumentTypesPayload.instrumentTypes[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypes')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentTypesUnAuthorized')
     # Validate the error message returned by API which should be equal with expected error
     * match updateInstrumentTypesResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

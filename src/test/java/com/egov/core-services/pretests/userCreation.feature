@@ -10,7 +10,7 @@ Feature: Create user
   * def dob = todayDate()
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def gender = commonConstants.parameters.gender[0]
-  * def newUserPayload = read('../../core-services/requestPayload/userCreation/createUser.json')
+  * def newUserPayload = read('../../core-services/requestPayload/user-creation/createUser.json')
 
   
         @usercreation
