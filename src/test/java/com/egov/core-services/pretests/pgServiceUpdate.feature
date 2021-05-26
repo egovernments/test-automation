@@ -2,7 +2,7 @@ Feature: Update a payment transaction
 
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * def pgServicesUpdatePayload = read('../../core-services/requestPayload/pgServices/pgServicesUpdate.json')
+  * def pgServicesUpdatePayload = read('../../core-services/requestPayload/pg-service/pgServicesUpdate.json')
 
         @updatePgTransactionSuccessfully
         Scenario: Update Payment Gateway Transaction Successfully

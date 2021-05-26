@@ -4,12 +4,12 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
     #egfInstrumet-Instruments Requests
-  * def instrumentCreateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/create.json')
-  * def instrumentUpdateRequest = read('../../business-services/requestPayload/egfInstrument/instrument/update.json')
-  * def instrumentSearchRequest = read('../../business-services/requestPayload/egfInstrument/instrument/search.json')
-  * def createSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/create.json')
-  * def updateSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/update.json')
-  * def searchSurrenderReasonRequest = read('../../business-services/requestPayload/egfInstrument/surrenderReasons/search.json')
+  * def instrumentCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/create.json')
+  * def instrumentUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/update.json')
+  * def instrumentSearchRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/search.json')
+  * def createSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/create.json')
+  * def updateSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/update.json')
+  * def searchSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/search.json')
 
   # Instrument Types prtests
 
@@ -30,7 +30,27 @@ Background:
     And request instrumentTypesPayload
         * print instrumentTypesPayload
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And  def instrumentTypesResponse = response
+
+@errorInCreateInstrumentTypesUnAuthorized
+    Scenario: Negative pretest to create instrument types
+    Given url createInstrumentTypes
+        * print createInstrumentTypes
+    And request instrumentTypesPayload
+        * print instrumentTypesPayload
+    When method post
+    Then status 403
+    And  def instrumentTypesResponse = response
+
+@errorInCreateInstrumentTypesServerError
+    Scenario: Negative pretest to create instrument types
+    Given url createInstrumentTypes
+        * print createInstrumentTypes
+    And request instrumentTypesPayload
+        * print instrumentTypesPayload
+    When method post
+    Then status 500
     And  def instrumentTypesResponse = response
 
   @searchInstrumentTypes
@@ -70,7 +90,27 @@ Background:
     And request instrumentTypesPayload
         * print instrumentTypesPayload
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And  def updateInstrumentTypesResponse = response
+
+@errorInUpdateInstrumentTypesUnAuthorized
+    Scenario: Negative pretest to update instrument types
+    Given url updateInstrumentTypes
+        * print updateInstrumentTypes
+    And request instrumentTypesPayload
+        * print instrumentTypesPayload
+    When method post
+    Then status 403
+    And  def updateInstrumentTypesResponse = response
+
+@errorInUpdateInstrumentTypesServerError
+    Scenario: Negative pretest to update instrument types
+    Given url updateInstrumentTypes
+        * print updateInstrumentTypes
+    And request instrumentTypesPayload
+        * print instrumentTypesPayload
+    When method post
+    Then status 500
     And  def updateInstrumentTypesResponse = response
 
 # Instruments pretests
@@ -123,7 +163,17 @@ Scenario: Updating an instruments and check for error through API call
     Given url instrumentUpdate
     And request instrumentUpdateRequest
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def instrumentUpdateResponseHeader = responseHeaders
+    And def instrumentUpdateResponseBody = response
+
+@errorInUpdateInstrumentsServerError
+Scenario: Updating an instruments and check for error through API call
+
+    Given url instrumentUpdate
+    And request instrumentUpdateRequest
+    When method post
+    Then status 500
     And def instrumentUpdateResponseHeader = responseHeaders
     And def instrumentUpdateResponseBody = response
 
@@ -188,7 +238,7 @@ Scenario: Searching Instruments through API call
     And def instrumentSearchResponseHeader = responseHeaders
     And def instrumentSearchResponseBody = response
 
-@errorInsearchTransactionTypeSuccessfully
+@errorInsearchTransactionTypeServerError
 Scenario: Searching Instruments through API call
     * def instrumentsSearchParam = 
     """
@@ -201,7 +251,7 @@ Scenario: Searching Instruments through API call
     And params instrumentsSearchParam
     And request instrumentSearchRequest
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 500
     And def instrumentSearchResponseHeader = responseHeaders
     And def instrumentSearchResponseBody = response
 
@@ -287,7 +337,16 @@ Scenario: Create Surrender Reason Error
     Given url createSurrenderReasons
     And request createSurrenderReasonRequest
     When method post
-    Then assert responseStatus >= 400
+    Then status 400
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+
+@errorInCreateSurrenderReasonUnAuthorized
+Scenario: Create Surrender Reason Error
+    Given url createSurrenderReasons
+    And request createSurrenderReasonRequest
+    When method post
+    Then status 403
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response
 
@@ -309,7 +368,29 @@ Scenario: Update Surrender Reason Error
     And request updateSurrenderReasonRequest
     When method post
      * print surrenderReasonsResponseBody
-    Then assert responseStatus >= 400
+    Then status 400
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+
+@errorInUpdateSurrenderReasonUnAuthorized
+Scenario: Update Surrender Reason Error
+    * eval updateSurrenderReasonRequest.surrenderReasons = surrenderReasons
+    Given url updateSurrenderReasons
+    And request updateSurrenderReasonRequest
+    When method post
+     * print surrenderReasonsResponseBody
+    Then status 403
+    And def surrenderReasonsResponseHeaders = responseHeaders
+    And def surrenderReasonsResponseBody = response
+
+@errorInUpdateSurrenderReasonServerError
+Scenario: Update Surrender Reason Error
+    * eval updateSurrenderReasonRequest.surrenderReasons = surrenderReasons
+    Given url updateSurrenderReasons
+    And request updateSurrenderReasonRequest
+    When method post
+     * print surrenderReasonsResponseBody
+    Then status 500
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response
     
@@ -323,12 +404,12 @@ Scenario: Search Surrender Reason Successfully
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response
 
-@errorInSearchSurrenderReason
+@errorInSearchSurrenderReasonUnAuthorized
 Scenario: Search Surrender Reason Error
     Given url searchSurrenderReasons
     And params surrenderReasonsParams
     And request searchSurrenderReasonRequest
     When method post
-    Then assert responseStatus >= 400
+    Then status 403
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response

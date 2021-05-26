@@ -3,10 +3,10 @@ Feature: enc-Service API call
         Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
-  * def encryptRequest = read('../requestPayload/encService/encrypt.json')
-  * def rotateKeyRequest = read('../requestPayload/encService/rotate.json')
-  * def signRequest = read('../requestPayload/encService/sign.json')
-  * def verifyRequest = read('../requestPayload/encService/verify.json')
+  * def encryptRequest = read('../requestPayload/enc-service/encrypt.json')
+  * def rotateKeyRequest = read('../requestPayload/enc-service/rotate.json')
+  * def signRequest = read('../requestPayload/enc-service/sign.json')
+  * def verifyRequest = read('../requestPayload/enc-service/verify.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
         @EncryptSuccessfully
@@ -26,7 +26,17 @@ Feature: enc-Service API call
             Given url encryptUrl
               And request encryptRequest
              When method post
-             Then assert responseStatus >= 400
+             Then status 400
+              And def encryptResponseHeader = responseHeaders
+              And def encryptResponseBody = response
+
+      @EncryptErrorUnAuthoriszed
+        Scenario: encrypt error
+
+            Given url encryptUrl
+              And request encryptRequest
+             When method post
+             Then status 403
               And def encryptResponseHeader = responseHeaders
               And def encryptResponseBody = response
 

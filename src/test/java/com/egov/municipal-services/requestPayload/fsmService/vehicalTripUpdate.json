@@ -1,8 +1,0 @@
-{
-    "RequestInfo": {
-        "authToken": "#(authToken)"
-    },
-    "vehicleTrip": [
-        "#(vehicakBody)"
-    ]        
-}

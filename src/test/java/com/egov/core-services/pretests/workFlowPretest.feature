@@ -4,9 +4,9 @@ Feature: Work Flow Pre Tests
     * def jsUtils = read('classpath:jsUtils.js')
     * configure headers = read('classpath:websCommonHeaders.js')
     * def workFlowConstants = read('../../core-services/constants/workFlow.yaml')
-    * def createWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowCreate.json')
-    * def searchWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowUpdate.json')
-    * def updateWorkFlowRequest = read('../../core-services/requestPayload/eGovWorkFlow/businessService/workFlowSearch.json')
+    * def createWorkFlowRequest = read('../../core-services/requestPayload/eGov-workflow/businessService/workFlowCreate.json')
+    * def searchWorkFlowRequest = read('../../core-services/requestPayload/eGov-workflow/businessService/workFlowUpdate.json')
+    * def updateWorkFlowRequest = read('../../core-services/requestPayload/eGov-workflow/businessService/workFlowSearch.json')
 
         @createWorkFlowSuccessfully
         Scenario: Create Work Flow successfully

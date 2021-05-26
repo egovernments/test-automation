@@ -50,7 +50,7 @@ Scenario: Search Fire NOC BIlling Slab Feature with invalid tenant id
     # Search FireNOC Billing slab
     * def invalidtenantId = randomString(2) + "." + randomString(10)
     * def searchFireNOCBillingSlabParams = { tenantId:'#(invalidtenantId)', uom: '#(uom)', calculationType: '#(calculationType)',buildingUsageType:'#(buildingUsageType)',fireNOCType:"NEW"}
-    * call read('../../municipal-services/pretests/fireNOCBillingSlabPretest.feature@failSearchFireNOCBIllingSlabFeature')
+    * call read('../../municipal-services/pretests/fireNOCBillingSlabPretest.feature@failSearchFireNOCBIllingSlabFeatureUnAuthorized')
     # Validate response body
     * match fireNOCBillingSlabResponse.Errors[0].code == fireNocBillignSlabConstants.Errors.errorCodes.invalidTenantId
     * match fireNOCBillingSlabResponse.Errors[0].message == fireNocBillignSlabConstants.Errors.errorMessages.invalidTenantId
@@ -206,7 +206,7 @@ Scenario: Calculate FireNOC With Invalid NOC Application Length
 Scenario: Calculate FireNOC With Invalid Tenant Id Role
     # Create FireNOC Billing slab
     * def tenantIdRoles = ""
-    * call read('../../municipal-services/pretests/fireNOCBillingSlabPretest.feature@failCalculateFireNOCBIllingSlab')
+    * call read('../../municipal-services/pretests/fireNOCBillingSlabPretest.feature@failCalculateFireNOCBIllingSlabUnAuthorized')
     * match calculateFireNOCBillingSlabResponse.Errors[0].message == fireNocBillignSlabConstants.Errors.errorMessages.invalidTenantId
 
 

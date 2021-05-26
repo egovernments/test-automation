@@ -34,7 +34,7 @@ Scenario: Create Fire Noc With Valid Data
 Scenario: Create Fire Noc With invalid Tenant Id
     # Create a NOC
     * def tenantId = randomString(10)
-    * call read('../../municipal-services/pretests/NOCPretest.feature@failCreateNOCRequest')
+    * call read('../../municipal-services/pretests/NOCPretest.feature@failCreateNOCRequestUnAuthoriszed')
     # Validate response body
     * match nocResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
     * match nocResponseBody.Errors[0].code == nocConstants.Errors.errorCodes.invalidTenantId

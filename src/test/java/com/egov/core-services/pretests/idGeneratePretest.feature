@@ -2,7 +2,7 @@ Feature: IDGenerate API call
 
         Background:
 	# reading idgenerate request payload Json
-  * def idGenerateRequest = read('../../core-services/requestPayload/idGenerate/idgenerate.json')
+  * def idGenerateRequest = read('../../core-services/requestPayload/id-generate/idgenerate.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
 

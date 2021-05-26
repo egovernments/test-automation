@@ -1,8 +1,8 @@
 {
     "deactivationDetails": [
         {
-            "reasonForDeactivation": "OTHERS",
-            "effectiveFrom": 1607970600000
+            "reasonForDeactivation": "#(reasonForDeactivation)",
+            "effectiveFrom": "#(effectiveFrom)"
         }
     ]
 }

@@ -9,11 +9,12 @@ Background:
     * def envCommon = read('file:envYaml/common/common.yaml')
     * def gateway = commonConstants.parameters.gateway
     * def callbackUrl = envHost + envCommon.endPoints.pgServices.payload
-    * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
+    * def pgServicesCreatePayload = read('../../core-services/requestPayload/pg-service/pgServicesCreate.json')
     # Create Demand details
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
     * def taxPeriodFrom = getCurrentEpochTime() + ''
-    * def taxPeriodTo = getEpochDate(2) + ''
+    * def daysFromToday = 2
+    * def taxPeriodTo = getEpochDate(daysFromToday) + ''
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
     * def taxHeadMasterCode = taxHeadMasterCodes[randomNumber(taxHeadMasterCodes.length)]
     * def collectionAmount = 0

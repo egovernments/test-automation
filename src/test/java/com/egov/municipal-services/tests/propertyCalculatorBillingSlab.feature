@@ -80,7 +80,7 @@ Scenario: Verify creating a billing slab for property tax through API call
    # Set tenantId as invalid
    * set billingSlabCreatePayload.BillingSlab[0].tenantId = 'pb.'+randomString(3)
    # Steps to generate error for invalid tenantId
-   * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlab')
+   * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlabUnAuthorized')
    # Validate the result
    * match errorResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -181,7 +181,7 @@ Scenario: Verify searching billing slab for a invalid or non existant tenant id 
     # Prepare searchParams with invalid tenantId
     * def searchParams = {tenantId: '#(invalidTenantId)'}
     # Steps to generate error on search
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlab')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlabUnAuthorized')
     # Validate the error
     * match billingSlabSearchResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -246,7 +246,7 @@ Scenario: Verify updating a billing slab for property tax through API call by pa
     # Set invalid tenant 
     * set updateBillingSlabPayload.BillingSlab[0].tenantId = 'pb.'+randomString(3)
     # Steps to generate error on update billing slab for invalid tenantId
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlab')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlabUnAuthorized')
     # Validate the error 
     * match billingSlabUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

@@ -171,7 +171,7 @@ Scenario: Verify Searching for billing slab details by not passing tenant id and
 Scenario: Verify searching billing slab for a invalid or non existant tenant id and check for errors
     * def tenantId = invalidValue
     * def searchParam = {"tenantId": '#(tenantId)',"ids": '#(id)'}
-    * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@searchBillingSlabError')
+    * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@searchBillingSlabErrorUnAuthorized')
     * match billSlabSearchResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @BillingSlab_Search_EmptyResponse_04 @positive @regression @tlCalculatorBillingSlabSearch @tlCalculator @tlCalculatorBillingSlab
@@ -214,6 +214,6 @@ Scenario: Verify the Trade License Calculation through API for a by passing an i
 Scenario: Verify by passing a invalid or non existant tenant id and check for errors
     * def applicationNumber = consumerCode
     * def tenantId = invalidValue
-    * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@calculateError')
+    * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@calculateErrorUnAuthorized')
     * match calculateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 

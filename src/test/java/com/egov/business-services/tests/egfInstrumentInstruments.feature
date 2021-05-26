@@ -271,7 +271,7 @@ Scenario: Update instrument with Transaction Type
   * call read('../../business-services/pretest/egfInstrumentPretest.feature@createInstrumentsSuccessfully')
   * def transactionType = commonConstants.invalidParameters.invalidValue
   # Updating an instruments
-  * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstruments')
+  * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateInstrumentsServerError')
   # Validating response body
   * match instrumentUpdateResponseBody.responseInfo.status == commonConstants.expectedStatus.serverError
 
@@ -354,7 +354,7 @@ Scenario: Search instrument details with invalid Transaction type
  
   * def transactionType = commonConstants.invalidParameters.invalidValue
   # Searching an instruments
-  * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInsearchTransactionTypeSuccessfully')
+  * call read('../../business-services/pretest/egfInstrumentPretest.feature@@errorInsearchTransactionType')
   # Validating response body
   * match instrumentSearchResponseBody.responseInfo.status == commonConstants.expectedStatus.serverError
 

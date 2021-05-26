@@ -5,7 +5,8 @@ Background:
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
     * def Thread = Java.type('java.lang.Thread')
     * def taxPeriodFrom = getCurrentEpochTime() + ''
-    * def taxPeriodTo = getEpochDate(2) + ''
+    * def daysFromToday = 2
+    * def taxPeriodTo = getEpochDate(daysFromToday) + ''
     * def taxAmount = 200
     * def collectionAmount = 0
     * def minimumAmountPayable = 1

@@ -32,7 +32,7 @@ Scenario: Verify the property tax esimate thorugh API call for a given property 
     # Set tenantId value as invalid
     * set propertyTaxEstimatePayload['Assessment'].tenantId = invalidTenantId
     # Steps to generate error message due to invalid tenant id
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCalculatePropertyTaxEstimate')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCalculatePropertyTaxEstimateUnAuthorized')
     # Validate the error message
     * match propertyTaxEstimateErrorResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

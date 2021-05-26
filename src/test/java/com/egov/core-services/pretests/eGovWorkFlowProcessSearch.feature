@@ -1,7 +1,7 @@
 Feature: Perform search using business id
 
         Background:
-* def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGovWorkFlow/process/processSearch.json')
+* def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGov-workflow/process/processSearch.json')
 
         @searchWorkflowProcessSuccessfully
         Scenario: Perform search using business id

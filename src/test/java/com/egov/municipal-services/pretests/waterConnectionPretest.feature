@@ -2,9 +2,9 @@ Feature: Water Connection service pretests
 
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    * def createWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/create.json')
-    * def updateWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/update.json')
-    * def searchWaterConnectionRequest = read('../../municipal-services/requestpayload/waterConnection/search.json')
+    * def createWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/create.json')
+    * def updateWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/update.json')
+    * def searchWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/search.json')
 
 @successCreateWaterConnection
 Scenario: Create water connection successfully
@@ -25,7 +25,7 @@ Scenario: Create water connection error
     Given url createWaterConnection
     And request createWaterConnectionRequest 
 	When method post 
-	Then assert responseStatus >= 400 && responseStatus <= 403
+	Then status 400
 	And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response
 
@@ -35,7 +35,7 @@ Scenario: Create water connection error with invalid tenantId
     * eval createWaterConnectionRequest.WaterConnection.tenantId = 'invalid-tenant-' + randomString(5)
     And request createWaterConnectionRequest 
 	When method post 
-	Then assert responseStatus >= 400 && responseStatus <= 403
+	Then status 400
 	And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response
 
@@ -61,7 +61,7 @@ Scenario: Search water connection error
     And params waterConnectionParams
     And request searchWaterConnectionRequest 
 	When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response
 
@@ -89,9 +89,6 @@ Scenario: Update Water connection error
     Given url updateWaterConnection
     And request updateWaterConnectionRequest 
 	When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     And def waterConnectionResponseHeaders = responseHeaders 
 	And def waterConnectionResponseBody = response
-
-@setWaterConnectionVariablesToUpdate
-Scenario: Set Water Connection variables to update
