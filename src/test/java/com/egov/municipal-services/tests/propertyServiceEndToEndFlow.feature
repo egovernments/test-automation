@@ -68,7 +68,7 @@ Background:
     * def propertyTaxMutationPayload = read('../../municipal-services/requestPayload/property-calculator/propertyTaxMutation/calculate.json')
     * def pgServiceConstants = read('../../core-services/constants/pgServices.yaml')
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
-    * Thread.sleep(15000)
+    * Thread.sleep(3000)
 
 @createPropertyAndPayFullTaxAsCitizen @propertyTaxEndToEnd
 Scenario: Login as a citizen and pay propety tax (Full Payment)

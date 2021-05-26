@@ -7,7 +7,7 @@ Background:
     * def tlCalculatorConstants = read('../../municipal-services/constants/tlCalculator.yaml')
     * def Thread = Java.type('java.lang.Thread')
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
-    * Thread.sleep(15000)
+    * Thread.sleep(3000)
 
 ###########################
 #    TODO: Need to revisit the below tests where Payment needs to be made through third party payment gateway

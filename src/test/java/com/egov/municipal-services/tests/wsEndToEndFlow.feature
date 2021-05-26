@@ -11,7 +11,7 @@ Background:
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
-    * Thread.sleep(15000)
+    * Thread.sleep(3000)
 
 # WS Metered Connection
 @payWaterServiceTaxFullAsCitizen @wsConnection @wsEndToEnd @regression
