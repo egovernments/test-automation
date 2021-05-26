@@ -21,6 +21,7 @@ Background:
     * print fetchBillParams
     And request fetchBillRequest
     When method post
+    * print fetchBillResponse
     Then status 201
     And def fetchBillResponse = response
     And def totalAmount = response.Bill[0].totalAmount

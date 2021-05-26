@@ -12,7 +12,7 @@ Background:
     * def invalidPropertyId = 'PB-'+randomString(10)
     * def propertyTaxEstimatePayload = read('../../municipal-services/requestPayload/property-calculator/propertyTax/estimate.json')
 
-@property_estimate_01 @positive @propertyEstimate @regression @municipalService @propertyCalculator
+@property_estimate_01 @positive @propertyEstimate @regression @municipalServices @propertyCalculator
 Scenario: Verify the property tax esimate thorugh API call for a given property id
     # Steps to Calculate Tax Estimate
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTaxEstimate')
@@ -27,7 +27,7 @@ Scenario: Verify the property tax esimate thorugh API call for a given property 
     * match propertyTaxEstimateResponse.Calculation[0].taxAmount == '#present'
     * match result == propertyTaxEstimateResponse.Calculation[0].taxAmount
 
-@property_estimate_invalidTenant_02 @negative @propertyEstimate @regression @municipalService @propertyCalculator
+@property_estimate_invalidTenant_02 @negative @propertyEstimate @regression @municipalServices @propertyCalculator
 Scenario: Verify the property tax esimate thorugh API call for a given property id for a invalid or non existant tenant id and check for errors
     # Set tenantId value as invalid
     * set propertyTaxEstimatePayload['Assessment'].tenantId = invalidTenantId
@@ -36,7 +36,7 @@ Scenario: Verify the property tax esimate thorugh API call for a given property 
     # Validate the error message
     * match propertyTaxEstimateErrorResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
-@property_estimate_invalidFY_03 @negative @propertyEstimate @regression @municipalService @propertyCalculator
+@property_estimate_invalidFY_03 @negative @propertyEstimate @regression @municipalServices @propertyCalculator
 Scenario: Verify the property tax esimate thorugh API call for a given property id for a invalid or non existant financial year and check for errors
     # Set financialYear value as invalid
     * set propertyTaxEstimatePayload['Assessment'].financialYear = invalidFinancialYear
@@ -47,7 +47,7 @@ Scenario: Verify the property tax esimate thorugh API call for a given property 
     # Steps to generate error message due to invalid tenant id
     * match propertyTaxEstimateErrorResponse.Errors[0].message == financialYearError
 
-@property_estimate_invalidPID_04 @negative @propertyEstimate @regression @municipalService @propertyCalculator
+@property_estimate_invalidPID_04 @negative @propertyEstimate @regression @municipalServices @propertyCalculator
 Scenario: Verify the property tax esimate thorugh API call for a given property id for a invalid or non existant property id and  check for errors
     # Set propertyId value as invalid
     * set propertyTaxEstimatePayload['Assessment'].propertyId = invalidPropertyId
@@ -58,7 +58,7 @@ Scenario: Verify the property tax esimate thorugh API call for a given property 
     # Steps to generate error message due to invalid propertyId
     * match propertyTaxEstimateErrorResponse.Errors[0].message == propertyIdError
 
-@property_estimate_NoFY_05 @negative @propertyEstimate @regression @municipalService @propertyCalculator
+@property_estimate_NoFY_05 @negative @propertyEstimate @regression @municipalServices @propertyCalculator
 Scenario: Verify the property tax esimate thorugh API call for a given property id by not passing financial year and check for errors
     # Remove financialYear from the request payload
     * remove propertyTaxEstimatePayload['Assessment'].financialYear
