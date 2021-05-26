@@ -68,9 +68,9 @@ Background:
     * def propertyTaxMutationPayload = read('../../municipal-services/requestPayload/property-calculator/propertyTaxMutation/calculate.json')
     * def pgServiceConstants = read('../../core-services/constants/pgServices.yaml')
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
-    * Thread.sleep(15000)
+    * Thread.sleep(3000)
 
-@createPropertyAndPayFullTaxAsCitizen @propertyTaxEndToEnd
+@createPropertyAndPayFullTaxAsCitizen @propertyTaxEndToEnd @e2eServices
 Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to validate error messages of login attempt with invalid mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
@@ -127,7 +127,7 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     * match pgServicesSearchResponseBody.Transaction[0].txnStatus == pgServiceConstants.parameters.txnStatus
     * match pgServicesSearchResponseBody.Transaction[0].txnStatusMsg == pgServiceConstants.parameters.txnStatusMsg
     
-@createPropertyAndPayPartialTaxAsCitizen @propertyTaxEndToEnd
+@createPropertyAndPayPartialTaxAsCitizen @propertyTaxEndToEnd @e2eServices
 Scenario: Login as a citizen and pay propety tax (Partial Payment)
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -184,7 +184,7 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     * match pgServicesSearchResponseBody.Transaction[0].txnStatusMsg == pgServiceConstants.parameters.txnStatusMsg
     
     
-@searchReceiptAndCancel @propertyTaxEndToEnd 
+@searchReceiptAndCancel @propertyTaxEndToEnd @e2eServices 
 Scenario: Receipt search and cancellation
     # Steps to create an property
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -212,7 +212,7 @@ Scenario: Receipt search and cancellation
     * match collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
     * match collectionServicesResponseBody.Payments[0].paymentStatus == 'CANCELLED'
 
-@sendBackByDocVerifierAndReopen @propertyTaxEndToEnd
+@sendBackByDocVerifierAndReopen @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Reopen
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -236,7 +236,7 @@ Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Reopen
     * match processSearchResponseBody.ProcessInstances[0].action == 'REOPEN'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'OPEN'
 
-@sendBackByDocVerifierAndEdit @propertyTaxEndToEnd
+@sendBackByDocVerifierAndEdit @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Doc- Verifier- Send Back to Citizen - Citizen Edit
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -264,7 +264,7 @@ Scenario: PT- Doc- Verifier- Send Back to Citizen - Citizen Edit
     # Validate the property state which should be `OPEN`
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'OPEN'
 
-@sendBackAndRejectByCitizen @propertyTaxEndToEnd
+@sendBackAndRejectByCitizen @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Rejects
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -292,7 +292,7 @@ Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Rejects
     # Validate the state which should be `REJECTED`
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
-@rejectByDocVerifier @propertyTaxEndToEnd
+@rejectByDocVerifier @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Doc-Verifier- Reject
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -309,7 +309,7 @@ Scenario: PT- Doc-Verifier- Reject
     * match processSearchResponseBody.ProcessInstances[0].action == 'REJECT'
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
-@rejectByApprover @propertyTaxEndToEnd
+@rejectByApprover @propertyTaxEndToEnd @e2eServices
 Scenario: PT-Approver-Reject
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
@@ -329,7 +329,7 @@ Scenario: PT-Approver-Reject
     * match processSearchResponseBody.ProcessInstances[0]['state'].state == 'REJECTED'
 
 #bug: No Option to pay mutation charges through citizen
-@transferOwnerShip @propertyTaxEndToEnd
+@transferOwnerShip @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Transfer Of Ownership- Citizen
     # Steps to create an Active property and Pay full tax 
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -374,7 +374,7 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * call read('../../municipal-services/tests/PropertyService.feature@approveMutationProperty')
 
 
-@differentOwnershipCategory @propertyTaxEndToEnd
+@differentOwnershipCategory @propertyTaxEndToEnd @e2eServices
 Scenario: PT- Create for different ownership category 
     # Defining another ownership category
     * def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[2].code
@@ -387,7 +387,7 @@ Scenario: PT- Create for different ownership category
     # Validate the status as `INWORKFLOW`
     * match propertyServiceResponseBody.Properties[0].status == 'INWORKFLOW'
 
-@propertyCreateAsCounterEmployee @propertyTaxEndToEnd
+@propertyCreateAsCounterEmployee @propertyTaxEndToEnd @e2eServices
 Scenario: Login as a counter employee and pay propety tax
     # Create an Active Property as a Counter Employee
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -427,7 +427,7 @@ Scenario: Login as a counter employee and pay propety tax
     * match pdfCreateResponseBody.message == pdfCreateConstant.expectedMessages.message
     * match pdfCreateResponseBody.ResponseInfo.userInfo.roles.length == '##[_ > 0]'
     
-@mCollect @propertyTaxEndToEnd
+@mCollect @propertyTaxEndToEnd @e2eServices
 Scenario: mCollect- Universal Collection  
     # Steps to create Billing service demand
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')

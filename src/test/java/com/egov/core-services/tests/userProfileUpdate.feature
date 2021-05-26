@@ -14,7 +14,7 @@ Background:
         * def randomMobileNo = '9'+ randomMobileNumGen(9)
         * def invalidGender = randomNumber(3)
 
-        @User_Update_ValidDataWithNameEmailCity_01 @coreServices @regression @positive @updateProfile @eGovUser
+        @User_Update_ValidDataWithNameEmailCity_01 @coreServicesDontRun @regression @positive @updateProfile @eGovUser
         Scenario: To verify user profile data is updating correctly
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -35,7 +35,7 @@ Background:
         # Validate correspondenceCity which should be equal to city
         * assert hrmsResponseBody.Employees[0].user.correspondenceCity == city
    
-        @User_Update_ValidDataWithAlltheParameters_02 @coreServices @regression @positive @updateProfile @eGovUser
+        @User_Update_ValidDataWithAlltheParameters_02 @coreServicesDontRun @regression @positive @updateProfile @eGovUser
         Scenario: Update existing user profile with all valid parameters
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -44,7 +44,7 @@ Background:
         # Validate that hrms search response size in not 0
         * assert hrmsResponseBody.Employees.size() > 0
 
-        @User_Update_NameWithSpecialCharacters_03 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_NameWithSpecialCharacters_03 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when an invalid username is passed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -56,7 +56,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidUserName
 
-        @User_Update_InvalidEmail_04 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_InvalidEmail_04 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when an invalid emailid is passed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -68,7 +68,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidEmail
 
-        @User_Update_InvalidMobileNumber_05 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_InvalidMobileNumber_05 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when an invalid phone number is passed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -80,7 +80,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidPhoneNumber
 
-        @User_Update_RandomDigit_MobileNumber_06 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_RandomDigit_MobileNumber_06 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the phone number is not get updated even though it is valid
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -93,7 +93,7 @@ Background:
         # Validate user's mobileNumber is not equal with rendomMobileNumber
         * assert hrmsResponseBody.Employees[0].user.mobileNumber != randomMobileNo 
 
-        @User_Update_InvalidGender_07 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_InvalidGender_07 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when an invalid gender is passed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -105,7 +105,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == errorMessage.errormessages.invalidGender
 
-        @User_Update_noTenantId_08 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_noTenantId_08 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when tenant id passed as null
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -117,7 +117,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-        @User_Update_noUUID_09 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_noUUID_09 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when UUID passed as blank
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -128,7 +128,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].description == errorMessage.errormessages.invalidUUID
 
-        @User_Update_InvalidUUID_10 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_InvalidUUID_10 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when an invalid UUID passed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -140,7 +140,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-        @User_Update_noID_11 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_noID_11 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when ID is removed
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -152,7 +152,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-        @User_Update_InvalidID_12 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_InvalidID_12 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the error message returned by API when ID is invalid
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
@@ -164,7 +164,7 @@ Background:
         # Checking actual error message returned by API with expected error message
         * assert updatedUserprofileResponseBody.Errors[0].message == genericError.errorMessages.unhandledException
 
-        @User_Update_NameWithMorethanMaxCharacters_13 @coreServices @regression @negative @updateProfile @eGovUser
+        @User_Update_NameWithMorethanMaxCharacters_13 @coreServicesDontRun @regression @negative @updateProfile @eGovUser
         Scenario: To verify the max length of characters of username
         # Assigning user's details from HRMS search user results
         * eval profilePayload.user = hrmsResponseBody.Employees[0].user
