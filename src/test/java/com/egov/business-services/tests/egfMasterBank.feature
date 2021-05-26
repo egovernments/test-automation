@@ -8,10 +8,10 @@
         * def bankDescription = 'Desc-'+randomString(3)
         * def isActive = false
         * def bankType = 'Type-'+randomString(3)
-        * def createBankPayload = read('../../business-services/requestPayload/egfMaster/bank/create.json')
+        * def createBankPayload = read('../../business-services/requestPayload/egf-master/bank/create.json')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-        * def updateBankPayload = read('../../business-services/requestPayload/egfMaster/bank/update.json')
-        * def searchBankPayload = read('../../business-services/requestPayload/egfMaster/bank/search.json')
+        * def updateBankPayload = read('../../business-services/requestPayload/egf-master/bank/update.json')
+        * def searchBankPayload = read('../../business-services/requestPayload/egf-master/bank/search.json')
         * def invalidTenantId = 'Invalid-'+randomString(3)
         * def uniqueBankId = 'Unique-'+randomString(4)
   
@@ -64,7 +64,7 @@
         # Assigning tenant id with invalid value
         * set createBankPayload.banks[0].tenantId = 'Invalid'+randomString(5)
         # Steps to create bank to generate error response
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBank')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInCreateBankUnAuthorized')
         # Validate the response
         * match createBankResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -184,7 +184,7 @@
     Scenario: Verify updating bank using API call by passing a invalid/non existing tenant id in the request body
         # Set an Invalid tenantId
         * set updateBankPayload.banks[0].tenantId = 'Invalid'+randomString(5)
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBank')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInUpdateBankUnAuthorized')
         # Validate that the error description returned by API due to Invalid tenantId is equal with expected error
         * match updateBankResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -253,7 +253,7 @@
     Scenario: Verify searching for Bank through API call by passing a invlalid or a non existing tenant id  and check for errors
         # Defining search parameters with InvalidTenantID
         * def searchParams = { tenantId: '#(invalidTenantId)', code: '#(bankCode)', name: '#(bankName)', description: '#(bankDescription)', active: '#(isActive)', type: '#(bankType)'}
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBank')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBankUnAuthorized')
         # Validate that the error returns by API due to invalid tenantId should be equal with expected error
         * match searchBankResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
         

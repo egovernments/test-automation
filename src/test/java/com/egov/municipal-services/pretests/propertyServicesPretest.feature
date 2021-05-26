@@ -8,7 +8,7 @@ Background:
   * def searchAssessmentRequest = read('../../municipal-services/requestPayload/property-services/searchAssessment.json')
   * def searchPropertyRequest = read('../../common-services/requestPayload/common/search.json')
   * def transferOwnershipRequest = read('../../municipal-services/requestPayload/property-services/ownership.json')
-  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pgServices/pgServicesSearch.json')
+  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pg-service/pgServicesSearch.json')
 @createPropertySuccessfully 
 Scenario: Create a property successfully 
 	Given url createpropertyUrl 
@@ -28,7 +28,16 @@ Scenario: Create a property error
 	Given url createpropertyUrl 
 	And request createPropertyRequest 
 	When method post 
-	Then assert responseStatus >=400 && responseStatus <=403 
+	Then status 400
+	And def propertyServiceResponseHeaders = responseHeaders 
+	And def propertyServiceResponseBody = response 
+
+@errorInCreatePropertyUnAuthorized
+Scenario: Create a property error 
+	Given url createpropertyUrl 
+	And request createPropertyRequest 
+	When method post 
+	Then status 403 
 	And def propertyServiceResponseHeaders = responseHeaders 
 	And def propertyServiceResponseBody = response 
 	
@@ -38,7 +47,7 @@ Scenario: Create a property error
 	* eval karate.remove('createPropertyRequest', removeFieldPath) 
 	And  request createPropertyRequest 
 	When  method post 
-	Then  assert responseStatus >=400 && responseStatus <=403 
+	Then  status 400
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response 
 	
@@ -105,7 +114,21 @@ Scenario: Update a property error
   Given  url updatePropertyUrl 
 	And  request updatePropertyRequest 
 	When  method post
-	Then  assert responseStatus >=400 && responseStatus <=403 
+	Then  status 400
+	And  def propertyServiceResponseHeaders = responseHeaders 
+	And  def propertyServiceResponseBody = response
+
+@errorInUpdatePropertyUnAuhtorized
+Scenario: Update a property error
+	* def workflow = updatePropertyRequest.Property.workflow 
+	* eval Property = karate.merge(Property, {'0': {'comment': '', 'assignee':[]}}) 
+	* eval updatePropertyRequest.Property = Property 
+	* eval updatePropertyRequest.Property.workflow = workflow 
+	* eval updatePropertyRequest.Property.workflow.action = 'VERIFY'
+  Given  url updatePropertyUrl 
+	And  request updatePropertyRequest 
+	When  method post
+	Then  status 403 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response
 
@@ -120,7 +143,7 @@ Scenario: Update a property error
   Given  url updatePropertyUrl 
 	And  request updatePropertyRequest 
 	When  method post
-	Then  assert responseStatus >=400 && responseStatus <=403 
+	Then  status 400
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response
 	
@@ -255,7 +278,23 @@ Scenario: Create assessment error
 	And  params assessmentParams
 	And  request createAssessmentRequest
 	When  method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+
+@errorInCreateAssessmentUnAuthorized
+Scenario: Create assessment error
+	* def assessmentParams =
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	Given  url createAssessment
+	And  params assessmentParams
+	And  request createAssessmentRequest
+	When  method post
+	Then  status 403
 	And  def propertyServiceResponseHeaders = responseHeaders
 	And  def propertyServiceResponseBody = response
 
@@ -275,7 +314,17 @@ Scenario: Create assessment error
 	And  params assessmentParams
 	And  request searchAssessmentRequest
 	When  method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+
+@errorInSearchAssessmentUnAuhtorized
+Scenario: Create assessment error
+	Given  url searchAssessment
+	And  params assessmentParams
+	And  request searchAssessmentRequest
+	When  method post
+	Then  status 403
 	And  def propertyServiceResponseHeaders = responseHeaders
 	And  def propertyServiceResponseBody = response
 
@@ -311,7 +360,25 @@ Scenario: Update assessment error
 	And  params assessmentParams
 	And  request updateAssessmentRequest
 	When  method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
+	And  def propertyServiceResponseHeaders = responseHeaders
+	And  def propertyServiceResponseBody = response
+	And def Assessment = propertyServiceResponseBody.Assessments[0]
+
+@errorInUpdateAssessmentUnAuthorized
+Scenario: Update assessment error
+	* def assessmentParams =
+	"""
+    {
+       tenantId: '#(tenantId)'
+    }
+    """
+	* eval updatePropertyRequest.Assessment = Assessment
+	Given  url updateAssessment
+	And  params assessmentParams
+	And  request updateAssessmentRequest
+	When  method post
+	Then  status 403
 	And  def propertyServiceResponseHeaders = responseHeaders
 	And  def propertyServiceResponseBody = response
 	And def Assessment = propertyServiceResponseBody.Assessments[0]

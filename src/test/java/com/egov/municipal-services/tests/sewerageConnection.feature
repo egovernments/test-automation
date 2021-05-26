@@ -6,7 +6,7 @@ Background:
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def sewerageConnectionConstants = read('../../municipal-services/constants/sewerageConnection.yaml')
-    * def sewerageCreateRequest = read('../../municipal-services/requestPayload/sewerageConnection/create.json')
+    * def sewerageCreateRequest = read('../../municipal-services/requestPayload/sewerage-connection/create.json')
     * def isWater = true
     * def isSewerage = true
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.initiate

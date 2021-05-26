@@ -1,9 +1,9 @@
 Feature: NOC Service Pretest
 
 Background:
-    * def createNocRequest = read('../../municipal-services/requestpayload/noc/create.json')
-    * def updateNOCRequest = read('../../municipal-services/requestpayload/noc/update.json')
-    * def searchNOCRequest = read('../../municipal-services/requestpayload/noc/search.json')
+    * def createNocRequest = read('../../municipal-services/requestPayload/noc-service/create.json')
+    * def updateNOCRequest = read('../../municipal-services/requestPayload/noc-service/update.json')
+    * def searchNOCRequest = read('../../municipal-services/requestPayload/noc-service/search.json')
 
 @successCreateNOCRequest
 Scenario: Create NOC Request successfully
@@ -24,7 +24,17 @@ Scenario: Create Failed NOC Request
     Given url createNOCUrl
     And request createNocRequest 
     When method post 
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def nocResponseHeaders = responseHeaders 
+    And def nocResponseBody = response
+    * print nocResponseBody
+
+@failCreateNOCRequestUnAuthoriszed
+Scenario: Create Failed NOC Request
+    Given url createNOCUrl
+    And request createNocRequest 
+    When method post 
+    Then status 403
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     * print nocResponseBody
@@ -51,7 +61,7 @@ Scenario: Search NOC With Valid Data
     * print searchNOCParams
     And request searchNOCRequest 
     When method post 
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     * print nocResponseBody
@@ -72,7 +82,7 @@ Scenario: Update NOC With InValid Data
     And request updateNOCRequest 
     When method post
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then statu 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     * print nocResponseBody

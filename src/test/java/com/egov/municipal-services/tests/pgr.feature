@@ -53,7 +53,7 @@ Scenario: Create PGR With Invalid Service
 Scenario: Create PGR With Invalid TenantId
     # Create a property
     * def tenantId = randomString(10)
-    * call read('../../municipal-services/pretests/pgrPretest.feature@failCreatePGRRequest')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@failCreatePGRRequestUnAuthorized')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantId
     * match pgrResponseBody.Errors[0].message ==pgrConstants.errors.errorMessages.invalidTenantId
@@ -136,7 +136,7 @@ Scenario: Update PGR With Invalid Tenant Id
     * call read('../../municipal-services/pretests/pgrPretest.feature@successfullySearchPGRRequest')
     * def invalidTenantId = randomString(10)
     * set serviceDetails.tenantId = invalidTenantId
-    * call read('../../municipal-services/pretests/pgrPretest.feature@failUpdatePGRRequest')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@failUpdatePGRRequestAuthorized')
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantId
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.invalidTenantId
 
@@ -171,7 +171,7 @@ Scenario: Search PGR With No Tenant Id
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
     #* def searchPGRParams = {mobileNumber: '#(mobileNumber)', serviceRequestId: '#(serviceRequestId)'}
     * def searchPGRParams = {mobileNumber: '#(mobileNumber)', serviceRequestId:'#(serviceRequestId)'}
-    * call read('../../municipal-services/pretests/pgrPretest.feature@UnsuccessfullySearchPGRRequestwithInvalidTenantId')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@errorSearchPGRRequestwithInvalidTenantId')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantSearch
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.blankTenantId
@@ -220,7 +220,7 @@ Scenario: Search PGR With invalid mobile number
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
     * def invalidMobileNumber = randomString(9)
     * def searchPGRParams = { tenantId: '#(tenantId)', mobileNumber: '#(invalidMobileNumber)'    , serviceRequestId: '#(invalidServiceRequestId)' }
-    * call read('../../municipal-services/pretests/pgrPretest.feature@UnsuccessfullySearchPGRRequestwithInvalidTenantId')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@errorSearchPGRRequestwithInvalidTenantId')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidMobileNumber
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.invalidMobileNumber

@@ -13,7 +13,7 @@ Background:
   * def callbackUrl = envHost + envCommon.endPoints.pgServices.payload
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def gateway = commonConstants.parameters.gateway
-  * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
+  * def pgServicesCreatePayload = read('../../core-services/requestPayload/pg-service/pgServicesCreate.json')
 
 @PGCreate_01  @coreServices @regression @positive  @pgservices
 Scenario: Verify creating a payment transaction

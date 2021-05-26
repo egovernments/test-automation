@@ -110,7 +110,7 @@ Background:
     @tradeLicenseCreate8 @municipalServices @regression @negative @tradeLicenseCreate @tradeLicense
     Scenario: Test to create Trade License With Invalid Tenant Id
     * def tenantId = invalidTenantId
-    * call read('../../municipal-services/pretests/tradeLicensePretest.feature@errorCreateTradeLicense')
+    * call read('../../municipal-services/pretests/tradeLicensePretest.feature@errorCreateTradeLicenseUnAuthorized')
     # #Match the response
     * match tradeLicenseResponseBody.Errors[0].code == tradeLicenseConstants.errors.errorCodes.invalidTenantId
     * match tradeLicenseResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError

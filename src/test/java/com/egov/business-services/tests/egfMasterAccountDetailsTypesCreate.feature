@@ -220,5 +220,5 @@ Scenario: Search All AccountdetailsTypes
 Scenario: Search AccountdetailsTypes with Invalid tenantID
 # Accountdetailtypes Search_InvalidTenantID_06
 * def tenantId = "pb."+randomString(5)
-* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeSearch')
+* call read('../../business-services/pretest/egfMasterAccountDetailsTypesPreTest.feature@negativeSearchUnAuthorized')
 * match $.Errors[0].message == egfMasterAccountDetailTypesConstant.errorMessages.forbiddenError

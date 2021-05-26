@@ -8,14 +8,14 @@ Background:
   * def fullyQualifiedName = randomString(3)+"/"+tableName
   * def description = 'TEST_'+randomString(5)
   * def active = egfMasterConstants.chartOfAccountDeatails.params.active
-  * def chartOfAccountCreatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccount/create.json')
-  * def chartOfAccountSearchPayload = read('../../business-services/requestPayload/egfMaster/chartOfAccount/search.json')
-  * def chartOfAccountUpdatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccount/update.json')
-  * def accountDetailsTypePayload = read('../../business-services/requestPayload/egfMaster/accountDetailsType.json')
-  * def accountDetailsUpdatePayload = read('../../business-services/requestPayload/egfMaster/chartOfAccountDetails/update.json')
-  * def createBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/create.json')
-  * def updateBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/update.json')
-  * def searchBankBranchPayload = read('../../business-services/requestPayload/egfMaster/bankBranches/search.json')
+  * def chartOfAccountCreatePayload = read('../../business-services/requestPayload/egf-master/chartOfAccount/create.json')
+  * def chartOfAccountSearchPayload = read('../../business-services/requestPayload/egf-master/chartOfAccount/search.json')
+  * def chartOfAccountUpdatePayload = read('../../business-services/requestPayload/egf-master/chartOfAccount/update.json')
+  * def accountDetailsTypePayload = read('../../business-services/requestPayload/egf-master/accountDetailsType.json')
+  * def accountDetailsUpdatePayload = read('../../business-services/requestPayload/egf-master/chartOfAccountDetails/update.json')
+  * def createBankBranchPayload = read('../../business-services/requestPayload/egf-master/bankBranches/create.json')
+  * def updateBankBranchPayload = read('../../business-services/requestPayload/egf-master/bankBranches/update.json')
+  * def searchBankBranchPayload = read('../../business-services/requestPayload/egf-master/bankBranches/search.json')
 
   
 @createAccountSuccessfully
@@ -210,7 +210,7 @@ Scenario: Updating chart of accounts and check for error through API call
     #* print accountDetailsCreateResponse
     And def accountDetailsCreateResponse = response
 
-@errorInCreateChartOfAccountDetails
+@errorInCreateChartOfAccountDetailsUnAuthorized
     Scenario: Negative pretest to create chart of account details
     * def params = 
     """
@@ -222,7 +222,22 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request requestPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 403
+    Then status 403
+    And def accountDetailsCreateResponse = response
+
+@errorInCreateChartOfAccountDetailsInternalServerError
+    Scenario: Negative pretest to create chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url createAccountDetails
+    And params params
+    And request requestPayload
+    When method post
+    Then status 500
     And def accountDetailsCreateResponse = response
 
 @updateChartOfAccountDetails
@@ -253,7 +268,37 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request requestPayloadToUpdate
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def updateResponse = response
+
+@errorInUpdateChartOfAccountDetailsUnAuthorized
+    Scenario: Negative pretest to update chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url updateAccountDetails
+    And params params
+    And request requestPayloadToUpdate
+    When method post
+    Then status 403
+    And def updateResponse = response
+
+@errorInUpdateChartOfAccountDetailsServerError
+    Scenario: Negative pretest to update chart of account details
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url updateAccountDetails
+    And params params
+    And request requestPayloadToUpdate
+    When method post
+    Then status 500
     And def updateResponse = response
     
 @searchChartOfAccountDetails
@@ -303,7 +348,22 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request createBankPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then status 400
+    And def createBankResponse = response
+
+@errorInCreateBankUnAuthorized
+    Scenario: Negative pretest to create Bank
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankCreate
+    And params params
+    And request createBankPayload
+    When method post
+    Then status 403
     And def createBankResponse = response
 
 @updateBank
@@ -333,7 +393,22 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request updateBankPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then status 400
+    And def updateBankResponse = response
+
+@errorInUpdateBankUnAuthorized
+    Scenario: Negative pretest to update Bank
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    Given url bankUpdate
+    And params params
+    And request updateBankPayload
+    When method post
+    Then status 403
     And def updateBankResponse = response
 
 @searchBank
@@ -351,7 +426,16 @@ Scenario: Updating chart of accounts and check for error through API call
     And params searchParams
     And request searchBankPayload
     When method post
-    Then assert responseStatus == 403 || responseStatus == 400
+    Then status 400
+    And def searchBankResponse = response
+
+@errorInSearchBankUnAuthorized
+    Scenario: Negative pretest to search Bank
+    Given url bankSearch
+    And params searchParams
+    And request searchBankPayload
+    When method post
+    Then status 403
     And def searchBankResponse = response
 
 # Pretest scenarios for Bank Branch Service
@@ -383,7 +467,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request createBankBranchPayload
     When method post
-    Then assert responseStatus == 500 || responseStatus == 403 || responseStatus == 400
+    Then status 400
     And def createBankBranchResponse = response
     * def bankBranches = createBankBranchResponse.bankBranches
 
@@ -441,9 +525,23 @@ Scenario: Updating chart of accounts and check for error through API call
     And params params
     And request updateBankBranchPayload
     When method post
-    * print response
-    * print responseStatus
-    Then assert responseStatus >= 400
+    Then status 400
+    And def updateBankBranchResponse = response
+
+@errorInUpdateBankBranchUnAuthorized
+    Scenario: Update Bank Branch Error
+    * def params = 
+    """
+    {
+        tenantId: '#(tenantId)'
+    }    
+    """
+    * eval updateBankBranchPayload.bankBranches = bankBranches
+    Given url bankBranchUpdate
+    And params params
+    And request updateBankBranchPayload
+    When method post
+    Then status 403
     And def updateBankBranchResponse = response
 
 @errorInUpdateBankBranchWithInvalidTenantId
@@ -480,5 +578,14 @@ Scenario: Updating chart of accounts and check for error through API call
     And params searchParams
     And request searchBankBranchPayload
     When method post
-    Then assert responseStatus == 403 || responseStatus == 400
+    Then status 400
+    And def searchBankBranchResponse = response
+
+@errorInSearchBankBranchUnAuthorized
+    Scenario: To search Bank Branch
+    Given url bankBranchSearch
+    And params searchParams
+    And request searchBankBranchPayload
+    When method post
+    Then status 403
     And def searchBankBranchResponse = response
