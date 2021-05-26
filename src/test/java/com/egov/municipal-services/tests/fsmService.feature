@@ -3,7 +3,7 @@ Feature: Fire NOC Service Tests
 Background:
     * def jsUtils = read('classpath:jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
-    * Thread.sleep(10000)
+    * Thread.sleep(3000)
     * def propertyType = mdmsStateFsmService.PropertyType[1].code
     * def vehicalType = mdmsStateFsmService.VehicleType[2].code
     * def noOfTrips = mdmsStateFsmService.Config[0].default

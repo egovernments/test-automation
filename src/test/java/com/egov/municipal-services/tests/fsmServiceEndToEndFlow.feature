@@ -39,7 +39,7 @@ Scenario: Login as a citizen
     * call read('../../municipal-services/tests/fsmService.feature@fsm_search_location_01')
     # creating FSM using Citizen
     * call read('../../municipal-services/tests/fsmService.feature@fsm_create_01')
-    * Thread.sleep(15000)
+    * Thread.sleep(5000)
     # creating No Slum for FSM
     * call read('../../municipal-services/tests/fsmService.feature@fsm_create_NoSLum_01')
     # need to check Kafka step
