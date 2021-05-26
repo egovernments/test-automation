@@ -23,6 +23,7 @@ DIGIT Test Automation framework majorly deals with various API services validati
  * [Karate](https://github.com/intuit/karate)
  * [Cucumber](https://cucumber.io/docs/cucumber/api/)
  * [JUnit](https://junit.org/junit4/)
+ * [kafka REST Proxy - Coming soon](https://github.com/confluentinc/kafka-rest)
 
 ## Dependencies Used
 In this section we have listed down some of the major libraries which is being used by the test automation framework as a `maven dependency` that is defined in `pom.xml`. 
@@ -55,6 +56,8 @@ To set up this framework, two mandatory softwares need to be installed into the 
  * To install OpenJDK 8 with brew, execute `$ brew cask install adoptopenjdk8` on terminal
  * To install maven into the system, execute `$ brew install maven` on terminal
  * [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/mac)
+
+* [Jenkins Setup](https://digit-discuss.atlassian.net/wiki/spaces/EPE/pages/1620934657/Jenkins+Setup+Tutorial+for+Automation)
  
 <!--Clone Project-->
 ## Clone Project
@@ -66,9 +69,14 @@ git clone https://github.com/egovernments/test-automation.git
 
 <!--Configurations-->
 ## Configurations
+
   ### Application Level 
   * Create role action mapping as per the requirement 
   * Create a new user as per the mapped role
+  * Disabled the resource creation rate limit for the environment where the automation scripts will be executed
+  * Configure and deploy Kafka REST Proxy tool in the environment with other services. Kafka Cluster can be accessed through proxy API created by kafka REST Proxy.
+  * Currently kafka related testcases will not run as we are waiting for the latest version of the tool to be releases officially.
+   
   ### Project Level 
    Environment configuration files needs to be created in `local` by following below steps.
    * Create environment specific files with `.yaml` extension anywhere in the local directory 
@@ -76,35 +84,43 @@ git clone https://github.com/egovernments/test-automation.git
    * Please keep the environment specific data in the config file as per below format.  
    #### For example
    ```yaml
-    host: https://qa.xxx.xxx/
+    host: https://qa.digit.org/
+    # This parameter is used in authorization header
+    basicAuthorization: ZWdvdi11c2VyLWNsaWVudDo=
+    # This parameter will be removed once kafka rest proxy is accessible
+    localhost: http://localhost:8082/
+    # This parameter is used to mock kafka test cases until the kafka rest proxy 6.2 is released
+    mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
+    # This parameter is used to check the kafka offset movement threshold percentage
+    kafkaOffsetThresholdPercentage: 75
     stateCode: pb
     cityCode: amritsar
-# Super User credentials for login(need to create user manually)
-superUser:
-     userName: <username goes here>
-     password: <password goes here>
-     type: <user type goes here>
-# Employee username and password to update an existing user's profile (need to create user manually)
-employee:
-     userName: <username goes here>
-     password: <password goes here>
-     type: <user type goes here>
-# Citizen's username and password needed for Property End to End flow (need to create user manually)
-citizen:
-     userName: <username goes here>
-     password: <password goes here>
-     type: <user type goes here>
-# Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
-alternateCitizen:
-     userName: <username goes here>
-     password: <password goes here>
-     type: <user type goes here>
-# Counter Employee's username and password, required for multiple use (need to create user manually)
-counterEmployeeUser:
-     userName: <username goes here>
-     password: <password goes here>
-     type: <user type goes here>
- ```
+    # Super User credentials for login(need to create user manually)
+    superUser:
+      userName: <username goes here>
+      password: <password goes here>
+      type: <user type goes here>
+    # Employee username and password to update an existing user's profile (need to create user manually)
+    employee:
+      userName: <username goes here>
+      password: <password goes here>
+      type: <user type goes here>
+    # Citizen's username and password needed for Property End to End flow (need to create user manually)
+    citizen:
+      userName: <username goes here>
+      password: <password goes here>
+      type: <user type goes here>
+    # Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
+    alternateCitizen:
+      userName: <username goes here>
+      password: <password goes here>
+      type: <user type goes here>
+    # Counter Employee's username and password, required for multiple use (need to create user manually)
+    counterEmployeeUser:
+      userName: <username goes here>
+      password: <password goes here>
+      type: <user type goes here>
+   ```
  
 <!--List Of Tags--> 
 ## List Of Tags
@@ -135,15 +151,20 @@ Please use the appropriate tags to execute tests based on the requirement.
 ### Service Category Tags
 | Tags          		      | Description   			                           |        
 | ------------- 		      |:-------------:			                           |
-| @core-services        | Runs all services under core services       |
-| @business-services    | Runs all services under business services   |
-| @municipal-services   | Runs all services under municipal services  |
+| @coreServices        | Runs all services under core services       |
+| @businessServices    | Runs all services under business services   |
+| @municipalServices   | Runs all services under municipal services  |
 
 ### Test Category Tags
 | Tags          		      | Description   			                                     |        
 | ------------- 		      |:-------------:			                                     |
 | @regression           | Runs all regression tests across all services         |
 | @smoke                | Runs all smoke tests across all services (coming soon)|
+
+### Kafka Service tags
+| Tags                  | Description                                   |
+| -------------         |:--------------:                               |
+| @kafkaServices        | Runs all kafka releated services(coming soon) |
 
 
 <!--Execution-->  
