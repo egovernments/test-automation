@@ -16,22 +16,23 @@ Background:
     * def source = "BPA"
     * def comment = randomString(10)
     * def action = nocConstants.actions.forward
+
 @NOCCreate1 @createNOC  @positive @regression @NOCService @municipalServices
-Scenario: Create Fire Noc With Valid Data
+Scenario: Create  Noc With Valid Data
     # Create a NOC
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     # Validate response body
     * match nocResponseBody.Noc[0].tenantId == "#present"
     * match nocResponseBody.Noc[0].nocType == nocType
 @NOCCreate1 @createNOC  @positive @regression @NOCService @municipalServices
-Scenario: Create Fire Noc With Valid Data
+Scenario: Create Noc With Valid Data
     # Create a NOC
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     # Validate response body
     * match nocResponseBody.Noc[0].tenantId == "#present"
     * match nocResponseBody.Noc[0].nocType == nocConstants.nocType.fireNoc
 @NOCCreate2 @createNOC  @positive @regression @NOCService @municipalServices
-Scenario: Create Fire Noc With invalid Tenant Id
+Scenario: Create Noc With invalid Tenant Id
     # Create a NOC
     * def tenantId = randomString(10)
     * call read('../../municipal-services/pretests/NOCPretest.feature@failCreateNOCRequestUnAuthoriszed')
@@ -40,7 +41,7 @@ Scenario: Create Fire Noc With invalid Tenant Id
     * match nocResponseBody.Errors[0].code == nocConstants.Errors.errorCodes.invalidTenantId
 
 @NOCCreate3 @createNOC  @positive @regression @NOCService @municipalServices
-Scenario: Create Fire Noc With invalid NOC Type
+Scenario: Create Noc With invalid NOC Type
     # Create a NOC
     * def nocType = randomString(10)
     * call read('../../municipal-services/pretests/NOCPretest.feature@failCreateNOCRequest')
@@ -49,7 +50,7 @@ Scenario: Create Fire Noc With invalid NOC Type
     * match nocResponseBody.Errors[0].message == replaceString(nocConstants.Errors.errorMessages.invalidNOCType,"<<noc_type>>",nocType)
 
 @NOCCreate4 @createNOC  @positive @regression @NOCService @municipalServices
-Scenario: Create Fire Noc With invalid soruce
+Scenario: Create Noc With invalid soruce
     # Create a NOC
     * def source = ""
     * call read('../../municipal-services/pretests/NOCPretest.feature@failCreateNOCRequest')
@@ -58,7 +59,7 @@ Scenario: Create Fire Noc With invalid soruce
     * match nocResponseBody.Errors[0].message == nocConstants.Errors.errorMessages.invalidSource
 
 @NOCSearch1 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Search NOC with Valid Data
+Scenario: Search with Valid Data
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { tenantId: '#(tenantId)', id: '#(nocId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithValidData')
@@ -66,7 +67,7 @@ Scenario: Search NOC with Valid Data
     * match nocResponseBody.Noc[0].nocType == nocType
 
 @NOCSearch2 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Search NOC with No Tenant Id
+Scenario: Search with No Tenant Id
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { id: '#(nocId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithInvalidData')
@@ -74,7 +75,7 @@ Scenario: Search NOC with No Tenant Id
     * match nocResponseBody.Errors[0].message == nocConstants.Errors.errorMessages.searchNoTenantId
 
 @NOCSearch3 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Search NOC with only tenant id
+Scenario: Search with only tenant id
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { tenantId: '#(tenantId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithValidData')
@@ -82,7 +83,7 @@ Scenario: Search NOC with only tenant id
 
 
 @NOCUpdate1 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Update NOC with Valid Data
+Scenario: Update with Valid Data
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { tenantId: '#(tenantId)', id: '#(nocId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithValidData')
@@ -91,7 +92,7 @@ Scenario: Update NOC with Valid Data
     * match nocResponseBody.Noc[0].nocType == nocConstants.nocType.fireNoc
 
 @NOCUpdate2 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Update NOC with Invalid Id
+Scenario: Update with Invalid Id
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { tenantId: '#(tenantId)', id: '#(nocId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithValidData')
@@ -103,7 +104,7 @@ Scenario: Update NOC with Invalid Id
 
 #BUG - JSON RESPONSE IS NOT FORMATTED PROPERLY
 @NOCUpdate3 @searchNOC  @positive @regression @NOCService @municipalServices
-Scenario: Update NOC with Invalid WF
+Scenario: Update with Invalid WF
     * call read('../../municipal-services/pretests/NOCPretest.feature@successCreateNOCRequest')
     * def searchNOCParams = { tenantId: '#(tenantId)', id: '#(nocId)'}
     * call read('../../municipal-services/pretests/NOCPretest.feature@searchNOCWithValidData')

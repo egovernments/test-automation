@@ -192,10 +192,12 @@ Scenario: Common negative pre test of creating a Payment
   Scenario: Collection Service success workflow call
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
+  * print workflowRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
+  * print response
 
 # Search Payment
 

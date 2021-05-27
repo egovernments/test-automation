@@ -552,3 +552,10 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmNoSlumSuccessfully')
     * match fsmResponseBody.fsm[0].id == '#present'
     * match fsmResponseBody.fsm[0].applicationNo == '#present'
+
+
+    @fsm_update_without_creation @positive @regression @municipalService @fsmService @fsmServiceUpdate
+    Scenario: Verify updating a fsm service application through API
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@updateFsmSuccessfully')
+    * match fsmResponseBody.fsm[0].id == '#present'
+    * match fsmResponseBody.fsm[0].applicationNo == '#present'

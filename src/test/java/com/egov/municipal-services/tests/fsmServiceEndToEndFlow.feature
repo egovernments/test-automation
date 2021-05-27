@@ -31,7 +31,7 @@ Background:
     * def businessService = "FSM"
     
 @createFsmAsCitizen @fsmEndToEnd
-Scenario: Login as a citizen
+Scenario: Login as a citizen and create FSM
     # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
     # searching locations
@@ -41,10 +41,8 @@ Scenario: Login as a citizen
     * call read('../../municipal-services/tests/fsmService.feature@fsm_create_01')
     * Thread.sleep(5000)
     # creating No Slum for FSM
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
     * call read('../../municipal-services/tests/fsmService.feature@fsm_create_NoSLum_01')
-    # need to check Kafka step
-
-
     # login using super suer
     * def authToken = superUserAuthToken
     # step for serching FSM
@@ -60,16 +58,81 @@ Scenario: Login as a citizen
     * def getFsmSearchParam = { tenantId: '#(tenantId)'}
     * call read('../../municipal-services/tests/fsmService.feature@trip_search_01')
     # need to create FSM Calculator Billing slab api
-
-
-    # update FSM
-    * call read('../../municipal-services/tests/fsmService.feature@fsm_update_01')
+    * call read('../../municipal-services/tests/fsmServiceEndToEndFlow.feature@fsm_billing_slab_calculate_1')
+    # update FSM --> update the workflow to SUBMIT
+    * set fsmbody.workflow.action = "SUBMIT"
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_update_without_creation')
     # need to create FSM Calculator Estimate api
-
+    *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_estimate_1') 
     # need to create FSM Calculator Demand Create
+    *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_calculate_1') 
 
-    # need to verify Kafka step
 
-    # login to citizon for payment 
+@createFsmAsCitizen @fsmEndToEnd
+Scenario: Login as a citizen and create FSM
+    # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
+    # searching locations
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_search_location_01')
+    # creating FSM using Citizen
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_create_01')
+    * Thread.sleep(15000)
+    # creating No Slum for FSM
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_create_NoSLum_01')
+    # login using super suer
+    * def authToken = superUserAuthToken
+    # step for serching FSM
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_search_01')
+    # step to verify vendor Search
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@vendor_Search_01')
+    # step to verify vehical Search
+    * def getFsmSearchParam = { tenantId: '#(tenantId)',"type": '#(vehicalType)'}
+    * call read('../../municipal-services/tests/fsmService.feature@vehicle_search_01')
+    # step to verify vehical trip Search
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@trip_search_01')
+    # need to create FSM Calculator Billing slab api
+    * call read('../../municipal-services/tests/fsmServiceEndToEndFlow.feature@fsm_billing_slab_calculate_1')
+    # update FSM --> update the workflow to SUBMIT
+    * set fsmbody.workflow.action = "SUBMIT"
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_update_without_creation')
+    # need to create FSM Calculator Estimate api
+    *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_estimate_1') 
+    # need to create FSM Calculator Demand Create
+    *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_calculate_1') 
+    # login as citizen
+    * def authToken = citizenAuthToken
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_search_01')
+    # verify the bill details through API call
+    * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
+    # Verify PG services API Call
+    * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
+    # Verify Billing Service Demand Search
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@searchDemand')
+    # Verify PDF Service Create
+    * def pdfCreatePayload = read('../../core-services/requestPayload/pdfService/pdfCreate.json')
+    # Verify FSM Search
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_search_01')
+    # Assign Vehicle
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+    * call read('../../municipal-services/tests/fsmService.feature@vendor_Search_01')
+
+@DisposeWaste @fsmEndToEnd
+Scenario: Login as FSPTO and dispose waste
+    # Steps to login as Citizen and Create a FSM
+    # searching locations
+    * def getFsmSearchParam = { tenantId: '#(tenantId)'}
+  * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmSuccessfully')
+    * def getFsmVendorSearchParam = {"tenantId": '#(tenantId)'}
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vendorSearchFsmSuccessfully')
+    * def getFsmVehicalSearchParam = {"tenantId": '#(tenantId)',"type": '#(vehicalType)'}
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalSearchFsmSuccessfully')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmSuccessfully')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripUpdateFsmSuccessfully')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@SearchFsmSuccessfully')
     
