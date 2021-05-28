@@ -183,6 +183,7 @@ Please use the appropriate tags to execute tests based on the requirement.
 | @coreServices        | Runs all services under core services       |
 | @businessServices    | Runs all services under business services   |
 | @municipalServices   | Runs all services under municipal services  |
+| @e2eServices         | Runs all e2e service tests                  |
 
 ### Test Category Tags
 | Tags          		      | Description   			                                     |        
