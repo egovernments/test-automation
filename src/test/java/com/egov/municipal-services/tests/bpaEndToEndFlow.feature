@@ -129,7 +129,7 @@ Scenario: Register Architect
 
 
 
-@bpae2e1 @positive @bpae2eservice
+@bpae2e1 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
@@ -226,7 +226,7 @@ Scenario: Verify BPA e2e scenarios
 
 
 
-@bpae2e2 @positive @bpae2eservice
+@bpae2e2 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Highend
     * print "RUNNING SCNEARIOS"
     * def riskType = mdmsStateBPA.RiskTypeComputation[0].riskType
@@ -299,7 +299,7 @@ Scenario: Verify BPA e2e scenarios - Highend
     * match BPA.accountId == "#present"
     * match BPA.applicationNo == "#present"
 
-@bpae2e3 @positive @bpae2eservice
+@bpae2e3 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
@@ -349,7 +349,7 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     * match BPA.applicationNo == "#present"
 
 
-@bpae2e4 @positive  @bpae2eservice
+@bpae2e4 @positive  @bpae2eservice  @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
