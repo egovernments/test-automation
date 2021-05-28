@@ -4,7 +4,7 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
  # calling property creation test which is required for workflow process
   * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-  * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/eGov-workflow/process/processSearch.json')
+  * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/egov-workflow/process/processSearch.json')
   * def processSearchConstant = read('../../core-services/constants/eGovWorkFlowProcessSearch.yaml')
   # initializing request payload objects
   * def history = 'true'

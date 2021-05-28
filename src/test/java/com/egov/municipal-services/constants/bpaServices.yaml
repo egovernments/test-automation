@@ -46,3 +46,6 @@ errorMessages:
   ownershipError: ' LandInfo service call failed.'
   calculateError: Failed to get calculationType
   invalidUserError: EG WF ERROR
+
+dob:
+  DOB: "676578599000"
