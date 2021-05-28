@@ -75,11 +75,6 @@ function() {
          config.counterEmployeePassword = envProps.counterEmployeeUser.password;
          config.counterEmployeeType = envProps.counterEmployeeUser.type;
         
-         // username & password for Architect Employee user
-         config.citizenArchitectUsername = envProps.citizenArchitect.userName;
-         config.citizenArchitectPassword = envProps.citizenArchitect.password;
-         config.citizenType = envProps.citizen.type;
-
        //  username & password for Architect Employee user
          config.citizenArchitectUsername = envProps.citizenArchitect.userName;
          config.citizenArchitectPassword = envProps.citizenArchitect.password;
