@@ -30,8 +30,8 @@ Background:
     * def trip = 2220
     * def businessService = "FSM"
     
-@createFsmAsCitizen @fsmEndToEnd
-Scenario: Login as a citizen and create FSM
+@createFsmAsCitizen @fsmEndToEnd @e2eServices
+Scenario: Login as a citizen
     # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
     # searching locations
@@ -68,7 +68,7 @@ Scenario: Login as a citizen and create FSM
     *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_calculate_1') 
 
 
-@createFsmAsCitizen @fsmEndToEnd
+@createFsmAsCitizen @fsmEndToEnd @e2eServices
 Scenario: Login as a citizen and create FSM
     # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
@@ -122,7 +122,7 @@ Scenario: Login as a citizen and create FSM
     * def getFsmSearchParam = { tenantId: '#(tenantId)'}
     * call read('../../municipal-services/tests/fsmService.feature@vendor_Search_01')
 
-@DisposeWaste @fsmEndToEnd
+@DisposeWaste @fsmEndToEnd @e2eServices
 Scenario: Login as FSPTO and dispose waste
     # Steps to login as Citizen and Create a FSM
     # searching locations

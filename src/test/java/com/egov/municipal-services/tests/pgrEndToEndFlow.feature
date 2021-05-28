@@ -6,7 +6,7 @@ Background:
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(5000)
 
-@createPgrComplaintEndTotEndFlow @pgrEndToEndFlow
+@createPgrComplaintEndTotEndFlow @pgrEndToEndFlow @e2eServices
 Scenario: Login as a citizen and files a Complaint
     # Steps to validate error messages of login attempt with invalid mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo')
@@ -90,7 +90,7 @@ Scenario: Login as a citizen and files a Complaint
     * call read('../../municipal-services/pretests/pgrPretest.feature@PGRUpdate1')
 
 
-@createPgrComplaintForCSREndTotEndFlow @pgrEndToEndFlow
+@createPgrComplaintForCSREndTotEndFlow @pgrEndToEndFlow @e2eServices
 Scenario: Login as a citizen and files a Complaint
     # Steps to login as Citizen and files Complaint
     * def authToken = superUserAuthToken

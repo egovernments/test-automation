@@ -37,7 +37,7 @@ Scenario: Create PGR Request With Failure
     And request createPGRRequest 
     When method post 
     * print response
-    Then statu 403
+    Then status 403
     * print response
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
