@@ -84,9 +84,9 @@ git clone https://github.com/egovernments/test-automation.git
    * Please keep the environment specific data in the config file as per below format.  
    #### For example
    ```yaml
-    host: https://qa.digit.org/
+    host: <Host URL goes here>
     # This parameter is used in authorization header
-    basicAuthorization: ZWdvdi11c2VyLWNsaWVudDo=
+    basicAuthorization: <Basic Authorization Encoded String goes here>
     # This parameter will be removed once kafka rest proxy is accessible
     localhost: http://localhost:8082/
     # This parameter is used to mock kafka test cases until the kafka rest proxy 6.2 is released
@@ -99,27 +99,31 @@ git clone https://github.com/egovernments/test-automation.git
     superUser:
       userName: <username goes here>
       password: <password goes here>
-      type: <user type goes here>
+      type: EMPLOYEE
     # Employee username and password to update an existing user's profile (need to create user manually)
     employee:
       userName: <username goes here>
       password: <password goes here>
-      type: <user type goes here>
+      type: EMPLOYEE
     # Citizen's username and password needed for Property End to End flow (need to create user manually)
     citizen:
       userName: <username goes here>
       password: <password goes here>
-      type: <user type goes here>
+      type: CITIZEN
     # Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
     alternateCitizen:
       userName: <username goes here>
       password: <password goes here>
-      type: <user type goes here>
+      type: CITIZEN
     # Counter Employee's username and password, required for multiple use (need to create user manually)
     counterEmployeeUser:
       userName: <username goes here>
-      password: <password goes here>
+      password: EMPLOYEE
       type: <user type goes here>
+    citizenArchitect:
+      userName: <username goes here>
+      password: <username goes here>
+      type: CITIZEN
    ```
  
 <!--List Of Tags--> 
