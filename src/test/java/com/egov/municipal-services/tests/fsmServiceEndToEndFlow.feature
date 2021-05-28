@@ -30,7 +30,7 @@ Background:
     * def trip = 2220
     * def businessService = "FSM"
     
-@createFsmAsCitizen @fsmEndToEnd @e2eServices @e2eServices
+@createFsmAsCitizen @fsmEndToEnd @e2eServices
 Scenario: Login as a citizen
     # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
