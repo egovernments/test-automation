@@ -4,12 +4,12 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
     #egfInstrumet-Instruments Requests
-  * def instrumentCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/create.json')
-  * def instrumentUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/update.json')
-  * def instrumentSearchRequest = read('../../business-services/requestPayload/dashboard-analytics/instrument/search.json')
-  * def createSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/create.json')
-  * def updateSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/update.json')
-  * def searchSurrenderReasonRequest = read('../../business-services/requestPayload/dashboard-analytics/surrenderReasons/search.json')
+  * def instrumentCreateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/create.json')
+  * def instrumentUpdateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/update.json')
+  * def instrumentSearchRequest = read('../../business-services/requestPayload/egf-instrument/instrument/search.json')
+  * def createSurrenderReasonRequest = read('../../business-services/requestPayload/egf-instrument/surrenderReasons/create.json')
+  * def updateSurrenderReasonRequest = read('../../business-services/requestPayload/egf-instrument/surrenderReasons/update.json')
+  * def searchSurrenderReasonRequest = read('../../business-services/requestPayload/egf-instrument/surrenderReasons/search.json')
 
   # Instrument Types prtests
 
