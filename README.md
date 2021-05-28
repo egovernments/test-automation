@@ -126,31 +126,60 @@ git clone https://github.com/egovernments/test-automation.git
 ## List Of Tags
 Please use the appropriate tags to execute tests based on the requirement.
 
-### Individual service tags
+### Core services tags
+| Tags          		              | Description   			             |        
+| ------------- 		              |:-------------:			             | 
+| @reports      		              | Reports tests 			             | 
+| @url_Shorterning_Invalid      | Url Shortening                |
+| @Searcher     		              | Searcher tests                |
+| @location     		              | Location tests			             |
+| @localization 		              | Loacalization tests		         |
+| @userotp      		              | User OTP tests			             |
+| @eGovUser				                 | User profile update tests     |
+| @accessControl		              | Access control tests 		       |
+| @mdmsService         		       | MDMS tests				                |
+| @userAccountAfterLock 	       | User Account After Lock tests	|
+| @zuul                         | Zuul tests		                  |
+| @eGovPdf                      | PDF Service tests			          |
+| @idGenerate			                | ID generation tests		         |
+| @egovWorkflowBusniessService  | eGov Workflow tests			        |
+| @fileStore			                 | File store tests			           |
+| @pgservices			                | PG Service tests			           |
+| @encService                   | Enc Service tests             |
+
+### Business services tags
 | Tags          		      | Description   			         |        
 | ------------- 		      |:-------------:			         | 
-| @reports      		      | Reports tests 			         | 
-| @searchMdms   		      | Search mdms tests         | 
-| @Searcher     		      | Searcher tests            |
-| @location     		      | Location tests			         |
-| @localization 		      | Loacalization tests		     |
-| @userotp      		      | User OTP tests			         |
-| @eGovUser				         | User profile update tests |
-| @accessControl		      | Access control tests 		   |
+| @apportionService     | Apportion tests 			       | 
+| @dashboardAnalytics   | Dashboard Analytics tests	|
+| @egfMaster 		         | EGF Master tests		        |
+| @egfInstrument      		| EGF Instrument tests			   |
+| @dashboardIngest				  | Dashboard Ingest tests    |
 | @hrms         		      | HRMS tests				            |
 | @collectionServices 	 | Collecetion Service tests	|
 | @billingServiceDemand | Billing Demand tests		    |
-| @pdfservice           | PDF Service tests			      |
-| @billingServiceBill   | Billing Service Bill tests|
-| @idGenerate			        | ID generation tests		     |
-| @egovWorkflowProcess  | Workflow tests			         |
-| @fileStore			         | File store tests			       |
-| @pgservices			        | PG Service tests			       |
-| @propertyCalculator   | Property Calculator tests |
+| @billingServiceBill   | Billing Service tests|
+
+### Municipal services tags
+| Tags          		       | Description   			             |        
+| ------------- 		       |:-------------:			             | 
+| @propertyServices      | Property Tax tests 			        | 
+| @bpaCalculator   		    | BPA Calculator tests          | 
+| @bpaService     		     | BPA tests                     |
+| @dcrService     		     | DCR tests			                  |
+| @eGovUserEvent 		      | eGov User Event tests		       |
+| @fireNOCBillingFeature | FireNOC Calculator tests			   |
+| @fireNocService				    | FireNOC tests                 |
+| @landService		         | Land Service tests 		         |
+| @NOCService         		 | NOC Service tests				         |
+| @PGRService 	          | PGR Service tests	            |
+| @propertyCalculator    | Property Tax Calculator tests |
+| @fsmService            | FSM Service tests			          |
+| @fsmBillingSlab        | FSM Calculator tests          |
 
 ### Service Category Tags
-| Tags          		      | Description   			                           |        
-| ------------- 		      |:-------------:			                           |
+| Tags          		     | Description   			                           |        
+| ------------- 		     |:-------------:			                           |
 | @coreServices        | Runs all services under core services       |
 | @businessServices    | Runs all services under business services   |
 | @municipalServices   | Runs all services under municipal services  |
@@ -160,6 +189,17 @@ Please use the appropriate tags to execute tests based on the requirement.
 | ------------- 		      |:-------------:			                                     |
 | @regression           | Runs all regression tests across all services         |
 | @smoke                | Runs all smoke tests across all services (coming soon)|
+
+### E2E service tags
+| Tags          		      | Description   			               |        
+| ------------- 		      |:-------------:			               | 
+| @propertyTaxEndToEnd  | Property Tax and mCollect tests | 
+| @tradeLicenseEndToEnd | Trade License mdms tests        | 
+| @wsEndToEnd     		    | Water and Sewerage tests        |
+| @fsmEndToEnd     		   | FSM tests			                    |
+| @pgrEndToEndFlow 		   | PGR tests		                     |
+| @firenocEndToEnd      | FireNOC tests			                |
+| @bpae2eservice				    | BPA tests                       |
 
 ### Kafka Service tags
 | Tags                  | Description                                   |
