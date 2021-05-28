@@ -35,8 +35,10 @@ Background:
     Given url fetchBill
     And params fetchBillParams
     And request fetchBillRequest
+    * print fetchBillRequest
     When method post
     Then def fetchBillResponse = response
+    * print fetchBillResponse
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
     And def txnAmount = totalAmount

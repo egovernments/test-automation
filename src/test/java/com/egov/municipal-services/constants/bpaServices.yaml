@@ -4,6 +4,7 @@ parameters:
 
 status:
   initiate: INITIATED
+  revocationSuccessful: "PERMIT REVOCATION"
 
 actions:
   initiate: INITIATE
@@ -15,7 +16,21 @@ documentType:
   type3: 'APPL.LTR.LTR'
   type4: 'APPL.TDP.TDP'
   type5: 'BPD.SP.SP'
+  type6: "FI.FIR.FIR"
+  type7: "FI.SINS.SINS"
+  type8: "FI.SISS.SISS"
+  type9: "FI.SIES.SIES"
+  type10: "FI.SIWS.SIWS"
+  type11: "NOC.FIRE.CERTIFICATE"
+  
+tradeType:
+  architect: "ARCHITECT.CLASSA"
 
+licenseType:
+  permenant: "PERMENANT"
+
+businessService:
+  bpaReg: "BPAREG"
 errorMessages:
   duplicateEDCR: ' Application already exists with EDCR Number '
   duplicateCode: DUPLICATE EDCR

@@ -1,0 +1,11 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "CalulationCriteria":[{
+        "fsm": "#(fsmBody)",
+      "tenantId":"#(tenantId)",
+      "feeType":"#(feeType)",
+    "applicationNo":"#(applicationNo)"
+    }]
+}

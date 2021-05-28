@@ -248,6 +248,7 @@ endPoints:
     create: bpa-services/v1/bpa/_create
     update: bpa-services/v1/bpa/_update
     search: bpa-services/v1/bpa/_search
+    createStakeHolder: tl-services/v1/BPAREG/_create
 
   bpaCalculator:
     calculate: bpa-calculator/_calculate
@@ -294,3 +295,11 @@ endPoints:
     vehicalTripCreate: vehicle/trip/v1/_create
     vehicalTripSearch: vehicle/trip/v1/_search
     vehicalTripUpdate: vehicle/trip/v1/_update
+  fsmBillingSlab:
+    create: fsm-calculator/v1/billingSlab/_create
+    update: fsm-calculator/v1/billingSlab/_update
+    search: fsm-calculator/v1/billingSlab/_search
+    calculate: fsm-calculator/v1/_calculate
+    estimate: fsm-calculator/v1/_estimate
+  fsm:
+    create: fsm/v1/_create
