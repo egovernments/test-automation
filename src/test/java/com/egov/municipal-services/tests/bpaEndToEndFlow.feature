@@ -13,11 +13,6 @@ Background:
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunity')
 
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunityHighEnd')
-    # * def appliactionType = "BUILDING_OC_PLAN_SCRUTINY"
-    # * print appliactionType
-    # * def applicationSubType = "NEW_CONSTRUCTION"
-    # * print applicationSubType
-    # * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunityOCDR')    
 
     * def index = randomNumber(mdmsStateBPA.CalculationType.length)
     * print mdmsStateBPA.CalculationType
@@ -29,14 +24,14 @@ Background:
     * call read('../../core-services/pretests/location.feature@searchLocationSuccessfully')
     * def localityCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].code
     * def pincode = '5' + randomMobileNumGen(5)
-    * def mobileNumber = '8073460929'
+    * def mobileNumber = citizenUsername
 #* def mobileNumber = '77' + randomMobileNumGen(8)
     * def fatherOrHusbandName = randomString(10)
     * def name = 'AUTO_' + randomString(10)
     * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
    # * def dob = getPastEpochDate(5000)
-    * def dob = "676578599000"
+    * def dob = bpaConstants.dob.DOB
     * def correspondenceAddress = randomString(50)
     * def ownershipCategory = mdmsStatePropertyTax.OwnerShipCategory[0].code +"."+mdmsStatePropertyTax.SubOwnerShipCategory[0].code
     * def floorNo = bpaConstants.parameters.florNo
@@ -134,7 +129,7 @@ Scenario: Register Architect
 
 
 
-@bpae2e1 @positive @regression @bpae2eservice @e2eServices
+@bpae2e1 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
@@ -227,34 +222,11 @@ Scenario: Verify BPA e2e scenarios
     * match BPA.accountId == "#present"
     * match BPA.applicationNo == "#present"
     * def comparisonParams = { edcrNumber: '#(edcrNumber)', ocdcrNumber: '#(ocdcrNumber)',tenantId: '#(tenantId)'}
-    # Compare files
-  #  * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchComparisonSuccessfully')
-  #  # Search For BPA For getting permit number and date
-#     * def appNumber = BPA.applicationNo
-#     * def getBPASearchParam = {  applicationNo: '#(appNumber)',tenantId: '#(tenantId)'}
-#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
-#     * print "SEARCH AFTER APPROVAL"
-#     # Login To Citizen
-#     * def authToken = citizenArchitectAuthToken
-#     # Send Occupancy Ceritificate Scrutiny
-#     * def transactionNumber = randomString(20)
-#     * def permitDate = bpaResponseBody.BPA.applicationDate
-#     * def permitNumber = bpaResponseBody.BPA.approvalNo
-#     * def appliactionType = "BUILDING_OC_PLAN_SCRUTINY"
-#     * def applicationSubType = "NEW_CONSTRUCTION"
-#     * def comparisonEdcrNumber = comparisonResponseBody.comparisonDetail.edcrNumber
-#    # * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunityOCDR')
-#     * print "SCRUTINY ODCR DONE"
-#     #--------
-#     * def businessService = "BPA_OC"
-#     * set BPA.workflow.action = 'SEND_TO_CITIZEN'
-#     * set BPA.status = 'INITIATED'
-#     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
+ 
 
 
 
-
-@bpae2e2 @positive @regression @bpae2eservice @e2eServices
+@bpae2e2 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Highend
     * print "RUNNING SCNEARIOS"
     * def riskType = mdmsStateBPA.RiskTypeComputation[0].riskType
@@ -327,14 +299,7 @@ Scenario: Verify BPA e2e scenarios - Highend
     * match BPA.accountId == "#present"
     * match BPA.applicationNo == "#present"
 
-
-
-
-    # * def comparisonParams = { edcrNumber: '#(edcrNumber)', ocdcrNumber: '#(ocdcrNumber)',tenantId: '#(tenantId)'}
-    # * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchComparisonSuccessfully')
-    # * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfullyForHighEnd')
-
-@bpae2e3 @positive @regression @bpae2eservice @e2eServices
+@bpae2e3 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
@@ -383,7 +348,8 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     * match BPA.accountId == "#present"
     * match BPA.applicationNo == "#present"
 
-@bpae2e4 @positive @regression @bpae2eservice @e2eServices
+
+@bpae2e4 @positive  @bpae2eservice  @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     #Scrutinize the building plan -- Done above
     * print "RUNNING SCNEARIOS"
