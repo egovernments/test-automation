@@ -42,11 +42,21 @@ function getCurrentEpochTime(){
     return new java.util.Date().getTime();
 }
 
+function getCurrentTime(){
+      var simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
+    return simpleDateFormat.format(new java.util.Date().getTime());
+}
+
+
 function getCurrentDate1(){
     var simpleDateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
     return simpleDateFormat.format(new java.util.Date());
 }
 
+function getCurrentDate2(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    return simpleDateFormat.format(new java.util.Date());
+}
 /**
  * Generates tomorrows date/time in epoch format
  * @returns tomorrows date/time
@@ -135,7 +145,9 @@ function randomString(length) {
  function stringToInteger(x) {
     return parseInt(x);
 }
-
+function intergerToString(x) {
+    return x.toString();
+}
 /**
  * Fetched data based upon the environment selected
  * @param {String} rootParam 
@@ -291,4 +303,19 @@ function replaceString(stringText,texttoReplace,textToReplaceWith)
 function jsonToString(obj) {
     var myJSON = JSON.stringify(obj);
     return myJSON
+}
+
+function intergerToString(x) {
+    return x.toString();
+}
+
+function getCurrentDate2(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    return simpleDateFormat.format(new java.util.Date());
+}
+
+
+function getCurrentTime(){
+    var simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
+  return simpleDateFormat.format(new java.util.Date().getTime());
 }

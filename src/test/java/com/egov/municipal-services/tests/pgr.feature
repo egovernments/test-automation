@@ -16,7 +16,7 @@ Background:
     * def mobileNumber = '78' + randomMobileNumGen(8)
     * def pgrConstants = read('../../municipal-services/constants/pgr.yaml')
    # * def serviceCode = "NonSweepingOfRoad"
-    * def serviceCode = msmsCityPgrServiceCodes[0].serviceCode
+    * def serviceCode = msmsCityPgrServiceCodes[5].serviceCode
     * def action = pgrConstants.actions.apply
     * def applicationStatus = pgrConstants.applicationStatus.closedAfterRejection
     * def applicationStatus = 
