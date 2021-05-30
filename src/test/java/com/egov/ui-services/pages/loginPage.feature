@@ -9,19 +9,15 @@ Background:
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen
-	* waitForUrl(loginPageurls.languageSelection)
-	# * print 'GeoLocation Popup Status: ' + script(geoLocationScript)
-	* click(loginPageObjects.languageEnglishButton)
-	* click(loginPageObjects.continueButton)
-	* waitForUrl(loginPageurls.register)
-	* click(loginPageObjects.resendOtpButton)
-	* waitForUrl(loginPageurls.login)
-	* click(loginPageObjects.mobileNumberField)
-	* input(loginPageObjects.mobileNumberField, citizenUsername)
-	* click(loginPageObjects.loginSubmitButton)
-	* waitForUrl(loginPageurls.otp)
-	* input(loginPageObjects.otpField, '123456')
-	* click(loginPageObjects.submitOtpButton)
+	* hoverMouseAndClickElement(loginPageurls.languageSelection)
+	* clickElement(loginPageObjects.continueButton)
+	* clickElement(loginPageObjects.resendOtpButton)
+	* clickElement(loginPageObjects.mobileNumberField)
+	* print getAttribute(loginPageObjects.mobileNumberField,"type")
+	* sendKeys(loginPageObjects.mobileNumberField, citizenUsername)
+	* clickElement(loginPageObjects.loginSubmitButton)
+	* sendKeys(loginPageObjects.otpField, '123456')
+	* clickElement(loginPageObjects.submitOtpButton)
 
 @loginAsAltCitizen
 Scenario: Login to UI as Citizen

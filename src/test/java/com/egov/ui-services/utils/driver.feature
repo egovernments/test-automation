@@ -14,6 +14,146 @@ Background:
             }
         }
     """
+    * def clickElement = 
+    """
+        function(element){
+            try{
+            driver.waitFor(element)
+            driver.click(element)
+            }catch(err){
+                throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
+            }
+        }
+    """
+
+    * def sendKeys = 
+    """
+        function(element,keysToSend){
+            try{
+            driver.waitFor(element)
+            driver.input(element,keysToSend)
+             }catch(err){
+                console.log("Exception occured sending text to element "+str(element)+"-->"+err)
+                throw new Error("Exception occured sending text to element "+str(element)+"-->"+err)
+            }
+        }
+    """
+
+    * def clickElement = 
+    """
+        function(element){
+            try{
+            driver.waitFor(element)
+            driver.click(element)
+            }catch(err){
+                throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
+            }
+        }
+    """
+
+    * def waitForPageToLoad =
+    """
+        function(){
+            try{
+                driver.waitUntil("document.readyState == 'complete'")
+            }catch(err){
+                throw new Error("Exception occurred while waiting for page to load -->"+err)
+
+            }
+        }
+    """
+
+    * def hoverMouseToElement =
+    """
+        function(element){
+        try{
+            driver.mouse().move(element)
+    }catch(err){
+            throw new Error("Exception occurred while hovering the mouse to element -->"+err)
+
+        }
+    }      
+    """
+
+    * def hoverMouseAndClickElement =
+    """
+        function(element){
+        try{
+            driver.mouse().move(element)
+            driver.click(element)
+    }catch(err){
+            throw new Error("Exception occurred while hovering the mouse to element -->"+err)
+
+        }
+    }      
+    """
+
+    * def getAttribute =
+    """
+        function(element,attributeName){
+            try{
+                return driver.attribute(element,attributeName)
+            }catch(err){
+            throw new Error("Exception occurred while getting attribute "+str(attributeName)+"of element"+str(element)+"-->"+err)
+
+        }
+        }
+    """
+
+     * def softRefreshPage =
+    """
+        function(){
+            try{
+                return driver.refresh()
+            }catch(err){
+            throw new Error("Exception occurred while soft refreshing the page -->"+err)
+
+        }
+        }
+    """  
+    
+     * def hardRefreshPage =
+    """
+        function(){
+            try{
+                return driver.reload()
+            }catch(err){
+            throw new Error("Exception occurred while hard refreshing the page -->"+err)
+
+        }
+        }
+    """  
+    
+    
+     * def customSelectFromDropdown =
+    """
+        function(element,valueToSelect){
+            try{
+                driver.waitFor(element)
+                driver.click(element)
+                ele = "//div[contains(@class,'automcomplete-dropdown')]//*[text()='"+valueToSelect+"']"
+                driver.waitFor(ele)
+                driver.click(ele)
+                // driver.click("{div[class~='automcomplete-dropdown']} "+valueToSelect)
+            }catch(err){
+            throw new Error("Exception occurred while selecting value from dropdown -->"+err)
+        }
+        }
+    """
+
+    * def clickValueInSearchResults = 
+    """
+        function(valueToClick){
+            try{
+                ele = "//tr[contains(@Id,'MUIDataTableBodyRow')]//a[text()='"+clickValueInSearchResults+"']"
+                driver.click(ele)
+            }catch(err){
+                throw new Error("Exception occurred while clicking value in search results -->"+err)
+            }
+
+        }
+
+    """
 
 @initializeDriver
 Scenario: Initialize Driver
@@ -23,6 +163,7 @@ Scenario: Initialize Driver
     * driver envHost
 	* def browserstackSessionId = driver.sessionId
     * driver.fullscreen()
+
 
 @takeScreenshot
 Scenario: Take screenshot

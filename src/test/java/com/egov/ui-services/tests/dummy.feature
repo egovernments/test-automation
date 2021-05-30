@@ -19,7 +19,7 @@ Background:
             karate.call('../../ui-services/utils/browserstack.feature', scenarioStatus);
         }
     """
-
+        
 @dummyMobileBrowser
 Scenario Outline: Dummy Scenario
     * def browserTestName = karate.info.scenarioName + ' - @dummyMobileBrowser - '
