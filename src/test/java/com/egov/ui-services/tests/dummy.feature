@@ -1,37 +1,40 @@
 Feature: Dummy Feature
 
 Background:
-    * def afterScenarioDriver = null
     * def scenarioStatus = 
     """
         {
+            "sessionId": "",
             "status": "passed",
             "reason": ""
         }
     """
-    * configure driver = deviceConfigs[0];
-    * configure afterFeature = 
+    * configure afterScenario = 
     """
         function(){
             karate.log('Scenario Name After Feature: ' + karate.info.scenarioName)
             if(browserstack == "yes" && karate.info.errorMessage){
-                scenarioStatus.status = 'failed';
-                scenarioStatus.reason = karate.info.errorMessage;
-                afterScenarioDriver.screenshot();
+                scenarioStatus[__num].status = 'failed';
+                scenarioStatus[__num].reason = karate.info.errorMessage;
             }
-            karate.call('../../ui-services/utils/browserstack.feature@updateScenarioStatus', scenarioStatus);
+            karate.log(scenarioStatus);
+            // karate.call('../../ui-services/utils/browserstack.feature@updateScenarioStatus', scenarioStatus);
         }
     """
 
 @dummyMobileBrowser
 Scenario Outline: Dummy Scenario
-    * def deviceConfig = __row
     * def browserTestName = karate.info.scenarioName
-    * print 'Scenario Name: ' + karate.info.scenarioName
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
-    * eval afterScenarioDriver = karate.get('driver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
 
 Examples:
-| deviceConfigs |
+| deviceConfig      |
+| deviceConfigs[0]  |
+| deviceConfigs[1]  |
+| deviceConfigs[2]  |
+| deviceConfigs[3]  |
+| deviceConfigs[4]  |
+| deviceConfigs[5]  |
+| deviceConfigs[6]  |

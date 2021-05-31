@@ -10,7 +10,7 @@ Background:
                 var browserstackConfig = configResult.browserstackConfig;
                 return browserstackConfig;
             }else{
-                return deviceConfig;
+                return deviceConfigs[__num];
             }
         }
     """
@@ -18,6 +18,12 @@ Background:
     """
         function(element) {
             driver.waitFor(element).click()
+            
+        }
+    """
+    * configure afterScenario = 
+    """
+        function() { if(karate.info.errorMessage) {driver.screenshot();}
             
         }
     """
@@ -37,7 +43,7 @@ Scenario: Take screenshot
 
 @createBrowserStackConfig
 Scenario: Create Browserstack Config
-    * def deviceCapabilities = deviceConfig
+    * def deviceCapabilities = deviceConfigs[__num]
 	* def driverUrl = 'https://' + browserstackUsername + ':' + browserstackKey + '@' + browserstackUrl + '/wd/hub'
     * eval commonCapabilities.build = (karate.match(typeof browserstackBuildName, 'undefined').pass) ? commonCapabilities.build + currentEpochTime : browserstackBuildName
     * def desiredCapabilities = karate.merge(deviceCapabilities, commonCapabilities)
