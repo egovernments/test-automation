@@ -83,7 +83,7 @@ Scenario: Create a new  Property
     * clickElement(pTPageObjects.payPropertyTax)
     * clickElement(pTPageObjects.propertyCreateLink)
 	* clickElement(pTPageObjects.propertyApplyButton)
-	//Property Address
+	#Property Address
 	* customSelectFromDropdown(pTPageObjects.propertyCitySelectDropdown, 'Amritsar')
 	* sendKeys(pTPageObjects.propertyHouseNumber, randomString(2))
 	* sendKeys(pTPageObjects.propertyColony, randomString(10))
@@ -91,7 +91,7 @@ Scenario: Create a new  Property
 	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
 	* sendKeys(pTPageObjects.propertyPinCode , '48'+ranInteger(4))
 	* clickElement(pTPageObjects.propertyNextButton)
-	//Property Details
+	#Property Details
 	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyUsageType, 'Residential')
 	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyTypeOfBuilding , 'Flat/Part of the building')
 	* clickElement(pTPageObjects.noRainWaterHarvesting)
@@ -99,13 +99,13 @@ Scenario: Create a new  Property
 	* sendKeys(pTPageObjects.assessmentSuperArea , ranInteger(4))
 	* customSelectFromDropdown(pTPageObjects.selectFloor , 'Ground Floor')
 	* clickElement(pTPageObjects.propertyNextButton)
-	//Owner Details
+	#Owner Details
 	* sendKeys(pTPageObjects.ownerName,randomString(10))
 	* sendKeys(pTPageObjects.ownerMobile,citizenUsername)
 	* sendKeys(pTPageObjects.ownerGuardian,randomString(10))
 	* customSelectFromDropdown(pTPageObjects.specialCatergory , 'None of the above')
 	* clickElement(pTPageObjects.propertyNextButton)
-	//Document Info
+	#Document Info
 	* customSelectFromDropdown(pTPageObjects.addressProofInputDocumentType,"Electricity Bill")
 	* customSelectFromDropdown(pTPageObjects.identityProofInputDocumentType,"Aadhar Card")
 	* customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
@@ -117,7 +117,7 @@ Scenario: Create a new  Property
 	* customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
 	* customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
 	* clickElement(pTPageObjects.propertyNextButton)
-	//Summary
+	#Summary
 	* clickElement(pTPageObjects.acceptanceCheckbox)
 	* clickElement(pTPageObjects.addPropertyBtn)
 	* def appNumber = getElementText(pTPageObjects.generatedApplicationNumber)	
