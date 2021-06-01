@@ -33,23 +33,12 @@ Background:
             driver.waitFor(element)
             driver.input(element,keysToSend)
              }catch(err){
-                console.log("Exception occured sending text to element "+str(element)+"-->"+err)
+                karate.log("Exception occured sending text to element "+str(element)+"-->"+err)
                 throw new Error("Exception occured sending text to element "+str(element)+"-->"+err)
             }
         }
     """
 
-    # * def clickElement = 
-    # """
-    #     function(element){
-    #         try{
-    #         driver.waitFor(element)
-    #         driver.click(element)
-    #         }catch(err){
-    #             throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
-    #         }
-    #     }
-    # """
 
     * def waitForPageToLoad =
     """
@@ -123,18 +112,55 @@ Background:
         }
         }
     """  
-    
-    
-     * def customSelectFromDropdown =
+    * def customSelectFromDropdownContainingLocalization =
     """
         function(element,valueToSelect){
             try{
                 driver.waitFor(element)
                 driver.click(element)
-                ele = "//div[contains(@class,'automcomplete-dropdown')]//*[text()='"+valueToSelect+"']"
+                ele = "//span[@class='menu-class']//div[text()='"+valueToSelect+"']"
+                driver.waitFor(ele)
+                driver.click(ele)
+            }catch(err){
+            throw new Error("Exception occurred while selecting value from dropdown -->"+err)
+        }
+        }
+    """
+
+     * def customSelectFromDropdown =
+    """
+        function(element,valueToSelect){
+            try{
+                driver.waitFor(element)
+                driver.input(element,valueToSelect)
+                ele = "//div[contains(@class,'autocomplete-dropdown')]//*[text()='"+valueToSelect+"']"
                 driver.waitFor(ele)
                 driver.click(ele)
                 // driver.click("{div[class~='automcomplete-dropdown']} "+valueToSelect)
+            }catch(err){
+            throw new Error("Exception occurred while selecting value from dropdown -->"+err)
+        }
+        }
+    """
+
+     * def customSelectFromDropdownWithHover =
+    """
+        function(element,valueToSelect){
+            try{
+                try{
+                driver.input(element,valueToSelect)
+                karate.log("VALUE INPUTED")
+                }catch(err){
+                    throw new Error("Exception occurred while sending input to dropdown -->"+err)
+                }
+                try{
+                ele = "//div[contains(@class,'autocomplete-dropdown')]//*[text()='"+valueToSelect+"']"
+                driver.waitFor(ele)
+                driver.click(ele)
+                }catch(err){
+                    throw new Error("Selecting value from the dropdown menu -->"+err)
+
+                }
             }catch(err){
             throw new Error("Exception occurred while selecting value from dropdown -->"+err)
         }
@@ -153,6 +179,29 @@ Background:
 
         }
 
+    """
+    * def customInputFile = 
+    """
+        function(element,fileToInput){
+            try{
+                driver.inputFile(element,fileToInput)
+            }catch(err){
+                throw new Error("Exception occurred while input file -->"+err)
+            }
+
+        }
+
+    """
+   * def getElementText = 
+    """
+        function(element){
+            try{
+                return driver.text(element)
+            }catch(err){
+                throw new Error("Exception occurred while getting element text -->"+err)
+            }
+
+        }
     """
 
 @initializeDriver

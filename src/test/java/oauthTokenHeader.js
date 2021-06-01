@@ -12,6 +12,6 @@ function() {
 	out['Content-Type'] = 'application/x-www-form-urlencoded';
 	// out['webRequest.ContentType'] = 'application/x-www-form-urlencoded';
 	// out['authority'] = karate.get('authorityHeader');
-	out['authorization'] = 'Basic ' + karate.get('basicAuthorization');
+	out['authorization'] = 'Basic ' + "ZWdvdi11c2VyLWNsaWVudDo=";
 	return out;
 }

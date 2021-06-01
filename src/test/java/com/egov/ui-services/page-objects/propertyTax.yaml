@@ -21,19 +21,36 @@ objects:
   amountToPayField: "#custom-containers-displayAmount"
   takeActionButton: "span[data-localization='WF_TAKE_ACTION']"
   citizenPayActionButton: "span[data-localization='WF_CITIZEN_PT.MUTATION_PAY']"
-  propertyCreateLink: //button[@id='material-ui-newApplicationButton']
-  popertyApplyButton:  //button[@id='material-ui-applyButton']
-  propertyCitySelectDropdown: //label[text()='City']//..//div//p[text()='Select']
-  propertyHouseNumber: //input[@id='house-number']
-  propertColony:  //input[@id='property-colony']
-  propertyStreet:    //input[@id='property-street']
-  propertyLocality:  //label[text()='Locality/Mohalla']//..//div//p[text()='Select']
-  propertyPinCode: //input[@id='pincode']
-  propertyNextButton: div[data-localization='Next']
-  propertyUsageType:  //div[@id='typeOfUsage']
-  propertyTypeOfBuilding:      //div[@id='typeOfBuilding']
-  noRainWaterHarvesting: //input[@id='rainwaterHarvesting-1']
-  assessmentOccupancy:   //div[@id='assessment-occupancy']
-  assessmentSuperArea:   //input[@id='assessment-super-area']
-  selectFloor:  //div[@id='floorName']
-  
+  propertyCreateLink: "//button[@id='material-ui-newApplicationButton']"
+  propertyApplyButton:  "//button[@id='material-ui-applyButton']"
+  propertyCitySelectDropdown: "#city div div div input"
+  propertyHouseNumber: "//input[@id='house-number']"
+  propertyColony: "//input[@id='property-colony']"
+  propertyStreet: "//input[@id='property-street']"
+  propertyLocality: "//label[text()='Locality/Mohalla']//..//div//input"
+  propertyPinCode: "//input[@id='pincode']"
+  propertyNextButton: "div[data-localization='Next']"
+  propertyUsageType: "//div[@id='typeOfUsage']//button"
+  propertyTypeOfBuilding: "//div[@id='typeOfBuilding']//button"
+  noRainWaterHarvesting: "//input[@id='rainwaterHarvesting-1']"
+  assessmentOccupancy: "//div[@id='assessment-occupancy']//input"
+  assessmentSuperArea: "//input[@id='assessment-super-area']"
+  selectFloor: "//div[@id='floorName']//input"
+  ownerName: "//input[@id='ownerName']"
+  ownerMobile: "//input[@id='ownerMobile']"
+  ownerGuardian: "//input[@id='ownerGuardian']"
+  specialCatergory: "//div[@id='ownerCategory']//input"
+  ownerRelationship: "//div[@id='ownerRelationship']//input"
+  addressProofInputDocumentType: "//span[@data-localization='OWNER_ADDRESSPROOF']//..//..//input"
+  identityProofInputDocumentType: "//span[@data-localization='OWNER_IDENTITYPROOF']//..//..//input"
+  registrationProofInputDocumentType: "//span[@data-localization='OWNER_REGISTRATIONPROOF']//..//..//input"
+  usageProofInputDocumentType: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//input"
+  constructionProofInputDocumentType: "//span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//input"
+  addressProofInputDocumentInput: "//span[@data-localization='OWNER_ADDRESSPROOF']//..//..//div//input[@type='file']"
+  identityProofInputDocumentInput: "//span[@data-localization='OWNER_IDENTITYPROOF']//..//..//div//input[@type='file']"
+  registrationProofInputDocumentInput: "//span[@data-localization='OWNER_REGISTRATIONPROOF']//..//..//div//input[@type='file']"
+  usageProofInputDocumentInput: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//div//input[@type='file']"
+  constructionProofInputDocumentInput: //span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//div//input[@type='file']"
+  addPropertyBtn: "//div[@data-localization='ADD PROPERTY']"
+  acceptanceCheckbox: "//input[@id='rcpt']"
+  generatedApplicationNumber: "//div[text()='Application No:']//parent::div//../../following-sibling::h1//div[@class='label-text ']"

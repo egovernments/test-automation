@@ -9,7 +9,7 @@ Background:
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen
-	* hoverMouseAndClickElement(loginPageurls.languageSelection)
+	* clickElement(loginPageObjects.languageEnglishButton)
 	* clickElement(loginPageObjects.continueButton)
 	* clickElement(loginPageObjects.resendOtpButton)
 	* clickElement(loginPageObjects.mobileNumberField)
