@@ -9,10 +9,9 @@ Scenario: Update Scenario Status to Browserstack
             "reason": "#(scenarioStatus.reason)"
         }
     """
-    Given url 'https://api.browserstack.com/automate/sessions/' + browserstackSessionId + '.json'
+    Given url 'https://api.browserstack.com/automate/sessions/' + scenarioStatus.browserstackSessionId + '.json'
     And header Authorization = call read('../../ui-services/utils/basic-auth.js') { username: '#(browserstackUsername)', password: '#(browserstackKey)' }
     And header Content-Type = 'application/json'
     And request browserstackUpdateStatusRequest
-    * print browserstackUpdateStatusRequest
     When method put
     Then status 200
