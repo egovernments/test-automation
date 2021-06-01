@@ -66,7 +66,7 @@ Scenario: Verify creating a mutation billing slab for property tax through API c
     # Set tenantId as Invalid
     * set createBillingSlabMutationPayload.MutationBillingSlab[0].tenantId = invalidTenaniId
     # Steps to generate error on create billing slab mutation for invalid tenantId
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlabMutation')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInCreateBillingSlabMutationUnAuthorized')
     # Validate the error
     * match mutationCreateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -130,7 +130,7 @@ Scenario: Verify searching mutation billing slab for a invalid or non existant t
     # Preparing searchParams with invalidTenantID
     * def searchParams = {tenantId: '#(invalidTenantId)'}
     # Steps to generate error on search for specified searchParams
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlabMutation')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInSearchBillingSlabMutationUnAuthorized')
     # Validate the error
     * match mutationSearchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
@@ -194,7 +194,7 @@ Scenario: Verify updating a mutation billing slab for property tax through API c
     * set updateBillingSlabMutationPayload.MutationBillingSlab[0].tenantId = invalidTenaniId
     * set updateBillingSlabMutationPayload.MutationBillingSlab[0].id = id
     # Steps to generate error on update 
-    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlabMutation')
+    * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@errorInUpdateBillingSlabMutationUnAuthorized')
     # Validate the result
     * match mutationUpdateResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

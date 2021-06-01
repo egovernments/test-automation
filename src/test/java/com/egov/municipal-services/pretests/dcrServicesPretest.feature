@@ -1,8 +1,8 @@
 Feature: EDCR-Service pretests
     Background:
         * def jsUtils = read('classpath:jsUtils.js')
-        * def scrutinyDetailsRequest = read('../../municipal-services/requestPayload/dcrServices/scrutinydetails.json')
-        * def occomparisonRequest = read('../../municipal-services/requestPayload/dcrServices/occomparison.json')
+        * def scrutinyDetailsRequest = read('../../municipal-services/requestPayload/dcr-services/scrutinydetails.json')
+        * def occomparisonRequest = read('../../municipal-services/requestPayload/dcr-services/occomparison.json')
         * configure ssl = false
 
     @scrunity
@@ -31,6 +31,7 @@ Feature: EDCR-Service pretests
         When method post
         Then status 200
         And def scrunityResponseBody = response
+        * print scrunityResponseBody
         * def edcrNumber = scrunityResponseBody.edcrDetail[0].edcrNumber
 
 
@@ -173,6 +174,7 @@ Feature: EDCR-Service pretests
         Then status 200
         And def comparisonResponseHeaders = responseHeaders
         And def comparisonResponseBody = response
+        * print response
 
     @searchComparisonError
     Scenario: Comparison Error

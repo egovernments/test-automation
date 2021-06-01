@@ -20,7 +20,16 @@ Feature: Land-Service pretests
         Given url createLand
         And request createLandRequest
         When method post
-        Then assert responseStatus == 400 || responseStatus == 403
+        Then status 400
+        And def landResponseHeaders = responseHeaders
+        And def landResponseBody = response
+
+    @createLandErrorUnAuthorized
+    Scenario: Create Land Error
+        Given url createLand
+        And request createLandRequest
+        When method post
+        Then status 403
         And def landResponseHeaders = responseHeaders
         And def landResponseBody = response
 
@@ -39,7 +48,16 @@ Feature: Land-Service pretests
         Given url updateLand
         And request updateLandRequest
         When method post
-        Then assert responseStatus == 400 || responseStatus == 403
+        Then status 400
+        And def landResponseHeaders = responseHeaders
+        And def landResponseBody = response
+
+    @updateLandErrorUnAuthorized
+    Scenario: Update Land Error
+        Given url updateLand
+        And request updateLandRequest
+        When method post
+        Then status 403
         And def landResponseHeaders = responseHeaders
         And def landResponseBody = response
 
@@ -59,6 +77,16 @@ Feature: Land-Service pretests
         And params searchParam
         And request searchLandRequest
         When method post
-        Then assert responseStatus == 400 || responseStatus == 403
+        Then status 400
+        And def landResponseHeaders = responseHeaders
+        And def landResponseBody = response
+
+    @searchLandErrorUnAuthorized
+    Scenario: Search Land Error
+        Given url searchLand
+        And params searchParam
+        And request searchLandRequest
+        When method post
+        Then status 403
         And def landResponseHeaders = responseHeaders
         And def landResponseBody = response

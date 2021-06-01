@@ -50,6 +50,14 @@ Feature: eGovUser-userProfileUpdate pretest
     And request updatedUserPassword
     When method post
     And  def updatedPasswordResponseBody = response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+
+  @errorInUpdateUserPasswordUnAuthorized
+  Scenario: Update existing password with invalid password
+    Given url updatePassword
+    And request updatedUserPassword
+    When method post
+    And  def updatedPasswordResponseBody = response
+    Then status 403
 
   

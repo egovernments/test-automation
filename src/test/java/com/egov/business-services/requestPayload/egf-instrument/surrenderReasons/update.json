@@ -1,0 +1,13 @@
+{
+    "requestInfo":{
+       "authToken":"#(authToken)"
+    },
+    "surrenderReasons":[
+            {
+             "id": "#(surrenderReasonId)",
+             "name":"#(surrenderReasonName)",
+             "description": "#(surrenderReasonDescription)",
+             "tenantId":"#(tenantId)"
+            }
+        ]
+ }

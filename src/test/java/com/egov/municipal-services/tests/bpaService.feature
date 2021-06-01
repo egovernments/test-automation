@@ -52,7 +52,7 @@ Scenario: Verify creating a bpa application through API  with the same edcr numb
 @bpa_create_Invalid_tenant_03 @negative @regression @bpaService
 Scenario: Verify creating a bpa through API call by passing an invalid tenant id and check for errors
     * def tenantId = commonConstants.invalidParameters.invalidTenantId
-    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAError')
+    * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPAErrorUnAuthorized')
     * match bpaResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 @bpa_create_NoParams_04 @positive @regression @bpaService
@@ -238,4 +238,3 @@ Scenario: verify by not passing "gender" in the request body
     * def gender = null
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@sendToCitizen_Invalid')
     * match bpaResponseBody.Errors[0].message == commonConstants.errorMessages.nullParameterError
-

@@ -143,3 +143,45 @@ Scenario: Auth token Creation for CounterEmpl
    * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
    
+@authTokenCitizenForBPAStakeholder
+Scenario: Auth token Creation for citizen
+        Given url authTokenUrl
+        And form field username = intergerToString(citizenUsername3)
+		* print intergerToString(citizenUsername3)
+		And form field password = citizenPassword3
+		* print citizenPassword3
+
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = "CITIZEN"
+		* print tenantId
+		* print citizenType
+		When method post
+		Then status 200
+		* print authResponseBody
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+	And def id = authResponseBody.UserRequest.uuid
+   * print authResponseBody.access_token 
+   * match authResponseBody.access_token == '#present'
+
+
+@authTokenCitizenArchitect
+Scenario: Auth token Creation for citizen
+        Given url authTokenUrl
+        And form field username = citizenArchitectUsername
+		And form field password = citizenArchitectPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = tenantId
+		And form field userType = citizenType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+   	And def authToken = authResponseBody.access_token
+	And def id = authResponseBody.UserRequest.uuid
+   * print authResponseBody.access_token 
+   * match authResponseBody.access_token == '#present'
