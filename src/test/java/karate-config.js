@@ -444,12 +444,15 @@ function() {
             if(karate.properties['browserstackBuildName']){
                 config.browserstackBuildName = karate.properties['browserstackBuildName'];
             }
+            if(java.lang.System.getenv("BROWSERSTACK_BUILD_NAME") != null){
+                config.browserstackBuildName = java.lang.System.getenv("BROWSERSTACK_BUILD_NAME");
+            }
 
             var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
             config.currentEpochTime = driverResult.currentEpochTime;
         }else{
             config.browserstack = 'no';
-            config.deviceConfigs = [{type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}}];
+            config.deviceConfigs = [{type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}}];
         }
 
     karate.log('karate.env:', env);

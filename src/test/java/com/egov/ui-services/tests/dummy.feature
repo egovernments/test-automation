@@ -1,6 +1,9 @@
 Feature: Dummy Feature
 
 Background:
+    * def fileName = 'sessionId.txt'
+    * def javaUtils = Java.type('com.egov.utils.JavaUtils')
+    * def deleteFile = javaUtils.deleteFile(fileName)
     * def scenarioStatus = 
     """
         {
@@ -12,19 +15,27 @@ Background:
     * configure afterScenario = 
     """
         function(){
-            karate.log('Scenario Name After Feature: ' + karate.info.scenarioName)
-            if(browserstack == "yes" && karate.info.errorMessage){
-                scenarioStatus[__num].status = 'failed';
-                scenarioStatus[__num].reason = karate.info.errorMessage;
+            if(karate.info.errorMessage){
+                scenarioStatus.status = 'failed';
+                scenarioStatus.reason = karate.info.errorMessage;
+            }else{
+                scenarioStatus.status = 'passed';
+                scenarioStatus.reason = '';
             }
-            karate.log(scenarioStatus);
-            // karate.call('../../ui-services/utils/browserstack.feature@updateScenarioStatus', scenarioStatus);
+            if(browserstack == 'yes'){
+                var browserstackSessionId = javaUtils.readFromFile(fileName);
+                scenarioStatus.browserstackSessionId = browserstackSessionId;
+                if(browserstackSessionId != ''){
+                    var deleteFile = javaUtils.deleteFile(fileName);
+                    karate.call('../../ui-services/utils/browserstack.feature@updateScenarioStatus', scenarioStatus);
+                }
+            }
         }
     """
 
 @dummyMobileBrowser
-Scenario Outline: Dummy Scenario
-    * def browserTestName = karate.info.scenarioName
+Scenario Outline: Login Scenario
+    * def browserTestName = karate.info.scenarioName + ' - '
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
