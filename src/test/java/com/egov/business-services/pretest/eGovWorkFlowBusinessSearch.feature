@@ -4,7 +4,7 @@ Feature: eGovWorkFlowBusiness Feature
     * def jsUtils = read('classpath:jsUtils.js')
     * def workFlowConstants = read('../../business-services/constants/eGovWorkFlowBusiness.yaml')
     * def businessServices = workFlowConstants.inputData.businessServices
-    * def searchWorkFlowRequest = read('../../business-services/requestPayload/eGovWorkFlow/business/workFlowSearch.json')
+    * def searchWorkFlowRequest = read('../../business-services/requestPayload/egov-workflow/business/workFlowSearch.json')
     
 @SuccessSearchWorkFlow
 Scenario: Search Work Flow

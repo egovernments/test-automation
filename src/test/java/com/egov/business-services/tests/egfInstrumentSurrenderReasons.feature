@@ -89,7 +89,7 @@ Scenario: Create Suurender Reason with invalid tenantId
     # setting reeust payload variable values
     * def tenantId = "invalid-tenant-" + randomString(10)
     # Creating a surrender reason
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateSurrenderReason')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateSurrenderReasonUnAuthorized')
     # Validating response body
     * match surrenderReasonsResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -163,7 +163,7 @@ Scenario: Search Surrender Reason with invalid tenantId
         }
     """
     # Search Surrender Reasons
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInSearchSurrenderReason')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInSearchSurrenderReasonUnAuthorized')
     # Validating response body
     * match surrenderReasonsResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -239,7 +239,7 @@ Scenario: Update Suurender Reason with duplicate name
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@createSurrenderReasonSuccessfully')
     * eval surrenderReasons[0].name = duplicateName
     # Creating a surredner reason again
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateSurrenderReason')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateSurrenderReasonServerError')
     # Validating response body
     * match surrenderReasonsResponseBody.error == commonConstants.errorMessages.internalServerError
 
@@ -272,6 +272,6 @@ Scenario: Update Suurender Reason with invalid tenantId
     # setting reeust payload variable values
     * eval surrenderReasons[0].tenantId = "invalid-tenant-" + randomString(10)
     # Updating a surrender reason
-    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateSurrenderReason')
+    * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInUpdateSurrenderReasonUnAuthorized')
     # Validating response body
     * match surrenderReasonsResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError

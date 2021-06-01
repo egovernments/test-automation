@@ -112,7 +112,18 @@ Scenario: Searching billingSlab through API call
     And params searchParam
     And request billingSlabSearch
     When method post
-    Then assert responseStatus == 400 || responseStatus == 403
+    Then status 400
+    And def billSlabSearchResponseHeader = responseHeaders
+    And def billSlabSearchResponseBody = response
+
+@searchBillingSlabErrorUnAuthorized
+Scenario: Searching billingSlab through API call
+
+    Given url tlCalculatorSearchBillingSlab
+    And params searchParam
+    And request billingSlabSearch
+    When method post
+    Then status 403
     And def billSlabSearchResponseHeader = responseHeaders
     And def billSlabSearchResponseBody = response
 
@@ -132,6 +143,16 @@ Scenario: TL Calculate through API call
     Given url tlCalculatorCalculate
     And request calculateRequest
     When method post
-    Then assert responseStatus == 400 || responseStatus == 403
+    Then status 400
+    And def calculateResponseHeader = responseHeaders
+    And def calculateResponseBody = response
+
+@calculateErrorUnAuthorized
+Scenario: TL Calculate through API call
+
+    Given url tlCalculatorCalculate
+    And request calculateRequest
+    When method post
+    Then status 403
     And def calculateResponseHeader = responseHeaders
     And def calculateResponseBody = response

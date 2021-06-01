@@ -1,10 +1,10 @@
 Feature: PGR Service Pretest
 
 Background:
-    * def createPGRRequest = read('../../municipal-services/requestpayload/pgr/create.json')
-    * def updatePGRRequest = read('../../municipal-services/requestpayload/pgr/update.json')
-    * def searchPGRRequest = read('../../municipal-services/requestpayload/pgr/search.json')
-    * def countPGRRequest = read('../../municipal-services/requestpayload/pgr/count.json')
+    * def createPGRRequest = read('../../municipal-services/requestPayload/pgr-service/create.json')
+    * def updatePGRRequest = read('../../municipal-services/requestPayload/pgr-service/update.json')
+    * def searchPGRRequest = read('../../municipal-services/requestPayload/pgr-service/search.json')
+    * def countPGRRequest = read('../../municipal-services/requestPayload/pgr-service/count.json')
 
 @successCreatePGRRequest
 Scenario: Create PGR Request successfully
@@ -26,10 +26,22 @@ Scenario: Create PGR Request With Failure
     And request createPGRRequest 
     When method post 
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     * print response
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
+
+@failCreatePGRRequestUnAuthorized
+Scenario: Create PGR Request With Failure
+    Given url createPGRUrl
+    And request createPGRRequest 
+    When method post 
+    * print response
+    Then status 403
+    * print response
+    And def pgrResponseHeaders = responseHeaders 
+    And def pgrResponseBody = response
+
 @successfullyUpdatePGRRequest
 Scenario: Update PGR Request successfully
     Given url updatePGRUrl
@@ -49,7 +61,18 @@ Scenario: Update PGR Request successfully
     * print updatePGRRequest
     When method post 
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def pgrResponseHeaders = responseHeaders 
+    And def pgrResponseBody = response 
+
+@failUpdatePGRRequestAuthorized
+Scenario: Update PGR Request successfully
+    Given url updatePGRUrl
+    And request updatePGRRequest 
+    * print updatePGRRequest
+    When method post 
+    * print response
+    Then status 403
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response 
 
@@ -68,7 +91,7 @@ Scenario: Search PGR Request successfully
     And def serviceDetails = pgrResponseBody.ServiceWrappers[0].service
     And def serviceRequestId = pgrResponseBody.ServiceWrappers[0].service.serviceRequestId
 
-@UnsuccessfullySearchPGRRequestwithInvalidTenantId
+@errorSearchPGRRequestwithInvalidTenantId
 Scenario: Fail Search PGR Request
     Given url searchPGRUrl
     And request searchPGRRequest
@@ -76,7 +99,7 @@ Scenario: Fail Search PGR Request
     * print searchPGRRequest
     When method post 
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response  
 
@@ -111,7 +134,7 @@ Scenario: Count PGR Request With Invalid Params
     * print countPGRParams
     When method post
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 403
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
 

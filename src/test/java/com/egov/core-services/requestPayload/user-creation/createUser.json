@@ -1,0 +1,23 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "user": {
+        "name": "#(name)",
+        "gender": "#(gender)",
+        "mobileNumber": "#(mobileNumber)",
+        "emailId": "#(emailId)",
+        "dob": "#(dob)",
+        "userName": "#(mobileNumber)",
+        "active": true,
+        "tenantId": "#(tenantId)",
+        "type": "#(userType)",
+        "roles": [
+            {
+                "code": "#(userType)",
+                "name": "#(userType)",
+                "tenantId": "#(tenantId)"
+            }
+        ]
+    }
+ }

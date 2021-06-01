@@ -3,9 +3,9 @@ Feature: Searchmdms
         Background:
   * configure headers = read('classpath:websCommonHeaders.js')
   * def jsUtils = read('classpath:jsUtils.js')
-  * def searchMdmsPayload = read('../../core-services/requestPayload/mdmsService/searchMdms.json')
+  * def searchMdmsPayload = read('../../core-services/requestPayload/mdms-service/searchMdms.json')
   * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
-  * def getMdmsRequest = read('../../core-services/requestPayload/mdmsService/getMdms.json')
+  * def getMdmsRequest = read('../../core-services/requestPayload/mdms-service/getMdms.json')
   
         @searchMdmsSuccessfully
         Scenario: Search Mdms Successfully
@@ -66,5 +66,13 @@ Feature: Searchmdms
               And request getMdmsRequest
              When method post
              And  def getMdmsResponseBody = response
-             Then assert responseStatus == 200 || responseStatus == 400 || responseStatus == 403
-              
+             Then status 200
+
+@ErrorInGetMdms
+        Scenario: Error In Get mdms
+            Given url getMdmsUrl
+              And params mdmsParam
+              And request getMdmsRequest
+             When method post
+             And  def getMdmsResponseBody = response
+             Then status 400

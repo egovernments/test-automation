@@ -7,6 +7,8 @@ localhost: http://localhost:8082/
 mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
 # This parameter is used to check the kafka offset movement threshold percentage
 kafkaOffsetThresholdPercentage: 75
+localhost: http://localhost:8082/
+mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
 stateCode: pb
 cityCode: amritsar
 # Super User credentials for login(need to create user manually)

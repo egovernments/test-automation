@@ -266,7 +266,7 @@
         # Defining search parameters
         * def searchParams = { tenantId: '#(tenantId)', code: '#(branchCode)', name: '#(branchName)'}
         # Searching a bank branch
-        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBankBranch')
+        * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchBankBranchUnAuthorized')
         # Validating error messages
         * match searchBankBranchResponse.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 

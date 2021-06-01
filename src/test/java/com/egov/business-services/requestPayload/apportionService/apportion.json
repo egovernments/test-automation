@@ -1,7 +1,0 @@
-{
-    "tenantId": "#(tenantId)",
-    "Bills": "#(Bills)",
-    "RequestInfo": {
-        "authToken":"#(authToken)"
-    }
-}
