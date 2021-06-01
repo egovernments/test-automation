@@ -1,6 +1,7 @@
 Feature: Driver Related Feature
 
 Background:
+    * def javaUtils = Java.type('com.egov.utils.JavaUtils');
     * def jsUtils = read('classpath:jsUtils.js')
     * def getDriverConfig = 
     """
@@ -21,7 +22,8 @@ Scenario: Initialize Driver
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
     * driver envHost
-	* def browserstackSessionId = driver.sessionId
+    * def sessionId = driver.sessionId
+    * if(browserstack == 'yes') javaUtils.writeToFile(fileName, sessionId)
     * driver.fullscreen()
 
 @takeScreenshot
