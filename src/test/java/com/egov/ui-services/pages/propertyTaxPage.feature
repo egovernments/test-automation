@@ -75,3 +75,24 @@ Scenario: Search property tax by unique id and make full payment
 	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
 	* print paymentReceiptNumber
+
+@createProperty
+Scenario: Create a new  Property
+    * clickElement(pTPageObjects.propertyTaxModule)
+    * clickElement(pTPageObjects.payPropertyTax)
+    * clickElement(pTPageObjects.propertycreatelink)
+	* clickElement(pTPageObjects.propertyApplyButton)
+	* customSelectFromDropdown(pTPageObjects.propertyCitySelectDropdown, 'Amritsar')
+	* sendKeys(pTPageObjects.propertyHouseNumber, '28')
+	* sendKeys(pTPageObjects.propertyColony, 'colony1')
+	* sendKeys(pTPageObjects.propertyStreet, 'street1')
+	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
+	* sendKeys(pTPageObjects.propertyPinCode , '480001')
+	* clickElement(pTPageObjects.propertyNextButton)
+	* customSelectFromDropdown(pTPageObjects.propertyUsageType, 'Residential')
+	* customSelectFromDropdown(pTPageObjects.propertyTypeOfBuilding , 'Flat/Part of the building')
+	* clickElement(pTPageObjects.noRainWaterHarvesting)
+	* customSelectFromDropdown(pTPageObjects.assessmentOccupancy, 'Rented')
+	* sendKeys(pTPageObjects.assessmentSuperArea , '35')
+	* customSelectFromDropdown(pTPageObjects.selectFloor , 'GroundFloor')
+	

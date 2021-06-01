@@ -21,3 +21,19 @@ objects:
   amountToPayField: "#custom-containers-displayAmount"
   takeActionButton: "span[data-localization='WF_TAKE_ACTION']"
   citizenPayActionButton: "span[data-localization='WF_CITIZEN_PT.MUTATION_PAY']"
+  propertyCreateLink: //button[@id='material-ui-newApplicationButton']
+  popertyApplyButton:  //button[@id='material-ui-applyButton']
+  propertyCitySelectDropdown: //label[text()='City']//..//div//p[text()='Select']
+  propertyHouseNumber: //input[@id='house-number']
+  propertColony:  //input[@id='property-colony']
+  propertyStreet:    //input[@id='property-street']
+  propertyLocality:  //label[text()='Locality/Mohalla']//..//div//p[text()='Select']
+  propertyPinCode: //input[@id='pincode']
+  propertyNextButton: div[data-localization='Next']
+  propertyUsageType:  //div[@id='typeOfUsage']
+  propertyTypeOfBuilding:      //div[@id='typeOfBuilding']
+  noRainWaterHarvesting: //input[@id='rainwaterHarvesting-1']
+  assessmentOccupancy:   //div[@id='assessment-occupancy']
+  assessmentSuperArea:   //input[@id='assessment-super-area']
+  selectFloor:  //div[@id='floorName']
+  

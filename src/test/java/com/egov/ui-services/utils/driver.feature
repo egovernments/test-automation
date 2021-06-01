@@ -39,17 +39,17 @@ Background:
         }
     """
 
-    * def clickElement = 
-    """
-        function(element){
-            try{
-            driver.waitFor(element)
-            driver.click(element)
-            }catch(err){
-                throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
-            }
-        }
-    """
+    # * def clickElement = 
+    # """
+    #     function(element){
+    #         try{
+    #         driver.waitFor(element)
+    #         driver.click(element)
+    #         }catch(err){
+    #             throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
+    #         }
+    #     }
+    # """
 
     * def waitForPageToLoad =
     """

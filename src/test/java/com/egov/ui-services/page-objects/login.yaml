@@ -16,3 +16,25 @@ objects:
   homePageLink: "div[data-localization='Home']"
   userSettingsDropdown: ".userSettingsInnerContainer svg"
   logoutButton: "#header-logout"
+
+#------------------------------------------------------------
+# ComplaintsModuleLink: //div[@class='citizen-dashboard-cont']/div[2]/div[1]
+
+# propertyTaxPageLink: //span[@id='PROPERTY-TAX-2']//div[@data-localization='Property Tax']
+
+# propertyCreateLink: //button[@id='material-ui-newApplicationButton']
+
+# propertTaxRegistrationBackButton: //div[@id='tax-wizard-buttons']/div[1]/div[1]/button
+
+# propertyTaxRegistrationNextButton: //div[@id='tax-wizard-buttons']/div[1]/div[2]/button
+
+# yesRadioButtonRainwaterharvesting: //input[@id='rainwaterHarvesting-0']
+
+# noRadioButton: //input[@id='rainwaterHarvesting-1']
+
+
+
+
+
+
+
