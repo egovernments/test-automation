@@ -89,7 +89,7 @@ Scenario: Create a new  Property
 	* sendKeys(pTPageObjects.propertyColony, randomString(10))
 	* sendKeys(pTPageObjects.propertyStreet, randomString(10))
 	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
-	* sendKeys(pTPageObjects.propertyPinCode , '48'+ranInteger(4))
+	* sendKeys(pTPageObjects.propertyPinCode , '481234'))
 	* clickElement(pTPageObjects.propertyNextButton)
 	#Property Details
 	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyUsageType, 'Residential')
@@ -101,7 +101,7 @@ Scenario: Create a new  Property
 	* clickElement(pTPageObjects.propertyNextButton)
 	#Owner Details
 	* sendKeys(pTPageObjects.ownerName,randomString(10))
-	* sendKeys(pTPageObjects.ownerMobile,citizenUsername)
+	* sendKeys(pTPageObjects.ownerMobile,"9818807742")
 	* sendKeys(pTPageObjects.ownerGuardian,randomString(10))
 	* customSelectFromDropdown(pTPageObjects.specialCatergory , 'None of the above')
 	* clickElement(pTPageObjects.propertyNextButton)
@@ -122,4 +122,7 @@ Scenario: Create a new  Property
 	* clickElement(pTPageObjects.addPropertyBtn)
 	* def appNumber = getElementText(pTPageObjects.generatedApplicationNumber)	
 	* print appNumber
-	* delay(10000000)
+
+# @approveProperty
+# Scenario: search property by application number and verify and forward and approveProperty
+#     * 
