@@ -26,8 +26,9 @@ Scenario Outline: Dummy Scenario
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
-  #  * call read('../../ui-services/pages/propertyTaxPage.feature@createProperty')
+    * call read('../../ui-services/pages/propertyTaxPage.feature@createProperty')
     * call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
+    * call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
 
 
 Examples:

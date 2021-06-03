@@ -56,6 +56,8 @@ objects:
   generatedApplicationNumber: "//div[text()='Application No:']//parent::div//../../following-sibling::h1//div[@class='label-text ']"
   #--------------------
   #Search Property Application
+  homeButton: //div[@data-localization='HOME']
+  searchApplicationTab: //span[@data-localization='PT_SEARCH_APPLICATION']
   searchByApplicationNumber:   //input[@id='custom-containers-propertyTaxApplicationNo']
   searchByOwnerMobileNumber:   //input[@id='custom-containers-ownerMobNoProp']
   searchByPropertyTaxUniqueId: //input[@id='custom-containers-applicationPropertyTaxUniqueId']
@@ -64,11 +66,12 @@ objects:
 
   #Verify Application
   verifyDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_VERIFY']
-  assigneeName:  //label[text()='Assignee Name']//..//div//input
+  assigneeName:  //div[text()='Select assignee Name']
+  selectAssigneeEmpAuto: //li[text()='EMP AUTO']
   commentsInput:  //label[text()='Comments']//..//div//input
   verifyAssigneeButton: //span[@data-localization='WF_PT.CREATE_VERIFY']
   uploadFilesButton: //span[@data-localization='TL_UPLOAD_FILES_BUTTON']
-
+ 
   #Forward Application
   forwardDropdown:  //span[@data-localization='WF_EMPLOYEE_PT.CREATE_FORWARD']
   forwardButton: //span[@data-localization='WF_PT.CREATE_FORWARD']

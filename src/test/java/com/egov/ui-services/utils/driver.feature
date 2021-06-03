@@ -171,7 +171,7 @@ Background:
     """
         function(valueToClick){
             try{
-                ele = "//tr[contains(@Id,'MUIDataTableBodyRow')]//a[text()='"+clickValueInSearchResults+"']"
+                ele = "//tr[contains(@Id,'MUIDataTableBodyRow')]//a[text()='"+valueToClick+"']"
                 driver.click(ele)
             }catch(err){
                 throw new Error("Exception occurred while clicking value in search results -->"+err)

@@ -89,7 +89,7 @@ Scenario: Create a new  Property
 	* sendKeys(pTPageObjects.propertyColony, randomString(10))
 	* sendKeys(pTPageObjects.propertyStreet, randomString(10))
 	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
-	* sendKeys(pTPageObjects.propertyPinCode , '481234'))
+	* sendKeys(pTPageObjects.propertyPinCode , '480004')
 	* clickElement(pTPageObjects.propertyNextButton)
 	#Property Details
 	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyUsageType, 'Residential')
@@ -111,18 +111,50 @@ Scenario: Create a new  Property
 	* customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
 	* customSelectFromDropdown(pTPageObjects.usageProofInputDocumentType,"Electricity Bill")
 	* customSelectFromDropdown(pTPageObjects.constructionProofInputDocumentType,"BPA Certificate")
-	* customInputFile(pTPageObjects.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	* customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	* customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	* customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	* customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPageObjects.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
 	* clickElement(pTPageObjects.propertyNextButton)
 	#Summary
 	* clickElement(pTPageObjects.acceptanceCheckbox)
 	* clickElement(pTPageObjects.addPropertyBtn)
-	* def appNumber = getElementText(pTPageObjects.generatedApplicationNumber)	
+	* def appNumber = getElementText(pTPageObjects.generatedApplicationNumber).trim()	
 	* print appNumber
 
-# @approveProperty
-# Scenario: search property by application number and verify and forward and approveProperty
-#     * 
+@approveProperty
+Scenario: search property by application number and verify and forward and approveProperty
+    
+    #* clickElement(pTPageObjects.homeButton)
+	* clickElement(pTPageObjects.propertyTaxModule)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.verifyDropdown)
+	* clickElement(pTPageObjects.assigneeName)
+	* clickElement(pTPageObjects.selectAssigneeEmpAuto)
+	* sendKeys(pTPageObjects.commentsInput)
+	* clickElement(pTPageObjects.verifyAssigneeButton)
+	* clickElement(pTPageObjects.goToHomeButton)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.forwardDropdown)
+	* clickElement(pTPageObjects.assigneeName)
+	* clickElement(pTPageObjects.selectAssigneeEmpAuto)
+	* clickElement(pTPageObjects.forwardButton)
+	* clickElement(pTPageObjects.goToHomeButton)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.approveDropdown)
+	* sendKeys(pTPageObjects.commentsInput)
+	* clickElement(pTPageObjects.approveButton)
+	
