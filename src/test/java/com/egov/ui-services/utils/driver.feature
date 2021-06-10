@@ -171,7 +171,7 @@ Background:
     """
         function(valueToClick){
             try{
-                ele = "//tr[contains(@Id,'MUIDataTableBodyRow')]//a[text()='"+clickValueInSearchResults+"']"
+                ele = "//tr[contains(@Id,'MUIDataTableBodyRow')]//a[text()='"+valueToClick+"']"
                 driver.click(ele)
             }catch(err){
                 throw new Error("Exception occurred while clicking value in search results -->"+err)
@@ -203,7 +203,16 @@ Background:
 
         }
     """
-
+    * def inputFileUsingJavascript =
+    """
+        function(element,fileToUpload){
+        print("BROWSER UPLAODING IN FILE")
+         var jsScript = "var input = document.getElementsByTagName('input')[4];"
+        +"input.value='/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png';";
+        driver.script(jsScript)
+        print("FILE UPLOADED IN BROWSER")
+        }
+    """
 @initializeDriver
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()

@@ -42,3 +42,15 @@ Scenario: Navigate To Home Page
 Scenario: Logout
 	* retry(3, 5000).waitFor(loginPageObjects.userSettingsDropdown).click()
 	* waitFor(loginPageObjects.logoutButton).click()
+
+@loginAsSuperUser
+Scenario: Login to UI as Super User
+	* driver envHost + "/employee"
+	* clickElement(loginPageObjects.languageEnglishButton)
+	* clickElement(loginPageObjects.continueButton)
+	* sendKeys(loginPageObjects.employeeUsername, 'EMPAUTO')
+	* sendKeys(loginPageObjects.employeePassword, 'eGov@123')
+	* clickElement(loginPageObjects.employeeCity)
+	* clickElement(loginPageObjects.amritsarDropdown)
+	* clickElement(loginPageObjects.loginSubmitButton)
+	
