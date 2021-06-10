@@ -1,10 +1,10 @@
 host: https://qa.digit.org/
 # This parameter is used in authorization header
 basicAuthorization: ZWdvdi11c2VyLWNsaWVudDo=
-# This parameter will be removed once kafka rest proxy is accessible
-localhost: http://localhost:8082/
-# This parameter is used to mock kafka test cases until the kafka rest proxy 6.2 is released
-mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
+# # This parameter will be removed once kafka rest proxy is accessible
+# localhost: http://localhost:8082/
+# # This parameter is used to mock kafka test cases until the kafka rest proxy 6.2 is released
+# mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
 # This parameter is used to check the kafka offset movement threshold percentage
 kafkaOffsetThresholdPercentage: 75
 localhost: http://localhost:8082/
