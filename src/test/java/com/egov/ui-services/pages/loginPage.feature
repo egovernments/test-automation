@@ -35,7 +35,8 @@ Scenario: Login to UI as Citizen
 
 @naviagteToHomePage
 Scenario: Navigate To Home Page
-	* waitFor(loginPageObjects.homePageLink).click()
+	# * waitFor(loginPageObjects.homePageLink).click()
+	* clickElement(loginPageObjects.homePageLink)
 	* waitForUrl(loginPageurls.homePage)
 
 @logout
