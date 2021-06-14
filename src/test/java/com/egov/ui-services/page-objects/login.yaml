@@ -20,6 +20,13 @@ objects:
   employeePassword:  //input[@id='employee-password']
   employeeCity: //input[@id='person-city']
   amritsarDropdown: //span[@id='pb.amritsar']
+
+  #----------------------------------------------------------------------
+data:
+  employeeUsername: "EMPAUTO"
+  employeePassword: "eGov@123"
+  otpField: "123456"
+  mobileNumberFieldType: "type" 
   
 
 

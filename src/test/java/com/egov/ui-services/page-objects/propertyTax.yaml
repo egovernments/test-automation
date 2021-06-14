@@ -34,12 +34,13 @@ objects:
   propertyTypeOfBuilding: "//div[@id='typeOfBuilding']//button"
   noRainWaterHarvesting: "//input[@id='rainwaterHarvesting-1']"
   assessmentOccupancy: "//div[@id='assessment-occupancy']//input"
+  assessmentOccupancy2: //label[text()='Occupancy']//..//div//input
   assessmentSuperArea: "//input[@id='assessment-super-area']"
   selectFloor: "//div[@id='floorName']//input"
   ownerName: "//input[@id='ownerName']"
   ownerMobile: "//input[@id='ownerMobile']"
   ownerGuardian: "//input[@id='ownerGuardian']"
-  specialCatergory: "//div[@id='ownerCategory']//input"
+  specialCategory: "//div[@id='ownerCategory']//input"
   ownerRelationship: "//div[@id='ownerRelationship']//input"
   addressProofInputDocumentType: "//span[@data-localization='OWNER_ADDRESSPROOF']//..//..//input"
   identityProofInputDocumentType: "//span[@data-localization='OWNER_IDENTITYPROOF']//..//..//input"
@@ -47,13 +48,16 @@ objects:
   usageProofInputDocumentType: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//input"
   constructionProofInputDocumentType: "//span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//input"
   addressProofInputDocumentInput: "//span[@data-localization='OWNER_ADDRESSPROOF']//..//..//div//input[@type='file']"
-  identityProofInputDocumentInput: "//span[@data-localization='OWNER_IDENTITYPROOF']//..//..//div//input[@type='file']"
+  identityProofInputDocumentInput: "//input[@id='contained-button-file'][1]"
   registrationProofInputDocumentInput: "//span[@data-localization='OWNER_REGISTRATIONPROOF']//..//..//div//input[@type='file']"
   usageProofInputDocumentInput: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//div//input[@type='file']"
   constructionProofInputDocumentInput: //span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//div//input[@type='file']"
   addPropertyBtn: "//div[@data-localization='ADD PROPERTY']"
   acceptanceCheckbox: "//input[@id='rcpt']"
   generatedApplicationNumber: "//div[text()='Application No:']//parent::div//../../following-sibling::h1//div[@class='label-text ']"
+  generatedUniquePropertyID: "(//div[@class='label-container ']//div[contains(@data-localization,'Unique Property ID')])[1]"
+  generatedPaymentReceiptNumber: "//div[@id='custom-atoms-tail']//following-sibling::h1//span"
+  
   #--------------------
   #Search Property Application
   homeButton: //div[@data-localization='HOME']
@@ -75,10 +79,69 @@ objects:
   #Forward Application
   forwardDropdown:  //span[@data-localization='WF_EMPLOYEE_PT.CREATE_FORWARD']
   forwardButton: //span[@data-localization='WF_PT.CREATE_FORWARD']
-  goToHomeButton: //span[@data-localization='PT_MUTATION_HOME']
+  forwardGoToHomeButton: //span[@data-localization='PT_MUTATION_HOME']
 
 # Approve Application
   approveDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_APPROVE']
   approveButton: //span[@data-localization='WF_PT.CREATE_APPROVE']
 
+
+  ownershipType: //label[text()='Type of Ownership']//..//div//p
+  ownershipType2: //div[@id='typeOfOwnership']//p[text()='Select Ownership Type']
+  singleOwnerDropdown: //p[text()='Individual / Single owner']
+
+# Reject Application
+  rejectDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_REJECT']
+  rejectButton: //span[@data-localization='WF_PT.CREATE_REJECT']
+  sendBackDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_SENDBACKTOCITIZEN']
+  sendBackToCitizenButton: //span[@data-localization='WF_PT.CREATE_SENDBACKTOCITIZEN']
+  headerMessageRejectVerification: //span[@data-localization='PT_APPROVAL_REJ_MESSAGE_HEAD']
+  headerMessageRejectApproval: //span[@data-localization='PT_APPROVAL_REJ_MESSAGE_HEAD']
+  headerMessageSendBack: //span[@data-localization='PT_SENDBACK_TOCITIZEN_CHECKLIST_MESSAGE_HEAD']
+  
+#Assess and Pay Property
+  assessProperty: //div[@data-localization='ASSESS PROPERTY']
+  selectPropertyTaxYear: //div[@data-localization='2021-22']//..//..//..//input
+  okButton: //div[@data-localization='OK']
+  proceedPaymentButton:  //div[@data-localization='PROCEED TO PAYMENT']
+  generateReceiptButton: //span[@data-localization='COMMON_GENERATE_RECEIPT']
+  goToHomeButton: //span[@data-localization='COMMON_BUTTON_HOME']
+  selectCity: "//label[text()='ULB']//..//div//input"
+  amritsarDropdown: "//p[text()='Amritsar']"
+  selectLocality: //label[text()='Locality']//..//div//input
+  uniquePropertyId: //input[@id='custom-containers-propertyTaxUniqueId']
+  checkBox: //input[@id='rcpt']
+  makePayment: //span[@data-localization='COMMON_MAKE_PAYMENT']
+  makePaymentButton2: //button[@id='material-ui-makePayment']
+  payButton: //div[@data-localization='PAY']
+  payerDetails: //input[@id='custom-containers-paidBy']
+  payerName: //input[@id='custom-containers-payerName']
+  payerMobile: //input[@id='custom-containers-payerMobileNo']
+  headerMessageCreateProperty: //h1[@id='material-ui-header']
+  headerMessageApproveProperty: //span[@data-localization='PT_APPROVAL_CHECKLIST_MESSAGE_HEAD']
+  headerMessagePayProperty: //span[@data-localization='EMPLOYEE_SUCCESS_PT_PAYMENT_MESSAGE']
+
+
+data:
+  selectCity: "Amritsar"
+  propertyLocality: "Ajit Nagar - Area1"
+  assessmentSuperArea: "234"
+  selectFloor: "Ground Floor"
+  ownerName: "jane"
+  ownerMobile: "9818807742"
+  ownerGuardian: "jill"
+  specialCategory: "None of the above"
+  propertyHouseNumber: "4"
+  propertyColony: "colony"
+  propertyStreet: "street"
+  propertyPinCode: "480004"
+  propertyUsageType: "Residential"
+  propertyTypeOfBuilding: "Flat/Part of the building"
+  assessmentOccupancy: "Self-Occupied"
+  payerDetails: "COMMON_OWNER"
+  payerName: "mayura"
+  payerMobile: "8073460929"
+  propertyCitySelectDropdown: "Amritsar"
+  
+  
 

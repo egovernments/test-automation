@@ -203,7 +203,16 @@ Background:
 
         }
     """
-
+    * def inputFileUsingJavascript =
+    """
+        function(element,fileToUpload){
+        print("BROWSER UPLAODING IN FILE")
+         var jsScript = "var input = document.getElementsByTagName('input')[4];"
+        +"input.value='C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png';";
+        driver.script(jsScript)
+        print("FILE UPLOADED IN BROWSER")
+        }
+    """
 @initializeDriver
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()
