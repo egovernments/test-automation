@@ -185,16 +185,20 @@ Background:
     """
         function(element,fileToInput){
             try{
-                driver.inputFile(element,fileToInput)
+                karate.log("BEFORE FILE INPUTTTT")
+                driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+                karate.log("AFTER FILE INPUTTTT")
+
             }catch(err){
+                karate.log("EXCEPTION OCCURED IN FILE FILE INPUTTTT")
                 throw new Error("Exception occurred while input file -->"+err)
             }
 
         }
-        function(element) {
-            driver.waitFor(element).click()
+        // function(element) {
+        //     driver.waitFor(element).click()
             
-        }
+        // }
     """
     * configure afterScenario = 
     """

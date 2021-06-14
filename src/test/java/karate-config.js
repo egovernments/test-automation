@@ -469,7 +469,7 @@ function() {
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
-
+   
         if(karate.properties['useBrowserstack']){
             config.browserstack = 'yes';
             var driverConfigJson = karate.read('file:' + karate.properties['useBrowserstack']);
@@ -489,7 +489,10 @@ function() {
             config.currentEpochTime = driverResult.currentEpochTime;
         }else{
             config.browserstack = 'no';
-            config.deviceConfigs = [{type: 'chrome', headless: true, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}}];
+            config.deviceConfigs = [
+            {type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}},
+            {type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
+        ];
         }
 
     karate.log('karate.env:', env);

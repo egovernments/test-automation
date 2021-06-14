@@ -193,19 +193,20 @@ Scenario: Create a new  Property as SuperUser
 	* customSelectFromDropdown(pTPageObjects.specialCatergory , 'None of the above')
 	* clickElement(pTPageObjects.propertyNextButton)
 	#Document Info
-	# * customSelectFromDropdown(pTPageObjects.addressProofInputDocumentType,"Electricity Bill")
-	# * customSelectFromDropdown(pTPageObjects.identityProofInputDocumentType,"Aadhar Card")
-	# * customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
-	# * customSelectFromDropdown(pTPageObjects.usageProofInputDocumentType,"Electricity Bill")
-	# * customSelectFromDropdown(pTPageObjects.constructionProofInputDocumentType,"BPA Certificate")
-	#* customInputFile(pTPageObjects.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* clickElement(pTPageObjects.addressProofInputDocumentInput)
+	* customSelectFromDropdown(pTPageObjects.addressProofInputDocumentType,"Electricity Bill")
+	* customSelectFromDropdown(pTPageObjects.identityProofInputDocumentType,"Aadhar Card")
+	* customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
+	* customSelectFromDropdown(pTPageObjects.usageProofInputDocumentType,"Electricity Bill")
+	* customSelectFromDropdown(pTPageObjects.constructionProofInputDocumentType,"BPA Certificate")
+	* print "ADDDING FILESS"
+	* customInputFile(pTPageObjects.addressProofInputDocumentInput,"file:src/test/java/com/screenshot.png")
+	# * customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	# * customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	# * customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	# * customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+#	* clickElement(pTPageObjects.addressProofInputDocumentInput)
 #	* driver.inputFile(pTPageObjects.addressProofInputDocumentInput, "/Users/Lenovo/Pictures/Screenshots/Screenshot (1).png")
-#	* delay(4000)
+	* delay(10000000)
    # * input(pTPageObjects.identityProofInputDocumentInput, "Screenshot.png")
 #	* inputFileUsingJavascript("test","test")
 	# * inputFileUsingJavascript("test","test")
@@ -251,7 +252,85 @@ Scenario: Create a new  Property as SuperUser
 
 	* print  UniquePropertyID
 
-@approveProperty
+
+
+@approvePropertyFromDocVerifier
+Scenario: Approve Property From Doc Verifier
+	* clickElement(pTPageObjects.propertyTaxModule)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.verifyDropdown)
+	* sendKeys(pTPageObjects.commentsInput,"Test")
+	* clickElement(pTPageObjects.verifyAssigneeButton)
+
+
+@approvePropertyFromFieldInspector
+Scenario: Approve Property From Field Inspector
+	* clickElement(pTPageObjects.goToHomeButton)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.forwardDropdown)
+	* clickElement(pTPageObjects.forwardButton)
+
+@approvePropertyFromApprover
+Scenario: Approve Property From Approver
+	* clickElement(pTPageObjects.goToHomeButton)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.approveDropdown)
+	* sendKeys(pTPageObjects.commentsInput,randomString(10))
+	* clickElement(pTPageObjects.approveButton)
+
+@rejectPropertyFromDocVerifier
+Scenario: Search property by application number and reject property Doc Verification
+    * clickElement(pTPageObjects.propertyTaxModule)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.rejectDropdown)
+	* sendKeys(pTPageObjects.commentsInput)
+	* clickElement(pTPageObjects.rejectButton)
+
+
+@sendBackToCitizenFromDocVerifier
+Scenario: Search property by application number and reject property Doc Verification
+    * clickElement(pTPageObjects.propertyTaxModule)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+ 	* clickElement(pTPageObjects.sendBackDropdown)
+	* sendKeys(pTPageObjects.commentsInput)
+ 	* clickElement(pTPageObjects.sendBackToCitizenButton)
+
+@rejectPropertyFromApprover
+Scenario: Search property by application number and reject property from approver
+	* softRefreshPage()
+    * clickElement(pTPageObjects.propertyTaxFromLeftNav)
+	* clickElement(pTPageObjects.searchApplicationTab)
+	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
+	* clickElement(pTPageObjects.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPageObjects.takeActionButton)
+	* clickElement(pTPageObjects.rejectDropdown)
+	* sendKeys(pTPageObjects.commentsInput)
+	* clickElement(pTPageObjects.rejectButton)
+
+
+
+@approvePropertyFULL
 Scenario: search property by application number and verify and forward and approveProperty
  #   * clickElement(pTPageObjects.homeButton)
 	* clickElement(pTPageObjects.propertyTaxModule)
@@ -272,7 +351,7 @@ Scenario: search property by application number and verify and forward and appro
 	* clickValueInSearchResults(appNumber)
 	* clickElement(pTPageObjects.takeActionButton)
 	* clickElement(pTPageObjects.forwardDropdown)
-	# * clickElement(pTPageObjects.assigneeName)
+	# * clickElement(pTPageObjects.assigneeName)	
 	# * clickElement(pTPageObjects.selectAssigneeEmpAuto)
 	* clickElement(pTPageObjects.forwardButton)
 	* clickElement(pTPageObjects.goToHomeButton)
@@ -321,18 +400,7 @@ Scenario: search property by application number and verify and forward and appro
 #     * clickElement(pTPageObjects.goToHomeButton)
 # 	* 
 
-# @rejectPropertyVerification
-# Scenario: Search property by application number and reject property Verification
-#     * clickElement(pTPageObjects.propertyTaxModule)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(appNumber)
-# 	* clickElement(pTPageObjects.takeActionButton)
-# 	* clickElement(pTPageObjects.rejectDropdown)
-# 	* sendKeys(pTPageObjects.commentsInput)
-# 	* clickElement(pTPageObjects.rejectButton)
-
+	
 # @rejectPropertyApproval
 # Scenario: Search Property by application and reject property Approval
 #     * clickElement(pTPageObjects.propertyTaxModule)
