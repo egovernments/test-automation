@@ -1,6 +1,7 @@
 Feature: Driver Related Feature
 
 Background:
+    * def javaUtils = Java.type('com.egov.utils.JavaUtils');
     * def jsUtils = read('classpath:jsUtils.js')
     * def getDriverConfig = 
     """
@@ -14,7 +15,7 @@ Background:
             }
         }
     """
-    * def clickElement = 
+    * def clickElement =
     """
         function(element){
             try{
@@ -184,14 +185,28 @@ Background:
     """
         function(element,fileToInput){
             try{
-                driver.inputFile(element,fileToInput)
+                karate.log("BEFORE FILE INPUTTTT")
+                driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+                karate.log("AFTER FILE INPUTTTT")
+
             }catch(err){
+                karate.log("EXCEPTION OCCURED IN FILE FILE INPUTTTT")
                 throw new Error("Exception occurred while input file -->"+err)
             }
 
         }
-
+        // function(element) {
+        //     driver.waitFor(element).click()
+            
+        // }
     """
+    * configure afterScenario = 
+    """
+        function() { if(karate.info.errorMessage) {driver.screenshot();}
+            
+        }
+    """
+
    * def getElementText = 
     """
         function(element){
@@ -219,7 +234,8 @@ Scenario: Initialize Driver
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
     * driver envHost
-	* def browserstackSessionId = driver.sessionId
+    * def sessionId = driver.sessionId
+    * if(browserstack == 'yes') javaUtils.writeToFile(fileName, sessionId)
     * driver.fullscreen()
 
 
@@ -236,10 +252,10 @@ Scenario: Create Browserstack Config
 	* def driverType = (karate.match(desiredCapabilities.browserName, "#notnull").pass) ? desiredCapabilities.browserName : desiredCapabilities.browser + 'driver'
     * eval driverType = (karate.match(driverType, 'firefoxdriver').pass) ?  'geckodriver' : driverType
     * eval desiredCapabilities.name = (karate.match(desiredCapabilities.browserName, "#notnull").pass) ? desiredCapabilities.browserName : desiredCapabilities.browser
-    * eval desiredCapabilities.name = browserTestName + desiredCapabilities.name
+    * eval desiredCapabilities.name = browserTestName + ' ' + desiredCapabilities.name
     * def capabilities = karate.merge(deviceCapabilities, commonCapabilities)
     * eval capabilities.name = (karate.match(capabilities.browserName, "#notnull").pass) ? capabilities.browserName : capabilities.browser
-    * eval capabilities.name = browserTestName + capabilities.name
+    * eval capabilities.name = browserTestName + ' ' + capabilities.name
     * def browserSession = { desiredCapabilities: '#(desiredCapabilities)', capabilities: '#(capabilities)' }
 	* def browserstackConfig = { type: '#(driverType)', webDriverSession: '#(browserSession)', start: false, webDriverUrl: '#(driverUrl)' }
 

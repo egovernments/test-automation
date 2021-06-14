@@ -469,7 +469,7 @@ function() {
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
-
+   
         if(karate.properties['useBrowserstack']){
             config.browserstack = 'yes';
             var driverConfigJson = karate.read('file:' + karate.properties['useBrowserstack']);
@@ -481,12 +481,18 @@ function() {
             if(karate.properties['browserstackBuildName']){
                 config.browserstackBuildName = karate.properties['browserstackBuildName'];
             }
+            if(java.lang.System.getenv("BROWSERSTACK_BUILD_NAME") != null){
+                config.browserstackBuildName = java.lang.System.getenv("BROWSERSTACK_BUILD_NAME");
+            }
 
             var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
             config.currentEpochTime = driverResult.currentEpochTime;
         }else{
             config.browserstack = 'no';
-            config.deviceConfigs = [{type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}}];
+            config.deviceConfigs = [
+            {type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}},
+            {type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
+        ];
         }
 
     karate.log('karate.env:', env);
