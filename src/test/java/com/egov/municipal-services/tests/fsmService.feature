@@ -30,6 +30,8 @@ Background:
     * def pitDetails = randomMobileNumGen(1)
     * def trip = 2220
     * def businessService = "FSM"
+    * def cash = "CASH"
+    * def owner = "OWNER"
 
     @fsm_create_01 @positive @regression @municipalService @fsmService @fsmServiceCreate
     Scenario: Verify creating a fsm service application through API 
@@ -91,6 +93,15 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmError')
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.invalidSanitationType
 
+    @fsm_payment_01 @positive @regression @municipalService @fsmService @fsmServiceUpdate
+    Scenario: Verify payment a fsm service application through API
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmSuccessfully')
+    * def businessService = "FSM.TRIP_CHARGES"
+    * def getFsmSearchParam = {"tenantId": '#(tenantId)', "consumerCode": '#(applicationNo)',"businessService": '#(businessService)'}
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@fetchBillSuccessfully')
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createPaymentFsmSuccessfully')
+    * match fsmResponseBody.Payments[0].id == '#present'
+
     @fsm_update_01 @positive @regression @municipalService @fsmService @fsmServiceUpdate
     Scenario: Verify updating a fsm service application through API
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmSuccessfully')
@@ -132,6 +143,12 @@ Background:
     * set fsmBody.fsm[0].dsoId = randomString(10)
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@updateFsmError')
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.invalidAction+applicationNo
+
+    @fetchBill_search_01 @positive @regression @municipalService @fsmService @fsmServiceSearch
+    Scenario: Verify searching for a fetcching bill service
+    * def getFsmSearchParam = {"tenantId": '#(tenantId)', "consumerCode": '#(applicationNo)',"businessService": '#(businessService)'}
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@fetchBillSuccessfully')
+    * match fsmResponseBody.fsm[0] == '#present'
 
     @fsm_search_01 @positive @regression @municipalService @fsmService @fsmServiceSearch
     Scenario: Verify searching for a fsm service

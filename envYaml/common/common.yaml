@@ -287,6 +287,7 @@ endPoints:
     update: fsm/v1/_update
     search: fsm/v1/_search
     audit: fsm/v1/_audit
+    paymentsCreate: collection-services/payments/_create
     vendorCreate: vendor/v1/_create
     vendorSearch: vendor/v1/_search
     vehicalCreate: vehicle/v1/_create
@@ -294,3 +295,8 @@ endPoints:
     vehicalTripCreate: vehicle/trip/v1/_create
     vehicalTripSearch: vehicle/trip/v1/_search
     vehicalTripUpdate: vehicle/trip/v1/_update
+
+  echallanService:
+    create: echallan-services/eChallan/v1/_create
+    update: echallan-services/eChallan/v1/_update
+    search: echallan-services/eChallan/v1/_search

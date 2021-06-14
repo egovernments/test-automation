@@ -29,6 +29,8 @@ Background:
     * def pitDetails = randomMobileNumGen(1)
     * def trip = 2220
     * def businessService = "FSM"
+    * def cash = "CASH"
+    * def owner = "OWNER"
     
 @createFsmAsCitizen @fsmEndToEnd
 Scenario: Login as a citizen
@@ -63,7 +65,7 @@ Scenario: Login as a citizen
 
 
     # update FSM
-    * call read('../../municipal-services/tests/fsmService.feature@fsm_update_01')
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_payment_01')
     # need to create FSM Calculator Estimate api
 
     # need to create FSM Calculator Demand Create
@@ -72,4 +74,3 @@ Scenario: Login as a citizen
 
     # login to citizon for payment 
     * def authToken = citizenAuthToken
-    

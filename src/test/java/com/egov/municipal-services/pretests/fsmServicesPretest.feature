@@ -14,6 +14,7 @@ Feature: FIRE-NOC-Service pretests
         * def vehicalTripCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripCreate.json')
         * def vehicalTripUpdateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripUpdate.json')
         * def createNoSlumFsmRequest = read('../../municipal-services/requestPayload/fsmService/createNoSlum.json')
+        * def createPaymentRequest = read('../../municipal-services/requestPayload/fsmService/payment.json')
 
     @createFsmSuccessfully
     Scenario: Create FSM successfully
@@ -36,6 +37,27 @@ Feature: FIRE-NOC-Service pretests
         When method post
         Then status 400
         And def fsmResponseBody = response
+
+    @createPaymentFsmSuccessfully
+    Scenario: create Payment successfully
+        Given url paymentsCreateFsmEvent
+        And request createPaymentRequest
+        When method post
+        Then status 200
+        And def fsmResponseBody = response
+
+    @fetchBillSuccessfully
+    Scenario: fetch Bill successfully
+        Given url fetchBill
+        And params getFsmSearchParam
+        And request searchFsmRequest
+        When method post
+        Then status 201
+        And def fsmResponseBody = response
+        And def billId = fsmResponseBody.Bill[0].id
+        And def payerName = fsmResponseBody.Bill[0].payerName
+        And def businessService = fsmResponseBody.Bill[0].businessService
+        And def billDate = fsmResponseBody.Bill[0].billDate
 
     @updateFsmSuccessfully
     Scenario: update FSM successfully
@@ -170,7 +192,7 @@ Feature: FIRE-NOC-Service pretests
 
     @vehicalCreateFsmError2
     Scenario: Vehical Create FSM Error without Registation Number
-        * eval karate.remove('createDemandRequest', removeFieldPath)
+        * eval karate.remove('vehicalCreateFsmRequest', removeFieldPath)
         Given url vehicalCreateFsmEvent
         And request vehicalCreateFsmRequest
         When method post
@@ -283,7 +305,7 @@ Feature: FIRE-NOC-Service pretests
 
     @vehicalTripCreateFsmError2
     Scenario: Vehical Trip Create FSM Error without vehical ID
-        * eval karate.remove('createDemandRequest', removeFieldPath)
+        * eval karate.remove('vehicalTripCreateFsmRequest', removeFieldPath)
         Given url vehicalTripCreateFsmEvent
         And request vehicalTripCreateFsmRequest
         When method post
