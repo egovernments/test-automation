@@ -7,3 +7,9 @@ objects:
   authResultDropdown: "#selectAuthResult"
   authenticatedDropDownValue: 'AUTHENTICATED'
   submitButton: "input[value='Submit']"
+
+data:
+  cardNumberField: "5457210001000019"
+  cardMonthField: "12"
+  cardYearField: "25"
+  

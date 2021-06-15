@@ -2,49 +2,48 @@ Feature: Water And Sewerage Page Feature
 
 Background:
     * def wsPage = read('../../ui-services/page-objects/waterAndSewerage.yaml')
-    * def wsPageObjects = wsPage.objects
-
+    * def wSPO = wsPage.objects
 @makeFullPayment
 Scenario: Search water and sewerage by unique id and make full payment
-	* waitFor(wsPageObjects.waterAndSewerageModule).click()
-	* waitFor(wsPageObjects.payWaterAndSewerageBill).click()
-	* waitFor(wsPageObjects.selectCity).click()
-	* input(wsPageObjects.selectCity, [stateCode, Key.ENTER], 100)
-	* input(wsPageObjects.consumerNumberField, connectionNo)
-	* click(wsPageObjects.searchWsButton)
-	* def payBillForConsumer = wsPageObjects.payBillForConsumer
+	* waitFor(wSPO.waterAndSewerageModule).click()
+	* waitFor(wSPO.payWaterAndSewerageBill).click()
+	* waitFor(wSPO.selectCity).click()
+	* input(wSPO.selectCity, [stateCode, Key.ENTER], 100)
+	* input(wSPO.consumerNumberField, connectionNo)
+	* click(wSPO.searchWsButton)
+	* def payBillForConsumer = wSPO.payBillForConsumer
 	* replace payBillForConsumer.connectionNo = connectionNo
 	* waitFor(payBillForConsumer).click()
-    * waitFor(wsPageObjects.payButton).click()
+    * waitFor(wSPO.payButton).click()
 	* delay(3000)
-    * retry(3, 5000).waitFor(wsPageObjects.payernameField).input(name)
-    * waitFor(wsPageObjects.payerMobileNoField).input(mobileNumber)
-	* retry(3, 5000).waitFor(wsPageObjects.makePaymentButton).click()
+    * retry(3, 5000).waitFor(wSPO.payernameField).input(name)
+    * waitFor(wSPO.payerMobileNoField).input(mobileNumber)
+	* retry(3, 5000).waitFor(wSPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(wsPageObjects.paymentReceiptNo)
-	* def paymentReceiptNumber = text(wsPageObjects.paymentReceiptNo)
+	* retry(6, 5000).waitFor(wSPO.paymentReceiptNo)
+	* def paymentReceiptNumber = text(wSPO.paymentReceiptNo)
 	* print paymentReceiptNumber
 
 @makePartialPayment
 Scenario: Search water and sewerage by unique id and make partial payment
-	* waitFor(wsPageObjects.waterAndSewerageModule).click()
-	* waitFor(wsPageObjects.payWaterAndSewerageBill).click()
-	* waitFor(wsPageObjects.selectCity).click()
-	* input(wsPageObjects.selectCity, [stateCode, Key.ENTER], 100)
-	* input(wsPageObjects.consumerNumberField, connectionNo)
-	* click(wsPageObjects.searchWsButton)
-	* def payBillForConsumer = wsPageObjects.payBillForConsumer
+	* waitFor(wSPO.waterAndSewerageModule).click()
+	* waitFor(wSPO.payWaterAndSewerageBill).click()
+	* waitFor(wSPO.selectCity).click()
+	* input(wSPO.selectCity, [stateCode, Key.ENTER], 100)
+	* input(wSPO.consumerNumberField, connectionNo)
+	* click(wSPO.searchWsButton)
+	* def payBillForConsumer = wSPO.payBillForConsumer
 	* replace payBillForConsumer.connectionNo = connectionNo
 	* waitFor(payBillForConsumer).click()
-    * waitFor(wsPageObjects.payButton).click()
+    * waitFor(wSPO.payButton).click()
 	* delay(3000)
-    * retry(3, 5000).waitFor(wsPageObjects.payernameField).input(name)
-    * waitFor(wsPageObjects.payerMobileNoField).input(mobileNumber)
-	* waitFor(wsPageObjects.partialAmountRadioButton).click()
-	* waitFor(wsPageObjects.amountToPayField)
-	* input(wsPageObjects.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
-	* waitFor(wsPageObjects.makePaymentButton).click()
+    * retry(3, 5000).waitFor(wSPO.payernameField).input(name)
+    * waitFor(wSPO.payerMobileNoField).input(mobileNumber)
+	* waitFor(wSPO.partialAmountRadioButton).click()
+	* waitFor(wSPO.amountToPayField)
+	* input(wSPO.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
+	* waitFor(wSPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(wsPageObjects.paymentReceiptNo)
-	* def paymentReceiptNumber = text(wsPageObjects.paymentReceiptNo)
+	* retry(6, 5000).waitFor(wSPO.paymentReceiptNo)
+	* def paymentReceiptNumber = text(wSPO.paymentReceiptNo)
 	* print paymentReceiptNumber

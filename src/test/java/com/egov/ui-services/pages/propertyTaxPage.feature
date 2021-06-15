@@ -2,213 +2,215 @@ Feature: Property Tax Page Feature
 
 Background:
     * def propertyTaxPage = read('../../ui-services/page-objects/propertyTax.yaml')
-    * def pTPageObjects = propertyTaxPage.objects
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def pTPO = propertyTaxPage.objects
 
+    * def jsUtils = read('classpath:jsUtils.js')
+	* def pTTestData = propertyTaxPage.data
+   
 @makeFullPayment
 Scenario: Search property tax by unique id and make full payment
-	* waitFor(pTPageObjects.propertyTaxModule).click()
-	* waitFor(pTPageObjects.payPropertyTax).click()
-	* waitFor(pTPageObjects.selectCity).click()
-	* input(pTPageObjects.selectCity, [stateCode, Key.ENTER], 100)
-	* input(pTPageObjects.uniquePropertyIdField, propertyId)
-	* click(pTPageObjects.searchPropertyButton)
-	* def selectPropertyId = pTPageObjects.selectPropertyId
+	* waitFor(pTPO.propertyTaxModule).click()
+	* waitFor(pTPO.payPropertyTax).click()
+	* waitFor(pTPO.selectCity).click()
+	* input(pTPO.selectCity, [stateCode, Key.ENTER], 100)
+	* input(pTPO.uniquePropertyIdField, propertyId)
+	* click(pTPO.searchPropertyButton)
+	* def selectPropertyId = pTPO.selectPropertyId
 	* replace selectPropertyId.propertyId = propertyId
 	* waitFor(selectPropertyId).click()
 	* delay(3000)
-	* waitFor(pTPageObjects.assessPropertyButton).click()
-	* waitFor(pTPageObjects.financialYearRadioButton).click()
-	* click(pTPageObjects.financialOkButton)
-	* waitFor(pTPageObjects.iAgreeCheckbox).click()
-	* waitFor(pTPageObjects.assessPropertyButton).click()
-	* waitFor(pTPageObjects.proceedToPaymentButton).click()
+	* waitFor(pTPO.assessPropertyButton).click()
+	* waitFor(pTPO.financialYearRadioButton).click()
+	* click(pTPO.financialOkButton)
+	* waitFor(pTPO.iAgreeCheckbox).click()
+	* waitFor(pTPO.assessPropertyButton).click()
+	* waitFor(pTPO.proceedToPaymentButton).click()
 	* delay(3000)
-	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
+	* retry(3, 5000).waitFor(pTPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
-	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPO.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
 	* print paymentReceiptNumber
  
 @makePartialPayment
 Scenario: Search property tax by unique id and make partial payment
-	* waitFor(pTPageObjects.propertyTaxModule).click()
-	* waitFor(pTPageObjects.payPropertyTax).click()
-	* waitFor(pTPageObjects.selectCity).click()
-	* input(pTPageObjects.selectCity, [stateCode, Key.ENTER], 100)
-	* input(pTPageObjects.uniquePropertyIdField, propertyId)
-	* click(pTPageObjects.searchPropertyButton)
-	* def selectPropertyId = pTPageObjects.selectPropertyId
+	* waitFor(pTPO.propertyTaxModule).click()
+	* waitFor(pTPO.payPropertyTax).click()
+	* waitFor(pTPO.selectCity).click()
+	* input(pTPO.selectCity, [stateCode, Key.ENTER], 100)
+	* input(pTPO.uniquePropertyIdField, propertyId)
+	* click(pTPO.searchPropertyButton)
+	* def selectPropertyId = pTPO.selectPropertyId
 	* replace selectPropertyId.propertyId = propertyId
 	* waitFor(selectPropertyId).click()
 	* delay(3000)
-	* waitFor(pTPageObjects.assessPropertyButton).click()
-	* waitFor(pTPageObjects.financialYearRadioButton).click()
-	* click(pTPageObjects.financialOkButton)
-	* waitFor(pTPageObjects.iAgreeCheckbox).click()
-	* waitFor(pTPageObjects.assessPropertyButton).click()
-	* waitFor(pTPageObjects.proceedToPaymentButton).click()
+	* waitFor(pTPO.assessPropertyButton).click()
+	* waitFor(pTPO.financialYearRadioButton).click()
+	* click(pTPO.financialOkButton)
+	* waitFor(pTPO.iAgreeCheckbox).click()
+	* waitFor(pTPO.assessPropertyButton).click()
+	* waitFor(pTPO.proceedToPaymentButton).click()
 	* delay(3000)
-	* waitFor(pTPageObjects.partialAmountRadioButton).click()
-	* waitFor(pTPageObjects.amountToPayField)
-	* input(pTPageObjects.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
-	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
+	* waitFor(pTPO.partialAmountRadioButton).click()
+	* waitFor(pTPO.amountToPayField)
+	* input(pTPO.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
+	* retry(3, 5000).waitFor(pTPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
-	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPO.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
 	* print paymentReceiptNumber
 
 @makeMutationPayment
 Scenario: Search property tax by unique id and make full payment
-	* waitFor(pTPageObjects.propertyTaxModule).click()
-	* waitFor(pTPageObjects.payPropertyTax).click()
-	* waitFor(pTPageObjects.searchApplication).click()
-	* waitFor(pTPageObjects.applicationNumberField).input(acknowldgementNumber)
-	* click(pTPageObjects.searchPropertyButton)
-	* def selectApplicationNumber = pTPageObjects.selectApplicationNumber
+	* waitFor(pTPO.propertyTaxModule).click()
+	* waitFor(pTPO.payPropertyTax).click()
+	* waitFor(pTPO.searchApplication).click()
+	* waitFor(pTPO.applicationNumberField).input(acknowldgementNumber)
+	* click(pTPO.searchPropertyButton)
+	* def selectApplicationNumber = pTPO.selectApplicationNumber
 	* replace selectApplicationNumber.acknowldgementNumber = acknowldgementNumber
 	* waitFor(selectApplicationNumber).click()
-	* waitFor(pTPageObjects.takeActionButton).click()
-	* waitFor(pTPageObjects.citizenPayActionButton).click()
+	* waitFor(pTPO.takeActionButton).click()
+	* waitFor(pTPO.citizenPayActionButton).click()
 	* delay(3000)
-	* retry(3, 5000).waitFor(pTPageObjects.makePaymentButton).click()
+	* retry(3, 5000).waitFor(pTPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
-	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	* retry(6, 5000).waitFor(pTPO.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
 	* print paymentReceiptNumber
 
 @createProperty
 Scenario: Create a new  Property as Citizen
-    * clickElement(pTPageObjects.propertyTaxModule)
-    * clickElement(pTPageObjects.payPropertyTax)
-    * clickElement(pTPageObjects.propertyCreateLink)
-	* clickElement(pTPageObjects.propertyApplyButton)
+    * clickElement(pTPO.propertyTaxModule)
+    * clickElement(pTPO.payPropertyTax)
+    * clickElement(pTPO.propertyCreateLink)
+	* clickElement(pTPO.propertyApplyButton)
 	#Property Address
-	* customSelectFromDropdown(pTPageObjects.propertyCitySelectDropdown, 'Amritsar')
+	* customSelectFromDropdown(pTPO.propertyCitySelectDropdown, pTTestData.propertyCitySelectDropdown)
 	* def houseNumber = ranInteger(2)
 	* print "House Number"
 	* print houseNumber
-	* sendKeys(pTPageObjects.propertyHouseNumber, '4')
+	* sendKeys(pTPO.propertyHouseNumber, pTTestData.propertyHouseNumber)
 	* def colony = randomString(10)
 	* print "colony"
 	* print colony
-	* sendKeys(pTPageObjects.propertyColony, 'colony')
+	* sendKeys(pTPO.propertyColony, pTTestData.propertyColony)
 	* def street = randomString(10)
 	* print "street"
 	* print street
-	* sendKeys(pTPageObjects.propertyStreet, 'street')
-	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
-	* sendKeys(pTPageObjects.propertyPinCode , '480004')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.propertyStreet, pTTestData.propertyStreet)
+	* customSelectFromDropdown(pTPO.propertyLocality, pTTestData.propertyLocality)
+	* sendKeys(pTPO.propertyPinCode , pTTestData.propertyPinCode)
+	* clickElement(pTPO.propertyNextButton)
 	#Property Details
-	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyUsageType, 'Residential')
-	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyTypeOfBuilding , 'Flat/Part of the building')
-	* clickElement(pTPageObjects.noRainWaterHarvesting)
-	* customSelectFromDropdown(pTPageObjects.assessmentOccupancy, 'Self-Occupied')
+	* customSelectFromDropdownContainingLocalization(pTPO.propertyUsageType, pTTestData.Residential)
+	* customSelectFromDropdownContainingLocalization(pTPO.propertyTypeOfBuilding , pTTestData.propertyTypeOfBuilding)
+	* clickElement(pTPO.noRainWaterHarvesting)
+	* customSelectFromDropdown(pTPO.assessmentOccupancy, pTTestData.assessmentOccupancy)
 	* def assesmentArea = ranInteger(4)
 	* print "assesment area"
 	* print assesmentArea
-	* sendKeys(pTPageObjects.assessmentSuperArea , '234')
-	* customSelectFromDropdown(pTPageObjects.selectFloor , 'Ground Floor')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.assessmentSuperArea , pTTestData.assessmentSuperArea)
+	* customSelectFromDropdown(pTPO.selectFloor , pTTestData.selectFloor)
+	* clickElement(pTPO.propertyNextButton)
 	#Owner Details
-	#* customSelectFromDropdown(pTPageObjects.ownershipType2 , 'Individual / Single owner')
-	#* clickElement(pTPageObjects.ownershipType2)
-	#* clickElement(pTPageObjects.singleOwnerDropdown)
+	#* customSelectFromDropdown(pTPO.ownershipType2 , 'Individual / Single owner')
+	#* clickElement(pTPO.ownershipType2)
+	#* clickElement(pTPO.singleOwnerDropdown)
 	* def ownerName = randomString(10)
 	* print 'ownerName'
 	* print ownerName
-	* sendKeys(pTPageObjects.ownerName, 'jane')
-	* sendKeys(pTPageObjects.ownerMobile,'9818807742')
+	* sendKeys(pTPO.ownerName, pTTestData.ownerName)
+	* sendKeys(pTPO.ownerMobile,pTTestData.ownerMobile)
 	* def ownerGuardian = randomString(10)
 	* print "owner Guardian"
 	* print ownerGuardian
-	* sendKeys(pTPageObjects.ownerGuardian, 'jill')
-	* customSelectFromDropdown(pTPageObjects.specialCatergory , 'None of the above')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.ownerGuardian, pTTestData.ownerGuardian)
+	* customSelectFromDropdown(pTPO.specialCategory , pTTestData.specialCategory)
+	* clickElement(pTPO.propertyNextButton)
 	#Document Info
-	#* customSelectFromDropdown(pTPageObjects.addressProofInputDocumentType,"Electricity Bill")
-	#* customSelectFromDropdown(pTPageObjects.identityProofInputDocumentType,"Aadhar Card")
-	#* customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
-	#* customSelectFromDropdown(pTPageObjects.usageProofInputDocumentType,"Electricity Bill")
-	#* customSelectFromDropdown(pTPageObjects.constructionProofInputDocumentType,"BPA Certificate")
-	#* customInputFile(pTPageObjects.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	#* customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	* clickElement(pTPageObjects.propertyNextButton)
+	#* customSelectFromDropdown(pTPO.addressProofInputDocumentType,"Electricity Bill")
+	#* customSelectFromDropdown(pTPO.identityProofInputDocumentType,"Aadhar Card")
+	#* customSelectFromDropdown(pTPO.registrationProofInputDocumentType,"Gift Deed")
+	#* customSelectFromDropdown(pTPO.usageProofInputDocumentType,"Electricity Bill")
+	#* customSelectFromDropdown(pTPO.constructionProofInputDocumentType,"BPA Certificate")
+	#* customInputFile(pTPO.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	* clickElement(pTPO.propertyNextButton)
 	#Summary
-	* clickElement(pTPageObjects.acceptanceCheckbox)
-	* clickElement(pTPageObjects.addPropertyBtn)
-	* def appNumber = getElementText(pTPageObjects.generatedApplicationNumber).trim()	
+	* clickElement(pTPO.acceptanceCheckbox)
+	* clickElement(pTPO.addPropertyBtn)
+	* def appNumber = getElementText(pTPO.generatedApplicationNumber).trim()	
 	* print appNumber
+	* print pTPO.headerMessageCreateProperty
 
 
 @createPropertyAsSuperUser
 Scenario: Create a new  Property as SuperUser
-    * clickElement(pTPageObjects.propertyTaxModule)
-    * clickElement(pTPageObjects.propertyCreateLink)
-	* clickElement(pTPageObjects.propertyApplyButton)
+    * clickElement(pTPO.propertyTaxModule)
+    * clickElement(pTPO.propertyCreateLink)
+	* clickElement(pTPO.propertyApplyButton)
 	#Property Address
 	* def houseNumber = ranInteger(2)
 	* print "House Number"
 	* print houseNumber
-	* sendKeys(pTPageObjects.propertyHouseNumber, '4')
+	* sendKeys(pTPO.propertyHouseNumber, pTTestData.propertyHouseNumber)
 	* def colony = randomString(10)
 	* print "colony"
 	* print colony
-	* sendKeys(pTPageObjects.propertyColony, 'colony')
+	* sendKeys(pTPO.propertyColony, pTTestData.propertyColony)
 	* def street = randomString(10)
 	* print "street"
 	* print street
-	* sendKeys(pTPageObjects.propertyStreet, 'street')
-	* customSelectFromDropdown(pTPageObjects.propertyLocality, 'Ajit Nagar - Area1')
-	* sendKeys(pTPageObjects.propertyPinCode , '480004')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.propertyStreet, pTTestData.propertyStreet)
+	* customSelectFromDropdown(pTPO.propertyLocality, pTTestData.propertyLocality)
+	* sendKeys(pTPO.propertyPinCode , pTTestData.propertyPinCode)
+	* clickElement(pTPO.propertyNextButton)
 	#Property Details
-	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyUsageType, 'Residential')
-	* customSelectFromDropdownContainingLocalization(pTPageObjects.propertyTypeOfBuilding , 'Flat/Part of the building')
-	* clickElement(pTPageObjects.noRainWaterHarvesting)
-	* customSelectFromDropdown(pTPageObjects.assessmentOccupancy, 'Self-Occupied')
+	* customSelectFromDropdownContainingLocalization(pTPO.propertyUsageType, pTTestData.propertyUsageType)
+	* customSelectFromDropdownContainingLocalization(pTPO.propertyTypeOfBuilding , pTTestData.propertyTypeOfBuilding)
+	* clickElement(pTPO.noRainWaterHarvesting)
+	* customSelectFromDropdown(pTPO.assessmentOccupancy, pTTestData.assessmentOccupancy)
 	* def assesmentArea = ranInteger(4)
 	* print "assesment area"
 	* print assesmentArea
-	* sendKeys(pTPageObjects.assessmentSuperArea , '10')
-	* customSelectFromDropdown(pTPageObjects.selectFloor , 'Ground Floor')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.assessmentSuperArea , pTTestData.assessmentSuperArea)
+	* customSelectFromDropdown(pTPO.selectFloor , pTTestData.selectFloor)
+	* clickElement(pTPO.propertyNextButton)
 	#Owner Details
-	#* customSelectFromDropdown(pTPageObjects.ownershipType2 , 'Individual / Single owner')
-	#* clickElement(pTPageObjects.ownershipType2)
-	#* clickElement(pTPageObjects.singleOwnerDropdown)
+	#* customSelectFromDropdown(pTPO.ownershipType2 , 'Individual / Single owner')
+	#* clickElement(pTPO.ownershipType2)
+	#* clickElement(pTPO.singleOwnerDropdown)
 	* def ownerName = randomString(10)
 	* print 'ownerName'
 	* print ownerName
-	* sendKeys(pTPageObjects.ownerName, 'jane')
-	* sendKeys(pTPageObjects.ownerMobile,'9818807742')
+	* sendKeys(pTPO.ownerName, pTTestData.ownerName)
+	* sendKeys(pTPO.ownerMobile,pTTestData.ownerMobile)
 	* def ownerGuardian = randomString(10)
 	* print "owner Guardian"
 	* print ownerGuardian
-	* sendKeys(pTPageObjects.ownerGuardian, 'jill')
-	* customSelectFromDropdown(pTPageObjects.specialCatergory , 'None of the above')
-	* clickElement(pTPageObjects.propertyNextButton)
+	* sendKeys(pTPO.ownerGuardian, pTTestData.ownerGuardian)
+	* customSelectFromDropdown(pTPO.specialCategory , pTTestData.specialCategory)
+	* clickElement(pTPO.propertyNextButton)
 	#Document Info
-	* customSelectFromDropdown(pTPageObjects.addressProofInputDocumentType,"Electricity Bill")
-	* customSelectFromDropdown(pTPageObjects.identityProofInputDocumentType,"Aadhar Card")
-	* customSelectFromDropdown(pTPageObjects.registrationProofInputDocumentType,"Gift Deed")
-	* customSelectFromDropdown(pTPageObjects.usageProofInputDocumentType,"Electricity Bill")
-	* customSelectFromDropdown(pTPageObjects.constructionProofInputDocumentType,"BPA Certificate")
-	* print "ADDDING FILESS"
-	* customInputFile(pTPageObjects.addressProofInputDocumentInput,"file:src/test/java/com/screenshot.png")
-	# * customInputFile(pTPageObjects.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	# * customInputFile(pTPageObjects.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	# * customInputFile(pTPageObjects.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-	# * customInputFile(pTPageObjects.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
-#	* clickElement(pTPageObjects.addressProofInputDocumentInput)
-#	* driver.inputFile(pTPageObjects.addressProofInputDocumentInput, "/Users/Lenovo/Pictures/Screenshots/Screenshot (1).png")
-	* delay(10000000)
-   # * input(pTPageObjects.identityProofInputDocumentInput, "Screenshot.png")
-#	* inputFileUsingJavascript("test","test")
+	# * customSelectFromDropdown(pTPO.addressProofInputDocumentType,"Electricity Bill")
+	# * customSelectFromDropdown(pTPO.identityProofInputDocumentType,"Aadhar Card")
+	# * customSelectFromDropdown(pTPO.registrationProofInputDocumentType,"Gift Deed")
+	# * customSelectFromDropdown(pTPO.usageProofInputDocumentType,"Electricity Bill")
+	# * customSelectFromDropdown(pTPO.constructionProofInputDocumentType,"BPA Certificate")
+	#* customInputFile(pTPO.addressProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.identityProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.registrationProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.usageProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* customInputFile(pTPO.constructionProofInputDocumentInput,"/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/src/test/java/com/egov/common-services/testData/testData4.png")
+	#* clickElement(pTPO.addressProofInputDocumentInput)
+#	* driver.inputFile(pTPO.addressProofInputDocumentInput, "/Users/Lenovo/Pictures/Screenshots/Screenshot (1).png")
+	#* delay(4000)
+   # * input(pTPO.identityProofInputDocumentInput, "Screenshot.png")
+	# * inputFileUsingJavascript("test","test")
 	# * inputFileUsingJavascript("test","test")
 	# * inputFileUsingJavascript("test","test")
 	# * inputFileUsingJavascript("test","test")
@@ -217,229 +219,173 @@ Scenario: Create a new  Property as SuperUser
 	# * inputFileUsingJavascript("test","test")
 	# * inputFileUsingJavascript("test","test")
 
- #	* input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
-	# * input("//input[@id='contained-button-file'][1]", "/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
+	* input("//input[@id='contained-button-file'][1]", "C:\\Users\\Lenovo\\egovernemtns\\test-automation\\src\\test\\java\\com\\egov\\Screenshot.png")
 
 #	* input("Test","test")
-	#* print "FILE UPLOADED"
-	#* delay(1)
-    #* driver.inputFile(pTPageObjects.registrationProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
-    #* driver.inputFile(pTPageObjects.usageProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
-    #* driver.inputFile(pTPageObjects.constructionProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
-	#* delay(1)
-	* clickElement(pTPageObjects.propertyNextButton)
+	* print "FILE UPLOADED"
+	#* delay(1000000000)
+    #* driver.inputFile(pTPO.registrationProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
+    #* driver.inputFile(pTPO.usageProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
+    #* driver.inputFile(pTPO.constructionProofInputDocumentInput, "C:\Users\Lenovo\Pictures\Screenshots\Screenshot (1).png")
+	* delay(5000)
+	* clickElement(pTPO.propertyNextButton)
 	#Summary
-	* clickElement(pTPageObjects.addPropertyBtn)	
-
-	* def appNumber =  getElementText(pTPageObjects.generatedApplicationNumber).trim()	
+	* clickElement(pTPO.addPropertyBtn)
 	* print appNumber
-	* def uniquePropertyIDFullString = getElementText(pTPageObjects.generatedUniquePropertyID)
+	* def appNumber =  getElementText(pTPO.generatedApplicationNumber).trim()	
+	* def uniquePropertyIDFullString = getElementText(pTPO.generatedUniquePropertyID)
 	* print uniquePropertyIDFullString
 	* def splitArrayPropertyId= uniquePropertyIDFullString.split(":")
 	* print splitArrayPropertyId
-
 	* def propertyID = splitArrayPropertyId[1]
 	* print propertyID
-
 	* def trimmedPropertyId = propertyID.trim()
 	* print trimmedPropertyId
-
 	* print  UniquePropertyID
-
-
-
-@approvePropertyFromDocVerifier
-Scenario: Approve Property From Doc Verifier
-	* clickElement(pTPageObjects.propertyTaxModule)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.verifyDropdown)
-	* sendKeys(pTPageObjects.commentsInput,"Test")
-	* clickElement(pTPageObjects.verifyAssigneeButton)
-
-
-@approvePropertyFromFieldInspector
-Scenario: Approve Property From Field Inspector
-	* clickElement(pTPageObjects.goToHomeButton)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.forwardDropdown)
-	* clickElement(pTPageObjects.forwardButton)
-
-@approvePropertyFromApprover
-Scenario: Approve Property From Approver
-	* clickElement(pTPageObjects.goToHomeButton)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.approveDropdown)
-	* sendKeys(pTPageObjects.commentsInput,randomString(10))
-	* clickElement(pTPageObjects.approveButton)
-
-@rejectPropertyFromDocVerifier
-Scenario: Search property by application number and reject property Doc Verification
-    * clickElement(pTPageObjects.propertyTaxModule)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.rejectDropdown)
-	* sendKeys(pTPageObjects.commentsInput)
-	* clickElement(pTPageObjects.rejectButton)
-
-
-@sendBackToCitizenFromDocVerifier
-Scenario: Search property by application number and reject property Doc Verification
-    * clickElement(pTPageObjects.propertyTaxModule)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
- 	* clickElement(pTPageObjects.sendBackDropdown)
-	* sendKeys(pTPageObjects.commentsInput)
- 	* clickElement(pTPageObjects.sendBackToCitizenButton)
-
-@rejectPropertyFromApprover
-Scenario: Search property by application number and reject property from approver
-	* softRefreshPage()
-    * clickElement(pTPageObjects.propertyTaxFromLeftNav)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.rejectDropdown)
-	* sendKeys(pTPageObjects.commentsInput)
-	* clickElement(pTPageObjects.rejectButton)
-
-
-
-@approvePropertyFULL
-Scenario: search property by application number and verify and forward and approveProperty
- #   * clickElement(pTPageObjects.homeButton)
-	* clickElement(pTPageObjects.propertyTaxModule)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.verifyDropdown)
-	# * clickElement(pTPageObjects.assigneeName)
-	# * clickElement(pTPageObjects.selectAssigneeEmpAuto)
-	* sendKeys(pTPageObjects.commentsInput,"Test")
-	* clickElement(pTPageObjects.verifyAssigneeButton)
-	* clickElement(pTPageObjects.goToHomeButton)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.forwardDropdown)
-	# * clickElement(pTPageObjects.assigneeName)	
-	# * clickElement(pTPageObjects.selectAssigneeEmpAuto)
-	* clickElement(pTPageObjects.forwardButton)
-	* clickElement(pTPageObjects.goToHomeButton)
-	* clickElement(pTPageObjects.searchApplicationTab)
-	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-	* clickElement(pTPageObjects.searchApplicationButton)
-	* clickValueInSearchResults(appNumber)
-	* clickElement(pTPageObjects.takeActionButton)
-	* clickElement(pTPageObjects.approveDropdown)
-	* sendKeys(pTPageObjects.commentsInput)
-	* clickElement(pTPageObjects.approveButton)
-
-# @payPropertyTax
-# Scenario:  pay for the property tax fees
-#     #* def appNumber =  'PB-AC-2021-06-08-016994'
-#     #* def uniquePropertyID = 'PB-PT-2021-06-08-017166'
-#     * clickElement(pTPageObjects.propertyTaxModule)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(uniquePropertyID)
-#     #* clickElement(pTPageObjects.goToHomeButton)
-# 	#* clickElement(pTPageObjects.searchApplicationTab)
-# 	#* sendKeys(pTPageObjects.searchByApplicationNumber, UniquePropertyID)
-#     #* clickValueInSearchResults(UniquePropertyID)
-# 	* print "CLICKING ON ACCESS BUTTON"
-# 	* delay(10000)
-#     * clickElement(pTPageObjects.assessProperty)
-# 	* delay(10000)
-# 	* print "Assess property"
-# 	* clickElement(pTPageObjects.selectPropertyTaxYear)
-# 	* delay(10000)
-# 	* clickElement(pTPageObjects.okButton)
-# 	* print("OK button clickced")
-# 	* delay(10000)
-# 	* print "Assess property2"
-# 	* clickElement(pTPageObjects.assessProperty)
-# 	* clickElement(pTPageObjects.proceedPaymentButton)
-# 	* clickElement(pTPageObjects.generateReceiptButton)
-# 	* def paymentReceiptNumber = getElementText(pTPageObjects.generatedpaymentReceiptNumber).trim()	
-# 	* print paymentReceiptNumber
-# 	* call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
-# # 	* clickElement(pTPageObjects.propertyTaxModule)
-# # 	* clickElement(pTPageObjects.payPropertyTax)
-#     * 
-#     * clickElement(pTPageObjects.goToHomeButton)
-# 	* 
-
+	* print pTPO.headerMessageCreateProperty
 	
-# @rejectPropertyApproval
-# Scenario: Search Property by application and reject property Approval
-#     * clickElement(pTPageObjects.propertyTaxModule)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(appNumber)
-# 	* clickElement(pTPageObjects.takeActionButton)
-# 	* clickElement(pTPageObjects.verifyDropdown)
-# 	* clickElement(pTPageObjects.assigneeName)
-# 	* clickElement(pTPageObjects.selectAssigneeEmpAuto)
-# 	* sendKeys(pTPageObjects.commentsInput)
-# 	* clickElement(pTPageObjects.verifyAssigneeButton)
-# 	* clickElement(pTPageObjects.goToHomeButton)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(appNumber)
-# 	* clickElement(pTPageObjects.takeActionButton)
-# 	* clickElement(pTPageObjects.forwardDropdown)
-# 	* clickElement(pTPageObjects.assigneeName)
-# 	* clickElement(pTPageObjects.selectAssigneeEmpAuto)
-# 	* clickElement(pTPageObjects.forwardButton)
-# 	* clickElement(pTPageObjects.goToHomeButton)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(appNumber)
-# 	* clickElement(pTPageObjects.takeActionButton)
-# 	* clickElement(pTPageObjects.rejectDropdown)
-#     * clickElement(pTPageObjects.rejectButton)
+
+ @approveProperty
+ Scenario: search property by application number and verify and forward and approveProperty
+	#* clickElement(pTPO.homeButton)
+ 	* clickElement(pTPO.propertyTaxModule)
+	* clickElement(pTPO.searchApplicationTab)
+ 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)
+	* clickElement(pTPO.verifyDropdown)
+	* clickElement(pTPO.assigneeName)
+	#* clickElement(pTPO.selectAssigneeEmpAuto)
+	* sendKeys(pTPO.commentsInput)
+	* clickElement(pTPO.verifyAssigneeButton)
+ 	* clickElement(pTPO.forwardGoToHomeButton)
+	* clickElement(pTPO.searchApplicationTab)
+	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+	* clickElement(pTPO.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPO.takeActionButton)
+	* clickElement(pTPO.forwardDropdown)
+	* clickElement(pTPO.assigneeName)
+	#* clickElement(pTPO.selectAssigneeEmpAuto)
+	* clickElement(pTPO.forwardButton)
+	* clickElement(pTPO.forwardGoToHomeButton)
+	* clickElement(pTPO.searchApplicationTab)
+	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+	* clickElement(pTPO.searchApplicationButton)
+	* clickValueInSearchResults(appNumber)
+	* clickElement(pTPO.takeActionButton)
+	* clickElement(pTPO.approveDropdown)
+ 	* sendKeys(pTPO.commentsInput)
+	* clickElement(pTPO.approveButton)
+    * print pTPO.headerMessageApproveProperty
+
+ @payPropertyTax
+ Scenario:  pay for the property tax fees
+	* call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+	* clickElement(pTPO.propertyTaxModule)
+ 	* clickElement(pTPO.payPropertyTax)  
+	#* clickElement(pTPO.selectCity)
+	#* clickElement(pTPO.amritsarDropdown)
+    * customSelectFromDropdown(pTPO.selectCity, pTTestData.selectCity)
+	* customSelectFromDropdown(pTPO.selectLocality, pTTestData.propertyLocality)
+	* sendKeys(pTPO.uniquePropertyId , uniquePropertyID)
+	* clickElement(pTPO.searchPropertyButton)
+	* clickValueInSearchResults(uniquePropertyID)
+	* delay(3000)
+	* clickElement(pTPO.assessProperty)
+	* delay(3000)
+	* clickElement(pTPO.selectPropertyTaxYear)
+	* clickElement(pTPO.okButton)
+    * clickElement(pTPO.checkBox)
+	* clickElement(pTPO.assessProperty)
+	* delay(3000)
+	* clickElement(pTPO.proceedPaymentButton)
+	* print "proceed to payment"
+	* clickElement(pTPO.payerDetails)
+	* clear(pTPO.payerDetails)
+	* sendKeys(pTPO.payerDetails, pTTestData.payerDetails)
+	* clickElement(pTPO.payerName)
+	* clear(pTPO.payerName)
+	#* sendKeys(pTPO.payerName, pTTestData.payerName)
+    * clickElement(pTPO.payerMobile)
+	* clear(pTPO.payerMobile)
+	#* sendKeys(pTPO.payerMobile, pTTestData.payerMobile)
+	* delay(10000)
+	* clickElement(pTPO.makePaymentButton2)
+	* print "make payment"
+	* delay(3000)
+    * call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
+	* delay(8000)
+	* print "payment gateway success"
+	* def paymentReceiptNumber = getElementText(pTPO.generatedpaymentReceiptNumber).trim()	
+	* print paymentReceiptNumber
+	* print pTPO.headerMessagePayProperty
+    
 	
-# @sendBackToCitizen
-# Scenario: Search property by application number and send back to citizenPayActionButton
-#     * clickElement(pTPageObjects.propertyTaxModule)
-# 	* clickElement(pTPageObjects.searchApplicationTab)
-# 	* sendKeys(pTPageObjects.searchByApplicationNumber, appNumber)
-# 	* clickElement(pTPageObjects.searchApplicationButton)
-# 	* clickValueInSearchResults(appNumber)
-# 	* clickElement(pTPageObjects.takeActionButton)	
-# 	* clickElement(pTPageObjects.sendBackDropdown)
-# 	* clickElement(pTPageObjects.sendBackToCitizenButton)
+ @rejectPropertyVerification
+ Scenario: Search property by application number and reject property Verification
+    * clickElement(pTPO.propertyTaxModule)
+ 	* clickElement(pTPO.searchApplicationTab)
+ 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+ 	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)
+ 	* clickElement(pTPO.rejectDropdown)
+	* sendKeys(pTPO.commentsInput)
+ 	* clickElement(pTPO.rejectButton)
+	* print pTPO.headerMessageRejectVerification
+
+
+ @rejectPropertyApproval
+ Scenario: Search Property by application and reject property Approval
+    * clickElement(pTPO.propertyTaxModule)
+	* clickElement(pTPO.searchApplicationTab)
+ 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+ 	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)
+	* clickElement(pTPO.verifyDropdown)
+ 	* clickElement(pTPO.assigneeName)
+ 	* clickElement(pTPO.selectAssigneeEmpAuto)
+ 	* sendKeys(pTPO.commentsInput)
+ 	* clickElement(pTPO.verifyAssigneeButton)
+ 	* clickElement(pTPO.goToHomeButton)
+	* clickElement(pTPO.searchApplicationTab)
+	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+ 	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)
+ 	* clickElement(pTPO.forwardDropdown)
+ 	* clickElement(pTPO.assigneeName)
+ 	* clickElement(pTPO.selectAssigneeEmpAuto)
+ 	* clickElement(pTPO.forwardButton)
+ 	* clickElement(pTPO.goToHomeButton)
+ 	* clickElement(pTPO.searchApplicationTab)
+ 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+ 	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)
+ 	* clickElement(pTPO.rejectDropdown)
+    * clickElement(pTPO.rejectButton)
+    * print pTPO.headerMessageRejectApproval
+	
+ @sendBackToCitizen
+ Scenario: Search property by application number and send back to citizenPayActionButton
+    * clickElement(pTPO.propertyTaxModule)
+	* clickElement(pTPO.searchApplicationTab)
+ 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
+ 	* clickElement(pTPO.searchApplicationButton)
+ 	* clickValueInSearchResults(appNumber)
+ 	* clickElement(pTPO.takeActionButton)	
+ 	* clickElement(pTPO.sendBackDropdown)
+ 	* clickElement(pTPO.sendBackToCitizenButton)
+	* print pTPO.headerMessageSendBack 
+

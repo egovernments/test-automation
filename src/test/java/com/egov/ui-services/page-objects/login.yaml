@@ -22,7 +22,11 @@ objects:
   amritsarDropdown: //span[@id='pb.amritsar']
 
   #----------------------------------------------------------------------
- 
+data:
+  employeeUsername: "EMPAUTO"
+  employeePassword: "eGov@123"
+  otpField: "123456"
+  mobileNumberFieldType: "type" 
   
 
 
