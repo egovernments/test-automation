@@ -1,5 +1,6 @@
 objects:
   propertyTaxModule: ".service-module-style div[data-localization='Property Tax']"
+  propertyTaxFromLeftNav: "div[class='label-container menuStyle'] div[data-localization='Property Tax']"
   payPropertyTax: "div[data-localization='Pay Property Tax']"
   searchApplication: "span[data-localization='PT_SEARCH_APPLICATION']"
   selectCity: "#custom-containers-local-ulbCity input"
@@ -66,8 +67,6 @@ objects:
   searchByOwnerMobileNumber:   "//input[@id='custom-containers-ownerMobNoProp']"
   searchByPropertyTaxUniqueId: "//input[@id='custom-containers-applicationPropertyTaxUniqueId']"
   searchApplicationButton:    "//button[@id='material-ui-searchButton']"
-  takeActionButton:  "//span[@data-localization='WF_TAKE_ACTION' and text()='TAKE ACTION']"
-
   #Verify Application
   verifyDropdown: "//span[@data-localization='WF_EMPLOYEE_PT.CREATE_VERIFY']"
   assigneeName:  "//div[text()='Select assignee Name']"

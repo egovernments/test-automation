@@ -69,13 +69,13 @@ Scenario Outline: Create Property and reject property Verification From Doc Veri
     * call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyDocVerification')
     Examples:
     | deviceConfigs      |
-    | deviceConfigs[0]  |
-    | deviceConfigs[1]  |
-    | deviceConfigs[2]  |
-    | deviceConfigs[3]  |
-    | deviceConfigs[4]  |
-    | deviceConfigs[5]  |
-    | deviceConfigs[6]  |
+    # | deviceConfigs[0]  |
+    # | deviceConfigs[1]  |
+    # | deviceConfigs[2]  |
+    # | deviceConfigs[3]  |
+    # | deviceConfigs[4]  |
+    # | deviceConfigs[5]  |
+    # | deviceConfigs[6]  |
 
 @rejectPropertyFromApproverUIFlow
 Scenario Outline: Create Property and reject property Verification From Doc Verifer
@@ -179,13 +179,13 @@ Scenario Outline: Create property and reject property approval
     * call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
     * call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyApproval')
 Examples:
-| deviceConfig      |
-| deviceConfigs[0]  |
-| deviceConfigs[1]  |
-| deviceConfigs[2]  |
-| deviceConfigs[3]  |
-| deviceConfigs[4]  |
-| deviceConfigs[5]  |
-| deviceConfigs[6]  |
+| deviceConfigs      |
+# | deviceConfigs[0]  |
+# | deviceConfigs[1]  |
+# | deviceConfigs[2]  |
+# | deviceConfigs[3]  |
+# | deviceConfigs[4]  |
+# | deviceConfigs[5]  |
+# | deviceConfigs[6]  |
 
 
