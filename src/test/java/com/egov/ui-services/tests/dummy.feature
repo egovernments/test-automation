@@ -150,9 +150,12 @@ Scenario Outline: Create  Property as SuperUser
     #* call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
     #* call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
    # * call read('../../ui-services/pages/propertyTaxPage.feature@createPropertyAsSuperUser')
-    * def appNumber = "PB-AC-2021-06-14-017173"
+    * def appNumber = "PB-AC-2021-06-14-017174"
+    * def uniquePropertyID = 'PB-PT-2021-06-14-017342'
     #* call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
-   * call read('../../ui-services/pages/propertyTaxPage.feature@payPropertyTax')
+    * call read('../../ui-services/pages/propertyTaxPage.feature@payPropertyTax')
+Examples:
+| deviceConfigs |
 
 @dummyMobileBrowser3
 Scenario Outline: Create property and reject property approval

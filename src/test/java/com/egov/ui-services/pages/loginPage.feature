@@ -6,7 +6,7 @@ Background:
     * def lPO = loginPage.objects
 	# * def geoLocationScript = "window.navigator.geolocation.getCurrentPosition = function(success){ var position = {'coords' : {  'latitude': '18.975080',   'longitude': '72.825838' }  };  success(position);}"
     * def loginPageData = loginPage.data
-    * def lPO = loginPage.objects
+   
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen

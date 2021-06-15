@@ -254,7 +254,7 @@ Scenario: Create a new  Property as SuperUser
 
  @approveProperty
  Scenario: search property by application number and verify and forward and approveProperty
-    #* clickElement(pTPO.homeButton)
+	#* clickElement(pTPO.homeButton)
  	* clickElement(pTPO.propertyTaxModule)
 	* clickElement(pTPO.searchApplicationTab)
  	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
@@ -288,9 +288,7 @@ Scenario: Create a new  Property as SuperUser
     * print pTPO.headerMessageApproveProperty
 
  @payPropertyTax
-Scenario:  pay for the property tax fees
-    * def appNumber =  'PB-AC-2021-06-14-017173'
-    * def uniquePropertyID = 'PB-PT-2021-06-14-017341'
+ Scenario:  pay for the property tax fees
 	* call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
 	* clickElement(pTPO.propertyTaxModule)
  	* clickElement(pTPO.payPropertyTax)  
@@ -301,7 +299,9 @@ Scenario:  pay for the property tax fees
 	* sendKeys(pTPO.uniquePropertyId , uniquePropertyID)
 	* clickElement(pTPO.searchPropertyButton)
 	* clickValueInSearchResults(uniquePropertyID)
+	* delay(3000)
 	* clickElement(pTPO.assessProperty)
+	* delay(3000)
 	* clickElement(pTPO.selectPropertyTaxYear)
 	* clickElement(pTPO.okButton)
     * clickElement(pTPO.checkBox)
@@ -314,15 +314,16 @@ Scenario:  pay for the property tax fees
 	* sendKeys(pTPO.payerDetails, pTTestData.payerDetails)
 	* clickElement(pTPO.payerName)
 	* clear(pTPO.payerName)
-	* sendKeys(pTPO.payerName, pTTestData.payerName)
+	#* sendKeys(pTPO.payerName, pTTestData.payerName)
     * clickElement(pTPO.payerMobile)
 	* clear(pTPO.payerMobile)
-	* sendKeys(pTPO.payerMobile, pTTestData.payerMobile)
+	#* sendKeys(pTPO.payerMobile, pTTestData.payerMobile)
 	* delay(10000)
 	* clickElement(pTPO.makePaymentButton2)
 	* print "make payment"
-	#* delay(3000)
+	* delay(3000)
     * call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
+	* delay(8000)
 	* print "payment gateway success"
 	* def paymentReceiptNumber = getElementText(pTPO.generatedpaymentReceiptNumber).trim()	
 	* print paymentReceiptNumber

@@ -491,7 +491,7 @@ function() {
             config.browserstack = 'no';
             config.deviceConfigs = [
             {type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}},
-            {type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
+            //{type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
         ];
         }
 
