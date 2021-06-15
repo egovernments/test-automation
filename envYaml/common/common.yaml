@@ -288,6 +288,7 @@ endPoints:
     update: fsm/v1/_update
     search: fsm/v1/_search
     audit: fsm/v1/_audit
+    paymentsCreate: collection-services/payments/_create
     vendorCreate: vendor/v1/_create
     vendorSearch: vendor/v1/_search
     vehicalCreate: vehicle/v1/_create
@@ -295,11 +296,15 @@ endPoints:
     vehicalTripCreate: vehicle/trip/v1/_create
     vehicalTripSearch: vehicle/trip/v1/_search
     vehicalTripUpdate: vehicle/trip/v1/_update
+    
+  echallanService:
+    create: echallan-services/eChallan/v1/_create
+    update: echallan-services/eChallan/v1/_update
+    search: echallan-services/eChallan/v1/_search
+    
   fsmBillingSlab:
     create: fsm-calculator/v1/billingSlab/_create
     update: fsm-calculator/v1/billingSlab/_update
     search: fsm-calculator/v1/billingSlab/_search
     calculate: fsm-calculator/v1/_calculate
     estimate: fsm-calculator/v1/_estimate
-  fsm:
-    create: fsm/v1/_create

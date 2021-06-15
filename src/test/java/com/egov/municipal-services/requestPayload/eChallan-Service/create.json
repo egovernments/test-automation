@@ -1,0 +1,48 @@
+{
+    "RequestInfo": {
+        "apiId": "",
+        "ver": ".01",
+        "action": "",
+        "msgId": "",
+        "authToken": "#(authToken)"
+    },
+    "Challan": {
+        "tenantId": "#(tenantId)",
+        "citizen": {
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)"
+        },
+        "address": {
+            "locality": {
+                "code": "#(localityCode)"
+            }
+        },
+        "businessService": "#(businessService)",
+        "consumerType": "#(advt)",
+        "amount": [
+            {
+                "taxHeadCode": "#(taxHeadCode)",
+                "amount": "#(amount)"
+            },
+            {
+                "taxHeadCode": "#(changeHeadCode)",
+                "amount": "#(changeAmount)"
+            },
+            {
+                "taxHeadCode": "ADVT.HOARDINGS_CGST",
+                "amount": 0
+            },
+            {
+                "taxHeadCode": "ADVT.HOARDINGS_SGST",
+                "amount": 0
+
+            }
+        ],
+        "taxPeriodFrom": "#(formDate)",
+        "taxPeriodTo": "#(toDate)",
+        "payer": {
+            "mobileNumber": "",
+            "name": ""
+        }
+    }
+}
