@@ -31,7 +31,7 @@ Background:
     * def areaCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].area
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(5000)
-@PGRCreate1 @createPGR  @positive @regression @PGRService @municipalServices
+@PGRCreate1 @createPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Create PGR With Valid Data
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -41,7 +41,7 @@ Scenario: Create PGR With Valid Data
     * match pgrResponseBody.ServiceWrappers[0].service.applicationStatus == "PENDINGFORASSIGNMENT"
     * match pgrResponseBody.ServiceWrappers[0].service.tenantId == tenantId
 
-@PGRCreate2 @createPGR  @negative @regression @PGRService @municipalServices
+@PGRCreate2 @createPGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Create PGR With Invalid Service
     # Create a property
     * def serviceCode = randomString(10)
@@ -49,16 +49,16 @@ Scenario: Create PGR With Invalid Service
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invaliServiceCode
     * match pgrResponseBody.Errors[0].message ==replaceString(pgrConstants.errors.errorMessages.invaliServiceCode,"<<service_code>>",serviceCode)
-@PGRCreate3 @createPGR  @negative @regression @PGRService @municipalServices
+@PGRCreate3 @createPGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Create PGR With Invalid TenantId
     # Create a property
     * def tenantId = randomString(10)
-    * call read('../../municipal-services/pretests/pgrPretest.feature@failCreatePGRRequest')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@failCreatePGRRequestUnAuthorized')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantId
     * match pgrResponseBody.Errors[0].message ==pgrConstants.errors.errorMessages.invalidTenantId
 
-@PGRCreate4 @createPGR  @negative @regression @PGRService @municipalServices
+@PGRCreate4 @createPGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Create PGR With Invalid Action
     # Create a property
     * def action = randomString(10)
@@ -67,7 +67,7 @@ Scenario: Create PGR With Invalid Action
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidAction
     * match pgrResponseBody.Errors[0].message contains replaceString(pgrConstants.errors.errorMessages.invalidAction,"<<action_name>>",action)
 
-@PGRCreate5 @createPGR  @negative @regression @PGRService @municipalServices
+@PGRCreate5 @createPGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Create PGR With Invalid Action
     # Create a property
     * def action = randomString(10)
@@ -76,7 +76,7 @@ Scenario: Create PGR With Invalid Action
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidAction
     * match pgrResponseBody.Errors[0].message contains replaceString(pgrConstants.errors.errorMessages.invalidAction,"<<action_name>>",action)
 
-@PGRUpdate1 @updatePGR  @positive @regression @PGRService @municipalServices
+@PGRUpdate1 @updatePGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Valid Data
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -90,7 +90,7 @@ Scenario: Update PGR With Valid Data
     * match pgrResponseBody.ServiceWrappers[0].service.applicationStatus == "PENDINGFORASSIGNMENT"
     * match pgrResponseBody.ServiceWrappers[0].service.tenantId == tenantId
 
-@PGRUpdate2 @updatePGR  @negative @regression @PGRService @municipalServices
+@PGRUpdate2 @updatePGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Invalid Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -103,7 +103,7 @@ Scenario: Update PGR With Invalid Id
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidId
 
 
-@PGRUpdate3 @updatePGR  @negative @regression @PGRService @municipalServices
+@PGRUpdate3 @updatePGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Invalid Service Request Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -116,7 +116,7 @@ Scenario: Update PGR With Invalid Service Request Id
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidAction
     * match pgrResponseBody.Errors[0].message contains replaceString(pgrConstants.errors.errorMessages.invalidAction,"<<action_name>>",action)
 
-@PGRUpdate4 @updatePGR  @negative @regression @PGRService @municipalServices
+@PGRUpdate4 @updatePGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Invalid Soruce
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -128,7 +128,7 @@ Scenario: Update PGR With Invalid Soruce
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidSource
     * match pgrResponseBody.Errors[0].message == replaceString(pgrConstants.errors.errorMessages.invalidSource,"<<source>>",invalidSource)
 
-@PGRUpdate5 @updatePGR @negative @regression @PGRService @municipalServices
+@PGRUpdate5 @updatePGR @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Invalid Tenant Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -136,11 +136,11 @@ Scenario: Update PGR With Invalid Tenant Id
     * call read('../../municipal-services/pretests/pgrPretest.feature@successfullySearchPGRRequest')
     * def invalidTenantId = randomString(10)
     * set serviceDetails.tenantId = invalidTenantId
-    * call read('../../municipal-services/pretests/pgrPretest.feature@failUpdatePGRRequest')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@failUpdatePGRRequestAuthorized')
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantId
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.invalidTenantId
 
-@PGRUpdate6 @updatePGR @negative @regression @PGRService @municipalServices
+@PGRUpdate6 @updatePGR @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Update PGR With Invalid Action
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -151,7 +151,7 @@ Scenario: Update PGR With Invalid Action
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidAction
     * match pgrResponseBody.Errors[0].message contains replaceString(pgrConstants.errors.errorMessages.invalidAction,"<<action_name>>",action)
 
-@PGRSearch1 @searchPGR  @positive @regression @PGRService @municipalServices
+@PGRSearch1 @searchPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With Valid Data - Mobile number and Tenant Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -165,19 +165,19 @@ Scenario: Search PGR With Valid Data - Mobile number and Tenant Id
     * match pgrResponseBody.ServiceWrappers[0].service.accountId == "#present"
 
 
-@PGRSearch2 @searchPGR  @negative @regression @PGRService @municipalServices
+@PGRSearch2 @searchPGR  @negative @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With No Tenant Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
     #* def searchPGRParams = {mobileNumber: '#(mobileNumber)', serviceRequestId: '#(serviceRequestId)'}
     * def searchPGRParams = {mobileNumber: '#(mobileNumber)', serviceRequestId:'#(serviceRequestId)'}
-    * call read('../../municipal-services/pretests/pgrPretest.feature@UnsuccessfullySearchPGRRequestwithInvalidTenantId')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@errorSearchPGRRequestwithInvalidTenantId')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantSearch
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.blankTenantId
 
     
-@PGRSearch3 @searchPGR  @positive @regression @PGRService @municipalServices
+@PGRSearch3 @searchPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With all Records
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -189,7 +189,7 @@ Scenario: Search PGR With all Records
     * match pgrResponseBody.ServiceWrappers[0].service.applicationStatus == pgrConstants.applicationStatus.pendingForAssignment
     * match pgrResponseBody.ServiceWrappers[0].service.accountId == "#present"
 
-@PGRSearch4 @searchPGR  @positive @regression @PGRService @municipalServices
+@PGRSearch4 @searchPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With all Records
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -203,7 +203,7 @@ Scenario: Search PGR With all Records
 
 
 
-@PGRSearch5 @searchPGR  @positive @regression @PGRService @municipalServices
+@PGRSearch5 @searchPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With valid data -  - Mobile number, Tenant Id and Request Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -214,19 +214,19 @@ Scenario: Search PGR With valid data -  - Mobile number, Tenant Id and Request I
     #* match pgrResponseBody.ServiceWrappers[0].applicationStatus == pgrConstants.applicationStatus.pendingForAssignment
     * match pgrResponseBody.ServiceWrappers[0].service.accountId == "#present"
 
-@PGRSearch6 @searchPGR  @positive @regression @PGRService @municipalServices
+@PGRSearch6 @searchPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Search PGR With invalid mobile number
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
     * def invalidMobileNumber = randomString(9)
     * def searchPGRParams = { tenantId: '#(tenantId)', mobileNumber: '#(invalidMobileNumber)'    , serviceRequestId: '#(invalidServiceRequestId)' }
-    * call read('../../municipal-services/pretests/pgrPretest.feature@UnsuccessfullySearchPGRRequestwithInvalidTenantId')
+    * call read('../../municipal-services/pretests/pgrPretest.feature@errorSearchPGRRequestwithInvalidTenantId')
     # Validate response body
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidMobileNumber
     * match pgrResponseBody.Errors[0].message == pgrConstants.errors.errorMessages.invalidMobileNumber
 
 
-@PGRCount1 @countPGR  @positive @regression @PGRService @municipalServices
+@PGRCount1 @countPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Count PGR With Tenant Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -235,7 +235,7 @@ Scenario: Count PGR With Tenant Id
     # Validate response body
     * match pgrResponseBody.count == "#present"
 
-@PGRCount2 @countPGR  @positive @regression @PGRService @municipalServices
+@PGRCount2 @countPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Count PGR - All
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -243,7 +243,7 @@ Scenario: Count PGR - All
     # Validate response body
     * match pgrResponseBody.count == "#present"
 
-@PGRCount3 @countPGR  @positive @regression @PGRService @municipalServices
+@PGRCount3 @countPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Count PGR With Invalid Tenant Id
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -254,7 +254,7 @@ Scenario: Count PGR With Invalid Tenant Id
     * match pgrResponseBody.Errors[0].code == pgrConstants.errors.errorCodes.invalidTenantId
     * match pgrResponseBody.Errors[0].message ==pgrConstants.errors.errorMessages.invalidTenantId
 
-@PGRCount4 @countPGR  @positive @regression @PGRService @municipalServices
+@PGRCount4 @countPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Count PGR With Application Status
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')
@@ -264,7 +264,7 @@ Scenario: Count PGR With Application Status
     * match pgrResponseBody.count == "#present"
 
 
-@PGRCount5 @countPGR  @positive @regression @PGRService @municipalServices
+@PGRCount5 @countPGR  @positive @regression @PGRService @municipalServicesDontRun
 Scenario: Count PGR With Invalid Application Status
     # Create a property
     * call read('../../municipal-services/pretests/pgrPretest.feature@successCreatePGRRequest')

@@ -2,12 +2,12 @@ Feature: eGov pdf pretest
 
   Background:
     * def jsUtils = read('classpath:jsUtils.js')
-    * def ptmutationcertificateRequest = read('../../core-services/requestPayload/eGovPdf/ptmutationcertificate.json')
-    * def consolidatedReceiptRequest = read('../../core-services/requestPayload/eGovPdf/consolidatedreceipt.json')
-    * def tlrenewalcertificateRequest = read('../../core-services/requestPayload/eGovPdf/tlrenewalcertificate.json')
-    * def tlreceiptRequest = read('../../core-services/requestPayload/eGovPdf/tlreceipt.json')
-    * def ptreceiptRequest = read('../../core-services/requestPayload/eGovPdf/ptreceipt.json')
-    * def ptbillRequest = read('../../core-services/requestPayload/eGovPdf/ptbill.json')
+    * def ptmutationcertificateRequest = read('../../core-services/requestPayload/egov-pdf/ptmutationcertificate.json')
+    * def consolidatedReceiptRequest = read('../../core-services/requestPayload/egov-pdf/consolidatedreceipt.json')
+    * def tlrenewalcertificateRequest = read('../../core-services/requestPayload/egov-pdf/tlrenewalcertificate.json')
+    * def tlreceiptRequest = read('../../core-services/requestPayload/egov-pdf/tlreceipt.json')
+    * def ptreceiptRequest = read('../../core-services/requestPayload/egov-pdf/ptreceipt.json')
+    * def ptbillRequest = read('../../core-services/requestPayload/egov-pdf/ptbill.json')
 
 @ptMutationCertificateSuccessfully
 Scenario:  pt Mutation Certificate Successfully

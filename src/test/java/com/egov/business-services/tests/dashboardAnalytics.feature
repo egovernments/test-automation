@@ -4,7 +4,7 @@ Feature: Business Services - Dashboard Analytics service tests
      * def jsUtils = read('classpath:jsUtils.js')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def dashboardServiceData = read('../../business-services/constants/dashboardAnalytics.yaml')
-     * def dashboardTestData = read('../../business-services/requestPayload/dashboardAnalytics/chartAPI.json')
+     * def dashboardTestData = read('../../business-services/requestPayload/dashboard-analytics/chartAPI.json')
      * def departmentId = commonConstants.invalidParameters.nullValue
      * def visualizationType = dashboardServiceData.parameters.visualizationType
      * def visualizationCode = dashboardServiceData.parameters.visualizationCode.totalComplaints

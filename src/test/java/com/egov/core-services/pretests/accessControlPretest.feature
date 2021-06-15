@@ -5,7 +5,7 @@ Feature: Access Control Pretest Feature
   * configure headers = read('classpath:websCommonHeaders.js')
   * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-  * def searchAccessControlRequest = read('../../core-services/requestPayload/accessControl/search.json')
+  * def searchAccessControlRequest = read('../../core-services/requestPayload/access-control/search.json')
   
         @searchAccessControlSuccessfully
         Scenario: Search Access Control successfully

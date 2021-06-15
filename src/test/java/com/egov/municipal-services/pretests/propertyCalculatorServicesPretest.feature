@@ -21,7 +21,16 @@ Scenario: Not to create billing slab mutation
         * print createBillingSlabMutationPayload
     When method post
     Then def mutationCreateResponse = response
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInCreateBillingSlabMutationUnAuthorized
+Scenario: Not to create billing slab mutation
+    Given url mutationBillingSlabCreate
+    And request createBillingSlabMutationPayload
+        * print createBillingSlabMutationPayload
+    When method post
+    Then def mutationCreateResponse = response
+    And  status 403
 
 @updateBillingSlabMutation
 Scenario: To update billing slab mutation
@@ -40,7 +49,16 @@ Scenario: Negative pretest to update billing slab mutation
         * print updateBillingSlabMutationPayload
     When method post
     Then def mutationUpdateResponse = response
-   And  assert responseStatus >= 400 && responseStatus <= 403
+   And  status 400
+
+@errorInUpdateBillingSlabMutationUnAuthorized
+Scenario: Negative pretest to update billing slab mutation
+    Given url mutationBillingSlabUpdate
+    And request updateBillingSlabMutationPayload
+        * print updateBillingSlabMutationPayload
+    When method post
+    Then def mutationUpdateResponse = response
+   And  status 403
 
 @searchBillingSlabMutation
 Scenario: To search a billing slab mutation
@@ -60,7 +78,17 @@ Scenario: Negative pretest to search a billing slab mutation
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInSearchBillingSlabMutationUnAuthorized
+Scenario: Negative pretest to search a billing slab mutation
+    Given url mutationBillingSlabSearch
+    And params searchParams
+        * print searchParams
+    And request searchBillingSlabMutationPayload
+    When method post
+    Then def mutationSearchResponse = response
+    And  status 403
 
 
 # Billing Slab
@@ -82,7 +110,16 @@ Scenario: Ngative pretest To create billing slab
     * print billingSlabCreatePayload
     When method post
     Then def errorResponse = response
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInCreateBillingSlabUnAuthorized
+Scenario: Ngative pretest To create billing slab 
+    Given url billingSlabCreate
+    And request billingSlabCreatePayload
+    * print billingSlabCreatePayload
+    When method post
+    Then def errorResponse = response
+    And  status 403
 
 @searchBillingSlab
 Scenario: To search a billing slab
@@ -103,7 +140,18 @@ Scenario: Negative pretest to search a billing slab
     When method post
     Then def billingSlabSearchResponse = response
     * print billingSlabSearchResponse
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInSearchBillingSlabUnAuthorized
+Scenario: Negative pretest to search a billing slab
+    Given url billingSlabSearch
+    And params searchParams
+        * print searchParams
+    And request searchBillingSlabPayload
+    When method post
+    Then def billingSlabSearchResponse = response
+    * print billingSlabSearchResponse
+    And  status 403
 
 @updateBillingSlab
 Scenario: To update billing slab
@@ -121,7 +169,16 @@ Scenario: Negative pretest to update billing slab
         * print updateBillingSlabPayload
     When method post
     Then def billingSlabUpdateResponse = response
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInUpdateBillingSlabUnAuthorized
+Scenario: Negative pretest to update billing slab
+    Given url billingSlabUpdate
+    And request updateBillingSlabPayload
+        * print updateBillingSlabPayload
+    When method post
+    Then def billingSlabUpdateResponse = response
+    And  status 403
 
 
 # Property Tax Mutation Calculate
@@ -141,7 +198,7 @@ Scenario: Negative pretest to Calculate property tax
         * print propertyTaxMutationPayload
     When method post
     Then def propertyTaxMutationResponse = response
-     And  assert responseStatus >= 400 && responseStatus <= 403
+     And  status 400
 
 @calculatePropertyTaxEstimate
 Scenario: To Calculate property tax estimate
@@ -172,7 +229,22 @@ Scenario: Negative pretest to Calculate property tax estimate
     And request propertyTaxEstimatePayload
     When method post
     Then def propertyTaxEstimateErrorResponse = response
-    And  assert responseStatus >= 400 && responseStatus <= 403
+    And  status 400
+
+@errorInCalculatePropertyTaxEstimateUnAuthorized
+Scenario: Negative pretest to Calculate property tax estimate
+    * def params =
+    """
+    {
+        tenantId:'#(tenantId)'
+    }
+    """
+    Given url propertyTaxEstimate
+    And params params
+    And request propertyTaxEstimatePayload
+    When method post
+    Then def propertyTaxEstimateErrorResponse = response
+    And  status 403
 
 @calculatePropertyTax
 Scenario: To Calculate property tax
@@ -188,4 +260,4 @@ Scenario: Negative pretest to Calculate property tax
     And request propertyTaxPayload
     When method post
     Then def propertyTaxErrorResponse = response
-     And  assert responseStatus >= 400 && responseStatus <= 403
+     And  status 400

@@ -192,10 +192,12 @@ Scenario: Common negative pre test of creating a Payment
   Scenario: Collection Service success workflow call
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
+  * print workflowRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
+  * print response
 
 # Search Payment
 
@@ -331,7 +333,8 @@ Scenario: Steps to create a payment with Cheque payment method
   * set createPaymentRequestForCheque.Payment.totalDue = amount
   * set createPaymentRequestForCheque.Payment.totalAmountPaid = amount
   * set createPaymentRequestForCheque.Payment.paymentMode = paymentModeForCheque
-  * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(91)
+  * def daysFromToday = 91
+  * set createPaymentRequestForCheque.Payment.instrumentDate = getEpochDate(daysFromToday)
   Given url payment
   And request createPaymentRequestForCheque
   When method post

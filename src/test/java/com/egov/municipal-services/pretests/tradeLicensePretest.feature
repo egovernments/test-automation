@@ -1,10 +1,10 @@
 Feature: Trade License service pretests
 
 Background:
-    * def createTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/create.json')
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
-    * def searchTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/search.json')
-	* def tlDocuments = read('../../municipal-services/requestPayload/tradeLicense/documents.json')
+    * def createTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/create.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
+    * def searchTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/search.json')
+	* def tlDocuments = read('../../municipal-services/requestPayload/trade-license/documents.json')
 
 @successCreateTradeLicense
 Scenario: To create Trade License successfully
@@ -26,7 +26,16 @@ Scenario: Create Trade License with Error
     Given url createTradeLicense
     And request createTradeLicenseRequest
     When method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
+    And def tradeLicenseResponseHeaders = responseHeaders
+    And def tradeLicenseResponseBody = response
+
+@errorCreateTradeLicenseUnAuthorized
+Scenario: Create Trade License with Error
+    Given url createTradeLicense
+    And request createTradeLicenseRequest
+    When method post
+	Then  status 403
     And def tradeLicenseResponseHeaders = responseHeaders
     And def tradeLicenseResponseBody = response
 
@@ -49,7 +58,7 @@ Scenario: Search a Trade License with InValid Parameters
 	And params searchTradeLicenseParams
 	And request searchTradeLicenseRequest
 	When method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
 	And def tradeLicenseResponseHeaders = responseHeaders
 	And def tradeLicenseResponseBody = response
 
@@ -78,7 +87,7 @@ Scenario: Update Trade License With Invalid Data
 	Given url updateTradeLicense
 	And request updateTradeLicenseRequest
 	When method post
-	Then  assert responseStatus >=400 && responseStatus <=403
+	Then  status 400
 	And def tradeLicenseResponseHeaders = responseHeaders
 	And def tradeLicenseResponseBody = response
 
@@ -90,7 +99,7 @@ Scenario: Forward TL
     * set tradeLicense.status = 'INITIATED' 
     * set tradeLicense.wfDocuments = tlDocuments.wfDocuments
     * set tradeLicense.tradeLicenseDetail.applicationDocuments = tlDocuments.wfDocuments
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -105,7 +114,7 @@ Scenario: Forward TL
 
 	* set tradeLicense.action = 'FORWARD' 
     * set tradeLicense.status = 'APPLIED' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -120,7 +129,7 @@ Scenario: Forward TL
 
 	* set tradeLicense.action = 'FORWARD' 
     * set tradeLicense.status = 'FIELDINSPECTION' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -136,7 +145,7 @@ Scenario: Forward TL
 
 	* set tradeLicense.action = 'APPROVE' 
     * set tradeLicense.status = 'PENDINGAPPROVAL' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -152,7 +161,7 @@ Scenario: Reject TL
 
 	* set tradeLicense.action = 'REJECT' 
     * set tradeLicense.status = 'APPLIED' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -167,7 +176,7 @@ Scenario: Reject TL
 
 	* set tradeLicense.action = 'REJECT' 
     * set tradeLicense.status = 'FIELDINSPECTION' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -182,7 +191,7 @@ Scenario: Reject TL
 
 	* set tradeLicense.action = 'REJECT' 
     * set tradeLicense.status = 'PENDINGAPPROVAL' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -197,7 +206,7 @@ Scenario: Send Back to CITIZEN TL
 
 	* set tradeLicense.action = 'SENDBACKTOCITIZEN' 
     * set tradeLicense.status = 'FIELDINSPECTION' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -213,7 +222,7 @@ Scenario: Forward TL
 	* set tradeLicense.action = 'FORWARD' 
     * set tradeLicense.status = 'CITIZENACTIONREQUIRED' 
 	* set tradeLicense.assignee = null
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -228,7 +237,7 @@ Scenario: Send Back to DocVerifier from FI
 
 	* set tradeLicense.action = 'SENDBACK' 
     * set tradeLicense.status = 'FIELDINSPECTION' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -243,7 +252,7 @@ Scenario: Send Back to DocVerifier from FI
 
 	* set tradeLicense.action = 'SENDBACK' 
     * set tradeLicense.status = 'PENDINGAPPROVAL' 
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -260,7 +269,7 @@ Scenario: Cancel TL : Approver
 	* set tradeLicense.action = 'CANCEL' 
     * set tradeLicense.status = 'APPROVED' 
 	* set tradeLicense.wfDocuments = null
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -280,7 +289,7 @@ Scenario: Submit for Renewal TL
 	* set tradeLicense.financialYear = '2020-21'
 	* set tradeLicense.wfDocuments = null
 	* set tradeLicense.calculation = null
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -300,7 +309,7 @@ Scenario: Edit for Renewal TL
 	* set tradeLicense.financialYear = '2020-21'
 	* set tradeLicense.wfDocuments = null
 	* set tradeLicense.calculation = null
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 
@@ -316,7 +325,7 @@ Scenario: Forward TL
 	* set tradeLicense.action = 'APPLY' 
     * set tradeLicense.status = 'INITIATED' 
     * set tradeLicense.wfDocuments = null
-    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/tradeLicense/update.json')
+    * def updateTradeLicenseRequest = read('../../municipal-services/requestPayload/trade-license/update.json')
 	Given  url updateTradeLicense 
 	And  request updateTradeLicenseRequest 
 	When  method post 

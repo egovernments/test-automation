@@ -63,6 +63,7 @@ Feature: FIRE-NOC-Service pretests
     Scenario: update FSM successfully
         Given url updateFsmEvent
         And request updateFsmRequest
+        * print updateFsmRequest
         When method post
         Then status 200
         And def fsmResponseBody = response
@@ -348,7 +349,9 @@ Feature: FIRE-NOC-Service pretests
     @createFsmNoSlumSuccessfully
     Scenario: Create FSM successfully
         Given url createFsmEvent
+        And params getFsmSearchParam
         And request createNoSlumFsmRequest
+        * print createNoSlumFsmRequest
         When method post
         Then status 200
         And def fsmResponseBody = response

@@ -1,9 +1,9 @@
 Feature: Sewerage Connection service pretests
 
 Background:
-    * def sewerageCreateRequest = read('../../municipal-services/requestpayload/sewerageConnection/create.json')
-    * def sewerageSearchRequest = read('../../municipal-services/requestpayload/sewerageConnection/update.json')
-    * def sewerageUpdateRequest = read('../../municipal-services/requestpayload/sewerageConnection/search.json')
+    * def sewerageCreateRequest = read('../../municipal-services/requestPayload/sewerage-connection/create.json')
+    * def sewerageSearchRequest = read('../../municipal-services/requestPayload/sewerage-connection/update.json')
+    * def sewerageUpdateRequest = read('../../municipal-services/requestPayload/sewerage-connection/search.json')
 
 @successSewerageCreate
 Scenario: success sewerage connection create 
@@ -26,7 +26,6 @@ Scenario: sewerage connection create - Invalid Property ID
   When method post
   * print response
   * print responseStatus
-  #Then assert responseStatus >=400 && responseStatus <= 403
   And def sewerageResponseHeader = responseHeaders
   And def sewerageResponseBody = response
 
@@ -52,8 +51,7 @@ Scenario: Search a Sewerage Connection with InValid Parameters
 	And request searchPropertyRequest
 	When method post
         * print response
-  #Then assert responseStatus >=400 && responseStatus <= 403
-	And def sewerageResponseHeader = responseHeaders 
+  And def sewerageResponseHeader = responseHeaders 
 	And def sewerageResponseBody = response
 
 @UpdateSewerageConnectionSuccessfully

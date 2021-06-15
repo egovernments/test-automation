@@ -4,7 +4,7 @@ Feature: PDF config is generated successfully
         * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
 * def Payments = Payments
 * def Bill = Payments[0].paymentDetails[0].bill
-* def pdfCreateNoSavePayload = read('../../core-services/requestPayload/pdfService/pdfCreateNoSave.json')
+* def pdfCreateNoSavePayload = read('../../core-services/requestPayload/pdf-service/pdfCreateNoSave.json')
 * def pdfCreateNoSavePayloadFirst = pdfCreateNoSavePayload.WS
 
         @createPdfNosaveSuccessfully

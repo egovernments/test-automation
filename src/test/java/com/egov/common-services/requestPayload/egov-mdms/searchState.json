@@ -181,6 +181,9 @@
           },
           {
             "name": "CalculationType"
+          },
+          {
+            "name": "CheckList"
           }
         ]
       },
@@ -220,18 +223,26 @@
           },
           {
             "name": "VehicleType"
-          },
-          {
+            },
+            {
             "name": "Config"
-          },
-          {
+            },
+            {
             "name": "ApplicationChannel"
-          },
-          {
+            },
+            {
             "name": "SanitationType"
-          },
-          {
+            },
+            {
             "name": "PitType"
+            }
+        ]
+      },
+      {
+        "moduleName": "StakeholderRegistraition",
+        "masterDetails":[
+          {
+            "name": "PropertyType"
           }
         ]
       }

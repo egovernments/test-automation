@@ -5,15 +5,16 @@ Background:
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
     * def Thread = Java.type('java.lang.Thread')
     * def taxPeriodFrom = getCurrentEpochTime() + ''
-    * def taxPeriodTo = getEpochDate(2) + ''
+    * def daysFromToday = 2
+    * def taxPeriodTo = getEpochDate(daysFromToday) + ''
     * def taxAmount = 200
     * def collectionAmount = 0
     * def minimumAmountPayable = 1
     * configure afterScenario = function(){ if (karate.info.errorMessage) driver.screenshot() }
-    * Thread.sleep(15000)
+    * Thread.sleep(3000)
 
 # WS Metered Connection
-@payWaterServiceTaxFullAsCitizen @wsConnection @wsEndToEnd @regression
+@payWaterServiceTaxFullAsCitizen @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -46,7 +47,7 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
-@payWaterServiceTaxPartialAsCitizen @wsConnection @wsEndToEnd @regression
+@payWaterServiceTaxPartialAsCitizen @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -84,7 +85,7 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * def amountToPay = 100
     * call read('../../ui-services/pages/waterAndSeweragePage.feature@makePartialPayment')
 
-@WSsendsBackByDocVerifierAndResubmit @wsConnection @wsEndToEnd @regression
+@WSsendsBackByDocVerifierAndResubmit @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -106,7 +107,7 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * call read('../../municipal-services/tests/waterConnection.feature@resubmit')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@WSsendsBackByDocVerifierAndEdit @wsConnection @wsEndToEnd @regression
+@WSsendsBackByDocVerifierAndEdit @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen Edit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -131,7 +132,7 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen Edit
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@WSRejectedByDocVerifier @wsConnection @wsEndToEnd @regression
+@WSRejectedByDocVerifier @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Doc- Verifier- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -150,7 +151,7 @@ Scenario: WS- Doc- Verifier- Reject
     * call read('../../municipal-services/tests/waterConnection.feature@reject')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.rejected
 
-@fieldInspectorSendBackAndReverifyByDocVerifer @wsConnection @wsEndToEnd @regression
+@fieldInspectorSendBackAndReverifyByDocVerifer @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -176,7 +177,7 @@ Scenario: WS- Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForw
     * call read('../../municipal-services/tests/waterConnection.feature@verify')
     * call read('../../municipal-services/tests/waterConnection.feature@forward')
 
-@rejectByFieldInspector @wsConnection @wsEndToEnd @regression
+@rejectByFieldInspector @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- FieldInspector- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -200,7 +201,7 @@ Scenario: WS- FieldInspector- Reject
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.rejected
 
-@sendBackToFieldInspectorByApprover @wsConnection @wsEndToEnd @regression
+@sendBackToFieldInspectorByApprover @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -225,7 +226,7 @@ Scenario: WS- Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * call read('../../municipal-services/tests/waterConnection.feature@forward')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.pendingApprovalForConnection
 
-@rejectedByApprover @wsConnection @wsEndToEnd @regression
+@rejectedByApprover @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Approver- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -248,7 +249,7 @@ Scenario: WS- Approver- Reject
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.rejected
     
-@clerkEditAndActivate @wsConnection @wsEndToEnd @regression
+@clerkEditAndActivate @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: WS- Clerk- Edit & Activate
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -274,7 +275,7 @@ Scenario: WS- Clerk- Edit & Activate
     * match waterConnectionApplicationStatus == waterConnectionConstants.parameters.applicationStatus.connectionActivated
 
 # WS Non-Metered Connection
-@payWaterServiceTaxNonMeteredFullAsCitizen @wsConnection @wsEndToEnd @regression
+@payWaterServiceTaxNonMeteredFullAsCitizen @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -309,7 +310,7 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
-@payWaterServiceTaxNonMeteredPartialAsCitizen @wsConnection @wsEndToEnd @regression
+@payWaterServiceTaxNonMeteredPartialAsCitizen @wsConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -347,7 +348,7 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
     
 # SW - Non-Metered Connection
 
-@paySewerageServiceTaxFullAsCitizen @swConnection @wsEndToEnd @regression
+@paySewerageServiceTaxFullAsCitizen @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -382,7 +383,7 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/waterAndSeweragePage.feature@makeFullPayment')
 
-@paySewerageServiceTaxPartialAsCitizen @swConnection @wsEndToEnd @regression
+@paySewerageServiceTaxPartialAsCitizen @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -417,7 +418,7 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
     * def amountToPay = 100
     * call read('../../ui-services/pages/waterAndSeweragePage.feature@makePartialPayment')
 
-@SWsendsBackByDocVerifierAndResubmit @swConnection @wsEndToEnd @regression
+@SWsendsBackByDocVerifierAndResubmit @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -439,7 +440,7 @@ Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * call read('../../municipal-services/tests/sewerageConnection.feature@resubmit')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@SWsendsBackByDocVerifierAndEdit @swConnection @wsEndToEnd @regression
+@SWsendsBackByDocVerifierAndEdit @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen Edit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -465,7 +466,7 @@ Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen Edit
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@SWRejectedByDocVerifier @swConnection @wsEndToEnd @regression
+@SWRejectedByDocVerifier @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Doc- Verifier- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -484,7 +485,7 @@ Scenario: SW - Doc- Verifier- Reject
     * call read('../../municipal-services/tests/sewerageConnection.feature@reject')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.rejected
 
-@SWfieldInspectorSendBackAndReverifyByDocVerifer @swConnection @wsEndToEnd @regression
+@SWfieldInspectorSendBackAndReverifyByDocVerifer @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -510,7 +511,7 @@ Scenario: SW - Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndFor
     * call read('../../municipal-services/tests/sewerageConnection.feature@verify')
     * call read('../../municipal-services/tests/sewerageConnection.feature@forward')
 
-@SWrejectByFieldInspector @swConnection @wsEndToEnd @regression
+@SWrejectByFieldInspector @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - FieldInspector- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -534,7 +535,7 @@ Scenario: SW - FieldInspector- Reject
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.rejected
 
-@SWsendBackToFieldInspectorByApprover @swConnection @wsEndToEnd @regression
+@SWsendBackToFieldInspectorByApprover @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -560,7 +561,7 @@ Scenario: SW - Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.pendingApprovalForConnection
 
-@SWrejectedByApprover @swConnection @wsEndToEnd @regression
+@SWrejectedByApprover @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW - Approver- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
@@ -583,7 +584,7 @@ Scenario: SW - Approver- Reject
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * match sewerageConnectionApplicationStatus == sewerageConnectionConstants.parameters.applicationStatus.rejected
     
-@SWclerkEditAndActivate @swConnection @wsEndToEnd @regression
+@SWclerkEditAndActivate @swConnection @wsEndToEnd @e2eServices @regression
 Scenario: SW- Clerk- Edit & Activate
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')

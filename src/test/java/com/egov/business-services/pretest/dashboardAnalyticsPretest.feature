@@ -4,7 +4,7 @@ Background:
 
   * def jsUtils = read('classpath:jsUtils.js')
   	# calling dashboard Json
-  * def dashboardRequest = read('../requestPayload/dashboardAnalytics/dashboard.json')
+  * def dashboardRequest = read('../requestPayload/dashboard-analytics/dashboard.json')
   * configure headers = read('classpath:websCommonHeaders.js')
 
 @processDashboard
