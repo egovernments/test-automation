@@ -2,7 +2,7 @@ Feature: Auth token Creation for Employee
 
 Background:
   * def jsUtils = read('classpath:jsUtils.js')
-  * print authTokenUrl
+  # * print authTokenUrl
   
   Scenario: Auth token Creation scenario
   * configure headers = read('classpath:oauthTokenHeader.js') 
@@ -18,5 +18,5 @@ Background:
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'

@@ -102,7 +102,7 @@ Scenario: Search water connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successCreateWaterConnection')
-    * print waterConnectionApplicationNumber
+    # * print waterConnectionApplicationNumber
     * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     # Search Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')

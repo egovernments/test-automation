@@ -84,7 +84,7 @@ Scenario: Delete Consumer Instance
 
 @getClusters
 Scenario: Get the list of clusters
-  * print getClustersUrl
+  # * print getClustersUrl
   Given url getClustersUrl
   When method get
   Then status 200
@@ -95,7 +95,7 @@ Scenario: Get the list of clusters
 @getConsumerGroups
 Scenario: Get the list of consumer groups
   * replace getConsumerGroupsUrl.cluster_id = cluster_id
-  * print getConsumerGroupsUrl
+  # * print getConsumerGroupsUrl
   Given url getConsumerGroupsUrl
   When method get
   Then status 200

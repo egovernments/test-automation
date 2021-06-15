@@ -45,7 +45,7 @@ Scenario: Verify by passing max. length of the desceription field
   # To update bank of account with invalid length of description
   * def descriptionOfBank = randomStringOfAnyLength(257)
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@errorInAccount')
-  * print bankAccountResponseBody.errors[0].message
+  # * print bankAccountResponseBody.errors[0].message
   * assert bankAccountResponseBody.errors[0].message == egfMasterBankAccountConstant.errorMessages.forInvalidDescription
 
 @BankAccountUpdate_InvalidLenPayTo_07  @negative  @bankAccountUpdate  @egfMasterBankAccount @egfMaster @regression @businessServices

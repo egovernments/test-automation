@@ -7,15 +7,15 @@ Background:
 
     * def applicantName = 'AUTO_NAME_' + ranInteger(10)
     * def appliactionType = mdmsStateBPA.ApplicationType[0].code
-    * print appliactionType
+    # * print appliactionType
     * def applicationSubType = mdmsStateBPA.ServiceType[0].code
-    * print applicationSubType
+    # * print applicationSubType
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunity')
 
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@scrunityHighEnd')
 
     * def index = randomNumber(mdmsStateBPA.CalculationType.length)
-    * print mdmsStateBPA.CalculationType
+    # * print mdmsStateBPA.CalculationType
     * def feeType = mdmsStateBPA.CalculationType[index].feeType
     * def bpaConstants = read('../../municipal-services/constants/bpaServices.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -81,19 +81,19 @@ Scenario: Register Architect
 
     * def mobileNumber = '77' + randomMobileNumGen(8)
     * def createdUser = mobileNumber
-    * print mobileNumber
+    # * print mobileNumber
     * call read('../../core-services/pretests/userCreationPretest.feature@usercreationForBPA')
-    * print ("USER CREATION BPA DONE")
+    # * print ("USER CREATION BPA DONE")
     * def mobileNumber = createdUser
-    * print mobileNumber
+    # * print mobileNumber
     * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
-    * print ("USER SUCCESSFULLY RUN")
+    # * print ("USER SUCCESSFULLY RUN")
     * def dob = "676578599000"
     * def action = "NOWORKFLOW"
     * def mobileNumber = createdUser
     * def citizenUsername3 = mobileNumber
     * def citizenPassword3 = 123456
-    * print mobileNumber
+    # * print mobileNumber
     # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
     #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
@@ -106,19 +106,19 @@ Scenario: Register Architect
 
     * def mobileNumber = '77' + randomMobileNumGen(8)
     * def createdUser = mobileNumber
-    * print mobileNumber
+    # * print mobileNumber
     * call read('../../core-services/pretests/userCreationPretest.feature@createCitizen')
-    * print ("USER CREATION BPA DONE")
+    # * print ("USER CREATION BPA DONE")
     * def mobileNumber = createdUser
-    * print mobileNumber
+    # * print mobileNumber
    # * call read('../../core-services/pretests/userCreationPretest.feature@registerUserSuccessfullyForBPA')
-    * print ("USER SUCCESSFULLY RUN")
+    # * print ("USER SUCCESSFULLY RUN")
     * def dob = "676578599000"
     * def action = "NOWORKFLOW"
     * def mobileNumber = createdUser
     * def citizenUsername3 = mobileNumber
     * def citizenPassword3 = 123456
-    * print mobileNumber
+    # * print mobileNumber
     # * def citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
     #     config.citizenAuthToken = citizenAuthTokenResponse.authToken;
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenCitizenForBPAStakeholder');
@@ -132,7 +132,7 @@ Scenario: Register Architect
 @bpae2e1 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios
     #Scrutinize the building plan -- Done above
-    * print "RUNNING SCNEARIOS"
+    # * print "RUNNING SCNEARIOS"
         * def authToken = citizenArchitectAuthToken
     #Create New BPA Application (Architect)
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
@@ -147,7 +147,7 @@ Scenario: Verify BPA e2e scenarios
     #Update BPA - Apply
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
-    * print getBPASearchParam
+    # * print getBPASearchParam
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * set BPA.workflow.action = 'APPLY'
     * set BPA.status = 'INPROGRESS'
@@ -164,7 +164,7 @@ Scenario: Verify BPA e2e scenarios
        tenantId: '#(tenantId)'
     }
     """
-    * print fetchBillParams
+    # * print fetchBillParams
     # Fetch Bill
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * def totalAmountPaid = txnAmount
@@ -203,13 +203,13 @@ Scenario: Verify BPA e2e scenarios
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfullyForFieldInsecptor')
     # Approval From NOC Verifier
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
-    * print "BELOW ARE OF ACTION TYPE NOC VERIFICATION IN PROGRESS"
+    # * print "BELOW ARE OF ACTION TYPE NOC VERIFICATION IN PROGRESS"
     * set BPA.workflow.action = 'FORWARD'
     * set BPA.status = 'NOC_VERIFICATION_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
     # Approval From NOC Approver
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
-    * print "BELOW ARE OF ACTION TYPE APPROVE"
+    # * print "BELOW ARE OF ACTION TYPE APPROVE"
     * set BPA.workflow.action = 'APPROVE'
     * set BPA.status = 'APPROVAL_INPROGRESS'
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfully')
@@ -228,7 +228,7 @@ Scenario: Verify BPA e2e scenarios
 
 @bpae2e2 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Highend
-    * print "RUNNING SCNEARIOS"
+    # * print "RUNNING SCNEARIOS"
     * def riskType = mdmsStateBPA.RiskTypeComputation[0].riskType
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfullyForHighEnd')
     * call read('../../municipal-services/pretests/landServicesPretest.feature@createLandSuccessfully')
@@ -237,7 +237,7 @@ Scenario: Verify BPA e2e scenarios - Highend
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@approveFromCitizen')
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
-    * print getBPASearchParam
+    # * print getBPASearchParam
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * set BPA.workflow.action = 'APPLY'
     * set BPA.status = 'INPROGRESS'
@@ -252,7 +252,7 @@ Scenario: Verify BPA e2e scenarios - Highend
        tenantId: '#(tenantId)'
     }
     """
-    * print fetchBillParams
+    # * print fetchBillParams
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * def totalAmountPaid = txnAmount
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
@@ -302,7 +302,7 @@ Scenario: Verify BPA e2e scenarios - Highend
 @bpae2e3 @positive @bpae2eservice @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     #Scrutinize the building plan -- Done above
-    * print "RUNNING SCNEARIOS"
+    # * print "RUNNING SCNEARIOS"
         * def authToken = citizenArchitectAuthToken
     #Create New BPA Application (Architect)
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
@@ -317,7 +317,7 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@approveFromCitizen')
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
-    * print getBPASearchParam
+    # * print getBPASearchParam
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * set BPA.workflow.action = 'APPLY'
     * set BPA.status = 'INPROGRESS'
@@ -332,7 +332,7 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
        tenantId: '#(tenantId)'
     }
     """
-    * print fetchBillParams
+    # * print fetchBillParams
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * def totalAmountPaid = txnAmount
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
@@ -352,7 +352,7 @@ Scenario: Verify BPA e2e scenarios - Revocate From Doc Verifer
 @bpae2e4 @positive  @bpae2eservice  @e2eServices
 Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     #Scrutinize the building plan -- Done above
-    * print "RUNNING SCNEARIOS"
+    # * print "RUNNING SCNEARIOS"
   #  * def authToken = citizenArchitectAuthToken
     #Create New BPA Application (Architect)
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
@@ -366,7 +366,7 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@approveFromCitizen')
     * def authToken = superUserAuthToken
     * def getBPASearchParam = {"tenantId": '#(tenantId)',"applicationNo": '#(applicationNo)'}
-    * print getBPASearchParam
+    # * print getBPASearchParam
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * set BPA.workflow.action = 'APPLY'
     * set BPA.status = 'INPROGRESS'
@@ -382,7 +382,7 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
        tenantId: '#(tenantId)'
     }
     """
-    * print fetchBillParams
+    # * print fetchBillParams
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     * def totalAmountPaid = txnAmount
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
@@ -403,7 +403,7 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@searchBPASuccessfully')
     * def searchNOCParams = {offset:0,limit:-1 ,tenantId: '#(tenantId)', sourceRefId: '#(applicationNo)', nocType: 'AIRPORT_AUTHORITY'}
     * call read('../../municipal-services/pretests/nocPretest.feature@searchNOCWithValidData')
-    * print "UPDATING AIRPORT NOC:::"
+    # * print "UPDATING AIRPORT NOC:::"
     * set nocDetail.applicationStatus = "INPROGRESS"
     * set nocDetail.workflow = "APPROVE"
     * set nocDetail.documents = []
@@ -423,11 +423,11 @@ Scenario: Verify BPA e2e scenarios - Revocate as field Inspector
     * set BPA.additionalDetails.fieldinspection_pending[0].time = getCurrentTime()
     * set BPA.additionalDetails.fieldinspection_pending[0].questions = []
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[0] = questions1Json
-    * print BPA
+    # * print BPA
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[1] = questions2Json
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[2] = questions3Json
     * set BPA.additionalDetails.fieldinspection_pending[0].questions[3] = questions4Json
-    * print ("FIELD INSPECTOR UPDATE")
+    # * print ("FIELD INSPECTOR UPDATE")
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@updateBPASuccessfullyForFieldInsecptor')
     * match BPA.edcrNumber == "#present"
     * match BPA.landId == "#present"

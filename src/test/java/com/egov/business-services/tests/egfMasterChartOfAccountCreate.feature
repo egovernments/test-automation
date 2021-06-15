@@ -28,7 +28,7 @@ Scenario: Verify creating chart of accounts by passing a bank name that already 
 * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInAccoutCreate')
 # Validating error message with dynamic value
 * def validateErrorMessage = "The  value  "+name+" for the field name already exists in the system. Please provide different value"
-* print validateErrorMessage
+# * print validateErrorMessage
 * match chartOfAccountCreateResponseBody.errors[0].description == validateErrorMessage
 
 @ChartOfAccountCreate_InValidTEnant_03  @chartOfAccountCreate  @chartOfAccount  @negative @egfMaster @businessServices @regression

@@ -111,7 +111,7 @@ Scenario: Verify by not passing null or invalid value for tenant id
 Scenario: Verify by not passing comma separated values
     * def transactionNumber = commonConstants.invalidParameters.invalidValue
     * def searchScrutinyParams = { tenantId: '#(tenantId)', transactionNumber: '#(transactionNumber)'}
-    * print searchScrutinyParams
+    # * print searchScrutinyParams
     * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchScrutinySuccessfully')
     * match scrunityResponseBody == dcrConstants.errorMessages.noRecords
 

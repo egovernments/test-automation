@@ -18,10 +18,10 @@ Background:
     """
     Given url fetchBill
     And params fetchBillParams
-    * print fetchBillParams
+    # * print fetchBillParams
     And request fetchBillRequest
     When method post
-    * print fetchBillResponse
+    # * print fetchBillResponse
     Then status 201
     And def fetchBillResponse = response
     And def totalAmount = response.Bill[0].totalAmount
@@ -35,10 +35,10 @@ Background:
     Given url fetchBill
     And params fetchBillParams
     And request fetchBillRequest
-    * print fetchBillRequest
+    # * print fetchBillRequest
     When method post
     Then def fetchBillResponse = response
-    * print fetchBillResponse
+    # * print fetchBillResponse
     And def totalAmount = response.Bill[0].totalAmount
     And def billId = response.Bill[0].id
     And def txnAmount = totalAmount

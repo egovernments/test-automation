@@ -190,7 +190,7 @@ Scenario: Approve a property
 	Given  url updatePropertyUrl 
 	And  request updatePropertyRequest 
 	When  method post
-	* print propertyServiceResponseBody
+	# * print propertyServiceResponseBody
 	Then  status 200 
 	And  def propertyServiceResponseHeaders = responseHeaders 
 	And  def propertyServiceResponseBody = response 
@@ -337,7 +337,7 @@ Scenario: Update assessment successfully
     }
     """
 	* set updatePropertyRequest.Assessment = Assessment
-	* print updateAssessmentRequest
+	# * print updateAssessmentRequest
 	Given  url updateAssessment
 	And  params assessmentParams
 	And  request updateAssessmentRequest
@@ -424,7 +424,7 @@ Scenario: Create a property with new counter employee
 	Then status 403
 	And def propertyServiceResponseHeaders = responseHeaders
 	And def propertyServiceResponseBody = response
-* print createPropertyRequest
+# * print createPropertyRequest
 
 @searchPgTransactionSuccessfully
         Scenario: Search a payment gateway transaction successfully

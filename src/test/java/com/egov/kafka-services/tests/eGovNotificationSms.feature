@@ -42,7 +42,7 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * call read('../../business-services/tests/egovHrms.feature@HRMS_create_emp01')
     * def resetMobileNumber =  hrmsResponseBody.Employees[0].user.mobileNumber
     * def userName =  hrmsResponseBody.Employees[0].code
-    * print 'UserName/EmployeeCode: ' + userName + ' and Mobile Number: ' + resetMobileNumber
+    # * print 'UserName/EmployeeCode: ' + userName + ' and Mobile Number: ' + resetMobileNumber
     # Generate OTP to reset password for user with above mobile number
     * call read('../../core-services/pretests/userOtpPretest.feature@generateOtpSuccessfully')
     # Setting the condition to filter consumer records
@@ -52,12 +52,12 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     # Get lag details after making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka OTP consumer response messages for above mobile number and notification sms topic
@@ -66,17 +66,17 @@ Scenario: Create an Employee user, forgot password, read otp from kafka, update 
     * def latestMessage = otpMessages[otpMessages.length-1]
     # Call JS function to extract OTP from the message
     * def otpReference = extractOtp(latestMessage)
-    * print 'Otp: ' + otpReference
+    # * print 'Otp: ' + otpReference
     * def newPassword = notificationSmsConstants.parameters.newPassword
     * def type = notificationSmsConstants.parameters.employeeType
     # Update the password for the above created userName with the generated OTP and New Password
     * call read('../../core-services/pretests/egovUserUpdatePretest.feature@updatePasswordNoLogin')
-    * print 'Update Password Response: ' + updatedPasswordWithOutLogin
+    # * print 'Update Password Response: ' + updatedPasswordWithOutLogin
     * def authUsername = userName
     * def authPassword = newPassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser')
-    * print 'Login Success.'
+    # * print 'Login Success.'
 
 @sms_02 @positive @kafkaEgovNotificationSms @kafkaServices
 Scenario: Create an Employee user,read generated password from kafka and login
@@ -84,7 +84,7 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * call read('../../business-services/tests/egovHrms.feature@HRMS_create_emp01')
     * def resetMobileNumber =  hrmsResponseBody.Employees[0].user.mobileNumber
     * def userName =  hrmsResponseBody.Employees[0].code
-    * print 'UserName/EmployeeCode: ' + userName + ' and Mobile Number: ' + resetMobileNumber
+    # * print 'UserName/EmployeeCode: ' + userName + ' and Mobile Number: ' + resetMobileNumber
     # Setting the condition to filter consumer records
     * def recordsFilterCondition = "$[?(@.value.mobileNumber=='" + resetMobileNumber + "' && @.topic=='" + kafkaTopics + "' && @.value.message contains 'Welcome to mSeva')].value.message"
     # Call to wait until records are read by kafka consumer
@@ -96,12 +96,12 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * eval dataAfterApiCall[0].current_offset = (parseInt(~~(dataAfterApiCall[0].current_offset + 10)))
     * eval dataAfterApiCall[1].current_offset = (parseInt(~~(dataAfterApiCall[1].current_offset + 5)))
     * eval dataAfterApiCall[2].current_offset = (parseInt(~~(dataAfterApiCall[2].current_offset + 15)))
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka Welcome Password consumer response messages for above mobile number and notification sms topic
@@ -110,12 +110,12 @@ Scenario: Create an Employee user,read generated password from kafka and login
     * def latestMessage = welcomePasswordMessages[welcomePasswordMessages.length-1]
     # Call JS function to extract OTP from the message
     * def welcomePassword = extractWelcomePassword(latestMessage)
-    * print 'Welcome Password: ' + welcomePassword
+    # * print 'Welcome Password: ' + welcomePassword
     * def authUsername = userName
     * def authPassword = welcomePassword
     * def authUserType = notificationSmsConstants.parameters.employeeType
     * call read('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser')
-    * print 'Login Success.'
+    # * print 'Login Success.'
 
 
 

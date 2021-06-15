@@ -126,7 +126,7 @@ Feature: Business Services - Apportion service tests
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
      * assert apportionResponseBody.Bills[0].totalAmount == totalAmount
      * assert apportionResponseBody.Bills[0].amountPaid == amountPaid
-     * print apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].amount
+     # * print apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].amount
 
    @apportion_bill_VerifyOrder_15 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with an Order

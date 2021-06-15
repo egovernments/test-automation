@@ -37,7 +37,7 @@ Scenario: Verify searching for chart of accounts through API call using tenantId
 Scenario: Verify searching for chart of accounts through API call by not passing tenantId
 # Search for chart of accounts without passing tenantId
 * call read('../../business-services/pretest/egfMasterPreTest.feature@errorInSearchAccount')
-* print egfMasterChartOfAccountConstant.errorMessages.withoutTenantId
+# * print egfMasterChartOfAccountConstant.errorMessages.withoutTenantId
 * def validationMessage = toReplaceComma(chartOfAccountSearchResponseBody)
-* print validationMessage
+# * print validationMessage
 * assert validationMessage == egfMasterChartOfAccountConstant.errorMessages.withoutTenantId

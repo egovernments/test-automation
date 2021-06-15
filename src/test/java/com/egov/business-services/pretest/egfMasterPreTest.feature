@@ -207,7 +207,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayload
     When method post
     Then assert responseStatus == 201
-    #* print accountDetailsCreateResponse
+    ## * print accountDetailsCreateResponse
     And def accountDetailsCreateResponse = response
 
 @errorInCreateChartOfAccountDetailsUnAuthorized
@@ -555,7 +555,7 @@ Scenario: Updating chart of accounts and check for error through API call
     * eval updateBankBranchPayload.bankBranches = bankBranches
     * set updateBankBranchPayload.bankBranches[0].tenantId = 'InvalidTenantId-' + randomString(5)
     * set updateBankBranchPayload.bankBranches[0].bank.tenantId = 'InvalidTenantId-' + randomString(5)
-    * print updateBankBranchPayload
+    # * print updateBankBranchPayload
     Given url bankBranchUpdate
     And params params
     And request updateBankBranchPayload

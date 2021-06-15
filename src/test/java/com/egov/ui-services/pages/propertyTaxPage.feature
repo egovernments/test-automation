@@ -27,7 +27,7 @@ Scenario: Search property tax by unique id and make full payment
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
 	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
-	* print paymentReceiptNumber
+	# * print paymentReceiptNumber
 
 @makePartialPayment
 Scenario: Search property tax by unique id and make partial payment
@@ -55,7 +55,7 @@ Scenario: Search property tax by unique id and make partial payment
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
 	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
-	* print paymentReceiptNumber
+	# * print paymentReceiptNumber
 
 @makeMutationPayment
 Scenario: Search property tax by unique id and make full payment
@@ -74,4 +74,4 @@ Scenario: Search property tax by unique id and make full payment
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
 	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
 	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
-	* print paymentReceiptNumber
+	# * print paymentReceiptNumber

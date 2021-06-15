@@ -17,7 +17,7 @@ Scenario: Create a pg transaction and verifdy the response Transaction object wi
     * call read('../../core-services/tests/eGovWorkFlowTransition.feature@Process_Transition_01')
     # Expected response
     * def createProcessInstanceResponse = processTransitionResponseBody.ProcessInstances
-    * print 'Business Id: ' + businessId
+    # * print 'Business Id: ' + businessId
     # Setting the condition to filter consumer records
     * def recordsFilterCondition = "$[?(@.value.ProcessInstances.businessId=='" + businessId + "')].value.ProcessInstances"
     # Call to wait until records are read by kafka consumer

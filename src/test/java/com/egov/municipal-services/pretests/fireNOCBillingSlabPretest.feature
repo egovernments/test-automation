@@ -12,11 +12,11 @@ Background:
 Scenario: Search Fire NOC Billing Slab Feature
     Given url searchFireNOCBillingSlabUrl
     And params searchFireNOCBillingSlabParams
-    * print searchFireNOCBillingSlabParams
+    # * print searchFireNOCBillingSlabParams
     And request searchFireNOCBillingLabRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
 
@@ -24,12 +24,12 @@ Scenario: Search Fire NOC Billing Slab Feature
 Scenario: Invalid Search Fire NOC Billing Slab Feature
     Given url searchFireNOCBillingSlabUrl
     And params searchFireNOCBillingSlabParams
-    * print searchFireNOCBillingSlabParams
+    # * print searchFireNOCBillingSlabParams
     And request searchFireNOCBillingLabRequest 
-    * print searchFireNOCBillingLabRequest
+    # * print searchFireNOCBillingLabRequest
     When method post 
     Then status 400
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
 
@@ -37,12 +37,12 @@ Scenario: Invalid Search Fire NOC Billing Slab Feature
 Scenario: Invalid Search Fire NOC Billing Slab Feature
     Given url searchFireNOCBillingSlabUrl
     And params searchFireNOCBillingSlabParams
-    * print searchFireNOCBillingSlabParams
+    # * print searchFireNOCBillingSlabParams
     And request searchFireNOCBillingLabRequest 
-    * print searchFireNOCBillingLabRequest
+    # * print searchFireNOCBillingLabRequest
     When method post 
     Then status 403
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
 
@@ -50,12 +50,12 @@ Scenario: Invalid Search Fire NOC Billing Slab Feature
 Scenario: Search Fire NOC Billing Slab Feature - all records
     Given url searchFireNOCBillingSlabUrl
     And params searchFireNOCBillingSlabParams
-    * print searchFireNOCBillingSlabParams
+    # * print searchFireNOCBillingSlabParams
     And request searchFireNOCBillingLabRequest
-    * print searchFireNOCBillingLabRequest
+    # * print searchFireNOCBillingLabRequest
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
     And assert fireNOCBillingSlabResponse.BillingSlabs.length > 1
@@ -64,11 +64,11 @@ Scenario: Search Fire NOC Billing Slab Feature - all records
 Scenario: Search Fire NOC Billing Slab Feature - No Records
     Given url searchFireNOCBillingSlabUrl
     And params searchFireNOCBillingSlabParams
-    * print searchFireNOCBillingSlabParams
+    # * print searchFireNOCBillingSlabParams
     And request searchFireNOCBillingLabRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
     And assert fireNOCBillingSlabResponse.BillingSlabs.length == 0
@@ -79,7 +79,7 @@ Scenario: Create Fire NOC Billing Slab Feature
     And request createFireNOCBillingSlabRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
     And def fireNOCBillingSlabId = fireNOCBillingSlabResponse.BillingSlabs[0].id
@@ -88,10 +88,10 @@ Scenario: Create Fire NOC Billing Slab Feature
 Scenario: Create Fire NOC Billing Slab Feature
     Given url createFireNOCBillingSlabUrl
     And request createFireNOCBillingSlabRequest 
-    * print createFireNOCBillingSlabRequest
+    # * print createFireNOCBillingSlabRequest
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
     And def fireNOCBillingSlabId = fireNOCBillingSlabResponse.BillingSlabs[0].id
@@ -100,10 +100,10 @@ Scenario: Create Fire NOC Billing Slab Feature
 Scenario: Create Fire NOC Billing Slab Feature
     Given url createFireNOCBillingSlabUrl
     And request createFireNOCBillingSlabRequest 
-    * print createFireNOCBillingSlabRequest
+    # * print createFireNOCBillingSlabRequest
     When method post 
     Then status 400
-    * print response
+    # * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
 
@@ -113,16 +113,16 @@ Scenario: Calculate Fire NOC Billing Slab Feature
     And request calculateFireNOCBillingSlabRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 
 @failCalculateFireNOCBIllingSlab
 Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
     Given url calculateFireNOCBillingSlabUrl
     And request calculateFireNOCBillingSlabRequest 
-    * print calculateFireNOCBillingSlabRequest
+    # * print calculateFireNOCBillingSlabRequest
     When method post 
-    * print response
+    # * print response
     Then status 400
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 
@@ -131,9 +131,9 @@ Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
 Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
     Given url calculateFireNOCBillingSlabUrl
     And request calculateFireNOCBillingSlabRequest 
-    * print calculateFireNOCBillingSlabRequest
+    # * print calculateFireNOCBillingSlabRequest
     When method post 
-    * print response
+    # * print response
     Then status 403
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 
@@ -142,9 +142,9 @@ Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
 Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
     Given url calculateFireNOCBillingSlabUrl
     And request calculateFireNOCBillingSlabRequestMandatoryParams 
-    * print calculateFireNOCBillingSlabRequest
+    # * print calculateFireNOCBillingSlabRequest
     When method post 
-    * print response
+    # * print response
     Then status 400
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 

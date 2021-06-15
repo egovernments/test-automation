@@ -13,11 +13,11 @@ Feature: BPA-Service pretests
 
     @createBPASuccessfully
     Scenario: Create BPA successfully
-        * print mobileNumber
+        # * print mobileNumber
         Given url createBPA
         And request createBPARequest
-        * print "BPA REQUEST IS"
-        * print createBPARequest
+        # * print "BPA REQUEST IS"
+        # * print createBPARequest
         When method post
         Then status 200
         And def bpaResponseHeaders = responseHeaders
@@ -34,7 +34,7 @@ Feature: BPA-Service pretests
         
    @createBPASuccessfullyForHighEnd
     Scenario: Create BPA successfully
-        * print mobileNumber
+        # * print mobileNumber
         Given url createBPA
         And request createBPARequestHighEnd
         When method post
@@ -76,7 +76,7 @@ Feature: BPA-Service pretests
         Then status 400
         And def bpaResponseHeaders = responseHeaders
         And def bpaResponseBody = response
-        * print bpaResponseBody
+        # * print bpaResponseBody
 
     @scrunity
     Scenario: Scrunity
@@ -96,21 +96,21 @@ Feature: BPA-Service pretests
             applicationSubType :"#(applicationSubType)"
             }
             """
-        * print "ECDR REQUST"
-        * print edcrRequest
+        # * print "ECDR REQUST"
+        # * print edcrRequest
         Given url createEdcrScrutinize + "?tenantId=" + tenantId
-        * print createEdcrScrutinize + "?tenantId=" + tenantId
+        # * print createEdcrScrutinize + "?tenantId=" + tenantId
         And header auth-token = authToken
         And header Content-Type = "multipart/form-data; boundary=----WebKitFormBoundaryac7WcrRamAPfptBJ"
         And multipart file planFile = {read: '#(testData)' , filename: 'scrunity.dxf', contentType: 'application/dxf'}
-        * print testData
+        # * print testData
         And param edcrRequest = edcrRequest
         When method post
         Then status 200
         And def scrunityResponseBody = response
         * def edcrNumber = scrunityResponseBody.edcrDetail[0].edcrNumber
-        * print "EDCR NUMBER"
-        * print edcrNumber
+        # * print "EDCR NUMBER"
+        # * print edcrNumber
 
     @scrunityHighEnd
     Scenario: Scrunity
@@ -130,12 +130,12 @@ Feature: BPA-Service pretests
             applicationSubType :"#(applicationSubType)"
             }
             """
-        * print edcrRequest
+        # * print edcrRequest
         Given url createEdcrScrutinize + "?tenantId=" + tenantId
         And header auth-token = authToken
         And header Content-Type = "multipart/form-data; boundary=----WebKitFormBoundaryac7WcrRamAPfptBJ"
         And multipart file planFile = {read: '#(testData2)' , filename: 'High_Accepted_STAIR_NEW_system_scrutinized.dxf', contentType: 'application/dxf'}
-        * print testData
+        # * print testData
         And param edcrRequest = edcrRequest
         When method post
         Then status 200
@@ -164,17 +164,17 @@ Feature: BPA-Service pretests
 
             }
             """
-        * print edcrRequest
+        # * print edcrRequest
         Given url createEdcrScrutinize + "?tenantId=" + tenantId
         And header auth-token = authToken
         And header Content-Type = "multipart/form-data; boundary=----WebKitFormBoundaryb6BUkUepG1X2UVP2"
         And multipart file planFile = {read: '#(testData)' , filename: 'scrunity.dxf', contentType: 'application/dxf'}
-        * print testData
+        # * print testData
         And param edcrRequest = edcrRequest
         When method post
         Then status 200
-        * print "SCRUTIY OCDR"
-        * print response
+        # * print "SCRUTIY OCDR"
+        # * print response
         And def scrunityResponseBody = response
         * def ocdcrNumber = scrunityResponseBody.edcrDetail[0].edcrNumber
 
@@ -189,7 +189,7 @@ Feature: BPA-Service pretests
         Then status 200
         And def bpaResponseHeaders = responseHeaders
         And def bpaResponseBody = response
-        * print bpaResponseBody
+        # * print bpaResponseBody
 
     @searchBPAError
     Scenario: Search BPA Error
@@ -266,8 +266,8 @@ Feature: BPA-Service pretests
         And  def bpaResponseBody = response
         And  def BPA = bpaResponseBody.BPA[0]
         And  def applicationNo = bpaResponseBody.BPA[0].applicationNo
-        * print ("APPROVE FROM CITIZEN RESPONSE")
-        * print response
+        # * print ("APPROVE FROM CITIZEN RESPONSE")
+        # * print response
 
 
     @updateBPASuccessfully
@@ -277,14 +277,14 @@ Feature: BPA-Service pretests
         # * set BPA.status = 'CITIZEN_APPROVAL_INPROCESS'
         # * set BPA.documents = bpaDocument.bpaDocuments
         * def updateBPARequest = read('../../municipal-services/requestPayload/bpa-services/update.json')
-        * print updateBPARequest
+        # * print updateBPARequest
         Given  url updateBPA
         And  request updateBPARequest
         When  method post
         Then  status 200
         And  def bpaResponseHeaders = responseHeaders
         And  def bpaResponseBody = response
-        * print bpaResponseBody
+        # * print bpaResponseBody
         And  def BPA = bpaResponseBody.BPA[0]
         And  def applicationNo = bpaResponseBody.BPA[0].applicationNo
 
@@ -293,24 +293,24 @@ Feature: BPA-Service pretests
     Scenario: Update BPA
         * set BPA.additionalDetails.fieldinspection_pending[0].docs = bpaDocument.bpaDocuments
         * def updateBPARequest = read('../../municipal-services/requestPayload/bpa-services/update.json')
-        * print updateBPARequest
+        # * print updateBPARequest
         Given  url updateBPA
         And  request updateBPARequest
         When  method post
         Then  status 200
         And  def bpaResponseHeaders = responseHeaders
         And  def bpaResponseBody = response
-        * print "updateBPASuccessfullyForFieldInsecptor RESPONSE BODY"
-        * print bpaResponseBody
+        # * print "updateBPASuccessfullyForFieldInsecptor RESPONSE BODY"
+        # * print bpaResponseBody
         And  def BPA = bpaResponseBody.BPA[0]
 
     @createBPAStakeholderSuccessfully
     Scenario: Create BPA Stakeholder successfully
-        * print dob
+        # * print dob
         Given url createBPAStakeHolder
-        * print createBPAStakeHolder
+        # * print createBPAStakeHolder
         And request createBPAStakeholderRequest
-        * print createBPAStakeholderRequest
+        # * print createBPAStakeholderRequest
         When method post
         Then status 200
         And def bpaResponseHeaders = responseHeaders

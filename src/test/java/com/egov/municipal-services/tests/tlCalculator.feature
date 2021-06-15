@@ -64,7 +64,7 @@ Scenario: Verify searching for bill details through API call by not passing any 
 Scenario: Verify searching for bill details through API call by passing any value for applicationNumber which doesnt have any demands associated with it and check for errors
     * call read('../../municipal-services/tests/tradeLicenseEndToEndFlow.feature@createTradeLicenseAndApproveCounterEmployee')
     * def noDemandsConsumerCode = consumerCode
-    * print noDemandsConsumerCode
+    # * print noDemandsConsumerCode
     * def getBillSearchParam = {"tenantId": '#(tenantId)',"consumerCode": '#(noDemandsConsumerCode)',"businessService": "#(businessService)"}
     * call read('../../municipal-services/pretests/tlCalculatorPretest.feature@searchBillError')
     * match billSearchResponseBody.Errors[0].message == tlCalculatorConstants.errorMessages.noDemandError

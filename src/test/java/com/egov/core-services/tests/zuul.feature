@@ -98,8 +98,8 @@ Background:
     # Create a property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateProperty')
     # Validate response body
-    * print createPropertyRequest
-    * print propertyServiceResponseBody 
+    # * print createPropertyRequest
+    # * print propertyServiceResponseBody 
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
     @zuul_03 @zuul @regression @negative @coreServices

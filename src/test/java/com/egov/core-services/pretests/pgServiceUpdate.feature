@@ -93,7 +93,7 @@ Scenario: To update Payment Gateway transaction only
       Given url pgServicesUpdate
       And params pgServicesUpdateParam
      And request pgServicesUpdatePayload
-      * print pgServicesUpdatePayload
+      # * print pgServicesUpdatePayload
      When method post
      Then status 200
      And def pgServicesUpdateResponseHeader = responseHeaders

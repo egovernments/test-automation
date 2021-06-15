@@ -42,7 +42,7 @@ Scenario: Search Meter Connection successfully
     * call read('../../municipal-services/pretests/wsCalculatorPretest.feature@successCreateMeterConnection')
     * def searchMeterConnectionParams = {"tenantId": "#(tenantId)", "connectionNos": "#(connectionNo)"}
     * call read('../../municipal-services/pretests/wsCalculatorPretest.feature@successSearchMeterConnection')
-    * print wsCalculatorResponseBody
+    # * print wsCalculatorResponseBody
     * match wsCalculatorResponseBody.meterReadings[0].id == "#present"
     * match wsCalculatorResponseBody.meterReadings[0].billingPeriod == billingPeriod
     * match wsCalculatorResponseBody.meterReadings[0].meterStatus == meterStatus

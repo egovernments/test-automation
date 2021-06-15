@@ -188,7 +188,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmSuccessfully')
     * def applicationStatus = randomString(10)
     * def getFsmSearchParam = {"tenantId": '#(tenantId)',"applicationNos": '#(applicatonNum,applicationStatus)'}
-    * print "FSM Param ::: "+getFsmSearchParam
+    # * print "FSM Param ::: "+getFsmSearchParam
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@searchFsmSuccessfully')
     * match fsmResponseBody.fsm[0] == '#notpresent'
 

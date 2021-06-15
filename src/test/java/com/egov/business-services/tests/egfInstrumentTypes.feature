@@ -55,7 +55,7 @@
     * set instrumentTypesPayload.instrumentTypes[0].id = null
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypesServerError')
     # Validate that the error message returned by the API should be equal with expected error
-    * print instrumentTypesResponse
+    # * print instrumentTypesResponse
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
 
     
@@ -96,7 +96,7 @@
     * set instrumentTypesPayload.instrumentTypes[0].name = null
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
-    * print instrumentTypesResponse
+    # * print instrumentTypesResponse
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[*].message contains ['#(fieldMustNotBlank)', '#(fieldMustNotBeNull)']
     

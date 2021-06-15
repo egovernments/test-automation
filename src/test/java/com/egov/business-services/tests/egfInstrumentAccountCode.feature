@@ -86,7 +86,7 @@ Scenario: Update InstrumentAccountCode with valid ID
   * def id = instrumentAccountCodeResponse.instrumentAccountCodes[0].id
   # Updating an instrumentAccountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@updateInstrumentAccountCode')
-  * print updateInstrumentAccountCodeResponse
+  # * print updateInstrumentAccountCodeResponse
   * match updateInstrumentAccountCodeResponse.instrumentAccountCodes[0].id == id
   * match updateInstrumentAccountCodeResponse.instrumentAccountCodes[0].instrumentType.name == instrumentTypeName 
   * match updateInstrumentAccountCodeResponse.instrumentAccountCodes[0].accountCode.glcode == glcode 
@@ -102,7 +102,7 @@ Scenario: Update InstrumentAccountCode with Invalid ID
   # Updating an instrumentAccountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorInupdateInstrumentAccountCode')
   # Validating response body
-  * print updateInstrumentAccountCodeResponse
+  # * print updateInstrumentAccountCodeResponse
   * match updateInstrumentAccountCodeResponse.message == egfInstrumentConstants.errorMessages.message
 
 @InstrumentAccountCode_Update_NullID_03 @positive @instrumentAcountCodeUpdate @egfInstrument_InstrumentsAccountCode @egfInstrument @regression @businessServices
@@ -112,7 +112,7 @@ Scenario: Update InstrumentAccountCode with Null ID
   # Updating an instrumentAccountCode
   * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorInupdateInstrumentAccountCode')
   # Validating response body
-  * print updateInstrumentAccountCodeResponse
+  # * print updateInstrumentAccountCodeResponse
   * match updateInstrumentAccountCodeResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
   * match updateInstrumentAccountCodeResponse.error.message == 'id'
 

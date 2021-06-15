@@ -25,18 +25,18 @@ Feature: Create Citizen For BPA
         Scenario: Create citizen
             Given url createCitizen
               And request createCitizenvalidPayload
-              * print createCitizenvalidPayload
+              # * print createCitizenvalidPayload
              When method post
              Then status 400
               And def createCitizenResponseHeader = responseHeaders
-              * print response
+              # * print response
               And def createCitizenResponseBody = response
 
 
 #         Background:
 #   * def jsUtils = read('classpath:jsUtils.js')
 #   * def userType = mdmsStateAccessControlRoles.roles[0].code
-#   * print mdmsStateAccessControlRoles.roles
+#   # * print mdmsStateAccessControlRoles.roles
 #   * def name = ranString(4)
 #   * def emailId = ranEmailId(5)
 #   * def dob = todayDate()
@@ -61,16 +61,16 @@ Feature: Create Citizen For BPA
 #         @usercreationForBPA
 #         Scenario: Creating new user
 #      * configure headers = read('classpath:websCommonHeaders.js')
-#       * print "CREATING USER"
+#       # * print "CREATING USER"
 #       Given url createUser
 #       And request newUserPayload
-#       * print newUserPayload
+#       # * print newUserPayload
 #       When method post
 #       Then status 200
 #       And def userCreationResponseHeader = responseHeaders
 #       And def userCreationResponseBody = response
 #      * def createdUser = userCreationResponseBody.user[0].userName
-#      * print "CREATED USER"
+#      # * print "CREATED USER"
 
  
 

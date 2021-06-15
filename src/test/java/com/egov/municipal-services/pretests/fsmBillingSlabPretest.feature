@@ -20,7 +20,7 @@ Feature: FSM Billing Slab pretests
     Scenario: Create FSM Billing Slab UnSuccessfully
         Given url createFSMBillingSlab
         And request createFSMBillingSlabRequest
-        * print createFSMBillingSlabRequest
+        # * print createFSMBillingSlabRequest
         When method post
         Then assert responseStatus >= 400 && responseStatus <= 403
         And def fsmBillingSlabResponseBody = response
@@ -86,5 +86,5 @@ Feature: FSM Billing Slab pretests
         And request estimateFSMBillingSlabRequest
         When method post
         Then assert responseStatus >= 400 && responseStatus <= 403
-        * print response
+        # * print response
         And def fsmBillingSlabResponseBody = response

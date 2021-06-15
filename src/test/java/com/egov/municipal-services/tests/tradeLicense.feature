@@ -86,7 +86,7 @@ Background:
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@errorCreateTradeLicense')
     # #Match the response
     * def errorMessage = "The structureType '"+invalidStructureType+"' does not exists"
-    * print tradeLicenseResponseBody
+    # * print tradeLicenseResponseBody
     * match tradeLicenseResponseBody.Errors[0].code == tradeLicenseConstants.errors.errorCodes.invalidStructureType
     * match tradeLicenseResponseBody.Errors[0].message == errorMessage
 

@@ -7,7 +7,7 @@ Feature: BPA-Calculator pretests
     Scenario: Calculate BPA successfully
         Given url calculateBPA
         And request calculateBPARequest
-        * print calculateBPARequest
+        # * print calculateBPARequest
         When method post
         Then status 200
         And def bpaResponseHeaders = responseHeaders

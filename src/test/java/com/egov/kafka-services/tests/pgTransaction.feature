@@ -15,29 +15,29 @@ Background:
     # Get lag details before making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataBeforeApiCall = lagData
-    * print dataBeforeApiCall
+    # * print dataBeforeApiCall
     
 @kafka_pg_create_01 @positive @kafkaPgTransaction @kafkaServices
 Scenario: Create a pg transaction and verify the response Transaction object with the data obtained from the consumer
     # Create pg transaction
     * call read('../../core-services/tests/pgServices.feature@PGCreate_01')
-    * print pgServicesCreateResponseBody
+    # * print pgServicesCreateResponseBody
     # Expected response
     * def createPgTransactionResponse = pgServicesCreateResponseBody.transaction
     # Setting the condition to filter consumer records
-    * print 'Bill Id: ' + billId + ', Consumer Code: ' + consumerCode
+    # * print 'Bill Id: ' + billId + ', Consumer Code: ' + consumerCode
     * def recordsFilterCondition = "$[?(@.value.Transaction.billId=='" + billId + "' && @.value.Transaction.consumerCode=='" + consumerCode + "')].value.Transaction"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
     # Get lag details after making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     # * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka pg transaction consumer response messages for created billId and consumerCode

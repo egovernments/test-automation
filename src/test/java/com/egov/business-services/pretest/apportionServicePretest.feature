@@ -26,7 +26,7 @@ Scenario: error apportion bill
 
   Given url apportionUrl 
   And request apportionRequest
-  * print apportionRequest
+  # * print apportionRequest
   When method post
   Then status 400
   And def apportionResponseHeader = responseHeaders

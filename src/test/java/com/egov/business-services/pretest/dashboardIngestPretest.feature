@@ -44,7 +44,7 @@ Scenario: upload file to dashboard ingest
     When method post
     Then status 500
     * def uploadResponse = response
-    * print uploadResponse
+    # * print uploadResponse
 
 @errorInUploadMutlipleFilesToDashboardIngest
 Scenario: upload file to dashboard ingest

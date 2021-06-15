@@ -16,7 +16,7 @@ Scenario: Create a payment and verify the response Transaction object with the d
     # Get lag details before making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataBeforeApiCall = lagData
-    * print dataBeforeApiCall
+    # * print dataBeforeApiCall
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -24,23 +24,23 @@ Scenario: Create a payment and verify the response Transaction object with the d
     # Create Payment
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
     # Expected response
-    * print collectionServicesResponseBody
+    # * print collectionServicesResponseBody
     * def createPaymentResponse = collectionServicesResponseBody.Payments[0]
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Setting the condition to filter consumer records
-    * print 'Payment Id: ' + paymentId + '
+    # * print 'Payment Id: ' + paymentId + '
     * def recordsFilterCondition = "$[?(@.value.Payment.id=='" + paymentId + "')].value.Payment"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
     # Get lag details after making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka pg transaction consumer response messages for created billId and consumerCode

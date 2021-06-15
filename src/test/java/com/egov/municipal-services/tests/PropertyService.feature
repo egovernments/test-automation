@@ -461,7 +461,7 @@ Scenario: Create Active Property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@approvePropertySuccessfully')
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
-    * print propertyId
+    # * print propertyId
 
 @verifyProperty
 Scenario: Verify the create property and procceed for the next steps
@@ -541,7 +541,7 @@ Scenario: Create Active Property
     * match propertyServiceResponseBody.Assessments[0].tenantId == tenantId
     * match propertyServiceResponseBody.Assessments[0].propertyId == propertyId
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
-    * print propertyId
+    # * print propertyId
 
 @assessment_search_01 @regression @positive @propertyServices @searchAssessment @municipalServices
 Scenario: Search Assessment with valid query parameters

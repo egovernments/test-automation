@@ -19,4 +19,4 @@ Scenario: Search water and sewerage by unique id and make full payment
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
 	* retry(6, 5000).waitFor(tlPageObjects.paymentReceiptNo)
 	* def paymentReceiptNumber = text(tlPageObjects.paymentReceiptNo)
-	* print paymentReceiptNumber
+	# * print paymentReceiptNumber

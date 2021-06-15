@@ -120,7 +120,7 @@ Scenario: tl Renewal Certificaite Error
 @tlreceiptSuccessfully
 Scenario: tl Receipt Successfully
     Given url tlreceiptEgovPDF
-    * print url tlreceiptEgovPDF
+    # * print url tlreceiptEgovPDF
     And params tlreceiptSearchParam
     And request tlreceiptRequest
     When method post

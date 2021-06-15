@@ -22,12 +22,12 @@ Scenario: Create a pdf and verify the response Transaction object with the data 
     # Create PDF
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfForPtSuccessfully')
     # Expected response
-    * print pdfCreateResponseBody
+    # * print pdfCreateResponseBody
     * def pdfCreateResponse = pdfCreateResponseBody
     * def jobId = pdfCreateResponse.jobid
     * def createdJobId = jobId
     # Setting the condition to filter consumer records
-    * print 'Job Id: ' + jobId + '
+    # * print 'Job Id: ' + jobId + '
     * def recordsFilterCondition = "$[?(@.value.jobId=='" + jobId + "')].value.jobId"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')

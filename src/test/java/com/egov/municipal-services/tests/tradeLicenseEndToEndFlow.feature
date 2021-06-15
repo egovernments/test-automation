@@ -345,7 +345,7 @@ Scenario: Login as a citizen and Send for Renewal
     * call read('../../municipal-services/tests/tradeLicense.feature@approveTL')
     * def consumerCode = tradeLicense.applicationNumber
     * def businessService = tradeLicense.businessService
-    * print consumerCode
+    # * print consumerCode
     * def authToken = superUserAuthToken
     * def consumerCode = tradeLicense.applicationNumber
     * def businessService = tradeLicense.businessService
@@ -358,7 +358,7 @@ Scenario: Login as a citizen and Send for Renewal
     * call read('../../ui-services/pages/tradeLicensePage.feature@makeFullPayment')
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseSearch')
     * call read('../../municipal-services/tests/tradeLicense.feature@submitRenewal')
-    * print consumerCode
+    # * print consumerCode
     # Steps to login as Citizen and make payment
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
     * call read('../../ui-services/pages/tradeLicensePage.feature@makeFullPayment')
@@ -379,7 +379,7 @@ Scenario: Login as a citizen and EditRenewal
     * call read('../../municipal-services/tests/tradeLicense.feature@approveTL')
     * def consumerCode = tradeLicense.applicationNumber
     * def businessService = tradeLicense.businessService
-    * print consumerCode
+    # * print consumerCode
     # Steps to login as Citizen and make payment
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/tradeLicensePage.feature@makeFullPayment')

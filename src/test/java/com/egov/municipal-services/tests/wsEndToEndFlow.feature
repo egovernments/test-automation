@@ -36,9 +36,9 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Full)
     * call read('../../municipal-services/tests/waterConnection.feature@generateBill')
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
-    * print propertyId
-    * print connectionType
-    * print connectionNo
+    # * print propertyId
+    # * print connectionType
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'WaterService'
     * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
@@ -51,7 +51,7 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Full)
 Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -68,14 +68,14 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
     * call read('../../municipal-services/tests/waterConnection.feature@forward')
     * call read('../../municipal-services/tests/waterConnection.feature@approve')
     * call read('../../municipal-services/tests/waterConnection.feature@generateBill')
-    * print totalAmount
+    # * print totalAmount
     # * def totalAmountPaid = '150'
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
-    * print collectionServicesResponseBody
+    # * print collectionServicesResponseBody
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
-    * print propertyId
-    * print waterConnectionApplicationNo
-    * print connectionNo
+    # * print propertyId
+    # * print waterConnectionApplicationNo
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'WaterService'
     * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
@@ -89,7 +89,7 @@ Scenario: Login as a citizen and pay Water service tax-Metered (Partial)
 Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -111,7 +111,7 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
 Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen Edit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -136,7 +136,7 @@ Scenario: WS- Doc- Verifier- Send Back to Citizen -Citizen Edit
 Scenario: WS- Doc- Verifier- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -155,7 +155,7 @@ Scenario: WS- Doc- Verifier- Reject
 Scenario: WS- Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -181,7 +181,7 @@ Scenario: WS- Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForw
 Scenario: WS- FieldInspector- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -205,7 +205,7 @@ Scenario: WS- FieldInspector- Reject
 Scenario: WS- Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -230,7 +230,7 @@ Scenario: WS- Approver- Send Back to FieldInspector -FI ReVerifyAndForward
 Scenario: WS- Approver- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -253,7 +253,7 @@ Scenario: WS- Approver- Reject
 Scenario: WS- Clerk- Edit & Activate
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -279,7 +279,7 @@ Scenario: WS- Clerk- Edit & Activate
 Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -299,9 +299,9 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
     * match connectionType == 'Non Metered'
-    * print propertyId
-    * print waterConnectionApplicationNo
-    * print connectionNo
+    # * print propertyId
+    # * print waterConnectionApplicationNo
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'WaterService'
     * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
@@ -314,7 +314,7 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Full)
 Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -334,9 +334,9 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
     * call read('../../municipal-services/tests/waterConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/waterConnection.feature@connectionActive')
     * match connectionType == 'Non Metered'
-    * print propertyId
-    * print waterConnectionApplicationNo
-    * print connectionNo
+    # * print propertyId
+    # * print waterConnectionApplicationNo
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'WaterService'
     * def taxHeadMasterCode = 'WS_TIME_ADHOC_PENALTY'
@@ -352,7 +352,7 @@ Scenario: Login as a citizen and pay Water service tax-NonMetered (Partial)
 Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -362,7 +362,7 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     # SW Steps
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/sewerageConnection.feature@createSewerageServiceConnection')
-    * print sewerageConnectionApplicationNumber
+    # * print sewerageConnectionApplicationNumber
     * call read('../../municipal-services/tests/sewerageConnection.feature@submitApplication')
     * def authToken = superUserAuthToken
     * def searchSewerageConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(sewerageConnectionApplicationNumber)'}
@@ -372,9 +372,9 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
     * call read('../../municipal-services/tests/sewerageConnection.feature@generateBill')
     * call read('../../municipal-services/tests/sewerageConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/sewerageConnection.feature@connectionActive')
-    * print propertyId
-    * print sewerageConnectionApplicationNumber
-    * print connectionNo
+    # * print propertyId
+    # * print sewerageConnectionApplicationNumber
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'SewerageService'
     * def taxHeadMasterCode = 'SW_TIME_ADHOC_PENALTY'
@@ -387,7 +387,7 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Full)
 Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -406,9 +406,9 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
     * call read('../../municipal-services/tests/sewerageConnection.feature@generateBill')
     * call read('../../municipal-services/tests/sewerageConnection.feature@payWaterServiceTax')
     * call read('../../municipal-services/tests/sewerageConnection.feature@connectionActive')
-    * print propertyId
-    * print sewerageConnectionApplicationNumber
-    * print connectionNo
+    # * print propertyId
+    # * print sewerageConnectionApplicationNumber
+    # * print connectionNo
     * def consumerCode = connectionNo
     * def consumerType = 'SewerageService'
     * def taxHeadMasterCode = 'SW_TIME_ADHOC_PENALTY'
@@ -422,7 +422,7 @@ Scenario: Login as a citizen and pay Sewerage service tax-NonMetered (Partial)
 Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -444,7 +444,7 @@ Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen ReSubmit
 Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen Edit
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -470,7 +470,7 @@ Scenario: SW - Doc- Verifier- Send Back to Citizen -Citizen Edit
 Scenario: SW - Doc- Verifier- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -489,7 +489,7 @@ Scenario: SW - Doc- Verifier- Reject
 Scenario: SW - Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -515,7 +515,7 @@ Scenario: SW - Field Inspector- Send Back to DocumentVerifier -DV ReVerifyAndFor
 Scenario: SW - FieldInspector- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -539,7 +539,7 @@ Scenario: SW - FieldInspector- Reject
 Scenario: SW - Approver- Send Back to FieldInspector -FI ReVerifyAndForward
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -565,7 +565,7 @@ Scenario: SW - Approver- Send Back to FieldInspector -FI ReVerifyAndForward
 Scenario: SW - Approver- Reject
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
@@ -588,7 +588,7 @@ Scenario: SW - Approver- Reject
 Scenario: SW- Clerk- Edit & Activate
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')

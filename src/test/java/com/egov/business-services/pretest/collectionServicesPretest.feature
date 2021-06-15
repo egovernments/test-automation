@@ -36,7 +36,7 @@ Background:
 Scenario: Common test to create a Payment 
   Given url payment
   And request createPaymentRequest
-  * print createPaymentRequest
+  # * print createPaymentRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
@@ -192,12 +192,12 @@ Scenario: Common negative pre test of creating a Payment
   Scenario: Collection Service success workflow call
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
-  * print workflowRequest
+  # * print workflowRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print response
+  # * print response
 
 # Search Payment
 
