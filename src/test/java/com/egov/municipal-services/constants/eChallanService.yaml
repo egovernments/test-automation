@@ -11,3 +11,4 @@ errorMessages:
   invalidTextHeadCode: Mandatory taxhead codes details are not present in request for provided business service
   invalidApplicationStatus: Challan cannot be updated/cancelled
   invalidBillId: Failed to deserialize certain JSON fields
+  unAuthorizedError: Not authorized to access this resource
