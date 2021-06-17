@@ -395,6 +395,7 @@ function() {
         config.vehicalTripSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripSearch
         config.vehicalTripUpdateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripUpdate
         config.paymentsCreateFsmEvent = envProps.host + path.endPoints.fsmService.paymentsCreate
+        config.inboxSearchFsmEvent = envProps.host + path.endPoints.fsmService.inboxSearch
 
         // eChallan Service
         config.createEchallanEvent = envProps.host + path.endPoints.echallanService.create

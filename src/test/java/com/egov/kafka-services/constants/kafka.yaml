@@ -40,3 +40,9 @@ asyncUserEvent:
 updateAsyncUserEvent:
   topics: "update-user-events-async"
   consumerGroupId: "egov-user-events"
+createChallan:
+  topics: "save-challan"
+  consumerGroupId: "egov-echallan-services"
+updateChallan:
+  topics: "update-challan"
+  consumerGroupId: "egov-echallan-services"

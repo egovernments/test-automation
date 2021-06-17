@@ -29,11 +29,11 @@
                 "amount": "#(changeAmount)"
             },
             {
-                "taxHeadCode": "ADVT.HOARDINGS_CGST",
+                "taxHeadCode": "#(cgst)",
                 "amount": 0
             },
             {
-                "taxHeadCode": "ADVT.HOARDINGS_SGST",
+                "taxHeadCode": "#(sgst)",
                 "amount": 0
 
             }
