@@ -4,9 +4,9 @@ Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * configure headers = read('classpath:websCommonHeaders.js')
   #egfInstrumet-InstrumentsAccountCode Requests
-  * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/egfInstrument/instrumentAccountCode/create.json')
-  * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/egfInstrument/instrumentAccountCode/update.json')
-  * def instrumentAccountCodeSearchRequest = read('../../business-services/requestPayload/egfInstrument/instrumentAccountCode/search.json')
+  * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/create.json')
+  * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/update.json')
+  * def instrumentAccountCodeSearchRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/search.json')
 
   # Instrument Account Code pretests
 
@@ -23,7 +23,15 @@ Background:
     Given url instrumentAccountCodeCreate
     And request instrumentAccountCodeCreateRequest
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def instrumentAccountCodeResponse = response
+
+  @errorIncreateInstrumentAccountCodeUnAuthorized
+    Scenario: error in create AccountCode
+    Given url instrumentAccountCodeCreate
+    And request instrumentAccountCodeCreateRequest
+    When method post
+    Then status 403
     And def instrumentAccountCodeResponse = response
 
   @searchInstrumentAccountCode
@@ -59,5 +67,14 @@ Background:
     And request instrumentAccountCodeUpdateRequest
     * print instrumentUpdateRequest
     When method post
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def updateInstrumentAccountCodeResponse = response
+
+  @errorInupdateInstrumentAccountCodeUnAuthorized
+    Scenario: error in update instrument types
+    Given url instrumentAccountCodeUpdate
+    And request instrumentAccountCodeUpdateRequest
+    * print instrumentUpdateRequest
+    When method post
+    Then status 403
     And def updateInstrumentAccountCodeResponse = response

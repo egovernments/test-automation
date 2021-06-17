@@ -13,6 +13,7 @@ Feature: Business Services - HRMS
     * def employeeStatus = mdmsStateEgovHrms.EmployeeStatus[0].code
     * def dob = 635404414000 + ''
     * def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)]
+    * def relationship = 'FATHER'
     * def fatherOrHusbandName = 'AUTOEMPFATHER' + randomString(6)
     * def employeeType = mdmsStateEgovHrms.EmployeeType[0].code
     * def hierarchy = mdmsCityEgovLocation.TenantBoundary[0].hierarchyType.code
@@ -24,6 +25,11 @@ Feature: Business Services - HRMS
     * def fromDate = today
     * def dateOfAppointment = today
     * def toDate = null
+    * def reasonForDeactivation = 'OTHERS'
+    * def effectiveFrom = getCurrentEpochTime() + ''
+    * def roleIndex = randomNumber(mdmsStateAccessControlRoles.roles.length)
+    * def roleCode = mdmsStateAccessControlRoles.roles[roleIndex].code
+    * def roleName = mdmsStateAccessControlRoles.roles[roleIndex].name
     * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithoutEmployeeCodes')
 
         @HRMS_create_emp01 @businessServices @regression @positive @hrms_create @hrms @smoke @businessService
@@ -282,7 +288,7 @@ Feature: Business Services - HRMS
     # Assigning employee father's or husband's
     * eval Employees[0].user.fatherOrHusbandName = fatherOrHusbandName + "Updated"
     # Steps to update employee through HRMS
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@updateEmployeeHrms')
+    * call read('../../business-services/pretest/egovHrmsPretest.feature@updateEmployeeSuccessfully')
     # Validating response status as Success
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     # Validating employee's updated name 
@@ -406,8 +412,8 @@ Feature: Business Services - HRMS
     # Validating actual error message returned by API with expected error message for invalid aadhaarNumber
     * assert hrmsResponseBody.Errors[0].message == hrmsConstants.expectedMessages.INVALID_AADHAR
 
-        @HRMS_update_Deactivate_08 @negative @hrmsupdate @hrms_bug
-        Scenario: Test to update an employee deactivating the employee
+    @HRMS_update_Deactivate_08 @negative @hrmsupdate @hrms_bug
+    Scenario: Test to update an employee deactivating the employee
     # Steps to Create a new Employee through HRMS
     * call read('../../business-services/pretest/egovHrmsPretest.feature@createEmployeeSuccessfully')
     # Validate response status as Success

@@ -1,0 +1,14 @@
+{ 
+    "RequestInfo": {
+       
+        "authToken": "#(authToken)"
+    },
+    "Payments": "#(Payments)",
+    "WS": {
+        "RequestInfo": {
+            "authToken": "#(authToken)",
+            "responseType": "arraybuffer"
+        },
+        "Bill": "#(bill)"
+        }
+    }

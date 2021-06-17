@@ -13,3 +13,5 @@ objects:
   payerMobileNoField: "#custom-containers-payerMobileNo"
   paymentReceiptNo: "//span[text()='Payment Receipt No.']/../following-sibling::h1/span"
   paymentSuccessHeader: "{span}Payment has been collected successfully!"
+
+  

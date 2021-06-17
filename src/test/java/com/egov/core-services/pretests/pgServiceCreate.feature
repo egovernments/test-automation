@@ -3,7 +3,7 @@ Feature: Initiates a new payment transaction, on successful validation, a redire
         Background:
   * configure headers = read('classpath:websCommonHeaders.js') 
   * def jsUtils = read('classpath:jsUtils.js')
-  * def pgServicesCreatePayload = read('../../core-services/requestPayload/pgServices/pgServicesCreate.json')
+  * def pgServicesCreatePayload = read('../../core-services/requestPayload/pg-service/pgServicesCreate.json')
 
         @createPgTransactionSuccessfully
         Scenario: Create Payment Gateway Transaction Successfully

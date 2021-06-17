@@ -13,7 +13,7 @@ Feature: User Search
   * def userConstant = read('../../core-services/constants/user.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
-  * def findUser = read('../../core-services/requestPayload/userCreation/searchUser.json')
+  * def findUser = read('../../core-services/requestPayload/user-creation/searchUser.json')
   
         @findUser
         Scenario: Search user with valid details

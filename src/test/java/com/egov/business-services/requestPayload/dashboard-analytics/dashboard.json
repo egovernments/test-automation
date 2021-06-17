@@ -1,0 +1,24 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "headers": {
+        "tenantId": "#(tenantId)"
+    },
+    "aggregationRequestDto": {
+        "visualizationType": "#(visualizationType)",
+        "visualizationCode": "#(visualizationCode)",
+        "queryType": "",
+        "filters": {
+            "departmentId": "#(departmentId)"
+        },
+        "moduleLevel": "#(moduleLevel)",
+        "aggregationFactors": null,
+        "requestDate": {
+            "startDate": "#(startDate)",
+            "endDate": "#(endDate)",
+            "interval": "month",
+            "title": ""
+        }
+    }
+}

@@ -1,0 +1,28 @@
+
+{
+    "requestInfo":{
+        
+         "authToken":"#(authToken)"
+      },
+       "bankBranches": [
+           {
+               "bank": {
+                   "id": "#(bankId)"
+               },
+               "code": "#(branchCode)",
+               "name": "#(branchName)",
+               "address": "#(branchAddress)",
+               "address2": "#(branchAddress2)",
+               "city": "#(cityCode)",
+               "state": "#(stateCode)",
+               "pincode": "#(pincode)",
+               "phone": "#(phoneNumber)",
+               "fax": "#(fax)",
+               "contactPerson": "#(contactPerson)",
+               "active": "#(isActive)",
+               "description": "#(branchDescription)",
+               "micr": "#(cityCode)",
+               "tenantId": "#(tenantId)"
+           }
+       ]
+   }

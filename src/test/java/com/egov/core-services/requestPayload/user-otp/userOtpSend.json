@@ -1,0 +1,14 @@
+{
+	"RequestInfo": {
+		
+		"authToken": null
+	},
+	"otp": {
+		"name": "#(name)",
+		"permanentCity": "#(permanentCity)",
+		"mobileNumber": "#(mobileNumber)",
+		"type": "#(type)",
+		"tenantId": "#(tenantId)",
+		"userType": "#(userType)"
+	}
+}

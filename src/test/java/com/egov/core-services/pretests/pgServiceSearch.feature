@@ -3,7 +3,7 @@ Feature: Verify searching transaction details using txn id
         Background:
   * def jsUtils = read('classpath:jsUtils.js')
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
-  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pgServices/pgServicesSearch.json')
+  * def pgServicesSearchPayload = read('../../core-services/requestPayload/pg-service/pgServicesSearch.json')
 
         @searchPgTransactionSuccessfully
         Scenario: Search a payment gateway transaction successfully

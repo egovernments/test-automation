@@ -28,12 +28,12 @@ Feature: FIRE-NOC-Service pretests
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
 
-    @createBPAError2
+    @createBPAErrorUnAuthorized
     Scenario: Create BPA Error
         Given url createFireNocService
         And request createFireNocRequest
         When method post
-        Then assert responseStatus >= 400 && responseStatus <= 403
+        Then status 403
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
 
@@ -47,6 +47,7 @@ Feature: FIRE-NOC-Service pretests
         Then status 200
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
+        * print fireNocResponseBody
 
     @searchFireNocWithoutParamsSuccessfully
     Scenario: Search FireNoc Successfully

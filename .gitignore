@@ -9,3 +9,4 @@ bin/
 build/*
 Jenkinsfile
 reports/
+qa.yaml

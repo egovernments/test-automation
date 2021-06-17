@@ -16,3 +16,21 @@ objects:
   homePageLink: "div[data-localization='Home']"
   userSettingsDropdown: ".userSettingsInnerContainer svg"
   logoutButton: "#header-logout"
+  employeeUsername: //input[@id='employee-phone']
+  employeePassword:  //input[@id='employee-password']
+  employeeCity: //input[@id='person-city']
+  amritsarDropdown: //span[@id='pb.amritsar']
+
+  #----------------------------------------------------------------------
+data:
+  employeeUsername: "EMPAUTO"
+  employeePassword: "eGov@123"
+  otpField: "123456"
+  mobileNumberFieldType: "type" 
+  
+
+
+
+
+
+

@@ -38,7 +38,11 @@ public class EGovTest {
 
 	@Test
 	public void testParallel() {
-		
+		/* Cannot run tests in parallel as some feature file are dependant on others
+		and karate runs all feature fils in parallel.
+		So below the below parallel no of threads is set to 1.
+		*/
+
 		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
 		
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);

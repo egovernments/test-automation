@@ -61,7 +61,7 @@ Scenario: Create Property invalid tenantId
     # Set request payload variable values
     * def tenantId = 'invalid-tenant-' + randomString(10)
     # Create a property
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateProperty')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreatePropertyUnAuthorized')
     # Validate response body
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
@@ -342,7 +342,7 @@ Scenario: Update Property with invalid tenantId
     # Set request payload variable values
     * eval Property.tenantId = 'invalid-tenant-' + randomString(10)
     # Update a property
-    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdateProperty')
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInUpdatePropertyUnAuhtorized')
     # Validate response body
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantId
 

@@ -11,7 +11,7 @@ Feature: User otp send API call
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
   * def mobileNumberGen1 = randomMobileNumGen(9)
   * def invalidMobileNo = new java.math.BigDecimal(mobileNumberGen1)
-  * def userOtpPayload = read('../../core-services/requestPayload/userOtp/userOtpSend.json')
+  * def userOtpPayload = read('../../core-services/requestPayload/user-otp/userOtpSend.json')
   * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def typeForRegister = commonConstants.parameters.type[0]

@@ -3,7 +3,7 @@ Feature: Verify Using API call, shorten the given url
 Background:
   * configure headers = read('classpath:websCommonHeaders.js') 
   * def jsUtils = read('classpath:jsUtils.js')
-  * def urlShortenPayload = read('../../core-services/requestPayload/urlShorten/urlShorten.json')
+  * def urlShortenPayload = read('../../core-services/requestPayload/url-shorten/urlShorten.json')
 
 @urlShortenFail
 Scenario: Verify Send a invalid url in the API call
