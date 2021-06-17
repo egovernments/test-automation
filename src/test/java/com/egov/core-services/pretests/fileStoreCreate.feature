@@ -15,7 +15,6 @@ Feature: FileStore create API call
   * def filetestData = 'dummyTestData.rtf'
   * def filetestData1 = 'dummyTestData1.pdf'
   * def filetestData2 = 'dummyTestData2.pdf'
-  * def filetestData3 = 'dummyTestData3.pdf'
   * configure ssl = false
 
         @uploadDocumentsSuccessfully

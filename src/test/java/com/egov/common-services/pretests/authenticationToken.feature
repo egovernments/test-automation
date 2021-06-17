@@ -185,3 +185,21 @@ Scenario: Auth token Creation for citizen
 	And def id = authResponseBody.UserRequest.uuid
    # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
+
+
+   @authTokenEmpEditor
+Scenario: Auth token Creation for Emp Editor
+	Given url authTokenUrl
+	And form field username = empEditorUsername
+	And form field password = empEditorPassword
+	And form field grant_type = 'password'
+	And form field scope = 'read'
+	And form field tenantId = tenantId
+	And form field userType = empEditorType
+	When method post
+	Then status 200
+	And def authResponseBody = response
+	And def authResponseHeader = responseHeaders
+   And def authToken = authResponseBody.access_token
+# * print authResponseBody.access_token
+* match authResponseBody.access_token == '#present'

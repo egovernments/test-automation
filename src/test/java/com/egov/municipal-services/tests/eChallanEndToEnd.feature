@@ -41,11 +41,26 @@ Scenario: Verify creation of eChallan as Citizen Unsucessfully
 @eChallanEndToEnd3 @positive @regression @municipalService @echallanServie @eChallanServiceCreate
 Scenario: Update eChallan as Emp Editor 
 #login as empployee editor here -->
+
 * call read('../../municipal-services/pretests/eChallanServicePretest.feature@createEChallanSuccessfully')
 * match challanResponseBody.challans[0].id == '#present'
 * match challanResponseBody.challans[0].tenantId == '#present'
 * match challanResponseBody.challans[0].challanNo == '#present'
+* def authToken = empEditorAuthToken
+
+* def geteChallanSearchParam = {"tenantId": '#(tenantId)', "challanNo": '#(challanNo)'}
+* call read('../../municipal-services/pretests/eChallanServicePretest.feature@searchEChallanSuccessfully')
+* match challanResponseBody.challans[0] == '#present'
 * call read('../../municipal-services/pretests/eChallanServicePretest.feature@updateEChallanSuccessfully')
+* match challanResponseBody.challans[0] == '#present'
 
 
+@eChallanEndToEnd4 @positive @regression @municipalService @echallanServie @eChallanServiceCreate
+Scenario: Verify payment echallan service application through API
+    * def authToken = citizenAuthToken
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@createEChallanSuccessfully')
+    * def geteChallanFetchParam = {"challanNo": '#(challanNo)',"tenantId": '#(tenantId)', "businessService": '#(businessService)', "mobileNumber": '#(mobileNumber)'}
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanSuccessfully')
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@paymentEChallanSuccessfully')
+    * match challanResponseBody == '#present'
 
