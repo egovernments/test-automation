@@ -1,0 +1,20 @@
+objects:
+  paymentReceiptNumber: //span[@data-localization='CITIZEN_SUCCESS_ADVT_GAS_BALLOON_ADVERTISEMENT_PAYMENT_RECEIPT_NO']//..//..//h1[@id='material-ui-paragraph']
+  messageHeader_Payment: //span[@data-localization='CITIZEN_SUCCESS_ADVT_GAS_BALLOON_ADVERTISEMENT_PAYMENT_MESSAGE']
+  billGennieModule:  //div[@data-localization='BillGenie']
+  selectCity: "//label[text()='ULB']//..//div//input"
+  amritsar: //p[text()='Amritsar']
+  selectServiceCategory:  //label[text()='Service Category']//..//div//input
+  gasBalloonAdvertisement: //p[text()='Gas Balloon Advertisement']
+  hoardings: //p[text()='Hoardings']
+
+  billNumber:  //input[@id='custom-containers-billNumber']
+  searchButton:  //button[@id='material-ui-searchButton']
+  payButton:  //a[text()='Pay']
+  makePayment:  //button[@id='material-ui-makePayment']
+
+data:
+  selectCity: "Amritsar"
+  serviceCategory: "Hoardings"
+
+  

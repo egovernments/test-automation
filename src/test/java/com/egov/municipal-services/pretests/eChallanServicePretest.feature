@@ -92,9 +92,11 @@ Scenario: Fetch eChallan Service successfully
     And request searchEChallanRequest
     When method post
     Then status 201
+    * print response
     And def challanResponseBody = response
     And def billId = challanResponseBody.Bill[0].billDetails[0].billId
     And def amount = challanResponseBody.Bill[0].totalAmount
+    And def billNumber = challanResponseBody.Bill[0].billNumber
 
 @paymentEChallanSuccessfully
 Scenario: Payment eChallan Service successfully

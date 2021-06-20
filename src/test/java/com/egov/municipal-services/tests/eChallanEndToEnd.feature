@@ -63,4 +63,3 @@ Scenario: Verify payment echallan service application through API
     * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanSuccessfully')
     * call read('../../municipal-services/pretests/eChallanServicePretest.feature@paymentEChallanSuccessfully')
     * match challanResponseBody == '#present'
-

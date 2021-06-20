@@ -70,6 +70,10 @@ function() {
          config.approverPassword = envProps.superUser.password;
          config.approverType = envProps.superUser.type;
 
+         config.empEditorUsername = envProps.empEditorUser.userName;
+         config.empEditorPassword = envProps.empEditorUser.password;
+         config.empEditorType = envProps.empEditorUser.type;
+
          // username & password for Counter Employee user
          config.counterEmployeeUsername = envProps.counterEmployeeUser.userName;
          config.counterEmployeePassword = envProps.counterEmployeeUser.password;
@@ -409,8 +413,8 @@ function() {
         config.estimateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.estimate
 
         // Calling pretest features which is consumed by almost all tests
-        var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
-        config.fileStoreId = fileUploadResponse.fileStoreId
+     //   var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
+       // config.fileStoreId = fileUploadResponse.fileStoreId
 
         var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
         config.citizenAuthToken = citizenAuthTokenResponse.authToken;
@@ -421,20 +425,20 @@ function() {
         var citizenArchitectAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizenArchitect', config);
         config.citizenArchitectAuthToken = citizenArchitectAuthTokenResponse.authToken;
 
-        var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
-        config.fileStoreId1 = fileUploadResponse1.fileStoreId
+        // var fileUploadResponse1 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore1', config);
+        // config.fileStoreId1 = fileUploadResponse1.fileStoreId
 
-        var fileUploadResponse2 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore2', config);
-        config.fileStoreId2 = fileUploadResponse2.fileStoreId
+        // var fileUploadResponse2 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore2', config);
+        // config.fileStoreId2 = fileUploadResponse2.fileStoreId
 
-        var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
-        config.fileStoreId3 = fileUploadResponse3.fileStoreId
+        // var fileUploadResponse3 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore3', config);
+        // config.fileStoreId3 = fileUploadResponse3.fileStoreId
 
-        var fileUploadResponse4 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore4', config);
-        config.fileStoreId4 = fileUploadResponse4.fileStoreId
+        // var fileUploadResponse4 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore4', config);
+        // config.fileStoreId4 = fileUploadResponse4.fileStoreId
 
-        var fileUploadResponse5 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore5', config);
-        config.fileStoreId5 = fileUploadResponse5.fileStoreId
+        // var fileUploadResponse5 = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore5', config);
+        // config.fileStoreId5 = fileUploadResponse5.fileStoreId
 
         var citizenAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenCitizen', config);
         config.citizenAuthToken = citizenAuthTokenResponse.authToken;
@@ -442,6 +446,9 @@ function() {
         var approverAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenApprover', config);
         config.approverAuthToken = approverAuthTokenResponse.authToken;
 
+        var empEditorAuthTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenEmpEditor', config);
+        config.empEditorAuthToken = empEditorAuthTokenResponse.authToken;
+        
         var authTokenResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenSuperuser', config);
         config.superUserAuthToken = authTokenResponse.authToken;
         config.authToken = authTokenResponse.authToken;
