@@ -469,7 +469,6 @@ function() {
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
-<<<<<<< HEAD
         if (karate.properties['browserConfig']) {
             var deviceConfigDetails = karate.read('file:' + karate.properties['browserConfig']);
             if (deviceConfigDetails.type == 'browserstack') {
@@ -493,32 +492,6 @@ function() {
                 var localConfigs = karate.jsonPath(deviceConfigDetails, "$.capabilities[?(@.run=='true')]");
                 config.deviceConfigs = localConfigs
             }
-=======
-   
-        if(karate.properties['useBrowserstack']){
-            config.browserstack = 'yes';
-            var driverConfigJson = karate.read('file:' + karate.properties['useBrowserstack']);
-            config.deviceConfigs = driverConfigJson.environments;
-            config.browserstackUrl = driverConfigJson.server;
-            config.browserstackUsername = driverConfigJson.user;
-            config.browserstackKey = driverConfigJson.key;
-            config.commonCapabilities = driverConfigJson.capabilities;
-            if(karate.properties['browserstackBuildName']){
-                config.browserstackBuildName = karate.properties['browserstackBuildName'];
-            }
-            if(java.lang.System.getenv("BROWSERSTACK_BUILD_NAME") != null){
-                config.browserstackBuildName = java.lang.System.getenv("BROWSERSTACK_BUILD_NAME");
-            }
-
-            var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
-            config.currentEpochTime = driverResult.currentEpochTime;
-        }else{
-            config.browserstack = 'no';
-            config.deviceConfigs = [
-            {type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}},
-            //{type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
-        ];
->>>>>>> ca12f7bbd428e0e8e40db0415f545ebc19e40f17
         }
 
     karate.log(config.deviceConfigs);
