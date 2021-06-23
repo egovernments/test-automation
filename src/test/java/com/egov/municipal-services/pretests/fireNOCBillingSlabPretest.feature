@@ -2,6 +2,8 @@ Feature: Fire NOC Billing Slab Feature
 
 Background:
     * def createFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/create.json')
+#    * def createFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/create2.json')
+
     * def searchFireNOCBillingLabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/search.json')
     * def calculateFireNOCBillingSlabRequest = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/calculate.json')
     * def calculateFireNOCBillingSlabRequestMandatoryParams = read('../../municipal-services/requestpayload/firenoc-calculator/billingSlab/calculateMandatory.json')
@@ -26,7 +28,20 @@ Scenario: Invalid Search Fire NOC Billing Slab Feature
     And request searchFireNOCBillingLabRequest 
     * print searchFireNOCBillingLabRequest
     When method post 
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    * print response
+    And def fireNOCBillingSlabResponseHeaders = responseHeaders
+    And def fireNOCBillingSlabResponse = response 
+
+@failSearchFireNOCBIllingSlabFeatureUnAuthorized
+Scenario: Invalid Search Fire NOC Billing Slab Feature
+    Given url searchFireNOCBillingSlabUrl
+    And params searchFireNOCBillingSlabParams
+    * print searchFireNOCBillingSlabParams
+    And request searchFireNOCBillingLabRequest 
+    * print searchFireNOCBillingLabRequest
+    When method post 
+    Then status 403
     * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
@@ -87,7 +102,7 @@ Scenario: Create Fire NOC Billing Slab Feature
     And request createFireNOCBillingSlabRequest 
     * print createFireNOCBillingSlabRequest
     When method post 
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     * print response
     And def fireNOCBillingSlabResponseHeaders = responseHeaders
     And def fireNOCBillingSlabResponse = response 
@@ -108,7 +123,18 @@ Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
     * print calculateFireNOCBillingSlabRequest
     When method post 
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
+    And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
+    And def calculateFireNOCBillingSlabResponse = response 
+
+@failCalculateFireNOCBIllingSlabUnAuthorized
+Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
+    Given url calculateFireNOCBillingSlabUrl
+    And request calculateFireNOCBillingSlabRequest 
+    * print calculateFireNOCBillingSlabRequest
+    When method post 
+    * print response
+    Then status 403
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 
 
@@ -119,7 +145,7 @@ Scenario: Calculate Fire NOC Billing Slab Feature with Invalid Data
     * print calculateFireNOCBillingSlabRequest
     When method post 
     * print response
-    Then assert responseStatus >= 400 && responseStatus <= 403
+    Then status 400
     And def calculateFireNOCBillingSlabResponseHeaders = responseHeaders
     And def calculateFireNOCBillingSlabResponse = response 
     

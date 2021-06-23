@@ -3,9 +3,9 @@ Background:
       * def jsUtils = read('classpath:jsUtils.js')
       * configure headers = read('classpath:websCommonHeaders.js')
       * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml') 
-      * def accountDetailTypesCreatePayload = read('../../business-services/requestPayload/egfMaster/accountDetailTypes/create.json')
-      * def accountDetailTypesUpdatePayload = read('../../business-services/requestPayload/egfMaster/accountDetailTypes/update.json')
-      * def accountDetailTypesSearchPayload = read('../../business-services/requestPayload/egfMaster/accountDetailTypes/search.json')
+      * def accountDetailTypesCreatePayload = read('../../business-services/requestPayload/egf-master/accountDetailTypes/create.json')
+      * def accountDetailTypesUpdatePayload = read('../../business-services/requestPayload/egf-master/accountDetailTypes/update.json')
+      * def accountDetailTypesSearchPayload = read('../../business-services/requestPayload/egf-master/accountDetailTypes/search.json')
   
       @createAccountSuccessfully
       Scenario: Creating Unique account detail type through API call
@@ -103,7 +103,7 @@ Background:
       And def accountDetailTypesSearchResponseHeader = responseHeaders
       And def accountDetailTypesSearchResponseBody = response
 
-      @negativeSearch
+      @negativeSearchUnAuthorized
       Scenario: Search Unique account detail type through API call
       * def accountSearchParam = 
       """
@@ -115,6 +115,6 @@ Background:
       And params accountSearchParam
       And request accountDetailTypesSearchPayload
       When method post
-      Then assert responseStatus >=400 && responseStatus <=403
+      Then status 403
       And def accountDetailTypesSearchResponseHeader = responseHeaders
       And def accountDetailTypesSearchResponseBody = response

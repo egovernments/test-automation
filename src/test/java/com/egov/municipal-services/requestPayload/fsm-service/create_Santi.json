@@ -1,0 +1,37 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "fsm": {
+        "citizen": {
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)"
+        },
+        "tenantId": "#(tenantId)",
+        "source": "#(source)",
+        "sanitationtype": "#(sanitationtype)",
+        "additionalDetails": {
+            "tripAmount": "#(trip)"
+        },
+        "propertyUsage": "#(propertyType)",
+        "vehicleType": "#(vehicalType)",
+        "pitDetail": {
+            "diameter": 0,
+            "length": "#(pitDetails)",
+            "width": "#(pitDetails)",
+            "height": "#(pitDetails)"
+        },
+        "address": {
+            "tenantId": "#(tenantId)",
+            "city": "#(tenantName)",
+            "slumName": null,
+            "locality": {
+                "code": "#(localityCode)",
+                "name": "#(localityName)"
+            },
+            "geoLocation": {}
+        },
+        "noOfTrips": "#(noOfTrips)"
+    },
+    "workflow": null
+}

@@ -74,7 +74,7 @@ Scenario: Create InstrumentAccountCode with empty GLCode
 Scenario: Create InstrumentAccountCode with Invalid tenantId
   * def tenantId = commonConstants.invalidParameters.invalidTenantId
   # Creating an instrumentAccountCode
-  * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorIncreateInstrumentAccountCode')
+  * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorIncreateInstrumentAccountCodeUnAuthorized')
   * match instrumentAccountCodeResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 
 #Update InstrumentAccountCode TCs
@@ -171,7 +171,7 @@ Scenario: Update InstrumentAccountCode with Invalid tenantId
   * def id = instrumentAccountCodeResponse.instrumentAccountCodes[0].id
   * def tenantId = commonConstants.invalidParameters.invalidValue
   # Updating an instrumentAccountCode
-  * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorInupdateInstrumentAccountCode')
+  * call read('../../business-services/pretest/egfInstrumentAccountCodePretest.feature@errorInupdateInstrumentAccountCodeUnAuthorized')
   # Validating response body
   * match updateInstrumentAccountCodeResponse.Errors[0].message == commonConstants.errorMessages.authorizedError
 

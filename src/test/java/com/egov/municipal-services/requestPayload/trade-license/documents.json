@@ -1,0 +1,22 @@
+{
+    "wfDocuments": [
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId1)",
+            "documentType": "#(documentType1)",
+            "tenantId": "#(tenantId)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId2)",
+            "documentType": "#(documentType2)",
+            "tenantId": "#(tenantId)"
+        },
+        {
+            "fileName": null,
+            "fileStoreId": "#(fileStoreId3)",
+            "documentType": "#(documentType3)",
+            "tenantId": "#(tenantId)"
+        }
+    ]
+}

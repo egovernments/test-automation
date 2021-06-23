@@ -8,7 +8,8 @@ Feature: Business Services - Billing Service Demand tests
     * def consumerType = mdmsStateBillingService.BusinessService[0].businessService
     * def businessService = mdmsStateBillingService.BusinessService[0].code
     * def taxPeriodFrom = getCurrentEpochTime()
-    * def taxPeriodTo = getEpochDate(2)
+    * def daysFromToday = 2
+    * def taxPeriodTo = getEpochDate(daysFromToday)
     * def taxHeadMasterCodes = karate.jsonPath(mdmsStateBillingService, "$.TaxHeadMaster[?(@.service=='" + businessService + "')].code")
     * def taxHeadMasterCode = taxHeadMasterCodes[randomNumber(taxHeadMasterCodes.length)]
     * def taxAmount = 200
@@ -174,7 +175,7 @@ Feature: Business Services - Billing Service Demand tests
     Scenario: Test to Create Demand with invalid tenant id
     # Defining an invalid tenantId and assigning it to tenantId
     * def tenantId = 'Invalid-tenantId-' + ranString(5)
-    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@errorCreateBillDemand')
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@errorCreateBillDemandUnAuthorized')
     * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
     @create_NoTenantId_19 @businessServices @regression @negative @billingServiceDemandCreate @billingServiceDemand
@@ -465,7 +466,7 @@ Feature: Business Services - Billing Service Demand tests
     * def invalidTenantId = 'Invalid-tenantId-' + ranString(5)
     # Assigning invalid tenantId to it's respective field
     * eval Demands[0].tenantId = invalidTenantId
-    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@errorInUpdateDemand')
+    * call read('../../business-services/pretest/billingServiceDemandPretest.feature@errorInUpdateDemandUnAuthorized')
     * assert billingServiceDemandResponseBody.Errors[0].message == billingServiceDemandConstants.expectedMessages.invalidTenantId || billingServiceDemandResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
     @update_NotenantId_11 @businessServices @regression @negative @billingServiceDemandUpdate @billingServiceDemand

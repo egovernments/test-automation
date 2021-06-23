@@ -1,13 +1,13 @@
 Feature: eGov User Event pretests
     Background:
         * def jsUtils = read('classpath:jsUtils.js')
-        * def noticiationRequest = read('../../municipal-services/requestPayload/eGovUserEvent/notification.json')
-        * def creatRequest = read('../../municipal-services/requestPayload/eGovUserEvent/create.json')
-        * def creatNullValuesRequest = read('../../municipal-services/requestPayload/eGovUserEvent/createNullParamss.json')
-        * def updateRequest = read('../../municipal-services/requestPayload/eGovUserEvent/update.json')
-        * def updateNullValuesRequest = read('../../municipal-services/requestPayload/eGovUserEvent/updateNullParames.json')
-        * def searchRequest = read('../../municipal-services/requestPayload/eGovUserEvent/search.json')
-        * def latUpdateRequest = read('../../municipal-services/requestPayload/eGovUserEvent/latUpdate.json')
+        * def noticiationRequest = read('../../municipal-services/requestPayload/egov-user-event/notification.json')
+        * def creatRequest = read('../../municipal-services/requestPayload/egov-user-event/create.json')
+        * def creatNullValuesRequest = read('../../municipal-services/requestPayload/egov-user-event/createNullParamss.json')
+        * def updateRequest = read('../../municipal-services/requestPayload/egov-user-event/update.json')
+        * def updateNullValuesRequest = read('../../municipal-services/requestPayload/egov-user-event/updateNullParames.json')
+        * def searchRequest = read('../../municipal-services/requestPayload/egov-user-event/search.json')
+        * def latUpdateRequest = read('../../municipal-services/requestPayload/egov-user-event/latUpdate.json')
 
     @notificationSuccessfully
     Scenario: notification count successfully

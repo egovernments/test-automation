@@ -9,14 +9,14 @@
              "name":"#(name)",
              "fatherOrHusbandName":"#(fatherOrHusbandName)",
              "mobileNumber":"#(mobileNumber)",
-             "relationship":"FATHER",
+             "relationship":"#(relationship)",
              "gender":"#(gender)",
              "dob":"#(dob)",
              "email": "#(email)",
              "roles":[
                 {
-                   "code":"AE_CREATOR",
-                   "name":"Abstract Estimate Creator"
+                   "code":"#(roleCode)",
+                   "name":"#(roleName)"
                 }
              ],
              "tenantId":"#(tenantId)"
