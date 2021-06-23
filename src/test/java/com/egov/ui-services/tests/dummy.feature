@@ -41,11 +41,4 @@ Scenario Outline: Login Scenario
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
 
 Examples:
-| deviceConfig      |
-| deviceConfigs[0]  |
-| deviceConfigs[1]  |
-| deviceConfigs[2]  |
-| deviceConfigs[3]  |
-| deviceConfigs[4]  |
-| deviceConfigs[5]  |
-| deviceConfigs[6]  |
+| deviceConfigs |
