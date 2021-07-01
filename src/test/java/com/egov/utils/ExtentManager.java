@@ -24,7 +24,7 @@ public class ExtentManager {
         htmlReporter.config().setEncoding("UTF-8");
         htmlReporter.config().setProtocol(Protocol.HTTPS);
         htmlReporter.config().setDocumentTitle("eGov Extent Report");
-        htmlReporter.config().setReportName("eGov Automation");
+        htmlReporter.config().setReportName("eGov Automation Results");
         htmlReporter.viewConfigurer().viewOrder().as(
                 new ViewName[] {
                         ViewName.DASHBOARD,
@@ -36,7 +36,7 @@ public class ExtentManager {
         htmlReporter.config().setTimeStampFormat("MM/dd/yyyy hh:mm:ss a");
         extent = new ExtentReports();
         extent.setSystemInfo("Created By", "eGov Automation");
-        extent.setSystemInfo("Autmation Type", "API");
+        extent.setSystemInfo("Autmation Type", "Karate Framework");
         extent.attachReporter(htmlReporter);
     }
 
@@ -46,7 +46,11 @@ public class ExtentManager {
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
             String formattedDate = dateFormat.format(date);
-            ExtentManager.createInstance("target/" + "eGov_Extent_Report_" + formattedDate + ".html");
+            String buildId = System.getEnv("BUILD_ID");
+            if(buildId != null){
+                formattedDate = buildId;
+            }
+            ExtentManager.createInstance("target/extent-reports/" + "eGov_Extent_Report_" + formattedDate + ".html");
         }
     }
 }
