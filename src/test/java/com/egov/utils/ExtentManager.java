@@ -46,7 +46,7 @@ public class ExtentManager {
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
             String formattedDate = dateFormat.format(date);
-            String buildId = System.getEnv("BUILD_ID");
+            String buildId = System.getenv("BUILD_ID");
             if(buildId != null){
                 formattedDate = buildId;
             }
