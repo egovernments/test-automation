@@ -1,6 +1,6 @@
 Feature: Bank account Create
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterBankAccountConstant = read('../../business-services/constants/egfMasterBankAccount.yaml')
   # Required parameters to create acccount

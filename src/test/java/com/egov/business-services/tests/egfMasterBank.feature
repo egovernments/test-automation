@@ -1,7 +1,7 @@
  Feature: To test egf-master-Bank service endpointS
 
     Background: 
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         * def bankCode = randomString(5)
         * def bankName = 'Bank-'+randomString(3)

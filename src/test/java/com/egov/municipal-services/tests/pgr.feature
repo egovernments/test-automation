@@ -1,7 +1,7 @@
 Feature: PGR Service Create
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Collections = Java.type('java.util.Collections')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # Searching Location for locality and areaCode
@@ -11,7 +11,7 @@ Background:
     * def localityCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].code
     # initialising request payload variables
     * def source = "web"
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     * def name = randomString(10)
     * def mobileNumber = '78' + randomMobileNumGen(8)
     * def pgrConstants = read('../../municipal-services/constants/pgr.yaml')

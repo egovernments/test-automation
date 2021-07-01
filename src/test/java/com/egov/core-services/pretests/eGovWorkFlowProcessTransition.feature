@@ -9,7 +9,7 @@ Background:
 
 @processTransitionSuccess
 Scenario: Verify the API call to move the workflow from one state to another
-  * configure headers = read('classpath:websCommonHeaders.js') 
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
      Given url workflowTransition 
      
      And request processTransiionPayloadValid
@@ -22,7 +22,7 @@ Scenario: Verify the API call to move the workflow from one state to another
 
 @processTransitionFail
 Scenario: Verify the API call to move the workflow from one state to another
-  * configure headers = read('classpath:websCommonHeaders.js') 
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
      Given url workflowTransition 
      
      And request processTransiionPayloadValid
@@ -35,7 +35,7 @@ Scenario: Verify the API call to move the workflow from one state to another
 
 @processTransitionWithoutModuleName
 Scenario: Verify the API call to move the workflow from one state to another
-  * configure headers = read('classpath:websCommonHeaders.js') 
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
      Given url workflowTransition 
      
      And request processTransiionPayloadInvalid
@@ -47,7 +47,7 @@ Scenario: Verify the API call to move the workflow from one state to another
 
 @processTransitionWithoutTenantId
 Scenario: Verify the API call to move the workflow from one state to another
-  * configure headers = read('classpath:websCommonHeaders.js') 
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
      Given url workflowTransition 
      
      And request processTransiionPayloadValid

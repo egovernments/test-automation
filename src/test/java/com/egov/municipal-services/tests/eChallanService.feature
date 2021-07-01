@@ -1,7 +1,7 @@
 Feature: eChallan Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(10000)
     * def formDate = mdmsStateBillingService.TaxPeriod[0].fromDate

@@ -2,12 +2,12 @@ Feature: enc-Service API call
 
         Background:
 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def encryptRequest = read('../requestPayload/enc-service/encrypt.json')
   * def rotateKeyRequest = read('../requestPayload/enc-service/rotate.json')
   * def signRequest = read('../requestPayload/enc-service/sign.json')
   * def verifyRequest = read('../requestPayload/enc-service/verify.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
         @EncryptSuccessfully
         Scenario: encrypt successfully

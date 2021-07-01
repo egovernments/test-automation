@@ -1,6 +1,6 @@
 Feature: EDCR-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def scrutinyDetailsRequest = read('../../municipal-services/requestPayload/dcr-services/scrutinydetails.json')
         * def occomparisonRequest = read('../../municipal-services/requestPayload/dcr-services/occomparison.json')
         * configure ssl = false

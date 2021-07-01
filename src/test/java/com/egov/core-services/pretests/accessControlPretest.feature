@@ -1,8 +1,8 @@
 Feature: Access Control Pretest Feature
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def searchAccessControlRequest = read('../../core-services/requestPayload/access-control/search.json')

@@ -1,7 +1,7 @@
 Feature: Kafka Payment Gateway Transaction Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     # Try to delete the kafka consumer instance if it is not already deleted
     * call read('../../kafka-services/pretests/kafkaPretest.feature@deleteConsumerInstance')
     # Read Constant Parameters

@@ -1,7 +1,7 @@
 Feature: WS Calculator Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../municipal-services/tests/waterConnection.feature@createActiveWaterConnection')
     * def wsCalculatorConstants = read('../../municipal-services/constants/wsCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

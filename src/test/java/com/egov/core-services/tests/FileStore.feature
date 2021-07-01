@@ -1,6 +1,6 @@
 Feature: File store
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def fileStoreConst = read('../../core-services/constants/fileStore.yaml')
 
   @FileStore_GenerateId_01  @coreServices @regression @positive  @fileStore

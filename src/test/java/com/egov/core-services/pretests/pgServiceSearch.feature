@@ -1,13 +1,13 @@
 Feature: Verify searching transaction details using txn id
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
   * def pgServicesSearchPayload = read('../../core-services/requestPayload/pg-service/pgServicesSearch.json')
 
         @searchPgTransactionSuccessfully
         Scenario: Search a payment gateway transaction successfully
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesSearchParam = 
     """
     {

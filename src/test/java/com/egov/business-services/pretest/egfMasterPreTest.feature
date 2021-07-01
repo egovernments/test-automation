@@ -1,7 +1,7 @@
 Feature: Pretest scenarios of egf-master service end points
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml') 
   * def typeName = randomString(10)
   * def tableName = egfMasterConstants.chartOfAccountDeatails.params.tableName

@@ -2,7 +2,7 @@ Feature: Billing Service - Bills tests
 
     Background:
      * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
-     * def jsUtils = read('classpath:jsUtils.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
      * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def invalidMobileNumber = '9'+randomMobileNumGen(9)

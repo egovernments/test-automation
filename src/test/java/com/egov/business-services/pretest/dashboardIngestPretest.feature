@@ -1,12 +1,12 @@
 Feature: Pretest scenarios of dashboard-ingest service end points
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def savePayload = read('../../business-services/requestPayload/dashboard-ingest/save.json')
   * def migratePayload = read('../../business-services/requestPayload/dashboard-ingest/migrate.json')
   
 @saveDashboardIngest
 Scenario: Save dashboard ingest
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     Given url dashboardIngestSave 
     And request savePayload
     When method post
@@ -14,7 +14,7 @@ Scenario: Save dashboard ingest
 
 @migrateDashboardIngest
 Scenario: Migrate dashboard ingest
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     Given url dashboardIngestMigrate
     And request migratePayload
     When method post

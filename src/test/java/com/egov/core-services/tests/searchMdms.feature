@@ -1,7 +1,7 @@
 Feature: search mdms
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   # initializing search mdms request payload objects

@@ -1,11 +1,11 @@
 Feature: Auth token Creation for Employee
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   # * print authTokenUrl
   
   Scenario: Auth token Creation scenario
-  * configure headers = read('classpath:oauthTokenHeader.js') 
+  * configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js') 
         Given url authTokenUrl
         And form field username = authUsername
 		And form field password = authPassword

@@ -1,7 +1,7 @@
 Feature: Trade License Service - End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
     * def tlCalculatorConstants = read('../../municipal-services/constants/tlCalculator.yaml')

@@ -1,8 +1,8 @@
 Feature: Searchmdms
 
         Background:
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def searchMdmsPayload = read('../../core-services/requestPayload/mdms-service/searchMdms.json')
   * def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml')
   * def getMdmsRequest = read('../../core-services/requestPayload/mdms-service/getMdms.json')

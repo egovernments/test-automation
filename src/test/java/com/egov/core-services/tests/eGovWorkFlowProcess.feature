@@ -1,7 +1,7 @@
 Feature: eGovWorkflow process search
 Background:
  # read the javascript utils file for using generic methods
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
  # calling property creation test which is required for workflow process
   * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
   * def workFlowProcessSearchPayload = read('../../core-services/requestPayload/egov-workflow/process/processSearch.json')

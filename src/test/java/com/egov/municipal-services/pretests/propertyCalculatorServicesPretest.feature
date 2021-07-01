@@ -1,7 +1,7 @@
 Feature: Pretest scenarios of property-calculator service end points
 
 Background: 
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
    
 
 @createBillingSlabMutation

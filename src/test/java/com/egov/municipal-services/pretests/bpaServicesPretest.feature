@@ -1,6 +1,6 @@
 Feature: BPA-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createBPARequest = read('../../municipal-services/requestPayload/bpa-services/create.json')
         * def createBPARequestHighEnd = read('../../municipal-services/requestPayload/bpa-services/create2.json')
         * def searchBPARequest = read('../../municipal-services/requestPayload/bpa-services/search.json')

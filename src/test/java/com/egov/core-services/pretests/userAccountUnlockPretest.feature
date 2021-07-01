@@ -1,7 +1,7 @@
 Feature: User oauth token pretest
 Background:
-  * configure headers = read('classpath:oauthTokenHeader.js')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 
 @invalidPasswordError
 Scenario: To test User account

@@ -1,7 +1,7 @@
 Feature: Property Service - End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')

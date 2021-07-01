@@ -1,7 +1,7 @@
 Feature: To test egf-Instrument-Instruments service tests
 
 Background: 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   #egf-Instruments Constants file
   * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
   # Creating an instrumentType

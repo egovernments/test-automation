@@ -1,7 +1,7 @@
 Feature: BPA Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def transactionNumber = randomString(20)
     * def applicantName = 'AUTO_NAME_' + ranInteger(10)
     * def appliactionType = mdmsStateBPA.ApplicationType[0].code

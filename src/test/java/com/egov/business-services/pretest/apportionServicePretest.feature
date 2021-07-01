@@ -2,12 +2,12 @@ Feature: Searcher API call
 
 Background:
 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   	# calling apportion Json
   * def apportionRequest = read('../../business-services/requestPayload/apportion-service/apportion.json')
     # calling apportion Json with No bill details
   * def noBillDetailsApportionRequest = read('../../business-services/requestPayload/apportion-service/noBillDetails.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 
 @successApportion

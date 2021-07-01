@@ -1,7 +1,7 @@
 Feature: Location
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def locationPayload = read('../../core-services/requestPayload/location/searchLocation.json')
   * def locationConstant = read('../../core-services/constants/location.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

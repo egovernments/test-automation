@@ -1,7 +1,7 @@
 Feature: eGov pdf pretest
 
   Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def ptmutationcertificateRequest = read('../../core-services/requestPayload/egov-pdf/ptmutationcertificate.json')
     * def consolidatedReceiptRequest = read('../../core-services/requestPayload/egov-pdf/consolidatedreceipt.json')
     * def tlrenewalcertificateRequest = read('../../core-services/requestPayload/egov-pdf/tlrenewalcertificate.json')

@@ -1,6 +1,6 @@
 Feature: Chart of account Create
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterChartOfAccountConstant = read('../../business-services/constants/egfMaster.yaml')
   # Required parameters to create acccount

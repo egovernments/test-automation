@@ -3,8 +3,8 @@ Feature: eGov egovWorkflowBusinessService service with create, search & update e
 # This script is under development or piece of code is missing
 
         Background:
-                * def jsUtils = read('classpath:jsUtils.js')
-                * configure headers = read('classpath:websCommonHeaders.js')
+                * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+                * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
                 * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusinessService.yaml')
                 * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
                 * call read('../../core-services/pretests/workFlowPretest.feature@SuccessSearchWorkFlowGeneric')

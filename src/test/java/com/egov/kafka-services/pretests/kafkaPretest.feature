@@ -1,7 +1,7 @@
 Feature: Kafka Service Pretest
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def createConsumerPayload = read('../../kafka-services/requestPayload/create.json')
     * def subscribeConsumerPayload = read('../../kafka-services/requestPayload/subscribe.json')
     * def api = read('file:envYaml/common/common.yaml');

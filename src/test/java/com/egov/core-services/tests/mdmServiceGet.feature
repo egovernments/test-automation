@@ -1,7 +1,7 @@
 Feature: Mdm Service Get tests
 
 Background:
-    *  def jsUtils = read('classpath:jsUtils.js')
+    *  def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     *  def mdmsServiceConstants = read('../../core-services/constants/mdmsServiceGet.yaml')
     *  def moduleName = mdmsServiceConstants.parameters.moduleName
     *  def masterName = mdmsServiceConstants.parameters.masterName

@@ -428,7 +428,7 @@ Scenario: Create a property with new counter employee
 
 @searchPgTransactionSuccessfully
         Scenario: Search a payment gateway transaction successfully
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesSearchParam = 
     """
     {

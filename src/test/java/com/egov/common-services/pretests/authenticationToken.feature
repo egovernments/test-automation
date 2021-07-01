@@ -1,7 +1,7 @@
 Feature: Auth token Creation for Employee
 
 Background:
-  * configure headers = read('classpath:oauthTokenHeader.js')
+  * configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
   # * print authTokenUrl
   # * print tenantId
   

@@ -1,7 +1,7 @@
 Feature: User OTP
 
 Background:
-      * def jsUtils = read('classpath:jsUtils.js')
+      * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
       * def userOtpConstant = read('../../core-services/constants/userOtp.yaml')
       # initializing user otp request payload objects
       * def userType = mdmsStateAccessControlRoles.roles[0].code

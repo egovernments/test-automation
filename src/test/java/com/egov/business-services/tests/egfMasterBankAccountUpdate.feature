@@ -2,7 +2,7 @@ Feature: Bank account update
 Background:
   * call read('../../business-services/tests/egfMasterBankAccountCreate.feature@BankAccountCreate_01')
   * def idForBankAccount = id
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterBankAccountConstant = read('../../business-services/constants/egfMasterBankAccount.yaml')
   # Required parameters to update acccount
