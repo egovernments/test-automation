@@ -1,6 +1,6 @@
 Feature: eGovUser - This feature is to test search and create user scenarios
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def userConstant = read('../../core-services/constants/user.yaml')
 
 @User_Search_ValidUserName_01  @coreServicesDontRun @regression @positive  @userSearch  @eGovUser

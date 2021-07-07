@@ -1,6 +1,6 @@
 Feature: FIRE-NOC-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/create.json')
         * def searchFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/search.json')
         * def updateFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/update.json')

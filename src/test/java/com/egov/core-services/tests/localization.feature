@@ -1,7 +1,7 @@
 Feature: Core service - Localization
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     #* def javaUtils = Java.type('com.egov.base.EGovTest')
     * def localizationServiceConstants = read('../../core-services/constants/localization.yaml')
     # Common global Constants

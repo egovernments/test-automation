@@ -1,7 +1,7 @@
 Feature: eGov User Event Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(10000)
     * def tenantId = mdmsStateFireNocService.FireStations[0].baseTenantId

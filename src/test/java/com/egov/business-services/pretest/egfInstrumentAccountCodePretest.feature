@@ -1,8 +1,8 @@
 Feature: Pretest scenarios of egf-instrumentAccountCode service end points
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   #egfInstrumet-InstrumentsAccountCode Requests
   * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/create.json')
   * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/update.json')

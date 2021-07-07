@@ -2,7 +2,7 @@ Feature: Sewerage connection service tests
 
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def sewerageConnectionConstants = read('../../municipal-services/constants/sewerageConnection.yaml')

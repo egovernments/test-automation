@@ -1,7 +1,7 @@
 Feature: Trade License Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     #* call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
     * def tradeLicenseConstants = read('../../municipal-services/constants/tradeLicense.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

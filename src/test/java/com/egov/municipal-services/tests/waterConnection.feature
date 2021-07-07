@@ -1,7 +1,7 @@
 Feature: Water Connection Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # initializing request payload variables

@@ -1,7 +1,7 @@
 Feature: FSM Service - End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def propertyType = mdmsStateFsmService.PropertyType[1].code
     * def vehicalType = mdmsStateFsmService.VehicleType[2].code

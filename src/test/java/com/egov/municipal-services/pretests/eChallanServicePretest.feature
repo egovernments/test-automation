@@ -1,6 +1,6 @@
 Feature: FIRE-NOC-Service pretests
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def createEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/create.json')
     * def searchEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/search.json')
     * def updateEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/update.json')

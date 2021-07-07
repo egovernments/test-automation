@@ -1,7 +1,7 @@
 Feature: TL Calculator Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def tlCalculatorConstants = read('../../municipal-services/constants/tlCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * call read('../../municipal-services/tests/tradeLicense.feature@tradeLicenseCreate1')

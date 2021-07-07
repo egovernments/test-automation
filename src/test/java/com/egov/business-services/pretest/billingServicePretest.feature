@@ -4,7 +4,7 @@ Background:
     * def billingServiceConstants = read('../../business-services/constants/billing-service.yaml')
     * def businessService = billingServiceConstants.parameters.businessService
     * def fetchBillRequest = read('../../business-services/requestPayload/collection-services/fetchBill.json')
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 @fetchBill
     Scenario: Fetch Bill

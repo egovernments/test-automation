@@ -1,11 +1,11 @@
 Feature: Create Citizen For BPA
 
       Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def citizenPayload = read('../../core-services/requestPayload/user/citizenCreation.json')
   # initializing create citizen request payload objects
   * def createCitizenvalidPayload = citizenPayload.validPayload
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 #   * def otpReference = '348356'
 #   * def mobileNumberGen = randomMobileNumGen(10)
 #   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)
@@ -34,7 +34,7 @@ Feature: Create Citizen For BPA
 
 
 #         Background:
-#   * def jsUtils = read('classpath:jsUtils.js')
+#   * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 #   * def userType = mdmsStateAccessControlRoles.roles[0].code
 #   # * print mdmsStateAccessControlRoles.roles
 #   * def name = ranString(4)
@@ -44,8 +44,8 @@ Feature: Create Citizen For BPA
 #   * def gender = commonConstants.parameters.gender[0]
 #   * def newUserPayload = read('../../core-services/requestPayload/userCreation/createUser.json')
 # #---
-#      * configure headers = read('classpath:websCommonHeaders.js')
-#   * def jsUtils = read('classpath:jsUtils.js')
+#      * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+#   * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 #  # Calling user creation feature to create new user
 #  # * call read('../../core-services/pretests/userCreation.feature@usercreation')
 #  # initialing user otp realted payload objects
@@ -60,7 +60,7 @@ Feature: Create Citizen For BPA
   
 #         @usercreationForBPA
 #         Scenario: Creating new user
-#      * configure headers = read('classpath:websCommonHeaders.js')
+#      * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 #       # * print "CREATING USER"
 #       Given url createUser
 #       And request newUserPayload

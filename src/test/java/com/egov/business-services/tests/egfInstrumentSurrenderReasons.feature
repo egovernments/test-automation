@@ -1,7 +1,7 @@
 Feature: egf-Instrument Surrender Reasons service Tests
 
 Background: 
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     #egf-Instruments Constants file
     * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

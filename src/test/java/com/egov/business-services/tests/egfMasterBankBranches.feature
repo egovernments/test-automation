@@ -1,7 +1,7 @@
  Feature: To test egf-master-Bank service 'Create' endpoint
 
     Background: 
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * call read('../../business-services/tests/egfMasterBank.feature@BankCreate_01')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         * def Collections = Java.type('java.util.Collections')

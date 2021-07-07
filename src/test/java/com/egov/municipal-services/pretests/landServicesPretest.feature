@@ -1,6 +1,6 @@
 Feature: Land-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createLandRequest = read('../../municipal-services/requestPayload/land-services/create.json')
         * def searchLandRequest = read('../../municipal-services/requestPayload/land-services/search.json')
         * def updateLandRequest = read('../../municipal-services/requestPayload/land-services/update.json')

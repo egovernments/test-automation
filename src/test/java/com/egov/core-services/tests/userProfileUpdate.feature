@@ -1,7 +1,7 @@
 Feature: eGov_User - Update user profile tests
 
 Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
         * def code = counterEmployeeUsername
         * call read('../../business-services/pretest/egovHrmsPretest.feature@searchEmployeeSuccessfullyWithMultipleEmployeeCodes')

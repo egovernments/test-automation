@@ -1,7 +1,7 @@
 Feature: To test propertyTax-Estimate service endpoints
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * callonce read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * def financialYear = Assessment.financialYear

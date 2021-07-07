@@ -1,7 +1,7 @@
 Feature: Kafka Notification SMS Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def kafkaConstants = read('../../kafka-services/constants/kafka.yaml')
     * def consumer_group_id = kafkaConstants.sms.consumerGroupId

@@ -1,7 +1,7 @@
 Feature: Kafka Property Services Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 
 @Property_Create_ReadKafkaPeristerCheck_17 @positive @kafkaPropertyServices @kafkaServices
 Scenario: Create a property and verify the response Transaction object with the data obtained from the consumer

@@ -1,7 +1,7 @@
 Feature: Water and Sewerage End to End test flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
     * def Thread = Java.type('java.lang.Thread')
     * def taxPeriodFrom = getCurrentEpochTime() + ''

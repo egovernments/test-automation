@@ -1,7 +1,7 @@
 Feature: eGovUser-userProfileUpdate pretest
 
   Background:
-     * configure headers = read('classpath:websCommonHeaders.js') 
+     * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
      * def updateUserPasswordNoLogin = read('../../core-services/requestPayload/user/updatePasswordNoLogin/updatePasswordNoLogin.json')
 
 @updateUserProfile

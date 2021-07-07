@@ -1,6 +1,6 @@
 Feature: eGov User Event pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def noticiationRequest = read('../../municipal-services/requestPayload/egov-user-event/notification.json')
         * def creatRequest = read('../../municipal-services/requestPayload/egov-user-event/create.json')
         * def creatNullValuesRequest = read('../../municipal-services/requestPayload/egov-user-event/createNullParamss.json')

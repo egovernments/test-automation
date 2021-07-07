@@ -1,7 +1,7 @@
 Feature: pdf service
 Background:
   # reading javascript utils for using generic methods
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def pdfCreateConstant = read('../../core-services/constants/pdfService.yaml')
   * call read('../../business-services/tests/collectionServicesCreate.feature@Create_PaymentWithValidBillID_01')
 

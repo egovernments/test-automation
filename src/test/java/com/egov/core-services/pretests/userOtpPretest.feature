@@ -1,8 +1,8 @@
 Feature: User otp send API call
 
         Background:
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   # Calling user creation feature to create new user
   * call read('../../core-services/pretests/userCreation.feature@usercreation')
   # initialing user otp realted payload objects

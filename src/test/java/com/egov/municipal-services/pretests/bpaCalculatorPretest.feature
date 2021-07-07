@@ -1,6 +1,6 @@
 Feature: BPA-Calculator pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def calculateBPARequest = read('../../municipal-services/requestPayload/bpa-calculator/calculate.json')
 
     @calcuateBPASuccessfully

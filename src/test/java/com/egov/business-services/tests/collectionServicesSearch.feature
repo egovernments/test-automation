@@ -2,8 +2,8 @@ Feature: Business Services - Collection service - search tests
 
 Background:
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
-    * def jsUtils = read('classpath:jsUtils.js')
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')

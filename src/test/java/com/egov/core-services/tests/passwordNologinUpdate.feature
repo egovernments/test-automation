@@ -1,7 +1,7 @@
 Feature: eGov_User - Update password no login tests
 
 Background:
-     * def jsUtils = read('classpath:jsUtils.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
      * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
      * def otpReference = randomNumber(5)
      * def newPassword = authPassword

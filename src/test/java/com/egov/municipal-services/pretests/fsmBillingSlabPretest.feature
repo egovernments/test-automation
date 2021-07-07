@@ -1,6 +1,6 @@
 Feature: FSM Billing Slab pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createFSMBillingSlabRequest = read('../../municipal-services/requestPayload/fsm-billingslab/create.json')
         * def searchFSMBillingSlabRequest = read('../../municipal-services/requestPayload/fsm-billingslab/search.json')
         * def updateFSMBillingSlabRequest = read('../../municipal-services/requestPayload/fsm-billingslab/update.json')

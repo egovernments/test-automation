@@ -1,7 +1,7 @@
  Feature: To test egf-instrument-instrumentTypes service 'Create' endpoint
 
     Background: 
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
         * def instrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/create.json')

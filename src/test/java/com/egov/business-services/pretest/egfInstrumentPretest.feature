@@ -1,8 +1,8 @@
 Feature: Pretest scenarios of egf-instrument service end points
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     #egfInstrumet-Instruments Requests
   * def instrumentCreateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/create.json')
   * def instrumentUpdateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/update.json')

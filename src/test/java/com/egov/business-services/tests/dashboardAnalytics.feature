@@ -1,7 +1,7 @@
 Feature: Business Services - Dashboard Analytics service tests
 
         Background:
-     * def jsUtils = read('classpath:jsUtils.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def dashboardServiceData = read('../../business-services/constants/dashboardAnalytics.yaml')
      * def dashboardTestData = read('../../business-services/requestPayload/dashboard-analytics/chartAPI.json')

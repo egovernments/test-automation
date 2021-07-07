@@ -1,7 +1,7 @@
 Feature: Create user
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def userType = mdmsStateAccessControlRoles.roles[0].code
   * def name = ranString(4)
   * def mobileNumberGen = '90' + randomMobileNumGen(8)
@@ -15,7 +15,7 @@ Feature: Create user
   
         @usercreation
         Scenario: Creating new user
-     * configure headers = read('classpath:websCommonHeaders.js')   
+     * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')   
             Given url createUser
               And request newUserPayload
              When method post

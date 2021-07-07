@@ -1,7 +1,7 @@
 Feature: Business Services: dashboard-ingest tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def fileContentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     * def validTestDataFile1Name = 'DashboardIngestTestData.xlsx'
     * def validTestDataFile2Name = 'DashboardIngestTestData2.xlsx'

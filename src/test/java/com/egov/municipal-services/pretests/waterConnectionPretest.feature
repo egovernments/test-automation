@@ -1,7 +1,7 @@
 Feature: Water Connection service pretests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def createWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/create.json')
     * def updateWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/update.json')
     * def searchWaterConnectionRequest = read('../../municipal-services/requestPayload/water-connection/search.json')

@@ -1,7 +1,7 @@
 Feature: Kafka Payment Gateway Transaction Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')

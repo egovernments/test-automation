@@ -1,8 +1,8 @@
 Feature: Verify Using API call, shorten the given url
 
 Background:
-  * configure headers = read('classpath:websCommonHeaders.js') 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def urlShortenPayload = read('../../core-services/requestPayload/url-shorten/urlShorten.json')
 
 @urlShortenFail
