@@ -113,14 +113,14 @@ Background:
         }
         }
     """  
-    * def customSelectFromDropdownContainingLocalization =
+    * def digitCustomSelectFromDropdownContainingLocalization =
     """
         function(element,valueToSelect){
             try{
                 driver.waitFor(element)
                 driver.click(element)
                 ele = "//span[@class='menu-class']//div[text()='"+valueToSelect+"']"
-                driver.waitFor(ele)
+             // driver.waitFor(ele)
                 driver.click(ele)
             }catch(err){
             throw new Error("Exception occurred while selecting value from dropdown -->"+err)
@@ -128,7 +128,7 @@ Background:
         }
     """
 
-     * def customSelectFromDropdown =
+     * def digitCustomSelectFromDropdown =
     """
         function(element,valueToSelect){
             try{
@@ -144,7 +144,7 @@ Background:
         }
     """
 
-     * def customSelectFromDropdownWithHover =
+     * def digitCustomSelectFromDropdownWithHover =
     """
         function(element,valueToSelect){
             try{
@@ -168,7 +168,7 @@ Background:
         }
     """
 
-    * def clickValueInSearchResults = 
+    * def digitClickValueInSearchResults = 
     """
         function(valueToClick){
             try{
@@ -181,12 +181,13 @@ Background:
         }
 
     """
-    * def customInputFile = 
+    * def digitCustomInputFile = 
     """
         function(element,fileToInput){
             try{
                 karate.log("BEFORE FILE INPUTTTT")
-                driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+               // driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+               driver.inputFile(element,fileToInput)
                 karate.log("AFTER FILE INPUTTTT")
 
             }catch(err){
@@ -218,16 +219,25 @@ Background:
 
         }
     """
-    * def inputFileUsingJavascript =
+
+    * def sendTextToAllElements =
     """
-        function(element,fileToUpload){
-            print("BROWSER UPLAODING IN FILE")
-            var jsScript = "var input = document.getElementsByTagName('input')[4];"
-            +"input.value='/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png';";
-            driver.script(jsScript)
-            print("FILE UPLOADED IN BROWSER")
+        function(locater){
+                elements = driver.locateAll("//input[@type='text']")
+                karate.log("ELEMENTS ARE")
+                karate.log(elements)
+                for(e in elements){
+                    karate.log("KEYSSS AREE")
+                    karate.log(e)
+                    karate.log("KEYSSS AREE")
+                    karate.log(driver.text(e))
+                    karate.log("TRYING TO INPUT NOW")
+                    driver.input(e,"HELLO")
+                } 
+            
         }
     """
+
 @initializeDriver
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()

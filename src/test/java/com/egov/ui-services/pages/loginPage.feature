@@ -20,6 +20,20 @@ Scenario: Login to UI as Citizen
 	* sendKeys(lPO.otpField, loginPageData.otpField)
 	* clickElement(lPO.submitOtpButton)
 
+	@loginAsCitizenTest
+Scenario: Login to UI as Citizen
+	* clickElement(lPO.languageEnglishButton)
+	* clickElement(lPO.continueButton)
+	* clickElement(lPO.resendOtpButton)
+	* clickElement(lPO.mobileNumberField)
+	* print getAttribute(lPO.mobileNumberField, loginPageData.mobileNumberFieldType)
+	* sendKeys(lPO.mobileNumberField, citizenUsername)
+	* clickElement(lPO.loginSubmitButton)
+	* sendKeys(lPO.otpField, loginPageData.otpField)
+	* clickElement(lPO.submitOtpButton)
+
+	
+
 @loginAsAltCitizen
 Scenario: Login to UI as Citizen
 	* waitForUrl(loginPageurls.languageSelection)

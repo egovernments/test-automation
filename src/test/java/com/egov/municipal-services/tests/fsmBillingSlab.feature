@@ -11,7 +11,7 @@ Background:
     * def price = randomNumber(3)
     * def status = fsmBillingSlabConstants.status.active
     * def feeType = fsmBillingSlabConstants.feeType.applicationFee
-@fsm_billing_slab_create_1 @positive @regression @fsmBillingSlab
+@fsm_billing_slab_create_1 @positive  @fsmBillingSlab
 Scenario: Verify creating a FSM Billing Slab
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@createFSMBillingSlabSuccessfully')
     * match fsmBillingSlabResponseBody.billingSlab[0].status == status
@@ -20,21 +20,21 @@ Scenario: Verify creating a FSM Billing Slab
     * match fsmBillingSlabResponseBody.billingSlab[0].capacityTo == capacityTo
     * match fsmBillingSlabResponseBody.billingSlab[0].capacityFrom == capacityFrom
 
-@fsm_billing_slab_create_2 @positive @regression @fsmBillingSlab
+@fsm_billing_slab_create_2 @positive  @fsmBillingSlab
 Scenario: Verify creating a FSM Billing Slab keeping Slum as Null
     * def slum = null
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@createFSMBillingSlabUnSuccessfully')
     * match fsmBillingSlabResponseBody.Errors[0].code == fsmBillingSlabConstants.Errors.errorCodes.invalidBillingSlab
     * match fsmBillingSlabResponseBody.Errors[0].message == fsmBillingSlabConstants.Errors.errorMessages.nullSlum
 
-@fsm_billing_slab_create_3 @positive @regression @fsmBillingSlab
+@fsm_billing_slab_create_3 @positive  @fsmBillingSlab
 Scenario: Verify creating a FSM Billing Slab with invalid price
     * def price = randomString(3)
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@createFSMBillingSlabUnSuccessfully')
     * match fsmBillingSlabResponseBody.Errors[0].code == fsmBillingSlabConstants.Errors.errorCodes.invalidPrice
     * match fsmBillingSlabResponseBody.Errors[0].message == fsmBillingSlabConstants.Errors.errorMessages.invalidPrice
 
-@fsm_billing_slab_create_4 @positive @regression @fsmBillingSlab
+@fsm_billing_slab_create_4 @positive  @fsmBillingSlab
 Scenario: Verify creating a FSM Billing Slab with duplicate billing slab
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@createFSMBillingSlabSuccessfully')
     * call read('../../municipal-services/pretests/fsmBillingSlabPretest.feature@createFSMBillingSlabUnSuccessfully')
