@@ -576,3 +576,8 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@updateFsmSuccessfully')
     * match fsmResponseBody.fsm[0].id == '#present'
     * match fsmResponseBody.fsm[0].applicationNo == '#present'
+
+    @fsm_inboxSearch_01 @positive @regression @municipalServices @fsmService @fsmServiceSearch
+    Scenario: Verify inbox searching for a fsm service
+    * call read('../../municipal-services/pretests/fsmServicesPretest.feature@inboxSearchFsmSuccessfully')
+    * match fsmResponseBody.statusMap[0] == '#present'

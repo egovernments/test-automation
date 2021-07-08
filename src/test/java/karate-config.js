@@ -395,6 +395,7 @@ function() {
         config.vehicalTripSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripSearch
         config.vehicalTripUpdateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripUpdate
         config.paymentsCreateFsmEvent = envProps.host + path.endPoints.fsmService.paymentsCreate
+        config.inboxSearchFsmEvent = envProps.host + path.endPoints.fsmService.inboxSearch
 
         // eChallan Service
         config.createEchallanEvent = envProps.host + path.endPoints.echallanService.create
@@ -407,6 +408,11 @@ function() {
         config.searchFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.search
         config.calculateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.calculate
         config.estimateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.estimate
+
+        //bill Amendment service
+        config.createBilAmendment = envProps.host + path.endPoints.billAmendment.create
+        config.updateBilAmendment = envProps.host + path.endPoints.billAmendment.update
+        config.searchBilAmendment = envProps.host + path.endPoints.billAmendment.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);

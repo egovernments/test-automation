@@ -355,3 +355,11 @@ Feature: FIRE-NOC-Service pretests
         When method post
         Then status 200
         And def fsmResponseBody = response
+
+    @inboxSearchFsmSuccessfully
+    Scenario: inbox search FSM successfully
+        Given url inboxSearchFsmEvent
+        And request searchFsmRequest
+        When method post
+        Then status 200
+        And def fsmResponseBody = response

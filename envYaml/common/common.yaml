@@ -296,6 +296,7 @@ endPoints:
     vehicalTripCreate: vehicle/trip/v1/_create
     vehicalTripSearch: vehicle/trip/v1/_search
     vehicalTripUpdate: vehicle/trip/v1/_update
+    inboxSearch: inbox/v1/_search
     
   echallanService:
     create: echallan-services/eChallan/v1/_create
@@ -308,3 +309,7 @@ endPoints:
     search: fsm-calculator/v1/billingSlab/_search
     calculate: fsm-calculator/v1/_calculate
     estimate: fsm-calculator/v1/_estimate
+  billAmendment:
+    create: billing-service/amendment/_create
+    update: billing-service/amendment/_update
+    search: billing-service/amendment/_search

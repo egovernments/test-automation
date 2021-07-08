@@ -22,6 +22,8 @@ Background:
     * def changeAmount = 108
     * def cash = "Cash"
     * def common = "COMMON_OWNER"
+    * def cgst = "ADVT.HOARDINGS_CGST"
+    * def sgst = "ADVT.HOARDINGS_SGST"
 
     @eChallan_create_01 @positive @regression @municipalService @echallanServie @eChallanServiceCreate
     Scenario: Verify creating a echallan service application through API 
