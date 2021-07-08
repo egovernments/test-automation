@@ -218,10 +218,10 @@ To start the test execution in `local`,
  * Open command prompt or terminal 
  * Navigate to project folder and execute,
  ```
- mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<tag1,tag2> classpath:com/egov"
+ mvn clean test "-DconfigPath= <path of the environment config. file>" "-tags=@<tag1,tag2>"
  ```
  ### For example 
- `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
+ `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dtags=@searchMdms,@eGovUser"`  
 
 <!--Reporting-->
 ## Reporting
