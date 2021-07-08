@@ -309,3 +309,7 @@ endPoints:
     search: fsm-calculator/v1/billingSlab/_search
     calculate: fsm-calculator/v1/_calculate
     estimate: fsm-calculator/v1/_estimate
+  billAmendment:
+    create: billing-service/amendment/_create
+    update: billing-service/amendment/_update
+    search: billing-service/amendment/_search

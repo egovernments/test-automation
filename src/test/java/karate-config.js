@@ -409,6 +409,11 @@ function() {
         config.calculateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.calculate
         config.estimateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.estimate
 
+        //bill Amendment service
+        config.createBilAmendment = envProps.host + path.endPoints.billAmendment.create
+        config.updateBilAmendment = envProps.host + path.endPoints.billAmendment.update
+        config.searchBilAmendment = envProps.host + path.endPoints.billAmendment.search
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
