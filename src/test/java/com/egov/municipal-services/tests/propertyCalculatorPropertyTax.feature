@@ -1,12 +1,12 @@
 Feature: To test property-calculator-PropertyTax service 'Calculate' endpoints
 
 Background: 
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def propertyCalculatorConstants = read('../../municipal-services/constants/propertyCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * call read('../../municipal-services/tests/PropertyService.feature@createActiveProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
-    * print propertyId
+    # * print propertyId
     * def unitId = generateUUID()
     * def floorNo = 0
     * def usageCategoryMajor = mdmsStatePropertyTax.UsageCategoryMajor[0].code
@@ -40,7 +40,7 @@ Background:
 Scenario: Verify the property tax calculation thorugh API call for a given property id
     * call read('../../municipal-services/pretests/propertyCalculatorServicesPretest.feature@calculatePropertyTax')
     * def estimateAmount = karate.jsonPath(propertyTaxResponse, '$.'+assessmentNumber+'.taxHeadEstimates[*].estimateAmount')
-    * print estimateAmount
+    # * print estimateAmount
     * def result = 0
     # Customized function to fetch sum of tax head estimate ammount
     * def fun = function(x){ var temp = karate.get('result'); karate.set('result', temp + x )}

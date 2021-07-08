@@ -1,7 +1,7 @@
 Feature: eGov_User - Update password no login tests
 
 Background:
-     * def jsUtils = read('classpath:jsUtils.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
      * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
      * def otpReference = randomNumber(5)
      * def newPassword = authPassword
@@ -79,7 +79,7 @@ Scenario: To validate error message when tenantId is invalid
         # Steps to update user's password without logged in 
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdatePasswordNoLogin')
         # Validate actual error retured by API should equal to expected error messages for invalid tenantId
-        * print updatedPasswordWithOutLogin
+        # * print updatedPasswordWithOutLogin
         * match updatedPasswordWithOutLogin.Errors[0].code == errorMessage.errormessages.userNotFoundCode
 
      

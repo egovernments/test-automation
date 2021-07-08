@@ -1,8 +1,8 @@
 Feature: Initiates a new payment transaction, on successful validation, a redirect is issued to the payment gateway.
 
         Background:
-  * configure headers = read('classpath:websCommonHeaders.js') 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def pgServicesCreatePayload = read('../../core-services/requestPayload/pg-service/pgServicesCreate.json')
 
         @createPgTransactionSuccessfully

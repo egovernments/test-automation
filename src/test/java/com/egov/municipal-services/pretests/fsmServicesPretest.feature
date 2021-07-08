@@ -1,19 +1,20 @@
 Feature: FIRE-NOC-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
-        * def createFsmRequest = read('../../municipal-services/requestPayload/fsm-service/create.json')
-        * def createSantiFsmRequest = read('../../municipal-services/requestPayload/fsm-service/create_Santi.json')
-        * def searchFsmRequest = read('../../municipal-services/requestPayload/fsm-service/search.json')
-        * def updateFsmRequest = read('../../municipal-services/requestPayload/fsm-service/update.json')
-        * def auditFsmRequest = read('../../municipal-services/requestPayload/fsm-service/audit.json')
-        * def vendorCreateFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vendorCreate.json')
-        * def vendorSearchFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vendorSearch.json')
-        * def vehicalCreateFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vehicalCreate.json')
-        * def vehicalSearchFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vehicalSearch.json')
-        * def vehicalTripSearchFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vehicalTripSearch.json')
-        * def vehicalTripCreateFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vehicalTripCreate.json')
-        * def vehicalTripUpdateFsmRequest = read('../../municipal-services/requestPayload/fsm-service/vehicalTripUpdate.json')
-        * def createNoSlumFsmRequest = read('../../municipal-services/requestPayload/fsm-service/createNoSlum.json')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+        * def createFsmRequest = read('../../municipal-services/requestPayload/fsmService/create.json')
+        * def createSantiFsmRequest = read('../../municipal-services/requestPayload/fsmService/create_Santi.json')
+        * def searchFsmRequest = read('../../municipal-services/requestPayload/fsmService/search.json')
+        * def updateFsmRequest = read('../../municipal-services/requestPayload/fsmService/update.json')
+        * def auditFsmRequest = read('../../municipal-services/requestPayload/fsmService/audit.json')
+        * def vendorCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vendorCreate.json')
+        * def vendorSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vendorSearch.json')
+        * def vehicalCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalCreate.json')
+        * def vehicalSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalSearch.json')
+        * def vehicalTripSearchFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripSearch.json')
+        * def vehicalTripCreateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripCreate.json')
+        * def vehicalTripUpdateFsmRequest = read('../../municipal-services/requestPayload/fsmService/vehicalTripUpdate.json')
+        * def createNoSlumFsmRequest = read('../../municipal-services/requestPayload/fsmService/createNoSlum.json')
+        * def createPaymentRequest = read('../../municipal-services/requestPayload/fsmService/payment.json')
 
     @createFsmSuccessfully
     Scenario: Create FSM successfully
@@ -37,11 +38,32 @@ Feature: FIRE-NOC-Service pretests
         Then status 400
         And def fsmResponseBody = response
 
+    @createPaymentFsmSuccessfully
+    Scenario: create Payment successfully
+        Given url paymentsCreateFsmEvent
+        And request createPaymentRequest
+        When method post
+        Then status 200
+        And def fsmResponseBody = response
+
+    @fetchBillSuccessfully
+    Scenario: fetch Bill successfully
+        Given url fetchBill
+        And params getFsmSearchParam
+        And request searchFsmRequest
+        When method post
+        Then status 201
+        And def fsmResponseBody = response
+        And def billId = fsmResponseBody.Bill[0].id
+        And def payerName = fsmResponseBody.Bill[0].payerName
+        And def businessService = fsmResponseBody.Bill[0].businessService
+        And def billDate = fsmResponseBody.Bill[0].billDate
+
     @updateFsmSuccessfully
     Scenario: update FSM successfully
         Given url updateFsmEvent
         And request updateFsmRequest
-        * print updateFsmRequest
+        # * print updateFsmRequest
         When method post
         Then status 200
         And def fsmResponseBody = response
@@ -171,7 +193,7 @@ Feature: FIRE-NOC-Service pretests
 
     @vehicalCreateFsmError2
     Scenario: Vehical Create FSM Error without Registation Number
-        * eval karate.remove('createDemandRequest', removeFieldPath)
+        * eval karate.remove('vehicalCreateFsmRequest', removeFieldPath)
         Given url vehicalCreateFsmEvent
         And request vehicalCreateFsmRequest
         When method post
@@ -284,7 +306,7 @@ Feature: FIRE-NOC-Service pretests
 
     @vehicalTripCreateFsmError2
     Scenario: Vehical Trip Create FSM Error without vehical ID
-        * eval karate.remove('createDemandRequest', removeFieldPath)
+        * eval karate.remove('vehicalTripCreateFsmRequest', removeFieldPath)
         Given url vehicalTripCreateFsmEvent
         And request vehicalTripCreateFsmRequest
         When method post
@@ -329,7 +351,15 @@ Feature: FIRE-NOC-Service pretests
         Given url createFsmEvent
         And params getFsmSearchParam
         And request createNoSlumFsmRequest
-        * print createNoSlumFsmRequest
+        # * print createNoSlumFsmRequest
+        When method post
+        Then status 200
+        And def fsmResponseBody = response
+
+    @inboxSearchFsmSuccessfully
+    Scenario: inbox search FSM successfully
+        Given url inboxSearchFsmEvent
+        And request searchFsmRequest
         When method post
         Then status 200
         And def fsmResponseBody = response

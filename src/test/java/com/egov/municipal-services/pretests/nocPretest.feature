@@ -9,12 +9,12 @@ Background:
 Scenario: Create NOC Request successfully
     Given url createNOCUrl
     And request createNocRequest 
-    * print createNocRequest
+    # * print createNocRequest
     When method post 
     Then status 200
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print nocResponseBody
+    # * print nocResponseBody
     And def nocDetail = nocResponseBody.Noc[0]
     And def nocId = nocDetail.id
     And def nocApplicationNo = nocDetail.applicationNo
@@ -27,7 +27,7 @@ Scenario: Create Failed NOC Request
     Then status 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print nocResponseBody
+    # * print nocResponseBody
 
 @failCreateNOCRequestUnAuthoriszed
 Scenario: Create Failed NOC Request
@@ -37,72 +37,72 @@ Scenario: Create Failed NOC Request
     Then status 403
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print nocResponseBody
+    # * print nocResponseBody
 
 @searchNOCWithValidData
 Scenario: Search NOC With Valid Data
     Given url searchNOCUrl
     And params searchNOCParams
-    * print searchNOCParams
+    # * print searchNOCParams
     And request searchNOCRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     And def nocDetail = nocResponseBody.Noc[0]
     And def nocId = nocDetail.id
     And def nocApplicationNo = nocDetail.applicationNo
-    * print nocResponseBody
+    # * print nocResponseBody
 
 @searchNOCWithInvalidData
 Scenario: Search NOC With Valid Data
     Given url searchNOCUrl
     And params searchNOCParams
-    * print searchNOCParams
+    # * print searchNOCParams
     And request searchNOCRequest 
     When method post 
     Then status 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print nocResponseBody
+    # * print nocResponseBody
 
 @updateNOCWithValidData
 Scenario: Update NOC With Valid Data
     Given url updateNOCUrl
     And request updateNOCRequest 
-    * print "NOC REQUEST"
-    * print updateNOCRequest
+    # * print "NOC REQUEST"
+    # * print updateNOCRequest
     When method post
     Then status 200
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print "NOC RESPONSE BODY"
-    * print nocResponseBody
+    # * print "NOC RESPONSE BODY"
+    # * print nocResponseBody
 
 @updateNOCWithInValidData
 Scenario: Update NOC With InValid Data
     Given url updateNOCUrl
     And request updateNOCRequest 
     When method post
-    * print response
+    # * print response
     Then statu 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
-    * print nocResponseBody
+    # * print nocResponseBody
 
 @searchNOCWithValidDataForBPA
 Scenario: Search NOC With Valid Data For BPA
     Given url searchNOCUrl
     And params searchNOCParams
-    * print searchNOCParams
+    # * print searchNOCParams
     And request searchNOCRequest 
     When method post 
     Then status 200
-    * print response
+    # * print response
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     And def nocDetail = nocResponseBody.Noc[0]
     And def nocId = nocDetail.id
     And def nocApplicationNo = nocDetail.applicationNo
-    * print nocResponseBody
+    # * print nocResponseBody

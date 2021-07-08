@@ -2,7 +2,7 @@ Feature: Bank account update
 Background:
   * call read('../../business-services/tests/egfMasterBankAccountCreate.feature@BankAccountCreate_01')
   * def idForBankAccount = id
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterBankAccountConstant = read('../../business-services/constants/egfMasterBankAccount.yaml')
   # Required parameters to update acccount
@@ -45,7 +45,7 @@ Scenario: Verify by passing max. length of the desceription field
   # To update bank of account with invalid length of description
   * def descriptionOfBank = randomStringOfAnyLength(257)
   * call read('../../business-services/pretest/egfMasterBankAccount.feature@errorInAccount')
-  * print bankAccountResponseBody.errors[0].message
+  # * print bankAccountResponseBody.errors[0].message
   * assert bankAccountResponseBody.errors[0].message == egfMasterBankAccountConstant.errorMessages.forInvalidDescription
 
 @BankAccountUpdate_InvalidLenPayTo_07  @negative  @bankAccountUpdate  @egfMasterBankAccount @egfMaster @regression @businessServices

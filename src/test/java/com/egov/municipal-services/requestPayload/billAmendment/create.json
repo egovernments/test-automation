@@ -1,0 +1,44 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Amendment":{
+        "consumerCode":"#(consumerCode)",
+        "tenantId":"#(tenantId)",
+        "businessService":"WS",
+        "amendmentReason":"COURT_CASE_SETTLEMENT",
+        "reasonDocumentNumber":"CD98765",
+        "effectiveFrom":1623263399000,
+        "effectiveTill":"",
+        "documents":[{
+            "documentType":"COURTORDER",
+            "fileStoreId":"#(fileStoreId1)"
+            },
+            {
+            "documentType":"PASTBILLS",
+            "fileStoreId":"#(fileStoreId2)"
+            },
+            {
+            "documentType":"IDENTITYPROOF.AADHAAR",
+            "fileStoreId":"#(fileStoreId3)"
+            },
+            {
+            "documentType":"ADDRESSPROOF.DRIVING",
+            "fileStoreId":"#(fileStoreId4)"
+            },
+            {
+            "documentType":"SELFDECLARATION",
+            "fileStoreId":"#(fileStoreId5)"
+            }],
+                "demandDetails":[{
+                    "taxHeadMasterCode":"WS_CHARGE",
+                    "taxAmount":-20
+                    }],
+                "additionalDetails":{
+                    "searchBillDetails":{
+                        "TOTAL":200,
+                        "WS_TIME_ADHOC_PENALTY":200
+                    }
+            }
+        }                  
+    }

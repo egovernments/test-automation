@@ -1,7 +1,7 @@
 Feature: Business Services - HRMS
 
         Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../common-services/pretests/egovMdmsPretest.feature')
     * def hrmsConstants = read('../../business-services/constants/egov-hrms.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

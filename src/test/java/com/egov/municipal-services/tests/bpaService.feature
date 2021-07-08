@@ -1,7 +1,7 @@
 Feature: BPA Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def transactionNumber = randomString(20)
     * def applicantName = 'AUTO_NAME_' + ranInteger(10)
     * def appliactionType = mdmsStateBPA.ApplicationType[0].code
@@ -39,7 +39,7 @@ Background:
 Scenario: Verify creating a bpa application through API 
     * call read('../../municipal-services/pretests/bpaServicesPretest.feature@createBPASuccessfully')
     * match bpaResponseBody.BPA[0].status == bpaConstants.status.initiate
-    * print bpaResponseBody
+    # * print bpaResponseBody
 
 @bpa_create_duplicate_02 @negative @regression @bpaService
 Scenario: Verify creating a bpa application through API  with the same edcr number

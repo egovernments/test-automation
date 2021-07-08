@@ -1,7 +1,7 @@
 Feature: FSM BILLING SLAB FEATURE
 
 Background:    
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def fsmBillingSlabConstants = read('../../municipal-services/constants/fsmBillingSlab.yaml')
     * def capacityFrom = randomNumber(1000000000)

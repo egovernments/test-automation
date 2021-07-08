@@ -1,10 +1,10 @@
 Feature: MDMS Service
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def searchCityRequest = read('../../common-services/requestPayload/egov-mdms/searchCity.json')
   * def searchStateRequest = read('../../common-services/requestPayload/egov-mdms/searchState.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 @searchMdmsSuccessfullyByState
 Scenario: Search MDMS by State success Call

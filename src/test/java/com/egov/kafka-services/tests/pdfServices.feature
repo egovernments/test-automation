@@ -1,7 +1,7 @@
 Feature: Kafka Payment Gateway Transaction Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
@@ -22,12 +22,12 @@ Scenario: Create a pdf and verify the response Transaction object with the data 
     # Create PDF
     * call read('../../core-services/pretests/pdfServiceCreate.feature@createPdfForPtSuccessfully')
     # Expected response
-    * print pdfCreateResponseBody
+    # * print pdfCreateResponseBody
     * def pdfCreateResponse = pdfCreateResponseBody
     * def jobId = pdfCreateResponse.jobid
     * def createdJobId = jobId
     # Setting the condition to filter consumer records
-    * print 'Job Id: ' + jobId + '
+    # * print 'Job Id: ' + jobId + '
     * def recordsFilterCondition = "$[?(@.value.jobId=='" + jobId + "')].value.jobId"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')

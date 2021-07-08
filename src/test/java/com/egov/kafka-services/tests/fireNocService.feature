@@ -20,7 +20,7 @@ Scenario: Create FireNoc using kafka service
     * def fireNocBody = fireNocResponseBody.FireNOCs[0]
     * def id = fireNocResponseBody.FireNOCs[0].id
     # Setting the condition to filter FireNocs
-    * print 'fire noc Id: ' + id + '
+    # * print 'fire noc Id: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.FireNOCs)]"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
@@ -53,7 +53,7 @@ Scenario: Update FireNoc using kafka service
     * def fireNocBody = fireNocResponseBody.FireNOCs[0]
     * def id = fireNocResponseBody.FireNOCs[0].id
     # Setting the condition to filter Firenoc ID
-    * print 'Fire Noc ID: ' + id + '
+    # * print 'Fire Noc ID: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.FireNOCs)]"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')

@@ -1,7 +1,7 @@
 Feature: Fire NOC Service
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Collections = Java.type('java.util.Collections')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # Searching Location for locality and areaCode
@@ -11,7 +11,7 @@ Background:
     * def localityCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].code
     * def nocConstants = read('../../municipal-services/constants/noc.yaml')
     # initialising request payload variables
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     * def nocType = nocConstants.nocType.fireNoc
     * def source = "BPA"
     * def comment = randomString(10)

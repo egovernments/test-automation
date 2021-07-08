@@ -1,7 +1,7 @@
 Feature: User oauth token
 Background:
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def userConstant = read('../../core-services/constants/user.yaml')
   
 @User_AccountLock_01 @userAccountAfterLock @coreServicesDontRun @regression

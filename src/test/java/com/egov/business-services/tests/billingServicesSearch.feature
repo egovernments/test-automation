@@ -4,7 +4,7 @@ Background:
     * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     *  def billingServiceConstants = read('../constants/billing-service.yaml')
-    *  def jsUtils = read('classpath:jsUtils.js')
+    *  def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     *  call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
     *  call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
     *  def mobileNumber = collectionServicesResponseBody.Payments[0].mobileNumber

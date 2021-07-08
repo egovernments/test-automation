@@ -1,7 +1,7 @@
 Feature: Pretest scenarios of property-calculator service end points
 
 Background: 
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
    
 
 @createBillingSlabMutation
@@ -10,7 +10,7 @@ Scenario: To create billing slab mutation
     And request createBillingSlabMutationPayload
     When method post
     Then def mutationCreateResponse = response
-        * print mutationCreateResponse
+        # * print mutationCreateResponse
     And def id = mutationCreateResponse.MutationBillingSlab[0].id
     And  assert responseStatus == 201
 
@@ -18,7 +18,7 @@ Scenario: To create billing slab mutation
 Scenario: Not to create billing slab mutation
     Given url mutationBillingSlabCreate
     And request createBillingSlabMutationPayload
-        * print createBillingSlabMutationPayload
+        # * print createBillingSlabMutationPayload
     When method post
     Then def mutationCreateResponse = response
     And  status 400
@@ -27,7 +27,7 @@ Scenario: Not to create billing slab mutation
 Scenario: Not to create billing slab mutation
     Given url mutationBillingSlabCreate
     And request createBillingSlabMutationPayload
-        * print createBillingSlabMutationPayload
+        # * print createBillingSlabMutationPayload
     When method post
     Then def mutationCreateResponse = response
     And  status 403
@@ -35,9 +35,9 @@ Scenario: Not to create billing slab mutation
 @updateBillingSlabMutation
 Scenario: To update billing slab mutation
     Given url mutationBillingSlabUpdate
-        * print mutationBillingSlabUpdate
+        # * print mutationBillingSlabUpdate
     And request updateBillingSlabMutationPayload
-        * print updateBillingSlabMutationPayload
+        # * print updateBillingSlabMutationPayload
     When method post
     Then def mutationUpdateResponse = response
     And  assert responseStatus == 201
@@ -46,7 +46,7 @@ Scenario: To update billing slab mutation
 Scenario: Negative pretest to update billing slab mutation
     Given url mutationBillingSlabUpdate
     And request updateBillingSlabMutationPayload
-        * print updateBillingSlabMutationPayload
+        # * print updateBillingSlabMutationPayload
     When method post
     Then def mutationUpdateResponse = response
    And  status 400
@@ -55,7 +55,7 @@ Scenario: Negative pretest to update billing slab mutation
 Scenario: Negative pretest to update billing slab mutation
     Given url mutationBillingSlabUpdate
     And request updateBillingSlabMutationPayload
-        * print updateBillingSlabMutationPayload
+        # * print updateBillingSlabMutationPayload
     When method post
     Then def mutationUpdateResponse = response
    And  status 403
@@ -64,7 +64,7 @@ Scenario: Negative pretest to update billing slab mutation
 Scenario: To search a billing slab mutation
     Given url mutationBillingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
@@ -74,7 +74,7 @@ Scenario: To search a billing slab mutation
 Scenario: Negative pretest to search a billing slab mutation
     Given url mutationBillingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
@@ -84,7 +84,7 @@ Scenario: Negative pretest to search a billing slab mutation
 Scenario: Negative pretest to search a billing slab mutation
     Given url mutationBillingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabMutationPayload
     When method post
     Then def mutationSearchResponse = response
@@ -97,7 +97,7 @@ Scenario: Negative pretest to search a billing slab mutation
 Scenario: To create billing slab 
     Given url billingSlabCreate
     And request billingSlabCreatePayload
-    * print billingSlabCreatePayload
+    # * print billingSlabCreatePayload
     When method post
     Then def billingSlabCreateResponse = response
     And def id = billingSlabCreateResponse.billingSlab[0].id
@@ -107,7 +107,7 @@ Scenario: To create billing slab
 Scenario: Ngative pretest To create billing slab 
     Given url billingSlabCreate
     And request billingSlabCreatePayload
-    * print billingSlabCreatePayload
+    # * print billingSlabCreatePayload
     When method post
     Then def errorResponse = response
     And  status 400
@@ -116,7 +116,7 @@ Scenario: Ngative pretest To create billing slab
 Scenario: Ngative pretest To create billing slab 
     Given url billingSlabCreate
     And request billingSlabCreatePayload
-    * print billingSlabCreatePayload
+    # * print billingSlabCreatePayload
     When method post
     Then def errorResponse = response
     And  status 403
@@ -125,7 +125,7 @@ Scenario: Ngative pretest To create billing slab
 Scenario: To search a billing slab
     Given url billingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabPayload
     When method post
     Then def billingSlabSearchResponse = response
@@ -135,29 +135,29 @@ Scenario: To search a billing slab
 Scenario: Negative pretest to search a billing slab
     Given url billingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabPayload
     When method post
     Then def billingSlabSearchResponse = response
-    * print billingSlabSearchResponse
+    # * print billingSlabSearchResponse
     And  status 400
 
 @errorInSearchBillingSlabUnAuthorized
 Scenario: Negative pretest to search a billing slab
     Given url billingSlabSearch
     And params searchParams
-        * print searchParams
+        # * print searchParams
     And request searchBillingSlabPayload
     When method post
     Then def billingSlabSearchResponse = response
-    * print billingSlabSearchResponse
+    # * print billingSlabSearchResponse
     And  status 403
 
 @updateBillingSlab
 Scenario: To update billing slab
     Given url billingSlabUpdate
     And request updateBillingSlabPayload
-        * print updateBillingSlabPayload
+        # * print updateBillingSlabPayload
     When method post
     Then def billingSlabUpdateResponse = response
     And  assert responseStatus == 201
@@ -166,7 +166,7 @@ Scenario: To update billing slab
 Scenario: Negative pretest to update billing slab
     Given url billingSlabUpdate
     And request updateBillingSlabPayload
-        * print updateBillingSlabPayload
+        # * print updateBillingSlabPayload
     When method post
     Then def billingSlabUpdateResponse = response
     And  status 400
@@ -175,7 +175,7 @@ Scenario: Negative pretest to update billing slab
 Scenario: Negative pretest to update billing slab
     Given url billingSlabUpdate
     And request updateBillingSlabPayload
-        * print updateBillingSlabPayload
+        # * print updateBillingSlabPayload
     When method post
     Then def billingSlabUpdateResponse = response
     And  status 403
@@ -186,7 +186,7 @@ Scenario: Negative pretest to update billing slab
 Scenario: To Calculate property tax
     Given url mutationCalculate
     And request propertyTaxMutationPayload
-        * print propertyTaxMutationPayload
+        # * print propertyTaxMutationPayload
     When method post
     Then def propertyTaxMutationResponse = response
     And  assert responseStatus == 200
@@ -195,7 +195,7 @@ Scenario: To Calculate property tax
 Scenario: Negative pretest to Calculate property tax
     Given url mutationCalculate
     And request propertyTaxMutationPayload
-        * print propertyTaxMutationPayload
+        # * print propertyTaxMutationPayload
     When method post
     Then def propertyTaxMutationResponse = response
      And  status 400
@@ -211,7 +211,7 @@ Scenario: To Calculate property tax estimate
     Given url propertyTaxEstimate
     And params params
     And request propertyTaxEstimatePayload
-        * print propertyTaxEstimatePayload
+        # * print propertyTaxEstimatePayload
     When method post
     Then def propertyTaxEstimateResponse = response
     And  assert responseStatus == 200

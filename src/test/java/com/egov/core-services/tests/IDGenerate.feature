@@ -1,7 +1,7 @@
 Feature: Core service - IDGenerate
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     #* def javaUtils = Java.type('com.egov.base.EGovTest')
     * def idGenServiceConstants = read('../constants/idGenerate.yaml')
     # Common global Constants

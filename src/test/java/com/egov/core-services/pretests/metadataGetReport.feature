@@ -1,9 +1,9 @@
 Feature: Metadata get reports
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def reportPayload = read('../../core-services/requestPayload/reports/metadataGetReport.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 
         @getReportMetadataSuccessfully
