@@ -4,9 +4,9 @@ Background:
   * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   #egfInstrumet-InstrumentsAccountCode Requests
-  * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/create.json')
-  * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/update.json')
-  * def instrumentAccountCodeSearchRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/search.json')
+  * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/egf-instrument/instrumentAccountCode/create.json')
+  * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/egf-instrument/instrumentAccountCode/update.json')
+  * def instrumentAccountCodeSearchRequest = read('../../business-services/requestPayload/egf-instrument/instrumentAccountCode/search.json')
 
   # Instrument Account Code pretests
 
