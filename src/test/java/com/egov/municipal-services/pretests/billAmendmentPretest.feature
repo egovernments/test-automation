@@ -1,6 +1,6 @@
 Feature: Bill Amendment Service pretests
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def createBillAmendmentRequest = read('../../municipal-services/requestPayload/billAmendment/create.json')
     * def searchBillAmendmentRequest = read('../../municipal-services/requestPayload/billAmendment/search.json')
     * def updateBillAmendmentRequest = read('../../municipal-services/requestPayload/billAmendment/update.json')
