@@ -95,8 +95,8 @@ public class ExtentReportHook implements ExecutionHook {
 			tags = tags.substring(1,  tags.length());
             if(matchingTags.size() > 0){
             	scenarioTest = ExtentManager.getInstance().createTest("<b>SCENARIO :   </b>" + result.getScenario().getName());
-            	scenarioTest.info("<b>FEATURE :   </b>" + result.getScenario().getFeature().getName());
-            	scenarioTest.assignCategory(result.getScenario().getFeature().getName());
+            	scenarioTest.info("<b>FEATURE :   </b>" + result.getScenario().getFeature().getPath().getFileName().toString());
+            	scenarioTest.assignCategory(result.getScenario().getFeature().getPath().getFileName().toString());
             	scenarioTest.info("<b>TAGS :   </b>" + tags);
                 if (Status == "FAILED") {
                     scenarioTest.fail(MarkupHelper.createLabel("<b>STATUS :   </b>" + Status, ExtentColor.RED));
