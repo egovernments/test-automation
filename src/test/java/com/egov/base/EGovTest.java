@@ -32,19 +32,42 @@ public class EGovTest {
 	}
 
 	@Test
-	public void testParallel() {
+	public void testParallelCoreServices() {
 		/* Cannot run tests in parallel as some feature file are dependant on others
 		and karate runs all feature fils in parallel.
 		So below the below parallel no of threads is set to 1.
 		*/
-		// List<String> tags = Arrays.asList(System.getProperty("tags").split(","));
 		String tags = System.getProperty("tags");
 		String[] paths = "classpath:com/egov".split(",");
-		Results stats1 = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		Results stats2 = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		Results stats3 = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		assertTrue("there are scenario failures", (stats1.getFailCount() + stats2.getFailCount() + stats3.getFailCount()) == 0);
+		Results stats = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
 	}
+
+	@Test
+	public void testParallelBusinessServices() {
+		/* Cannot run tests in parallel as some feature file are dependant on others
+		and karate runs all feature fils in parallel.
+		So below the below parallel no of threads is set to 1.
+		*/
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
+	}
+
+	@Test
+	public void testParallelMunicipalServices() {
+		/* Cannot run tests in parallel as some feature file are dependant on others
+		and karate runs all feature fils in parallel.
+		So below the below parallel no of threads is set to 1.
+		*/
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
+	}
+
+
 
 	@AfterClass
 	public static void after(){
