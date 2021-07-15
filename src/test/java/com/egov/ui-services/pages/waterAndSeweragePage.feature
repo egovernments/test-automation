@@ -20,9 +20,9 @@ Scenario: Search water and sewerage by unique id and make full payment
     * waitFor(wSPO.payerMobileNoField).input(mobileNumber)
 	* retry(3, 5000).waitFor(wSPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(wSPO.paymentReceiptNo)
-	* def paymentReceiptNumber = text(wSPO.paymentReceiptNo)
-	* print paymentReceiptNumber
+	* retry(6, 5000).waitFor(wsPageObjects.paymentReceiptNo)
+	* def paymentReceiptNumber = text(wsPageObjects.paymentReceiptNo)
+	# * print paymentReceiptNumber
 
 @makePartialPayment
 Scenario: Search water and sewerage by unique id and make partial payment
@@ -44,6 +44,6 @@ Scenario: Search water and sewerage by unique id and make partial payment
 	* input(wSPO.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
 	* waitFor(wSPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(wSPO.paymentReceiptNo)
-	* def paymentReceiptNumber = text(wSPO.paymentReceiptNo)
-	* print paymentReceiptNumber
+	* retry(6, 5000).waitFor(wsPageObjects.paymentReceiptNo)
+	* def paymentReceiptNumber = text(wsPageObjects.paymentReceiptNo)
+	# * print paymentReceiptNumber

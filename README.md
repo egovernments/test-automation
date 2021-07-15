@@ -218,27 +218,32 @@ To start the test execution in `local`,
  * Open command prompt or terminal 
  * Navigate to project folder and execute,
  ```
- mvn clean test "-DconfigPath= <path of the environment config. file>" "-Dkarate.options=--tags @<tag1,tag2> classpath:com/egov"
+ mvn clean test "-DconfigPath= <path of the environment config. file>" "-tags=@<tag1,tag2>"
  ```
  ### For example 
- `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dkarate.options=--tags @searchMdms,@eGovUser classpath:com/egov"`  
+ `mvn clean test "-DconfigPath= /User/apple/Documents/config.yaml" "-Dtags=@searchMdms,@eGovUser"`  
 
 <!--Reporting-->
 ## Reporting
 Follow below step to find location of reports generated post test execution to analyze the results.
-  
+
+### Cucumber HTML Report
 * A folder with `timestamp` will be created under `./target/`. 
 * Navigate to `./target/<timestamp>/cucumber-html-reports`
 * Open `overview-features.html`
-### A snapshot is attached for reference.
+#### A snapshot is attached for reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
- 
 
-## RUN API TEST CASES
-mvn clean install "-DconfigPath=/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/qa.yaml" "-Dtags=@coreServices"
+### Extent HTML Report
+* A folder with `extent-reports` will be created under `./target/`. 
+* Navigate to `./target/extent-reports/`
+* Open `eGov_Extent_Report_<timestamp>.html`
+#### A snapshot is attached for reference.
+* Dashboard View -
+<img width="1440" alt="Dashboard View" src="https://user-images.githubusercontent.com/77260934/124913124-61349f00-e00c-11eb-98de-68ea1946b264.png">
 
+* Tagwise/Modulewise View -
+<img width="1440" alt="Tag Or Module View" src="https://user-images.githubusercontent.com/77260934/124913276-917c3d80-e00c-11eb-9c23-0c56fddb0a31.png">
 
-## RUN UI TEST CASES
-
-cd /Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/.vscode
-mvn clean install "-DconfigPath=/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/qa.yaml" "-Dtags=@dummyMobileBrowser"
+* All Tests View -
+<img width="1440" alt="All_Tests_View" src="https://user-images.githubusercontent.com/77260934/124913495-cee0cb00-e00c-11eb-861d-dac86e560ca3.png">

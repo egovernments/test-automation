@@ -46,7 +46,6 @@ Scenario Outline: Create Property and approve property Verification
     Examples:
     | deviceConfigs      |
 
-
 @rejectPropertyFromDocVerifierUIFlow
 Scenario Outline: Create Property and reject property Verification From Doc Verifer
     * def browserTestName = karate.info.scenarioName + ' - @dummyMobileBrowser - '
@@ -86,16 +85,6 @@ Scenario Outline: Create Property and reject property Verification From Doc Veri
     * call read('../../ui-services/pages/propertyTaxPage.feature@sendBackToCitizenFromDocVerifier')
     Examples:
     | deviceConfigs      |
-
-    
-
-
-
-
-
-
-
-
 
 
 

@@ -4,8 +4,8 @@
         * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-        * def instrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/create.json')
-        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/search.json')
+        * def instrumentTypesPayload = read('../../business-services/requestPayload/egf-instrument/instrumentType/create.json')
+        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/egf-instrument/instrumentType/search.json')
         # Instrument types details
         * def id = randomString(5)
         * def name = "Instrument_"+randomString(3)

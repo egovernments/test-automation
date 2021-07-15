@@ -11,14 +11,14 @@ Background:
      * def genericError = read("../../common-services/constants/genericConstants.yaml")
      * def updateUserPasswordNoLogin = read('../../core-services/requestPayload/user/updatePasswordNoLogin/updatePasswordNoLogin.json')
 
-@Update_NoLogin_Password_InValidOTP_02 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_InValidOTP_02 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message for invalid OTP
         # Steps to update user's password without logged in
         * call read('../../core-services/pretests/eGovUserUpdatePretest.feature@errorInUpdatePasswordNoLogin')
         # Validate actual error message returned by API for unsuccessful OTP validation
         * match updatedPasswordWithOutLogin.error.fields[0].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_NoOtpReference_03 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_NoOtpReference_03 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when otpSignal is missing
         # Remove otpReference field from request
         * remove updateUserPasswordNoLogin.otpReference
@@ -27,7 +27,7 @@ Scenario: To validate error message when otpSignal is missing
         # Validate actual error retured by API should equal to expected error message
         * match updatedPasswordWithOutLogin['error'].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_NoNewPassword_04 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_NoNewPassword_04 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when newPassword is missing
         # Remove newPassword field from request
         * remove updateUserPasswordNoLogin.newPassword
@@ -36,7 +36,7 @@ Scenario: To validate error message when newPassword is missing
         # Validate actual error retured by API should equal to expected error messages
         * match updatedPasswordWithOutLogin['error'].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_NoUserName_05 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_NoUserName_05 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when username is missing
         # Remove userName field from request
         * remove updateUserPasswordNoLogin.userName
@@ -45,7 +45,7 @@ Scenario: To validate error message when username is missing
         # Validate actual error retured by API should equal to expected error messages
         * match updatedPasswordWithOutLogin['error'].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_NotenantId_06 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_NotenantId_06 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when tenantId is missing
         # Remove userName field from request
         * remove updateUserPasswordNoLogin.tenantId
@@ -54,7 +54,7 @@ Scenario: To validate error message when tenantId is missing
         # Validate actual error retured by API should equal to expected error messages
         * match updatedPasswordWithOutLogin['error'].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_Notype_07 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_Notype_07 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when type is missing
         # Remove type field from request
         * remove updateUserPasswordNoLogin.type
@@ -63,7 +63,7 @@ Scenario: To validate error message when type is missing
         # Validate actual error retured by API should equal to expected error messages
         * match updatedPasswordWithOutLogin['error'].message == errorMessage.errormessages.invalidOTP
 
-@Update_NoLogin_Password_InValidUserName_08 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_InValidUserName_08 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when userName is invalid
         # Set invalid value to the userName field 
         * set updateUserPasswordNoLogin.userName = ranString(10)
@@ -72,7 +72,7 @@ Scenario: To validate error message when userName is invalid
         # Validate actual error retured by API should equal to expected error messages for invalid userName
         * match updatedPasswordWithOutLogin.Errors[0].code == errorMessage.errormessages.userNotFoundCode
 
-@Update_NoLogin_Password_InValidtenantId_09 @coreServicesDontRun @regression @negative @userPasswordNoLogin @eGovUser
+@Update_NoLogin_Password_InValidtenantId_09 @coreServices @regression @negative @userPasswordNoLogin @eGovUser
 Scenario: To validate error message when tenantId is invalid
         # Set invalid value to the tenantId field 
         * set updateUserPasswordNoLogin.tenantId = ranString(10)

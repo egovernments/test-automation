@@ -11,7 +11,9 @@ Background:
                 var browserstackConfig = configResult.browserstackConfig;
                 return browserstackConfig;
             }else{
-                return deviceConfigs[__num];
+                var localConfig = deviceConfigs[__num];
+                delete localConfig.run;
+                return localConfig;
             }
         }
     """
@@ -242,6 +244,7 @@ Background:
 @initializeDriver
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()
+    * remove driverConfig.run
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
     * driver envHost
@@ -258,6 +261,7 @@ Scenario: Take screenshot
 @createBrowserStackConfig
 Scenario: Create Browserstack Config
     * def deviceCapabilities = deviceConfigs[__num]
+    * eval karate.remove('deviceCapabilities', '$.run')
 	* def driverUrl = 'https://' + browserstackUsername + ':' + browserstackKey + '@' + browserstackUrl + '/wd/hub'
     * eval commonCapabilities.build = (karate.match(typeof browserstackBuildName, 'undefined').pass) ? commonCapabilities.build + currentEpochTime : browserstackBuildName
     * def desiredCapabilities = karate.merge(deviceCapabilities, commonCapabilities)

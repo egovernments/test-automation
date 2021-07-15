@@ -395,6 +395,7 @@ function() {
         config.vehicalTripSearchFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripSearch
         config.vehicalTripUpdateFsmEvent = envProps.host + path.endPoints.fsmService.vehicalTripUpdate
         config.paymentsCreateFsmEvent = envProps.host + path.endPoints.fsmService.paymentsCreate
+        config.inboxSearchFsmEvent = envProps.host + path.endPoints.fsmService.inboxSearch
 
         // eChallan Service
         config.createEchallanEvent = envProps.host + path.endPoints.echallanService.create
@@ -407,6 +408,11 @@ function() {
         config.searchFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.search
         config.calculateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.calculate
         config.estimateFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.estimate
+
+        //bill Amendment service
+        config.createBilAmendment = envProps.host + path.endPoints.billAmendment.create
+        config.updateBilAmendment = envProps.host + path.endPoints.billAmendment.update
+        config.searchBilAmendment = envProps.host + path.endPoints.billAmendment.search
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
@@ -475,32 +481,32 @@ function() {
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
-   
-        if(karate.properties['useBrowserstack']){
-            config.browserstack = 'yes';
-            var driverConfigJson = karate.read('file:' + karate.properties['useBrowserstack']);
-            config.deviceConfigs = driverConfigJson.environments;
-            config.browserstackUrl = driverConfigJson.server;
-            config.browserstackUsername = driverConfigJson.user;
-            config.browserstackKey = driverConfigJson.key;
-            config.commonCapabilities = driverConfigJson.capabilities;
-            if(karate.properties['browserstackBuildName']){
-                config.browserstackBuildName = karate.properties['browserstackBuildName'];
+        if (karate.properties['browserConfig']) {
+            var deviceConfigDetails = karate.read('file:' + karate.properties['browserConfig']);
+            if (deviceConfigDetails.type == 'browserstack') {
+                config.browserstack = 'yes';
+                config.deviceConfigs = karate.jsonPath(deviceConfigDetails, "$.environments[?(@.run=='true')]")
+                config.browserstackUrl = deviceConfigDetails.server;
+                config.browserstackUsername = deviceConfigDetails.user;
+                config.browserstackKey = deviceConfigDetails.key;
+                config.commonCapabilities = deviceConfigDetails.capabilities;
+                if (karate.properties['browserstackBuildName']) {
+                    config.browserstackBuildName = karate.properties['browserstackBuildName'];
+                }
+                if (java.lang.System.getenv("BROWSERSTACK_BUILD_NAME") != null) {
+                    config.browserstackBuildName = java.lang.System.getenv("BROWSERSTACK_BUILD_NAME");
+                }
+        
+                var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
+                config.currentEpochTime = driverResult.currentEpochTime;
+            } else if (deviceConfigDetails.type == 'local') {
+                config.browserstack = 'no';
+                var localConfigs = karate.jsonPath(deviceConfigDetails, "$.capabilities[?(@.run=='true')]");
+                config.deviceConfigs = localConfigs
             }
-            if(java.lang.System.getenv("BROWSERSTACK_BUILD_NAME") != null){
-                config.browserstackBuildName = java.lang.System.getenv("BROWSERSTACK_BUILD_NAME");
-            }
-
-            var driverResult = karate.callSingle('../../ui-services/utils/driver.feature@getCurrentEpochTime', config);
-            config.currentEpochTime = driverResult.currentEpochTime;
-        }else{
-            config.browserstack = 'no';
-            config.deviceConfigs = [
-            {type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2}},
-            //{type: 'geckodriver', executable: '/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/geckodriver' }
-        ];
         }
 
+    karate.log(config.deviceConfigs);
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', config.tenantId);

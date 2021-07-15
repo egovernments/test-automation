@@ -86,7 +86,7 @@ Scenario: Update NOC With InValid Data
     And request updateNOCRequest 
     When method post
     # * print response
-    Then statu 400
+    Then status 400
     And def nocResponseHeaders = responseHeaders 
     And def nocResponseBody = response
     # * print nocResponseBody
