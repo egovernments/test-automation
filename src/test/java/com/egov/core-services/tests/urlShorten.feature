@@ -1,6 +1,6 @@
 Feature: Verify Using API call, shorten the given url
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def urlShortenConstant = read('../../core-services/constants/urlShortening.yaml')
 
 @url_Shorterning_Invalid @regression @coreServices

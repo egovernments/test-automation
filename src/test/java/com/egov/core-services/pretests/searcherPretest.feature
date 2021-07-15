@@ -2,10 +2,10 @@ Feature: Searcher API call
 
         Background:
 
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   	# calling searcher Json
   * def searcherRequest = read('../requestPayload/searcher/searcher.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 
         @searchSuccessfully

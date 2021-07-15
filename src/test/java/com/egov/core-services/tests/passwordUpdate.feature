@@ -1,7 +1,7 @@
 Feature: eGov_User - This feature is to test Update user's password scenarios
 
 Background:
-     * def jsUtils = read('classpath:jsUtils.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
      * call read('../../common-services/pretests/authenticationToken.feature@authTokenCounterEmployee')
      * def errorMessage = read('../../core-services/constants/user.yaml')
      * def genericError = read("../../common-services/constants/genericConstants.yaml")

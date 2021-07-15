@@ -9,7 +9,7 @@ Feature: Generated pdf successfully
 * def pdfCreatePayloadSecond = pdfCreatePayload.PT
 * def pdfCreatePayloadThird = pdfCreatePayload.FireNoc
 * def pdfCreatePayloadFourth = pdfCreatePayload.WS
-* configure headers = read('classpath:websCommonHeaders.js') 
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
 
         @createPdfSuccessfully
         Scenario: Create PDF Successfully

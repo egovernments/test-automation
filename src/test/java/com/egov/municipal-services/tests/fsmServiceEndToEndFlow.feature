@@ -1,7 +1,7 @@
 Feature: FSM Service - End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def propertyType = mdmsStateFsmService.PropertyType[1].code
     * def vehicalType = mdmsStateFsmService.VehicleType[2].code
@@ -29,6 +29,8 @@ Background:
     * def pitDetails = randomMobileNumGen(1)
     * def trip = 2220
     * def businessService = "FSM"
+    * def cash = "CASH"
+    * def owner = "OWNER"
     
 @createFsmAsCitizen @fsmEndToEnd @e2eServices
 Scenario: Login as a citizen
@@ -58,15 +60,18 @@ Scenario: Login as a citizen
     * def getFsmSearchParam = { tenantId: '#(tenantId)'}
     * call read('../../municipal-services/tests/fsmService.feature@trip_search_01')
     # need to create FSM Calculator Billing slab api
+
+    # update FSM
+    * call read('../../municipal-services/tests/fsmService.feature@fsm_payment_01')
     * call read('../../municipal-services/tests/fsmServiceEndToEndFlow.feature@fsm_billing_slab_calculate_1')
     # update FSM --> update the workflow to SUBMIT
     * set fsmbody.workflow.action = "SUBMIT"
-    * call read('../../municipal-services/tests/fsmService.feature@fsm_update_without_creation')
     # need to create FSM Calculator Estimate api
     *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_estimate_1') 
     # need to create FSM Calculator Demand Create
     *  call read('../../municipal-services/tests/fsmService.feature@fsm_billing_slab_calculate_1') 
-
+    # login to citizon for payment 
+    * def authToken = citizenAuthToken
 
 @createFsmAsCitizen @fsmEndToEnd @e2eServices
 Scenario: Login as a citizen and create FSM
@@ -135,4 +140,3 @@ Scenario: Login as FSPTO and dispose waste
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripCreateFsmSuccessfully')
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@vehicalTripUpdateFsmSuccessfully')
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@SearchFsmSuccessfully')
-    

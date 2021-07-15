@@ -3,9 +3,9 @@ Feature: eGov egovWorkflowBusniessServiceDontRun service with create, search & u
 # This script is under development or piece of code is missing
 
         Background:
-                * def jsUtils = read('classpath:jsUtils.js')
-                * configure headers = read('classpath:websCommonHeaders.js')
-                * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusniessServiceDontRun.yaml')
+                * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+                * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+                * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusinessService.yaml')
                 * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
                 * call read('../../core-services/pretests/workFlowPretest.feature@SuccessSearchWorkFlowGeneric')
 

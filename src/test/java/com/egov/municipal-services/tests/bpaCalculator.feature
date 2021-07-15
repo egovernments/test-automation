@@ -1,7 +1,7 @@
 Feature: BPA Calculator Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def bpaConstants = read('../../municipal-services/constants/bpaServices.yaml')
     * def index = randomNumber(mdmsStateBPA.CalculationType.length)

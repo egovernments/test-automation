@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
 import com.intuit.karate.KarateOptions;
+import com.egov.utils.ExtentReportHook;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 
@@ -24,10 +25,10 @@ import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
 
-@KarateOptions(features = {"classpath:com/egov"},
-	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
-			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
-			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
+// @KarateOptions(features = {"classpath:com/egov"},
+// 	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
+// 			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
+// 			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
 
 public class EGovTest {
 	static String karateOutputPath = "target/surefire-reports";
@@ -42,8 +43,10 @@ public class EGovTest {
 		and karate runs all feature fils in parallel.
 		So below the below parallel no of threads is set to 1.
 		*/
-
-		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
+		// List<String> tags = Arrays.asList(System.getProperty("tags").split(","));
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags).reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
 		
 		assertTrue("there are scenario failures", stats.getFailCount() == 0);
 	}
@@ -60,7 +63,7 @@ public class EGovTest {
 		String currentDate = dateFormat.format(date);
 
 		Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
-		List<String> jsonPaths = new ArrayList(jsonFiles.size());
+		List<String> jsonPaths = new ArrayList<String>(jsonFiles.size());
 		jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
 		
 		// To Store reports in other location in system

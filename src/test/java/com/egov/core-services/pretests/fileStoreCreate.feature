@@ -1,6 +1,6 @@
 Feature: FileStore create API call
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   # initializing the headers, form-data and other variables required for file upload
   * def fileContentTypeHeader = 'multipart/form-data;boundary=----WebKitFormBoundaryBDVBPRx02pZ7ePhq'
   * def fileContentType = 'application/pdf'

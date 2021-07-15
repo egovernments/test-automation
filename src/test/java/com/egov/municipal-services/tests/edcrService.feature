@@ -1,7 +1,7 @@
 Feature: DCR Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def transactionNumber = randomString(20)
     * def applicantName = 'AUTO_NAME_' + ranInteger(10)
     * def appliactionType = mdmsStateBPA.ApplicationType[0].code
@@ -111,7 +111,7 @@ Scenario: Verify by not passing null or invalid value for tenant id
 Scenario: Verify by not passing comma separated values
     * def transactionNumber = commonConstants.invalidParameters.invalidValue
     * def searchScrutinyParams = { tenantId: '#(tenantId)', transactionNumber: '#(transactionNumber)'}
-    * print searchScrutinyParams
+    # * print searchScrutinyParams
     * call read('../../municipal-services/pretests/dcrServicesPretest.feature@searchScrutinySuccessfully')
     * match scrunityResponseBody == dcrConstants.errorMessages.noRecords
 

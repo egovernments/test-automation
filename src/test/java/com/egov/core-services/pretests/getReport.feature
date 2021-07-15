@@ -1,9 +1,9 @@
 Feature: Get reports
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def getReportPayload = read('../../core-services/requestPayload/reports/getReport.json')
-* configure headers = read('classpath:websCommonHeaders.js')
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
         @getReportSuccessfully
         Scenario: Get Report Successfully

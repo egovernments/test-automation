@@ -4,8 +4,8 @@ Feature: Business Services - Apportion service tests
      * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
      * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
      * def Bills = fetchBillResponse.Bill
-     * def jsUtils = read('classpath:jsUtils.js')
-     * configure headers = read('classpath:websCommonHeaders.js')
+     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+     * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
      * def apportionServiceData = read('../../business-services/constants/apportionService.yaml')
      * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
      * def businessService = apportionServiceData.parameters.businessService
@@ -126,7 +126,7 @@ Feature: Business Services - Apportion service tests
      * assert apportionResponseBody.Bills[0].billDetails.length != 0
      * assert apportionResponseBody.Bills[0].totalAmount == totalAmount
      * assert apportionResponseBody.Bills[0].amountPaid == amountPaid
-     * print apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].amount
+     # * print apportionResponseBody.Bills[0].billDetails[0].billAccountDetails[3].amount
 
    @apportion_bill_VerifyOrder_15 @businessServices @regression @positive @apportionService @ignore
    Scenario: Test to apportion a bill with an Order

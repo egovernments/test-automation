@@ -1,8 +1,8 @@
 Feature: Pretest scenarios of egf-instrumentAccountCode service end points
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   #egfInstrumet-InstrumentsAccountCode Requests
   * def instrumentAccountCodeCreateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/create.json')
   * def instrumentAccountCodeUpdateRequest = read('../../business-services/requestPayload/dashboard-analytics/instrumentAccountCode/update.json')
@@ -56,7 +56,7 @@ Background:
     Scenario: To update instrument types
     Given url instrumentAccountCodeUpdate
     And request instrumentAccountCodeUpdateRequest
-    * print instrumentUpdateRequest
+    # * print instrumentUpdateRequest
     When method post
     Then assert responseStatus == 201
     And def updateInstrumentAccountCodeResponse = response
@@ -65,7 +65,7 @@ Background:
     Scenario: error in update instrument types
     Given url instrumentAccountCodeUpdate
     And request instrumentAccountCodeUpdateRequest
-    * print instrumentUpdateRequest
+    # * print instrumentUpdateRequest
     When method post
     Then status 400
     And def updateInstrumentAccountCodeResponse = response
@@ -74,7 +74,7 @@ Background:
     Scenario: error in update instrument types
     Given url instrumentAccountCodeUpdate
     And request instrumentAccountCodeUpdateRequest
-    * print instrumentUpdateRequest
+    # * print instrumentUpdateRequest
     When method post
     Then status 403
     And def updateInstrumentAccountCodeResponse = response

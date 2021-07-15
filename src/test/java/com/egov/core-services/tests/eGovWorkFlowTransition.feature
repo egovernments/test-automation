@@ -1,6 +1,6 @@
 Feature: eGovWorkflow process transition
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   
   # This feature testing was blocked. Need to update
   * call read('../../municipal-services/tests/PropertyService.feature@createProperty')

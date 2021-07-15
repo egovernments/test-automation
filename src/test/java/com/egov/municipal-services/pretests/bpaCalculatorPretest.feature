@@ -1,13 +1,13 @@
 Feature: BPA-Calculator pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def calculateBPARequest = read('../../municipal-services/requestPayload/bpa-calculator/calculate.json')
 
     @calcuateBPASuccessfully
     Scenario: Calculate BPA successfully
         Given url calculateBPA
         And request calculateBPARequest
-        * print calculateBPARequest
+        # * print calculateBPARequest
         When method post
         Then status 200
         And def bpaResponseHeaders = responseHeaders

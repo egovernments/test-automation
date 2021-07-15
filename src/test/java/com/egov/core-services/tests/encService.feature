@@ -2,8 +2,8 @@ Feature: enc-Service API call
 
 Background:
   # read the javascript utils file for using generic methods
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def encServiceData = read('../constants/encService.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   # initializing request payload objects

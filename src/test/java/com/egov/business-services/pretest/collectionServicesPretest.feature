@@ -1,7 +1,7 @@
 Feature: Business services - collection service calls
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def collectionServicesConstants = read('../../business-services/constants/collection-services.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def tenantId = tenantId
@@ -24,7 +24,7 @@ Background:
   * def workflowRequest = read('../../business-services/requestPayload/collection-services/workflow.json')
   * def searchPaymentRequest = read('../../business-services/requestPayload/collection-services/search.json')
   * def createPaymentRequestForCheque = read('../../business-services/requestPayload/collection-services/createPaymentWithCheque.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def invalidBillId = 'invalid_'+randomNumber(4)
   * def invalidBusinessId = 'PT'+randomNumber(4)
   * def invalidPaymentMode = randomString(4)
@@ -36,7 +36,7 @@ Background:
 Scenario: Common test to create a Payment 
   Given url payment
   And request createPaymentRequest
-  * print createPaymentRequest
+  # * print createPaymentRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
@@ -192,12 +192,12 @@ Scenario: Common negative pre test of creating a Payment
   Scenario: Collection Service success workflow call
   Given url collectionServiceWorkflowUrl 
   And request workflowRequest
-  * print workflowRequest
+  # * print workflowRequest
   When method post
   Then status 200
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-  * print response
+  # * print response
 
 # Search Payment
 

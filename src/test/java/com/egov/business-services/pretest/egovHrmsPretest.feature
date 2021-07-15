@@ -1,13 +1,13 @@
 Feature: HRMS API call
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   	# calling localization Json
   * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
   * def searchEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/search.json')
   * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
         @createEmployeeSuccessfully
         Scenario: hrms create employee successfully

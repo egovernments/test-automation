@@ -1,19 +1,19 @@
 Feature: Business services - billing service demand calls
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def createDemandRequest = read('../../business-services/requestPayload/billing-service-demand/create.json')
   * def searchDemandRequest = read('../../business-services/requestPayload/billing-service-demand/search.json')
   * def updateDemandRequest = read('../../business-services/requestPayload/billing-service-demand/update.json')
   
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
         @createBillDemand
         Scenario: Create Demand success Call
             Given url createDemandUrl
-            * print createDemandRequest
+            # * print createDemandRequest
               And request createDemandRequest
              When method post
              Then status 201

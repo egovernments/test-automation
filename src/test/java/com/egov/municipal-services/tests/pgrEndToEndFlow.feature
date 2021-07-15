@@ -1,7 +1,7 @@
 Feature: PGR Service for End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Collections = Java.type('java.util.Collections')
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(5000)

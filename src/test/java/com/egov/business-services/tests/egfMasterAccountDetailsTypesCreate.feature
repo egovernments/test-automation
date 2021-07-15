@@ -1,7 +1,7 @@
 Feature: Account Details Type Create
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterAccountDetailTypesConstant = read('../../business-services/constants/egfMaster.yaml')
   * def branchName = randomString(10)

@@ -5,7 +5,7 @@ Background:
 
 @searchWorkflowProcessCountSuccessfully
 Scenario: search workflow process using business id
-  * configure headers = read('classpath:websCommonHeaders.js') 
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') 
   * def processCountParam = 
     """
     {

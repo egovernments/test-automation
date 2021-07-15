@@ -1,7 +1,7 @@
 Feature: Pretest scenarios of egf-master account details types service end points
 Background:
-      * def jsUtils = read('classpath:jsUtils.js')
-      * configure headers = read('classpath:websCommonHeaders.js')
+      * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+      * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
       * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml') 
       * def accountDetailTypesCreatePayload = read('../../business-services/requestPayload/egf-master/accountDetailTypes/create.json')
       * def accountDetailTypesUpdatePayload = read('../../business-services/requestPayload/egf-master/accountDetailTypes/update.json')

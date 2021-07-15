@@ -4,7 +4,7 @@ Feature: Localization Messages API call
 		# calling localization Json
   * def localizationSearchRequest = read('../../core-services/requestPayload/localization/localizationMsg.json')
   * def localizationV2SearchRequest = read('../../core-services/requestPayload/localization/v2SearchMsg.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   
         @searchLocalizationMessageSuccessfully
         Scenario: Search Localization Message Successfully

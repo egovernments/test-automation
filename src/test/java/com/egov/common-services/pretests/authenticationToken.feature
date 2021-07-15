@@ -1,9 +1,9 @@
 Feature: Auth token Creation for Employee
 
 Background:
-  * configure headers = read('classpath:oauthTokenHeader.js')
-  * print authTokenUrl
-  * print tenantId
+  * configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+  # * print authTokenUrl
+  # * print tenantId
   
   @authTokenSuperuser
   Scenario: Auth token Creation scenario 
@@ -20,7 +20,7 @@ Background:
 		And def authResponseHeader = responseHeaders
    	    And def authToken = authResponseBody.access_token
 	   And def id = authResponseBody.UserRequest.uuid
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
 @authTokenCitizen
@@ -38,7 +38,7 @@ Scenario: Auth token Creation for citizen
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
 	And def id = authResponseBody.UserRequest.uuid
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
 @authTokenOfAltCitizen
@@ -55,7 +55,7 @@ Scenario: Auth token Creation for alternative citizen
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
 @authTokenApprover
@@ -72,7 +72,7 @@ Scenario: Auth token Creation for approver
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
 @authTokenCounterEmployee
@@ -89,7 +89,7 @@ Scenario: Auth token Creation for CounterEmpl
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token
+   # * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
 
 @authTokenDocVerifierTL
@@ -106,7 +106,7 @@ Scenario: Auth token Creation for CounterEmpl
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token
+   # * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
 
 @authTokenFieldInspectorTL
@@ -123,7 +123,7 @@ Scenario: Auth token Creation for CounterEmpl
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token
+   # * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
 
 @authTokenApproverTL
@@ -140,31 +140,31 @@ Scenario: Auth token Creation for CounterEmpl
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
-   * print authResponseBody.access_token
+   # * print authResponseBody.access_token
    * match authResponseBody.access_token == '#present'
    
 @authTokenCitizenForBPAStakeholder
 Scenario: Auth token Creation for citizen
         Given url authTokenUrl
         And form field username = intergerToString(citizenUsername3)
-		* print intergerToString(citizenUsername3)
+		# * print intergerToString(citizenUsername3)
 		And form field password = citizenPassword3
-		* print citizenPassword3
+		# * print citizenPassword3
 
 		And form field grant_type = 'password'
 		And form field scope = 'read'
 		And form field tenantId = tenantId
 		And form field userType = "CITIZEN"
-		* print tenantId
-		* print citizenType
+		# * print tenantId
+		# * print citizenType
 		When method post
 		Then status 200
-		* print authResponseBody
+		# * print authResponseBody
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
 	And def id = authResponseBody.UserRequest.uuid
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
 
 
@@ -183,5 +183,5 @@ Scenario: Auth token Creation for citizen
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
 	And def id = authResponseBody.UserRequest.uuid
-   * print authResponseBody.access_token 
+   # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'

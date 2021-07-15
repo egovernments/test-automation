@@ -1,7 +1,7 @@
  Feature: To test egf-master-chartOfAccountDetails service 'Create' endpoint
 
     Background: 
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml')
         # Required parameters to create acccount
         * def glcode = ranInteger(6)

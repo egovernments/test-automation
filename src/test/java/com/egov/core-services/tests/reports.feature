@@ -1,7 +1,7 @@
 Feature: Reports
 
   Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def reportConstant = read('../../core-services/constants/reports.yaml')
   # initializing get report request payload objects
   * def reportName = reportConstant.parameters.reportName

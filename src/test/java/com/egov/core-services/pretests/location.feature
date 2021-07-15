@@ -1,8 +1,8 @@
 Feature: Location
 
         Background:
-  * configure headers = read('classpath:websCommonHeaders.js')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def locationconstant = read('../../core-services/constants/location.yaml')
   * def locationPayload = read('../../core-services/requestPayload/location/searchLocation.json')
 

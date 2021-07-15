@@ -24,8 +24,8 @@ Scenario: sewerage connection create - Invalid Property ID
   Given url createSewerageConnection 
   And request sewerageCreateRequest
   When method post
-  * print response
-  * print responseStatus
+  # * print response
+  # * print responseStatus
   And def sewerageResponseHeader = responseHeaders
   And def sewerageResponseBody = response
 
@@ -33,11 +33,11 @@ Scenario: sewerage connection create - Invalid Property ID
 Scenario: Search a Sewerage Connection with Valid Parameters
 	Given  url searchSewerageConnection 
 	And params searchSewerageConnectionParams
-  * print searchSewerageConnectionParams
+  # * print searchSewerageConnectionParams
 	And request searchPropertyRequest
 	When method post
 	Then status 200 
-        * print response
+        # * print response
 	And def sewerageResponseHeader = responseHeaders 
 	And def sewerageResponseBody = response
   And def sewerageConnection = sewerageResponseBody.SewerageConnections[0]
@@ -50,7 +50,7 @@ Scenario: Search a Sewerage Connection with InValid Parameters
 	And params searchSewerageConnectionParams
 	And request searchPropertyRequest
 	When method post
-        * print response
+        # * print response
   And def sewerageResponseHeader = responseHeaders 
 	And def sewerageResponseBody = response
 
@@ -66,7 +66,7 @@ Scenario: Search a Sewerage Connection with Valid Parameters
 	And request sewerageUpdateRequest
 	When method post
 	Then status 200 
-        * print response
+        # * print response
 	And def sewerageResponseHeader = responseHeaders 
 	And def sewerageResponseBody = response
   And def sewerageConnection = sewerageResponseBody.SewerageConnections[0]
@@ -80,7 +80,7 @@ Scenario: Update a Sewerage Connection with invalid Parameters
 	And request sewerageUpdateRequest
 	When method post
 	Then status 200 
-    * print response
+    # * print response
 	And def sewerageResponseHeader = responseHeaders 
 	And def sewerageResponseBody = response
   And def sewerageConnection = sewerageResponseBody.SewerageConnections[0]

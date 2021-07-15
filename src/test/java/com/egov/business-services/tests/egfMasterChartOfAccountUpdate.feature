@@ -1,7 +1,7 @@
 Feature: Chart of account Update
 Background:
   * call read('../../business-services/tests/egfMasterChartOfAccountCreate.feature@ChartOfAccountCreate_01')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterChartOfAccountConstant = read('../../business-services/constants/egfMaster.yaml')
   * def invalidTenantId = ranString(3)

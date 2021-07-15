@@ -1,13 +1,13 @@
 Feature: Update a payment transaction
 
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def pgServicesUpdatePayload = read('../../core-services/requestPayload/pg-service/pgServicesUpdate.json')
 
         @updatePgTransactionSuccessfully
         Scenario: Update Payment Gateway Transaction Successfully
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionSuccessfully')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
     {
@@ -27,7 +27,7 @@ Feature: Update a payment transaction
         
         @invalidTransactionIdError
         Scenario: Update Payment Gateway Transaction Error
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
     {
@@ -49,7 +49,7 @@ Feature: Update a payment transaction
         @updatePgTransactionError
         Scenario: Update Payment Gateway Transaction Error
   * call read('../../core-services/pretests/pgServiceCreate.feature@createPgTransactionError')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
     {
@@ -70,7 +70,7 @@ Feature: Update a payment transaction
 
         @withouttransactionidpgservicefail
         Scenario: Update a payment transaction
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
             Given url pgServicesUpdate
      
               And request pgServicesUpdatePayload
@@ -83,7 +83,7 @@ Feature: Update a payment transaction
 
 @updateTransactionOnly
 Scenario: To update Payment Gateway transaction only
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def pgServicesUpdateParam = 
     """
     {
@@ -93,7 +93,7 @@ Scenario: To update Payment Gateway transaction only
       Given url pgServicesUpdate
       And params pgServicesUpdateParam
      And request pgServicesUpdatePayload
-      * print pgServicesUpdatePayload
+      # * print pgServicesUpdatePayload
      When method post
      Then status 200
      And def pgServicesUpdateResponseHeader = responseHeaders

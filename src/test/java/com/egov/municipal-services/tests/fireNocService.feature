@@ -1,7 +1,7 @@
 Feature: Fire NOC Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(3000)
     * def propertyLocalityCity = mdmsStateFireNocService.FireStations[0].city

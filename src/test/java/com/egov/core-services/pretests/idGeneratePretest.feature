@@ -3,7 +3,7 @@ Feature: IDGenerate API call
         Background:
 	# reading idgenerate request payload Json
   * def idGenerateRequest = read('../../core-services/requestPayload/id-generate/idgenerate.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 
         @idGenerateSuccessfully

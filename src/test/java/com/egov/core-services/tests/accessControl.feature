@@ -3,7 +3,7 @@ Feature: Core service - accessControl
         
     Background:
     # read the javascript utils file for using generic methods
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def accessControlConstants = read('../../core-services/constants/accessControl.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # javascript method to the current date and time in epoch format
