@@ -19,6 +19,7 @@
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<gatling.plugin.version>2.2.4</gatling.plugin.version>
 		<aspectj.version>1.8.10</aspectj.version>
+		<extentreport.version>5.0.4</extentreport.version>
 	</properties>
 
 	<dependencies>
@@ -158,6 +159,23 @@
 			<artifactId>allure-cucumber4-jvm</artifactId>
 			<version>2.13.5</version>
 		</dependency>
+		<dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreport.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>3.8.0</version>
+            <scope>test</scope>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20210307</version>
+</dependency>
 
 	</dependencies>
 

@@ -23,7 +23,7 @@ Scenario: Create Egov User Events using kafka service
     * def egovUserEventsBody = eGovUserEventResponseBody.events[0]
     * def id = eGovUserEventResponseBody.events[0].id
     # Setting the condition to filter Egov User Events
-    * print 'Egov User Events Id: ' + id + '
+    # * print 'Egov User Events Id: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.events.id=='" + id + "')].value.events"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
@@ -56,7 +56,7 @@ Scenario: update Egov User Events using kafka service
     * def egovUserEventsBody = eGovUserEventResponseBody.events[0]
     * def id = eGovUserEventResponseBody.events[0].id
     # Setting the condition to filter Egov User Events
-    * print 'Egov User Events Id: ' + id + '
+    # * print 'Egov User Events Id: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.events.id=='" + id + "')].value.events"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
@@ -105,7 +105,7 @@ Scenario: Create Egov User Events using kafka service
     * def egovUserEventsBody = eGovUserEventResponseBody.events[0]
     * def id = eGovUserEventResponseBody.events[0].id
     # Setting the condition to filter Egov User Events
-    * print 'Egov User Events Id: ' + id + '
+    # * print 'Egov User Events Id: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.events.id=='" + id + "')].value.events"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
@@ -138,7 +138,7 @@ Scenario: update Egov User Events using kafka service
     * def egovUserEventsBody = eGovUserEventResponseBody.events[0]
     * def id = eGovUserEventResponseBody.events[0].id
     # Setting the condition to filter Egov User Events
-    * print 'Egov User Events Id: ' + id + '
+    # * print 'Egov User Events Id: ' + id + '
     * def recordsFilterCondition = "$[?(@.value.events.id=='" + id + "')].value.events"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')

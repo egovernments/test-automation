@@ -16,18 +16,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
-import com.intuit.karate.KarateOptions;
+import com.egov.utils.ExtentReportHook;
 import com.intuit.karate.Results;
 import com.intuit.karate.Runner;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.minidev.json.JSONValue;
-
-@KarateOptions(features = {"classpath:com/egov"},
-	tags = {"@reports,@searchMdms,@location,@localization,@userOtp,@eGovUser,@accessControl," +
-			"@hrms,@collectionServices,@billingServiceDemand,@pdfservice,@billingServiceBill," +
-			"@idGenerate,@egovWorkflowProcess,@fileStore,@pgservices"})
 
 public class EGovTest {
 	static String karateOutputPath = "target/surefire-reports";
@@ -37,20 +32,47 @@ public class EGovTest {
 	}
 
 	@Test
-	public void testParallel() {
+	public void testParallelCoreServices() {
 		/* Cannot run tests in parallel as some feature file are dependant on others
 		and karate runs all feature fils in parallel.
 		So below the below parallel no of threads is set to 1.
 		*/
-
-		Results stats = Runner.parallel(getClass(), 1, karateOutputPath);
-		
-		assertTrue("there are scenario failures", stats.getFailCount() == 0);
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
 	}
+
+	@Test
+	public void testParallelBusinessServices() {
+		/* Cannot run tests in parallel as some feature file are dependant on others
+		and karate runs all feature fils in parallel.
+		So below the below parallel no of threads is set to 1.
+		*/
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
+	}
+
+	@Test
+	public void testParallelMunicipalServices() {
+		/* Cannot run tests in parallel as some feature file are dependant on others
+		and karate runs all feature fils in parallel.
+		So below the below parallel no of threads is set to 1.
+		*/
+		String tags = System.getProperty("tags");
+		String[] paths = "classpath:com/egov".split(",");
+		Results stats = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
+	}
+
+
 
 	@AfterClass
 	public static void after(){
-		generateReport(karateOutputPath);
+		// commented cucumer html reports as we are generating extent html report
+		// generateReport(karateOutputPath);
 	}
 
 	private static void generateReport(String karateOutputPath) {
@@ -60,7 +82,7 @@ public class EGovTest {
 		String currentDate = dateFormat.format(date);
 
 		Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
-		List<String> jsonPaths = new ArrayList(jsonFiles.size());
+		List<String> jsonPaths = new ArrayList<String>(jsonFiles.size());
 		jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
 		
 		// To Store reports in other location in system

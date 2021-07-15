@@ -1,7 +1,7 @@
 Feature: Bank account search
 Background:
   * call read('../../business-services/tests/egfMasterBankAccountCreate.feature@BankAccountCreate_01')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def commonConstant = read('../../common-services/constants/genericConstants.yaml')
   * def egfMasterBankAccountConstant = read('../../business-services/constants/egfMasterBankAccount.yaml')
   * def invalidTenantId = ranString(3)

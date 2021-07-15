@@ -28,10 +28,10 @@ Scenario: Search property tax by unique id and make full payment
 	* delay(3000)
 	* retry(3, 5000).waitFor(pTPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(pTPO.paymentReceiptNumber)
-	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
-	* print paymentReceiptNumber
- 
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	# * print paymentReceiptNumber
+
 @makePartialPayment
 Scenario: Search property tax by unique id and make partial payment
 	* waitFor(pTPO.propertyTaxModule).click()
@@ -56,9 +56,9 @@ Scenario: Search property tax by unique id and make partial payment
 	* input(pTPO.amountToPayField, [Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, Key.BACK_SPACE, amountToPay], 100)
 	* retry(3, 5000).waitFor(pTPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(pTPO.paymentReceiptNumber)
-	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
-	* print paymentReceiptNumber
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	# * print paymentReceiptNumber
 
 @makeMutationPayment
 Scenario: Search property tax by unique id and make full payment
@@ -389,3 +389,6 @@ Scenario: Create a new  Property as SuperUser
  	* clickElement(pTPO.sendBackToCitizenButton)
 	* print pTPO.headerMessageSendBack 
 
+	* retry(6, 5000).waitFor(pTPageObjects.paymentReceiptNumber)
+	* def paymentReceiptNumber = text(pTPageObjects.paymentReceiptNumber)
+	# * print paymentReceiptNumber

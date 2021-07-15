@@ -1,7 +1,7 @@
 Feature: Bank of account
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def bankAccountCreatePayload = read('../../business-services/requestPayload/egf-master-bank-account/create.json')
   * def banktAccountSearchPayload = read('../../business-services/requestPayload/egf-master-bank-account/search.json')
   * def bankAccountUpdatePayload = read('../../business-services/requestPayload/egf-master-bank-account/update.json')

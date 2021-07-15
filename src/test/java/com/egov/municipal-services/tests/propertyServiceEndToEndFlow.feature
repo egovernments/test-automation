@@ -1,7 +1,7 @@
 Feature: Property Service - End to End Flow
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml')
@@ -79,7 +79,7 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to login as Citizen and Create a Property with `INWORKFLOW` status
     * def authToken = citizenAuthToken
     * call read('../../municipal-services/tests/PropertyService.feature@createProperty')
-    * print propertyServiceResponseBody
+    # * print propertyServiceResponseBody
     * def authToken = superUserAuthToken
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to verify the PT application as a Doc Verifier
@@ -92,7 +92,7 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     * def authToken = citizenAuthToken
     # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty') 
-    * print propertyId
+    # * print propertyId
     * def consumerCode = propertyId
     * def authToken = superUserAuthToken
     # Calculate Property Tax estimate
@@ -110,7 +110,7 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
     # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
-    * print billId
+    # * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
     # Steps to make payment from UI
@@ -119,11 +119,11 @@ Scenario: Login as a citizen and pay propety tax (Full Payment)
     # Steps to search payment
     * call read('../../business-services/pretest/collectionServicesPretest.feature@searchPaymentWithConsumerCode')
     * def txnId = searchResponseBody.Payments[0].transactionNumber
-    * print txnId
+    # * print txnId
     # Steps to search the Payment
     * delay(5000)
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPgTransactionSuccessfully')
-    * print pgServicesSearchResponseBody.Transaction[0].txnStatus
+    # * print pgServicesSearchResponseBody.Transaction[0].txnStatus
     * match pgServicesSearchResponseBody.Transaction[0].txnStatus == pgServiceConstants.parameters.txnStatus
     * match pgServicesSearchResponseBody.Transaction[0].txnStatusMsg == pgServiceConstants.parameters.txnStatusMsg
     
@@ -144,7 +144,7 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     * def authToken = citizenAuthToken 
     # Steps to Assess the property
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')  
-    * print propertyId
+    # * print propertyId
     * def consumerCode = propertyId
     # Calculate Property Tax estimate
     * def financialYear = Assessment.financialYear
@@ -162,7 +162,7 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
     # Steps to fetch the bill details
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
-    * print billId
+    # * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
     # Re defining amount to make partial or customised payment.  
@@ -175,11 +175,11 @@ Scenario: Login as a citizen and pay propety tax (Partial Payment)
     # Steps to search payment
     * call read('../../business-services/pretest/collectionServicesPretest.feature@searchPaymentWithConsumerCode')
     * def txnId = searchResponseBody.Payments[0].transactionNumber
-    * print txnId
+    # * print txnId
     # Steps to search the Payment
     * delay(5000)
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPgTransactionSuccessfully')
-    * print pgServicesSearchResponseBody.Transaction[0].txnStatus
+    # * print pgServicesSearchResponseBody.Transaction[0].txnStatus
     * match pgServicesSearchResponseBody.Transaction[0].txnStatus == pgServiceConstants.parameters.txnStatus
     * match pgServicesSearchResponseBody.Transaction[0].txnStatusMsg == pgServiceConstants.parameters.txnStatusMsg
     
@@ -207,7 +207,7 @@ Scenario: Receipt search and cancellation
     * def paymentId = collectionServicesResponseBody.Payments[0].id
     # Steps to Cancel the reciept 
     * call read('../../business-services/pretest/collectionServicesPretest.feature@processworkflow')
-    * print collectionServicesResponseBody
+    # * print collectionServicesResponseBody
     # Validate the receipt number and payment status which should be `CANCELLED` now
     * match collectionServicesResponseBody.Payments[0].paymentDetails[0].receiptNumber == receiptNumber
     * match collectionServicesResponseBody.Payments[0].paymentStatus == 'CANCELLED'
@@ -245,7 +245,7 @@ Scenario: PT- Doc- Verifier- Send Back to Citizen - Citizen Edit
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to `Send back the property to Cititzen by a Doc Verifier`
     * call read('../../municipal-services/tests/PropertyService.feature@sendBackProperty')
-    * print propertyId
+    # * print propertyId
     * def businessIds = sendBackResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
@@ -273,7 +273,7 @@ Scenario: PT- Doc- Verifier- Send Back to Citizen -Citizen Rejects
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to `Send back the property to Cititzen by a Doc Verifier`
     * call read('../../municipal-services/tests/PropertyService.feature@sendBackProperty')
-    * print propertyId
+    # * print propertyId
     * def businessIds = sendBackResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
@@ -301,7 +301,7 @@ Scenario: PT- Doc-Verifier- Reject
     * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propertyId)'}
     # Steps to `Reject ` the property application as a Doc Verifier
     * call read('../../municipal-services/tests/PropertyService.feature@rejectProperty')
-    * print propertyId
+    # * print propertyId
     * def businessIds = rejectResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
@@ -320,7 +320,7 @@ Scenario: PT-Approver-Reject
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
     # Steps to `Reject ` the property application as a Approver
     * call read('../../municipal-services/tests/PropertyService.feature@rejectProperty')
-    * print propertyId
+    # * print propertyId
     * def businessIds = rejectResponseBody.Properties[0].acknowldgementNumber
     * def history = true
     * call read('../../core-services/pretests/eGovWorkFlowProcessSearch.feature@searchWorkflowProcessSuccessfully')
@@ -338,7 +338,7 @@ Scenario: PT- Transfer Of Ownership- Citizen
     * call read('../../municipal-services/tests/PropertyService.feature@verifyProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
-    * print propertyId
+    # * print propertyId
     * def mobileNumber = '9999999999'
     * def altContactNumber = '78' + randomMobileNumGen(8)
     * def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[2].code
@@ -397,7 +397,7 @@ Scenario: Login as a counter employee and pay propety tax
     * call read('../../municipal-services/tests/PropertyService.feature@forwardProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@approveProperty')
     * call read('../../municipal-services/tests/PropertyService.feature@assessProperty')
-    * print propertyId
+    # * print propertyId
     # Steps to Estimate the property tax
     * def financialYear = Assessment.financialYear
     * def source = Assessment.source
@@ -416,7 +416,7 @@ Scenario: Login as a counter employee and pay propety tax
     * def fetchBillParams = {tenantId: '#(tenantId)',consumerCode: '#(consumerCode)', businessService: '#(businessService)'}
     # Steps to fetch the bill id
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
-    * print billId
+    # * print billId
     * def name = fetchBillResponse.Bill[0].payerName
     * def mobileNumber = fetchBillResponse.Bill[0].mobileNumber
     # Steps to create a payment based on the bill id

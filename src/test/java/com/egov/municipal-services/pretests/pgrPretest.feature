@@ -10,12 +10,12 @@ Background:
 Scenario: Create PGR Request successfully
     Given url createPGRUrl
     And request createPGRRequest 
-    * print createPGRRequest
+    # * print createPGRRequest
     When method post 
     Then status 200
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
-    * print pgrResponseBody
+    # * print pgrResponseBody
     And def serviceDetails = pgrResponseBody.ServiceWrappers[0].service
     And def serviceRequestId = pgrResponseBody.ServiceWrappers[0].service.serviceRequestId
 
@@ -25,9 +25,9 @@ Scenario: Create PGR Request With Failure
     Given url createPGRUrl
     And request createPGRRequest 
     When method post 
-    * print response
+    # * print response
     Then status 400
-    * print response
+    # * print response
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
 
@@ -36,9 +36,9 @@ Scenario: Create PGR Request With Failure
     Given url createPGRUrl
     And request createPGRRequest 
     When method post 
-    * print response
+    # * print response
     Then status 403
-    * print response
+    # * print response
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
 
@@ -46,9 +46,9 @@ Scenario: Create PGR Request With Failure
 Scenario: Update PGR Request successfully
     Given url updatePGRUrl
     And request updatePGRRequest 
-    * print updatePGRRequest
+    # * print updatePGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 200
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
@@ -58,9 +58,9 @@ Scenario: Update PGR Request successfully
 Scenario: Update PGR Request successfully
     Given url updatePGRUrl
     And request updatePGRRequest 
-    * print updatePGRRequest
+    # * print updatePGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 400
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response 
@@ -69,9 +69,9 @@ Scenario: Update PGR Request successfully
 Scenario: Update PGR Request successfully
     Given url updatePGRUrl
     And request updatePGRRequest 
-    * print updatePGRRequest
+    # * print updatePGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 403
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response 
@@ -81,10 +81,10 @@ Scenario: Search PGR Request successfully
     Given url searchPGRUrl
     And request searchPGRRequest
     And params searchPGRParams 
-    * print searchPGRRequest
-    * print searchPGRParams
+    # * print searchPGRRequest
+    # * print searchPGRParams
     When method post 
-    * print response
+    # * print response
     Then status 200
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
@@ -96,9 +96,9 @@ Scenario: Fail Search PGR Request
     Given url searchPGRUrl
     And request searchPGRRequest
     And params searchPGRParams 
-    * print searchPGRRequest
+    # * print searchPGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 400
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response  
@@ -108,9 +108,9 @@ Scenario: Count PGR Request successfully
     Given url countPGRUrl
     And request countPGRRequest
     And params countPGRParams 
-    * print searchPGRRequest
+    # * print searchPGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 200
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
@@ -119,9 +119,9 @@ Scenario: Count PGR Request successfully
 Scenario: Count PGR Request successfully
     Given url countPGRUrl
     And request countPGRRequest
-    * print searchPGRRequest
+    # * print searchPGRRequest
     When method post 
-    * print response
+    # * print response
     Then status 200
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response
@@ -131,9 +131,9 @@ Scenario: Count PGR Request With Invalid Params
     Given url countPGRUrl
     And request countPGRRequest
     And params countPGRParams
-    * print countPGRParams
+    # * print countPGRParams
     When method post
-    * print response
+    # * print response
     Then status 403
     And def pgrResponseHeaders = responseHeaders 
     And def pgrResponseBody = response

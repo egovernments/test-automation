@@ -1,8 +1,8 @@
 Feature: Work Flow Pre Tests
 
         Background:
-    * def jsUtils = read('classpath:jsUtils.js')
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     * def workFlowConstants = read('../../core-services/constants/workFlow.yaml')
     * def createWorkFlowRequest = read('../../core-services/requestPayload/egov-workflow/businessService/workFlowCreate.json')
     * def searchWorkFlowRequest = read('../../core-services/requestPayload/egov-workflow/businessService/workFlowUpdate.json')

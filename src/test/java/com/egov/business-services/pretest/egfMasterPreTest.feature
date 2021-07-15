@@ -1,7 +1,7 @@
 Feature: Pretest scenarios of egf-master service end points
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def egfMasterConstants = read('../../business-services/constants/egfMaster.yaml') 
   * def typeName = randomString(10)
   * def tableName = egfMasterConstants.chartOfAccountDeatails.params.tableName
@@ -207,7 +207,7 @@ Scenario: Updating chart of accounts and check for error through API call
     And request requestPayload
     When method post
     Then assert responseStatus == 201
-    #* print accountDetailsCreateResponse
+    ## * print accountDetailsCreateResponse
     And def accountDetailsCreateResponse = response
 
 @errorInCreateChartOfAccountDetailsUnAuthorized
@@ -555,7 +555,7 @@ Scenario: Updating chart of accounts and check for error through API call
     * eval updateBankBranchPayload.bankBranches = bankBranches
     * set updateBankBranchPayload.bankBranches[0].tenantId = 'InvalidTenantId-' + randomString(5)
     * set updateBankBranchPayload.bankBranches[0].bank.tenantId = 'InvalidTenantId-' + randomString(5)
-    * print updateBankBranchPayload
+    # * print updateBankBranchPayload
     Given url bankBranchUpdate
     And params params
     And request updateBankBranchPayload

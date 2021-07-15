@@ -2,14 +2,14 @@ Feature: Localization Update Messages API call
 
         Background:
 	
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   	# calling localization Update Json
   * def localizationUpdateRequest = read('../../core-services/requestPayload/localization/update.json')
     # calling localization Ceate Json
   * def localizationCreateRequest = read('../../core-services/requestPayload/localization/create.json')
   # calling localization MultiMessageCeate Json
   * def localizationMultiMessageCreateRequest = read('../../core-services/requestPayload/localization/multiMessageCreate.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
 
         @updateLocalizationMessageSuccessfully
@@ -48,7 +48,7 @@ Feature: Localization Update Messages API call
         Scenario: Delete Localization message successfully
 
   * def deleteRequest = read('../requestPayload/localization/upsert.json')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   
             Given url localizationDeleteMessagesUrl
               And request deleteRequest

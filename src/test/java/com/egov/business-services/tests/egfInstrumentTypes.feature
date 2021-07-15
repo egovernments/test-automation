@@ -1,11 +1,11 @@
  Feature: To test egf-instrument-instrumentTypes service 'Create' endpoint
 
     Background: 
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def egfInstrumentConstants = read('../../business-services/constants/egfInstrument.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-        * def instrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/create.json')
-        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/dashboard-analytics/instrumentType/search.json')
+        * def instrumentTypesPayload = read('../../business-services/requestPayload/egf-instrument/instrumentType/create.json')
+        * def searchInstrumentTypesPayload = read('../../business-services/requestPayload/egf-instrument/instrumentType/search.json')
         # Instrument types details
         * def id = randomString(5)
         * def name = "Instrument_"+randomString(3)
@@ -55,7 +55,7 @@
     * set instrumentTypesPayload.instrumentTypes[0].id = null
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypesServerError')
     # Validate that the error message returned by the API should be equal with expected error
-    * print instrumentTypesResponse
+    # * print instrumentTypesResponse
     * assert instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.serverError
 
     
@@ -96,7 +96,7 @@
     * set instrumentTypesPayload.instrumentTypes[0].name = null
     * call read('../../business-services/pretest/egfInstrumentPretest.feature@errorInCreateInstrumentTypes')
     # Validate that the error message returned by the API should be equal with expected error
-    * print instrumentTypesResponse
+    # * print instrumentTypesResponse
     * match instrumentTypesResponse.responseInfo.status == commonConstants.expectedStatus.badRequest
     * match instrumentTypesResponse['error'].fields[*].message contains ['#(fieldMustNotBlank)', '#(fieldMustNotBeNull)']
     

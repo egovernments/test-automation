@@ -1,7 +1,7 @@
 Feature: Core Services - Zuul
 
 Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * call read('../../common-services/pretests/egovMdmsPretest.feature')
         * def hrmsConstants = read('../../business-services/constants/egov-hrms.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -39,7 +39,7 @@ Background:
         * def source = commonConstants.parameters.source
         * def channel = commonConstants.parameters.channel
         * def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)]
-        * configure headers = read('classpath:websCommonHeaders.js')
+        * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
         * def cityName = karate.jsonPath(mdmsStatetenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0]
         * def OccupancyType = mdmsStatePropertyTax.OccupancyType[1].code
         * def UsageCategory = mdmsStatePropertyTax.UsageCategory[0].code
@@ -98,8 +98,8 @@ Background:
     # Create a property
     * call read('../../municipal-services/pretests/propertyServicesPretest.feature@errorInCreateProperty')
     # Validate response body
-    * print createPropertyRequest
-    * print propertyServiceResponseBody 
+    # * print createPropertyRequest
+    # * print propertyServiceResponseBody 
     * match propertyServiceResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError
 
     @zuul_03 @zuul @regression @negative @coreServices

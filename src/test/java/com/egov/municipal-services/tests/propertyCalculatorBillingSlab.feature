@@ -1,7 +1,7 @@
 Feature: To test property-calculator-billingSlabs service endpoints
 
 Background: 
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def propertyCalculatorConstants = read('../../municipal-services/constants/propertyCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def propertyType = mdmsStatePropertyTax.PropertyType[1].code

@@ -1,8 +1,8 @@
 Feature: Pretest scenarios of egf-instrument service end points
 
 Background:
-  * def jsUtils = read('classpath:jsUtils.js')
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     #egfInstrumet-Instruments Requests
   * def instrumentCreateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/create.json')
   * def instrumentUpdateRequest = read('../../business-services/requestPayload/egf-instrument/instrument/update.json')
@@ -16,9 +16,9 @@ Background:
   @createInstrumentTypes
     Scenario: To create instrument types
     Given url createInstrumentTypes
-        * print createInstrumentTypes
+        # * print createInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then assert responseStatus == 201
     And  def instrumentTypesResponse = response
@@ -26,9 +26,9 @@ Background:
   @errorInCreateInstrumentTypes
     Scenario: Negative pretest to create instrument types
     Given url createInstrumentTypes
-        * print createInstrumentTypes
+        # * print createInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 400
     And  def instrumentTypesResponse = response
@@ -36,9 +36,9 @@ Background:
 @errorInCreateInstrumentTypesUnAuthorized
     Scenario: Negative pretest to create instrument types
     Given url createInstrumentTypes
-        * print createInstrumentTypes
+        # * print createInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 403
     And  def instrumentTypesResponse = response
@@ -46,9 +46,9 @@ Background:
 @errorInCreateInstrumentTypesServerError
     Scenario: Negative pretest to create instrument types
     Given url createInstrumentTypes
-        * print createInstrumentTypes
+        # * print createInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 500
     And  def instrumentTypesResponse = response
@@ -57,7 +57,7 @@ Background:
     Scenario: To search instrument types
     Given url searchInstrumentTypes
     And params searchParams
-      * print searchParams
+      # * print searchParams
     And request searchInstrumentTypesPayload
     When method post
     Then assert responseStatus == 200
@@ -67,7 +67,7 @@ Background:
     Scenario: Negative pretest to search instrument types
     Given url searchInstrumentTypes
     And params searchParams
-      * print searchParams
+      # * print searchParams
     And request searchInstrumentTypesPayload
     When method post
     Then assert responseStatus == 403
@@ -76,9 +76,9 @@ Background:
   @updateInstrumentTypes
     Scenario: To update instrument types
     Given url updateInstrumentTypes
-        * print updateInstrumentTypes
+        # * print updateInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then assert responseStatus == 201
     And  def updateInstrumentTypesResponse = response
@@ -86,9 +86,9 @@ Background:
 @errorInUpdateInstrumentTypes
     Scenario: Negative pretest to update instrument types
     Given url updateInstrumentTypes
-        * print updateInstrumentTypes
+        # * print updateInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 400
     And  def updateInstrumentTypesResponse = response
@@ -96,9 +96,9 @@ Background:
 @errorInUpdateInstrumentTypesUnAuthorized
     Scenario: Negative pretest to update instrument types
     Given url updateInstrumentTypes
-        * print updateInstrumentTypes
+        # * print updateInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 403
     And  def updateInstrumentTypesResponse = response
@@ -106,9 +106,9 @@ Background:
 @errorInUpdateInstrumentTypesServerError
     Scenario: Negative pretest to update instrument types
     Given url updateInstrumentTypes
-        * print updateInstrumentTypes
+        # * print updateInstrumentTypes
     And request instrumentTypesPayload
-        * print instrumentTypesPayload
+        # * print instrumentTypesPayload
     When method post
     Then status 500
     And  def updateInstrumentTypesResponse = response
@@ -367,7 +367,7 @@ Scenario: Update Surrender Reason Error
     Given url updateSurrenderReasons
     And request updateSurrenderReasonRequest
     When method post
-     * print surrenderReasonsResponseBody
+     # * print surrenderReasonsResponseBody
     Then status 400
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response
@@ -378,7 +378,7 @@ Scenario: Update Surrender Reason Error
     Given url updateSurrenderReasons
     And request updateSurrenderReasonRequest
     When method post
-     * print surrenderReasonsResponseBody
+     # * print surrenderReasonsResponseBody
     Then status 403
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response
@@ -389,7 +389,7 @@ Scenario: Update Surrender Reason Error
     Given url updateSurrenderReasons
     And request updateSurrenderReasonRequest
     When method post
-     * print surrenderReasonsResponseBody
+     # * print surrenderReasonsResponseBody
     Then status 500
     And def surrenderReasonsResponseHeaders = responseHeaders
     And def surrenderReasonsResponseBody = response

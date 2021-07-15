@@ -2,7 +2,7 @@ Feature: Sewerage connection service tests
 
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def billingServiceDemandConstants = read('../../business-services/constants/billing-service-demand.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def sewerageConnectionConstants = read('../../municipal-services/constants/sewerageConnection.yaml')
@@ -21,10 +21,10 @@ Background:
     * def sewerageConnectionType = 'Non Metered'
     * def connectionExecutionDate = getCurrentEpochTime()
 
-@sewerageConnectionCreate1 @municipalServicesDontRun @regression @positive @sewerageConnectionCreate @sewerageConnection
+@sewerageConnectionCreate1 @municipalServices @regression @positive @sewerageConnectionCreate @sewerageConnection
     Scenario: Test to create Sewerage Connection with Valid Payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
-    * print propertyId
+    # * print propertyId
     # Steps to create a new Employee through HRMS
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@successSewerageCreate')
     * assert sewerageResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
@@ -32,7 +32,7 @@ Background:
     * match sewerageResponseBody.SewerageConnections[0].propertyId == propertyId
     * match sewerageResponseBody.SewerageConnections[0].applicationStatus == sewerageConnectionConstants.parameters.applicationStatus.initiated
 
-@SewerageConnection_UpdateToDOCUMENT_VERIFICATION_01 @positive @regression @swServices @swerageConnectionUpdate @municipalServicesDontRun
+@SewerageConnection_UpdateToDOCUMENT_VERIFICATION_01 @positive @regression @swServices @swerageConnectionUpdate @municipalServices
 Scenario: Update sewerage connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
@@ -41,33 +41,33 @@ Scenario: Update sewerage connection with valid payload
     # Update Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     # Verify response body
-    * print sewerageResponseBody
+    # * print sewerageResponseBody
     * match sewerageResponseBody.SewerageConnections[0].id == sewerageConnectionId
     * match sewerageResponseBody.SewerageConnections[0].propertyId == propertyId
     * match sewerageResponseBody.SewerageConnections[0].applicationStatus == sewerageConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@SewerageConnection_SearchWithValidApplicationNumber_01 @positive @regression @swServices @sewerageConnectionSearch @municipalServicesDontRun
+@SewerageConnection_SearchWithValidApplicationNumber_01 @positive @regression @swServices @sewerageConnectionSearch @municipalServices
 Scenario: Search sewerage connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@successSewerageCreate')
-    * print sewerageConnectionNumber
+    # * print sewerageConnectionNumber
     * def searchSewerageConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(sewerageConnectionApplicationNumber)'}
     # Search Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     # Verify response body
-    * print sewerageResponseBody
+    # * print sewerageResponseBody
     * match sewerageResponseBody.SewerageConnections[0].id == sewerageConnectionId
     * match sewerageResponseBody.SewerageConnections[0].propertyId == propertyId
     * match sewerageResponseBody.SewerageConnections[0].applicationStatus == sewerageConnectionConstants.parameters.applicationStatus.initiated
 
-@createActiveSewerageConnection @municipalServicesDontRun
+@createActiveSewerageConnection @municipalServices
 Scenario: Create Active Sewerage connection
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@successSewerageCreate')
     # * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     # * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
-    * print sewerageConnection
+    # * print sewerageConnection
     * set sewerageConnection.roadCuttingInfo = [{"roadType": "BRICKPAVING","roadCuttingArea": 50}]
     * set sewerageConnection.connectionType = "Metered"
     * set sewerageConnection.additionalDetails.initialMeterReading = 100

@@ -2,7 +2,7 @@ Feature: Pg services
 Background:
  # calling create property and assess property
   * call read('../../business-services/tests/billingServicesDemand.feature@create_01')
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * call read('../../business-services/pretest/billingServicePretest.feature@fetchBill')
   #initializing create pg transaction request payload objects
   * def txnAmount = fetchBillResponse.Bill[0].totalAmount

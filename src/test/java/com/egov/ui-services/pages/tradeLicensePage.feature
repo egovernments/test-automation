@@ -17,6 +17,6 @@ Scenario: Search water and sewerage by unique id and make full payment
 	* delay(3000)
     * retry(3, 5000).waitFor(tLPO.makePaymentButton).click()
 	* call read('../../ui-services/pages/paymentGatewayPage.feature@makePayment')
-	* retry(6, 5000).waitFor(tLPO.paymentReceiptNo)
-	* def paymentReceiptNumber = text(tLPO.paymentReceiptNo)
-	* print paymentReceiptNumber
+	* retry(6, 5000).waitFor(tlPageObjects.paymentReceiptNo)
+	* def paymentReceiptNumber = text(tlPageObjects.paymentReceiptNo)
+	# * print paymentReceiptNumber

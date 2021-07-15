@@ -1,6 +1,6 @@
 Feature: Create Citizen Pretest Feature
         Background:
-  * def jsUtils = read('classpath:jsUtils.js')
+  * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   * def citizenPayload = read('../../core-services/requestPayload/user/citizenCreation.json')
   # initializing create citizen request payload objects
   * def createCitizenvalidPayload = citizenPayload.validPayload
@@ -9,7 +9,7 @@ Feature: Create Citizen Pretest Feature
   * def citizenWithoutTenantId = citizenPayload.withoutTenantIdPayload
   * def citizenWithInvalidUserName = citizenPayload.invalidUserNamePayload
   * def citizenWithName = citizenPayload.withNamePayload
-  * configure headers = read('classpath:websCommonHeaders.js')
+  * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def otpReference = '348356'
   * def mobileNumberGen = randomMobileNumGen(10)
   * def mobileNumber = new java.math.BigDecimal(mobileNumberGen)

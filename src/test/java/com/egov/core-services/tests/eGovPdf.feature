@@ -1,8 +1,8 @@
 Feature: Egov Pdf Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
-    * configure headers = read('classpath:websCommonHeaders.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+    * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
     * def businessService = mdmsStatePropertyTax.PTWorkflow[1].businessService
     * def tenantId = mdmsStateFireNocService.FireStations[0].baseTenantId
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')

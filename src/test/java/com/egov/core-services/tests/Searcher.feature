@@ -1,7 +1,7 @@
 Feature: Core service - Searcher
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     * def searcherConstants = read('../../core-services/constants/searcher.yaml')
     # initializing searcher request payload objects

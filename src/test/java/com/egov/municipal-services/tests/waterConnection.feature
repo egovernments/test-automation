@@ -1,7 +1,7 @@
 Feature: Water Connection Service Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def waterConnectionConstants = read('../../municipal-services/constants/waterConnection.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
     # initializing request payload variables
@@ -102,7 +102,7 @@ Scenario: Search water connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successCreateWaterConnection')
-    * print waterConnectionApplicationNumber
+    # * print waterConnectionApplicationNumber
     * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     # Search Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')

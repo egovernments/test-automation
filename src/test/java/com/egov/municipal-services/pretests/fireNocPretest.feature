@@ -1,6 +1,6 @@
 Feature: FIRE-NOC-Service pretests
     Background:
-        * def jsUtils = read('classpath:jsUtils.js')
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/create.json')
         * def searchFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/search.json')
         * def updateFireNocRequest = read('../../municipal-services/requestPayload/firenoc-service/update.json')
@@ -11,7 +11,7 @@ Feature: FIRE-NOC-Service pretests
         And request createFireNocRequest
         When method post
         Then status 200
-        * print response
+        # * print response
         And def fireNocResponseBody = response
         And def fireNocBody = fireNocResponseBody.FireNOCs[0]
         And def fireNocId = fireNocResponseBody.FireNOCs[0].id
@@ -22,7 +22,7 @@ Feature: FIRE-NOC-Service pretests
     Scenario: Create BPA Error
         Given url createFireNocService
         And request createFireNocRequest
-        * print createFireNocRequest
+        # * print createFireNocRequest
         When method post
         Then status 400
         And def fireNocResponseHeaders = responseHeaders
@@ -47,7 +47,7 @@ Feature: FIRE-NOC-Service pretests
         Then status 200
         And def fireNocResponseHeaders = responseHeaders
         And def fireNocResponseBody = response
-        * print fireNocResponseBody
+        # * print fireNocResponseBody
 
     @searchFireNocWithoutParamsSuccessfully
     Scenario: Search FireNoc Successfully

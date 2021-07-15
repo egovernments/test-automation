@@ -1,7 +1,7 @@
 Feature: Kafka Property Services Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 
 @Property_Create_ReadKafkaPeristerCheck_17 @positive @kafkaPropertyServices @kafkaServices
 Scenario: Create a property and verify the response Transaction object with the data obtained from the consumer
@@ -14,7 +14,7 @@ Scenario: Create a property and verify the response Transaction object with the 
     # Get lag details before making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataBeforeApiCall = lagData
-    * print dataBeforeApiCall
+    # * print dataBeforeApiCall
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -24,19 +24,19 @@ Scenario: Create a property and verify the response Transaction object with the 
     # Expected response
     * def createPropertyResponse = propertyServiceResponseBody.Properties[0]
     # Setting the condition to filter consumer records
-    * print 'Property Id: ' + propertyId + '
+    # * print 'Property Id: ' + propertyId + '
     * def recordsFilterCondition = "$[?(@.value.Property.propertyId=='" + propertyId + "')].value.Property"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
     # Get lag details after making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka pg transaction consumer response messages for created billId and consumerCode
@@ -56,7 +56,7 @@ Scenario: Update a property and verify the response Transaction object with the 
     # Get lag details before making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataBeforeApiCall = lagData
-    * print dataBeforeApiCall
+    # * print dataBeforeApiCall
     #Create Consumer instance before triggering producer messages via api
     * call read('../../kafka-services/pretests/kafkaPretest.feature@createConsumerInstance')
     #Subscribe Consumer instance to topic
@@ -67,19 +67,19 @@ Scenario: Update a property and verify the response Transaction object with the 
     * def upatePropertyResponse = propertyServiceResponseBody.Properties[0]
     * def propertyId = upatePropertyResponse.propertyId
     # Setting the condition to filter consumer records
-    * print 'Property Id: ' + propertyId + '
+    # * print 'Property Id: ' + propertyId + '
     * def recordsFilterCondition = "$[?(@.value.Property.propertyId=='" + propertyId + "')].value.Property"
     # Call to wait until records are read by kafka consumer
     * call read('../../kafka-services/pretests/kafkaPretest.feature@waitUntilRecordsAreConsumed')
     # Get lag details after making an api call
     * call read('../../kafka-services/pretests/kafkaPretest.feature@getConsumerGroupLags')
     * def dataAfterApiCall = lagData
-    * print dataAfterApiCall
+    # * print dataAfterApiCall
     # Compare the offset
     * def offsetDiff = compareOffsetMovement(dataBeforeApiCall, dataAfterApiCall)
-    * print offsetDiff
+    # * print offsetDiff
     * call read('../../kafka-services/pretests/kafkaPretest.feature@checkOffsetThreshold') 
-    * print isThreshHold
+    # * print isThreshHold
     # Fail the test if there is no offset change
     * eval if(!isThreshHold) karate.fail("No Movement in offset!!!")
     # Extract the kafka pg transaction consumer response messages for created billId and consumerCode

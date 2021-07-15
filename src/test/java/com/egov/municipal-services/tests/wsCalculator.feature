@@ -1,7 +1,7 @@
 Feature: WS Calculator Tests
 
 Background:
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../municipal-services/tests/waterConnection.feature@createActiveWaterConnection')
     * def wsCalculatorConstants = read('../../municipal-services/constants/wsCalculator.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -42,7 +42,7 @@ Scenario: Search Meter Connection successfully
     * call read('../../municipal-services/pretests/wsCalculatorPretest.feature@successCreateMeterConnection')
     * def searchMeterConnectionParams = {"tenantId": "#(tenantId)", "connectionNos": "#(connectionNo)"}
     * call read('../../municipal-services/pretests/wsCalculatorPretest.feature@successSearchMeterConnection')
-    * print wsCalculatorResponseBody
+    # * print wsCalculatorResponseBody
     * match wsCalculatorResponseBody.meterReadings[0].id == "#present"
     * match wsCalculatorResponseBody.meterReadings[0].billingPeriod == billingPeriod
     * match wsCalculatorResponseBody.meterReadings[0].meterStatus == meterStatus
