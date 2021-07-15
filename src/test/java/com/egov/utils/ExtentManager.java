@@ -50,7 +50,7 @@ public class ExtentManager {
             if(buildId != null){
                 formattedDate = buildId;
             }
-            ExtentManager.createInstance("target/extent-reports/" + "eGov_Extent_Report_" + formattedDate + ".html");
+            ExtentManager.createInstance("reports/extent-reports/" + "eGov_Extent_Report_" + formattedDate + ".html");
         }
     }
 }

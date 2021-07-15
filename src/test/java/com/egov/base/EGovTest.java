@@ -32,42 +32,17 @@ public class EGovTest {
 	}
 
 	@Test
-	public void testParallelCoreServices() {
+	public void testParallel() {
 		/* Cannot run tests in parallel as some feature file are dependant on others
 		and karate runs all feature fils in parallel.
 		So below the below parallel no of threads is set to 1.
 		*/
 		String tags = System.getProperty("tags");
+		String services = System.getProperty("services");
 		String[] paths = "classpath:com/egov".split(",");
-		Results stats = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
+		Results stats = Runner.path(paths).tags(tags, services).reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
 		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
 	}
-
-	@Test
-	public void testParallelBusinessServices() {
-		/* Cannot run tests in parallel as some feature file are dependant on others
-		and karate runs all feature fils in parallel.
-		So below the below parallel no of threads is set to 1.
-		*/
-		String tags = System.getProperty("tags");
-		String[] paths = "classpath:com/egov".split(",");
-		Results stats = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
-	}
-
-	@Test
-	public void testParallelMunicipalServices() {
-		/* Cannot run tests in parallel as some feature file are dependant on others
-		and karate runs all feature fils in parallel.
-		So below the below parallel no of threads is set to 1.
-		*/
-		String tags = System.getProperty("tags");
-		String[] paths = "classpath:com/egov".split(",");
-		Results stats = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		assertTrue("there are scenario failures", (stats.getFailCount() + stats.getFailCount() + stats.getFailCount()) == 0);
-	}
-
-
 
 	@AfterClass
 	public static void after(){
