@@ -109,11 +109,21 @@ Scenario Outline: Create Property and reject property Verification
 #     * def browserTestName = karate.info.scenarioName + ' - '
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
-    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
+    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePageMobile')
+    * call read('../../ui-services/pages/homePage.feature@@navigateToPropertyTaxMobile')
     * call read('../../ui-services/pages/propertyTaxPage.feature@createProperty')
     * call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
-    #* call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
-   * call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyVerification')
+    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePageMobile')
+    * delay(10000)
+    * call read('../../ui-services/pages/homePage.feature@navigateToPropertyTaxMobile')
+    * delay(10000)
+    * call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
+    # Initializing search query params
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propAppNumber)'}
+    # Search a property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+
+   #* call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyVerification')
   
 Examples:
 | deviceConfigs |

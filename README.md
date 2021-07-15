@@ -233,3 +233,12 @@ Follow below step to find location of reports generated post test execution to a
 ### A snapshot is attached for reference.
  <img width="1139" alt="Screenshot 2021-03-16 at 1 25 31 PM" src="https://user-images.githubusercontent.com/68421244/111275411-1f967780-865c-11eb-989b-abcf83d3e0df.png">
  
+
+## RUN API TEST CASES
+mvn clean install "-DconfigPath=/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/qa.yaml" "-Dtags=@coreServices"
+
+
+## RUN UI TEST CASES
+
+cd /Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/.vscode
+mvn clean install "-DconfigPath=/Users/macbookair/moolya_egovernments/test-automation-egovernmetns/test-automation/qa.yaml" "-Dtags=@dummyMobileBrowser"

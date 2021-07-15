@@ -2,7 +2,7 @@ Feature: Driver Related Feature
 
 Background:
     * def javaUtils = Java.type('com.egov.utils.JavaUtils');
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def getDriverConfig = 
     """
         function(){
@@ -22,7 +22,7 @@ Background:
             driver.waitFor(element)
             driver.click(element)
             }catch(err){
-                throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
+                throw new Error("Exception occured while clicking element "+element+"-->"+err)
             }
         }
     """
@@ -212,6 +212,7 @@ Background:
     """
         function(element){
             try{
+                driver.waitFor(element)
                 return driver.text(element)
             }catch(err){
                 throw new Error("Exception occurred while getting element text -->"+err)
@@ -245,6 +246,7 @@ Scenario: Initialize Driver
     * print 'Driver Config: ', driverConfig
     * driver envHost
     * def sessionId = driver.sessionId
+    * driver.emulateDevice(375, 812, 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36')
     * if(browserstack == 'yes') javaUtils.writeToFile(fileName, sessionId)
     * driver.fullscreen()
 

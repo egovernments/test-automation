@@ -1,0 +1,5 @@
+objects:
+  propertyTaxMenuItemMobile: '//div[@class="sideMenuItem "]//div[@data-localization="Property Tax"]'
+  propertyTaxMenuItemDesktop: '(//div[@class="sideMenuItem "]//div[@data-localization="Property Tax"])[2]'
+data:
+  test: "Test"

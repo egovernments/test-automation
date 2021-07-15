@@ -7,6 +7,24 @@ Background:
 	# * def geoLocationScript = "window.navigator.geolocation.getCurrentPosition = function(success){ var position = {'coords' : {  'latitude': '18.975080',   'longitude': '72.825838' }  };  success(position);}"
     * def loginPageData = loginPage.data
    
+	@naviagteToHomePageDesktop
+Scenario: Navigate To Home Page
+	* waitFor(lPO.homePageLink).click()
+	* waitForUrl(loginPageurls.homePage)
+@naviagteToHomePageMobile
+Scenario: Navigate To Home Page
+	* clickElement(lPO.leftHamburger)
+	# * waitForUrl(loginPageurls.homePage)
+	
+
+# @naviagteToHomePageDesktop
+# Scenario: Navigate To Home Page
+# 	* waitFor(lPO.homePageLink).click()
+# 	* waitForUrl(loginPageurls.homePage)
+# @naviagteToHomePageMobile
+# Scenario: Navigate To Home Page
+# 	* clickElement(lPO.leftHamburger)
+# 	* waitForUrl(loginPageurls.homePage)
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen

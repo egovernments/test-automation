@@ -5,8 +5,7 @@ Background:
 	#* def testDataFile = '../../ui-services/testData/dummyTestData1.pdf'
 	* def testDataFile = "file:src/test/java/com/screenshot.png"
     * def pTPO = propertyTaxPage.objects
-
-    * def jsUtils = read('classpath:jsUtils.js')
+	* def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
 	* def pTTestData = propertyTaxPage.data
    
 @makeFullPayment
@@ -81,9 +80,24 @@ Scenario: Search property tax by unique id and make full payment
 	* def paymentReceiptNumber = text(pTPO.paymentReceiptNumber)
 	* print paymentReceiptNumber
 
+# @navigateToPropertyTax
+# Scenario: Naviagte To Property Web
+# 	* 
+
+# 		@fillup1
+# 		@fillup2
+# 		@fillup3
+# 		@fillup4
+
 @createProperty
 Scenario: Create a new  Property as Citizen
-    * clickElement(pTPO.propertyTaxModule)
+	# * call read(@fillup1)
+	# * call read(@fillup2)
+	# * call read(@fillup3)
+	# * call read(@fillup4)
+	* print pTPO.propertyTaxModule
+	* clickElement(pTPO.leftHamburger)
+	* clickElement(pTPO.propertyTaxFromLeftNav)
     * clickElement(pTPO.payPropertyTax)
     * clickElement(pTPO.propertyCreateLink)
 	* clickElement(pTPO.propertyApplyButton)
@@ -109,7 +123,9 @@ Scenario: Create a new  Property as Citizen
 	* digitCustomSelectFromDropdownContainingLocalization(pTPO.propertyUsageType, pTTestData.propertyUsageType)
 	* digitCustomSelectFromDropdownContainingLocalization(pTPO.propertyTypeOfBuilding , pTTestData.propertyTypeOfBuilding)
 	* clickElement(pTPO.noRainWaterHarvesting)
+	* delay(5000)
 	* digitCustomSelectFromDropdown(pTPO.assessmentOccupancy, pTTestData.assessmentOccupancy)
+	* delay(5000)
 	* def assesmentArea = ranInteger(4)
 	* print "assesment area"
 	* print assesmentArea
@@ -268,12 +284,14 @@ Scenario: Create a new  Property as SuperUser
  @approveProperty
  Scenario: search property by application number and verify and forward and approveProperty
 	#* clickElement(pTPO.homeButton)
- 	* clickElement(pTPO.propertyTaxModule)
+ 	# * clickElement(pTPO.propertyTaxModule)
+	# * clickElement(pTPO.leftHamburger)
+	# * clickElement(pTPO.propertyTaxFromLeftNav)
 	* clickElement(pTPO.searchApplicationTab)
  	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
 	* clickElement(pTPO.searchApplicationButton)
  	* digitClickValueInSearchResults(appNumber)
- 	* clickElement(pTPO.propertyTakeActionButton)
+ 	* clickElement(pTPO.takeActionButton)
 	* clickElement(pTPO.verifyDropdown)
 	* clickElement(pTPO.assigneeName)
 	#* clickElement(pTPO.selectAssigneeEmpAuto)
@@ -283,8 +301,11 @@ Scenario: Create a new  Property as SuperUser
 	* clickElement(pTPO.searchApplicationTab)
 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
 	* clickElement(pTPO.searchApplicationButton)
+	* delay(5000)
 	* digitClickValueInSearchResults(appNumber)
-	* clickElement(pTPO.propertyTakeActionButton)
+	* delay(5000)
+
+	* clickElement(pTPO.takeActionButton)
 	* clickElement(pTPO.forwardDropdown)
 	* clickElement(pTPO.assigneeName)
 	#* clickElement(pTPO.selectAssigneeEmpAuto)
@@ -294,11 +315,19 @@ Scenario: Create a new  Property as SuperUser
 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
 	* clickElement(pTPO.searchApplicationButton)
 	* digitClickValueInSearchResults(appNumber)
-	* clickElement(pTPO.propertyTakeActionButton)
+	* clickElement(pTPO.takeActionButton)
 	* clickElement(pTPO.approveDropdown)
  	* sendKeys(pTPO.commentsInput)
 	* clickElement(pTPO.approveButton)
-    * print pTPO.headerMessageApproveProperty
+	* def uniquePropertyIDFullString = getElementText(pTPO.generatedUniquePropertyID)
+	* print uniquePropertyIDFullString
+	* def splitArrayPropertyId= uniquePropertyIDFullString.split(":")
+	* print splitArrayPropertyId
+	* def propertyID = splitArrayPropertyId[1]
+	* print propertyID
+	# * def 
+
+
 
 #it worked - 17/06/21
  @payPropertyTax
@@ -367,7 +396,7 @@ Scenario: Create a new  Property as SuperUser
  	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
  	* clickElement(pTPO.searchApplicationButton)
  	* digitClickValueInSearchResults(appNumber)
- 	* clickElement(pTPO.propertyTakeActionButton)
+ 	* clickElement(pTPO.takeActionButton)
 	* clickElement(pTPO.verifyDropdown)
  	* clickElement(pTPO.assigneeName)
  	* clickElement(pTPO.selectAssigneeEmpAuto)
@@ -378,7 +407,7 @@ Scenario: Create a new  Property as SuperUser
 	* sendKeys(pTPO.searchByApplicationNumber, appNumber)
  	* clickElement(pTPO.searchApplicationButton)
  	* digitClickValueInSearchResults(appNumber)
- 	* clickElement(pTPO.propertyTakeActionButton)
+ 	* clickElement(pTPO.takeActionButton)
  	* clickElement(pTPO.forwardDropdown)
  	* clickElement(pTPO.assigneeName)
  	* clickElement(pTPO.selectAssigneeEmpAuto)
