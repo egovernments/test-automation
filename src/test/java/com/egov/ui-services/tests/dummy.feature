@@ -36,8 +36,6 @@ Background:
 @approvePropertyUIFlow
 Scenario Outline: Create Property and approve property Verification
     * def browserTestName = karate.info.scenarioName + ' - @dummyMobileBrowser - '
-# Scenario Outline: Login Scenario
-#     * def browserTestName = karate.info.scenarioName + ' - '
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
@@ -51,8 +49,6 @@ Scenario Outline: Create Property and approve property Verification
 @rejectPropertyFromDocVerifierUIFlow
 Scenario Outline: Create Property and reject property Verification From Doc Verifer
     * def browserTestName = karate.info.scenarioName + ' - @dummyMobileBrowser - '
-# Scenario Outline: Login Scenario
-#     * def browserTestName = karate.info.scenarioName + ' - '
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
     * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
@@ -102,11 +98,21 @@ Scenario Outline: Create Property and reject property Verification
 #     * def browserTestName = karate.info.scenarioName + ' - '
     * call read('../../ui-services/utils/driver.feature@initializeDriver')
     * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
-    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
+    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage'+device)
+    * call read('../../ui-services/pages/homePage.feature@@navigateToPropertyTax'+device)
     * call read('../../ui-services/pages/propertyTaxPage.feature@createProperty')
     * call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
-    #* call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
-   * call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyVerification')
+    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePageMobile')
+    * delay(10000)
+    * call read('../../ui-services/pages/homePage.feature@navigateToPropertyTaxMobile')
+    * delay(10000)
+    * call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
+    # Initializing search query params
+    * def searchPropertyParams = { tenantId: '#(tenantId)', propertyIds: '#(propAppNumber)'}
+    # Search a property
+    * call read('../../municipal-services/pretests/propertyServicesPretest.feature@searchPropertySuccessfully')
+
+   #* call read('../../ui-services/pages/propertyTaxPage.feature@rejectPropertyVerification')
   
 Examples:
 | deviceConfigs |
@@ -140,3 +146,15 @@ Examples:
 
   
 
+@approvePropertyUIFlow3
+Scenario Outline: Create Property and approve property Verification
+    * def browserTestName = karate.info.scenarioName + ' - @dummyMobileBrowser - '
+    * call read('../../ui-services/utils/driver.feature@initializeDriver')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsCitizen')
+    * call read('../../ui-services/pages/loginPage.feature@naviagteToHomePage')
+    * def appNumber = ""
+    * call read('../../ui-services/pages/propertyTaxPage.feature@createProperty2')
+    * call read('../../ui-services/pages/loginPage.feature@loginAsSuperUser')
+    * call read('../../ui-services/pages/propertyTaxPage.feature@approveProperty')
+    Examples:
+    | deviceConfigs      |

@@ -1,0 +1,11 @@
+{
+  "type": "local",
+  "capabilities": [
+    {
+      "type": "chrome",
+      "headless": false,
+      "device": "Mobile",
+      "run": "true"
+    }
+  ]
+}

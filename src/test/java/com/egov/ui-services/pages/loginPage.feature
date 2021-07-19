@@ -7,6 +7,24 @@ Background:
 	# * def geoLocationScript = "window.navigator.geolocation.getCurrentPosition = function(success){ var position = {'coords' : {  'latitude': '18.975080',   'longitude': '72.825838' }  };  success(position);}"
     * def loginPageData = loginPage.data
    
+	@naviagteToHomePageDesktop
+Scenario: Navigate To Home Page
+	* waitFor(lPO.homePageLink).click()
+	* waitForUrl(loginPageurls.homePage)
+@naviagteToHomePageMobile
+Scenario: Navigate To Home Page
+	* clickElement(lPO.leftHamburger)
+	# * waitForUrl(loginPageurls.homePage)
+	
+
+# @naviagteToHomePageDesktop
+# Scenario: Navigate To Home Page
+# 	* waitFor(lPO.homePageLink).click()
+# 	* waitForUrl(loginPageurls.homePage)
+# @naviagteToHomePageMobile
+# Scenario: Navigate To Home Page
+# 	* clickElement(lPO.leftHamburger)
+# 	* waitForUrl(loginPageurls.homePage)
 
 @loginAsCitizen
 Scenario: Login to UI as Citizen
@@ -19,6 +37,20 @@ Scenario: Login to UI as Citizen
 	* clickElement(lPO.loginSubmitButton)
 	* sendKeys(lPO.otpField, loginPageData.otpField)
 	* clickElement(lPO.submitOtpButton)
+
+	@loginAsCitizenTest
+Scenario: Login to UI as Citizen
+	* clickElement(lPO.languageEnglishButton)
+	* clickElement(lPO.continueButton)
+	* clickElement(lPO.resendOtpButton)
+	* clickElement(lPO.mobileNumberField)
+	* print getAttribute(lPO.mobileNumberField, loginPageData.mobileNumberFieldType)
+	* sendKeys(lPO.mobileNumberField, citizenUsername)
+	* clickElement(lPO.loginSubmitButton)
+	* sendKeys(lPO.otpField, loginPageData.otpField)
+	* clickElement(lPO.submitOtpButton)
+
+	
 
 @loginAsAltCitizen
 Scenario: Login to UI as Citizen

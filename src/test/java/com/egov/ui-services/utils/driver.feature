@@ -2,7 +2,7 @@ Feature: Driver Related Feature
 
 Background:
     * def javaUtils = Java.type('com.egov.utils.JavaUtils');
-    * def jsUtils = read('classpath:jsUtils.js')
+    * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def getDriverConfig = 
     """
         function(){
@@ -24,7 +24,7 @@ Background:
             driver.waitFor(element)
             driver.click(element)
             }catch(err){
-                throw new Error("Exception occured while clicking element "+str(element)+"-->"+err)
+                throw new Error("Exception occured while clicking element "+element+"-->"+err)
             }
         }
     """
@@ -115,14 +115,14 @@ Background:
         }
         }
     """  
-    * def customSelectFromDropdownContainingLocalization =
+    * def digitCustomSelectFromDropdownContainingLocalization =
     """
         function(element,valueToSelect){
             try{
                 driver.waitFor(element)
                 driver.click(element)
                 ele = "//span[@class='menu-class']//div[text()='"+valueToSelect+"']"
-                driver.waitFor(ele)
+             // driver.waitFor(ele)
                 driver.click(ele)
             }catch(err){
             throw new Error("Exception occurred while selecting value from dropdown -->"+err)
@@ -130,7 +130,7 @@ Background:
         }
     """
 
-     * def customSelectFromDropdown =
+     * def digitCustomSelectFromDropdown =
     """
         function(element,valueToSelect){
             try{
@@ -146,7 +146,7 @@ Background:
         }
     """
 
-     * def customSelectFromDropdownWithHover =
+     * def digitCustomSelectFromDropdownWithHover =
     """
         function(element,valueToSelect){
             try{
@@ -170,7 +170,7 @@ Background:
         }
     """
 
-    * def clickValueInSearchResults = 
+    * def digitClickValueInSearchResults = 
     """
         function(valueToClick){
             try{
@@ -183,12 +183,13 @@ Background:
         }
 
     """
-    * def customInputFile = 
+    * def digitCustomInputFile = 
     """
         function(element,fileToInput){
             try{
                 karate.log("BEFORE FILE INPUTTTT")
-                driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+               // driver.inputFile("#contained-button-file","file:src/test/java/com/screenshot.png")
+               driver.inputFile(element,fileToInput)
                 karate.log("AFTER FILE INPUTTTT")
 
             }catch(err){
@@ -213,6 +214,7 @@ Background:
     """
         function(element){
             try{
+                driver.waitFor(element)
                 return driver.text(element)
             }catch(err){
                 throw new Error("Exception occurred while getting element text -->"+err)
@@ -220,24 +222,36 @@ Background:
 
         }
     """
-    * def inputFileUsingJavascript =
+
+    * def sendTextToAllElements =
     """
-        function(element,fileToUpload){
-            print("BROWSER UPLAODING IN FILE")
-            var jsScript = "var input = document.getElementsByTagName('input')[4];"
-            +"input.value='/Users/macbookair/Downloads/test-automation/src/test/java/com/egov/Screenshot.png';";
-            driver.script(jsScript)
-            print("FILE UPLOADED IN BROWSER")
+        function(locater){
+                elements = driver.locateAll("//input[@type='text']")
+                karate.log("ELEMENTS ARE")
+                karate.log(elements)
+                for(e in elements){
+                    karate.log("KEYSSS AREE")
+                    karate.log(e)
+                    karate.log("KEYSSS AREE")
+                    karate.log(driver.text(e))
+                    karate.log("TRYING TO INPUT NOW")
+                    driver.input(e,"HELLO")
+                } 
+            
         }
     """
+
 @initializeDriver
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()
     * remove driverConfig.run
+    * def device = driverConfig.device
+    * remove driverConfig.device
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
     * driver envHost
     * def sessionId = driver.sessionId
+    * if(device == "Mobile") driver.emulateDevice(375, 812, 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36')
     * if(browserstack == 'yes') javaUtils.writeToFile(fileName, sessionId)
     * driver.fullscreen()
 

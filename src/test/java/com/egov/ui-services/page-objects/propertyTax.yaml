@@ -48,17 +48,17 @@ objects:
   registrationProofInputDocumentType: "//span[@data-localization='OWNER_REGISTRATIONPROOF']//..//..//input"
   usageProofInputDocumentType: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//input"
   constructionProofInputDocumentType: "//span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//input"
-  addressProofInputDocumentInput: "//span[@data-localization='OWNER_ADDRESSPROOF']//..//..//div//input[@type='file']"
-  identityProofInputDocumentInput: "//input[@id='contained-button-file'][1]"
-  registrationProofInputDocumentInput: "//span[@data-localization='OWNER_REGISTRATIONPROOF']//..//..//div//input[@type='file']"
-  usageProofInputDocumentInput: "//span[@data-localization='OWNER_USAGEPROOF']//..//..//div//input[@type='file']"
-  constructionProofInputDocumentInput: //span[@data-localization='OWNER_CONSTRUCTIONPROOF']//..//..//div//input[@type='file']"
+  addressProofInputDocumentInput: "#jk-document-id-0"
+  identityProofInputDocumentInput: "#jk-document-id-1"
+  registrationProofInputDocumentInput: "#jk-document-id-2"
+  usageProofInputDocumentInput: "#jk-document-id-3"
+  constructionProofInputDocumentInput: "#jk-document-id-4"
   addPropertyBtn: "//div[@data-localization='ADD PROPERTY']"
   acceptanceCheckbox: "//input[@id='rcpt']"
   generatedApplicationNumber: "//div[text()='Application No:']//parent::div//../../following-sibling::h1//div[@class='label-text ']"
   generatedUniquePropertyID: "(//div[@class='label-container ']//div[contains(@data-localization,'Unique Property ID')])[1]"
   generatedPaymentReceiptNumber: "//div[@id='custom-atoms-tail']//following-sibling::h1//span"
-  
+  propertyApplicationNumber: "//*[text()='Application No:']//..//following-sibling::h1//span[@id='custom-containers-key']"
   #--------------------
   #Search Property Application
   homeButton: "//div[@data-localization='HOME']"
@@ -83,8 +83,6 @@ objects:
 # Approve Application
   approveDropdown: "//span[@data-localization='WF_EMPLOYEE_PT.CREATE_APPROVE']"
   approveButton: "//span[@data-localization='WF_PT.CREATE_APPROVE']"
-
-
   ownershipType: "//label[text()='Type of Ownership']//..//div//p"
   ownershipType2: "//div[@id='typeOfOwnership']//p[text()='Select Ownership Type']"
   singleOwnerDropdown: "//p[text()='Individual / Single owner']"
@@ -102,30 +100,11 @@ objects:
   proceedPaymentButton:  "//div[@data-localization='PROCEED TO PAYMENT']"
   generateReceiptButton: "//span[@data-localization='COMMON_GENERATE_RECEIPT']"
   #goToHomeButton: "//span[@data-localization='COMMON_BUTTON_HOME']"
-
-
-
-  ownershipType: //label[text()='Type of Ownership']//..//div//p
-  ownershipType2: //div[@id='typeOfOwnership']//p[text()='Select Ownership Type']
-  singleOwnerDropdown: //p[text()='Individual / Single owner']
-
-# Reject Application
-  rejectDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_REJECT']
-  rejectButton: //span[@data-localization='WF_PT.CREATE_REJECT']
-  sendBackDropdown: //span[@data-localization='WF_EMPLOYEE_PT.CREATE_SENDBACKTOCITIZEN']
-  sendBackToCitizenButton: //span[@data-localization='WF_PT.CREATE_SENDBACKTOCITIZEN']
   headerMessageRejectVerification: //span[@data-localization='PT_APPROVAL_REJ_MESSAGE_HEAD']
   headerMessageRejectApproval: //span[@data-localization='PT_APPROVAL_REJ_MESSAGE_HEAD']
   headerMessageSendBack: //span[@data-localization='PT_SENDBACK_TOCITIZEN_CHECKLIST_MESSAGE_HEAD']
   
 #Assess and Pay Property
-  assessProperty: //div[@data-localization='ASSESS PROPERTY']
-  selectPropertyTaxYear: //div[@data-localization='2021-22']//..//..//..//input
-  okButton: //div[@data-localization='OK']
-  proceedPaymentButton:  //div[@data-localization='PROCEED TO PAYMENT']
-  generateReceiptButton: //span[@data-localization='COMMON_GENERATE_RECEIPT']
-  goToHomeButton: //span[@data-localization='COMMON_BUTTON_HOME']
-  selectCity: "//label[text()='ULB']//..//div//input"
   amritsarDropdown: "//p[text()='Amritsar']"
   selectLocality: //label[text()='Locality']//..//div//input
   uniquePropertyId: //input[@id='custom-containers-propertyTaxUniqueId']
@@ -139,8 +118,8 @@ objects:
   headerMessageCreateProperty: //h1[@id='material-ui-header']
   headerMessageApproveProperty: //span[@data-localization='PT_APPROVAL_CHECKLIST_MESSAGE_HEAD']
   headerMessagePayProperty: //span[@data-localization='EMPLOYEE_SUCCESS_PT_PAYMENT_MESSAGE']
-
-
+#Mobile 
+  leftHamburger: ".appbar-left-icon>#icon-hamburger"
 data:
   selectCity: "Amritsar"
   propertyLocality: "Ajit Nagar - Area1"

@@ -34,7 +34,7 @@ Background:
     * def ownerShipType = mdmsStatecommonMasters.OwnerShipCategory[0].code
     * def tenantIdRoles = tenantId
 
-@SearchFireNOCBillingFeature1 @fireNOCBillingFeature  @positive @regression @NOCService @municipalServices
+@SearchFireNOCBillingFeature1 @fireNOCBillingFeature  @positive  @NOCService @municipalServices
 Scenario: Search Fire NOC BIlling Slab Feature with Valid Inputs
     # Search FireNOC Billing slab
     * def searchFireNOCBillingSlabParams = { tenantId:'#(tenantId)', uom: '#(uom)', calculationType: '#(calculationType)',buildingUsageType:'#(buildingUsageType)',fireNOCType:"NEW"}

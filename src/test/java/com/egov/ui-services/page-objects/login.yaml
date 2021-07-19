@@ -20,6 +20,8 @@ objects:
   employeePassword:  //input[@id='employee-password']
   employeeCity: //input[@id='person-city']
   amritsarDropdown: //span[@id='pb.amritsar']
+  homePageLinkMobile: ".drawer-list-poweredBy-wrapper div[data-localization='Home']"
+  leftHamburger: ".appbar-left-icon>#icon-hamburger"
 
   #----------------------------------------------------------------------
 data:
@@ -27,7 +29,7 @@ data:
   employeePassword: "eGov@123"
   otpField: "123456"
   mobileNumberFieldType: "type" 
-  
+
 
 
 
