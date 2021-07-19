@@ -1,0 +1,12 @@
+objects:
+  complaintsLink:  //a[contains(text(),'File a Complaint')]
+  backLink: //p[contains(text(),'Back')]
+  radioButton: (//span[@class='radio-btn-checkmark'])[1]
+  nextButton: //button[@class='submit-bar ']
+  pinCode: //input[@id='pac-input']
+  locality: (//input[@class='radio-btn'])[2]
+  details: //textarea[@name='details']
+
+Data:
+  pinCode: 480004
+  details: "Testing"
