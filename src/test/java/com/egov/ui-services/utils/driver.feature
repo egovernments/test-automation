@@ -245,11 +245,13 @@ Background:
 Scenario: Initialize Driver
     * def driverConfig = getDriverConfig()
     * remove driverConfig.run
+    * def device = driverConfig.device
+    * remove driverConfig.device
 	* configure driver = driverConfig
     * print 'Driver Config: ', driverConfig
     * driver envHost
     * def sessionId = driver.sessionId
-    * driver.emulateDevice(375, 812, 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36')
+    * if(device == "Mobile") driver.emulateDevice(375, 812, 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36')
     * if(browserstack == 'yes') javaUtils.writeToFile(fileName, sessionId)
     * driver.fullscreen()
 
