@@ -10,8 +10,12 @@ Background:
 Scenario: Navigate To Property Tax - Mobile
     * clickElement(pTPO.leftHamburger)
 	* clickElement(pTPO.propertyTaxFromLeftNav)
-	@navigateToPropertyTaxDesktop
+	
+  @navigateToPropertyTaxDesktop
 Scenario: Navigate To Property Tax - Desktop
     * clickElement(pTPO.leftHamburger)
 	* clickElement(pTPO.propertyTaxFromLeftNav)
-    
+
+@clickComplaints
+Scenario: Click Complaints link
+	* clickElement(hPO.complaintsLink)

@@ -1,0 +1,2 @@
+objects:
+  complaintsLink:  //div[contains(text(),'Complaints')]
