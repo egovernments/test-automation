@@ -1,7 +1,0 @@
-{
-    "RequestInfo": {
-        "authToken": "#(authToken)"
-    },
-    "value": "#(value)",
-    "signature": "#(signature)"
-}

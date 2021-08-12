@@ -1,9 +1,0 @@
-objects:
-  cardTypeMastercard: "img[name='MasterCard']"
-  cardNumberField: "#CardNumber"
-  cardMonthField: "#CardMonth"
-  cardYearField: "#CardYear"
-  payButton: "#Paybutton"
-  authResultDropdown: "#selectAuthResult"
-  authenticatedDropDownValue: 'AUTHENTICATED'
-  submitButton: "input[value='Submit']"
