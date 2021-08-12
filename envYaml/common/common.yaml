@@ -45,7 +45,6 @@ endPoints:
     create: egov-hrms/employees/_create
     search: egov-hrms/employees/_search
     update: egov-hrms/employees/_update
-    count: egov-hrms/employees/_count
 
   accessControl:
     search: access/v1/actions/mdms/_get
@@ -63,14 +62,10 @@ endPoints:
     businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
     businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
     businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
-    
-  escalate:  
-    escalateSearch: egov-workflow-v2/egov-wf/escalate/_search
 
   billingService:
     fetchBill: billing-service/bill/v2/_fetchbill
     search: billing-service/bill/v2/_search
-    cancelBill: billing-service/bill/v2/_cancelbill
 
   pdfService:
     create: pdf-service/v1/_create?
@@ -86,7 +81,6 @@ endPoints:
     createPayment: collection-services/payments/_create
     workflow: collection-services/payments/PT/_workflow
     searchPayment: collection-services/payments/PT/_search
-    echallanPaymentCount: collection-services/payments/_search
 
   billingServiceDemand:
     create: billing-service/demand/_create
@@ -308,7 +302,6 @@ endPoints:
     create: echallan-services/eChallan/v1/_create
     update: echallan-services/eChallan/v1/_update
     search: echallan-services/eChallan/v1/_search
-    count: echallan-services/eChallan/v1/_count
     
   fsmBillingSlab:
     create: fsm-calculator/v1/billingSlab/_create
@@ -320,6 +313,3 @@ endPoints:
     create: billing-service/amendment/_create
     update: billing-service/amendment/_update
     search: billing-service/amendment/_search
-
-  inbox:
-    inboxSearch: inbox/v1/_search

@@ -6,16 +6,7 @@ parameters:
   taxHeadCode2: WS_TIME_INTEREST
   taxHeadCode3: WS_CHARGE
   taxHeadCode4: WS_ADVANCE_CARRYFORWARD
-  reason1: INCORRECT_CONNECTION_DETAILS
-  reason2: INCORRECT_PERSONAL_INFO
-  reason3: INCORRECT_PROPERTY_DETAILS
-  reason4: OTHER
 errorMessages:
   invalidBusinessService: No Advance taxHead found for 
   invalidTenantMessage: Invalid Tenant Id
   amountErrorMsg: Failed to deserialize certain JSON fields
-  cancelBillError:
-    message: No Active bills found for cancellation for the given criteria
-successMessages:
-  cancelBillSuccess:
-    message: Successfully cancelled 1 Active bills for given consumer codes

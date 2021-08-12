@@ -23,17 +23,13 @@ Background:
   * def createPaymentRequest = read('../../business-services/requestPayload/collection-services/create.json')
   * def workflowRequest = read('../../business-services/requestPayload/collection-services/workflow.json')
   * def searchPaymentRequest = read('../../business-services/requestPayload/collection-services/search.json')
-  * def searchPTreceiptcount = read('../../business-services/requestPayload/collection-services/receiptcount.json')
   * def createPaymentRequestForCheque = read('../../business-services/requestPayload/collection-services/createPaymentWithCheque.json')
-  * def eChallanPaymentcount = read('../../business-services/requestPayload/collection-services/echallancount.json')
   * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
   * def invalidBillId = 'invalid_'+randomNumber(4)
   * def invalidBusinessId = 'PT'+randomNumber(4)
   * def invalidPaymentMode = randomString(4)
   * def invalidTenantId = randomString(5)
   * def negativeTotalAmount = '-'+randomNumber(4)
- # * def roleCode = mdmsStateAccessControlRoles.roles[roleIndex].code
- # * def roleName = mdmsStateAccessControlRoles.roles[roleIndex].name
    
 
 @createPayment
@@ -392,42 +388,3 @@ Scenario: Steps to create a payment with Cheque payment method
   Then status 400
   And def collectionServicesResponseHeader = responseHeaders
   And def collectionServicesResponseBody = response
-
-@fetchPaymentReceiptCount 
-    Scenario: To fetch payment receipt count
-
-    * def parameters = 
-    """
-    {
-     tenantId: #(tenantId),
-     businessServices: PT,
-     isCountRequest: true
-    }
-    """
-    Given url searchPayment
-     And params parameters
-      * print parameters
-     And request searchPaymentRequest
-    When method post
-    Then status 200
-     And def searchResponseHeader = responseHeaders
-     And def searchResponseBody = response
-     And def PTreceiptcount = response.Count
-
-@fetchEChallanPaymentCount
-Scenario: Fetch eChallan payment count
-    * def parameters = 
-    """
-    {
-     tenantId: #(tenantId),
-     businessServices: ADVT.Unipolls,
-     isCountRequest: true
-    }
-    """
-    Given url echallanPaymentCount
-    And params parameters
-    And request eChallanPaymentcount
-    When method post
-    Then status 200
-    And def echallanCountResponseBody = response
-    And def echallanPaymentsCount = response.Count

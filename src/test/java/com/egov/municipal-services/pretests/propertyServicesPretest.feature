@@ -258,7 +258,6 @@ Scenario: Create assessment successfully
     }
     """
 	Given  url createAssessment 
-	   # * print createAssessment
 	And  params assessmentParams 
 	And  request createAssessmentRequest
 	When  method post 
