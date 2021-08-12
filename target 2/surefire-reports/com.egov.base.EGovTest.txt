@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.egov.base.EGovTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 270.39 sec <<< FAILURE! - in com.egov.base.EGovTest
-testParallel(com.egov.base.EGovTest)  Time elapsed: 270.184 sec  <<< FAILURE!
-java.lang.AssertionError: there are scenario failures
-	at com.egov.base.EGovTest.testParallel(EGovTest.java:46)
-

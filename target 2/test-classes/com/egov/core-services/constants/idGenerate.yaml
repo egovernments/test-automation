@@ -1,5 +1,0 @@
-errorMessages:
-  noFormatError: No Format is available in the MDMS for the given name and tenant
-  dbError: Error occurred while auto creating seq in DB
-invalidParameters:
-  sequenceFormat: WS/OTP/[fy:yyyy-yy]/[SEQ_EGOV]
