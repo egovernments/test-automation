@@ -5,7 +5,6 @@ Background:
     * def searchEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/search.json')
     * def updateEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/update.json')
     * def paymentEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/payment.json')
-    * def countEChallanRequest = read('../../municipal-services/requestPayload/eChallan-Service/count.json')
 
 @createEChallanSuccessfully
 Scenario: Create eChallan Service successfully
@@ -120,23 +119,3 @@ Scenario: Payment eChallan Service Error
     When method post
     Then status 403
     And def challanResponseBody = response
-
-@fetchEChallanCount
-Scenario: Fetch eChallan count
-  * def geteChallanCountParam = 
-    """
-    {
-     tenantId: #(tenantId)
-    }
-    """
-    Given url countEchallanEvent
-    And params geteChallanCountParam
-    And request countEChallanRequest
-    When method post
-    Then status 200
-    And def challanCountResponseBody = response
-    And def challanCount = stringToInteger(response.ChallanCount)
-    And def paidChallan = stringToInteger(response.paidChallan)
-    And def cancelledChallan = stringToInteger(response.cancelledChallan)
-    And def activeChallan = stringToInteger(response.activeChallan)
-    And def totalChallan = stringToInteger(response.totalChallan)
