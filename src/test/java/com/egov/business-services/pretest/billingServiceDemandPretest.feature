@@ -19,6 +19,7 @@ Feature: Business services - billing service demand calls
              Then status 201
               And def billingServiceDemandResponseHeader = responseHeaders
               And def billingServiceDemandResponseBody = response
+                * print billingServiceDemandResponseBody
               And def Demands = billingServiceDemandResponseBody.Demands
               And def demandId = Demands[0].id
               And def consumerCode = Demands[0].consumerCode

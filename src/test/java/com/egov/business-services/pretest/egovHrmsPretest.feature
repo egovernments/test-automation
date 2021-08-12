@@ -1,11 +1,13 @@
 Feature: HRMS API call
 
-        Background:
+Background:
   * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
   	# calling localization Json
+  * def tenantId = tenantId
   * def createEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/create.json')
   * def searchEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/search.json')
   * def updateEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/update.json')
+  * def countEmployeeRequest = read('../../business-services/requestPayload/egov-hrms/count.json')
   * def updateDeactivatemployeeRequest = read('../../business-services/requestPayload/egov-hrms/deactivate.json')
   * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 
@@ -18,6 +20,32 @@ Feature: HRMS API call
               And def hrmsResponseHeader = responseHeaders
               And def hrmsResponseBody = response
               And def Employees = hrmsResponseBody.Employees
+
+        @fetchEmployeeCountSuccessfully
+        Scenario: Fetch the employee count
+           * def parameters = 
+           """
+           {
+           tenantId: '#(tenantId)'
+           }
+           """
+           Given url hrmsCountUrl
+            #* print hrmsCountUrl
+            And params parameters
+            And request countEmployeeRequest
+           When method post
+           Then status 200
+            And def hrmsResponseBody = response
+            #* print hrmsResponseBody
+            And def hrmsResponseHeader = responseHeaders
+            And def hrmsEmployeeCount = response.EmployeCount
+            And def hrmsTotalEmployeeCount = response.EmployeCount.totalEmployee
+                  #* print hrmsTotalEmployeeCount
+            And def hrmsActiveEmployeeCount = stringToInteger(response.EmployeCount.activeEmployee)
+                  #* print hrmsActiveEmployeeCount
+            And def hrmsInactiveEmployeeCount = stringToInteger(response.EmployeCount.inactiveEmployee)
+                  #* print hrmsInactiveEmployeeCount
+            And assert responseStatus == 200
 
 
         @createEmployeeError

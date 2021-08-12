@@ -1,4 +1,4 @@
-function() {
+function fn() {
 	var uuid = '' + java.util.UUID.randomUUID(); // convert to string
 	//var dateTime = karate.get('dateTime'); // convert to string
 

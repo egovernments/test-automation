@@ -23,3 +23,4 @@ errorMessages:
   notNullSearchCriteriaError:
     code: NotNull.billSearchCriteria.tenantId
     message: must not be null
+  
