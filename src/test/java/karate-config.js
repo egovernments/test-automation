@@ -1,4 +1,4 @@
-function fn() {
+function() {
     var env = karate.env; // get system property 'karate.env'
     var locale = karate.properties['locale']; // get system property 'karate.locale'
     var tenantId = karate.properties['tenantId']; // get system property 'karate.tenantId'
@@ -151,16 +151,14 @@ function fn() {
         //hrmsSearch
         config.hrmsSearchUrl = envProps.host + path.endPoints.hrms.search;
 
+        
+
         //pgServices
         config.pgServices = envProps.host + path.endPoints.pgServices.create
         config.pgServicesUpdate = envProps.host + path.endPoints.pgServices.update
         config.pgServicesSearch = envProps.host + path.endPoints.pgServices.search
-
         //hrmsUpdate
         config.hrmsUpdateUrl = envProps.host + path.endPoints.hrms.update
-
-        //hrmsCount
-        config.hrmsCountUrl = envProps.host + path.endPoints.hrms.count;
 
         //accessControlSearch
         config.accessControlSearchUrl = envProps.host + path.endPoints.accessControl.search;
@@ -182,9 +180,6 @@ function fn() {
         config.collectionServiceWorkflowUrl = envProps.host + path.endPoints.collectionServices.workflow
         // Search Payment
         config.searchPayment = envProps.host + path.endPoints.collectionServices.searchPayment
-        // Search Payment
-        config.echallanPaymentCount = envProps.host + path.endPoints.collectionServices.echallanPaymentCount
-        
         // billing-service-demand
         config.createDemandUrl = envProps.host + path.endPoints.billingServiceDemand.create
         config.searchDemandUrl = envProps.host + path.endPoints.billingServiceDemand.search
@@ -193,17 +188,12 @@ function fn() {
         config.workFlowProcess = envProps.host + path.endPoints.eGovWorkFlowV2Process.search
         config.workFlowProcessCount = envProps.host + path.endPoints.eGovWorkFlowV2Process.count
         config.workflowTransition = envProps.host + path.endPoints.eGovWorkFlowV2Process.transition
-	    config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
-    	config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
-    	config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
-        
-        //escalate
-        config.escalateURL = envProps.host + path.endPoints.escalate.escalateSearch
-
+	      config.workFlowCreateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceCreate
+    	  config.workFlowSearchURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceSearch
+    	  config.workFlowUpdateURL = envProps.host + path.endPoints.eGovWorkFlowV2Process.businessServiceUpdate
         //billing service
         config.fetchBill = envProps.host + path.endPoints.billingService.fetchBill
         config.searchBill = envProps.host + path.endPoints.billingService.search
-        config.cancelBillURL = envProps.host + path.endPoints.billingService.cancelBill
         //pdf service
         config.createPdf = envProps.host + path.endPoints.pdfService.create
         config.createNoSavePdf = envProps.host + path.endPoints.pdfService.createNoSave
@@ -214,8 +204,6 @@ function fn() {
         config.createpropertyUrl =  envProps.host + path.endPoints.propertyService.create
         config.updatePropertyUrl =  envProps.host + path.endPoints.propertyService.update
         config.searchPropertyUrl =  envProps.host + path.endPoints.propertyService.search
-        //InboxAPI
-        config.inboxSearchUrl = envProps.host + path.endPoints.inbox.inboxSearch
         //apportion
         config.apportionUrl = envProps.host + path.endPoints.apportion.bill;
         //dashboard
@@ -413,7 +401,6 @@ function fn() {
         config.createEchallanEvent = envProps.host + path.endPoints.echallanService.create
         config.updateEchallanEvent = envProps.host + path.endPoints.echallanService.update
         config.searchEchallanEvent = envProps.host + path.endPoints.echallanService.search
-        config.countEchallanEvent = envProps.host + path.endPoints.echallanService.count
     
         //FSM Billing Slab
         config.createFSMBillingSlab = envProps.host + path.endPoints.fsmBillingSlab.create

@@ -1,7 +1,6 @@
 Feature: Business Services - HRMS
 
-Background:
- 
+        Background:
     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * call read('../../common-services/pretests/egovMdmsPretest.feature')
     * def hrmsConstants = read('../../business-services/constants/egov-hrms.yaml')
@@ -428,43 +427,3 @@ Background:
     # Validate response status as Success once employee is Deactivated
     * assert hrmsResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     * call read('../../business-services/pretest/egovHrmsPretest.feature@updateEmployeeError')
-
-@HRMS_employee_Count_01 @positive @hrmsemployeecount @businessService @businessServices
-    Scenario: Test to search and fetch the employees count
-    # Steps to get the employee count through HRMS count API
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@fetchEmployeeCountSuccessfully')
-    # Validate response status as Success
-    * match hrmsEmployeeCount == '#present'
-
-    @HRMS_employee_Count_02 @positive @hrmsemployeecount @businessService @businessServices
-    Scenario: Test to search and fetch the active employees count
-    # Steps to get the employee count through HRMS count API
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@fetchEmployeeCountSuccessfully')
-    # Validate response status as Success
-    * match hrmsActiveEmployeeCount == '#present'
-    * match hrmsActiveEmployeeCount == '#notnull'
-
-    @HRMS_employee_Count_03 @positive @hrmsemployeecount @businessService @businessServices
-    Scenario: Test to search and fetch the inactive employees count
-    # Steps to get the employee count through HRMS count API
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@fetchEmployeeCountSuccessfully')
-    # Validate response status as Success
-    * match hrmsInactiveEmployeeCount == '#present'
-    * match hrmsInactiveEmployeeCount == '#notnull'
-
-    @HRMS_employee_Count_04 @positive @hrmsemployeecount @businessService @businessServices
-    Scenario: Test to search and fetch the total employees count
-    # Steps to get the employee count through HRMS count API
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@fetchEmployeeCountSuccessfully')
-    # Validate response status as Success
-    * match hrmsTotalEmployeeCount == '#present'
-    * match hrmsTotalEmployeeCount == '#notnull'
-
-    @HRMS_employee_Count_05 @positive @hrmsemployeecount @businessService @businessServices
-    Scenario: Test to compare the total count with active and inactive employees count
-    # Steps to get the employee count through HRMS count API
-    * call read('../../business-services/pretest/egovHrmsPretest.feature@fetchEmployeeCountSuccessfully')
-    # Validate response status as Success
-    * def totalEmployeeCount = hrmsActiveEmployeeCount + hrmsInactiveEmployeeCount
-            * print totalEmployeeCount
-    * assert hrmsTotalEmployeeCount == totalEmployeeCount
