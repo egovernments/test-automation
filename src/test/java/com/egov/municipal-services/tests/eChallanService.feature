@@ -203,3 +203,34 @@ Background:
 
 
     # echallan calculator isnot required to automate becuase we are checking in local only and also we are going to checking in kafka testcase place
+
+    @eChallan_count_01 @echallanCount @positive @municipalService @echallanServie
+    Scenario: To fetch the echallan count
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanCount')
+    * match challanCount == '#present'
+
+    @eChallan_count_02 @echallanCount @positive @municipalService @echallanServie
+    Scenario: To fetch the echallan active count
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanCount')
+    * match activeChallan == '#present'
+    * match activeChallan == '#notnull'
+
+    @eChallan_count_03 @echallanCount @positive @municipalService @echallanServie 
+    Scenario: To fetch the echallan paid count
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanCount')
+    * match paidChallan == '#present'
+    * match paidChallan == '#notnull'
+
+    @eChallan_count_04 @echallanCount @positive @municipalService @echallanServie 
+    Scenario: To fetch the echallan cancelled count
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanCount')
+    * match cancelledChallan == '#present'
+    * match cancelledChallan == '#notnull'
+
+    @eChallan_count_05 @positive @municipalService @echallanServie @echallanCount @eChallanServicePayment
+    Scenario: To fetch the echallan total count
+    * call read('../../municipal-services/pretests/eChallanServicePretest.feature@fetchEChallanCount')
+    * match totalChallan == paidChallan + cancelledChallan + activeChallan
+    * match totalChallan == '#notnull'
+        * print totalChallan
+    

@@ -1,17 +1,17 @@
-host: https://qa.digit.org/
+host: https://uat.digit.org/
 localhost: http://localhost:8082/
 mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
-stateCode: pb
-cityCode: amritsar
+stateCode: pg
+cityCode: citya
 # Super User credentials for login(need to create user manually)
 superUser:
-  userName: EMPAUTO
+  userName: CRPT2
   password: eGov@123
   type: EMPLOYEE
 # Employee username and password to update an existing user's profile (need to create user manually)
 employee:
-  userName: EMP-107-001333
-  password: Password@2
+  userName: CRPT2
+  password: eGov@123
   type: EMPLOYEE
 # Citizen's username and password needed for Property End to End flow (need to create user manually)
 citizen:
@@ -34,3 +34,4 @@ citizenArchitect:
   type: CITIZEN
 
 
+  

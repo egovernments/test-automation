@@ -92,3 +92,18 @@ Scenario: Test to search payment with invalid ReceiptNumber
     * assert searchResponseBody.Payments.length == 0
     # Validate that Payment details should not present in the response body as receipt number is invalid
     * match searchResponseBody.Payments[0] == '#notpresent'
+
+@pt_receiptCountSearch_01 @positive @regression @businessServices @ptcountSearch
+    Scenario: Fetch PT receipt count
+    * call read('../../business-services/pretest/collectionServicesPretest.feature@fetchPaymentReceiptCount')
+    * match PTreceiptcount == '#present'
+    * match PTreceiptcount == '#notnull'
+    * print PTreceiptcount
+
+@echallanPaymentCount_01 @positive @regression @businessServices @echallancountSearch
+    Scenario: Fetch echallan payment count
+    * call read('../../business-services/pretest/collectionServicesPretest.feature@fetchEChallanPaymentCount')
+    * match echallanPaymentsCount == '#present'
+    * match echallanPaymentsCount == '#notnull'
+    * print echallanPaymentsCount
+    
