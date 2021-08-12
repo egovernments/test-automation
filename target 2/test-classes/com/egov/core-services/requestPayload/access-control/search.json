@@ -1,0 +1,10 @@
+{
+    "RequestInfo": {
+      "ts": "#(ts)",
+      "authToken": "#(authToken)"
+    },
+    "roleCodes": ["#(roleCodes)"],
+    "tenantId": "#(tenantId)",
+    "actionMaster": "#(actionMaster)",
+    "enabled": "#(enabled)"
+  }

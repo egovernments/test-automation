@@ -1,0 +1,566 @@
+<testsuite failures="5"
+           name="com/egov/core-services/tests/userAccount.feature"
+           skipped="0"
+           tests="5"
+           time="0.231607">
+   <testcase classname="com.egov.core-services.tests.userAccount"
+             name="Verify the user Account is locked after giving Invalid password for 5 times"
+             time="0.061861">
+      <failure message="userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;caller: classpath:com/egov/core-services/tests/userAccount.feature&#xA;items: [{&#34;oauthPassword&#34;:&#34;egov1&#34;},{&#34;oauthPassword&#34;:&#34;egov2&#34;},{&#34;oauthPassword&#34;:&#34;egov3&#34;},{&#34;oauthPassword&#34;:&#34;egov11&#34;},{&#34;oauthPassword&#34;:&#34;egov12&#34;}]&#xA;errors:&#xA;-------&#xA;feature call (loop) failed at index: 0&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov1&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 1&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov2&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 2&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov3&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 3&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov11&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 4&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov12&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)">* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:14)
+
+* def accountLockError = $result[*].authResponseBody ...................... skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.userAccount"
+             name="Verify the user Account is UnLocked after 1 hour from account locked time"
+             time="0.005313">
+      <failure message="userAccount.feature:20 - evaluation (js) failed: waitTimeSec(1800), javax.script.ScriptException: ReferenceError: &#34;waitTimeSec&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)">* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:14)
+
+* def accountLockError = $result[*].authResponseBody ...................... skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* call waitTimeSec(1800) .................................................. failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:20 - evaluation (js) failed: waitTimeSec(1800), javax.script.ScriptException: ReferenceError: "waitTimeSec" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* call waitTimeSec(1800) (userAccount.feature:20)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@acountUnlockSuccess') . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.userAccount"
+             name="Verify user account after same account is locked by giving valid credentials"
+             time="0.09169">
+      <failure message="userAccount.feature:30 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;caller: classpath:com/egov/core-services/tests/userAccount.feature&#xA;items: [{&#34;oauthPassword&#34;:&#34;egov1&#34;},{&#34;oauthPassword&#34;:&#34;egov2&#34;},{&#34;oauthPassword&#34;:&#34;egov3&#34;},{&#34;oauthPassword&#34;:&#34;egov11&#34;},{&#34;oauthPassword&#34;:&#34;egov12&#34;}]&#xA;errors:&#xA;-------&#xA;feature call (loop) failed at index: 0&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov1&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 1&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov2&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 2&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov3&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 3&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov11&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 4&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov12&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)">* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:14)
+
+* def accountLockError = $result[*].authResponseBody ...................... skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* call waitTimeSec(1800) .................................................. failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:20 - evaluation (js) failed: waitTimeSec(1800), javax.script.ScriptException: ReferenceError: "waitTimeSec" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* call waitTimeSec(1800) (userAccount.feature:20)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@acountUnlockSuccess') . skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:30 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:30)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordError') . skipped
+* assert authResponseBody.error == userConstant.errormessages.accountLock . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.userAccount"
+             name="Verify the user Account is NOT locked after giving valid password for the 5th time"
+             time="0.039175">
+      <failure message="userAccount.feature:40 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;caller: classpath:com/egov/core-services/tests/userAccount.feature&#xA;items: [{&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;},{&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;},{&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;},{&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;},{&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}]&#xA;errors:&#xA;-------&#xA;feature call (loop) failed at index: 0&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}&#xA;userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 1&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}&#xA;userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 2&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}&#xA;userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 3&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}&#xA;userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 4&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthValidPassword&#34;:&#34;eGov#123&#34;}&#xA;userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)">* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:14)
+
+* def accountLockError = $result[*].authResponseBody ...................... skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* call waitTimeSec(1800) .................................................. failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:20 - evaluation (js) failed: waitTimeSec(1800), javax.script.ScriptException: ReferenceError: "waitTimeSec" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* call waitTimeSec(1800) (userAccount.feature:20)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@acountUnlockSuccess') . skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:30 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:30)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordError') . skipped
+* assert authResponseBody.error == userConstant.errormessages.accountLock . skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def validPasswordNotToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordSuccess') . passed
+* def validPasswordPayload = read('../../core-services/requestPayload/user/oauthValidPassword.json') . passed
+* def resultOne = call validPasswordNotToLock validPasswordPayload ........ failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:40 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def resultOne = call validPasswordNotToLock validPasswordPayload (userAccount.feature:40)</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.userAccount"
+             name="Verify the user Account before 1 hr after locked"
+             time="0.033569">
+      <failure message="userAccount.feature:49 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;caller: classpath:com/egov/core-services/tests/userAccount.feature&#xA;items: [{&#34;oauthPassword&#34;:&#34;egov1&#34;},{&#34;oauthPassword&#34;:&#34;egov2&#34;},{&#34;oauthPassword&#34;:&#34;egov3&#34;},{&#34;oauthPassword&#34;:&#34;egov11&#34;},{&#34;oauthPassword&#34;:&#34;egov12&#34;}]&#xA;errors:&#xA;-------&#xA;feature call (loop) failed at index: 0&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov1&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 1&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov2&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 2&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov3&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 3&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov11&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)&#xA;-------&#xA;feature call (loop) failed at index: 4&#xA;caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature&#xA;arg: {&#34;oauthPassword&#34;:&#34;egov12&#34;}&#xA;userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: &#34;employeeSuperUserUserNme&#34; is not defined in &lt;eval&gt; at line number 1&#xA;stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)">* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:14 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:14)
+
+* def accountLockError = $result[*].authResponseBody ...................... skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* call waitTimeSec(1800) .................................................. failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:20 - evaluation (js) failed: waitTimeSec(1800), javax.script.ScriptException: ReferenceError: "waitTimeSec" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* call waitTimeSec(1800) (userAccount.feature:20)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@acountUnlockSuccess') . skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:30 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:30)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordError') . skipped
+* assert authResponseBody.error == userConstant.errormessages.accountLock . skipped
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def validPasswordNotToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordSuccess') . passed
+* def validPasswordPayload = read('../../core-services/requestPayload/user/oauthValidPassword.json') . passed
+* def resultOne = call validPasswordNotToLock validPasswordPayload ........ failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:40 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"},{"oauthValidPassword":"eGov#123"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthValidPassword":"eGov#123"}
+userAccountUnlockPretest.feature:52 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def resultOne = call validPasswordNotToLock validPasswordPayload (userAccount.feature:40)
+
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userConstant = read('../../core-services/constants/user.yaml') ...... passed
+* def invalidPswToLock = read('../../core-services/pretests/userAccountUnlockPretest.feature@invalidPasswordError') . passed
+* def invalidPswPayload = read('../../core-services/requestPayload/user/oauthInvalidPassword.json') . passed
+* def result = call invalidPswToLock invalidPswPayload .................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: userAccount.feature:49 - feature call (loop) failed: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+caller: classpath:com/egov/core-services/tests/userAccount.feature
+items: [{"oauthPassword":"egov1"},{"oauthPassword":"egov2"},{"oauthPassword":"egov3"},{"oauthPassword":"egov11"},{"oauthPassword":"egov12"}]
+errors:
+-------
+feature call (loop) failed at index: 0
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov1"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 1
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov2"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 2
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov3"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 3
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov11"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+-------
+feature call (loop) failed at index: 4
+caller: classpath:com/egov/core-services/tests/../../core-services/pretests/userAccountUnlockPretest.feature
+arg: {"oauthPassword":"egov12"}
+userAccountUnlockPretest.feature:9 - evaluation (js) failed: employeeSuperUserUserNme, javax.script.ScriptException: ReferenceError: "employeeSuperUserUserNme" is not defined in &lt;eval&gt; at line number 1
+stack trace: jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at ✽.* def result = call invalidPswToLock invalidPswPayload (userAccount.feature:49)
+
+* call read('../../core-services/pretests/userAccountUnlockPretest.feature@validPasswordError') . skipped
+* assert authResponseBody.error == userConstant.errormessages.accountLock . skipped</failure>
+   </testcase>
+</testsuite>

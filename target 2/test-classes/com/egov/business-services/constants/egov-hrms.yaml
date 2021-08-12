@@ -1,0 +1,29 @@
+expectedMessages:
+  ERR_HRMS_INVALID_DESG: Invalid designation of employee.
+  ERR_HRMS_INVALID_DOB: Invalid date of birth entered.
+  ERR_HRMS_INVALID_DATE_OF_APPOINTMENT_DOB: Employee date of appointment can not be before date of birth.
+  ERR_HRMS_INVALID_ASSIGNMENT_DATES: Employee period of assignment (From Date or To date) can not be before date of birth.
+  ERR_HRMS_INVALID_ASSIGNMENT_NOT_CURRENT_TO_DATE: To date field should not be blank for non current assignment of the employee.
+  ERR_HRMS_INVALID_CURRENT_ASSGN: There should be exactly one current assignment for the employee.
+  unauthorized: Not authorized to access this resource
+  ERR_HRMS_INVALID_ASSIGNMENT_CURRENT_TO_DATE: To Date field should be blank for current assignment of the employee.
+  INVALID_AADHAR: AdharNumber should be 12 digit number
+  invalidEmployeeStatus: 'Invalid employment status entered.'
+  userCreationFailed: 'User creation failed at the user service.'
+  failedToDeserializeJson: 'Failed to deserialize certain JSON fields'
+  notNull: 'must not be null'
+  userAlreadyExists: 'User already exists for the entered mobile number. Use a different mobile number to proceed.'
+  invalidAssignmentPeriod: 'Invalid period of assignment (From date - To date).'
+  toDateShouldBeBlank: 'To Date field should be blank for current assignment of the employee.'
+  toDateShouldBeBlankForNonCurrentAssignment: To date field should not be blank for non current assignment of the employee.
+  assigmentPeriodCannotBeBeforeDob: 'Employee period of assignment (From Date or To date) can not be before date of birth.'
+  invalidEmployeeType: 'Invalid employee type entered.'
+  invalidJurisdictionHierarchyValue: 'Jurisiction hierarchy value is invalid.'
+  invalidJurisdictionBoundaryType: 'Jurisiction boundary type value is invalid.'
+  invalidJurisdictionBoundary: 'Jurisiction boundary value is invalid.'
+  invalidSizeRange: 'size must be between 2 and 100'
+  invalidDepartment: 'Invalid department of employee entered.'
+  invalidDesignation: 'Invalid designation of employee.'
+  onlyOneCurrentAssigment: 'There should be exactly one current assignment for the employee.'
+  tenantIdMandatory: 'For search based on phone number and name, passing of tenant id is mandatory.'
+  invalidMobileNumber: "Invalid mobile number entered."

@@ -1,0 +1,22 @@
+{
+  "RequestInfo": {
+      "apiId": "Mihy",
+      "ver": ".01",
+      "action": "_search",
+      "did": "1",
+      "key": "",
+      "msgId": "20170310130900|en_IN",
+      "requesterId": "",
+      "authToken": "#(authToken)"
+  },
+  "UpdateBillCriteria": {
+      "additionalDetails": {
+          "reason": "#(cancelBillReason1)"
+      },
+      "tenantId": "#(tenantId)",
+      "consumerCodes": [
+          "WS/1013/2021-22/000139"
+      ],
+      "businessService": "#(apportionbusinessService)"
+  }
+}

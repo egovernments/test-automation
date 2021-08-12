@@ -1,0 +1,11 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "CalulationCriteria" : [
+        {
+        "tenantId" : "#(tenantId)",
+        "applicationNumber": "#(applicationNumber)"
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+<testsuite failures="0"
+           name="com/egov/core-services/tests/searchMdms.feature"
+           skipped="0"
+           tests="6"
+           time="0.885374">
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test to search data for a particular module and tenant"
+             time="0.13319">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test by passing invalid/non existent or null value for tenant id"
+             time="0.150161">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test by passing invalid/non existent or null value for Module Name"
+             time="0.148693">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def moduleName = 'INVALID-module-' + randomString(3) .................... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponse = searchMdmsResponseBody.MdmsRes ....................... passed
+* match mdmsResponse == '#present' ........................................ passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test by passing invalid/non existent or null value for Name in Masterdetails"
+             time="0.141041">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def moduleName = 'INVALID-module-' + randomString(3) .................... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponse = searchMdmsResponseBody.MdmsRes ....................... passed
+* match mdmsResponse == '#present' ........................................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def name = 'INVALID-Name-' + randomString(3) ............................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponseSecond = searchMdmsResponseBody.MdmsRes["common-masters"] . passed
+* match mdmsResponseSecond == '#present' .................................. passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test by removing tenantid and module name parameter in the request"
+             time="0.163726">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def moduleName = 'INVALID-module-' + randomString(3) .................... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponse = searchMdmsResponseBody.MdmsRes ....................... passed
+* match mdmsResponse == '#present' ........................................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def name = 'INVALID-Name-' + randomString(3) ............................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponseSecond = searchMdmsResponseBody.MdmsRes["common-masters"] . passed
+* match mdmsResponseSecond == '#present' .................................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.passValusAsNull ........ passed
+* def moduleName = commonConstants.invalidParameters.passValusAsNull ...... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.messageForTenantId . passed
+* assert searchMdmsResponseBody.Errors[1].message == searchMdmsConstant.errorMessages.messageForTenantId . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.searchMdms"
+             name="Test by removing MasterDetails parameter in the request"
+             time="0.148562">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* match searchMdmsResponseBody == '#present' .............................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.invalidTenantid . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def moduleName = 'INVALID-module-' + randomString(3) .................... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponse = searchMdmsResponseBody.MdmsRes ....................... passed
+* match mdmsResponse == '#present' ........................................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def name = 'INVALID-Name-' + randomString(3) ............................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsSuccessfully') . passed
+* def mdmsResponseSecond = searchMdmsResponseBody.MdmsRes["common-masters"] . passed
+* match mdmsResponseSecond == '#present' .................................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* def tenantId = commonConstants.invalidParameters.passValusAsNull ........ passed
+* def moduleName = commonConstants.invalidParameters.passValusAsNull ...... passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithInvalidtenantIdError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.messageForTenantId . passed
+* assert searchMdmsResponseBody.Errors[1].message == searchMdmsConstant.errorMessages.messageForTenantId . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def searchMdmsConstant = read('../../core-services/constants/searchMdms.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def moduleName = searchMdmsConstant.parameters.moduleName[0] ............ passed
+* def name = searchMdmsConstant.parameters.name[0] ........................ passed
+* call read('../../core-services/pretests/mdmsService.feature@searchMdmsWithoutMasterDetailsError') . passed
+* assert searchMdmsResponseBody.Errors[0].message == searchMdmsConstant.errorMessages.withoutMasterDetails . passed</system-out>
+   </testcase>
+</testsuite>

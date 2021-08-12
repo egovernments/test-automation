@@ -1,0 +1,15 @@
+{
+  "RequestInfo": {
+    "authToken": "#(authToken)"
+  },
+  "tenantId": "#(tenantId)",
+  "messages": [
+    {
+            "code": "#(code)",
+            "message": "#(message)",
+            "module": "#(module)",
+            "locale": "#(locale)"
+        }
+        
+  ]
+}

@@ -1,0 +1,26 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Transaction": {
+        "tenantId": "#(tenantId)",
+        "txnAmount": "#(txnAmount)",
+        "module": "PT",
+        "billId": "#(billId)",
+        "consumerCode": "#(consumerCode)",
+        "productInfo": "Common Payment",
+        "gateway": "#(gateway)",
+        "taxAndPayments": [
+            {
+                "billId": "#(billId)",
+                "amountPaid": "#(txnAmount)"
+            }
+        ],
+        "user": {
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)",
+            "tenantId": "#(tenantId)"
+        },
+        "callbackUrl": "#(callbackUrl)"
+    }
+}

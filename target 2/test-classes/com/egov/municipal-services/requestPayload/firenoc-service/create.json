@@ -1,0 +1,92 @@
+{
+    "RequestInfo": {
+        "apiId": "",
+        "ver": ".01",
+        "action": "",
+        "msgId": "",
+        "authToken": "#(authToken)"
+    },
+    "FireNOCs": [
+        {
+            "fireNOCDetails": {
+                "noOfBuildings": "#(single)",
+                "fireNOCType": "#(provisional)",
+                "buildings": [
+                    {
+                        "name": "#(name)",
+                        "usageTypeMajor": "#(usageTypeMajor)",
+                        "usageType": "#(usageType)",
+                        "uomsMap": {
+                            "NO_OF_FLOORS": "#(noofFloors)",
+                            "NO_OF_BASEMENTS": "0",
+                            "PLOT_SIZE": "#(plotSize)",
+                            "HEIGHT_OF_BUILDING": "#(plotSize)"
+                        },
+                        "uoms": [
+                            {
+                                "code": "#(hight)",
+                                "value": "#(plotSize)",
+                                "isActiveUom": "#(isActiveUom)",
+                                "active": "#(active)"
+                            },
+                            {
+                                "code": "#(floors)",
+                                "value": "#(noofFloors)",
+                                "isActiveUom": false,
+                                "active": true
+                            },
+                            {
+                                "code": "#(basements)",
+                                "value": 0,
+                                "isActiveUom": false,
+                                "active": true
+                            },
+                            {
+                                "code": "#(platSize)",
+                                "value": "#(plotSize)",
+                                "isActiveUom": false,
+                                "active": true
+                            }
+                        ],
+                        "applicationDocuments": []
+                    }
+                ],
+                "propertyDetails": {
+                    "address": {
+                        "city": "#(tenantId)",
+                        "locality": {
+                            "code": "#(localityCode)"
+                        }
+                    }
+                },
+                "firestationId": "#(stationCode)",
+                "additionalDetail": {
+                    "documents": []
+                },
+                "applicantDetails": {
+                    "ownerShipMajorType": "#(ownerShipMajorType)",
+                    "ownerShipType": "#(singleOwner)",
+                    "owners": [
+                        {
+                            "mobileNumber": "#(mobileNumber)",
+                            "name": "#(name)",
+                            "gender": "#(gender)",
+                            "dob": "#(dob)",
+                            "fatherOrHusbandName": "#(fatherOrHusbandName)",
+                            "relationship": "#(relationship)",
+                            "correspondenceAddress": "#(correspondenceAddress)",
+                            "ownerType": "NONE"
+                        }
+                    ],
+                    "additionalDetail": {
+                        "documents": []
+                    }
+                },
+                "action": "#(action)",
+                "channel": "#(counter)",
+                "financialYear": "#(financialYear)"
+            },
+            "tenantId": "#(tenantId)"
+        }
+    ]
+}

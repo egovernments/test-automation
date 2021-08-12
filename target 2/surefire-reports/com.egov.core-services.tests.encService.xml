@@ -1,0 +1,451 @@
+<testsuite failures="2"
+           name="com/egov/core-services/tests/encService.feature"
+           skipped="0"
+           tests="7"
+           time="1.956526">
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Verify to encrypt name, mobile number and email for a user"
+             time="0.203471">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Verify with a invalid or non existant tenant id/type and check for errors"
+             time="0.246146">
+      <failure message="encService.feature:29 - &#xA;encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {&#34;path&#34;:&#34;/egov-enc-service/crypto/v1/_encrypt&#34;,&#34;error&#34;:&#34;Internal Server Error&#34;,&#34;message&#34;:&#34;Abc@123 is an Invalid Data Type&#34;,&#34;timestamp&#34;:&#34;2021-08-10T10:10:20.211+0000&#34;,&#34;status&#34;:500}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Verify by sending encrypted message in the API"
+             time="0.309692">
+      <failure message="encService.feature:38 - &#xA;encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;MismatchedInputException&#34;,&#34;description&#34;:&#34;Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\&#34;[\&#34;780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\&#34;,[\&#34;780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\&#34;,\&#34;780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\&#34;],{\&#34;userObject1\&#34;:{\&#34;mobileNumber\&#34;:\&#34;780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\&#34;,\&#34;name\&#34;:\&#34;780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\&#34;,\&#34;email\&#34;:\&#34;780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\&#34;}}]\&#34;; line: 1, column: 1]&#34;,&#34;message&#34;:&#34;Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\&#34;[\&#34;780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\&#34;,[\&#34;780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\&#34;,\&#34;780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\&#34;],{\&#34;userObject1\&#34;:{\&#34;mobileNumber\&#34;:\&#34;780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\&#34;,\&#34;name\&#34;:\&#34;780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\&#34;,\&#34;email\&#34;:\&#34;780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\&#34;}}]\&#34;; line: 1, column: 1]&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:38 - 
+encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {"ResponseInfo":null,"Errors":[{"code":"MismatchedInputException","description":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","message":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","params":null}]}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') (encService.feature:38)
+
+* match response[*].userObject1.name contains name ........................ skipped
+* match response[*].userObject1.email contains email ...................... skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Verify roate key API for a given tenant id"
+             time="0.266223">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:38 - 
+encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {"ResponseInfo":null,"Errors":[{"code":"MismatchedInputException","description":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","message":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","params":null}]}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') (encService.feature:38)
+
+* match response[*].userObject1.name contains name ........................ skipped
+* match response[*].userObject1.email contains email ...................... skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@rotateSuccessfully') . passed
+* match response.acknowledged == true ..................................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Test to Sign the data"
+             time="0.204253">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:38 - 
+encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {"ResponseInfo":null,"Errors":[{"code":"MismatchedInputException","description":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","message":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","params":null}]}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') (encService.feature:38)
+
+* match response[*].userObject1.name contains name ........................ skipped
+* match response[*].userObject1.email contains email ...................... skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@rotateSuccessfully') . passed
+* match response.acknowledged == true ..................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* match response.value == value ........................................... passed
+* match response.signature == '#present' .................................. passed
+* match response.signature != value ....................................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Test to verify signature through API call"
+             time="0.344338">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:38 - 
+encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {"ResponseInfo":null,"Errors":[{"code":"MismatchedInputException","description":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","message":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","params":null}]}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') (encService.feature:38)
+
+* match response[*].userObject1.name contains name ........................ skipped
+* match response[*].userObject1.email contains email ...................... skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@rotateSuccessfully') . passed
+* match response.acknowledged == true ..................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* match response.value == value ........................................... passed
+* match response.signature == '#present' .................................. passed
+* match response.signature != value ....................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* def signature = response.signature ...................................... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@verifySuccessfully') . passed
+* match response.verified == true ......................................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.encService"
+             name="Test to verify signature through API call by passing invalid value"
+             time="0.382404">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* match response[*].userObject1.name == '#present' ........................ passed
+* match response[*].userObject1.email == '#present' ....................... passed
+* match response[*].userObject1.mobileNumber == '#present' ................ passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* def type = commonConstants.invalidParameters.invalidValue ............... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:29 - 
+encServicePrestest.feature:29 - status code was: 500, expected: 400, response time: 217, url: https://qa.digit.org/egov-enc-service/crypto/v1/_encrypt, response: {"path":"/egov-enc-service/crypto/v1/_encrypt","error":"Internal Server Error","message":"Abc@123 is an Invalid Data Type","timestamp":"2021-08-10T10:10:20.211+0000","status":500}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@EncryptError') (encService.feature:29)
+
+* match encryptResponseBody.message == type +' '+ encServiceData.errorMessages.invalidType . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@EncryptSuccessfully') . passed
+* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: encService.feature:38 - 
+encServicePrestest.feature:49 - status code was: 500, expected: 200, response time: 113, url: https://qa.digit.org/egov-enc-service/crypto/v1/_decrypt, response: {"ResponseInfo":null,"Errors":[{"code":"MismatchedInputException","description":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","message":"Cannot deserialize instance of `java.util.HashMap&lt;java.lang.Object,java.lang.Object&gt;` out of START_ARRAY token\n at [Source: (String)\"[\"780010|DHm9RrUlzkNocJK6+r6jg4OtNqJNrvSsZ+kLfdg1LQ==\",[\"780010|HWm7Wowqw1raYbSIX7rf7qSSRPvwHXWw\",\"780010|HX6gX4IwxzdZTNQ27GvtjZ1EEBxs7Hc=\"],{\"userObject1\":{\"mobileNumber\":\"780010|eSL/HdJ1kQM1Yde9q42Er/t6FnT7xITre4M3s3M=\",\"name\":\"780010|DHm9RrY3x0QtEayO9KeaUuAwBtlLhxpFnkCc4F86\",\"email\":\"780010|AWSkZpcExVtsOY/W8b6j4GJzitUPUDu/N8KYilqd4w==\"}}]\"; line: 1, column: 1]","params":null}]}
+	at ✽.* call read('../../core-services/pretests/encServicePrestest.feature@decryptsuccessfully') (encService.feature:38)
+
+* match response[*].userObject1.name contains name ........................ skipped
+* match response[*].userObject1.email contains email ...................... skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@rotateSuccessfully') . passed
+* match response.acknowledged == true ..................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* match response.value == value ........................................... passed
+* match response.signature == '#present' .................................. passed
+* match response.signature != value ....................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* def signature = response.signature ...................................... passed
+* call read('../../core-services/pretests/encServicePrestest.feature@verifySuccessfully') . passed
+* match response.verified == true ......................................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def encServiceData = read('../constants/encService.yaml') ............... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def type = 'Normal' ..................................................... passed
+* def value = 'AutoValue ' + randomString(5) .............................. passed
+* def name = 'AutoUser ' + randomString(5) ................................ passed
+* def mobileNumber = randomMobileNumGen(10) ............................... passed
+* def email = randomString(5) + '@gmail.com' .............................. passed
+* call read('../../core-services/pretests/encServicePrestest.feature@signSuccessfully') . passed
+* def signature = response.signature ...................................... passed
+* def value = null ........................................................ passed
+* call read('../../core-services/pretests/encServicePrestest.feature@verifyError') . passed
+* match response.message == encServiceData.errorMessages.verifyError + ': 1' . passed</system-out>
+   </testcase>
+</testsuite>

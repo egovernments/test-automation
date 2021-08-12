@@ -1,0 +1,25 @@
+parameters:
+ # Metadata report name
+ reportName: DescriptionReport
+ # to get the pgr LMEPerformance report
+ secondReportName: LMEPerformanceReport
+ # search param payload
+ searchparams:
+  - name: fromDate
+    input: pastDate
+  - name: toDate
+    input: currentDate
+  - name: deptname
+    input: departmentname
+ input:
+  - qa: DEPT_1
+  - uat: 
+ ts: currentDate
+# error messages
+errormessages:
+ withoutReportName: Error in retrieving report definition
+ noReportName: ERROR_IN_RETRIEVING_REPORT_DATA
+ invalidTenantId: Not authorized to access this resource
+ invalidEndpoint: Not authorized to access this resource
+ invalidSearchparam: Failed to deserialize certain JSON fields
+ invalidSearchParamsNames: ERROR_IN_RETRIEVING_REPORT_DATA

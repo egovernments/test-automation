@@ -1,0 +1,77 @@
+workflowCode:
+  newTradeLicense: "NewTL"
+
+applicationType:
+  new: "NEW"
+  
+licenseType:
+  permenant: "PERMANENT"
+
+processInstanceActions:
+  initiate: 'INITIATE'
+  submitApplication: 'SUBMIT_APPLICATION'
+  verifyAndForward: 'VERIFY_AND_FORWARD'
+  approveConnection: 'APPROVE_FOR_CONNECTION'
+  activateConnection: 'ACTIVATE_CONNECTION'
+
+tradeType:
+  goodsManufactureT15: "GOODS.MANUFACTURE.TST-15"
+
+documentType:
+  type1: OWNERIDPROOF
+  type2: OWNERSHIPPROOF
+  type3: OWNERPHOTO
+
+financialYear: '2019-20'
+
+status:
+  initiated: "INITIATED"
+  active: "Active"
+  pendingForDocVerification: 'PENDING_FOR_DOCUMENT_VERIFICATION'
+  pendingForFieldInspection: 'PENDING_FOR_FIELD_INSPECTION'
+  pendingForApproval: 'PENDING_APPROVAL_FOR_CONNECTION'
+  pendingForPayment: 'PENDING_FOR_PAYMENT'
+  pendingForConnectionActivation: 'PENDING_FOR_CONNECTION_ACTIVATION'
+  connectionActivated: 'CONNECTION_ACTIVATED'
+
+errors:
+  errorCodes:
+    invalidLicenseType: 'INVALID_LICENSE_TYPE'
+    invalidLocality: 'BOUNDARY MDMS DATA ERROR'
+    invalidStructureType: 'INVALID STRUCTURETYPE'
+    invalidMobileNumber: 'Pattern.tradeLicenseRequest.licenses[0].tradeLicenseDetail.owners[0].mobileNumber'
+    invalidFinancialYear: 'INVALID FINANCIALYEAR'
+    invalidTenantId: 'CustomException'
+    invalidUOM: 'INVALID UOM'
+    noTenantId: 'INVALID SEARCH'
+    onlyTenantId: 'INVALID SEARCH'
+    updateInvalidBusinessService: 'BUSINESSSERVICE_NOTMATCHING'
+    updateInvalidLicenseType: 'NullPointerException'
+    updateInvalidFinancialYear: 'INVALID FINANCIALYEAR'
+    updateInvalidId: 'INVALID UPDATE'
+    updateInvalidLicenseId: 'INVALID UPDATE'
+    updateInvalidOwnerUUID: 'INVALID UPDATE'
+    updateInvalidMobileNumber: 'Pattern.tradeLicenseRequest.licenses[0].tradeLicenseDetail.owners[0].mobileNumber'
+    updateInvalidUOM: 'INVALID UOM'
+    updateInvalidTenantId: 'Invalid_tenantId.MdmsCriteria.tenantId'
+    updateInvalidApplicationId: 'INVALID UPDATE'
+  errorMessages:
+    invalidLicenseType: 'License Type is Invalid'
+    invalidLocality: 'The boundary data was not found'
+    invalidStructureType: "The structureType '<<structure_type>>' does not exists"
+    invalidMobileNumber: 'Invalid mobile number'
+    invalidFinancialYear: 'No data found for the financialYear: '
+    invalidTenantId: 'Invalid Tenant Id'
+    invalidUOM: "The UOM: <<invalid_uom>> is not valid for accessoryCategory: "
+    noTenantId: 'TenantId is mandatory in search'
+    onlyTenantId: 'Search based only on tenantId is not allowed'
+    updateInvalidBusinessService: ' The business service inside license not matching with the one sent in path variable'
+    updateInvalidLicenseType: 'An unhandled exception occurred on the server'
+    updateInvalidFinancialYear: 'No data found for the financialYear: '
+    updateInvalidId: 'The license to be updated is not in database'
+    updateInvalidLicenseId: "The id <<license_id>> does not exist"
+    updateInvalidOwnerUUID: "The id: <<owner_id>> was not present in update request"
+    updateInvalidMobileNumber: 'Invalid mobile number'
+    updateInvalidUOM: 'The UOM: <<invalid_uom>> is not valid for accessoryCategory: '
+    updateInvalidTenantId: 'Invalid Tenant Id'
+    updateInvalidApplicationId: 'The application number from search: <<application_search_no>> and from update: <<application_update_no>> does not match'
