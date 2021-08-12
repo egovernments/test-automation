@@ -1,0 +1,169 @@
+{
+    "RequestInfo": {
+        "apiId": "string",
+        "ver": "string",
+        "ts": 0,
+        "action": "string",
+        "did": "string",
+        "key": "string",
+        "msgId": "string",
+        "requesterId": "string",
+        "authToken": "#(authToken)",
+        "userInfo": {
+            "id": 22675,
+            "uuid": "445864fa-1127-4567-86b3-0a0e96c32fef",
+            "userName": "PR_USER161",
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)",
+            "emailId": "leela@gmail.com",
+            "locale": null,
+            "type": "EMPLOYEE",
+            "roles": [
+                {
+                    "name": "PT Doc Verifier",
+                    "code": "PT_DOC_VERIFIER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "PT Counter Employee",
+                    "code": "PT_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "PT Field Inspector",
+                    "code": "PT_FIELD_INSPECTOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "PT Counter Approver",
+                    "code": "PT_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Property Approver",
+                    "code": "Property Approver",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "CSC Collection Operator",
+                    "code": "CSC_COLL_OPERATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Employee",
+                    "code": "EMPLOYEE",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC counter employee",
+                    "code": "NOC_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Counter Employee",
+                    "code": "TL_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Anonymous User",
+                    "code": "ANONYMOUS",
+                    "tenantId": "pb"
+                },
+                {
+                    "name": "TL Field Inspector",
+                    "code": "TL_FIELD_INSPECTOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Creator",
+                    "code": "TL_CREATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC counter Approver",
+                    "code": "NOC_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Approver",
+                    "code": "TL_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Super User",
+                    "code": "SUPERUSER",
+                    "tenantId": "pb"
+                },
+                {
+                    "name": "BPA Services Approver",
+                    "code": "BPA_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Field Employee",
+                    "code": "FEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Counter Employee",
+                    "code": "CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC Field Inpector",
+                    "code": "NOC_FIELD_INSPECTOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Super User",
+                    "code": "SUPERUSER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Grievance Officer",
+                    "code": "GO",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC Doc Verifier",
+                    "code": "NOC_DOC_VERIFIER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Collection Operator",
+                    "code": "COLL_OPERATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL doc verifier",
+                    "code": "TL_DOC_VERIFIER",
+                    "tenantId": "#(tenantId)"
+                }
+            ],
+            "active": true,
+            "tenantId": "#(tenantId)"
+        }
+    },
+    "inbox": {
+        "tenantId": "#(tenantId)",
+        "processSearchCriteria": {
+            "businessService": [
+                "PT.CREATE",
+                "PT.MUTATION",
+                "PT.UPDATE"
+            ],
+            "moduleName": "PT"
+        },
+        "moduleSearchCriteria": {
+            "creationReason": [
+                "CREATE",
+                "MUTATION",
+                "UPDATE"
+            ],
+            "mobileNumber": 9999999999,
+            "isInboxSearch": true
+        },
+        "limit": 150,
+        "offset": 22
+    }
+}

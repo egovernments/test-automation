@@ -2,16 +2,16 @@ Feature: eGov egovWorkflowBusinessService service with create, search & update e
 
 # This script is under development or piece of code is missing
 
-        Background:
-                * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
-                * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
-                * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusinessService.yaml')
-                * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
-                * call read('../../core-services/pretests/workFlowPretest.feature@SuccessSearchWorkFlowGeneric')
+Background:
+        * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
+        * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
+        * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusinessService.yaml')
+        * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
+        * call read('../../core-services/pretests/workFlowPretest.feature@SuccessSearchWorkFlowGeneric')
 
         @Bus_Create_01 @positive @egovWorkflowBusinessService 
         Scenario: Happy path: Send a POST request to create a business service for a particular module
-                * call read('../../core-services/pretest/workFlowPretest.feature@createWorkFlowSuccessfully')
+                * call read('../../core-services/pretests/workFlowPretest.feature@createWorkFlowSuccessfully')
                 
                 * match workFlowCreateResponseBody.ResponseInfo.status == 'successful'
                 * match workFlowCreateResponseBody.BusinessServices == '#notnull'
