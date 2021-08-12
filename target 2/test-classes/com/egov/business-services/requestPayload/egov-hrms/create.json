@@ -1,0 +1,56 @@
+{
+    "RequestInfo":{
+       "authToken":"#(authToken)"
+    },
+    "Employees":[
+       {
+          "employeeStatus":"#(employeeStatus)",
+          "user":{
+             "name":"#(name)",
+             "fatherOrHusbandName":"#(fatherOrHusbandName)",
+             "mobileNumber":"#(mobileNumber)",
+             "relationship":"#(relationship)",
+             "gender":"#(gender)",
+             "dob":"#(dob)",
+             "email": "#(email)",
+             "roles":[
+                {
+                   "code":"#(roleCode)",
+                   "name":"#(roleName)"
+                }
+             ],
+             "tenantId":"#(tenantId)"
+          },
+          "employeeType":"#(employeeType)",
+          "jurisdictions":[
+             {
+                "hierarchy":"#(hierarchy)",
+                "boundaryType":"#(boundaryType)",
+                "boundary":"#(boundary)",
+                "tenantId":"#(tenantId)"
+             }
+          ],
+          "assignments":[
+             {
+                "fromDate":"#(fromDate)",
+                "toDate":"#(toDate)",
+                "isCurrentAssignment":"#(isCurrentAssignment)",
+                "department":"#(department)",
+                "designation":"#(designation)",
+                "reportingTo":"ss"
+             }
+          ],
+          "serviceHistory":[
+             
+          ],
+          "education":[
+             
+          ],
+          "tests":[
+             
+          ],
+          "tenantId":"#(tenantId)",
+          "dateOfAppointment":null
+       }
+    ]
+ }

@@ -1,0 +1,26 @@
+parameters:
+  businessService: PT
+errorMessages:
+  consumerCode:
+    code: BILL_GEN_MANDATORY_FIELDS_MISSING
+    message: "Valid search criteria fields missing, please give some valid criteria like mobileNumber/email OR 'businessService & consumerCode' OR demandId"
+  tenantId:
+    code: NotNull.generateBillCriteria.tenantId
+  businessService:
+    code: NotNull.generateBillCriteria.businessService
+  invalidConsumerBusinessCode:
+    code: EG_BS_BILL_NO_DEMANDS_FOUND
+    message: No Demands Found for the given bill generate criteria
+  invalidTenantId:
+    code: EG_BS_INVALID_TENANTID
+    message: Employees cannot search based on state level tenantid
+  mandatoryFieldError:
+    code: EGBS_MANDATORY_FIELDS_ERROR
+    message: BILL_SEARCH_MANDATORY_FIELDS_MISSING Any one of the fields additional to tenantId is mandatory like consumerCode,billId, mobileNumber or email
+  noBusinessServiceError:
+    code: BILL_SEARCH_CONSUMERCODE_BUSINESSSERVICE
+    message: the consumerCode & Service values should be given together or mobilenumber/email can be given
+  notNullSearchCriteriaError:
+    code: NotNull.billSearchCriteria.tenantId
+    message: must not be null
+  

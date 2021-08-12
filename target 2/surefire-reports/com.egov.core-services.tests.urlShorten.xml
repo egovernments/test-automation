@@ -1,0 +1,14 @@
+<testsuite failures="0"
+           name="com/egov/core-services/tests/urlShorten.feature"
+           skipped="0"
+           tests="1"
+           time="0.159234">
+   <testcase classname="com.egov.core-services.tests.urlShorten"
+             name="Verify Send a invalid url in the API call (request body)and check for errors"
+             time="0.159234">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def urlShortenConstant = read('../../core-services/constants/urlShortening.yaml') . passed
+* call read('../../core-services/pretests/urlShorteningPretest.feature@urlShortenFail') . passed
+* assert urlShortenResponseBody.Errors[0].message == urlShortenConstant.errorMessages.forInvalidUrl . passed</system-out>
+   </testcase>
+</testsuite>

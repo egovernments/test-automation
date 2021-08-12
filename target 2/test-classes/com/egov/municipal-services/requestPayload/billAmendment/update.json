@@ -1,0 +1,9 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "AmendmentUpdate": "#(billAmendmentBody)",
+    
+        "0":{"comment":"","wfDocuments":[],"assignee":[],"action":"APPROVE"}
+    
+}

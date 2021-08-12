@@ -1,0 +1,13 @@
+parameters:
+# Module name 
+ moduleName: 
+  - common-masters
+ name: 
+  - uiCommonConstants
+# error messages
+errorMessages:
+ invalidEndPoint: Not authorized to access this resource
+ invalidTenantid: Invalid Tenant Id
+ messageForTenantId: must not be null
+ messageForModuleName: must not be null
+ withoutMasterDetails: An unhandled exception occurred on the server

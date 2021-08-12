@@ -1,0 +1,293 @@
+<testsuite failures="0"
+           name="com/egov/core-services/tests/accessControl.feature"
+           skipped="0"
+           tests="6"
+           time="1.285395">
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search an access control with all valid fields"
+             time="0.412087">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search an access control with invalid tenant"
+             time="0.216859">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search access control with invalid role code"
+             time="0.145711">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def roleCodes = 'Invalid-rolecode-' + ranString(10) ..................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions == '#[0]' ....................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search an access control with invalid action-master"
+             time="0.17848">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def roleCodes = 'Invalid-rolecode-' + ranString(10) ..................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions == '#[0]' ....................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def actionMaster = 'Invalid-actionMaster-' + ranString(10) .............. passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description contains accessControlConstants.expectedDescriptions.PathNotFoundException . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search an access control with action-master as blank"
+             time="0.169746">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def roleCodes = 'Invalid-rolecode-' + ranString(10) ..................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions == '#[0]' ....................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def actionMaster = 'Invalid-actionMaster-' + ranString(10) .............. passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description contains accessControlConstants.expectedDescriptions.PathNotFoundException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def actionMaster = " " .................................................. passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.InvalidPathException . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.accessControl"
+             name="Test to search an access control with invalid value for enabled"
+             time="0.162513">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions[*].id == '#present' ............. passed
+* match accessControlResponseBody.actions[*].name == '#present' ........... passed
+* match accessControlResponseBody.actions[*].url == '#present' ............ passed
+* match accessControlResponseBody.actions[*].displayName == '#present' .... passed
+* match accessControlResponseBody.actions[*].orderNumber == '#present' .... passed
+* match accessControlResponseBody.actions[*].parentModule == '#present' ... passed
+* match accessControlResponseBody.actions[*].enabled == '#present' ........ passed
+* match accessControlResponseBody.actions[*].serviceCode == '#present' .... passed
+* match accessControlResponseBody.actions[*].tenantId == '#present' ....... passed
+* match accessControlResponseBody.actions[*].path == '#present' ........... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlWithInvalidTenant') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.IllegalArgumentException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def roleCodes = 'Invalid-rolecode-' + ranString(10) ..................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlSuccessfully') . passed
+* match accessControlResponseBody.responseInfo.status == commonConstants.expectedStatus.ok . passed
+* match accessControlResponseBody.actions == '#[0]' ....................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def actionMaster = 'Invalid-actionMaster-' + ranString(10) .............. passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description contains accessControlConstants.expectedDescriptions.PathNotFoundException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def actionMaster = " " .................................................. passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.InvalidPathException . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def accessControlConstants = read('../../core-services/constants/accessControl.yaml') . passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def ts = getCurrentEpochTime() .......................................... passed
+* def roleCodes = mdmsStateAccessControlRoles.roles[2].code ............... passed
+* def actionMaster = accessControlConstants.parameters.actionMaster ....... passed
+* def enabled = true ...................................................... passed
+* def enabled = 'Invalid-enabled-' + ranString(5) ......................... passed
+* call read('../../core-services/pretests/accessControlPretest.feature@searchAccessControlError') . passed
+* match accessControlResponseBody.Errors[0].description == accessControlConstants.expectedDescriptions.JsonMappingException . passed</system-out>
+   </testcase>
+</testsuite>

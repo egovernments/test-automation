@@ -1,0 +1,13 @@
+{
+    "RequestInfo": {
+      "authToken": "#(authToken)"
+    },
+    "isconnectionCalculation": false,
+    "CalculationCriteria": [
+      {
+        "applicationNo": "#(waterConnectionApplicationNo)",
+        "tenantId": "#(tenantId)",
+        "assessmentYear":"#(assessmentYear)"
+      }
+    ]
+  }

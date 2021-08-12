@@ -1,0 +1,509 @@
+<testsuite failures="5"
+           name="com/egov/core-services/tests/UserOtpSend.feature"
+           skipped="0"
+           tests="9"
+           time="4.536983">
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test to send the OTP to a valid mobile number during registration"
+             time="0.669681">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test registering using a already registered number"
+             time="0.448433">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test to send the OTP to a valid mobile number during login"
+             time="0.703614">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test to send the OTP using a unregistered mobile number during login"
+             time="0.463527">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test to send the OTP using a invalid mobile number during login or register"
+             time="0.489047">
+      <failure message="UserOtpSend.feature:44 - &#xA;userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;RateLimitExceededException&#34;,&#34;description&#34;:null,&#34;message&#34;:&#34;Rate limit exceeded&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:44 - 
+userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') (UserOtpSend.feature:44)
+
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test by not passing mobile number or tenant id for type ' login'"
+             time="0.430107">
+      <failure message="UserOtpSend.feature:52 - &#xA;userOtpPretest.feature:162 - status code was: 429, expected: 400, response time: 120, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;RateLimitExceededException&#34;,&#34;description&#34;:null,&#34;message&#34;:&#34;Rate limit exceeded&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:44 - 
+userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') (UserOtpSend.feature:44)
+
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:52 - 
+userOtpPretest.feature:162 - status code was: 429, expected: 400, response time: 120, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') (UserOtpSend.feature:52)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test by passing a invalid or a non existent tenant ID"
+             time="0.435669">
+      <failure message="UserOtpSend.feature:59 - &#xA;userOtpPretest.feature:184 - status code was: 429, expected: 400, response time: 137, url: https://qa.digit.org/user-otp/v1/_send?tenantId=invalid, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;RateLimitExceededException&#34;,&#34;description&#34;:null,&#34;message&#34;:&#34;Rate limit exceeded&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:44 - 
+userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') (UserOtpSend.feature:44)
+
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:52 - 
+userOtpPretest.feature:162 - status code was: 429, expected: 400, response time: 120, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') (UserOtpSend.feature:52)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:59 - 
+userOtpPretest.feature:184 - status code was: 429, expected: 400, response time: 137, url: https://qa.digit.org/user-otp/v1/_send?tenantId=invalid, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') (UserOtpSend.feature:59)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test by not passing any value for 'type'"
+             time="0.441601">
+      <failure message="UserOtpSend.feature:66 - &#xA;userOtpPretest.feature:79 - status code was: 429, expected: 201, response time: 127, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;RateLimitExceededException&#34;,&#34;description&#34;:null,&#34;message&#34;:&#34;Rate limit exceeded&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:44 - 
+userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') (UserOtpSend.feature:44)
+
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:52 - 
+userOtpPretest.feature:162 - status code was: 429, expected: 400, response time: 120, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') (UserOtpSend.feature:52)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:59 - 
+userOtpPretest.feature:184 - status code was: 429, expected: 400, response time: 137, url: https://qa.digit.org/user-otp/v1/_send?tenantId=invalid, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') (UserOtpSend.feature:59)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@successNoType') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:66 - 
+userOtpPretest.feature:79 - status code was: 429, expected: 201, response time: 127, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@successNoType') (UserOtpSend.feature:66)
+
+* match userOtpSendResponseBody.isSuccessful == true ...................... skipped</failure>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.UserOtpSend"
+             name="Test without mobile number, tenantid and type' parameters"
+             time="0.455303">
+      <failure message="UserOtpSend.feature:73 - &#xA;userOtpPretest.feature:199 - status code was: 429, expected: 400, response time: 133, url: https://qa.digit.org/user-otp/v1/_send, response: {&#34;ResponseInfo&#34;:null,&#34;Errors&#34;:[{&#34;code&#34;:&#34;RateLimitExceededException&#34;,&#34;description&#34;:null,&#34;message&#34;:&#34;Rate limit exceeded&#34;,&#34;params&#34;:null}]}">* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@registerUserSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorRegister') . passed
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobNo . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@loginSuccessfully') . passed
+* match userOtpSendResponseBody.isSuccessful == true ...................... passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorLogin') . passed
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:44 - 
+userOtpPretest.feature:141 - status code was: 429, expected: 400, response time: 136, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidMobileNo') (UserOtpSend.feature:44)
+
+* assert userOtpSendResponseBody.error.fields[0].code == userOtpConstant.errorMessages.msgForMobileNoLength . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:52 - 
+userOtpPretest.feature:162 - status code was: 429, expected: 400, response time: 120, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorMobileNoNull') (UserOtpSend.feature:52)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:59 - 
+userOtpPretest.feature:184 - status code was: 429, expected: 400, response time: 137, url: https://qa.digit.org/user-otp/v1/_send?tenantId=invalid, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorInvalidTenant') (UserOtpSend.feature:59)
+
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForUnRegMobNo . skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@successNoType') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:66 - 
+userOtpPretest.feature:79 - status code was: 429, expected: 201, response time: 127, url: https://qa.digit.org/user-otp/v1/_send?tenantId=pb.amritsar, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@successNoType') (UserOtpSend.feature:66)
+
+* match userOtpSendResponseBody.isSuccessful == true ...................... skipped
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def userOtpConstant = read('../../core-services/constants/userOtp.yaml') . passed
+* def userType = mdmsStateAccessControlRoles.roles[0].code ................ passed
+* def name = ranString(4) ................................................. passed
+* def permanentCity = cityCode ............................................ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* call read('../../core-services/pretests/userOtpPretest.feature@errorTenantNull') . failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: UserOtpSend.feature:73 - 
+userOtpPretest.feature:199 - status code was: 429, expected: 400, response time: 133, url: https://qa.digit.org/user-otp/v1/_send, response: {"ResponseInfo":null,"Errors":[{"code":"RateLimitExceededException","description":null,"message":"Rate limit exceeded","params":null}]}
+	at ✽.* call read('../../core-services/pretests/userOtpPretest.feature@errorTenantNull') (UserOtpSend.feature:73)
+
+* assert userOtpSendResponseBody.error.message == userOtpConstant.errorMessages.msgForInvalidOtp . skipped
+* assert userOtpSendResponseBody.error.fields[0].message == userOtpConstant.errorMessages.msgForMandTenantId . skipped
+* assert userOtpSendResponseBody.error.fields[1].message == userOtpConstant.errorMessages.msgForMandMobNo . skipped
+* assert userOtpSendResponseBody.error.fields[2].message == userOtpConstant.errorMessages.msgForMobNoNum . skipped
+* assert userOtpSendResponseBody.error.fields[3].message == userOtpConstant.errorMessages.msgForValidMobNo . skipped</failure>
+   </testcase>
+</testsuite>

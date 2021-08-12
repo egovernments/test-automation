@@ -1,0 +1,246 @@
+<testsuite failures="0"
+           name="com/egov/core-services/tests/IDGenerate.feature"
+           skipped="0"
+           tests="6"
+           time="1.246088">
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Test a unique Id is created for every new application,receipt"
+             time="0.164245">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Search for Localization in English(Specific Module)"
+             time="0.315599">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id1 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value1 = stringToInteger(id1.slice(-2)) ............................. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id2 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value2 = stringToInteger(id2.slice(-2)) ............................. passed
+* match value2 == value1 + 1 .............................................. passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Test by interchanging the id names from different modules"
+             time="0.13634">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id1 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value1 = stringToInteger(id1.slice(-2)) ............................. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id2 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value2 = stringToInteger(id2.slice(-2)) ............................. passed
+* match value2 == value1 + 1 .............................................. passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Test by passing a invalid or a nonexistent tenant id"
+             time="0.139673">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id1 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value1 = stringToInteger(id1.slice(-2)) ............................. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id2 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value2 = stringToInteger(id2.slice(-2)) ............................. passed
+* match value2 == value1 + 1 .............................................. passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateError') . passed
+* assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Test by not passing any value for format"
+             time="0.162792">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id1 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value1 = stringToInteger(id1.slice(-2)) ............................. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id2 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value2 = stringToInteger(id2.slice(-2)) ............................. passed
+* match value2 == value1 + 1 .............................................. passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateError') . passed
+* assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def format = commonConstants.invalidParameters.emptyValue ............... passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateFailed') . passed
+* assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed . passed
+* assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError . passed</system-out>
+   </testcase>
+   <testcase classname="com.egov.core-services.tests.IDGenerate"
+             name="Test by not passing invalid Sequence format which is not in MDMS"
+             time="0.327439">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id1 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value1 = stringToInteger(id1.slice(-2)) ............................. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* def id2 = idGenerateResponseBody.idResponses[0].id ...................... passed
+* def value2 = stringToInteger(id2.slice(-2)) ............................. passed
+* match value2 == value1 + 1 .............................................. passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateSuccessfully') . passed
+* assert idGenerateResponseBody.responseInfo.status == commonConstants.successMessages.successful . passed
+* match idGenerateResponseBody.idResponses == '#notnull' .................. passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def tenantId = commonConstants.invalidParameters.invalidTenantId ........ passed
+* def idName = mdmsStatecommonMasters.IdFormat[index].idname .............. passed
+* def format = mdmsStatecommonMasters.IdFormat[index].format .............. passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateError') . passed
+* assert idGenerateResponseBody.Errors[0].message == commonConstants.errorMessages.authorizedError . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def format = commonConstants.invalidParameters.emptyValue ............... passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateFailed') . passed
+* assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed . passed
+* assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.noFormatError . passed
+* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def idGenServiceConstants = read('../constants/idGenerate.yaml') ........ passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def index = randomNumber(mdmsStatecommonMasters.IdFormat.length) ........ passed
+* def format = idGenServiceConstants.invalidParameters.sequenceFormat ..... passed
+* call read('../../core-services/pretests/idGeneratePretest.feature@idGenerateFailed') . passed
+* assert idGenerateResponseBody.ResponseInfo.status == commonConstants.errorMessages.failed . passed
+* assert idGenerateResponseBody.Errors[0].message == idGenServiceConstants.errorMessages.dbError . passed</system-out>
+   </testcase>
+</testsuite>
