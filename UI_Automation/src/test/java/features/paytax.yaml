@@ -1,0 +1,82 @@
+location:
+    [
+    pages:
+        [
+            [
+            titlename: Is this a Residential Property,
+            fieldtype: [radio, Yes, null]
+            ],
+            [
+            titlename: Choose Property Type,
+            fieldtype: [radio, Residential, null],
+            fieldtype: [text, Mobile Number, 997788654]
+            ],
+            [
+            titlename: Type of Property,
+            fieldtype: [radio, Vacant Land, null]
+            ],
+            [
+            titlename: Area,
+            fieldtype: [text, Plot Size (sq ft), 33]
+            ],
+            [
+            titlename: Pin Property Location,
+            fieldtype: [skip, Skip and continue, null]
+            ],
+            [
+            titlename: Do you know the pincode,
+            fieldtype: [skip, Skip and continue, null]
+            ],
+             [
+            titlename: Provide Property address,
+            fieldtype: [radio, Amritsar, null],
+            fieldtype: [dropdown, Locality, Dental College - Area1],
+            fieldtype: [text, Street Name, Boston vally],
+            fieldtype: [text, Door/House No., Boston322]
+            ],
+            [
+            titlename: Provide Landmark,
+            fieldtype: [skip, Skip and continue, null]
+            ],
+             [
+            titlename: PT_PROOF_OF_ADDRESS_HEADER,
+            fieldtype: [dropdown, Document Type, Adhaar Card],
+            fieldtype: [file, testfile.pdf, null]
+            ],
+            [
+            titlename: Provide Ownership details,
+            fieldtype: [radio, Single Owner, null]
+            ],
+             [
+            titlename: Owner Details,
+            fieldtype: [dropdown, Locality, Dental College - Area1],
+            fieldtype: [text, Name, Testgren],
+            fieldtype: [radio, Female, null],
+            fieldtype: [text, Mobile Number, 9832334824],
+            fieldtype: [text, Guardian, Ganga],
+            fieldtype: [radio, Husband, null]
+            ],
+            [
+            titlename: Special Owner category,
+            fieldtype: [radio, Below Poverty Line, null]
+            ],
+            [
+            titlename: Owner’s Address,
+            fieldtype: [checkbox, Same As Property Address, null]
+            ],
+             [
+            titlename: Special Owner Category Proof,
+            fieldtype: [dropdown, Document Type, BPL Document],
+            fieldtype: [file, testfile2.pdf, null]
+            ],
+             [
+            titlename: Proof Of Identity,
+            fieldtype: [dropdown, Document Type, Passport],
+            fieldtype: [file, testfile3.pdf, null]
+            ],
+            [
+            titlename: Review your answers,
+            fieldtype: [checkbox, I hereby declare, null]
+            ]
+        ]
+    ]

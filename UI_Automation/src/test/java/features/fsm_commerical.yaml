@@ -1,0 +1,45 @@
+location:
+    [
+    pages:
+        [
+            [
+            titlename: Choose Property Type,
+            fieldtype: [radio, Commercial, Info]
+            ],
+            [
+            titlename: Choose Property Sub-Type,
+            fieldtype: [dropdown, Choose Property Sub-Type *, Hotel]
+            ],
+            [
+            titlename: Pin Property Location,
+            fieldtype: [skip, Skip and Continue, null]
+            ],
+            [
+            titlename: Do you know the pincode,
+            fieldtype: [skip, Skip and Continue, null]
+            ],
+            [
+            titlename: Provide Property address,
+            fieldtype: [dropdown, City *, Amritsar],
+            fieldtype: [dropdown, Locality/Mohalla *, Ajit Nagar - Area1],
+            fieldtype: [text, Street Name, Boston vally],
+            fieldtype: [text, Door/House No., Boston322]
+            ],
+            [
+            titlename: Is your property located in a notified slum area,
+            fieldtype: [radio, NO, null]
+            ],
+            [
+            titlename: Provide Landmark,
+            fieldtype: [skip, Skip and Continue, null]
+            ],
+            [ 
+            titlename: Choose Onsite sanitation type,
+            fieldtype: [radio, Septic tank with soak pit, null]
+            ],
+            [ 
+            titlename: Pit/Septic Tank Size,
+            fieldtype: [skip, Skip and Continue, null]
+            ]
+        ]
+    ]
