@@ -31,7 +31,7 @@ import utilities.BaseTests;
 import utilities.DriverUtil;
 
 @CucumberOptions(features = { "src/test/java/features/mCollect" }, glue = { "stepDefinition/" }, monochrome = true, tags = {
-		"@mCollect1" }, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@mCollect3" }, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
