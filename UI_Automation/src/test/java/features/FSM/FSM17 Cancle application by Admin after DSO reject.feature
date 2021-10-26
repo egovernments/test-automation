@@ -75,8 +75,7 @@ Scenario: DSO Reject the Application
   And Enter Comment
   Then Click On Decline Request button
   And Logout from eGov and Close
-
-   
+ 
    
  @fsm17
 Scenario: Admin Reject the Application
@@ -100,5 +99,4 @@ Scenario: Admin Reject the Application
   And Enter Comment
   Then Click On Decline Request button
   And Employee Logout and Close
-
-   
+  
