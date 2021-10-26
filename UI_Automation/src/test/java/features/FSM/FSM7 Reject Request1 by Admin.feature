@@ -8,7 +8,7 @@ Scenario: Create FSM application as a citizen- Institutional Property Type
 	And Feed Pin code
   Then Click on Property type Radio button "Institutional"
   When Click on Next button
-  And check SubType Radio button "InstitutionalSubType"
+  And Select Citizen Property SubType "InstitutionalSubType"
   When Click on Next button
   And Pin Property Location
   And Check Can enter city

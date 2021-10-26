@@ -17,7 +17,7 @@ Scenario: Employee Editor Create Application
   And Select Property "Commercial"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
-  And Select Locality Mohalla "Mohalla_2"
+  And Select Locality Mohalla "Mohalla"
   Then Update Name of the Slum
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type1"
@@ -86,7 +86,7 @@ Scenario: Editor Re-Assign Application To DSO
   And Click on Application Number
   When Click On Take Action button
   And Click on Re-Assign DSO
-  And Enter Reason For Re-assign "reason"
+  And Enter Reason For Re-assign "reason1"
   And Re Re Assign DSO and Date
   Then Click On Assign button
   And Employee Logout and Close

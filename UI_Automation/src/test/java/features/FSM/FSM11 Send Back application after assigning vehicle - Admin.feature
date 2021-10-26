@@ -58,11 +58,10 @@ Scenario: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-  Then Click On Update Application
   And Update Property "Commercial" and "ResidentialSubType"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
-  And Select Locality Mohalla "Mohalla_2"
+  And Select Locality Mohalla "Mohalla"
   Then Update Name of the Slum
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type2"

@@ -41,7 +41,7 @@ Scenario: Create FSM application as a citizen- Residential Property Type
   And Logout from eGov and Close
   
 @fsm15
-Scenario Outline: EE Explore Filter
+Scenario: EE Explore Filter
 	Given Open new web url "employee"
 	When Select the language
 	Then Enter eGov username as "EE"
@@ -70,9 +70,8 @@ Scenario Outline: EE Explore Filter
   And Employee Logout and Close
 
    
-   
    @fsm15
-Scenario Outline: Explore Employee Inbox- Search Application
+Scenario: Explore Employee Inbox- Search Application
 	Given Open new web url "employee"
 	When Select the language
 	Then Enter eGov username as "EE"
@@ -89,10 +88,11 @@ Scenario Outline: Explore Employee Inbox- Search Application
   Then Click On Search
   And Click on Application Number
   When Click On Take Action button
- And Update Property "Commercial" and "ResidentialSubType"
+  Then Click On Update Application
+  And Update Property "Commercial" and "ResidentialSubType"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
-  And Select Locality Mohalla "Mohalla_2"
+  And Select Locality Mohalla "Mohalla"
   Then Update Name of the Slum
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type2"
