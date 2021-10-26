@@ -12,4 +12,4 @@ config:
     build:
       - work-dir: "."
         image-name: "name"
-        dockerfile: "build/maven/Dockerfile"
+        dockerfile: "build/maven/Dockerfile""
