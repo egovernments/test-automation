@@ -2,7 +2,7 @@
 <suite name="Example test run">
     <test name="Simple Test">
         <classes>
-            <class name="stepDefinition.mCollect_Test_Runner"/>
+            <class name="stepDefinition.FSM_Test_Runner"/>
         </classes>
     </test>
 </suite>

@@ -28,7 +28,7 @@ import utilities.BaseTests;
 import utilities.DriverUtil;
 
 @CucumberOptions(features = { "src/test/java/features/FSM" }, glue = { "stepDefinition/" }, monochrome = true, tags = {
-		"@fsm1"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@fsm18"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
@@ -301,6 +301,24 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("Slum_Area",pro.getProperty("Slum_Area"));
+			eGovOp.clickElement(locator.inputfield(8), "Slum dropdown");
+			eGovOp.clickElement(locator.provideslum(eGovOp.getRuntimeProps("Slum_Area")), "Update Slum Area");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	@Then("^Update Name of the Slum as \"(.*)\"$")
+	public void updateNameoftheSlumdata(String slum) {
+		try {
+			Properties pro = new Properties();
+
+			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+			 String outputFile = path + "/" + "data" + ".properties";
+			
+			FileInputStream fileLoc = new FileInputStream(outputFile);
+			pro.load(fileLoc);
+			eGovOp.setRuntimeProps("Slum_Area",pro.getProperty(slum));
 			eGovOp.clickElement(locator.inputfield(8), "Slum dropdown");
 			eGovOp.clickElement(locator.provideslum(eGovOp.getRuntimeProps("Slum_Area")), "Update Slum Area");
 		} catch (Exception e) {
@@ -600,9 +618,17 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	@And("^Select Citizen Property SubType \"(.*)\"$")
 	public void Selectcitizenpropertysubtype(String subtype) {
 	try {
+		Properties pro = new Properties();
+
+		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+		 String outputFile = path + "/" + "data" + ".properties";
+		
+		FileInputStream fileLoc = new FileInputStream(outputFile);
+		pro.load(fileLoc);
+		eGovOp.setRuntimeProps("subtype",pro.getProperty(subtype));
 		
 		eGovOp.clickElement(locator.firstdropdownfield(),"Click Property subtype dropdown");
-		eGovOp.clickElement(locator.selectsubtype(subtype),"Select Property subtype");		
+		eGovOp.clickElement(locator.selectsubtype(eGovOp.getRuntimeProps("subtype")),"Select Property subtype");		
 	} catch (Exception e) {
 		e.getStackTrace();
 	}
@@ -628,6 +654,24 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	}
 	}
 	
+	@And("^Enter Pincode Number as \"(.*)\"$")
+	public void enterPincodedata(String pincode) {
+	try {
+		Properties pro = new Properties();
+
+		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+		 String outputFile = path + "/" + "data" + ".properties";
+		
+		FileInputStream fileLoc = new FileInputStream(outputFile);
+		pro.load(fileLoc);
+		eGovOp.setRuntimeProps("pincode",pro.getProperty(pincode));
+		eGovOp.scrollpagewithpixel(0, 400);
+		eGovOp.enterData(locator.pincodeEC(),eGovOp.getRuntimeProps("pincode"),"Enter Pincode Number");
+		
+	} catch (Exception e) {
+		e.getStackTrace();
+	}
+	}
 	
 	@And("^Select Locality Mohalla \"(.*)\"$")
 	public void selectMohalla(String Mohalla) {
@@ -642,6 +686,7 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 		eGovOp.setRuntimeProps("Mohalla",pro.getProperty(Mohalla));
 		eGovOp.implicitWait(2, "wait");
 		eGovOp.clickElement(locator.mohallaDropdwon(),"Click Locality Dropdown");
+		eGovOp.enterData(locator.mohallaDropdwon(), eGovOp.getRuntimeProps("Mohalla"), "Enter Mohalla");
 		eGovOp.clickElement(locator.selectmohallaEC(eGovOp.getRuntimeProps("Mohalla")),"Select Locality");		
 	} catch (Exception e) {
 		e.getStackTrace();

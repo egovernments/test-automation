@@ -22,7 +22,7 @@ Scenario: Employee Editor Create Application
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type1"
   Then Enter Length Breadth and Depth
-  And Select Vehicle Type "Vehicle_Type""
+  And Select Vehicle Type "Vehicle_Type"
   And Click Submit Application button
   Then Check Application Number
   And Employee Logout and Close
@@ -71,11 +71,11 @@ Scenario: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-   And Update Property "Commercial" and "ResidentialSubType"
-  And Select Property SubType "InstitutionalSubType"
-  And Enter Pincode Number
+  And Update Property "Commercial" and "InstitutionalSubType"
+  And Select Property SubType "CommercialSubType"
+  And Enter Pincode Number as "pincode_2"
   And Select Locality Mohalla "Mohalla_2"
-  Then Update Name of the Slum
+  Then Update Name of the Slum as "Slum_Area2"
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type2"
   Then Enter Length Breadth

@@ -1,7 +1,7 @@
 Feature: FSM13 E2E Flow via Employee creator
 	
 	@fsm13
-Scenario Outline: Employee Editor Create Collector and Editor Flow
+Scenario: Employee Editor Create Collector and Editor Flow
   Given Open new web url "employee"
 	When Select the language
 	Then Enter eGov username as "CEC"

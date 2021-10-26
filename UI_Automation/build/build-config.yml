@@ -8,7 +8,7 @@
 # -
 # -
 config:
-  - name: "builds/eGov_UI_Automation"
+  - name: "builds/test-automation/UI_Automation"
     build:
       - work-dir: "."
         image-name: "name"

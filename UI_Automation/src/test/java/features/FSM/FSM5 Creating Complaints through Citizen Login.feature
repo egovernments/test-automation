@@ -8,7 +8,7 @@ Scenario: Create FSM application as a citizen- Commercial Property Type
 	And Feed Pin code
   Then Click on Property type Radio button "Commercial"
   When Click on Next button
-  And check SubType Radio button "CommercialSubType"
+  And Select Citizen Property SubType "CommercialSubType"
   When Click on Next button
   And Pin Property Location
   And Check Can enter city
@@ -38,13 +38,13 @@ Scenario: Create FSM application as a citizen- Commercial Property Type
 
 
 @fsm5
-Scenario Outline: Explore Employee Inbox- Search Application
-	Given Open new web url "<url>"
+Scenario: Explore Employee Inbox- Search Application
+	Given Open new web url "employee"
 	When Select the language
-	Then Enter eGov username as "<Username>"
-  And Enter eGov password as "<Password>"
+	Then Enter eGov username as "EE"
+  And Enter eGov password
   And Select eGov city field
-  And Select City "<City>"
+  And Select City
   And Click on Continue to proceed further
   And Click on FSM
   And Click on Inbox
@@ -56,10 +56,10 @@ Scenario Outline: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-  And Update Property "Commercial" and "ResidentialSubType"
-  And Select Property SubType "CommercialSubType"
+  And Update Property "Residential" and "CommercialSubType"
+  And Select Property SubType "ResidentialSubType"
   And Enter Pincode Number
-  And Select Locality Mohalla "Mohalla_2"
+  And Select Locality Mohalla "Mohalla"
   Then Update Name of the Slum
   And Enter Street House and Landmark
   When Select Sanitation Type "Sanitation_Type2"

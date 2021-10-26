@@ -46,7 +46,7 @@ Scenario: DSO Assign Vehicle Number
 	Given Open new web url "citizen"
 	When Click On DSO Login
 	And Feed mobile number as "dsonumber"
-	And Feed Pin code as "<pin>"
+	And Feed Pin code
 	Then Click On DSO Dashboard
 	And Click On DSO Inbox
   When Enter Application Number
