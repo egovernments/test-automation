@@ -255,6 +255,11 @@ public class elementLocators implements BaseTests {
 		//driver.findElement(by).isDisplayed();
 		return by;
 	}
+	public By langHidi() {
+		By by =  By.id("button-item-1");
+		//driver.findElement(by).isDisplayed();
+		return by;
+	}
 	
 	public By engButton() {
 		By by = By.xpath("//*[@id='continue-action']/span[1]/div/div");
@@ -263,7 +268,7 @@ public class elementLocators implements BaseTests {
 	}
 	
 	public By loginButton() {
-		By by = By.xpath("//div[text()='Continue']");
+		By by = By.xpath("//div[@class='button-label-container ']");
 		//driver.findElement(by).isDisplayed();
 		return by;
 	}
@@ -445,9 +450,9 @@ public By downwardArrow() {
 }
 
 //RightFace Arrow
-public By RighefaceArrow() {
+public By svg(int num) {
 	
-	By by = By.xpath("(//*[local-name()='svg'])[19]");
+	By by = By.xpath("(//*[local-name()='svg'])["+num+"]");
 	return by;
 }
 
@@ -467,7 +472,7 @@ public By complaintSubSelectiondropdown() {
 
 //click on locality subtype dropdown
 
-public By localitySubInput(int num) {
+public By dropDownfieldEmp(int num) {
 	
 	By by = By.xpath("(//div[@class='employee-select-wrap '])["+num+"]");
 	return by;
@@ -1097,9 +1102,9 @@ public By selectcitydropdown() {
 	return by;
 }
 
-public By selectcity() {
+public By selectcityCitizen(String city) {
 	
-	By by = By.xpath("//span[text()='City A']");
+	By by = By.xpath("//span[text()='"+city+"']");
 	return by;
 }
 
@@ -1109,15 +1114,15 @@ public By selectLocalitydropdown() {
 	return by;
 }
 
-public By selectLocality() {
+public By selectLocality(String Locality) {
 	
-	By by = By.xpath("//span[text()='Main Road Abadpura']");
+	By by = By.xpath("//span[text()='"+Locality+"']");
 	return by;
 }
 
-public By localitySlumYes() {
+public By radioButtonfield(int num) {
 	
-	By by = By.xpath("(//span[@class='radio-btn-wrap'])[1]");
+	By by = By.xpath("(//span[@class='radio-btn-wrap'])["+num+"]");
 	return by;
 }
 
@@ -1724,9 +1729,9 @@ public By Cancle()
 	
 }
 
-public By mCollectSearchPay() 
+public By SeacrhandPay(String value) 
 {
-	By by =  By.xpath("//h2[text()='mCollect']//following::a[text()='Search and Pay']");
+	By by =  By.xpath("//h2[text()='"+value+"']//following::a[text()='Search and Pay']");
  return by;
 	
 }
@@ -1760,7 +1765,129 @@ public By clearicon()
 	
 }
 
+/////// Property Tax
+public By selectcitizenLanguage(String language) 
+{
+	By by =  By.xpath("//label[text()='"+language+"']//parent::div//span");
+ return by;
 
 }
+
+public By citizenContinue() 
+{
+	By by =  By.xpath("//button[contains(@class,'submit-bar')]//header");
+ return by;
+}
+
+public By selectLocation(String location) 
+{
+	By by =  By.xpath("//label[text()='"+location+"']//preceding-sibling::span");
+ return by;
+}
+
+public By selectService(String service) 
+{
+	By by =  By.xpath("//p[text()='"+service+"']");
+ return by;
+}
+
+public By selectServiceSubtype(String servicesubType) 
+{
+	By by =  By.xpath("//p[text()='"+servicesubType+"']");
+ return by;
+}
+
+public By selectHyperlinkText(int num) 
+{
+	By by =  By.xpath("//a["+num+"]");
+ return by;
+}
+
+public By plotSize() 
+{
+	By by =  By.name("PlotSize");
+ return by;
+}
+
+public By builtUpArea() 
+{
+	By by =  By.name("BuiltUpArea");
+ return by;
+}
+
+public By rentArea() 
+{
+	By by =  By.name("RentArea");
+ return by;
+}
+
+
+public By annualRent() 
+{
+	By by =  By.name("AnnualRent");
+ return by;
+}
+public By floorArea() 
+{
+	By by =  By.name("floorarea");
+ return by;
+}
+public By guardianField() 
+{
+	By by =  By.name("fatherOrHusbandName");
+ return by;
+}
+public By selectGender() 
+{
+	By by =  By.xpath("//label[text()='Male']//preceding::span[@class='radio-btn-wrap']");
+ return by;
+}
+
+public By checkboxfield() 
+{
+	By by =  By.className("custom-checkbox");
+ return by;
+}
+
+public By addressfield() 
+{
+	By by =  By.name("address");
+ return by;
+}
+public By propertyID() 
+{
+	By by =  By.xpath("//div[@class='value']");
+ return by;
+}
+
+public By propertyIDfield() 
+{
+	By by =  By.name("propertyId");
+ return by;
+}
+
+
+public By selectServiceType(int num) 
+{
+	By by =  By.xpath("(//div[@class='inbox-service-list']//div)["+num+"]");
+ return by;
+}
+
+
+public By clickonLink(int num) 
+{
+	By by =  By.xpath("(//span[@class='link'])["+num+"]");
+ return by;
+}
+
+
+public By takeActionOtions(int num) 
+{
+	By by =  By.xpath("(//div[@class='menu-wrap']//p)["+num+"]");
+ return by;
+}
+}
+
+
 
 

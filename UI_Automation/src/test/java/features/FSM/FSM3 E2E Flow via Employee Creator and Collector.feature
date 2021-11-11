@@ -15,7 +15,7 @@ Scenario: Employee Editor Create Application and Collector Collect
   And Select Application Channel
   And Enter Application Name
   And Enter Mobile Number
-  And Select Property "Residential"
+  And Select Property "Property_Residential"
   And Select Property SubType "ResidentialSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"

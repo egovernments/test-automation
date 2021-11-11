@@ -1,6 +1,6 @@
 Feature: PGR1 E2E Flow via Citizen Application Creation
 
-@pgr11
+@pgr1
 Scenario: Citizen Application Creation
   Given Open new web url "citizen"
   And Click File Complaint Option
@@ -38,7 +38,7 @@ Scenario: Citizen Application Creation
   And Logout from eGov and Close
 
    
- @pgr11
+ @pgr1
  Scenario: GRO complaint assign to LME
 	Given Open new web url "employee"
 	When Select the language
@@ -61,7 +61,7 @@ Scenario: Citizen Application Creation
 
 
    
-@pgr11
+@pgr1
 Scenario: LME Resolved
 	Given Open new web url "employee"
 	When Select the language

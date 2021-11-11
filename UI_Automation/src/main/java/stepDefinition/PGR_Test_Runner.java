@@ -22,6 +22,9 @@ import utilities.DriverUtil;
 	public class PGR_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 		//protected WebDriver driver;
 		String ApplicationNum="";
+		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+		//String outputFile = path + "/" + "dataHindi" + ".properties";
+		String outputFile = path + "/" + "data" + ".properties";
 
 
 		elementLocators locator = new elementLocators();
@@ -41,9 +44,6 @@ import utilities.DriverUtil;
 		public void checkradiobutton() {
 			try {
 				Properties pro = new Properties();
-
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				 String outputFile = path + "/" + "data" + ".properties";
 				
 				FileInputStream fileLoc = new FileInputStream(outputFile);
 				pro.load(fileLoc);
@@ -82,8 +82,6 @@ import utilities.DriverUtil;
 			try {
 				
 				Properties pro = new Properties();
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				String outputFile = path + "/" + "data" + ".properties";
 				
 				FileInputStream fileLoc = new FileInputStream(outputFile);
 				pro.load(fileLoc);
@@ -234,30 +232,6 @@ import utilities.DriverUtil;
 				e.getStackTrace();
 			}
 		}
-		
-		@And("^File upload")
-		public void Selectfile() {
-		try {
-			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
-			FileInputStream fileLoc = new FileInputStream(outputFile);
-			pro.load(fileLoc);
-			eGovOp.setRuntimeProps("file",pro.getProperty("file"));
-			
-			String button = eGovOp.getElementText(locator.chooseFilebutton(),
-					"Check the Upload button name in the screen");
-			if (button.contains("Choose")) {
-				String filep = System.getProperty("user.dir") + "/src/test/java/TestData/" + eGovOp.getRuntimeProps("file");
-				eGovOp.clickChoose(locator.inputFile(), filep, "Click on Upload doc1");
-			} else {
-			}
-		} catch (Exception e) {
-			e.getStackTrace();
-		}
-	}
 			
 		
 		
@@ -368,9 +342,6 @@ import utilities.DriverUtil;
 			public void selectcomplaintType(String Property) {
 				try {
 					Properties pro = new Properties();
-
-					String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-					 String outputFile = path + "/" + "data" + ".properties";
 					
 					FileInputStream fileLoc = new FileInputStream(outputFile);
 					pro.load(fileLoc);
@@ -389,8 +360,6 @@ import utilities.DriverUtil;
 				try {
 					Properties pro = new Properties();
 
-					String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-					 String outputFile = path + "/" + "data" + ".properties";
 					
 					FileInputStream fileLoc = new FileInputStream(outputFile);
 					pro.load(fileLoc);
@@ -419,9 +388,6 @@ import utilities.DriverUtil;
 			public void entercitizenPincode() {
 			try {
 				Properties pro = new Properties();
-
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				 String outputFile = path + "/" + "data" + ".properties";
 				
 				FileInputStream fileLoc = new FileInputStream(outputFile);
 				pro.load(fileLoc);
@@ -532,7 +498,7 @@ import utilities.DriverUtil;
 					 * 
 					 * }
 					 */		
-					eGovOp.scrollToElement(locator.localitySubInput(4));
+					eGovOp.scrollToElement(locator.dropDownfieldEmp(4));
 		String arr[]= {"","Pending for assignment","Pending for reassignment","Pending at LME","Rejected","Resolved","Closed after rejection","Closed after resolution","Pending At Supervisor","","Cancelled"};
 				for(int i=1;i<11;i++) 
 				{
@@ -583,7 +549,7 @@ import utilities.DriverUtil;
 			@And("^Select Locality")
 			public void selectLocality() {
 				try {
-				eGovOp.clickElement(locator.localitySubInput(4),"Click dropdown");
+				eGovOp.clickElement(locator.dropDownfieldEmp(4),"Click dropdown");
 				eGovOp.scrollpagewithpixel(0, 100);
 				try
 				{

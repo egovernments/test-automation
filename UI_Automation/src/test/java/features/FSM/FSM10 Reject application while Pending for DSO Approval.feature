@@ -15,7 +15,7 @@ Scenario: Employee Editor Creator Collector and Editor Flow
   And Select Application Channel
   And Enter Application Name
   And Enter Mobile Number
-  And Select Property "Institutional"
+  And Select Property "Property_Institutional"
   And Select Property SubType "InstitutionalSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"

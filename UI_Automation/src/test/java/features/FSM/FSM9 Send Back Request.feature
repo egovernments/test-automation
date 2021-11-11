@@ -14,7 +14,7 @@ Scenario: Employee Editor Create Application
   And Select Application Channel
   And Enter Application Name
   And Enter Mobile Number
-  And Select Property "Institutional"
+  And Select Property "Property_Institutional"
   And Select Property SubType "InstitutionalSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"
@@ -71,7 +71,7 @@ Scenario: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-  And Update Property "Commercial" and "InstitutionalSubType"
+  And Update Property "Property_Commercial" and "InstitutionalSubType"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number as "pincode_2"
   And Select Locality Mohalla "Mohalla_2"

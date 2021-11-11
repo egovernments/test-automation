@@ -6,7 +6,7 @@ Scenario: Create FSM application as a citizen- Institutional Property Type
 	When Click on Apply Septic Tank Pit
 	And Feed mobile number
 	And Feed Pin code
-  Then Click on Property type Radio button "Institutional"
+  Then Click on Property type Radio button "Property_Institutional"
   When Click on Next button
   And Select Citizen Property SubType "InstitutionalSubType"
   When Click on Next button

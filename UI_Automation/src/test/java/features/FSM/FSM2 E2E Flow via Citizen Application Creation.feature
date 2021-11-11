@@ -1,25 +1,21 @@
 Feature: FSM2 E2E Flow via Citizen Application Creation
 
-@fsm2
+@fsm22
 Scenario: Create FSM application as a citizen- Residential Property Type
   Given Open new web url "citizen"
 	When Click on Apply Septic Tank Pit
 	And Feed mobile number
 	And Feed Pin code
-  Then Click on Property type Radio button "Residential"
+  Then Click on Property type Radio button "Property_Residential"
   When Click on Next button
   And check SubType Radio button "ResidentialSubType"
   When Click on Next button
   And Pin Property Location
   And Check Can enter city
   When Scroll click on Next button
-  Then Enter pincode "wrongpin"
-  When Click on Next button
-  Then Verify provide valid pin text 
-  And Clear pin field
-  And Click skip and next
+  Then Enter pincode "pincode"
   And Select City and Check Locality
-  When Click on Next button
+  Then Enter pincode "pincode"
   And Click Slum Located Option
   When Click on Next button
   Then Provide Name of the Slum "Slum_Area"
@@ -59,7 +55,7 @@ Scenario: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-  And Update Property "Commercial" and "ResidentialSubType"
+  And Update Property "Property_Commercial" and "ResidentialSubType"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"

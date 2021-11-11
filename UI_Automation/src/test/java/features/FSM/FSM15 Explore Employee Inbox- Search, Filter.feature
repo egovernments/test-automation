@@ -7,7 +7,7 @@ Scenario: Create FSM application as a citizen- Residential Property Type
 	When Click on Apply Septic Tank Pit
 	And Feed mobile number
 	And Feed Pin code
-  Then Click on Property type Radio button "Residential"
+  Then Click on Property type Radio button "Property_Residential"
   When Click on Next button
   And check SubType Radio button "ResidentialSubType"
   When Click on Next button
@@ -89,7 +89,7 @@ Scenario: Explore Employee Inbox- Search Application
   And Click on Application Number
   When Click On Take Action button
   Then Click On Update Application
-  And Update Property "Commercial" and "ResidentialSubType"
+  And Update Property "Property_Commercial" and "ResidentialSubType"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"

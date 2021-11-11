@@ -32,7 +32,7 @@ Scenario: Employee Application Creation
 @mCollect5
 Scenario: Citizen Application Pay
   Given Open new web url "citizen"
-	When Click On Search and Pay
+	When Click On Search and Pay "mColl"
 	And Feed mobile number
 	And Feed Pin code
   And Citizen Enter City

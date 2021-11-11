@@ -67,6 +67,12 @@ public class NavigateMethods extends DriverUtil implements BaseTests {
 	
 	}
 	
+public String getUrl() {
+			
+		return driver.getCurrentUrl();
+
+	}
+	
 	public void getCokkies(By byElem) throws InterruptedException {
 
 		    driver.get("chrome://settings/clearBrowserData");
@@ -404,6 +410,137 @@ catch(InterruptedException e)
         }
     }
 
+	public String readPropertyApplicationNumber()
+    {
+        String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+
+        String outputFile = path + "/" + "PT Application Number" + ".txt";
+        if (!new File(outputFile).exists()) {
+            try
+            {
+                new FileOutputStream(new File(outputFile));
+
+                FileWriter writer = new FileWriter(outputFile);
+                writer.write("0");
+                writer.close();
+            }
+            catch (FileNotFoundException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        String tempp = null;
+        try
+        {
+            FileReader red = new FileReader(new File(outputFile));
+            BufferedReader textreader = new BufferedReader(red);
+            tempp = textreader.readLine();
+
+            red.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tempp;
+    }
+	
+	//write text
+	
+	public void writePropertyApplicationNumber (String complaintNumber)
+    {
+        String path = System.getProperty("user.dir")+"/src/test/java/TestData/";
+        System.out.println(path);
+
+        File theDir = new File(path);
+        if (!theDir.exists()) {
+            boolean result = false;
+            try {
+                theDir.mkdirs();
+                result = true;
+            } catch (SecurityException localSecurityException) {
+            }
+        }
+        String outputFile = path + "/" + "PT Application Number" + ".txt";
+        try {
+            FileWriter writer = new FileWriter(new File(outputFile));
+            writer.write(complaintNumber);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
+	
+	public String readPropertyUID()
+    {
+        String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+
+        String outputFile = path + "/" + "PT Unique ID" + ".txt";
+        if (!new File(outputFile).exists()) {
+            try
+            {
+                new FileOutputStream(new File(outputFile));
+
+                FileWriter writer = new FileWriter(outputFile);
+                writer.write("0");
+                writer.close();
+            }
+            catch (FileNotFoundException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        String tempp = null;
+        try
+        {
+            FileReader red = new FileReader(new File(outputFile));
+            BufferedReader textreader = new BufferedReader(red);
+            tempp = textreader.readLine();
+
+            red.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tempp;
+    }
+	
+	//write text
+	
+	public void writePropertyUID (String complaintNumber)
+    {
+        String path = System.getProperty("user.dir")+"/src/test/java/TestData/";
+        System.out.println(path);
+
+        File theDir = new File(path);
+        if (!theDir.exists()) {
+            boolean result = false;
+            try {
+                theDir.mkdirs();
+                result = true;
+            } catch (SecurityException localSecurityException) {
+            }
+        }
+        String outputFile = path + "/" + "PT Unique ID" + ".txt";
+        try {
+            FileWriter writer = new FileWriter(new File(outputFile));
+            writer.write(complaintNumber);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public String readComplaintNumber()
     {
         String path = System.getProperty("user.dir")+"/src/test/java/TestData";
@@ -1055,6 +1192,20 @@ catch(InterruptedException e)
 
 	}
 
+	
+	//CLick short 
+	public void clickElementShort(By byElem, String description) {
+		boolean clickelem = true;
+		try {
+			driver.findElement(byElem).click();
+		} catch (Exception e) {
+			e.getStackTrace();
+			clickelem = false;
+
+		}
+
+	}
+	
 	public void clickChoose(By byElem, String value, String description) {
 		boolean clickelem = true;
 		try {
@@ -1466,6 +1617,14 @@ catch(InterruptedException e)
 			e.getStackTrace();
 			contentAvail = false;
 		}
+		return contentAvail;
+	}
+	
+	public boolean wait_Custom_short_element_visible(By byElem, String description) {
+		boolean contentAvail = true;
+		
+			contentAvail = driver.findElements(byElem).size() > 0;
+		
 		return contentAvail;
 	}
 

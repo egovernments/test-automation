@@ -36,6 +36,8 @@ import utilities.DriverUtil;
 public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
 	String ApplicationNum="";
+	String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+	String outputFile = path + "/" + "data" + ".properties";
 
 
 	elementLocators locator = new elementLocators();
@@ -123,9 +125,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 			public void serviceCategory(String category) {
 				try {
 					Properties pro = new Properties();
-
-					String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-					 String outputFile = path + "/" + "data" + ".properties";
 					
 					FileInputStream fileLoc = new FileInputStream(outputFile);
 					pro.load(fileLoc);
@@ -144,9 +143,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 					try {
 						Properties pro = new Properties();
 
-						String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-						 String outputFile = path + "/" + "data" + ".properties";
-						
 						FileInputStream fileLoc = new FileInputStream(outputFile);
 						pro.load(fileLoc);
 						eGovOp.setRuntimeProps("Type",pro.getProperty(Type));
@@ -306,9 +302,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 		try {	
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("status",pro.getProperty(status));
@@ -353,10 +346,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 	public void serviceCatagory(String catagory) {
 		try {	
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("catagory",pro.getProperty(catagory));
@@ -466,16 +455,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 	
 	// Start Citizen Region 
 	
-	@When("^Click On Search and Pay")
-	public void SeacrhandPay() {
-		try {
-
-			eGovOp.clickElement(locator.mCollectSearchPay(), "Click On Search and Pay");
-		} catch (Exception e) {
-			e.getStackTrace();
-		}
-	}
-	
 	@When("^Click On My Challans")
 	public void myChallan() {
 		try {
@@ -498,17 +477,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 		}
 	}
 	
-	@And("^Citizen Enter City")
-	public void citizenEnterCity() {
-		try {
-
-			eGovOp.clickElement(locator.dropdownfieldCitizen("1"), "^Citizen Enter City");
-			eGovOp.clickElement(locator.selectcity(), "Select City");
-
-		} catch (Exception e) {
-			e.getStackTrace();
-		}
-	}
 	
 	@And("^Choose Service Category \"(.*)\"$")
 	public void chooseServiceCategory(String category) {
@@ -516,9 +484,6 @@ public class mCollect_Test_Runner extends AbstractTestNGCucumberTests implements
 
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("category",pro.getProperty(category));

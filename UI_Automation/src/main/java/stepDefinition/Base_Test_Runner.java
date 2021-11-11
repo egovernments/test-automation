@@ -31,38 +31,43 @@ import yamlPojo.Pages;
 public class Base_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 		//protected WebDriver driver;
 		elementLocators locator = new elementLocators();	
-		String baseUrl="https://uat.digit.org/";
-		String empUrl="employee/language-selection";
-		String citizenUrl="digit-ui/citizen";
+		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+		// String outputFile = path + "/" + "dataHindi" + ".properties";
+		 String outputFile = path + "/" + "data" + ".properties";
+		 String credentailsfile = path + "/" + "credentials" + ".properties";
 	
 		
 		@When("^Open new web url \"(.*)\"$")
 		public void eGovlauncherEmp(String url) {
 			try {
+				Properties pro = new Properties();
+				
+				FileInputStream fileLoc = new FileInputStream(outputFile);
+				pro.load(fileLoc);
+				eGovOp.setRuntimeProps("baseUrl",pro.getProperty("baseUrl"));
+				eGovOp.setRuntimeProps("empUrl",pro.getProperty("empUrl"));
+				eGovOp.setRuntimeProps("citizenUrl",pro.getProperty("citizenUrl"));
+				
 				if (url.equals("employee"))
 				{
 				System.out.println("Enter employee URL");
 			   // eGovOp.deleteAllCookies();
 			  eGovOp.getCokkies(locator.chromecache());
-				eGovOp.navigateTo(baseUrl+empUrl);
+				eGovOp.navigateTo(eGovOp.getRuntimeProps("baseUrl")+eGovOp.getRuntimeProps("empUrl"));
 				 try
 					{
 						Thread.sleep(5000);
 					}
 					catch(InterruptedException e)
 					{
-					}
-			
-				
-				  
-				
+					}	  	
 				}
 				if (url.equals("citizen"))
 				{
 					System.out.println("Enter Citizen URL");
 			    	//eGovOp.deleteAllCookies();
 					 eGovOp.getCokkies(locator.chromecache());
-					eGovOp.navigateTo(baseUrl+citizenUrl);
+					eGovOp.navigateTo(eGovOp.getRuntimeProps("baseUrl")+eGovOp.getRuntimeProps("citizenUrl"));
 					 try
 						{
 							Thread.sleep(5000);
@@ -70,8 +75,6 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 						catch(InterruptedException e)
 						{
 						}
-				
-					
 				}
 				
 				/* if(eGovOp.wait_short_element_visib(locator.detailsSafe(),""))
@@ -85,19 +88,13 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 			}
 		}
 		
-	
-
-		
 		@Given("^Enter eGov username as \"(.*)\"$")
 		public void enterUsername(String username) {
 			
 			try {
 				Properties pro = new Properties();
-
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				 String outputFile = path + "/" + "credentials" + ".properties";
 				
-				FileInputStream fileLoc = new FileInputStream(outputFile);
+				FileInputStream fileLoc = new FileInputStream(credentailsfile);
 				pro.load(fileLoc);
 				eGovOp.setRuntimeProps("loginUser",pro.getProperty(username));
 				System.out.print("User Name"+eGovOp.getRuntimeProps("loginUser"));
@@ -113,9 +110,6 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 			try {		
 				Properties pro = new Properties();
 
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				 String outputFile = path + "/" + "data" + ".properties";
-				
 				FileInputStream fileLoc = new FileInputStream(outputFile);
 				pro.load(fileLoc);
 				eGovOp.setRuntimeProps("loginPassword",pro.getProperty("password"));
@@ -331,8 +325,6 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 			{
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -351,7 +343,8 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 		@When("^Click On Take Action button")
 		public void takeactioncoll() {
 			try {
-				eGovOp.clickElement(locator.takeactionColl(), "Click On Take Action button");
+				// 	eGovOp.clickElement(locator.takeactionColl(), "Click On Take Action button");
+				eGovOp.clickElement(locator.eGovNext(), "Click On Take Action button");
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
@@ -365,6 +358,29 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 				e.getStackTrace();
 			}
 		}
+		
+		
+		@And("^File upload")
+		public void Selectfile() {
+		try {
+			Properties pro = new Properties();
+			
+			FileInputStream fileLoc = new FileInputStream(outputFile);
+			pro.load(fileLoc);
+			eGovOp.setRuntimeProps("file",pro.getProperty("file"));
+			
+			String button = eGovOp.getElementText(locator.chooseFilebutton(),
+					"Check the Upload button name in the screen");
+			if (button.contains("Choose")) {
+				String filep = System.getProperty("user.dir") + "/src/test/java/TestData/" + eGovOp.getRuntimeProps("file");
+				eGovOp.clickChoose(locator.inputFile(), filep, "Click on Upload doc1");
+			} else {
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+		
        //End Citizen Region
 		// Start LME Region
 		@And("^Click LME Pendig Filter")
@@ -407,12 +423,12 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 			try {
 				Properties pro = new Properties();
 
-				String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-				 String outputFile = path + "/" + "data" + ".properties";
+				
 				
 				FileInputStream fileLoc = new FileInputStream(outputFile);
 				pro.load(fileLoc);
 				eGovOp.setRuntimeProps("city",pro.getProperty("city"));
+				System.out.print("This is city"+eGovOp.getRuntimeProps("city"));
 				 eGovOp.clickElement(locator.selectcity(eGovOp.getRuntimeProps("city")), "Select the expected City");
 			} catch (Exception e) {
 				e.getStackTrace();
@@ -430,7 +446,7 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 			        map.put("Pending at LME",3);
 
 			       
-				eGovOp.scrollToElement(locator.localitySubInput(4));
+				eGovOp.scrollToElement(locator.dropDownfieldEmp(4));
 				String pendingAssign="Pending for assignment";
 	
 					eGovOp.hoverOverclick(locator.selectstatus(map.get(status)));
@@ -465,8 +481,6 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 		try {
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -499,7 +513,7 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 		
 		try {
 			
-			eGovOp.scrollToElement(locator.localitySubInput(3));
+			eGovOp.scrollToElement(locator.dropDownfieldEmp(3));
 	       String arr[]= {"","Pending for Payment"};
 		
 				eGovOp.hoverOverclick(locator.selectstatus(1));
@@ -542,11 +556,81 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 	
 		try {
 			eGovOp.scrollToElement(locator.nextbutton());
-			eGovOp.clickElement(locator.nextbutton(), "Click on Nedxt Option");
+			eGovOp.clickElement(locator.nextbutton(), "Click on Next Option");
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
 	}
+	
+	
+	
+	//mCollect and Property Tax
+	
+	@When("^Click On Search and Pay \"(.*)\"$")
+	public void SeacrhAndPay(String value) {
+		try {
+			Properties pro = new Properties();
+			
+			FileInputStream fileLoc = new FileInputStream(outputFile);
+			pro.load(fileLoc);
+			eGovOp.setRuntimeProps("value",pro.getProperty(value));
+			
+			eGovOp.clickElement(locator.SeacrhandPay(eGovOp.getRuntimeProps("value")), "Click On Search and Pay");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	@And("^Citizen Enter City")
+	public void citizenEnterCity() {
+		try {
+			Properties pro = new Properties();
+			
+			FileInputStream fileLoc = new FileInputStream(outputFile);
+			pro.load(fileLoc);
+			eGovOp.setRuntimeProps("city",pro.getProperty("city"));
+			
+			eGovOp.clickElement(locator.dropdownfieldCitizen("1"), "^Citizen Enter City");
+			eGovOp.clickElement(locator.selectcityCitizen(eGovOp.getRuntimeProps("city")), "Select City");
+
+		} catch (Exception e) {
+			
+		 e.getStackTrace();
+		}
+	}
+		
+		@And("^Citizen Select Locality")
+		public void citizenselectLocality() {
+			try {
+				Properties pro = new Properties();
+				
+				FileInputStream fileLoc = new FileInputStream(outputFile);
+				pro.load(fileLoc);
+				eGovOp.setRuntimeProps("locality",pro.getProperty("locality"));
+				
+				eGovOp.clickElement(locator.dropdownfieldCitizen("2"), "^Citizen Enter Locality");
+				eGovOp.clickElement(locator.selectcityCitizen(eGovOp.getRuntimeProps("locality")), "Select locality");
+
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+	}
+		@And("^Citizen Enter Mobile")
+		public void citizenenterMobile() {
+			try {
+				Properties pro = new Properties();
+				
+				FileInputStream fileLoc = new FileInputStream(outputFile);
+				pro.load(fileLoc);
+				eGovOp.setRuntimeProps("mobile",pro.getProperty("mobile"));
+				
+				eGovOp.enterData(locator.inputfield(3),eGovOp.getRuntimeProps("mobile"), "Enter mobile");
+
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+	}
+	
 	
 	}
 

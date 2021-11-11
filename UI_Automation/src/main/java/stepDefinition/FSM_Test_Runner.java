@@ -28,11 +28,14 @@ import utilities.BaseTests;
 import utilities.DriverUtil;
 
 @CucumberOptions(features = { "src/test/java/features/FSM" }, glue = { "stepDefinition/" }, monochrome = true, tags = {
-		"@fsm18"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@fsm22"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
 	String ApplicationNum="";
+	String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+	//String outputFile = path + "/" + "dataHindi" + ".properties";
+	String outputFile = path + "/" + "data" + ".properties";
 
 
 	elementLocators locator = new elementLocators();
@@ -107,9 +110,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void checkradiobutton(String property) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -153,14 +153,25 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void enterpincode(String pincode) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("pincode",pro.getProperty(pincode));
-			eGovOp.enterData(locator.pincodeenter(), eGovOp.getRuntimeProps("pincode"), "Enter pincode");
+		
+			if(eGovOp.wait_for_element(locator.pincodeenter(),"check element")==true)
+			{
+				eGovOp.enterData(locator.pincodeenter(), eGovOp.getRuntimeProps("pincode"), "Enter pincode");
+					
+				
+	        	eGovOp.scrollToElement(locator.nextbutton());
+	        	eGovOp.clickElement(locator.nextbutton(), "Click on Nedxt Option"); 
+		
+			}
+			else
+			{
+				eGovOp.clickElementShort(locator.skiplink(), "Click skip and next");
+			}
+			
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
@@ -205,10 +216,22 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	@And("^Select City and Check Locality")
 	public void selectcitywuthoutpin() {
 		try {
+           Properties pro = new Properties();
+			
+			FileInputStream fileLoc = new FileInputStream(outputFile);
+			pro.load(fileLoc);
+			eGovOp.setRuntimeProps("city",pro.getProperty("city"));
+			eGovOp.setRuntimeProps("Mohalla",pro.getProperty("Mohalla"));
+			if(eGovOp.wait_for_element(locator.selectcitydropdown(), "")==true)
+			{
 			eGovOp.clickElement(locator.selectcitydropdown(), "Select City Dropdown");
-			eGovOp.clickElement(locator.selectcity(), "Select City");
+			eGovOp.clickElement(locator.selectcityCitizen(eGovOp.getRuntimeProps("city")), "Select City");
 			eGovOp.clickElement(locator.selectLocalitydropdown(), "Select Locality Dropdown");
-			eGovOp.clickElement(locator.selectLocality(), "Select locality");
+			eGovOp.clickElement(locator.selectLocality(eGovOp.getRuntimeProps("Mohalla")), "Select locality");
+			eGovOp.scrollToElement(locator.nextbutton());
+			}
+			eGovOp.clickElement(locator.nextbutton(), "Click on Nedxt Option");
+	
 		}
 		catch (Exception e) {
 			e.getStackTrace();
@@ -231,7 +254,7 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	@And("^Check Can enter city")
 	public void entercity() {
 		try {
-			eGovOp.implicitWait(10, "Wait for Upload document screen load again");
+			eGovOp.implicitWait(10, "Wait");
 			eGovOp.enterData(locator.entercity(), "Mumbai", "Enter city in field");
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -266,7 +289,7 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 		
 	
 		try {
-			eGovOp.clickElement(locator.localitySlumYes(), "Click on Yes Slum");
+			eGovOp.clickElement(locator.radioButtonfield(1), "Click on Yes Slum");
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
@@ -276,9 +299,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void provideNameoftheSlum(String slum) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -294,9 +314,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void updateNameoftheSlum() {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -312,10 +329,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void updateNameoftheSlumdata(String slum) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("Slum_Area",pro.getProperty(slum));
@@ -390,9 +403,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 		try {
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("cardnum",pro.getProperty(cardnum));
@@ -530,9 +540,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void selectProperty(String Property) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -553,9 +560,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 			
 			Properties pro = new Properties();
 
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("value",pro.getProperty(value));
@@ -573,9 +577,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 		try {
 		
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -599,9 +600,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void Selectpropertysubtype(String subtype) {
 	try {
 		Properties pro = new Properties();
-
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
 		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
@@ -620,9 +618,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	try {
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("subtype",pro.getProperty(subtype));
@@ -639,15 +634,14 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void enterPincode() {
 	try {
 		Properties pro = new Properties();
-
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
 		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("pincode",pro.getProperty("pincode"));
 		eGovOp.scrollpagewithpixel(0, 400);
-		eGovOp.enterData(locator.pincodeEC(),eGovOp.getRuntimeProps("pincode"),"Enter Pincode Number");
+				
+			eGovOp.enterData(locator.pincodeEC(),eGovOp.getRuntimeProps("pincode"),"Enter Pincode Number");
+                
 		
 	} catch (Exception e) {
 		e.getStackTrace();
@@ -659,9 +653,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	try {
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("pincode",pro.getProperty(pincode));
@@ -677,9 +668,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	public void selectMohalla(String Mohalla) {
 	try {
 		Properties pro = new Properties();
-
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
 		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
@@ -712,9 +700,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	try {
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("sanitation",pro.getProperty(sanitation));
@@ -756,9 +741,6 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	try {
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("vehicletype",pro.getProperty(vehicletype));
@@ -952,7 +934,7 @@ try {
 public void selectLocality() {
 	try {
 	eGovOp.scrollpagewithpixel(0, 100);
-	eGovOp.clickElement(locator.localitySubInput(3),"Click dropdown");
+	eGovOp.clickElement(locator.dropDownfieldEmp(3),"Click dropdown");
 	
 	try
 	{
@@ -980,7 +962,7 @@ public void selectStatus() {
 		 * 
 		 * }
 		 */		
-		eGovOp.scrollToElement(locator.localitySubInput(3));
+		eGovOp.scrollToElement(locator.dropDownfieldEmp(3));
        String arr[]= {"","DSO Rejected","Pending for DSO Assignment","Application Created","Pending for DSO Approval","DSO InProgress"};
 	for(int i=1;i<6;i++) 
 	{
@@ -1070,9 +1052,6 @@ public void reasonreassign(String reason) {
 try {
 	Properties pro = new Properties();
 
-	String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-	 String outputFile = path + "/" + "data" + ".properties";
-	
 	FileInputStream fileLoc = new FileInputStream(outputFile);
 	pro.load(fileLoc);
 	eGovOp.setRuntimeProps("reason",pro.getProperty(reason));
@@ -1354,9 +1333,6 @@ public void declinewithdetails(String reason) {
 	try {
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("reason",pro.getProperty(reason));
@@ -1468,9 +1444,6 @@ public void cancleReason(String reason) {
 try {		
 	Properties pro = new Properties();
 
-	String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-	 String outputFile = path + "/" + "data" + ".properties";
-	
 	FileInputStream fileLoc = new FileInputStream(outputFile);
 	pro.load(fileLoc);
 	eGovOp.setRuntimeProps("reason",pro.getProperty(reason));
@@ -1516,9 +1489,6 @@ public void selectfilterStatus(String status) {
 	try {	
 		Properties pro = new Properties();
 
-		String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-		 String outputFile = path + "/" + "data" + ".properties";
-		
 		FileInputStream fileLoc = new FileInputStream(outputFile);
 		pro.load(fileLoc);
 		eGovOp.setRuntimeProps("status",pro.getProperty(status));
@@ -1531,7 +1501,7 @@ public void selectfilterStatus(String status) {
 	        map.put("DSO Rejected",6);
 	        
 	        
-			eGovOp.scrollToElement(locator.localitySubInput(3));
+			eGovOp.scrollToElement(locator.dropDownfieldEmp(3));
 			eGovOp.implicitWait(2, "wait");
 			if(map.get(status)>3)
 			{

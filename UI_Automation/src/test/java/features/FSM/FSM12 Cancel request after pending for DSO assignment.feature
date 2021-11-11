@@ -14,7 +14,7 @@ Scenario: Employee Editor Create Application
   And Select Application Channel
   And Enter Application Name
   And Enter Mobile Number
-  And Select Property "Commercial"
+  And Select Property "Property_Commercial"
   And Select Property SubType "CommercialSubType"
   And Enter Pincode Number
   And Select Locality Mohalla "Mohalla"

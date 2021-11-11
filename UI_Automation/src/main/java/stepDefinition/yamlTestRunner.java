@@ -41,6 +41,10 @@ public class yamlTestRunner extends AbstractTestNGCucumberTests implements BaseT
 	elementLocators locator = new elementLocators();
 	String recId;
 	String complaintnum="";
+	String path = System.getProperty("user.dir")+"/src/test/java/TestData";
+	String outputFile = path + "/" + "data" + ".properties";
+	//String outputFile = path + "/" + "dataHindi" + ".properties";
+	
 	boolean home;
 	public static Map<String, Object> yamlMap = null;
 
@@ -156,10 +160,6 @@ public class yamlTestRunner extends AbstractTestNGCucumberTests implements BaseT
 	public void eGovMobile() {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
-			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
 			eGovOp.setRuntimeProps("mobileNumber",pro.getProperty("mobile"));
@@ -174,9 +174,6 @@ public class yamlTestRunner extends AbstractTestNGCucumberTests implements BaseT
 	public void eGovMobile(String mobile) {
 		try {
 			Properties pro = new Properties();
-
-			String path = System.getProperty("user.dir")+"/src/test/java/TestData";
-			 String outputFile = path + "/" + "data" + ".properties";
 			
 			FileInputStream fileLoc = new FileInputStream(outputFile);
 			pro.load(fileLoc);
@@ -237,6 +234,30 @@ public class yamlTestRunner extends AbstractTestNGCucumberTests implements BaseT
 				do
 				{
 		    	eGovOp.javascriptclick(locator.langEnglish());
+
+				}
+		     	while(!eGovOp.No_wait_element_visib(locator.loginButton(), "Wait for continue"));
+						
+				eGovOp.clickElement(locator.loginButton(), "Select the Continue button");
+			
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	// change
+	
+	@When("^Select the language Hindi")
+	public void selectlanguageasHindi() {
+		try {
+			// Thread.sleep(5000);
+			eGovOp.clickElement(locator.langHidi(), "Select the Hindi language before login");
+			// Thread.sleep(5000);
+		//	boolean avail=eGovOp.wait_short_element_visib(locator.loginButton(), "Wait for continue");
+				
+				do
+				{
+		    	eGovOp.javascriptclick(locator.langHidi());
 
 				}
 		     	while(!eGovOp.No_wait_element_visib(locator.loginButton(), "Wait for continue"));
