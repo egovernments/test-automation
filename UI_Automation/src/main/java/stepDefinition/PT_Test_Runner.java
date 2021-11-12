@@ -28,7 +28,7 @@ import utilities.BaseTests;
 import utilities.DriverUtil;
 
 @CucumberOptions(features = { "src/test/java/features/PT" }, glue = { "stepDefinition/" }, monochrome = true, tags = {
-		"@pt14"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@pt1"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
