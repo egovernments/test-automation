@@ -8,8 +8,8 @@
 # -
 # -
 config:
-  - name: "builds/test-automation"
+  - name: "builds/automation/api-automation"
     build:
-      - work-dir: "."
-        image-name: "name"
+      - work-dir: "api-automation"
+        image-name: "api-automation"
         dockerfile: "build/maven/Dockerfile"
