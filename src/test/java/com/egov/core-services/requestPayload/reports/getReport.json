@@ -1,9 +1,0 @@
-{
-	"tenantId": "#(tenantId)",
-	"reportName": "#(secondReportName)",
-	"searchParams": "#(searchParams)",
-	"RequestInfo": {
-		"ts": "#(ts)",
-		"authToken": "#(authToken)"
-	}
-}
