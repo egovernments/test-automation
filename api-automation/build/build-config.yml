@@ -8,7 +8,7 @@
 # -
 # -
 config:
-  - name: "builds/automation/api-automation"
+  - name: "builds/test-automation/api-automation"
     build:
       - work-dir: "api-automation"
         image-name: "api-automation"
