@@ -8,7 +8,7 @@
 # -
 # -
 config:
-  - name: "builds/automation/ui-automation"
+  - name: "builds/test-automation/ui-automation"
     build:
       - work-dir: "ui-automation"
         image-name: "ui-automation"
