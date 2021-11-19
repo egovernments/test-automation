@@ -447,7 +447,7 @@ public class FSM_Test_Runner extends AbstractTestNGCucumberTests implements Base
 	@And("^Click On View Rating")
 	public void viewRating() {
 		try {
-			eGovOp.clickElement(locator.viewrating(),"Click On View Rating");
+			eGovOp.clickElement(locator.viewdetails(),"Click On View Rating");
 		} catch (Exception e) {
 			e.getStackTrace();
 		}

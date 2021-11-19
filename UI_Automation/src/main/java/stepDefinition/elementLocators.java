@@ -912,9 +912,9 @@ public By viewButton(String appnum) {
 	return by;
 }
 
-public By viewDetails(String challannum) {
+public By viewDetails(String num) {
 	
-	By by = By.xpath("//p[text()='"+challannum+"']//following::button[1]");
+	By by = By.xpath("//p[text()='"+num+"']//following::button[1]");
 	return by;
 }
 //rate us
@@ -1229,7 +1229,7 @@ public By submit()
 
 //view rating 
 
-public By viewrating()
+public By viewdetails()
 {
 	By by =  By.className("action-link");
 	return by;
@@ -1886,6 +1886,19 @@ public By takeActionOtions(int num)
 	By by =  By.xpath("(//div[@class='menu-wrap']//p)["+num+"]");
  return by;
 }
+
+public By citizenDownloadlabel() 
+{
+	By by =  By.xpath("//div[@class='app-container']//child::span");
+ return by;
+}
+
+public By checkinformation() 
+{
+	By by =  By.xpath("(//header[@class='card-sub-header '])[8]");
+ return by;
+}
+
 }
 
 

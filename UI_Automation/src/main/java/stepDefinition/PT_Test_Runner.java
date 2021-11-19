@@ -27,8 +27,18 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import utilities.BaseTests;
 import utilities.DriverUtil;
 
+/* Module: Property Tax
+ * 
+ *
+ *
+ *
+ *
+ *
+ */
+
+
 @CucumberOptions(features = { "src/test/java/features/PT" }, glue = { "stepDefinition/" }, monochrome = true, tags = {
-		"@pt1"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@pt14"}, plugin = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseTests {
 	//protected WebDriver driver;
@@ -209,9 +219,9 @@ public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseT
 	public void vasikapropertyDetails() {
 		try {
 			String currentUrl=eGovOp.getUrl();
-			System.out.print(currentUrl);
 			if(currentUrl.contains("vasika-details")&&eGovOp.wait_for_element(locator.plotSize(),"check element")==true)
 			{
+				
 			eGovOp.enterData(locator.plotSize(),"400","Enter Plot Size");
 			eGovOp.enterData(locator.builtUpArea(), "300","Enter Build Up Area");
 			eGovOp.scrollToElement(locator.nextbutton());
@@ -222,11 +232,7 @@ public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseT
 			eGovOp.clickElement(locator.nextbutton(), "Click on Next Option");
 			
 			}
-			else
-			{
-				eGovOp.scrollToElement(locator.nextbutton());
-				eGovOp.clickElement(locator.nextbutton(), "Click on Next Option");
-			}
+			
 			
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -434,6 +440,28 @@ public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseT
 		}
 }
 	
+	@And("^Click On My Application")
+	public void myApplication() {
+		try {
+            
+			eGovOp.clickElement(locator.selectHyperlinkText(5), "Click On My Application");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	@Then("^Click On Track button")
+	public void clickonViewDetails() {
+		try {
+
+			String ptUID=eGovOp.readPropertyUID();
+			eGovOp.clickElement(locator.viewDetails(ptUID), "Click On Track button");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	//End Citizen Region
 	//Employee DV
 	@And("^Click on Property Tax")
 	public void ptService() {
@@ -650,6 +678,37 @@ public class PT_Test_Runner extends AbstractTestNGCucumberTests implements BaseT
 	public void clickonAssessPropertybutton() {
 		try {
 			eGovOp.clickElement(locator.assignbutton(), "Click On Assess Property button");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	@And("^Click On View Property Details")
+	public void viewDetails() {
+		try {
+			eGovOp.scrollToElement(locator.viewdetails());
+			eGovOp.clickElement(locator.viewdetails(),"Click On View Property Details");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	
+	@And("^Click On Download Label")
+	public void downloadlabel() {
+		try {
+			eGovOp.clickElement(locator.citizenDownloadlabel(), "Click On Download");
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+
+	
+	@When("^Check information and Next")
+	public void clickonnextbutton() {
+	
+		try {
+			eGovOp.wait_for_element(locator.checkinformation(), "wait for list Header");
+			eGovOp.clickElement(locator.nextbutton(), "Click on Next Option");
 		} catch (Exception e) {
 			e.getStackTrace();
 		}

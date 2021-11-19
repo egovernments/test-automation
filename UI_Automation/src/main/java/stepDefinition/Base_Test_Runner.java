@@ -36,7 +36,7 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 		 String outputFile = path + "/" + "data" + ".properties";
 		 String credentailsfile = path + "/" + "credentials" + ".properties";
 	
-		
+			
 		@When("^Open new web url \"(.*)\"$")
 		public void eGovlauncherEmp(String url) {
 			try {
@@ -552,7 +552,6 @@ public class Base_Test_Runner extends AbstractTestNGCucumberTests implements Bas
 
 	@When("^Click on Next button")
 	public void clickonnextbutton() {
-		
 	
 		try {
 			eGovOp.scrollToElement(locator.nextbutton());
