@@ -10,13 +10,13 @@
 config:
   - name: "builds/test-automation/api-automation"
     build:
-      - work-dir: "api-automation"
+    -   work-dir: "api-automation"
         image-name: "api-automation"
         dockerfile: "build/maven/Dockerfile"
         
   - name: "builds/test-automation/ui-automation"
     build:
-      - work-dir: "ui-automation"
+    -   work-dir: "ui-automation"
         image-name: "ui-automation"
         dockerfile: "build/maven/Dockerfile"
 
