@@ -22,7 +22,7 @@ Scenario: Create Property Tax by citizen
   And Select No for floor unoccupied
   And Enter VASIKA Property Details
   
-@pt1
+@pt14
 Scenario: Create Property Tax by citizen
   Given Open new web url "citizen"
   When Select Language "languageEng"
@@ -31,7 +31,7 @@ Scenario: Create Property Tax by citizen
   And Click On Create Property
   And Feed mobile number
 	And Feed Pin code
-	When Click on Next button
+	When Check information and Next
 	Then Select Yes for Is Resident Property
 	When Click on Next button
   Then Click on Property type Radio button "PT_Property" 
@@ -59,6 +59,7 @@ Scenario: Create Property Tax by citizen
   Then Click Submit button
   And Check Property Application Number
   And Check Property Unique ID
+  
   
 @pt1
 Scenario: Employee Editor Create Application
@@ -119,7 +120,7 @@ Scenario: Employee Editor Create Application
   And File upload
   And Click On Approve button
   
-@pt14
+@pt11
 Scenario: Employee Editor Create Application
 	Given Open new web url "employee"
 	When Select the language
@@ -138,6 +139,19 @@ Scenario: Employee Editor Create Application
   Then Click on ASSESS PROPERTY
   And Select Financial Year
   And Click On Assess Property button
+  
+ @pt1
+Scenario: Check My application
+  Given Open new web url "citizen"
+  When Select Language "languageEng"
+  And Select Location
+  And Select Citizen Service "PT"
+  And Click On My Application
+  And Feed mobile number
+	And Feed Pin code
+	And Click On Track button
+	And Click On Download Label
+	#And Click On View Property Details
   
   
 @pt11
