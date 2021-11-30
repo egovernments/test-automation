@@ -3,12 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eGovernanceUI</groupId>
-	<artifactId>eGovUI</artifactId>
+	<artifactId>egovui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eGovUI</name>
 	<packaging>jar</packaging>
 	<description>e-Governance project</description>
 	<url>http://maven.apache.org</url>
+
+<distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub shan-egov Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/egovernments/egovui</url>
+   </repository>
+</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +24,10 @@
 		<threads>1</threads>
 	</properties>
 
+
 	<dependencies>
+
+
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
@@ -38,6 +49,7 @@
 			<version>6.14.3</version>
 		</dependency>
 		
+
 		<!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
 <dependency>
     <groupId>com.sikulix</groupId>
@@ -144,6 +156,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M4</version>
 				<configuration>
+          
 					<testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
 					<testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
 					<testFailureIgnore>true</testFailureIgnore>
@@ -151,6 +164,9 @@
 					<outputDirectory>${basedir}/target</outputDirectory>
 					<parallel>methods</parallel>
 					<threadCount>${threads}</threadCount>
+					 <suiteXmlFiles>
+               <suiteXmlFile>${basedir}/testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
 					<includes>
 						<include>**/${stepRunner}.java</include>
 					</includes>
