@@ -1,0 +1,28 @@
+{
+	"TL": {
+	     "RequestInfo": {
+		 "authToken": "#(authToken)"
+	},
+        "Payments": "#(Payments)"
+    },
+
+    "PT": {
+		"RequestInfo": {
+            "authToken": "#(authToken)"
+        },
+        "Payments": "#(Payments)"
+    },
+    "FireNoc": {
+            "RequestInfo": {
+                "authToken": "#(authToken)"
+            },
+            "Payments": "#(Payments)"
+                },
+    "WS": {
+            "RequestInfo": {
+                "authToken": "#(authToken)",
+                "responseType": "arraybuffer"
+            },
+            "Bill": "#(Bill)"
+        }
+    }

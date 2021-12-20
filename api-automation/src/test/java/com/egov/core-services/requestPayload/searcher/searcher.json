@@ -1,0 +1,12 @@
+{
+    "RequestInfo": {
+      "authToken": "#(authToken)"
+  },
+    "searchCriteria": {
+         "tenantId": "#(tenantId)",
+         "businesService": "#(businesService)",
+         "mobileNumber": "#(mobileNumber)",
+         "url": "#(url1)"
+     } 
+  
+}

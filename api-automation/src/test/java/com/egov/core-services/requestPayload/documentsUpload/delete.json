@@ -1,0 +1,61 @@
+{
+    "DocumentEntity":{
+       "postedBy":"#(name)",
+       "uuid":"#(documentToDeleteUUID)",
+       "tenantIds":null,
+       "name":"#(docname)",
+       "category":"CATEGORY_CITIZEN_CHARTER",
+       "description":"",
+       "filestoreId":"#(fileStoreId)",
+       "documentLink":"",
+       "active":true,
+       "auditDetails":{
+          "createdBy":"ce86356e-c02f-4610-9fae-dcc8f1c50be4",
+          "lastModifiedBy":"1d5014bd-50e4-4ce0-b8d8-2128201467e6",
+          "createdTime":1635250673516,
+          "lastModifiedTime":1636463681755
+       },
+       "tenantId":"#(tenantId)",
+       "fileType":"image/png",
+       "fileSize":428163
+    },
+    "RequestInfo":{
+       "apiId":"Rainmaker",
+       "authToken":"#(authToken)",
+       "userInfo": {
+        "id": "#(id)",
+        "uuid": "#(uuid)",
+        "userName": "#(userName)",
+        "name": "#(name)",
+        "mobileNumber": "#(mobileNumber)",
+        "emailId": "#(email)",
+        "locale": null,
+        "type": "#(employeeType)",
+          "roles":[
+             {
+                "name":"Employee",
+                "code":"EMPLOYEE",
+                "tenantId":"#(tenantId)"
+             },
+             {
+                "name":"Employee",
+                "code":"EMPLOYEE",
+                "tenantId":"#(tenantId)"
+             },
+             {
+                "name":"Employee",
+                "code":"EMPLOYEE",
+                "tenantId":"#(tenantId)"
+             },
+             {
+                "name":"Employee",
+                "code":"EMPLOYEE",
+                "tenantId":"#(tenantId)"
+             }
+          ],
+          "active":true,
+          "tenantId":"#(tenantId)",
+          "permanentCity":null
+       }
+    }
+ }

@@ -1,0 +1,13 @@
+{
+    "RequestInfo": {
+      "authToken": "#(authToken)",
+      "userInfo": {
+        "uuid": "asd",
+        "name": "ad",
+        "userName": "asd",
+        "tenantId": "#(tenantId)",
+        "id": 4,
+        "mobileNumber": "#(mobileNumber)"
+      }
+    }
+  }

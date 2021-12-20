@@ -1,0 +1,38 @@
+location:
+    [
+    pages:
+        [
+            [
+            titlename: Select complaint type,
+            fieldtype: [radio, Streetlights, null]
+            ],
+            [
+            titlename: Choose Complaint Sub-Type,
+            fieldtype: [radio, No streetlight, null],
+            ],
+            [
+            titlename: Pin Complaint Location,
+            fieldtype: [skip, Skip and Continue, null]
+            ],
+            [
+            titlename: Do you know the pincode,
+            fieldtype: [text, Pincode, 143001]
+            ],
+            [
+            titlename: Provide Complaint address,
+            fieldtype: [radio, Back Side 33 KVA Grid Patiala Road - Area1, null]
+            ],
+            [
+            titlename: Provide Landmark,
+            fieldtype: [skip, Skip and continue, null]
+            ],
+             [
+            titlename: Upload complaint photos,
+            fieldtype: [skip, Skip and continue, null]
+            ],
+            [
+            titlename: Provide Additional Details,
+            fieldtype: [text, Additional Address Information, Test]    
+            ]
+        ]
+    ]

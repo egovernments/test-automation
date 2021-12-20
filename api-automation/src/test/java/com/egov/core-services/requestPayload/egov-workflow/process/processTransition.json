@@ -1,0 +1,39 @@
+{
+    "valid": {
+    "RequestInfo": {
+       
+        "authToken": "#(authToken)"
+    },
+    "ProcessInstances": [
+        {
+            "tenantId": "#(tenantId)",
+            "businessService": "#(businessService)",
+            "businessId": "#(businessId)",
+            "action": "REJECT",
+            "comment": null,
+            "assignee": null,
+         "moduleName": "PT",
+            "previousStatus": null  
+        }
+    ]
+    },
+    "invalid": {
+        "RequestInfo": {
+       
+            "authToken": "#(authToken)"
+        },
+        "ProcessInstances": [
+            {
+                "tenantId": "#(tenantId)",
+                "businessService": "#(businessService)",
+                "businessId": "#(businessId)",
+                "action": "REJECT",
+                "comment": null,
+                "assignee": null,
+                "previousStatus": null
+    
+                
+            }
+        ]
+    }
+}

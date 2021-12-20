@@ -1,0 +1,21 @@
+status: Accepted
+
+invalidParameters:
+  invalidValue: 123
+
+errorMessages:
+  noFileError: Cannot convert form data
+  transactionError: Transaction Number should be unique
+  emptyTransaction: Please enter transaction number
+  invalidFileError: Please upload [dxf] format file only
+  noRecords: '"No Record Found"'
+  tenantError: tenantId is missing
+  edcrMissingError: eDcr number is missing
+  ocdcrMissingError: OcDcr number is missing
+  edcrInvalidError: No record found with dcr number
+  ocdcrInvalidError: No record found with ocdcr number
+
+errorCode:
+  invalidApplicationType: INVALID APPLICATIONTYPE
+  invalidServiceType: INVALID SERVICETYPE
+  

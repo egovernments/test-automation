@@ -1,0 +1,27 @@
+{
+    
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": "#(authToken)",
+        "userInfo": {
+            "id": "#(id)",
+            "uuid": "#(uuid)",
+            "userName": "#(userName)",
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)",
+            "emailId": "#(email)",
+            "locale": null,
+            "type": "#(employeeType)",
+            "roles": [
+                {
+                    "name": "TL Counter Employee",
+                    "code": "TL_CEMP",
+                    "tenantId": "#(tenantId)"
+                }
+            ],
+            "active": true,
+            "tenantId": "#(tenantId)",
+            "permanentCity": null
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "RequestInfo": {
+        "apiId": "#(apiId)",
+        "ver": "#(ver)",
+        "action": "#(action)",
+        "did": "#(did)",
+        "msgId": "#(msgId)",
+        "authToken": "#(authToken)",
+        "ts": 0,
+        "key": "string",
+        "requesterId": "string",
+            "userInfo": {
+        "tenantId": "#(tenantId)"
+     }
+    },
+    "CalulationCriteria": [
+      {
+        "fireNOC": {
+        "fireNOCDetails": {
+
+          "buildings": [
+            {
+              "tenantId": "#(tenantId)",
+              "name": "#(buildingName)",
+              "usageType": "#(buildingUsageType)",
+              "uoms": [
+                {
+                }
+              ],
+              "applicationDocuments": []
+            }
+          ],
+          "propertyDetails": {
+          
+          },
+          "applicantDetails": {
+            "ownerShipType": "#(ownerShipType)",
+            "owners": [
+              {
+                "roles": {
+                  "tenantId" :"#(tenantIdRoles)"
+                }
+              }
+            ]
+          },
+          "additionalDetail": {
+            "documents": []
+           
+          }
+        }
+      },
+        "tenantId": "#(tenantId)"
+      }
+    ]
+  }

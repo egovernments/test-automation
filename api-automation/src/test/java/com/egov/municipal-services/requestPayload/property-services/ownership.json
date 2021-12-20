@@ -1,0 +1,104 @@
+{
+    "RequestInfo": {
+      "authToken": "#(authToken)"
+    },
+    "Property": {
+      "tenantId": "#(tenantId)",
+      "address": {
+        "city": "#(cityName)",
+        "locality": {
+          "code": "#(localityCode)",
+          "area": "#(areaCode)"
+        }
+      },
+      "units": [
+        {
+          "floorNo": "0",
+          "occupancyType": "#(OccupancyType)",
+          "constructionDetail": {
+            "builtUpArea": "#(builtUpArea)"
+          },
+          "tenantId": "#(tenantId)",
+          "usageCategory": "#(UsageCategory)"
+        }
+      ],
+      "usageCategoryMajor": "#(UsageCategoryMajor)",
+      "landArea": "#(landArea)",
+      "propertyType": "#(PropertyType)",
+      "noOfFloors": 2,
+      "ownershipCategory": "#(OwnerShipCategory)",
+      "ownersInit": [],
+      "owners": [
+        {
+          "name": "#(name)",
+          "mobileNumber": "#(mobileNumber)",
+          "fatherOrHusbandName": "#(fatherOrHusbandName)",
+          "permanentAddress": "#(localityName)",
+          "relationship": "#(relationship)",
+          "alternatemobilenumber": "#(mobileNumber)",
+          "ownerType": "#(OwnerType)",
+          "gender": "#(gender)",
+          "isCorrespondenceAddress": "#(isCorrespondenceAddress)",
+          "altContactNumber": "#(mobileNumber)"
+        }
+      ],
+      "source": "#(source)",
+      "channel": "#(channel)",
+      "documents": [
+        {
+          "documentType": "OWNER.ADDRESSPROOF.ELECTRICITYBILL",
+          "fileStoreId": "#(fileStoreId)",
+          "documentUid": "#(fileStoreId)"
+        },
+        {
+          "documentType": "OWNER.IDENTITYPROOF.AADHAAR",
+          "fileStoreId": "#(fileStoreId)",
+          "documentUid": "#(fileStoreId)"
+        },
+        {
+          "documentType": "#(reasonForTransfer)",
+          "fileStoreId": "#(fileStoreId)",
+          "documentUid": "#(fileStoreId)"
+        },
+        {
+          "documentType": "OWNER.USAGEPROOF.ELECTRICITYBILL",
+          "fileStoreId": "#(fileStoreId)",
+          "documentUid": "#(fileStoreId)"
+        }
+      ],
+      "usageCategory": "#(UsageCategory)",
+      "creationReason": "#(creationReason)",
+      "institution": {
+        "nameOfAuthorizedPerson": "#(nameOfAuthorizedPerson)",
+        "name": "#(name)",
+        "designation": "#(designation)",
+        "tenantId": "#(tenantId)",
+        "type": "#(type)"
+       },
+       "ownersTemp": [
+        {
+            "name": "#(name)",
+            "gender": "#(gender)",
+            "designation": "#(designation)",
+            "mobileNumber": "#(mobileNumber)",
+            "fatherOrHusbandName": "#(fatherOrHusbandName)",
+            "permanentAddress": "#(permanentAddress)",
+            "ownerType": "NONE",
+            "status": "ACTIVE"
+        }
+    ],
+    "additionalDetails": {
+      "previousPropertyUuid": "#(previousPropertyUuid)",
+      "caseDetails": "#(caseDetails)",
+      "isMutationInCourt": "#(isMutationInCourt)",
+      "govtAcquisitionDetails": "#(govtAcquisitionDetails)",
+      "isPropertyUnderGovtPossession": "#(isPropertyUnderGovtPossession)",
+      "reasonForTransfer": "#(reasonForTransfer)",
+      "marketValue": "#(marketValue)",
+      "documentNumber": "#(documentNumber)",
+      "documentDate": "#(documentDate)",
+      "documentValue": "#(documentValue)"
+  },
+    "declaration": true
+    }
+  }

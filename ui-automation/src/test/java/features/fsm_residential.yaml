@@ -1,0 +1,48 @@
+location:
+    [
+    pages:
+        [
+            [
+            titlename: Choose Property Type,
+            fieldtype: [radio, Residential, Info]
+            ],
+            [
+            titlename: Choose Property Sub-Type *,
+            fieldtype: [radio, Independent house, null],
+            ],
+            [
+            titlename: Pin Property Location,
+            fieldtype: [skip, Skip and Continue, null]
+            ],
+            [
+            titlename: Do you know the pincode,
+            fieldtype: [text, Pincode, 143001],
+            ],
+            [
+            titlename: Is your property located in a notified slum area,
+            fieldtype: [radio, YES, null]
+            ],
+            [
+            titlename: Provide Name of the Slum,
+            fieldtype: [dropdown, City *, Phagwara]
+            ],
+            [
+            titlename: Provide Property address,
+            fieldtype: [text, Street Name, Boston vally],
+            fieldtype: [text, Door/House No., Boston322]
+            ],
+            [
+            titlename: Provide Landmark,
+            fieldtype: [text, Landmark, Goal Hatti]
+            ],
+            [ 
+            titlename: Choose Onsite sanitation type,
+            fieldtype: [radio, Septic tank with soak pit, null]
+            ],
+            [ 
+            titlename: Pit/Septic Tank Size,
+            fieldtype: [text, Diameter (m), 11],
+            fieldtype: [text, Depth (m), 11]
+            ]
+        ]
+    ]

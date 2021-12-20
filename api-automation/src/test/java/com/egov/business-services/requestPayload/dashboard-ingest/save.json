@@ -1,0 +1,13 @@
+{
+    "RequestInfo": {
+         "authToken": "#(authToken)"
+     },
+    "topicContextConfigurations": [
+     {
+       "topic": "dss-collection-update",
+       "dataContext": "collection",
+       "dataContextVersion": "v1"
+     }
+   ]
+ }
+ 
