@@ -1,0 +1,44 @@
+{
+    "events": [
+        {
+            "tenantId": "#(tenantId)",
+            "id": "#(eventsToDeleteid)",
+            "referenceId": null,
+            "eventType": "EVENTSONGROUND",
+            "eventCategory": "CULTURAL",
+            "name": "tex",
+            "description": "#(description)",
+            "status": "CANCELLED",
+            "source": "#(source)",
+            "postedBy": "#(eventsToDeletepostedBy)",
+            "recepient": null,
+            "actions": null,
+            "eventDetails": {
+                "id": "#(eventsToDeleteeventDetailsid)",
+                "eventId": "#(eventsToDeleteeventDetailseventId)",
+                "organizer": "",
+                "fromDate": "#(fromDate)",
+                "toDate": "#(toDate)",
+                "latitude": 19.972096,
+                "longitude": 79.282176,
+                "address": "ajit nagar",
+                "documents": null,
+                "fees": null
+            },
+            "auditDetails": {
+                "createdBy": "abfe724b-a93e-4edd-b084-82ecbe22a192",
+                "createdTime": 1633464261882,
+                "lastModifiedBy": "abfe724b-a93e-4edd-b084-82ecbe22a192",
+                "lastModifiedTime": 1633464261882
+            },
+            "recepientEventMap": null,
+            "generateCounterEvent": null,
+            "internallyUpdted": true,
+            "uploadedFilesData": null
+        }
+    ],
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": "#(authToken)"
+    }
+}

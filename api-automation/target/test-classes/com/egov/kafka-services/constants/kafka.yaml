@@ -1,0 +1,48 @@
+topics:
+  emailNotification: "egov.core.notification.email"
+  createWorkflowTransition: "save-wf-transitions"
+clusterId: "Q4JvuYyESKer14_lxPieWA"
+sms:
+  topics: "egov.core.notification.sms"
+  consumerGroupId: "sms"
+createProperty:
+  topics: "save-property-registry"
+  consumerGroupId: "egov-property-services"
+updateProperty:
+  topics: "update-property-registry"
+  consumerGroupId: "egov-property-services"
+createPayment:
+  topics: "egov.collection.payment-create"
+  consumerGroupId: "collection-persist"
+createPdf:
+  topics: "PDF_GEN_CREATE"
+createPgTransaction:
+  topics: "save-pg-txns"
+  consumerGroupId: "egov-pg-service"
+createFireNoc:
+  topics: "save-fn-firenoc"
+  consumerGroupId: "firenoc-consumer-grp"
+updateFireNoc:
+  topics: "update-fn-firenoce"
+  consumerGroupId: "firenoc-consumer-grp"
+createUserEvent:
+  topics: "save-user-events"
+  consumerGroupId: "egov-user-events"
+updateUserEvent:
+  topics: "update-user-events"
+  consumerGroupId: "egov-user-events"
+latUserEvent:
+  topics: "user-events-lat"
+  consumerGroupId: "egov-user-events"
+asyncUserEvent:
+  topics: "persist-user-events-async"
+  consumerGroupId: "egov-user-events"
+updateAsyncUserEvent:
+  topics: "update-user-events-async"
+  consumerGroupId: "egov-user-events"
+createChallan:
+  topics: "save-challan"
+  consumerGroupId: "egov-echallan-services"
+updateChallan:
+  topics: "update-challan"
+  consumerGroupId: "egov-echallan-services"

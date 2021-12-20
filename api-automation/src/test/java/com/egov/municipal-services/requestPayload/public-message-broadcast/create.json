@@ -1,0 +1,21 @@
+  {
+    "events": [
+        {
+            "recepient":null,
+            "source": "#(source)",
+            "eventType": "BROADCAST",
+            "tenantId": "#(tenantId)",
+            "description": "#(description)",
+            "name": "#(name)",
+            "eventDetails": {
+                "documents":[],
+                "fromDate": "#(fromDate)",
+                "toDate": "#(toDate)"
+            }
+        }
+    ],
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": "#(authToken)"
+    }
+}

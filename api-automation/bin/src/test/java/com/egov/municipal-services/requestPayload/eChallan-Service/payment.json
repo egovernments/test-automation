@@ -1,0 +1,20 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Payment":{
+        "paymentDetails":[{
+            "businessService":"#(businessService)",
+            "billId":"#(billId)",
+            "totalDue":"#(amount)",
+            "totalAmountPaid":"#(amount)"
+            }],
+            "tenantId":"#(tenantId)",
+            "totalDue":"#(amount)",
+            "paymentMode":"#(cash)",
+            "paidBy":"#(common)",
+            "mobileNumber":"#(mobileNumber)",
+            "payerName":"#(name)",
+            "totalAmountPaid":"#(amount)"
+        }
+    }

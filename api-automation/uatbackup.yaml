@@ -1,0 +1,37 @@
+host: https://uat.digit.org/
+localhost: http://localhost:8082/
+mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
+stateCode: pg
+cityCode: citya
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: EMPAUTO
+  password: eGov@123
+  type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMPAUTO
+  password: eGov@123
+  type: EMPLOYEE
+# Citizen's username 8073460929 and password needed for Property End to End flow (need to create user manually)
+citizen:
+  userName: 9999999999
+  password: 123456
+  type: CITIZEN
+# Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
+alternateCitizen:
+  userName: 9999999999
+  password: 123456
+  type: CITIZEN
+# Counter Employee's username EMP-107-001333 9222222222 and password Password@2, required for multiple use (need to create user manually)
+counterEmployeeUser:
+  userName: EMPAUTO
+  password: eGov@123
+  type: EMPLOYEE
+citizenArchitect:
+  userName: 9916210028 
+  password: 123456
+  type: CITIZEN
+
+
+  

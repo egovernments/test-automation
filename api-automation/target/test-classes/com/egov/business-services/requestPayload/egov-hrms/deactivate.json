@@ -1,0 +1,8 @@
+{
+    "deactivationDetails": [
+        {
+            "reasonForDeactivation": "#(reasonForDeactivation)",
+            "effectiveFrom": "#(effectiveFrom)"
+        }
+    ]
+}

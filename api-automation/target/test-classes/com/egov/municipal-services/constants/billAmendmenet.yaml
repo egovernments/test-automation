@@ -1,0 +1,4 @@
+errorMessages:
+  withoutBusinessService: "Business service not found for the given code : "
+  wrongAmendment: must not be null
+  invalidAmendment: No Amendment found in the system for the given amendmentId, Please provide valid id for update

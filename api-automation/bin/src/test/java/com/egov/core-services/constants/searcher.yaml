@@ -1,0 +1,2 @@
+errorMessages: 
+  tenantIdMandatory: 'Missiing Mandatory Property: $.searchCriteria.tenantId'

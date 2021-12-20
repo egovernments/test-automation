@@ -1,0 +1,14 @@
+{
+  "RequestInfo": {
+    "authToken": "#(authToken)"
+  },
+  "Assessment": {
+    "tenantId": "#(tenantId)",
+    "propertyId": "#(propertyId)",
+    "financialYear": "#(financialYear)",
+    "assessmentDate": "#(assessmentDate)",
+    "source": "#(source)",
+    "channel": "#(channel)",
+    "additionalDetails": {}
+  }
+}

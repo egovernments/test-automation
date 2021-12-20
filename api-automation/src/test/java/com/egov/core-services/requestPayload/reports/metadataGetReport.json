@@ -1,0 +1,8 @@
+{
+	"tenantId": "#(tenantId)",
+	"reportName": "#(reportName)",
+	"RequestInfo": {
+		"ts": "#(ts)",
+		"authToken": "#(authToken)"
+	}
+}

@@ -1,0 +1,16 @@
+{
+"RequestInfo":{
+       "authToken":"#(authToken)"
+    },
+       "accountDetailTypes":[
+         {
+            "id":"#(bankId)", 
+            "name":"#(bankName)",
+            "tableName":"#(tableName)",
+            "fullyQualifiedName":"#(fullyQualifiedName)",
+            "tenantId": "#(tenantId)",
+            "description":"#(bankDescription)",
+            "active":"#(active)"
+        }
+    ]
+}

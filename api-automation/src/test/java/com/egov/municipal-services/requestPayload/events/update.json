@@ -1,0 +1,121 @@
+{
+    "events": [
+        {
+            "tenantId": "#(tenantId)",
+            "id": "1b41bc11-bd49-4668-a96f-2f98b5fb0d9e",
+            "referenceId": null,
+            "eventType": "EVENTSONGROUND",
+            "eventCategory": "CULTURAL",
+            "name": "DANCE",
+            "description": "DANDIYA",
+            "status": "ACTIVE",
+            "source": "WEBAPP",
+            "postedBy": "d0710c4c-728a-446d-bc7e-d4614efe1463",
+            "recepient": null,
+            "actions": null,
+            "eventDetails": {
+                "id": "e2eaeca4-9e89-4c31-bfca-88dfdf3f4032",
+                "eventId": "1b41bc11-bd49-4668-a96f-2f98b5fb0d9e",
+                "organizer": "SSS",
+                "fromDate": "#(fromDate)",
+                "toDate": "#(toDate)",
+                "latitude": 31.57415368513166,
+                "longitude": 74.9185768527984,
+                "address": "aaaaaaaaaaa",
+                "documents": null,
+                "fees": "1000",
+                "fromTime": "02:00",
+                "toTime": "08:00"
+            },
+            "auditDetails": {
+                "createdBy": "d0710c4c-728a-446d-bc7e-d4614efe1463",
+                "createdTime": 1632282992872,
+                "lastModifiedBy": "d0710c4c-728a-446d-bc7e-d4614efe1463",
+                "lastModifiedTime": 1632282992872
+            },
+            "recepientEventMap": null,
+            "generateCounterEvent": null,
+            "internallyUpdted": true,
+            "user": {
+                "id": 12074,
+                "userName": "#(userName)",
+                "salutation": null,
+                "name": "#(name)",
+                "gender": "#(gender)",
+                "mobileNumber": "#(mobileNumber)",
+                "emailId": null,
+                "altContactNumber": null,
+                "pan": null,
+                "aadhaarNumber": null,
+                "permanentAddress": null,
+                "permanentCity": null,
+                "permanentPinCode": null,
+                "correspondenceAddress": null,
+                "correspondenceCity": null,
+                "correspondencePinCode": null,
+                "alternatemobilenumber": null,
+                "active": true,
+                "locale": null,
+                "type": "#(employeeType)",
+                "accountLocked": false,
+                "accountLockedDate": 0,
+                "fatherOrHusbandName": "Test",
+                "relationship": "FATHER",
+                "signature": null,
+                "bloodGroup": null,
+                "photo": null,
+                "identificationMark": null,
+                "createdBy": 12011,
+                "lastModifiedBy": 1,
+                "tenantId": "#(tenantId)",
+                "roles": [
+                    {
+                        "code": "FSM_VIEW_EMP",
+                        "name": "FSM Employee Application Viewer",
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "FSM_ADMIN",
+                        "name": "FSM Administrator",
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "EMPLOYEE",
+                        "name": "Employee",
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "FSM_REPORT_VIEWER",
+                        "name": "FSM Employee Report Viewer",
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "STADMIN",
+                        "name": "State Administrator",
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "EMPLOYEE ADMIN",
+                        "name": null,
+                        "tenantId": "#(tenantId)"
+                    },
+                    {
+                        "code": "FSM_DASHBOARD_VIEWER",
+                        "name": "FSM Employee Dashboard Viewer",
+                        "tenantId": "#(tenantId)"
+                    }
+                ],
+                "uuid": "d0710c4c-728a-446d-bc7e-d4614efe1463",
+                "createdDate": "15-02-2021 14:41:32",
+                "lastModifiedDate": "06-04-2021 14:58:43",
+                "dob": "1990-09-09",
+                "pwdExpiryDate": "16-05-2021 14:41:32"
+            },
+            "eventcategory": "CULTURAL"
+        }
+    ],
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": "#(authToken)"
+    }
+}

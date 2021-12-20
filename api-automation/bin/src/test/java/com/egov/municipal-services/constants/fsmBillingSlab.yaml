@@ -1,0 +1,34 @@
+Slum:
+  itisslum: "YES"
+status:
+  active: "ACTIVE"
+feeType:
+  applicationFee: "APPLICATION_FEE"
+Errors:
+  errorCodes:
+    searchInvalidTenantId: "CustomException"
+    invalidBillingSlab: "INVALID_BILLING_SLAB_ERROR"
+    invalidPrice: "JsonMappingException"
+    invalidPropertyType: "INVALID_PROPERTY_TYPE"
+    searchNoTenantId: "NullPointerException"
+    searchInvalidSlum: "typeMismatch.billingSlabSearchCriteria.slum"
+    updateInvalidId: "INVALID_BILLING_SLAB_ERROR"
+    updateNullTenantId: "INVALID_BILLING_SLAB_ERROR"
+    updateNullCapacityFrom: "INVALID_BILLING_SLAB_ERROR"
+    calculateInvalidFeeType: "NotNull.calculationReq.calulationCriteria[0].feeType"
+    calculateInvalidTenantId: "NotNull.calculationReq.calulationCriteria[0].tenantId"
+  errorMessages:
+    nullSlum: "Slum is mandatory"
+    invalidPrice: "Failed to deserialize certain JSON fields"
+    dublicateBillingSlab: "Billing Slab already exits with the given combination of capacityType, capacityFrom, propertyType and slum"
+    invalidId: "Noc Application not found for: <<invalid_id>> :ID"
+    nullPropertyType: "PropertyType is mandatory"
+    invalidPropertyType: " Property Type is invalid"
+    searchNoTenantId: "An unhandled exception occurred on the server"
+    searchInvalidSlum: "Failed to convert property value of type 'java.lang.String' to required type 'org.egov.fsm.calculator.web.models.BillingSlab$SlumEnum' for property 'slum'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@com.fasterxml.jackson.annotation.JsonProperty org.egov.fsm.calculator.web.models.BillingSlab$SlumEnum] for value '<<replace_string>>'; nested exception is java.lang.IllegalArgumentException: No enum constant org.egov.fsm.calculator.web.models.BillingSlab.SlumEnum.<<replace_string>>"
+    searchInvalidTenantId: "Not authorized to access this resource"
+    updateInvalidId: "Billing Slab not found"
+    updateNullTenantId: "TenantId is mandatory"
+    updateNullCapacityFrom: "CapacityFrom is mandatory"
+    calculateInvalidFeeType: "must not be null"
+    calculateInvalidTenantId: "must not be null"

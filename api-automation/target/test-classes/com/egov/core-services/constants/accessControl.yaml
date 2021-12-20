@@ -1,0 +1,10 @@
+parameters:
+  actionMaster: actions-test
+expectedDescriptions:
+  IllegalArgumentException: json string can not be null or empty
+  PathNotFoundException: "No results for path: "
+  InvalidPathException: "Path must not end with a '.' or '..'"
+  
+expectedMessages:  
+  JsonMappingException: Failed to deserialize certain JSON fields
+  CustomException: Not authorized to access this resource

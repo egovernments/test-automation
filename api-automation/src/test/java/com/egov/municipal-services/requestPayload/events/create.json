@@ -1,0 +1,25 @@
+  {
+    "events": [
+        {
+            "source": "#(source)",
+            "eventType": "EVENTSONGROUND",
+            "tenantId": "#(tenantId)",
+            "description": "#(description)",
+            "name": "#(name)",
+            "eventcategory": "CULTURAL",
+            "eventDetails": {
+                "fromDate": "#(fromDate)",
+                "toDate": "#(toDate)",
+                "fromTime": "17:31",
+                "toTime": "21:35",
+                "address": "Ajit Road, Batinda, Bathinda, Punjab, India",
+                "organizer": "#(name)",
+                "fees": "50"
+            }
+        }
+    ],
+    "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": "#(authToken)"
+    }
+}

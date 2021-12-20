@@ -1,0 +1,60 @@
+<testsuite failures="0"
+           name="com/egov/municipal-services/tests/PropertyService.feature"
+           skipped="0"
+           tests="1"
+           time="1.975094">
+   <testcase classname="com.egov.municipal-services.tests.PropertyService"
+             name="Create Property with valid payload"
+             time="1.975094">
+      <system-out>* def jsUtils = read('classpath:com/egov/utils/jsUtils.js') ............... passed
+* def Collections = Java.type('java.util.Collections') .................... passed
+* def commonConstants = read('../../common-services/constants/genericConstants.yaml') . passed
+* def hierarchyTypeCode = commonConstants.parameters.hierarchyTypeCode .... passed
+* def boundaryType = commonConstants.parameters.boundaryType .............. passed
+* call read('../../core-services/pretests/location.feature@searchLocationSuccessfully') . passed
+* def localityCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].code . passed
+* def areaCode = searchLocationResponseBody.TenantBoundary[0].boundary[0].area . passed
+* def localityName = searchLocationResponseBody.TenantBoundary[0].boundary[0].name + ', ' + cityCode . passed
+* def financialYear = commonConstants.parameters.financialYear ............ passed
+* def assessmentDate = getPastEpochDate(1) ................................ passed
+* def source = commonConstants.parameters.source .......................... passed
+* def channel = commonConstants.parameters.channel ........................ passed
+* def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)] . passed
+* configure headers = read('classpath:com/egov/utils/websCommonHeaders.js') . passed
+* def cityName = karate.jsonPath(mdmsStatetenant, "$.tenants[?(@.code=='" + tenantId + "')].name")[0] . passed
+* def OccupancyType = mdmsStatePropertyTax.OccupancyType[1].code .......... passed
+* def UsageCategory = mdmsStatePropertyTax.UsageCategory[0].code .......... passed
+* def builtUpArea = 2000 .................................................. passed
+* def UsageCategoryMajor = mdmsStatePropertyTax.UsageCategoryMajor[0].code . passed
+* def landArea = 800 ...................................................... passed
+* def PropertyType = mdmsStatePropertyTax.PropertyType[3].code ............ passed
+* def noOfFloors = 1 ...................................................... passed
+* def OwnerShipCategory = mdmsStatePropertyTax.OwnerShipCategory[3].code .. passed
+* def name = randomString(10) ............................................. passed
+* def mobileNumber = '78' + randomMobileNumGen(8) ......................... passed
+* def fatherOrHusbandName = randomString(10) .............................. passed
+* def relationship = commonConstants.parameters.relationship[randomNumber(commonConstants.parameters.relationship.length)] . passed
+* def OwnerType = mdmsStatePropertyTax.OwnerType[5].code .................. passed
+* def gender = commonConstants.parameters.gender[randomNumber(commonConstants.parameters.gender.length)] . passed
+* def isCorrespondenceAddress = true ...................................... passed
+* def source = commonConstants.parameters.source .......................... passed
+* def channel = commonConstants.parameters.channel ........................ passed
+* def addressProofDocumentType0 = mdmsStatePropertyTax.Documents[0].dropdownData[0].code . passed
+* def addressProofDocumentType1 = mdmsStatePropertyTax.Documents[1].dropdownData[0].code . passed
+* def addressProofDocumentType2 = mdmsStatePropertyTax.Documents[2].dropdownData[0].code . passed
+* def addressProofDocumentType3 = mdmsStatePropertyTax.Documents[3].dropdownData[0].code . passed
+* def addressProofDocumentType4 = mdmsStatePropertyTax.Documents[4].dropdownData[0].code . passed
+* def creationReason = commonConstants.parameters.creationReason .......... passed
+* def businessService = mdmsStatePropertyTax.PTWorkflow[1].businessService . passed
+* def propertyServicesConstants = read('../../municipal-services/constants/propertyServices.yaml') . passed
+* call read('../../municipal-services/pretests/propertyServicesPretest.feature@createPropertySuccessfully') . passed
+* match propertyServiceResponseBody.Properties[0].id == "#present" ........ passed
+* match propertyId == "#present" .......................................... passed
+* match propertyServiceResponseBody.Properties[0].status == "INWORKFLOW" .. passed
+* match propertytenantId == tenantId ...................................... passed
+* match alternatemobileNumber == "#present" ............................... passed
+* match alternatemobileNumber == mobileNumber ............................. passed
+* match alternatemobileNumberDetails == "#present" ........................ passed
+* match alternateUpdated == "#present" .................................... passed</system-out>
+   </testcase>
+</testsuite>

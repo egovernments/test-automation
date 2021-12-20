@@ -66,6 +66,7 @@ endPoints:
     
   escalate:  
     escalateSearch: egov-workflow-v2/egov-wf/escalate/_search
+    escalateCount: egov-workflow-v2/egov-wf/process/_count
 
   billingService:
     fetchBill: billing-service/bill/v2/_fetchbill
@@ -255,6 +256,7 @@ endPoints:
     update: bpa-services/v1/bpa/_update
     search: bpa-services/v1/bpa/_search
     createStakeHolder: tl-services/v1/BPAREG/_create
+    bparegSearch: tl-services/v1/BPAREG/_search
 
   bpaCalculator:
     calculate: bpa-calculator/_calculate
@@ -264,7 +266,7 @@ endPoints:
     update: land-services/v1/land/_update
     search: land-services/v1/land/_search
   
-  dcrServices:
+  edcrServices:
     scrutinize: edcr/rest/dcr/scrutinize
     scrutinydetails: edcr/rest/dcr/scrutinydetails
     occomparison: edcr/rest/dcr/occomparison
@@ -278,6 +280,7 @@ endPoints:
     notificationCount: egov-user-event/v1/events/notifications/_count 
     create: egov-user-event/v1/events/_create
     update: egov-user-event/v1/events/_update
+    delete: egov-user-event/v1/events/_delete
     search: egov-user-event/v1/events/_search
     latUpdate: egov-user-event/v1/events/lat/_update
 
@@ -323,3 +326,9 @@ endPoints:
 
   inbox:
     inboxSearch: inbox/v1/_search
+
+  documents:
+    create: /egov-document-uploader/egov-du/document/_create
+    update: /egov-document-uploader/egov-du/document/_update
+    delete: /egov-document-uploader/egov-du/document/_delete
+    search: /egov-document-uploader/egov-du/document/_search

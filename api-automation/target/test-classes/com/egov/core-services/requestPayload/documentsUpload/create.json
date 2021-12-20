@@ -1,0 +1,151 @@
+{
+    "RequestInfo": {
+        "apiId": "asset-services",
+        "ver": null,
+        "ts": null,
+        "action": null,
+        "did": null,
+        "key": null,
+        "msgId": "search with from and to values",
+        "authToken": "#(authToken)",
+        "userInfo": {
+            "id": "#(id)",
+            "uuid": "#(uuid)",
+            "userName": "#(userName)",
+            "name": "#(name)",
+            "mobileNumber": "#(mobileNumber)",
+            "emailId": "#(email)",
+            "locale": null,
+            "type": "#(employeeType)",
+            "roles": [
+                {
+                    "name": "CSC Collection Operator",
+                    "code": "CSC_COLL_OPERATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Employee",
+                    "code": "EMPLOYEE",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Grievance Routing Officer",
+                    "code": "GRO",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC counter employee",
+                    "code": "NOC_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Counter Employee",
+                    "code": "TL_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Counter Employee",
+                    "code": "TL_CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Field Inspector",
+                    "code": "TL_FIELD_INSPECTOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Creator",
+                    "code": "TL_CREATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Customer Support Representative",
+                    "code": "CSR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC counter Approver",
+                    "code": "NOC_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL Approver",
+                    "code": "TL_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Super User",
+                    "code": "SUPERUSER",
+                    "tenantId": "#(tenant)"
+                },
+                {
+                    "name": "BPA Services Approver",
+                    "code": "BPA_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Field Employee",
+                    "code": "FEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Counter Employee",
+                    "code": "CEMP",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC Field Inpector",
+                    "code": "NOC_FIELD_INSPECTOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NOC Department Approver",
+                    "code": "NOC_DEPT_APPROVER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Super User",
+                    "code": "SUPERUSER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Grievance Officer",
+                    "code": "GO",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Anonymous User",
+                    "code": "ANONYMOUS",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "Collection Operator",
+                    "code": "COLL_OPERATOR",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "NoC Doc Verifier",
+                    "code": "NOC_DOC_VERIFIER",
+                    "tenantId": "#(tenantId)"
+                },
+                {
+                    "name": "TL doc verifier",
+                    "code": "TL_DOC_VERIFIER",
+                    "tenantId": "#(tenantId)"
+                }
+            ],
+            "active": true,
+            "tenantId": "#(tenantId)"
+        }
+    },
+    "DocumentEntity": {
+        "tenantIds": [
+            "#(tenantId)"
+        ],
+        "name": "#(docname)",
+        "category": "CATEGORY_TENDERS",
+        "description": "#(description)",
+        "filestoreId": "#(fileStoreId)",
+        "documentLink": "www.test-abc.com"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+   "billingSlab":{
+          
+            "tenantId":"#(tenantId)",
+            "capacityFrom": "#(capacityFrom)",
+            "capacityTo": "#(capacityTo)",
+            "propertyType": "#(propertyType)",
+            "slum": "#(slum)",
+            "price": "#(price)",
+            "status": "#(status)"
+        }
+}

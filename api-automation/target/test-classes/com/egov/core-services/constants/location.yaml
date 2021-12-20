@@ -1,0 +1,3 @@
+# Error messages
+errorMessages:
+ noTenantId: Required String parameter 'tenantId' is not present

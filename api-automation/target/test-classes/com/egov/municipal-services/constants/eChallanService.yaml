@@ -1,0 +1,13 @@
+errorMessages:
+  invalidBusinessSevice: Taxhead codes details are not present in request or in mdms records for provided business service
+  invalidTextCode: Mandatory taxhead codes details are not present in request for provided business service
+  invalidLocality: Locality details are invalid
+  emptyCitizenName: An unhandled exception occurred on the server
+  invalidMobileNo: must match "(^$|[0-9]{10})"
+  withoutParams: must not be null
+  invalidTenantId: Invalid Tenant Id
+  invalidChallan: The Challan Number is not matching with the Search result
+  invalidAccountId: Challan cannot be updated/cancelled
+  invalidTextHeadCode: Mandatory taxhead codes details are not present in request for provided business service
+  invalidApplicationStatus: Challan cannot be updated/cancelled
+  invalidBillId: Failed to deserialize certain JSON fields

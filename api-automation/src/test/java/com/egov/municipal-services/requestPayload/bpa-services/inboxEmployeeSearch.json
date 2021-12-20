@@ -1,0 +1,30 @@
+{
+    "RequestInfo": {
+        "apiId": "string",
+        "ver": "string",
+        "ts": null,
+        "action": "string",
+        "did": "string",
+        "key": "string",
+        "msgId": "string",
+        "requesterId": "string",
+        "authToken": "#(authToken)"
+    },
+    "inbox": {
+        "tenantId": "#(tenantId)",
+        "processSearchCriteria": {
+            "businessService": [
+                "BPA_LOW",
+                "BPA",
+                "BPA_OC"
+            ],
+            "moduleName": "bpa-services"
+        },
+        "moduleSearchCriteria": {
+            "sortBy": "createdtime",
+            "sortOrder": "ASC"
+        },
+        "offset": 0,
+        "limit": 10
+    }
+}

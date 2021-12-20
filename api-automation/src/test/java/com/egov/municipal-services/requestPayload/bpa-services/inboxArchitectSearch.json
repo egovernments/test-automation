@@ -1,0 +1,32 @@
+{
+    "RequestInfo": {
+        "apiId": "string",
+        "ver": "string",
+        "ts": 0,
+        "action": "string",
+        "did": "string",
+        "key": "string",
+        "msgId": "string",
+        "requesterId": "string",
+        "authToken": "#(authToken)"
+    },
+    "inbox": {
+        "tenantId": "#(tenant)",
+        "processSearchCriteria": {
+            "businessService": [
+                "ARCHITECT"
+               
+            ],
+           
+            "moduleName":"BPAREG",
+            "applicationstatus": "PENDINGPAYMENT"
+           
+        },
+        "moduleSearchCriteria": {
+            "sortOrder":"DESC"
+        },
+        "limit": 50,
+        "offset": 0
+    }
+ }
+ 

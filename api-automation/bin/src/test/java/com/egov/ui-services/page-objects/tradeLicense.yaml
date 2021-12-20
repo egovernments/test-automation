@@ -1,0 +1,10 @@
+objects:
+  tradeLicenseModule: ".service-module-style div[data-localization='Trade License']"
+  myApplications: "span[data-localization='TL_MY_APPLICATIONS']"
+  viewDetails: "//span[@data-localization='TL_COMMON_TABLE_COL_APP_NO']/../following-sibling::div/span[text()='<consumerCode>']/../../following-sibling::div/span"
+  takeActionButton: "span[data-localization='WF_TAKE_ACTION']"
+  citizenPayActionButton: "span[data-localization='WF_CITIZEN_NEWTL_PAY']"
+  citizenRenewalPayActionButton: "span[data-localization='WF_CITIZEN_DIRECTRENEWAL_PAY']"
+  makePaymentButton: "#material-ui-makePayment"
+  paymentReceiptNo: "//span[text()='Payment Receipt No.']/../following-sibling::h1/span"
+  paymentSuccessHeader: "{span}Payment has been collected successfully!"
