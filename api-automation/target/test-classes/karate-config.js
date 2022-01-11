@@ -435,6 +435,9 @@ function fn() {
         config.deleteDocumentsURL = envProps.host + path.endPoints.documents.update
         config.searchDocumentsURL = envProps.host + path.endPoints.documents.search
 
+        // surveys
+        config.searchEgovSurveys = envProps.host + path.endPoints.surveys.search
+
 
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
