@@ -4,13 +4,13 @@ Background:
     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
     * def Thread = Java.type('java.lang.Thread')
     * Thread.sleep(3000)
-    * def propertyType = mdmsStateFsmService.PropertyType[1].code
+    * def PropertyType = mdmsStateFsmService.PropertyType[2].code
     * def vehicalType = mdmsStateFsmService.VehicleType[2].code
     * def noOfTrips = mdmsStateFsmService.Config[0].default
     * def source = mdmsStateFsmService.ApplicationChannel[2].code
-    * def tenantId = mdmsStatetenant.tenants[3].code
+    * def tenantId = mdmsStatetenant.tenants[0].code
     * def vendorTenantId = tenantId
-    * def tenantName = mdmsStatetenant.tenants[3].name
+    * def tenantName = mdmsStatetenant.tenants[0].name
     * def sanitationtype = mdmsStateFsmService.PitType[1].code
     * def fsmConstants = read('../../municipal-services/constants/fsmService.yaml')
     * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
@@ -24,11 +24,11 @@ Background:
     * def mobileNumber = '77' + randomMobileNumGen(8)
     * def whatsup = "WhatsApp"
     * def regNumber = "PB 09 PA "
-    * def name = 'AUTO_' + randomString(10)
+    * def name = 'AUTO' + randomString(10)
     * def driverName = 'AUTO' + randomString(10)
     * def drName = 'AUTOFATHER' + randomString(10)
     * def pitDetails = randomMobileNumGen(1)
-    * def trip = 2220
+    * def trip = 800
     * def businessService = "FSM"
     * def cash = "CASH"
     * def owner = "OWNER"
@@ -93,7 +93,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmError')
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.invalidSanitationType
 
-    @fsm_payment_01 @positive @regression @municipalService @fsmService @fsmServiceUpdate
+    @fsm_payment_01 @positive @regression @municipalService @fsmService @fsmServiceUpdate @municipalServices
     Scenario: Verify payment a fsm service application through API
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@createFsmSuccessfully')
     * def businessService = "FSM.TRIP_CHARGES"
@@ -144,7 +144,7 @@ Background:
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@updateFsmError')
     * match fsmResponseBody.Errors[0].message == fsmConstants.errorMessages.invalidAction+applicationNo
 
-    @fetchBill_search_01 @positive @regression @municipalService @fsmService @fsmServiceSearch
+    @fetchBill_search_01 @positive @regression @municipalService @fsmService @fsmServiceSearch @municipalServices
     Scenario: Verify searching for a fetcching bill service
     * def getFsmSearchParam = {"tenantId": '#(tenantId)', "consumerCode": '#(applicationNo)',"businessService": '#(businessService)'}
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@fetchBillSuccessfully')
@@ -571,7 +571,7 @@ Background:
     * match fsmResponseBody.fsm[0].applicationNo == '#present'
 
 
-    @fsm_update_without_creation @positive @regression @municipalService @fsmService @fsmServiceUpdate
+    @fsm_update_without_creation @positive @regression @municipalServices @fsmService @fsmServiceUpdate
     Scenario: Verify updating a fsm service application through API
     * call read('../../municipal-services/pretests/fsmServicesPretest.feature@updateFsmSuccessfully')
     * match fsmResponseBody.fsm[0].id == '#present'

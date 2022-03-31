@@ -91,11 +91,11 @@ Scenario: Create Active Sewerage connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * def connectionNo = sewerageResponseBody.SewerageConnections[0].connectionNo
 
-@createSewerageServiceConnection
+@createSewerageServiceConnection @municipalServices
 Scenario: To create a water service connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@successSewerageCreate')
 
-@submitApplication
+@submitApplication @municipalServices
 Scenario: To submit the application
     * def searchSewerageConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(sewerageConnectionApplicationNumber)'}
     # Search Water Connection
@@ -111,68 +111,68 @@ Scenario: To submit the application
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.submitApplication
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
 
-@verify
+@verify @municipalServices
 Scenario: To verify the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.verifyAndForward
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
 
-@forward
+@forward @municipalServices
 Scenario: To Forward the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.verifyAndForward
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
 
-@approve
+@approve @municipalServices
 Scenario: To approve the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.approveConnection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
 
-@generateBill
+@generateBill @municipalServices
 Scenario: To generate Bill
     * def fetchBillParams = { consumerCode: '#(sewerageConnectionApplicationNumber)', businessService: 'SW.ONE_TIME_FEE', tenantId: '#(tenantId)'}
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     
-@payWaterServiceTax
+@payWaterServiceTax @municipalServices
 Scenario: To Pay the Water Service Tax
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
 
-@connectionActive
+@connectionActive @municipalServices
 Scenario: To actvate the connection
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.activateConnection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * def connectionNo = sewerageResponseBody.SewerageConnections[0].connectionNo
     * def connectionType = sewerageResponseBody.SewerageConnections[0].connectionType
 
-@sendsBack
+@sendsBack @municipalServices
 Scenario: To sends back the application
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.sendsBackToCitizen
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
 
-@resubmit
+@resubmit @municipalServices
 Scenario: To sends back the application
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.resubmitApplication
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
 
-@reject
+@reject @municipalServices
 Scenario: To reject the application
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.rejectApplication
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
 
-@sendBackToDocVerifier
+@sendBackToDocVerifier @municipalServices
 Scenario: To send back to the Doc verifier
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.sendBackToDocVerifier
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@searchSewerageConnectionSuccessfully')
 
-@sendBackForInspection
+@sendBackForInspection @municipalServices
 Scenario: To send back to the Field Inspector
     * def processInstanceAction = sewerageConnectionConstants.parameters.processInstanceActions.sendBackForInspection
     * call read('../../municipal-services/pretests/sewerageConnectionPretest.feature@UpdateSewerageConnectionSuccessfully')

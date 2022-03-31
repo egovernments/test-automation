@@ -13,9 +13,15 @@
         "additionalDetails": {
             "tripAmount": "#(trip)"
         },
-        "propertyUsage": "#(propertyType)",
+        "propertyUsage": "#(PropertyType)",
         "vehicleType": "#(vehicalType)",
-        "pitDetail": {},
+        "vehicleCapacity": 1000,
+        "pitDetail": {
+            "length": 0,
+            "width": 0,
+            "diameter": "10",
+            "height": "8"
+        },
         "address": {
             "tenantId": "#(tenantId)",
             "city": "#(tenantName)",

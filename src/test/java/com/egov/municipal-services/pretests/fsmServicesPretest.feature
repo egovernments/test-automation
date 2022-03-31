@@ -28,7 +28,12 @@ Feature: FIRE-NOC-Service pretests
         And def applicationNo = fsmResponseBody.fsm[0].applicationNo
         And def applicationStatus = fsmResponseBody.fsm[0].applicationStatus
         And def fsmStatus = fsmResponseBody.fsm[0].status
+        And def citizen = fsmResponseBody.fsm[0].citizen
+        And def pitDetail = fsmResponseBody.fsm[0].pitDetail
         And def tenantId = fsmResponseBody.fsm[0].tenantId
+        And def locality = fsmResponseBody.fsm[0].address.locality
+        And def localitycode = fsmResponseBody.fsm[0].address.locality.code
+        And def localityname = fsmResponseBody.fsm[0].address.locality.name
 
     @createFsmError
     Scenario: Create FSM Error

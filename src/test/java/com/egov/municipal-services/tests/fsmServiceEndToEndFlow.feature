@@ -32,7 +32,7 @@ Background:
     * def cash = "CASH"
     * def owner = "OWNER"
     
-@createFsmAsCitizen @fsmEndToEnd @e2eServices
+@createFsmAsCitizen @fsmEndToEnd @e2eServices @municipalServices
 Scenario: Login as a citizen
     # Steps to login as Citizen and Create a FSM
     * def authToken = citizenAuthToken
