@@ -13,7 +13,7 @@
         "applicationStatus": "CREATED",
         "source": "#(source)",
         "sanitationtype": "#(sanitationtype)",
-        "propertyUsage": "#(PropertyType)",
+        "propertyUsage": "#(propertyType)",
         "vehicleType": "#(vehicalType)",
         "noOfTrips": 1,
         "vehicleCapacity": 1000,
