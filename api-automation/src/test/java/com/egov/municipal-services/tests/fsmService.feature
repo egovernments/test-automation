@@ -1,4 +1,4 @@
-Feature: Fire NOC Service Tests
+Feature: FSM Service Tests
 
 Background:
     * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')

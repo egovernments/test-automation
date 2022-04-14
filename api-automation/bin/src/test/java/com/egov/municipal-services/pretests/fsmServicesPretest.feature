@@ -1,4 +1,4 @@
-Feature: FIRE-NOC-Service pretests
+Feature: FSM-Service pretests
     Background:
         * def jsUtils = read('classpath:com/egov/utils/jsUtils.js')
         * def createFsmRequest = read('../../municipal-services/requestPayload/fsm-service/create.json')

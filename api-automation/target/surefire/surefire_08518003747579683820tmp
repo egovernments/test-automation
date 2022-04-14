@@ -1,0 +1,7 @@
+#surefire_0
+#Thu Apr 14 15:30:03 IST 2022
+configPath=/home/user/Documents/eGov/BWC/test-automation/api-automation/uat.yaml
+tags=@autoescalate_PGR_01
+user.dir=/home/user/Documents/eGov/BWC/test-automation/api-automation
+localRepository=/home/user/.m2/repository
+basedir=/home/user/Documents/eGov/BWC/test-automation/api-automation

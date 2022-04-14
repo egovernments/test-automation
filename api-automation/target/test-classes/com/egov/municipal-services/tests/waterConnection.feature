@@ -14,7 +14,7 @@ Background:
     * def roadType = 'BRICKPAVING'
     * def roadCuttingArea = 50
 
-@WaterConnection_CreateWithValidPropertyId_01 @positive @regression @wsServices @waterConnectionCreate
+@WaterConnection_CreateWithValidPropertyId_01 @positive @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
@@ -23,7 +23,8 @@ Scenario: Create water connection with valid payload
     * match waterConnectionResponseBody.WaterConnection[0].id == "#present"
     * match waterConnectionResponseBody.WaterConnection[0].propertyId == propertyId
     * match waterConnectionResponseBody.WaterConnection[0].applicationStatus == waterConnectionConstants.parameters.applicationStatus.initiated
-@WaterConnection_CreateWithInValidPropertyId_02 @negative @regression @wsServices @waterConnectionCreate
+
+@WaterConnection_CreateWithInValidPropertyId_02 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with invalid propertyId
     # Create Water Connection
     * def propertyId = 'invalid-porpertyId-' + randomString(5)
@@ -31,14 +32,14 @@ Scenario: Create water connection with invalid propertyId
     # Verify response body
     * match waterConnectionResponseBody.Errors[0].message == waterConnectionConstants.errorMessages.invalidPropertyId
 
-@WaterConnection_CreateWithInValidTenantID_03 @negative @regression @wsServices @waterConnectionCreate
+@WaterConnection_CreateWithInValidTenantID_03 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with invalid tenantId
     # Create Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@errorInCreateWaterConnectionWithInvalidTenantId')
     # Verify response body
     * match waterConnectionResponseBody.Errors[0].message == commonConstants.errorMessages.invalidTenantIdError
 
-@WaterConnection_CreateWithNullPropertyID_04 @WaterConnection_CreateWithEmptyPropertyID_04 @negative @regression @wsServices @waterConnectionCreate
+@WaterConnection_CreateWithNullPropertyID_04 @WaterConnection_CreateWithEmptyPropertyID_04 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with propertyId as null
     # Create Water Connection
     * def propertyId = null
@@ -46,7 +47,7 @@ Scenario: Create water connection with propertyId as null
     # Verify response body
     * match waterConnectionResponseBody.Errors[0].message == waterConnectionConstants.errorMessages.propertyIdNotNull
 
-@WaterConnection_Create_MorethanMaxProposedTaps_05 @negative @regression @wsServices @waterConnectionCreate
+@WaterConnection_Create_MorethanMaxProposedTaps_05 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with invalid proposedTaps
     # Create Water Connection
     * def proposedTaps = 9999999999
@@ -54,7 +55,7 @@ Scenario: Create water connection with invalid proposedTaps
     # Verify response body
     * match waterConnectionResponseBody.Errors[0].message == commonConstants.errorMessages.jsonDeserializeError
 
-@WaterConnection_CreateWithInValidAction_07 @negative @regression @wsServices @waterConnectionCreate
+@WaterConnection_CreateWithInValidAction_07 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with invalid action
     # Create Water Connection
     * def processInstanceAction = 'invalid-instance-' + randomString(5)
@@ -64,7 +65,7 @@ Scenario: Create water connection with invalid action
     * replace expectedMessage.processInstanceAction = processInstanceAction
     * match waterConnectionResponseBody.Errors[0].message contains expectedMessage
 
-@WaterConnection_CreateWithNullAction_08 @negative @regression @wsServices @waterConnectionCreate
+@WaterConnection_CreateWithNullAction_08 @negative @regression @wsServices @waterConnectionCreate @municipalServices
 Scenario: Create water connection with action as null
     # Create Water Connection
     * def processInstanceAction = null
@@ -72,7 +73,7 @@ Scenario: Create water connection with action as null
     # Verify response body
     * match waterConnectionResponseBody.Errors[0].message == waterConnectionConstants.errorMessages.actionNotNull
 
-@WaterConnection_UpdateToDOCUMENT_VERIFICATION_01 @swcSubmit @positive @regression @wsServices @waterConnectionUpdate
+@WaterConnection_UpdateToDOCUMENT_VERIFICATION_01 @swcSubmit @positive @regression @wsServices @waterConnectionUpdate @municipalServices
 Scenario: Update water connection with valid payload
     # Create Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successCreateWaterConnection')
@@ -84,7 +85,7 @@ Scenario: Update water connection with valid payload
     * match waterConnectionResponseBody.WaterConnection[0].propertyId == propertyId
     * match waterConnectionResponseBody.WaterConnection[0].applicationStatus == waterConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@WaterConnection_UpdateToDOCUMENT_VERIFICATION_01 @positive @regression @wsServices @waterConnectionUpdate
+@WaterConnection_UpdateToDOCUMENT_VERIFICATION_01 @positive @regression @wsServices @waterConnectionUpdate @municipalServices
 Scenario: Update water connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
@@ -97,7 +98,7 @@ Scenario: Update water connection with valid payload
     * match waterConnectionResponseBody.WaterConnection[0].propertyId == propertyId
     * match waterConnectionResponseBody.WaterConnection[0].applicationStatus == waterConnectionConstants.parameters.applicationStatus.pendingForDocVerification
 
-@WaterConnection_SearchWithValidApplicationNumber_01 @positive @regression @wsServices @waterConnectionSearch
+@WaterConnection_SearchWithValidApplicationNumber_01 @positive @regression @wsServices @waterConnectionSearch @municipalServices
 Scenario: Search water connection with valid payload
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     # Create Water Connection
@@ -111,7 +112,7 @@ Scenario: Search water connection with valid payload
     * match waterConnectionResponseBody.WaterConnection[0].propertyId == propertyId
     * match waterConnectionResponseBody.WaterConnection[0].applicationStatus == waterConnectionConstants.parameters.applicationStatus.initiated
 
-@createActiveWaterConnection
+@createActiveWaterConnection @municipalServices @wsServices
 Scenario: Create Active Water connection
     * call read('../../municipal-services/tests/PropertyService.feature@createPropertyAndAssess')
     * def authToken = citizenAuthToken
@@ -133,11 +134,11 @@ Scenario: Create Active Water connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * def connectionNo = waterConnectionResponseBody.WaterConnection[0].connectionNo
 
-@createWaterServiceConnection
+@createWaterServiceConnection @municipalServices @wsServices
 Scenario: To create a water service connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successCreateWaterConnection')
 
-@submitApplication
+@submitApplication @municipalServices @wsServices
 Scenario: To submit the application
     * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     # Search Water Connection
@@ -154,7 +155,7 @@ Scenario: To submit the application
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
 
-@submitApplicationForNonMetered
+@submitApplicationForNonMetered @municipalServices @wsServices
 Scenario: To submit the application for Non metered connection
     * def waterConnectionParams = { tenantId: '#(tenantId)', applicationNumber: '#(waterConnectionApplicationNo)'}
     # Search Water Connection
@@ -170,68 +171,68 @@ Scenario: To submit the application for Non metered connection
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.submitApplication
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
-@verify
+@verify @municipalServices @wsServices
 Scenario: To verify the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.verifyAndForward
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
-@forward
+@forward @municipalServices @wsServices
 Scenario: To Forward the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.verifyAndForward
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
-@approve
+@approve @municipalServices @wsServices
 Scenario: To approve the application
     # Search Water Connection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.approveConnection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
 
-@generateBill
+@generateBill @municipalServices @wsServices
 Scenario: To generate Bill
     * def fetchBillParams = { consumerCode: '#(waterConnectionApplicationNo)', businessService: 'WS.ONE_TIME_FEE', tenantId: '#(tenantId)'}
     * call read('../../business-services/pretest/billingServicePretest.feature@fetchBillWithCustomizedParameters')
     
-@payWaterServiceTax
+@payWaterServiceTax @municipalServices @wsServices
 Scenario: To Pay the Water Service Tax
     * call read('../../business-services/pretest/collectionServicesPretest.feature@createPayment')
 
-@connectionActive
+@connectionActive @municipalServices @wsServices
 Scenario: To actvate the connection
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.activateConnection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * def connectionNo = waterConnectionResponseBody.WaterConnection[0].connectionNo
     * def connectionType = waterConnectionResponseBody.WaterConnection[0].connectionType
 
-@sendsBack
+@sendsBack @municipalServices @wsServices
 Scenario: To sends back the application
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.sendsBackToCitizen
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
 
-@resubmit
+@resubmit @municipalServices @wsServices
 Scenario: To sends back the application
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.resubmitApplication
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
 
-@reject
+@reject @municipalServices @wsServices
 Scenario: To reject the application
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.rejectApplication
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
 
-@sendBackToDocVerifier
+@sendBackToDocVerifier @municipalServices @wsServices
 Scenario: To send back to the Doc verifier
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.sendBackToDocVerifier
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successSearchWaterConnection')
 
-@sendBackForInspection
+@sendBackForInspection @municipalServices @wsServices
 Scenario: To send back to the Field Inspector
     * def processInstanceAction = waterConnectionConstants.parameters.processInstanceActions.sendBackForInspection
     * call read('../../municipal-services/pretests/waterConnectionPretest.feature@successUpdateWaterConnection')
