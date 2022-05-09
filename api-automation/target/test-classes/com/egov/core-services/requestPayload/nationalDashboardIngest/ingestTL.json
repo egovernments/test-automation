@@ -1,0 +1,56 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Data": [
+		{
+            "date": "#(date)",
+			"module": "#(tl)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "transactions": 10,
+                "todaysApplications": 50,
+                "tlTax": 10000,
+                "adhocPenalty": 3000,
+                "adhocRebate": 500,
+                "todaysLicenseIssuedWithinSLA": 39,
+                "todaysCollection": [
+                    {
+                        "groupBy": "tradeType",
+                        "buckets": [
+                            {
+                                "name": "#(tradetype)",
+                                "value": 12500
+                            }
+                        ]
+                    }
+                ],
+                "todaysTradeLicenses": [
+                    {
+                        "groupBy": "status",
+                        "buckets": [
+                            {
+                                "name": "#(statusTL)",
+                                "value": 15
+                            }
+                        ]
+                    }
+                ],
+                "applicationsMovedToday": [
+                    {
+                        "groupBy": "status",
+                        "buckets": [
+                            {
+                                "name": "#(statusTL)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+		}
+	]
+}

@@ -18,5 +18,6 @@ Background:
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
    	And def authToken = authResponseBody.access_token
+	And def userInfo = authResponseBody.UserRequest
    # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'

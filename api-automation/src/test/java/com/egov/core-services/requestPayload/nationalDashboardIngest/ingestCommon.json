@@ -1,0 +1,34 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Data": [
+        {
+            "date": "#(date)",
+			"module": "#(common)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "status":"#(statusCommon)",
+                "onboardedUlbsCount":12,
+                "totalCitizensCount":1250,
+                "totalLiveUlbsCount":15,
+                "totalUlbCount":22,
+                "slaAchievement":65,
+                "liveUlbsCount":[
+                  {
+                        "groupBy": "serviceModuleCode",
+                        "buckets": [
+                            {
+                                "name": "#(serviceModuleCode)",
+                                "value": 5
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

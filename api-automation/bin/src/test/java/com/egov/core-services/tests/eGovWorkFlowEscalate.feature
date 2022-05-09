@@ -8,7 +8,7 @@ Background:
         * def workFlowConstants = read('../../core-services/constants/egovWorkflowBusinessService.yaml')
         * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
 
-@autoescalate_PGR_01 @coreServices
+@autoescalate_PGR_01 @coreServices @regression @positive
 Scenario: To verify the escalate API for the PGR complaints
         * call read('../../core-services/pretests/workFlowEscalatePretest.feature@autoEscalate')
         * match workFlowEscalateProcessInstance == '#present'

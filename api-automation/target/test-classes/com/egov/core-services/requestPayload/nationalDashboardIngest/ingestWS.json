@@ -1,0 +1,140 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Data": [
+        {
+            "date": "#(date)",
+			"module": "#(ws)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "transactions": 2105,
+                "connectionsCreated": [
+                    {
+                        "groupBy": "connectionType",
+                        "buckets": [
+                            {
+                                "name": "#(connectionType)",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "channelType",
+                        "buckets": [
+                            {
+                                "name": "#(channelType)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ],
+                "todaysCollection": [
+                    {
+                        "groupBy": "usageType",
+                        "buckets": [
+                            {
+                                "name": "#(usageTypeWS)",
+                                "value": 1000
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "paymentChannelType",
+                        "buckets": [
+                            {
+                                "name": "#(paymentChannelType)",
+                                "value": 1000
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "taxHeads",
+                        "buckets": [
+                            {
+                                "name": "#(taxHeads)",
+                                "value": 1000
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "connectionType",
+                        "buckets": [
+                            {
+                                "name": "#(connectionType)",
+                                "value": 1000
+                            }
+                        ]
+                    }
+                ],
+                "sewerageConnections": [
+                    {
+                        "groupBy": "channelType",
+                        "buckets": [
+                            {
+                                "name": "#(channelType)",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "usageType",
+                        "buckets": [
+                            {
+                                "name": "#(usageTypeWS)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ],
+                "waterConnections": [
+                    {
+                        "groupBy": "channelType",
+                        "buckets": [
+                            {
+                                "name": "#(channelType)",
+                                "value": 15
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "usageType",
+                        "buckets": [
+                            {
+                                "name": "#(usageTypeWS)",
+                                "value": 15
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "meterType",
+                        "buckets": [
+                            {
+                                "name": "#(meterType)",
+                                "value": 15
+                            }
+                        ]
+                    }
+                ],
+                "pendingConnections": [
+                    {
+                        "groupBy": "duration",
+                        "buckets": [
+                            {
+                                "name": "#(wsduration)",
+                                "value": 11
+                            }
+                        ]
+                    }
+                ],
+                "slaCompliance": 24,
+                "todaysTotalApplications": 35,
+                "todaysClosedApplications": 33,
+                "todaysCompletedApplicationsWithinSLA": 46
+            }
+        }
+    ]
+}

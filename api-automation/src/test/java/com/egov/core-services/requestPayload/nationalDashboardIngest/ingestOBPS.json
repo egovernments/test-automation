@@ -1,0 +1,74 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Data": [
+		{
+			"date": "#(date)",
+			"module": "#(obps)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "ocPlansScrutinized": 200,
+                "plansScrutinized": 250,
+                "ocSubmitted": 100,
+                "applicationsSubmitted": 150,
+                "ocIssued": 34,
+                "landAreaAppliedInSystemForBPA": 10000,
+                "averageDaysToIssuePermit": 12,
+                "averageDaysToIssueOC": 10,
+                "todaysClosedApplicationsOC": 12,
+                "todaysCompletedApplicationsWithinSLAOC": 9,
+                "todaysClosedApplicationsPermit": 23,
+                "todaysCompletedApplicationsWithinSLAPermit": 14,
+                "slaComplianceOC": 16,
+                "slaCompliancePermit": 34,
+                "applicationsWithDeviation": 26,
+                "averageDeviation": 17,
+                "ocWithDeviation": 28,
+                "todaysCollection": [
+                    {
+                        "groupBy": "paymentMode",
+                        "buckets": [
+                            {
+                                "name": "#(paymentMode)",
+                                "value": 5000
+                            }
+                        ]
+                    }
+                ],
+                "permitsIssued": [
+                    {
+                        "groupBy": "riskType",
+                        "buckets": [
+                            {
+                                "name": "#(riskType)",
+                                "value": 100
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "occupancyType",
+                        "buckets": [
+                            {
+                                "name": "#(occupancyType)",
+                                "value": 100
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "subOccupancyType",
+                        "buckets": [
+                            {
+                                "name": "#(subOccupancyType)",
+                                "value": 100
+                            }
+                        ]
+                    }
+                ]
+            }
+		}
+	]
+}

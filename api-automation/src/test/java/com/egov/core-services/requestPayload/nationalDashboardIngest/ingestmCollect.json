@@ -1,0 +1,96 @@
+{
+    "RequestInfo": {
+        "authToken": "#(authToken)"
+    },
+    "Data": [
+        {
+            "date": "#(date)",
+            "module": "#(mcollect)",
+            "ward": "#(ward)",
+            "ulb": "#(tenantId)",
+            "region": "#(region)",
+            "state": "#(state)",
+            "metrics": {
+                "numberOfCategories": 9,
+                "todaysCollection": [
+                    {
+                        "groupBy": "paymentMode",
+                        "buckets": [
+                            {
+                                "name": "#(paymentMode)",
+                                "value": 100
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "status",
+                        "buckets": [
+                            {
+                                "name": "#(receiptStatus)",
+                                "value": 100
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "category",
+                        "buckets": [
+                            {
+                                "name": "#(category)",
+                                "value": 100
+                            }
+                        ]
+                    }
+                ],
+                "numberOfReceipts": [
+                    {
+                        "groupBy": "status",
+                        "buckets": [
+                            {
+                                "name": "#(receiptStatus)",
+                                "value": 50
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "paymentMode",
+                        "buckets": [
+                            {
+                                "name": "#(paymentMode)",
+                                "value": 50
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "category",
+                        "buckets": [
+                            {
+                                "name": "#(category)",
+                                "value": 50
+                            }
+                        ]
+                    }
+                ],
+                "numberOfChallans": [
+                    {
+                        "groupBy": "challanStatus",
+                        "buckets": [
+                            {
+                                "name": "#(challanStatus)",
+                                "value": 75
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "category",
+                        "buckets": [
+                            {
+                                "name": "#(category)",
+                                "value": 75
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
