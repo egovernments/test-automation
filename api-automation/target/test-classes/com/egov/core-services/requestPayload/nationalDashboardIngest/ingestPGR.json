@@ -1,0 +1,273 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Data": [
+		{
+			"date": "#(date)",
+			"module": "#(pgr)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "uniqueCitizens": 25,
+                "todaysComplaints": [
+                    {
+                        "groupBy": "status",
+                        "buckets": [
+                            {
+                                "name": "#(statusPGR)",
+                                "value": 35
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "channel",
+                        "buckets": [
+                            {
+                                "name": "#(channelPGR)",
+                                "value": 15
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 11
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 14
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "category",
+                        "buckets": [
+                            {
+                                "name": "#(serviceCode)",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ],
+                "todaysClosedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 16
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 14
+                            }
+                        ]
+                    }
+                ],
+                "todaysResolvedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 20
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ],
+                "slaAchievement": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ],
+                "completionRate": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ],
+                "todaysReopenedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ],
+                "todaysOpenComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 20
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 15
+                            }
+                        ]
+                    }
+                ],
+                "todaysAssignedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ],
+                "todaysReassignRequestedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 6
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 13
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 7
+                            }
+                        ]
+                    }
+                ],
+                "averageSolutionTime": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 10
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 15
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ],
+                "todaysRejectedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 2
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 1
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 2
+                            }
+                        ]
+                    }
+                ],
+                "todaysReassignedComplaints": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 2
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 4
+                            },
+                            {
+                                "name": "#(department3)",
+                                "value": 3
+                            }
+                        ]
+                    }
+                ]
+            }
+		}
+	]
+}

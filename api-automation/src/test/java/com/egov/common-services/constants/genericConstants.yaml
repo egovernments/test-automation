@@ -27,6 +27,11 @@ parameters:
     - passwordreset
   # payment gateway
   gateway: AXIS
+  dssFY: 
+    - '2018-19'
+    - '2019-20'
+    - '2020-21'
+    - '2021-22'
 expectedStatus:
   ok: "200 OK"
   success: 'successful'

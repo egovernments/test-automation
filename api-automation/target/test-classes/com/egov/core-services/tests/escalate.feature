@@ -11,12 +11,13 @@ Background:
         * def sla = escalateConstants.parameters.input.sla
         * def applicationStatus = escalateConstants.parameters.input.applicationStatus
         * def moduleName = escalateConstants.parameters.input.moduleName
+
+
 @autoEscalate_PGR_01 @positive @escalateScenarios @coreServices
 Scenario: To verify the escalate API for the PGR complaints
         * call read('../../core-services/pretests/escalatePretest.feature@autoEscalate')
         * match escalateAction == '#present'
         * match escalateAction == '#notnull'
-
         * match escalateModuleName == '#present'
         * match escalateModuleName == '#(moduleName)'
                 * print escalateModuleName
@@ -26,13 +27,13 @@ Scenario: To verify the escalate API with sla, state, applicationStatus
         * call read('../../core-services/pretests/escalatePretest.feature@autoEscalate')
         * match escalateSLA == '#present'
         * match escalateSLA == '#(sla)'
-
         * match escalateState == '#present'
         * match escalateState == '#(state)'
                 * print escalateState
         * match escalateAppStatus == '#present'
         * match escalateAppStatus == '#(applicationStatus)'
                 * print escalateAppStatus
+
 @autoEscalate_PGR_03 @negative @escalateScenarios @coreServices
 Scenario: To verify the escalate API with ProcessInstances
         * call read('../../core-services/pretests/escalatePretest.feature@autoEscalate')

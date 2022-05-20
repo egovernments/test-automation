@@ -56,3 +56,8 @@ invalidParameters:
   passValusAsNull: null
   invalidMobileNumber: '98765432'
   wrongTenantId: pb.amritsa
+dssFY: 
+  - '2018-19'
+  - '2019-20'
+  - '2020-21'
+  - '2021-22'

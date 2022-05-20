@@ -50,7 +50,7 @@ Background:
 
     @tradeLicenseCreate1 @municipalServices @regression @positive @tradeLicenseCreate @tradeLicense
     Scenario: Test to create Trade License With Valid Payload
-    # Steps to create a new Employee through HRMS    
+    # Steps to create a new trade license    
     * call read('../../municipal-services/pretests/tradeLicensePretest.feature@successCreateTradeLicense')
     * assert tradeLicenseResponseBody.ResponseInfo.status == commonConstants.expectedStatus.success
     # #Match the response

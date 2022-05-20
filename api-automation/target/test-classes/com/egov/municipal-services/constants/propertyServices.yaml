@@ -22,3 +22,4 @@ errorMessages:
   assessmentIdNotFound: "The assessment with id: <assessmentId> is not found in DB"
   invalidAssessmentStatus: "Assessment Status cannot be empty"
   authorizedError: Invalid login credentials
+  noLocalityOpenSearch: " locality is mandatory for open search when PropertyId OR MobileNumber is not provided"

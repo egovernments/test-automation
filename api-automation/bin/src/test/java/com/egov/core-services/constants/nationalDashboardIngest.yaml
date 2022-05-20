@@ -1,0 +1,5 @@
+# Error messages
+errorMessages:
+ noTenantId: Required String parameter 'tenantId' is not present
+ futureDate: Future dates are not allowed
+ recordAlreadyExist: Records for the given date and area details have already been ingested. No new data will be ingested

@@ -1,0 +1,128 @@
+# Error messages
+errorMessages:
+ noTenantId: Required String parameter 'tenantId' is not present
+ futureDate: Future date values are not allowed.
+ recordAlreadyExist: Records for the given date and area details have already been ingested. No new data will be ingested.
+ invalidDate: Date should be strictly in dd-MM-yyyy format.
+parameters: 
+  ward: 
+    - Ward 1
+    - Ward 2
+    - Ward 3
+    - Ward 4
+    - Ward 5
+  state: Punjab
+  region: Amritsar-MC
+  module:
+    - PT
+    - TL
+    - WS
+    - OBPS
+    - PGR
+    - MCOLLECT
+    - FIRENOC
+    - COMMON
+  paymentMode:
+    - CASH
+    - CHEQUE
+    - DEBIT_CARD
+    - ONLINE
+    - UPI
+  category:
+    - COMMON_MASTERS_HOARDING
+    - COMMON_MASTERS_UNIPOLLS
+  receiptStatus:
+    - NEW
+    - DEPOSITED
+    - DISHONOURED
+  challanStatus:
+    - PAID
+    - CANCELLED
+    - ACTIVE
+  channelType:
+    - Counter
+    - Online
+    - System
+    - CSC
+  connectionType:
+    - WATER.METERED
+    - WATER.NONMETERED
+    - SEWERAGE
+  usageTypeWS:
+    - Domestic
+    - Commercial
+    - Institutional
+    - Domestic SLC
+    - Domestic Exempted
+    - Commercial Motor
+  taxHeads:
+    - INTEREST
+    - LATE.CHARGES
+    - ADVANCE
+    - CURRENT.CHARGES
+    - ARREAR.CHARGES
+  wsduration:
+    - 0to3Days
+    - 3to7Days
+    - 7to15Days
+    - MoreThan15Days
+  meterType:
+    - METERED
+    - NON.METERED
+  paymentChannelType:
+    - System
+    - Paytm
+    - Field
+    - Razorpay
+    - PayU
+    - BBPS
+    - POS
+    - Sewakendra
+    - Freecharge
+  channelPGR:
+    - MOBILE
+    - WEB
+  statusPGR:
+    - reassignrequested
+    - open
+    - assigned
+    - rejected
+    - closed
+    - resolved
+  statusTL:
+    - INITIATED
+    - APPLIED
+    - PENDINGPAYMENT
+    - PENDINGAPPROVAL
+    - FIELDINSPECTION
+    - REJECTED
+    - APPROVED
+    - CANCELLED
+    - CITIZENACTIONREQUIRED
+    - EXPIRED
+    - MANUALEXPIRED
+  tradetype:
+    - BRICKFIELD
+    - GROCERYSTORES
+    - CHARCOAL_KLIN
+  riskType:
+    - LOW
+    - MEDIUM
+    - HIGH
+  occupancyType:
+    - RESIDENTIAL
+    - INSTITUTIONAL
+  subOccupancyType:
+    - RESIDENTIAL.INDIVIDUAL
+    - RESIDENTIAL.SHARED
+    - INSITUTIONAL.SHARED
+  serviceModuleCode:
+    - PT
+    - TL
+    - WS
+    - OBPS
+    - PGR
+    - MCOLLECT
+    - FIRENOC
+  statusLive: Live
+  statusOnBoarded: OnBoarded

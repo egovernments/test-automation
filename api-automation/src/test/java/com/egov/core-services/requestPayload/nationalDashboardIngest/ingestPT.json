@@ -1,0 +1,183 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Data": [
+		{
+			"date": "#(date)",
+			"module": "#(pt)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+			"metrics": {
+				"assessments": 9,
+				"todaysTotalApplications": 5,
+				"todaysClosedApplications": 6,
+				"propertiesRegistered": [
+					{
+						"groupBy": "financialYear",
+						"buckets": [
+							{
+								"name": "#(financialYear)",
+								"value": 5
+							}
+						]
+					}
+				],
+				"assessedProperties": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 3
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 4
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 2
+							}
+						]
+					}
+				],
+				"transactions": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 2
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 3
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 2
+							}
+						]
+					}
+				],
+				"todaysCollection": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 700
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 730
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 300
+							}
+						]
+					}
+				],
+				"propertyTax": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 1400
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 1600
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 500
+							}
+						]
+					}
+				],
+				"cess": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 400
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 300
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 300
+							}
+						]
+					}
+				],
+				"rebate": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": -200
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": -100
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": -200
+							}
+						]
+					}
+				],
+				"penalty": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 300
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 500
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 300
+							}
+						]
+					}
+				],
+				"interest": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "#(UsageCategory1)",
+								"value": 800
+							},
+							{
+								"name": "#(UsageCategory2)",
+								"value": 700
+							},
+							{
+								"name": "#(UsageCategory3)",
+								"value": 500
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

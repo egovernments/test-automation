@@ -2,7 +2,50 @@
     "RequestInfo": {
         "authToken": "#(authToken)"
     },
-    "fsm": [
-        "#(fsmBody)"
-    ]        
+    "fsm": {
+        "citizen":"#(citizen)",
+        "id":"#(fsmId)",
+        "tenantId": "#(tenantId)",
+        "applicationNo": "#(applicationNo)",
+        "additionalDetails": {
+            "tripAmount": "#(trip)"
+        },
+        "applicationStatus": "CREATED",
+        "source": "#(source)",
+        "sanitationtype": "#(sanitationtype)",
+        "propertyUsage": "#(propertyType)",
+        "vehicleType": "#(vehicalType)",
+        "noOfTrips": 1,
+        "vehicleCapacity": 1000,
+        "status": null,
+        "vehicleId": null,
+        "vehicle": null,
+        "dsoId": null,
+        "dso": null,
+        "possibleServiceDate": 0,
+        "paymentPreference": "POST_PAY",
+        "pitDetail": "#(pitDetail)",
+        "address": {
+            "tenantId": "#(tenantId)",
+            "city": "#(tenantName)",
+            "slumName": null,
+            "locality": {
+                "code": "#(localitycode)",
+                "name": "#(localityname)",
+                "label": "Locality",
+                "latitude": 0.0,
+                "longitude": 0.0,
+                "children": [],
+                "materializedPath": null
+            }
+        },
+        "geoLocation": {
+            "latitude": 0.0,
+            "longitude": 0.0,
+            "additionalDetails": {}
+        }
+    },
+    "workflow": {
+        "action":"SUBMIT"
+    }
 }

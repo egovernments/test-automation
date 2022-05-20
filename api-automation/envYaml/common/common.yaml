@@ -332,3 +332,6 @@ endPoints:
     update: /egov-document-uploader/egov-du/document/_update
     delete: /egov-document-uploader/egov-du/document/_delete
     search: /egov-document-uploader/egov-du/document/_search
+
+  nationalDashboardIngest:
+    ingest: national-dashboard/metric/_ingest

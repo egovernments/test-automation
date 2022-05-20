@@ -1,0 +1,192 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)",
+		"userInfo": "#(userInfo)"
+	},
+	"Data": [
+		{
+			"date": "01-04-2021",
+			"module": "PT",
+			"ward": "Block 1",
+			"ulb": "pb.amritsar",
+			"region": "Amritsar-MC",
+			"state": "Punjab",
+			"metrics": {
+				"assessments": 90,
+				"todaysTotalApplications": 56,
+				"todaysClosedApplications": 15,
+				"propertiesRegistered": [
+					{
+						"groupBy": "financialYear",
+						"buckets": [
+							{
+								"name": "2018-19",
+								"value": 5
+							},
+							{
+								"name": "2019-20",
+								"value": 40
+							},
+							{
+								"name": "2020-21",
+								"value": 45
+							}
+						]
+					}
+				],
+				"assessedProperties": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 30
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 40
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 10
+							}
+						]
+					}
+				],
+				"transactions": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 15
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 10
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 20
+							}
+						]
+					}
+				],
+				"todaysCollection": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 7000
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 7300
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 3000
+							}
+						]
+					}
+				],
+				"propertyTax": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 14000
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 16000
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 5000
+							}
+						]
+					}
+				],
+				"cess": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 400
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 300
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 300
+							}
+						]
+					}
+				],
+				"rebate": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": -200
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": -100
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": -200
+							}
+						]
+					}
+				],
+				"penalty": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 300
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 500
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 300
+							}
+						]
+					}
+				],
+				"interest": [
+					{
+						"groupBy": "usageCategory",
+						"buckets": [
+							{
+								"name": "RESIDENTIAL",
+								"value": 800
+							},
+							{
+								"name": "COMMERCIAL",
+								"value": 700
+							},
+							{
+								"name": "INDUSTRIAL",
+								"value": 500
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

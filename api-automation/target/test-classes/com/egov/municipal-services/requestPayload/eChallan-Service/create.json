@@ -22,20 +22,7 @@
         "amount": [
             {
                 "taxHeadCode": "#(taxHeadCode)",
-                "amount": "#(amount)"
-            },
-            {
-                "taxHeadCode": "#(changeHeadCode)",
-                "amount": "#(changeAmount)"
-            },
-            {
-                "taxHeadCode": "#(cgst)",
-                "amount": 0
-            },
-            {
-                "taxHeadCode": "#(sgst)",
-                "amount": 0
-
+                "amount": 1500
             }
         ],
         "taxPeriodFrom": "#(formDate)",

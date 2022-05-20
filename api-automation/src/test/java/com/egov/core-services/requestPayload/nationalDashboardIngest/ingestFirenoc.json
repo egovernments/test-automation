@@ -1,0 +1,197 @@
+{
+	"RequestInfo": {
+		"authToken": "#(authToken)"
+	},
+	"Data": [
+		{
+            "date": "#(date)",
+			"module": "#(firenoc)",
+			"ward": "#(ward)",
+			"ulb": "#(tenantId)",
+			"region": "#(region)",
+			"state": "#(state)",
+            "metrics": {
+                "todaysClosedApplications": 8,
+                "todaysCompletedApplicationsWithinSLA": 21,
+                "todaysApplications": [
+                    {
+                        "groupBy": "applicationType",
+                        "buckets": [
+                            {
+                                "name": "#(new)",
+                                "value": 31
+                            },
+                            {
+                                "name": "#(provisional)",
+                                "value": 39
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 20
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 50
+                            }
+                        ]
+                    }
+                ],
+                "todaysCollection": [
+                    {
+                        "groupBy": "paymentMode",
+                        "buckets": [
+                            {
+                                "name": "#(cash)",
+                                "value": 4000
+                            },
+                            {
+                                "name": "#(cheque)",
+                                "value": 5000
+                            },
+                            {
+                                "name": "#(debitCard)",
+                                "value": 6000
+                            },
+                            {
+                                "name": "#(online)",
+                                "value": 13000
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 12000
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 16000
+                            }
+                        ]
+                    }
+                ],
+                "nocIssuedToday": [
+                    {
+                        "groupBy": "type",
+                        "buckets": [
+                            {
+                                "name": "#(new)",
+                                "value": 19
+                            },
+                            {
+                                "name": "#(provisional)",
+                                "value": 43
+                            }
+                        ]
+                    }
+                ],
+                "provisionalNOCIssued": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 21
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 22
+                            }
+                        ]
+                    }
+                ],
+                "actualNOCIssued": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 11
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 8
+                            }
+                        ]
+                    },
+                    {
+                        "groupBy": "usageType",
+                        "buckets": [
+                            {
+                                "name": "#(usageTypeFN)",
+                                "value": 11
+                            }
+                        ]
+                    }
+                ],
+                "avgDaysToIssueProvisionalNOC": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 9
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ],
+                "slaComplianceActual": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 43
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 49
+                            }
+                        ]
+                    }
+                ],
+                "slaComplianceProvisional": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 51
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 39
+                            }
+                        ]
+                    }
+                ],
+                "avgDaysToIssueActualNOC": [
+                    {
+                        "groupBy": "department",
+                        "buckets": [
+                            {
+                                "name": "#(department1)",
+                                "value": 8
+                            },
+                            {
+                                "name": "#(department2)",
+                                "value": 12
+                            }
+                        ]
+                    }
+                ]
+            }
+		}
+	]
+}

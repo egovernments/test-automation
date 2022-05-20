@@ -425,6 +425,9 @@ function fn() {
         config.updateBilAmendment = envProps.host + path.endPoints.billAmendment.update
         config.searchBilAmendment = envProps.host + path.endPoints.billAmendment.search
 
+        //National Dashboard Ingest
+        config.dashboardIngest = envProps.host + path.endPoints.nationalDashboardIngest.ingest
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
