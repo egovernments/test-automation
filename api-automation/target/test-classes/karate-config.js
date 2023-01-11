@@ -79,6 +79,18 @@ function fn() {
          config.citizenArchitectUsername = envProps.citizenArchitect.userName;
          config.citizenArchitectPassword = envProps.citizenArchitect.password;
          config.citizenType = envProps.citizen.type;
+
+        // Credential data for HCM registrar
+        config.registrarUsername = envProps.registrar.userName
+        config.registrarPassword = envProps.registrar.password
+        config.registrarTenant = envProps.registrar.tenantId
+        config.registrarUserType = envProps.registrar.userType
+
+        // Credential data for HCM distributor
+        config.distributorUsername = envProps.distributor.userName
+        config.distributorPassword = envProps.distributor.password
+        config.distributorTenant = envProps.distributor.tenantId
+        config.distributorUserType = envProps.distributor.userType 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -486,7 +498,12 @@ function fn() {
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
 
-        
+        var authTokenHealthServicesRegistrarResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForRegistrar', config);
+        config.registrarAuthToken = authTokenHealthServicesRegistrarResponse.authToken
+
+        var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForDistributor', config);
+        config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
+
         var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
         var MdmsStateRes = MdmsStateResponse.MdmsStateRes
         config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax

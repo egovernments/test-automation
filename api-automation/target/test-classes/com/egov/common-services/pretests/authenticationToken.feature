@@ -185,3 +185,39 @@ Scenario: Auth token Creation for citizen
 	And def id = authResponseBody.UserRequest.uuid
    # * print authResponseBody.access_token 
    * match authResponseBody.access_token == '#present'
+
+@authTokenForRegistrar
+Scenario: Auth token for registrar
+	* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js') 
+		  Given url authTokenUrl
+		  And form field username = registrarUsername
+		  And form field password = registrarPassword
+		  And form field grant_type = 'password'
+		  And form field scope = 'read'
+		  And form field tenantId = registrarTenant
+		  And form field userType = registrarUserType
+		  When method post
+		  Then status 200
+		  And def authResponseBody = response
+		  And def authResponseHeader = responseHeaders
+		 And def authToken = authResponseBody.access_token
+	 * print authResponseBody.access_token 
+	 * match authResponseBody.access_token == '#present'
+
+@authTokenForDistributor
+Scenario: Auth token for distributor
+		* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js') 
+			  Given url authTokenUrl
+			  And form field username = distributorUsername
+			  And form field password = distributorPassword
+			  And form field grant_type = 'password'
+			  And form field scope = 'read'
+			  And form field tenantId = distributorTenant
+			  And form field userType = distributorUserType
+			  When method post
+			  Then status 200
+			  And def authResponseBody = response
+			  And def authResponseHeader = responseHeaders
+			 And def authToken = authResponseBody.access_token
+		 * print authResponseBody.access_token 
+		 * match authResponseBody.access_token == '#present'
