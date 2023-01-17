@@ -1,0 +1,25 @@
+{
+    "RequestInfo": {
+        "authToken": "#(sysAdminAuthToken)"
+    },
+    "Product": [
+        {
+            "tenantId": "#(hcmTenantId)",
+            "type": "#(productType)",
+            "name": "#(productName)",
+            "manufacturer": "#(productManufacturer)",
+            "additionalFields": {
+                "schema": "HOUSEHOLD",
+                "version": 2,
+                "fields": [
+                    {
+                        "key": "height",
+                        "value": "180"
+                    }
+                ]
+            },
+            "isDeleted": false
+        }
+    ],
+    "apiOperation": "#(apiOperation)"
+}

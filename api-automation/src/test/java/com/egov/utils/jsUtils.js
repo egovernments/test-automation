@@ -319,3 +319,7 @@ function getCurrentTime(){
     var simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
   return simpleDateFormat.format(new java.util.Date().getTime());
 }
+
+function getRandomArrayElement(list){
+   return list[Math.floor((Math.random()*list.length))];
+}

@@ -26,28 +26,36 @@ import net.minidev.json.JSONValue;
 
 public class EGovTest {
 	static String karateOutputPath = "target/surefire-reports";
+
 	@BeforeClass
 	public static void before() {
-		
+
 	}
 
 	@Test
 	public void testParallel() {
-		/* Cannot run tests in parallel as some feature file are dependant on others
-		and karate runs all feature fils in parallel.
-		So below the below parallel no of threads is set to 1.
-		*/
+		/*
+		 * Cannot run tests in parallel as some feature file are dependant on others
+		 * and karate runs all feature fils in parallel.
+		 * So below the below parallel no of threads is set to 1.
+		 */
 		// List<String> tags = Arrays.asList(System.getProperty("tags").split(","));
 		String tags = System.getProperty("tags");
 		String[] paths = "classpath:com/egov".split(",");
-		Results stats1 = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		Results stats2 = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		Results stats3 = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath).hook(new ExtentReportHook()).parallel(1);
-		assertTrue("there are scenario failures", (stats1.getFailCount() + stats2.getFailCount() + stats3.getFailCount()) == 0);
+		Results stats1 = Runner.path(paths).tags(tags, "@coreServices").reportDir(karateOutputPath)
+				.hook(new ExtentReportHook()).parallel(1);
+		Results stats2 = Runner.path(paths).tags(tags, "@businessServices").reportDir(karateOutputPath)
+				.hook(new ExtentReportHook()).parallel(1);
+		Results stats3 = Runner.path(paths).tags(tags, "@municipalServices").reportDir(karateOutputPath)
+				.hook(new ExtentReportHook()).parallel(1);
+		Results stats4 = Runner.path(paths).tags(tags, "@healthServices").reportDir(karateOutputPath)
+				.hook(new ExtentReportHook()).parallel(1);
+		assertTrue("there are scenario failures",
+				(stats1.getFailCount() + stats2.getFailCount() + stats3.getFailCount() + stats4.getFailCount()) == 0);
 	}
 
 	@AfterClass
-	public static void after(){
+	public static void after() {
 		// commented cucumer html reports as we are generating extent html report
 		// generateReport(karateOutputPath);
 	}
@@ -61,9 +69,11 @@ public class EGovTest {
 		Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
 		List<String> jsonPaths = new ArrayList<String>(jsonFiles.size());
 		jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-		
+
 		// To Store reports in other location in system
-		//Configuration config = new Configuration(new File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov Functional Test");
+		// Configuration config = new Configuration(new
+		// File("C:/Users/Toshiba/Documents/KarateResults/" + currentDate), "eGov
+		// Functional Test");
 		Configuration config = new Configuration(new File("target/" + currentDate), "eGov Test Automation Results");
 
 		ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
@@ -73,11 +83,11 @@ public class EGovTest {
 	public static String converToString(String conValue) {
 		return conValue.replaceAll("\"", "");
 	}
-	
-	public static String getYamlProperties(String yamlString) {
-	    Yaml yaml= new Yaml();
-	    Object obj = yaml.load(yamlString);
 
-	    return JSONValue.toJSONString(obj);
+	public static String getYamlProperties(String yamlString) {
+		Yaml yaml = new Yaml();
+		Object obj = yaml.load(yamlString);
+
+		return JSONValue.toJSONString(obj);
 	}
 }

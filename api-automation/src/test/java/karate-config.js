@@ -80,17 +80,23 @@ function fn() {
          config.citizenArchitectPassword = envProps.citizenArchitect.password;
          config.citizenType = envProps.citizen.type;
 
-        // // Credential data for HCM registrar
-        // config.registrarUsername = envProps.registrar.userName
-        // config.registrarPassword = envProps.registrar.password
-        // config.registrarTenant = envProps.registrar.tenantId
-        // config.registrarUserType = envProps.registrar.userType
+        // Credential data for HCM sys admins
+        config.sysAdminUsername = envProps.sysAdmin.userName
+        config.sysAdminPassword = envProps.sysAdmin.password
+        config.sysAdminTenant = envProps.sysAdmin.tenantId
+        config.sysAdminUserType = envProps.sysAdmin.type
 
-        // // Credential data for HCM distributor
-        // config.distributorUsername = envProps.distributor.userName
-        // config.distributorPassword = envProps.distributor.password
-        // config.distributorTenant = envProps.distributor.tenantId
-        // config.distributorUserType = envProps.distributor.userType 
+        // Credential data for HCM registrar
+        config.registrarUsername = envProps.registrar.userName
+        config.registrarPassword = envProps.registrar.password
+        config.registrarTenant = envProps.registrar.tenantId
+        config.registrarUserType = envProps.registrar.type
+
+        // Credential data for HCM distributor
+        config.distributorUsername = envProps.distributor.userName
+        config.distributorPassword = envProps.distributor.password
+        config.distributorTenant = envProps.distributor.tenantId
+        config.distributorUserType = envProps.distributor.type 
 
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
@@ -451,6 +457,22 @@ function fn() {
         //National Dashboard Ingest
         config.dashboardIngest = envProps.host + path.endPoints.nationalDashboardIngest.ingest
 
+        // HCM Endpoints
+        
+        // Product
+        config.createProductURL = envProps.host + path.endPoints.hcm.product.create
+        config.updateProductURL = envProps.host + path.endPoints.hcm.product.update
+        config.searchProductURL = envProps.host + path.endPoints.hcm.product.search
+        config.deleteProductURL = envProps.host + path.endPoints.hcm.product.update
+
+        // Product Variant
+        config.createProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.create
+        config.updateProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.update
+        config.searchProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.search
+        config.deleteProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.update
+
+        /*
+
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -498,39 +520,47 @@ function fn() {
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
+        */
 
-        // var authTokenHealthServicesRegistrarResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForRegistrar', config);
-        // config.registrarAuthToken = authTokenHealthServicesRegistrarResponse.authToken
+        var authTokenHealthServicesSysAdminResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMSysAdmin', config);
+        config.sysAdminAuthToken = authTokenHealthServicesSysAdminResponse.authToken
 
-        // var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForDistributor', config);
-        // config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
+        var authTokenHealthServicesRegistrarResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMRegistrar', config);
+        config.registrarAuthToken = authTokenHealthServicesRegistrarResponse.authToken
 
-        var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
-        var MdmsStateRes = MdmsStateResponse.MdmsStateRes
-        config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
-        config.mdmsStatetenant = MdmsStateRes.tenant
-        config.mdmsStateBillingService = MdmsStateRes.BillingService
-        config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
-        config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
-        config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
-        config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
-        config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
-        config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
-        config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
-        config.mdmsStateBPA = MdmsStateRes['BPA']
-        config.mdmsStateFireNocService = MdmsStateRes['firenoc']
-        config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
-        config.mdmsStateFsmService = MdmsStateRes['FSM']
-        config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
+        var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMDistributor', config);
+        config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
+
+        // var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
+        // var MdmsStateRes = MdmsStateResponse.MdmsStateRes
+        // config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
+        // config.mdmsStatetenant = MdmsStateRes.tenant
+        // config.mdmsStateBillingService = MdmsStateRes.BillingService
+        // config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
+        // config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
+        // config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
+        // config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
+        // config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        // config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
+        // config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+        // config.mdmsStateBPA = MdmsStateRes['BPA']
+        // config.mdmsStateFireNocService = MdmsStateRes['firenoc']
+        // config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
+        // config.mdmsStateFsmService = MdmsStateRes['FSM']
+        // config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 
+        // Setting up HCM tenantId
+        config.hcmTenantId = envProps.tenantId;
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', config.tenantId);
+    karate.log('config:', config);
     
     karate.configure('readTimeout', 120000);
 
