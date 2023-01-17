@@ -471,8 +471,6 @@ function fn() {
         config.searchProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.search
         config.deleteProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.update
 
-        /*
-
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -520,7 +518,6 @@ function fn() {
         var MdmsCityRes = MdmsCityResponse.MdmsCityRes
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
-        */
 
         var authTokenHealthServicesSysAdminResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMSysAdmin', config);
         config.sysAdminAuthToken = authTokenHealthServicesSysAdminResponse.authToken
@@ -531,23 +528,23 @@ function fn() {
         var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMDistributor', config);
         config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
 
-        // var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
-        // var MdmsStateRes = MdmsStateResponse.MdmsStateRes
-        // config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
-        // config.mdmsStatetenant = MdmsStateRes.tenant
-        // config.mdmsStateBillingService = MdmsStateRes.BillingService
-        // config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
-        // config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
-        // config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
-        // config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
-        // config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
-        // config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
-        // config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
-        // config.mdmsStateBPA = MdmsStateRes['BPA']
-        // config.mdmsStateFireNocService = MdmsStateRes['firenoc']
-        // config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
-        // config.mdmsStateFsmService = MdmsStateRes['FSM']
-        // config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
+        var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
+        var MdmsStateRes = MdmsStateResponse.MdmsStateRes
+        config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
+        config.mdmsStatetenant = MdmsStateRes.tenant
+        config.mdmsStateBillingService = MdmsStateRes.BillingService
+        config.mdmsStatecommonMasters = MdmsStateRes['common-masters']
+        config.mdmsStateAccessControlRoles = MdmsStateRes['ACCESSCONTROL-ROLES']
+        config.mdmsStateEgovHrms = MdmsStateRes['egov-hrms']
+        config.mdmsStateDashboard = MdmsStateRes['dss-dashboard']
+        config.mdmsStateDashboardConfig = config.mdmsStateDashboard['dashboard-config']
+        config.msmsCityPgrServiceCodes = MdmsCityRes['RAINMAKER-PGR'].ServiceDefs 
+        config.mdmsStateTradeLicense = MdmsStateRes['TradeLicense']
+        config.mdmsStateBPA = MdmsStateRes['BPA']
+        config.mdmsStateFireNocService = MdmsStateRes['firenoc']
+        config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
+        config.mdmsStateFsmService = MdmsStateRes['FSM']
+        config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
 
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
