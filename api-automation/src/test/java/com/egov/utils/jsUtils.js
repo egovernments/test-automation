@@ -323,3 +323,26 @@ function getCurrentTime(){
 function getRandomArrayElement(list){
    return list[Math.floor((Math.random()*list.length))];
 }
+
+function getUUID(){
+    var uuid = require('uuid')
+    return uuid.v4();
+}
+
+function getUnixEpochTime(){
+    return Math.floor(new Date().getTime() / 1000);
+}
+
+function getDateInFormat(format, numberOfDaysToAdd) {
+    var today = new Date();
+    var dd = String(today.getDate() + numberOfDaysToAdd);
+    var mm = String(today.getMonth() + 1);
+    var yyyy = today.getFullYear();
+    switch(format){
+        case "dd/mm/yyyy": 
+            return dd + '/' + mm + '/' + yyyy;
+        case "dd-mm-yyyy":
+            return dd + '-' + mm + '-' + yyyy;
+        default: return dd + '/' + mm + '/' + yyyy;
+    }
+}
