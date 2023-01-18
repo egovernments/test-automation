@@ -345,3 +345,51 @@ endPoints:
       create: product/variant/v1/_create
       update: product/variant/v1/_update
       search: product/variant/v1/_search
+    household:
+      create: household/v1/_create
+      update: household/v1/_update
+      search: household/v1/_search
+    individual:
+      create: individual/v1/_create
+      update: individual/v1/_update
+      search: individual/v1/_search
+    householdMember:
+      create: household/member/v1/_create
+      update: household/member/v1/_update
+      search: household/member/v1/_search
+    project:
+      create: project/v1/_create
+      update: project/v1/_update
+      search: project/v1/_search
+    projectBeneficiary:
+      create: project/beneficiary/v1/_create
+      update: project/beneficiary/v1/_update
+      search: project/beneficiary/v1/_search
+    projectTask:
+      create: project/task/v1/_create
+      update: project/task/v1/_update
+      search: project/task/v1/_search
+    projectStaff:
+      create: project/staff/v1/_create
+      update: project/staff/v1/_update
+      search: project/staff/v1/_search
+    projectFacility:
+      create: project/facility/v1/_create
+      update: project/facility/v1/_update
+      search: project/facility/v1/_search
+    projectResource:
+      create: project/resource/v1/_create
+      update: project/resource/v1/_update
+      search: project/resource/v1/_search
+    facility:
+      create: facility/v1/_create
+      update: facility/v1/_update
+      search: facility/v1/_search
+    stock:
+      create: stock/v1/_create
+      update: stock/v1/_update
+      search: stock/v1/_search
+    stockReconciliation:
+      create: stock/reconciliation/v1/_create
+      update: stock/reconciliation/v1/_update
+      search: stock/reconciliation/v1/_search
