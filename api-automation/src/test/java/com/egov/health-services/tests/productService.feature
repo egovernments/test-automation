@@ -46,35 +46,35 @@ Feature: Product Services - HCM
         * assert createProductResponseBody.Errors[0].description == commonConstants.errorMessages.authorizedError
 
     @HCM_product_create_04 @null_check_product_name @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product with null product name
         * def productName = null
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "NotNull.productRequest.product[0].name"
         * assert createProductResponseBody.Errors[0].message == "must not be null"
 
     @HCM_product_create_05 @null_check_product_tenantId @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product with null tenantId
         * def hcmTenantId = null
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "NotNull.productRequest.product[0].tenantId"
         * assert createProductResponseBody.Errors[0].message == "must not be null"
 
     @HCM_product_create_06 @null_check_product_type @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product with null type
         * def productType = null
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "NotNull.productRequest.product[0].type"
         * assert createProductResponseBody.Errors[0].message == "must not be null"
 
     @HCM_product_create_07 @null_check_product_apiOperation @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product with null apiOperation
         * def apiOperation = null
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "INVALID_API_OPERATION"
         * assert createProductResponseBody.Errors[0].message == "API Operation null not valid for create request"
 
     @HCM_product_create_08 @invalid_tenantId @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product with invalid tenantId
         * def hcmTenantId = "abcdefghijklmnopqrstuvwxyz"
         * call read('../../health-services/pretest/productServicePretest.feature@createProductAuthorizationError')
         * assert createProductResponseBody.Errors[0].code == "CustomException"
@@ -82,42 +82,42 @@ Feature: Product Services - HCM
         * assert createProductResponseBody.Errors[0].description == commonConstants.errorMessages.authorizedError
 
     @HCM_product_create_09 @invalid_type_size_min @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify the minimum value needed for the type
         * def productType = "a"
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "Size.productRequest.product[0].type"
         * assert createProductResponseBody.Errors[0].message == "size must be between 2 and 100"
 
     @HCM_product_create_10 @invalid_type_size_max @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify the maximum value needed for the type
         * def productType = randomString(101)
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "Size.productRequest.product[0].type"
         * assert createProductResponseBody.Errors[0].message == "size must be between 2 and 100"
 
     @HCM_product_create_11 @invalid_name_size_min @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify the minimum value needed for the name
         * def productName = "a"
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "Size.productRequest.product[0].name"
         * assert createProductResponseBody.Errors[0].message == "size must be between 2 and 1000"
 
     @HCM_product_create_12 @invalid_name_size_max @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify the maximum value needed for the name
         * def productName = randomString(1001)
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "Size.productRequest.product[0].name"
         * assert createProductResponseBody.Errors[0].message == "size must be between 2 and 1000"
 
     @HCM_product_create_13 @invalid_apiOperation @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify the invalid value for apiOperation
         * def apiOperation = randomString(10)
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "INVALID_API_OPERATION"
         * assert createProductResponseBody.Errors[0].message == "API Operation null not valid for create request"
 
     @HCM_product_create_14 @invalid_apiOperation_emptyString @healthServices @regression @positive @smoke @hcm_product_create @hcm
-    Scenario: Test to create a product
+    Scenario: Test to create a product to verify empty string value for apiOperation
         * def apiOperation = ""
         * call read('../../health-services/pretest/productServicePretest.feature@createProductError')
         * assert createProductResponseBody.Errors[0].code == "INVALID_API_OPERATION"
