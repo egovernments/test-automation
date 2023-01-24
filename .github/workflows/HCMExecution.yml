@@ -28,18 +28,12 @@ jobs:
         with:
           step: restore
 
-      - name: Change folder to api-automation
-        run: |
-          pwd
-          ls -lrta
-          cd api-automation
-          ls -lrta
-
       - name: Build and test project with Maven
         run: |
           cd /home/runner/work/test-automation/test-automation/api-automation
           ls -lrta
           mvn clean install "-Dtags=@hcm" "-DconfigPath=/home/runner/work/test-automation/test-automation/api-automation/health-qa.yaml"
+          ls -R /home/runner/work/test-automation/test-automation/api-automation/target
 
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
