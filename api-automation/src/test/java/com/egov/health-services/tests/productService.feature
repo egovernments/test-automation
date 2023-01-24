@@ -7,6 +7,7 @@ Feature: Product Services - HCM
         * def productName = 'Auto_' + randomString(6) + '_ProdName'
         * def productManufacturer = getRandomArrayElement(["J & J", "Cipla", "GSB", "Dr. Reddys", "Piramal"])
         * def apiOperation = "CREATE"
+        * def hcmTenantId = "default"
 
     @HCM_product_create_01 @healthServices @regression @positive @smoke @hcm_product_create @hcm
     Scenario: Test to create a product

@@ -1,0 +1,45 @@
+name: Maven CI/CD
+
+on:
+  push:
+    branches: [hcm_base_branch]
+  pull_request:
+    branches: [hcm_base_branch]
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  test_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code from repo
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Restore Maven cache
+        uses: skjolber/maven-cache-github-action@v1
+        with:
+          step: restore
+
+      - name: Build and test project with Maven
+        run: mvn clean install "-Dtags=@userDetails"
+
+      - name: Save Maven cache
+        uses: skjolber/maven-cache-github-action@v1
+        with:
+          step: save
+
+      - name: Upload Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: reports
+          path: |
+            target/ext*/Exe*.html
+            target/sure*/*
+          retention-days: 365

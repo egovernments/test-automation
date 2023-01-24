@@ -1,7 +1,6 @@
 Feature: HCM Product API
 
       Background:
-            * def tenantId = tenantId
             * def createProductRequest = read('../../health-services/requestPayload/product-service/create.json')
             * configure headers = read('classpath:com/egov/utils/websCommonHeaders.js')
 

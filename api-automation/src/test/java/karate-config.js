@@ -543,6 +543,7 @@ function fn() {
         config.searchStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.search
         config.deleteStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.update
         
+        /*
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -591,6 +592,7 @@ function fn() {
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
 
+        */
         var authTokenHealthServicesSysAdminResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMSysAdmin', config);
         config.sysAdminAuthToken = authTokenHealthServicesSysAdminResponse.authToken
 
@@ -600,6 +602,7 @@ function fn() {
         var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMDistributor', config);
         config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
 
+        /*
         var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
         var MdmsStateRes = MdmsStateResponse.MdmsStateRes
         config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
@@ -617,7 +620,7 @@ function fn() {
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
-
+        */
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
