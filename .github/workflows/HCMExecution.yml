@@ -34,7 +34,10 @@ jobs:
           ls -lrta
 
       - name: Build and test project with Maven
-        run: mvn clean install "-Dtags=@hcm" "-DconfigPath=api-automation/health-qa.yaml"
+        run: |
+          cd /home/runner/work/test-automation/test-automation/api-automation
+          ls -lrta
+          mvn clean install "-Dtags=@hcm" "-DconfigPath=/home/runner/work/test-automation/test-automation/api-automation/health-qa.yaml"
 
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
