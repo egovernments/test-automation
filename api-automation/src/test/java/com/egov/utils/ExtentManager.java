@@ -50,11 +50,7 @@ public class ExtentManager {
             if (buildId != null) {
                 formattedDate = buildId;
             }
-            // ExtentManager.createInstance("target/extent-reports/" + "eGov_Extent_Report_"
-            // + formattedDate + ".html");
-            ExtentManager.createInstance(
-                    "/home/runner/work/test-automation/test-automation/api-automation/target/extent-reports/"
-                            + "eGov_Extent_Report_" + formattedDate + ".html");
+            ExtentManager.createInstance("target/extent-reports/" + "eGov_Extent_Report_" + formattedDate + ".html");
         }
     }
 }

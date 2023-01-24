@@ -33,7 +33,7 @@ jobs:
           cd /home/runner/work/test-automation/test-automation/api-automation
           ls -lrta
           mvn clean install "-Dtags=@hcm" "-DconfigPath=/home/runner/work/test-automation/test-automation/api-automation/health-qa.yaml"
-          ls -R /home/runner/work/test-automation/test-automation/api-automation/target
+          ls -R /home/runner/work/test-automation/test-automation/api-automation/target/ext*/eGov*
 
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
@@ -46,5 +46,5 @@ jobs:
         with:
           name: reports
           path: |
-            /home/runner/work/test-automation/test-automation/api-automation/target/ext*/Exe*.html
+            /home/runner/work/test-automation/test-automation/api-automation/target/ext*/eGov*.html
           retention-days: 365
