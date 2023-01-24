@@ -50,6 +50,6 @@ jobs:
         with:
           name: reports
           path: |
-            target/ext*/Exe*.html
-            target/sure*/*
+            /home/runner/work/test-automation/test-automation/api-automation/target/ext*/Exe*.html
+            /home/runner/work/test-automation/test-automation/api-automation/target/sure*/*
           retention-days: 365
