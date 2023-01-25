@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [hcm_base_branch]
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "30 23 * * *"
 
 jobs:
   test_and_publish:
