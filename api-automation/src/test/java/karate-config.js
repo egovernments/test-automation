@@ -121,6 +121,12 @@ function fn() {
         //Get file id
         config.fileStoreGet = envProps.host + path.endPoints.fileStore.getFileId;
 
+        //Get file metadata
+        config.fileStoreMetadata = envProps.host + path.endPoints.fileStore.getMetadataId;
+
+        //Get file tag
+        config.fileStoreTag = envProps.host + path.endPoints.fileStore.getFileTag;
+
         //Search location
         config.searchloc = envProps.host + path.endPoints.location.search;
 
