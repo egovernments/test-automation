@@ -1,14 +1,14 @@
 Feature: Auth token Creation for Employee
 
-Background:
-  * configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
-  # * print authTokenUrl
-  # * print tenantId
-  
-  @authTokenSuperuser
-  Scenario: Auth token Creation scenario 
-        Given url authTokenUrl
-        And form field username = authUsername
+	Background:
+		* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+	# * print authTokenUrl
+	# * print tenantId
+
+	@authTokenSuperuser
+	Scenario: Auth token Creation scenario
+		Given url authTokenUrl
+		And form field username = authUsername
 		And form field password = authPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -18,15 +18,15 @@ Background:
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	    And def authToken = authResponseBody.access_token
-	   And def id = authResponseBody.UserRequest.uuid
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		And def id = authResponseBody.UserRequest.uuid
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenCitizen
-Scenario: Auth token Creation for citizen
-        Given url authTokenUrl
-        And form field username = citizenUsername
+	@authTokenCitizen
+	Scenario: Auth token Creation for citizen
+		Given url authTokenUrl
+		And form field username = citizenUsername
 		And form field password = citizenPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -36,15 +36,15 @@ Scenario: Auth token Creation for citizen
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-	And def id = authResponseBody.UserRequest.uuid
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		And def id = authResponseBody.UserRequest.uuid
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenOfAltCitizen
-Scenario: Auth token Creation for alternative citizen
-        Given url authTokenUrl
-        And form field username = altCitizenUsername
+	@authTokenOfAltCitizen
+	Scenario: Auth token Creation for alternative citizen
+		Given url authTokenUrl
+		And form field username = altCitizenUsername
 		And form field password = altCitizenPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -54,14 +54,14 @@ Scenario: Auth token Creation for alternative citizen
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenApprover
-Scenario: Auth token Creation for approver
-        Given url authTokenUrl
-        And form field username = approverUsername
+	@authTokenApprover
+	Scenario: Auth token Creation for approver
+		Given url authTokenUrl
+		And form field username = approverUsername
 		And form field password = approverPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -71,14 +71,14 @@ Scenario: Auth token Creation for approver
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenCounterEmployee
-Scenario: Auth token Creation for CounterEmpl
-        Given url authTokenUrl
-        And form field username = counterEmployeeUsername
+	@authTokenCounterEmployee
+	Scenario: Auth token Creation for CounterEmpl
+		Given url authTokenUrl
+		And form field username = counterEmployeeUsername
 		And form field password = counterEmployeePassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -88,14 +88,14 @@ Scenario: Auth token Creation for CounterEmpl
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenDocVerifierTL
-Scenario: Auth token Creation for CounterEmpl
-        Given url authTokenUrl
-        And form field username = TLDocVerifierUsername
+	@authTokenDocVerifierTL
+	Scenario: Auth token Creation for CounterEmpl
+		Given url authTokenUrl
+		And form field username = TLDocVerifierUsername
 		And form field password = TLDocVerifierPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -105,14 +105,14 @@ Scenario: Auth token Creation for CounterEmpl
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenFieldInspectorTL
-Scenario: Auth token Creation for CounterEmpl
-        Given url authTokenUrl
-        And form field username = FieldInspectorUsername
+	@authTokenFieldInspectorTL
+	Scenario: Auth token Creation for CounterEmpl
+		Given url authTokenUrl
+		And form field username = FieldInspectorUsername
 		And form field password = FieldInspectorPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -122,14 +122,14 @@ Scenario: Auth token Creation for CounterEmpl
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
-@authTokenApproverTL
-Scenario: Auth token Creation for CounterEmpl
-        Given url authTokenUrl
-        And form field username = ApproverUsername
+	@authTokenApproverTL
+	Scenario: Auth token Creation for CounterEmpl
+		Given url authTokenUrl
+		And form field username = ApproverUsername
 		And form field password = ApproverPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -139,14 +139,14 @@ Scenario: Auth token Creation for CounterEmpl
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-   # * print authResponseBody.access_token
-   * match authResponseBody.access_token == '#present'
-   
-@authTokenCitizenForBPAStakeholder
-Scenario: Auth token Creation for citizen
-        Given url authTokenUrl
-        And form field username = intergerToString(citizenUsername3)
+		And def authToken = authResponseBody.access_token
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
+
+	@authTokenCitizenForBPAStakeholder
+	Scenario: Auth token Creation for citizen
+		Given url authTokenUrl
+		And form field username = intergerToString(citizenUsername3)
 		# * print intergerToString(citizenUsername3)
 		And form field password = citizenPassword3
 		# * print citizenPassword3
@@ -162,16 +162,16 @@ Scenario: Auth token Creation for citizen
 		# * print authResponseBody
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-	And def id = authResponseBody.UserRequest.uuid
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		And def id = authResponseBody.UserRequest.uuid
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
 
 
-@authTokenCitizenArchitect
-Scenario: Auth token Creation for citizen
-        Given url authTokenUrl
-        And form field username = citizenArchitectUsername
+	@authTokenCitizenArchitect
+	Scenario: Auth token Creation for citizen
+		Given url authTokenUrl
+		And form field username = citizenArchitectUsername
 		And form field password = citizenArchitectPassword
 		And form field grant_type = 'password'
 		And form field scope = 'read'
@@ -181,7 +181,61 @@ Scenario: Auth token Creation for citizen
 		Then status 200
 		And def authResponseBody = response
 		And def authResponseHeader = responseHeaders
-   	And def authToken = authResponseBody.access_token
-	And def id = authResponseBody.UserRequest.uuid
-   # * print authResponseBody.access_token 
-   * match authResponseBody.access_token == '#present'
+		And def authToken = authResponseBody.access_token
+		And def id = authResponseBody.UserRequest.uuid
+		# * print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
+
+	@authTokenForHCMSysAdmin
+	Scenario: Auth token for registrar
+		* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+		Given url authTokenUrl
+		And form field username = sysAdminUsername
+		And form field password = sysAdminPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = sysAdminTenant
+		And form field userType = sysAdminUserType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+		And def authToken = authResponseBody.access_token
+		* print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
+
+	@authTokenForHCMRegistrar
+	Scenario: Auth token for registrar
+		* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+		Given url authTokenUrl
+		And form field username = registrarUsername
+		And form field password = registrarPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = registrarTenant
+		And form field userType = registrarUserType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+		And def authToken = authResponseBody.access_token
+		* print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'
+
+	@authTokenForHCMDistributor
+	Scenario: Auth token for distributor
+		* configure headers = read('classpath:com/egov/utils/oauthTokenHeader.js')
+		Given url authTokenUrl
+		And form field username = distributorUsername
+		And form field password = distributorPassword
+		And form field grant_type = 'password'
+		And form field scope = 'read'
+		And form field tenantId = distributorTenant
+		And form field userType = distributorUserType
+		When method post
+		Then status 200
+		And def authResponseBody = response
+		And def authResponseHeader = responseHeaders
+		And def authToken = authResponseBody.access_token
+		* print authResponseBody.access_token
+		* match authResponseBody.access_token == '#present'

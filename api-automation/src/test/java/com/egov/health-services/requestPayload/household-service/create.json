@@ -1,0 +1,45 @@
+{
+    "RequestInfo": {
+        "authToken": "#(hcmAuthToken)"
+    },
+    "Household": [
+        {
+            "tenantId": "#(hcmTenantId)",
+            "clientReferenceId": "#(clientReferenceId)",
+            "memberCount": "#(memberCount)",
+            "address": {
+                "tenantId": "#(hcmTenantId)",
+                "doorNo": "#(doorNo)",
+                "latitude": 90,
+                "longitude": 180,
+                "locationAccuracy": 10000,
+                "type": "#(type)",
+                "addressLine1": "#(addressLine1)",
+                "addressLine2": "#(addressLine2)",
+                "landmark": "#(landmark)",
+                "city": "#(city)",
+                "pincode": "#(pincode)",
+                "buildingName": "#(buildingName)",
+                "street": "#(street)",
+                "locality": {
+                    "code": "#(localityCode)",
+                    "name": "#(localityName)",
+                    "label": "#(localityLabel)",
+                    "latitude": "#(localityLatitude)",
+                    "longitude": "#(localityLongitude)"
+                }
+            },
+            "additionalFields": {
+                "schema": "HOUSEHOLD",
+                "version": 2,
+                "fields": [
+                    {
+                        "key": "height",
+                        "value": "180"
+                    }
+                ]
+            }
+        }
+    ],
+    "apiOperation": "#(apiOperation)"
+}

@@ -1,0 +1,26 @@
+{
+    "searchWithId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "id": "#(idOfHousehold)"
+        }
+    },
+    "searchWithClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "clientReferenceId": "#(clientReferenceIdOfHousehold)"
+        }
+    },
+    "searchWithBoundaryCode": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "boundaryCode": "#(boundaryCodeOfHousehold)"
+        }
+    }
+}

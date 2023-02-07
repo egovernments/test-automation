@@ -63,8 +63,8 @@ endPoints:
     businessServiceCreate: egov-workflow-v2/egov-wf/businessservice/_create
     businessServiceUpdate: egov-workflow-v2/egov-wf/businessservice/_update
     businessServiceSearch: egov-workflow-v2/egov-wf/businessservice/_search
-    
-  escalate:  
+
+  escalate:
     escalateSearch: egov-workflow-v2/egov-wf/escalate/_search
     escalateCount: egov-workflow-v2/egov-wf/process/_count
 
@@ -187,19 +187,19 @@ endPoints:
     create: egf-instrument/instrumentaccountcodes/_create
     update: egf-instrument/instrumentaccountcodes/_update
     search: egf-instrument/instrumentaccountcodes/_search
-  
+
   egfInstrumentSurrenderReasons:
     create: egf-instrument/surrenderreasons/_create
     update: egf-instrument/surrenderreasons/_update
     search: egf-instrument/surrenderreasons/_search
-  
+
   propertyCalculatorBillingSlab:
     create: pt-calculator-v2/billingslab/_create
     update: pt-calculator-v2/billingslab/_update
     search: pt-calculator-v2/billingslab/_search
-  
+
   propertyCalculatorPropertyTax:
-    calculate: pt-calculator-v2/propertytax/mutation/_calculate  
+    calculate: pt-calculator-v2/propertytax/mutation/_calculate
 
   pgr:
     create: pgr-services/v2/request/_create
@@ -216,7 +216,7 @@ endPoints:
     create: /firenoc-calculator/billingslab/_create
     search: /firenoc-calculator/billingslab/_search
     calculate: firenoc-calculator/v1/_calculate
-  
+
   waterConnection:
     create: ws-services/wc/_create
     search: ws-services/wc/_search
@@ -232,7 +232,7 @@ endPoints:
   propertyCalculator:
     estimate: pt-calculator-v2/propertytax/v2/_estimate
     calculator: pt-calculator-v2/propertytax/_calculate
-  
+
   tradeLicense:
     create: tl-services/v1/_create
     update: tl-services/v1/_update
@@ -249,7 +249,7 @@ endPoints:
     billingSlabUpdate: tl-calculator/billingslab/_update
     billingSlabSearch: tl-calculator/billingslab/_search
     calculate: tl-calculator/v1/_calculate
-  
+
   bpaService:
     edcrScrutinize: edcr/rest/dcr/scrutinize
     create: bpa-services/v1/bpa/_create
@@ -265,7 +265,7 @@ endPoints:
     create: land-services/v1/land/_create
     update: land-services/v1/land/_update
     search: land-services/v1/land/_search
-  
+
   edcrServices:
     scrutinize: edcr/rest/dcr/scrutinize
     scrutinydetails: edcr/rest/dcr/scrutinydetails
@@ -277,7 +277,7 @@ endPoints:
     search: firenoc-services/v1/_search
 
   eGovUserEvent:
-    notificationCount: egov-user-event/v1/events/notifications/_count 
+    notificationCount: egov-user-event/v1/events/notifications/_count
     create: egov-user-event/v1/events/_create
     update: egov-user-event/v1/events/_update
     delete: egov-user-event/v1/events/_delete
@@ -306,13 +306,13 @@ endPoints:
     vehicalTripSearch: vehicle/trip/v1/_search
     vehicalTripUpdate: vehicle/trip/v1/_update
     inboxSearch: inbox/v1/_search
-    
+
   echallanService:
     create: echallan-services/eChallan/v1/_create
     update: echallan-services/eChallan/v1/_update
     search: echallan-services/eChallan/v1/_search
     count: echallan-services/eChallan/v1/_count
-    
+
   fsmBillingSlab:
     create: fsm-calculator/v1/billingSlab/_create
     update: fsm-calculator/v1/billingSlab/_update
@@ -335,3 +335,61 @@ endPoints:
 
   nationalDashboardIngest:
     ingest: national-dashboard/metric/_ingest
+
+  hcm:
+    product:
+      create: product/v1/_create
+      update: product/v1/_update
+      search: product/v1/_search
+    productVariant:
+      create: product/variant/v1/_create
+      update: product/variant/v1/_update
+      search: product/variant/v1/_search
+    household:
+      create: household/v1/_create
+      update: household/v1/_update
+      search: household/v1/_search
+    individual:
+      create: individual/v1/_create
+      update: individual/v1/_update
+      search: individual/v1/_search
+    householdMember:
+      create: household/member/v1/_create
+      update: household/member/v1/_update
+      search: household/member/v1/_search
+    project:
+      create: project/v1/_create
+      update: project/v1/_update
+      search: project/v1/_search
+    projectBeneficiary:
+      create: project/beneficiary/v1/_create
+      update: project/beneficiary/v1/_update
+      search: project/beneficiary/v1/_search
+    projectTask:
+      create: project/task/v1/_create
+      update: project/task/v1/_update
+      search: project/task/v1/_search
+    projectStaff:
+      create: project/staff/v1/_create
+      update: project/staff/v1/_update
+      search: project/staff/v1/_search
+    projectFacility:
+      create: project/facility/v1/_create
+      update: project/facility/v1/_update
+      search: project/facility/v1/_search
+    projectResource:
+      create: project/resource/v1/_create
+      update: project/resource/v1/_update
+      search: project/resource/v1/_search
+    facility:
+      create: facility/v1/_create
+      update: facility/v1/_update
+      search: facility/v1/_search
+    stock:
+      create: stock/v1/_create
+      update: stock/v1/_update
+      search: stock/v1/_search
+    stockReconciliation:
+      create: stock/reconciliation/v1/_create
+      update: stock/reconciliation/v1/_update
+      search: stock/reconciliation/v1/_search

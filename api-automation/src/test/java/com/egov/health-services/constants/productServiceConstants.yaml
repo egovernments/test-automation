@@ -1,0 +1,3 @@
+errorMessages:
+  notNullProductNameErrorMessage: NotNull.productRequest.product[0].name
+  

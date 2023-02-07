@@ -79,6 +79,25 @@ function fn() {
          config.citizenArchitectUsername = envProps.citizenArchitect.userName;
          config.citizenArchitectPassword = envProps.citizenArchitect.password;
          config.citizenType = envProps.citizen.type;
+
+        // Credential data for HCM sys admins
+        config.sysAdminUsername = envProps.sysAdmin.userName
+        config.sysAdminPassword = envProps.sysAdmin.password
+        config.sysAdminTenant = envProps.sysAdmin.tenantId
+        config.sysAdminUserType = envProps.sysAdmin.type
+
+        // Credential data for HCM registrar
+        config.registrarUsername = envProps.registrar.userName
+        config.registrarPassword = envProps.registrar.password
+        config.registrarTenant = envProps.registrar.tenantId
+        config.registrarUserType = envProps.registrar.type
+
+        // Credential data for HCM distributor
+        config.distributorUsername = envProps.distributor.userName
+        config.distributorPassword = envProps.distributor.password
+        config.distributorTenant = envProps.distributor.tenantId
+        config.distributorUserType = envProps.distributor.type 
+
         //tenantId
         config.tenantId = envProps.stateCode + '.' + envProps.cityCode;
 
@@ -438,6 +457,93 @@ function fn() {
         //National Dashboard Ingest
         config.dashboardIngest = envProps.host + path.endPoints.nationalDashboardIngest.ingest
 
+        // HCM Endpoints
+        
+        // Product
+        config.createProductURL = envProps.host + path.endPoints.hcm.product.create
+        config.updateProductURL = envProps.host + path.endPoints.hcm.product.update
+        config.searchProductURL = envProps.host + path.endPoints.hcm.product.search
+        config.deleteProductURL = envProps.host + path.endPoints.hcm.product.update
+
+        // Product Variant
+        config.createProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.create
+        config.updateProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.update
+        config.searchProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.search
+        config.deleteProductVariantURL = envProps.host + path.endPoints.hcm.productVariant.update
+
+        // Household
+        config.createHouseholdURL = envProps.host + path.endPoints.hcm.household.create
+        config.updateHouseholdURL = envProps.host + path.endPoints.hcm.household.update
+        config.searchHouseholdURL = envProps.host + path.endPoints.hcm.household.search
+        config.deleteHouseholdURL = envProps.host + path.endPoints.hcm.household.update
+
+        // Individual
+        config.createIndividualURL = envProps.host + path.endPoints.hcm.individual.create
+        config.updateIndividualURL = envProps.host + path.endPoints.hcm.individual.update
+        config.searchIndividualURL = envProps.host + path.endPoints.hcm.individual.search
+        config.deleteIndividualURL = envProps.host + path.endPoints.hcm.individual.update
+
+        // Household Member
+        config.createHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.create
+        config.updateHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.update
+        config.searchHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.search
+        config.deleteHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.update
+
+        // Project
+        config.createProjectURL = envProps.host + path.endPoints.hcm.project.create
+        config.updateProjectURL = envProps.host + path.endPoints.hcm.project.update
+        config.searchProjectURL = envProps.host + path.endPoints.hcm.project.search
+        config.deleteProjectURL = envProps.host + path.endPoints.hcm.project.update
+
+        // Project Beneficiary
+        config.createProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.create
+        config.updateProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.update
+        config.searchProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.search
+        config.deleteProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.update
+
+        // Project Task
+        config.createProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.create
+        config.updateProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.update
+        config.searchProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.search
+        config.deleteProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.update
+
+        // Project Staff
+        config.createProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.create
+        config.updateProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.update
+        config.searchProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.search
+        config.deleteProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.update
+
+        // Project Facility
+        config.createProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.create
+        config.updateProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.update
+        config.searchProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.search
+        config.deleteProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.update
+
+        // Project Resource
+        config.createProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.create
+        config.updateProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.update
+        config.searchProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.search
+        config.deleteProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.update
+
+        // Facility
+        config.createFacilityURL = envProps.host + path.endPoints.hcm.facility.create
+        config.updateFacilityURL = envProps.host + path.endPoints.hcm.facility.update
+        config.searchFacilityURL = envProps.host + path.endPoints.hcm.facility.search
+        config.deleteFacilityURL = envProps.host + path.endPoints.hcm.facility.update
+
+        // Stock
+        config.createStockURL = envProps.host + path.endPoints.hcm.stock.create
+        config.updateStockURL = envProps.host + path.endPoints.hcm.stock.update
+        config.searchStockURL = envProps.host + path.endPoints.hcm.stock.search
+        config.deleteStockURL = envProps.host + path.endPoints.hcm.stock.update
+
+        // Stock Reconciliation
+        config.createStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.create
+        config.updateStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.update
+        config.searchStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.search
+        config.deleteStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.update
+        
+        /*
         // Calling pretest features which is consumed by almost all tests
         var fileUploadResponse = karate.callSingle('../../common-services/pretests/fileStoreUpload.feature@uploadFileToFilestore', config);
         config.fileStoreId = fileUploadResponse.fileStoreId
@@ -486,7 +592,17 @@ function fn() {
         config.mdmsCityEgovLocation = MdmsCityRes['egov-location']
         config.mdmsCityTenant = MdmsCityRes.tenant
 
-        
+        */
+        var authTokenHealthServicesSysAdminResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMSysAdmin', config);
+        config.sysAdminAuthToken = authTokenHealthServicesSysAdminResponse.authToken
+
+        var authTokenHealthServicesRegistrarResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMRegistrar', config);
+        config.registrarAuthToken = authTokenHealthServicesRegistrarResponse.authToken
+
+        var authTokenHealthServicesDistributorResponse = karate.callSingle('../../common-services/pretests/authenticationToken.feature@authTokenForHCMDistributor', config);
+        config.distributorAuthToken = authTokenHealthServicesDistributorResponse.authToken
+
+        /*
         var MdmsStateResponse = karate.callSingle('../../common-services/pretests/egovMdmsPretest.feature@searchMdmsSuccessfullyByState', config);
         var MdmsStateRes = MdmsStateResponse.MdmsStateRes
         config.mdmsStatePropertyTax = MdmsStateRes.PropertyTax
@@ -504,15 +620,19 @@ function fn() {
         config.mdmsStateEgfMasterService = MdmsStateRes['egf-master']
         config.mdmsStateFsmService = MdmsStateRes['FSM']
         config.mdmsStatebpaChecklist = MdmsStateRes.BPA.CheckList;
-
+        */
 
         var driverConfig = { type: 'chrome', headless: false, addOptions: [ '--disable-geolocation', '--start-maximized', '--disable-notifications'], prefs : { 'profile.default_content_setting_values.geolocation': 2} };
         karate.configure('driver', driverConfig);
         config.driverConfig = driverConfig;
 
+        // Setting up HCM tenantId
+        config.hcmTenantId = envProps.tenantId;
+
     karate.log('karate.env:', env);
     karate.log('locale:', locale);
     karate.log('tenantId:', config.tenantId);
+    karate.log('config:', config);
     
     karate.configure('readTimeout', 120000);
 

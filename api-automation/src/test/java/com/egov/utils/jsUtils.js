@@ -319,3 +319,49 @@ function getCurrentTime(){
     var simpleDateFormat = new java.text.SimpleDateFormat("HH:mm");
   return simpleDateFormat.format(new java.util.Date().getTime());
 }
+
+/**
+ * Get a random array element
+ * @param {no of digits} x
+ * @returns random integer
+ */
+function getRandomArrayElement(list){
+   return list[Math.floor((Math.random()*list.length))];
+}
+
+function getUUID(){
+    var uuid = java.util.UUID.randomUUID() + '';
+    return uuid;
+}
+
+function getUnixEpochTime(){
+    return Math.floor(new Date().getTime() / 1000);
+}
+
+function getDateInFormat(format, numberOfDaysToAdd){
+    var date = java.time.LocalDate.now()
+    var formatter = java.time.format.DateTimeFormatter.ofPattern(format);
+    return date.minusDays(numberOfDaysToAdd).format(formatter);
+}
+
+// function generateRandomNumberBelowMax(max) {
+//     return Math.floor(Math.random() * max)
+// }
+
+function generateRandomNumberInRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateRandomFloatNumber(min, max){
+    return (Math.random() * (max - min + 1)) + min;
+}
+
+function convertIntegerToString(num){
+    return num + ''
+}
+
+function retMax(max){
+    return Math.floor(Math.random() * max)
+}
