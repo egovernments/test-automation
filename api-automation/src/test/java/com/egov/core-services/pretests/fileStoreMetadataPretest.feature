@@ -38,7 +38,6 @@ Feature: Filestore Metadata API call
         tenantId: '#(tenantId)',
         fileStoreIds: '#(getFileIds)'
     }
-
     """
     Given url fileStoreMetadata 
     And params getFileIdParam

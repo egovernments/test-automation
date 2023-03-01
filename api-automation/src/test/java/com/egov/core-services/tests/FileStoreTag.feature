@@ -11,8 +11,15 @@ Feature: File store Tag
        * match fileStoreTagResponseBody == '#present'
 
   @FileStore_Tag_02 @coreServices @regression @negative @filestore
-  Scenario: Filestore incorrect tag
+  Scenario: Filestore incorrect tenantId
       #Calling tag preset
        * call read('../../core-services/pretests/fileStoreTagPretest.feature@getFilestoreIncorrectTag')   
 
-       * assert.fileStoreTagResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTenantid 
+       * assert fileStoreTagResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTenantid
+
+  @FileStore_Tag_03 @coreServices @regression @negative @filestore
+  Scenario: Filestore incorrect tag
+      #Calling tag preset
+       * call read('../../core-services/pretests/fileStoreTagPretest.feature@getFilestoreIncorrectTagError')   
+
+       * assert fileStoreTagResponseBody.Errors[0].message == fileStoreConst.errorMessages.noTag     
