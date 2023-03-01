@@ -6,6 +6,7 @@ Feature: FileStore create API call
   * def fileContentType = 'application/pdf'
   * def commonConstants = read('../../common-services/constants/genericConstants.yaml')
   * def module = commonConstants.parameters.module[0]
+  * def tag = commonConstants.parameters.tag[0]
   * def invalidTenantId = commonConstants.invalidParameters.invalidTenantId
   * def fileStoreConst = read('../../core-services/constants/fileStore.yaml')
   * def testData = '../../common-services/testData/dummyTestData.rtf'
@@ -24,6 +25,7 @@ Feature: FileStore create API call
               And multipart file file = {read: '#(testData3)' , filename: '#(filetestData3)', contentType: '#(fileContentType)'}
               And multipart field tenantId = tenantId
               And multipart field module = module
+              And multipart field tag = tag
               And header Content-Type = fileContentTypeHeader
              When method post
              Then status 201
@@ -38,6 +40,7 @@ Feature: FileStore create API call
               And multipart file file = { read: '#(testData2)', filename: '#(filetestData2)', contentType: '#(fileContentType)' }
               And multipart field tenantId = tenantId
               And multipart field module = module
+              And multipart field tag = tag
               And header Content-Type = fileContentTypeHeader
              When method post
              Then status 201
@@ -62,6 +65,7 @@ Feature: FileStore create API call
               And multipart file file = {read: '#(testData)', filename: '#(filetestData)', contentType: '#(fileContentType)'}
               And multipart field tenantId = tenantId
               And multipart field module = module
+              And multipart field tag = tag
               And header Content-Type = fileContentTypeHeader
              When method post
              Then status 400
@@ -74,6 +78,7 @@ Feature: FileStore create API call
               And multipart file file = {read: '#(testData1)', filename: '#(filetestData1)', contentType: '#(fileContentType)'}
               And multipart field tenantId = tenantId
               And multipart field module = module
+              And multipart field tag = tag
               And header Content-Type = fileContentTypeHeader
              When method post
              Then status 413
@@ -88,6 +93,7 @@ Feature: FileStore create API call
               And multipart file file = {read: '#(testData3)', filename: '#(filetestData3)', contentType: '#(fileContentType)'}
               And multipart field tenantId = invalidTenantId
               And multipart field module = module
+              And multipart field tag = tag
               And header Content-Type = fileContentTypeHeader
              When method post
              Then status 201

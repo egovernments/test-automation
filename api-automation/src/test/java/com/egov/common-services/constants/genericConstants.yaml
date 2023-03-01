@@ -20,6 +20,9 @@ parameters:
   # to upload file on fire-noc module
   module:
     - fire-noc
+  # tag for filestore
+  tag:
+    - 00041-2017-QR  
   # type for userOtp
   type:
     - register 

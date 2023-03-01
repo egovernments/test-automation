@@ -16,6 +16,8 @@ endPoints:
   fileStore:
     create: filestore/v1/files
     getFileId: filestore/v1/files/url
+    getMetadataId: filestore/v1/files/metadata
+    getFileTag: filestore/v1/files/tag
 
   citizen:
     create: user/users/_createnovalidate
@@ -76,6 +78,7 @@ endPoints:
   pdfService:
     create: pdf-service/v1/_create?
     createNoSave: pdf-service/v1/_createnosave?
+    bulk: pdf-service/v1/_getBulkPdfRecordsDetails
 
   user:
     updateProfile: user/profile/_update
