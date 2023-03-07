@@ -1,0 +1,102 @@
+{
+    "searchWithId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "id": [
+                "#(idOfIndividual)"
+            ]
+        }
+    },
+    "searchWithClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "clientReferenceId": [
+                "#(clientReferenceIdOfIndividual)"
+            ]
+        }
+    },
+    "searchWithMultipleClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "clientReferenceId": #(clientReferenceIdOfIndividual)
+        }
+    },
+    "searchWithName": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "name": {
+                "givenName": "#(givenName)",
+                "familyName": "#(familyName)",
+                "otherNames": "#(otherNames)"
+            }
+        }
+    },
+    "searchWithDateOfBirth": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "dateOfBirth": "#(dateOfBirth)"
+        }
+    },
+    "searchWithGender": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "gender": "#(gender)"
+        }
+    },
+    "searchWithIdentifier": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "identifier": {
+                "identifierType": "#(individualIdentifierType)",
+                "identifierId": "#(individualIdentifierId)"
+            }
+        }
+    },
+    "searchWithBoundaryCode": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "boundaryCode": "#(code)"
+        }
+    },
+    "searchWithAllCriteria": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "id": [
+                "#(idOfIndividual)"
+            ],
+            "clientReferenceId": [
+                "#(clientReferenceIdOfIndividual)"
+            ],
+            "name": {
+                "givenName": "#(givenName)",
+                "familyName": "#(familyName)",
+                "otherNames": "#(otherNames)"
+            },
+            "dateOfBirth": "#(dateOfBirth)",
+            "gender": "#(gender)",
+            "identifier": {
+                "identifierType": "#(individualIdentifierType)",
+                "identifierId": "#(individualIdentifierId)"
+            },
+            "boundaryCode": "#(code)"
+        }
+    }
+}

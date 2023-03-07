@@ -475,19 +475,29 @@ function fn() {
         config.createHouseholdURL = envProps.host + path.endPoints.hcm.household.create
         config.updateHouseholdURL = envProps.host + path.endPoints.hcm.household.update
         config.searchHouseholdURL = envProps.host + path.endPoints.hcm.household.search
-        config.deleteHouseholdURL = envProps.host + path.endPoints.hcm.household.update
+        config.deleteHouseholdURL = envProps.host + path.endPoints.hcm.household.delete
+        config.bulkCreateHouseholdURL = envProps.host + path.endPoints.hcm.household.bulkCreate
+        config.bulkUpdateHouseholdURL = envProps.host + path.endPoints.hcm.household.bulkUpdate
+        config.bulkDeleteHouseholdURL = envProps.host + path.endPoints.hcm.household.bulkDelete
 
         // Individual
         config.createIndividualURL = envProps.host + path.endPoints.hcm.individual.create
         config.updateIndividualURL = envProps.host + path.endPoints.hcm.individual.update
         config.searchIndividualURL = envProps.host + path.endPoints.hcm.individual.search
-        config.deleteIndividualURL = envProps.host + path.endPoints.hcm.individual.update
+        config.deleteIndividualURL = envProps.host + path.endPoints.hcm.individual.delete
+        config.bulkCreateIndividualURL = envProps.host + path.endPoints.hcm.individual.bulkCreate
+        config.bulkUpdateIndividualURL = envProps.host + path.endPoints.hcm.individual.bulkUpdate
+        config.bulkDeleteIndividualURL = envProps.host + path.endPoints.hcm.individual.bulkDelete
+
 
         // Household Member
         config.createHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.create
         config.updateHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.update
         config.searchHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.search
-        config.deleteHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.update
+        config.deleteHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.delete
+        config.bulkCreateHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.bulkCreate
+        config.bulkUpdateHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.bulkUpdate
+        config.bulkDeleteHouseholdMemberURL = envProps.host + path.endPoints.hcm.householdMember.bulkDelete
 
         // Project
         config.createProjectURL = envProps.host + path.endPoints.hcm.project.create
@@ -499,49 +509,73 @@ function fn() {
         config.createProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.create
         config.updateProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.update
         config.searchProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.search
-        config.deleteProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.update
+        config.deleteProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.delete
+        config.bulkCreateProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.bulkCreate
+        config.bulkUpdateProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.bulkUpdate
+        config.bulkDeleteProjectBeneficiaryURL = envProps.host + path.endPoints.hcm.projectBeneficiary.bulkDelete
 
         // Project Task
         config.createProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.create
         config.updateProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.update
         config.searchProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.search
-        config.deleteProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.update
+        config.deleteProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.delete
+        config.bulkCreateProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.bulkCreate
+        config.bulkUpdateProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.bulkDelete
+        config.bulkDeleteProjectTaskURL = envProps.host + path.endPoints.hcm.projectTask.bulkUpdate
 
         // Project Staff
         config.createProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.create
         config.updateProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.update
         config.searchProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.search
-        config.deleteProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.update
+        config.deleteProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.delete
+        config.bulkCreateProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.bulkCreate
+        config.bulkUpdateProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.bulkUpdate
+        config.bulkDeleteProjectStaffURL = envProps.host + path.endPoints.hcm.projectStaff.bulkDelete
 
         // Project Facility
         config.createProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.create
         config.updateProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.update
         config.searchProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.search
-        config.deleteProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.update
+        config.deleteProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.delete
+        config.bulkCreateProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.bulkCreate
+        config.bulkUpdateProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.bulkUpdate
+        config.bulkDeleteProjectFacilityURL = envProps.host + path.endPoints.hcm.projectFacility.bulkDelete
 
         // Project Resource
         config.createProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.create
         config.updateProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.update
         config.searchProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.search
-        config.deleteProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.update
+        config.deleteProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.delete
+        config.bulkCreateProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.bulkCreate
+        config.bulkUpdateProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.bulkUpdate
+        config.bulkDeleteProjectResourceURL = envProps.host + path.endPoints.hcm.projectResource.bulkDelete
 
         // Facility
         config.createFacilityURL = envProps.host + path.endPoints.hcm.facility.create
         config.updateFacilityURL = envProps.host + path.endPoints.hcm.facility.update
         config.searchFacilityURL = envProps.host + path.endPoints.hcm.facility.search
-        config.deleteFacilityURL = envProps.host + path.endPoints.hcm.facility.update
+        config.deleteFacilityURL = envProps.host + path.endPoints.hcm.facility.delete
+        config.bulkCreateFacilityURL = envProps.host + path.endPoints.hcm.facility.bulkCreate
+        config.bulkUpdateFacilityURL = envProps.host + path.endPoints.hcm.facility.bulkUpdate
+        config.bulkDeleteFacilityURL = envProps.host + path.endPoints.hcm.facility.bulkDelete
 
         // Stock
         config.createStockURL = envProps.host + path.endPoints.hcm.stock.create
         config.updateStockURL = envProps.host + path.endPoints.hcm.stock.update
         config.searchStockURL = envProps.host + path.endPoints.hcm.stock.search
-        config.deleteStockURL = envProps.host + path.endPoints.hcm.stock.update
+        config.deleteStockURL = envProps.host + path.endPoints.hcm.stock.delete
+        config.bulkCreateStockURL = envProps.host + path.endPoints.hcm.stock.bulkCreate
+        config.bulkUpdateStockURL = envProps.host + path.endPoints.hcm.stock.bulkUpdate
+        config.bulkDeleteStockURL = envProps.host + path.endPoints.hcm.stock.bulkDelete
 
         // Stock Reconciliation
         config.createStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.create
         config.updateStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.update
         config.searchStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.search
-        config.deleteStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.update
+        config.deleteStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.delete
+        config.bulkCreateStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.bulkCreate
+        config.bulkUpdateStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.bulkUpdate
+        config.bulkDeleteStockReconciliationURL = envProps.host + path.endPoints.hcm.stockReconciliation.bulkDelete
         
         /*
         // Calling pretest features which is consumed by almost all tests

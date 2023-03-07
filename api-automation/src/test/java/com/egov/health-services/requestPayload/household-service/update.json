@@ -1,0 +1,67 @@
+{
+    "householdUpdateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": #(householdCreatedData)
+    },
+    "householdUpdateBodyGeneric": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "id": "#(idOfHouseholdToUpdate)",
+            "tenantId": "#(hcmTenantId)",
+            "clientReferenceId": "#(householdClientReferenceId)",
+            "memberCount": "#(memberCount)",
+            "address": {
+                "id": "ab92038c-b02c-4592-9f9c-04f4ea7b3b4a",
+                "clientReferenceId": "#(addressClientReferenceId)",
+                "tenantId": "#(tenantIdOfAddress)",
+                "doorNo": "#(doorNo)",
+                "latitude": 90,
+                "longitude": 180,
+                "locationAccuracy": 10000,
+                "type": "#(type)",
+                "addressLine1": "#(addressLine1)",
+                "addressLine2": "#(addressLine2)",
+                "landmark": "#(landmark)",
+                "city": "#(city)",
+                "pincode": "#(pincode)",
+                "buildingName": "#(buildingName)",
+                "street": "#(street)",
+                "locality": {
+                    "code": "#(localityCode)",
+                    "name": "#(localityName)",
+                    "label": "#(localityLabel)",
+                    "latitude": "#(localityLatitude)",
+                    "longitude": "#(localityLongitude)"
+                }
+            },
+            "additionalFields": {
+                "schema": "HOUSEHOLD",
+                "version": 2,
+                "fields": [
+                    {
+                        "key": "height",
+                        "value": "180"
+                    }
+                ]
+            },
+            "isDeleted": false,
+            "rowVersion": 1,
+            "auditDetails": {
+                "createdBy": "56b5c31b-b843-426c-b8d5-64a4c80286aa",
+                "lastModifiedBy": "56b5c31b-b843-426c-b8d5-64a4c80286aa",
+                "createdTime": 1678072236754,
+                "lastModifiedTime": 1678072236754
+            }
+        }
+    },
+    "bulkHouseholdUpdateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Households": #(householdBulkCreatedData)
+    }
+}

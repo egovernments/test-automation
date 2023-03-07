@@ -349,14 +349,26 @@ endPoints:
       create: household/v1/_create
       update: household/v1/_update
       search: household/v1/_search
+      delete: household/v1/_delete
+      bulkCreate: household/v1/bulk/_create
+      bulkUpdate: household/v1/bulk/_update
+      bulkDelete: household/v1/bulk/_delete
     individual:
       create: individual/v1/_create
       update: individual/v1/_update
       search: individual/v1/_search
+      delete: individual/v1/_delete
+      bulkCreate: individual/v1/bulk/_create
+      bulkUpdate: individual/v1/bulk/_update
+      bulkDelete: individual/v1/bulk/_delete
     householdMember:
       create: household/member/v1/_create
       update: household/member/v1/_update
       search: household/member/v1/_search
+      delete: household/member/v1/_delete
+      bulkCreate: household/member/v1/bulk/_create
+      bulkUpdate: household/member/v1/bulk/_update
+      bulkDelete: household/member/v1/bulk/_delete
     project:
       create: project/v1/_create
       update: project/v1/_update
@@ -365,31 +377,63 @@ endPoints:
       create: project/beneficiary/v1/_create
       update: project/beneficiary/v1/_update
       search: project/beneficiary/v1/_search
+      delete: product/variant/v1/_delete
+      bulkCreate: project/beneficiary/v1/bulk/_create
+      bulkUpdate: project/beneficiary/v1/bulk/_update
+      bulkDelete: project/beneficiary/v1/bulk/_delete
     projectTask:
       create: project/task/v1/_create
       update: project/task/v1/_update
       search: project/task/v1/_search
+      delete: project/task/v1/_delete
+      bulkCreate: project/task/v1/bulk/_create
+      bulkUpdate: project/task/v1/bulk/_update
+      bulkDelete: project/task/v1/bulk/_delete
     projectStaff:
       create: project/staff/v1/_create
       update: project/staff/v1/_update
       search: project/staff/v1/_search
+      delete: project/staff/v1/_delete
+      bulkCreate: project/staff/v1/bulk/_create
+      bulkUpdate: project/staff/v1/bulk/_update
+      bulkDelete: project/staff/v1/bulk/_delete
     projectFacility:
       create: project/facility/v1/_create
       update: project/facility/v1/_update
       search: project/facility/v1/_search
+      delete: project/facility/v1/_delete
+      bulkCreate: project/facility/v1/bulk/_create
+      bulkUpdate: project/facility/v1/bulk/_update
+      bulkDelete: project/facility/v1/bulk/_delete
     projectResource:
       create: project/resource/v1/_create
       update: project/resource/v1/_update
       search: project/resource/v1/_search
+      delete: project/resource/v1/_delete
+      bulkCreate: project/resource/v1/bulk/_create
+      bulkUpdate: project/resource/v1/bulk/_update
+      bulkDelete: project/resource/v1/bulk/_delete
     facility:
       create: facility/v1/_create
       update: facility/v1/_update
       search: facility/v1/_search
+      delete: facility/v1/_delete
+      bulkCreate: facility/v1/bulk/_create
+      bulkUpdate: facility/v1/bulk/_update
+      bulkDelete: facility/v1/bulk/_delete
     stock:
       create: stock/v1/_create
       update: stock/v1/_update
       search: stock/v1/_search
+      delete: stock/v1/_delete
+      bulkCreate: stock/v1/bulk/_create
+      bulkUpdate: stock/v1/bulk/_update
+      bulkDelete: stock/v1/bulk/_delete
     stockReconciliation:
       create: stock/reconciliation/v1/_create
       update: stock/reconciliation/v1/_update
       search: stock/reconciliation/v1/_search
+      delete: stock/reconciliation/v1/_delete
+      bulkCreate: stock/reconciliation/v1/bulk/_create
+      bulkUpdate: stock/reconciliation/v1/bulk/_update
+      bulkDelete: stock/reconciliation/v1/bulk/_delete

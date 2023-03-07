@@ -1,9 +1,9 @@
 {
-    "RequestInfo": {
-        "authToken": "#(hcmAuthToken)"
-    },
-    "Individual": [
-        {
+    "individualCreateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
             "tenantId": "#(hcmTenantId)",
             "clientReferenceId": "#(clientReferenceId)",
             "name": {
@@ -20,6 +20,7 @@
             "address": [
                 {
                     "tenantId": "#(hcmTenantId)",
+                    "clientReferenceId": "#(addressClientReferenceId)",
                     "doorNo": "#(doorNo)",
                     "latitude": 40.82,
                     "longitude": 35.06,
@@ -44,6 +45,21 @@
             ],
             "fatherName": "#(fatherName)",
             "husbandName": "#(husbandName)",
+            "identifiers": [
+                {
+                    "clientReferenceId": "#(individualIdentifierClientReferenceId)",
+                    "identifierType": "#(individualIdentifierType)",
+                    "identifierId": "#(individualIdentifierId)"
+                }
+            ],
+            "skills": [
+                {
+                    "clientReferenceId": "#(individualSkillClientReferenceId)",
+                    "type": "#(individualSkillType)",
+                    "level": "#(individualSkillLevel)",
+                    "experience": "#(individualSkillExperience)"
+                }
+            ],
             "photo": "#(photo)",
             "additionalFields": {
                 "schema": "INDIVIDUAL",
@@ -56,6 +72,150 @@
                 ]
             }
         }
-    ],
-    "apiOperation": "#(apiOperation)"
+    },
+    "bulkIndividualCreateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individuals": [
+            {
+                "tenantId": "#(hcmTenantId)",
+                "clientReferenceId": "#(clientReferenceId)",
+                "name": {
+                    "givenName": "#(givenName)",
+                    "familyName": "#(familyName)",
+                    "otherNames": "#(otherNames)"
+                },
+                "dateOfBirth": "#(dateOfBirth)",
+                "gender": "#(gender)",
+                "bloodGroup": "#(bloodGroup)",
+                "mobileNumber": "#(mobileNumber)",
+                "altContactNumber": "#(altContactNumber)",
+                "email": "#(email)",
+                "address": [
+                    {
+                        "tenantId": "#(hcmTenantId)",
+                        "clientReferenceId": "#(addressClientReferenceId)",
+                        "doorNo": "#(doorNo)",
+                        "latitude": 40.82,
+                        "longitude": 35.06,
+                        "locationAccuracy": 14.27,
+                        "type": "#(type)",
+                        "addressLine1": "#(addressLine1)",
+                        "addressLine2": "#(addressLine2)",
+                        "landmark": "#(landmark)",
+                        "city": "#(city)",
+                        "pincode": "#(pincode)",
+                        "buildingName": "#(buildingName)",
+                        "street": "#(street)",
+                        "locality": {
+                            "code": "#(code)",
+                            "name": "#(name)",
+                            "label": "#(label)",
+                            "latitude": "#(latitude)",
+                            "longitude": "#(longitude)",
+                            "materializedPath": "#(materializedPath)"
+                        }
+                    }
+                ],
+                "fatherName": "#(fatherName)",
+                "husbandName": "#(husbandName)",
+                "identifiers": [
+                    {
+                        "clientReferenceId": "#(individualIdentifierClientReferenceId)",
+                        "identifierType": "#(individualIdentifierType)",
+                        "identifierId": "#(individualIdentifierId)"
+                    }
+                ],
+                "skills": [
+                    {
+                        "clientReferenceId": "#(individualSkillClientReferenceId)",
+                        "type": "#(individualSkillType)",
+                        "level": "#(individualSkillLevel)",
+                        "experience": "#(individualSkillExperience)"
+                    }
+                ],
+                "photo": "#(photo)",
+                "additionalFields": {
+                    "schema": "INDIVIDUAL",
+                    "version": 23,
+                    "fields": [
+                        {
+                            "key": "test_80f7fb8d8a45",
+                            "value": "test_38bfd0dc223b"
+                        }
+                    ]
+                }
+            },
+            {
+                "tenantId": "#(hcmTenantId)",
+                "clientReferenceId": "#(clientReferenceId2)",
+                "name": {
+                    "givenName": "#(givenName2)",
+                    "familyName": "#(familyName2)",
+                    "otherNames": "#(otherNames2)"
+                },
+                "dateOfBirth": "#(dateOfBirth)",
+                "gender": "#(gender)",
+                "bloodGroup": "#(bloodGroup)",
+                "mobileNumber": "#(mobileNumber)",
+                "altContactNumber": "#(altContactNumber)",
+                "email": "#(email)",
+                "address": [
+                    {
+                        "tenantId": "#(hcmTenantId)",
+                        "clientReferenceId": "#(addressClientReferenceId2)",
+                        "doorNo": "#(doorNo2)",
+                        "latitude": 40.82,
+                        "longitude": 35.06,
+                        "locationAccuracy": 14.27,
+                        "type": "#(type2)",
+                        "addressLine1": "#(addressLine12)",
+                        "addressLine2": "#(addressLine22)",
+                        "landmark": "#(landmark2)",
+                        "city": "#(city2)",
+                        "pincode": "#(pincode2)",
+                        "buildingName": "#(buildingName2)",
+                        "street": "#(street2)",
+                        "locality": {
+                            "code": "#(code2)",
+                            "name": "#(name2)",
+                            "label": "#(label2)",
+                            "latitude": "#(latitude2)",
+                            "longitude": "#(longitude2)",
+                            "materializedPath": "#(materializedPath2)"
+                        }
+                    }
+                ],
+                "fatherName": "#(fatherName2)",
+                "husbandName": "#(husbandName2)",
+                "identifiers": [
+                    {
+                        "clientReferenceId": "#(individualIdentifierClientReferenceId2)",
+                        "identifierType": "#(individualIdentifierType2)",
+                        "identifierId": "#(individualIdentifierId2)"
+                    }
+                ],
+                "skills": [
+                    {
+                        "clientReferenceId": "#(individualSkillClientReferenceId2)",
+                        "type": "#(individualSkillType2)",
+                        "level": "#(individualSkillLevel2)",
+                        "experience": "#(individualSkillExperience2)"
+                    }
+                ],
+                "photo": "#(photo2)",
+                "additionalFields": {
+                    "schema": "INDIVIDUAL",
+                    "version": 23,
+                    "fields": [
+                        {
+                            "key": "test_80f7fb8d8a45",
+                            "value": "test_38bfd0dc223b"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }

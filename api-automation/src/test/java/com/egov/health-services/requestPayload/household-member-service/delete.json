@@ -1,0 +1,44 @@
+{
+    "deleteHouseholdMemberBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": #(householdMemberCreatedData)
+    },
+    "deleteHouseholdMemberGenericBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "id": "#(idOfHouseholdMemberToUpdate)",
+            "householdClientReferenceId": "#(householdClientReferenceIdToUpdate)",
+            "individualClientReferenceId": "#(individualClientReferenceIdToUpdate)",
+            "isHeadOfHousehold": false,
+            "tenantId": "#(tenantIdToUpdate)",
+            "additionalFields": {
+                "schema": "test_a3bf3e3ca4bc",
+                "version": 62,
+                "fields": [
+                    {
+                        "key": "test_d1960b95a67c",
+                        "value": "test_8329c276a171"
+                    }
+                ]
+            },
+            "isDeleted": false,
+            "rowVersion": 1,
+            "auditDetails": {
+                "createdBy": "56b5c31b-b843-426c-b8d5-64a4c80286aa",
+                "lastModifiedBy": "56b5c31b-b843-426c-b8d5-64a4c80286aa",
+                "createdTime": 1678073429826,
+                "lastModifiedTime": 1678073429826
+            }
+        }
+    },
+    "bulkDeleteHouseholdMemberBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMembers": #(householdMemberCreatedData)
+    }
+}

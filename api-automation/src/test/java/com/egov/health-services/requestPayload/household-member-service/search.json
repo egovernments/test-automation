@@ -1,0 +1,36 @@
+{
+    "searchHouseholdMemberById": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "id": #(idOfHouseholdMember)
+        }
+    },
+    "searchHouseholdMemberByHouseholdClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "householdClientReferenceId": "#(householdClientReferenceId)"
+        }
+    },
+    "searchHouseholdMemberByIndividualClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "individualClientReferenceId": "#(individualClientReferenceId)"
+        }
+    },
+    "searchHouseholdMemberWithAllCriteria": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "id": #(idOfHouseholdMember),
+            "householdClientReferenceId": "#(householdClientReferenceId)",
+            "individualClientReferenceId": "#(individualClientReferenceId)"
+        }
+    }
+}

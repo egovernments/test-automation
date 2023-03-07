@@ -1,13 +1,14 @@
 {
-    "RequestInfo": {
-        "authToken": "#(hcmAuthToken)"
-    },
-    "Household": [
-        {
+    "householdCreateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
             "tenantId": "#(hcmTenantId)",
-            "clientReferenceId": "#(clientReferenceId)",
+            "clientReferenceId": "#(householdClientReferenceId)",
             "memberCount": "#(memberCount)",
             "address": {
+                "clientReferenceId": "#(addressClientReferenceId)",
                 "tenantId": "#(hcmTenantId)",
                 "doorNo": "#(doorNo)",
                 "latitude": 90,
@@ -40,6 +41,88 @@
                 ]
             }
         }
-    ],
-    "apiOperation": "#(apiOperation)"
+    },
+    "bulkHouseholdCreateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Households": [
+            {
+                "tenantId": "#(hcmTenantId)",
+                "clientReferenceId": "#(householdClientReferenceId)",
+                "memberCount": "#(memberCount)",
+                "address": {
+                    "clientReferenceId": "#(addressClientReferenceId)",
+                    "tenantId": "#(hcmTenantId)",
+                    "doorNo": "#(doorNo)",
+                    "latitude": 90,
+                    "longitude": 180,
+                    "locationAccuracy": 10000,
+                    "type": "#(type)",
+                    "addressLine1": "#(addressLine1)",
+                    "addressLine2": "#(addressLine2)",
+                    "landmark": "#(landmark)",
+                    "city": "#(city)",
+                    "pincode": "#(pincode)",
+                    "buildingName": "#(buildingName)",
+                    "street": "#(street)",
+                    "locality": {
+                        "code": "#(localityCode)",
+                        "name": "#(localityName)",
+                        "label": "#(localityLabel)",
+                        "latitude": "#(localityLatitude)",
+                        "longitude": "#(localityLongitude)"
+                    }
+                },
+                "additionalFields": {
+                    "schema": "HOUSEHOLD",
+                    "version": 2,
+                    "fields": [
+                        {
+                            "key": "height",
+                            "value": "180"
+                        }
+                    ]
+                }
+            },
+            {
+                "tenantId": "#(hcmTenantId)",
+                "clientReferenceId": "#(householdClientReferenceId2)",
+                "memberCount": "#(memberCount)",
+                "address": {
+                    "clientReferenceId": "#(addressClientReferenceId2)",
+                    "tenantId": "#(hcmTenantId)",
+                    "doorNo": "#(doorNo2)",
+                    "latitude": 90,
+                    "longitude": 180,
+                    "locationAccuracy": 10000,
+                    "type": "#(type)",
+                    "addressLine1": "#(addressLine12)",
+                    "addressLine2": "#(addressLine22)",
+                    "landmark": "#(landmark2)",
+                    "city": "#(city2)",
+                    "pincode": "#(pincode2)",
+                    "buildingName": "#(buildingName2)",
+                    "street": "#(street2)",
+                    "locality": {
+                        "code": "#(localityCode2)",
+                        "name": "#(localityName2)",
+                        "label": "#(localityLabel2)",
+                        "latitude": "#(localityLatitude2)",
+                        "longitude": "#(localityLongitude2)"
+                    }
+                },
+                "additionalFields": {
+                    "schema": "HOUSEHOLD",
+                    "version": 2,
+                    "fields": [
+                        {
+                            "key": "height",
+                            "value": "180"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }

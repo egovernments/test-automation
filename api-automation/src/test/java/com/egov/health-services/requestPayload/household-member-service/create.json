@@ -1,0 +1,65 @@
+{
+    "createHouseholdMemberBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMember": {
+            "tenantId": "#(hcmTenantId)",
+            "householdClientReferenceId": "#(householdClientReferenceId)",
+            "individualClientReferenceId": "#(individualClientReferenceId)",
+            "isHeadOfHousehold": #(isHeadOfHousehold),
+            "rowVersion": 1,
+            "additionalFields": {
+                "schema": "HOUSEHOLDMEMBER",
+                "version": 2,
+                "fields": [
+                    {
+                        "key": "height",
+                        "value": "180"
+                    }
+                ]
+            }
+        }
+    },
+    "bulkCreateHouseholdMemberBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "HouseholdMembers": [
+            {
+                "tenantId": "#(hcmTenantId)",
+                "householdClientReferenceId": "#(householdClientReferenceId)",
+                "individualClientReferenceId": "#(individualClientReferenceId)",
+                "isHeadOfHousehold": #(isHeadOfHousehold),
+                "rowVersion": 1,
+                "additionalFields": {
+                    "schema": "HOUSEHOLDMEMBER",
+                    "version": 2,
+                    "fields": [
+                        {
+                            "key": "height",
+                            "value": "180"
+                        }
+                    ]
+                }
+            },
+            {
+                "tenantId": "#(hcmTenantId)",
+                "householdClientReferenceId": "#(householdClientReferenceId2)",
+                "individualClientReferenceId": "#(individualClientReferenceId2)",
+                "isHeadOfHousehold": #(isHeadOfHousehold2),
+                "rowVersion": 1,
+                "additionalFields": {
+                    "schema": "HOUSEHOLDMEMBER",
+                    "version": 2,
+                    "fields": [
+                        {
+                            "key": "height",
+                            "value": "180"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

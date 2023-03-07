@@ -4,7 +4,9 @@
             "authToken": "#(hcmAuthToken)"
         },
         "Household": {
-            "id": "#(idOfHousehold)"
+            "id": [
+                "#(idOfHousehold)"
+            ]
         }
     },
     "searchWithClientReferenceId": {
@@ -12,7 +14,17 @@
             "authToken": "#(hcmAuthToken)"
         },
         "Household": {
-            "clientReferenceId": "#(clientReferenceIdOfHousehold)"
+            "clientReferenceId": [
+                "#(clientReferenceIdOfHousehold)"
+            ]
+        }
+    },
+    "searchWithMultipleClientReferenceId": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "clientReferenceId": #(clientReferenceIdOfHousehold)
         }
     },
     "searchWithBoundaryCode": {
@@ -20,6 +32,20 @@
             "authToken": "#(hcmAuthToken)"
         },
         "Household": {
+            "boundaryCode": "#(boundaryCodeOfHousehold)"
+        }
+    },
+    "searchWithAllCriteria": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Household": {
+            "id": [
+                "#(idOfHousehold)"
+            ],
+            "clientReferenceId": [
+                "#(clientReferenceIdOfHousehold)"
+            ],
             "boundaryCode": "#(boundaryCodeOfHousehold)"
         }
     }
