@@ -24,7 +24,7 @@ Background:
     * def mobileNumber = '77' + randomMobileNumGen(8)
     * def whatsup = "WhatsApp"
     * def regNumber = "PB 09 PA "
-    * def name = 'AUTO_' + randomString(10)
+    * def name = 'AUTO' + randomString(10)
     * def driverName = 'AUTO' + randomString(10)
     * def drName = 'AUTOFATHER' + randomString(10)
     * def pitDetails = randomMobileNumGen(1)
