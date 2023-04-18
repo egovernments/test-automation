@@ -338,10 +338,60 @@ function getUnixEpochTime(){
     return Math.floor(new Date().getTime() / 1000);
 }
 
-function getDateInFormat(format, numberOfDaysToAdd){
-    var date = java.time.LocalDate.now()
-    var formatter = java.time.format.DateTimeFormatter.ofPattern(format);
-    return date.minusDays(numberOfDaysToAdd).format(formatter);
+function getDateInFormat(){
+    // var date = java.time.LocalDate.now()
+    // var formatter = java.time.format.DateTimeFormatter.ofPattern(format);
+    // return date.minusDays(numberOfDaysToAdd).format(formatter);
+    // Get a random day, month, and year between 1 and 31, 1 and 12, and 1970 and 2023, respectively
+    // Generate a random date between 1/1/1970 and the current date
+
+    // var startDate = new Date(1970, 0, 1).getTime();
+    // var endDate = new Date().getTime();
+    // var randomDate = new Date(Math.floor(Math.random() * (endDate - startDate + 1)) + startDate);
+
+    // // Get the day, month, and year components
+    // var year = randomDate.getFullYear();
+    // var month = randomDate.getMonth() + 1;
+    // var daysInMonth = new Date(year, month, 0).getDate();
+    // var day = Math.floor(Math.random() * daysInMonth) + 1;
+
+    // // Check for leap year
+    // if (month === 2 && year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+    // // February in a leap year - generate a random day between 1 and 29
+    // day = Math.floor(Math.random() * 29) + 1;
+    // }
+
+    // // Format the date as "dd/MM/yyyy"
+    // var formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+
+    // console.log(formattedDate);
+    // return formattedDate;
+
+
+    // var start = java.time.LocalDate.of(1970,1,1)
+    // var end = java.time.LocalDate.now()
+    // var randomDate = java.time.LocalDate.ofEpochDay(java.lang.Math.abs(java.time.Duration.between(start, end).toDays() * java.util.concurrent.ThreadLocalRandom.current().nextDouble()))
+    // var year = randomDate.getYear()
+    // var isLeapYear = java.time.Year.isLeap(year)
+    // var daysInMonth = randomDate.getMonthValue() == 2 && isLeapYear ? 29 : randomDate.lengthOfMonth()
+    // var day = randomDate.getDayOfMonth().toString().padLeft(2, '0')
+    // var month = randomDate.getMonthValue().toString().padLeft(2, '0')
+    // var formattedDate = day + '/' + month + '/' + year
+    // console.log(formattedDate)
+
+    // var dt = new Date(new Date() - Math.random() * 1e12).toLocaleDateString('es-CL')
+    // return dt
+    var start = new Date(1970, 0, 1)
+    var end = new Date()
+    var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [day, month, year].join('/');
 }
 
 // function generateRandomNumberBelowMax(max) {

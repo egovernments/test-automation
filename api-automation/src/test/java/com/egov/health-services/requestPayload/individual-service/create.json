@@ -40,7 +40,8 @@
                         "latitude": "#(latitude)",
                         "longitude": "#(longitude)",
                         "materializedPath": "#(materializedPath)"
-                    }
+                    },
+                    "ward": null
                 }
             ],
             "fatherName": "#(fatherName)",
@@ -60,6 +61,65 @@
                     "experience": "#(individualSkillExperience)"
                 }
             ],
+            "photo": "#(photo)",
+            "additionalFields": {
+                "schema": "INDIVIDUAL",
+                "version": 23,
+                "fields": [
+                    {
+                        "key": "test_80f7fb8d8a45",
+                        "value": "test_38bfd0dc223b"
+                    }
+                ]
+            }
+        }
+    },
+    "individualUpdateBody": {
+        "RequestInfo": {
+            "authToken": "#(hcmAuthToken)"
+        },
+        "Individual": {
+            "tenantId": "#(hcmTenantId)",
+            "clientReferenceId": "#(clientReferenceId)",
+            "name": {
+                "givenName": "#(givenName)",
+                "familyName": "#(familyName)",
+                "otherNames": "#(otherNames)"
+            },
+            "dateOfBirth": "#(dateOfBirth)",
+            "gender": "#(gender)",
+            "bloodGroup": "#(bloodGroup)",
+            "mobileNumber": "#(mobileNumber)",
+            "altContactNumber": "#(altContactNumber)",
+            "email": "#(email)",
+            "address": [
+                {
+                    "tenantId": "#(hcmTenantId)",
+                    "clientReferenceId": "#(addressClientReferenceId)",
+                    "doorNo": "#(doorNo)",
+                    "latitude": 40.82,
+                    "longitude": 35.06,
+                    "locationAccuracy": 14.27,
+                    "type": "#(type)",
+                    "addressLine1": "#(addressLine1)",
+                    "addressLine2": "#(addressLine2)",
+                    "landmark": "#(landmark)",
+                    "city": "#(city)",
+                    "pincode": "#(pincode)",
+                    "buildingName": "#(buildingName)",
+                    "street": "#(street)",
+                    "locality": {
+                        "code": "#(code)",
+                        "name": "#(name)",
+                        "label": "#(label)",
+                        "latitude": "#(latitude)",
+                        "longitude": "#(longitude)",
+                        "materializedPath": "#(materializedPath)"
+                    }
+                }
+            ],
+            "fatherName": "#(fatherName)",
+            "husbandName": "#(husbandName)",
             "photo": "#(photo)",
             "additionalFields": {
                 "schema": "INDIVIDUAL",
@@ -115,7 +175,8 @@
                             "latitude": "#(latitude)",
                             "longitude": "#(longitude)",
                             "materializedPath": "#(materializedPath)"
-                        }
+                        },
+                        "ward": null
                     }
                 ],
                 "fatherName": "#(fatherName)",
@@ -184,7 +245,8 @@
                             "latitude": "#(latitude2)",
                             "longitude": "#(longitude2)",
                             "materializedPath": "#(materializedPath2)"
-                        }
+                        },
+                        "ward": null
                     }
                 ],
                 "fatherName": "#(fatherName2)",

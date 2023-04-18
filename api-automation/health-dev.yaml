@@ -1,0 +1,53 @@
+host: https://health-dev.digit.org/
+localhost: http://localhost:8082/
+mockHost: https://e5a23525-a2d2-42d3-b518-2761de88655c.mock.pstmn.io/
+tenantId: default
+stateCode: pb
+cityCode: amritsar
+# System Admin credentials for login
+sysAdmin:
+  userName: 3989999996
+  password: eGov@4321
+  tenantId: default
+  type: EMPLOYEE
+# Registrar username and password
+registrar:
+  userName: vishal-registrar
+  password: eGov@4321
+  tenantId: default
+  type: EMPLOYEE
+# Distributor username and password
+distributor:
+  userName: ds2
+  password: eGov@4321
+  tenantId: default
+  type: EMPLOYEE
+# Super User credentials for login(need to create user manually)
+superUser:
+  userName: EMPAUTO
+  password: eGov@123
+  type: EMPLOYEE
+# Employee username and password to update an existing user's profile (need to create user manually)
+employee:
+  userName: EMP-107-001333
+  password: Password@2
+  type: EMPLOYEE
+# Citizen's username and password needed for Property End to End flow (need to create user manually)
+citizen:
+  userName: 8073460929
+  password: 123456
+  type: CITIZEN
+# Alternate Citizen's username and password needed for Transfer Ownership of Property (need to create user manually)
+alternateCitizen:
+  userName: 9999999999
+  password: 123456
+  type: CITIZEN
+# Counter Employee's username and password, required for multiple use (need to create user manually)
+counterEmployeeUser:
+  userName: EMP-107-001333
+  password: Password@2
+  type: EMPLOYEE
+citizenArchitect:
+  userName: 9222222222
+  password: 123456
+  type: CITIZEN

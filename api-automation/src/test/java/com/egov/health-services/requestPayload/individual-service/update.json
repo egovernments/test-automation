@@ -47,7 +47,8 @@
                         "latitude": "#(latitude)",
                         "longitude": "#(longitude)",
                         "materializedPath": "#(materializedPath)"
-                    }
+                    },
+                    "ward": null
                 }
             ],
             "fatherName": "#(fatherName)",
